@@ -1,0 +1,431 @@
+<template>
+    <div class={popupClass} data-name="cancel-popup" onclick={handlePopupClick}>
+        <div class="pop-up">
+            <div class="pop-up-body-block">
+                <img src={triangleExclamationRed}>
+
+                <h4>Are you sure you want to cancel your report?</h4>
+                <p class="medium">If you cancel, you will lose all progress.</p>
+                <div class="button-block">
+                    <a class="button-link" onclick={handleCancelReport}><lightning-icon icon-name="utility:close" size="medium"></lightning-icon><span class="xmedium">Cancel my report</span></a>
+                    <button class="blue-btn with-icon" onclick={handleContinueReport}>Continue my report<lightning-icon icon-name="utility:chevronright" size="medium"></lightning-icon></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class={urgentPopupClass} data-name="urgent-popup" onclick={handlePopupClick}>
+        <div class="pop-up">
+            <div class="pop-up-close-block">
+                <a class="close-link" onclick={handleContinueReport}>
+                    <span>Close</span>
+                    <img src={closeWhite}>
+                </a>
+            </div>
+            <div class="pop-up-body-block">
+                <img src={triangleExclamationRed}>
+                <p class="medium">You will need to contact RSPCA Qld on 1300 ANIMAL to make your report for critical issues between the hours of 7am and 7pm. Outside of these hours call 000</p>
+                <div class="button-block">
+                    <a class="red-btn blue-btn" href="tel:1300 264 625">Call 1300 264 625</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class={agePopupClass} data-name="age-popup" onclick={handlePopupClick}>
+        <div class="pop-up">
+            <div class="pop-up-close-block">
+                <a class="close-link" onclick={handleContinueReport}>
+                    <span>Close</span>
+                    <img src={closeWhite}>
+                </a>
+            </div>
+            <div class="pop-up-body-block">
+                <img src={triangleExclamationRed}>
+                <p class="medium">Please contact your local police for assistance with lodging this report</p>
+            </div>
+        </div>
+    </div>
+
+    <div class={backdropClass}></div>
+    <div class="page-container page-form-page page-welfare-complaint background-20">
+        <template lwc:if={introStep}>
+            <c-rspcaqld-page-welfare-complaint-intro header={header}
+                                                     header-height={headerHeight}
+                                                     description={description}
+                                                     button-color={buttonColor}
+                                                     button-label={buttonLabel}
+                                                     button-label-color={buttonLabelColor}
+                                                     image-url={imageUrl}
+                                                     image-key={imageKey}
+                                                     image-height={imageHeight}
+                                                     paw-print-label={pawPrintLabel}
+                                                     onstepchange={handleNext}></c-rspcaqld-page-welfare-complaint-intro>
+        </template>
+        <template lwc:else>
+            <div class="mobile-navigation">
+                <div>
+                    <template for:each={progressSteps} for:item="progressStep">
+                        <span key={progressStep.stepNumber} class={progressStep.class} data-step={progressStep.stepNumber} onclick={handleMobileStep}>{progressStep.stepNumber}. {progressStep.name}</span>
+                        <span class="divide-line" key={progressStep.stepNumber}></span>
+                    </template>
+                </div>
+            </div>
+            <div class="page-data-form">
+                <div class="main-block">
+                    <template if:false={reviewStep}>
+                        <div class="page-data-form-info">
+                            <div class="graphic-icon">
+                                <div class="icon-block shape-1"><img src={activeStep.icon}></div>
+                            </div>
+                            <div class="desc">
+                                <h1>{activeStep.header}</h1>
+                                <div class="progress-steps">
+                                    <template for:each={progressSteps} for:item="progressStep">
+                                        <c-rspcaqld-progress-step key={progressStep.name} type={progressStep.type} label={progressStep.name}></c-rspcaqld-progress-step>
+                                    </template>
+                                </div>
+                                <template lwc:if={isNavButton}>
+                                    <a onclick={handleBack} class="desktop-back-link button-link"><lightning-icon icon-name="utility:chevronleft" size="medium"></lightning-icon><span>Back</span></a>
+                                </template>
+                            </div>
+                        </div>
+                        <div class="page-data-form-form">
+                            <template lwc:if={basicsStep}>
+                                <div class="row complaint-type">
+                                    <c-rspcaqld-cards-report type="urgent"
+                                                             icon-url={triangleExclamationWhite}
+                                                             header="Critical"
+                                                             description="If the animal is seriously injured, or in immediate danger, call:<br>1300 ANIMAL (7am - 7pm)<br>All other hours call 000"
+                                                             link-label="Call 1300 264 625"
+                                                             link-url="1300 264 625"
+                                                             active={isUrgentReport}
+                                                             onselectreport={handleReportSelect}></c-rspcaqld-cards-report>
+                                    <c-rspcaqld-cards-report type="information"
+                                                             icon-url={flagWhite}
+                                                             header="Urgent"
+                                                             description="If the animal requires attention or the situation requires investigation, continue to make a report"
+                                                             link-label="Report to us"
+                                                             link-url="welfare-complaint"
+                                                             active={isInformationReport}
+                                                             onselectreport={handleReportSelect}></c-rspcaqld-cards-report>
+                                </div>
+                                <div class="row">
+                                    <c-rspcaqld-checkbox label="By completing this form I am confirming this animal's life is not in immediate risk and understand our officers may not be able to action within 48hrs." checked={welfareReport.welfareDeclaration} data-name="welfaredeclaration" required onchange={handleFieldChange} error={isWelfareDeclarationError}></c-rspcaqld-checkbox>
+                                </div>
+                                <div class="row">
+                                    <c-rspcaqld-picklist label="Due to the sensitive nature of investigations, RSPCA Qld cannot investigate incidents involving minors. These incidents need to be directed to Qld Police. Is the individual(s) involved over 18 years of age?" options={poiAgeDeclarations.data} data-name="poiagedeclaration" value={welfareReport.poiAgeDeclaration} onchange={handleFieldChange} required></c-rspcaqld-picklist>
+                                </div>
+                            </template>
+                            <template lwc:if={personStep}>
+                                <div class="row two-fields-row">
+                                    <lightning-input type="text" label="First name" placeholder="First name" class="input-inline" required="true" data-name="firstname"  value={contact.firstName} onchange={handleFieldChange} max-length="40" message-when-value-missing={requiredText}></lightning-input>
+                                    <lightning-input type="text" label="Last name" placeholder="Last name" class="input-inline" required="true" data-name="lastname" value={contact.lastName} onchange={handleFieldChange} max-length="80" message-when-value-missing={requiredText}></lightning-input>
+                                </div>
+                                <div class="row">
+                                    <lightning-input type="email" label="Email" placeholder="email@provider.com" class="input-inline" required="true" data-name="email" value={contact.email} onchange={handleFieldChange} onblur={validateEmail} max-length="80" message-when-bad-input="The email address is incorrect" message-when-pattern-mismatch="The email address is incorrect" message-when-type-mismatch="The email address is incorrect" message-when-value-missing={requiredText}></lightning-input>
+                                </div>
+                                <div class="row" onkeydown={handlePhoneKeydown}>
+                                    <lightning-input field-level-help="Phone number must be an Australian service, contain only numbers, and include the area code for land lines" type="tel" label="Your phone number" class="input-inline" required="true" data-name="phone" value={contact.phone} onchange={handleFieldChange} onblur={validateMainPhone} message-when-value-missing={requiredText}></lightning-input>
+                                </div>
+                                <div class="row" onkeydown={handlePhoneKeydown}>
+                                    <lightning-input type="tel" label="Alternate phone (optional)" class="input-inline" data-name="alternatephone" value={contact.alternatePhone} onchange={handleFieldChange} onblur={validateAlternatePhone}></lightning-input>
+                                </div>
+                                <div class="row">
+                                    <c-rspcaqld-google-search placeholder="Please enter your street address" label="Your address" onchange={handleAddressChange} onselect={handleAddressSelect} ontype={handleAddressType} value={contact.address}></c-rspcaqld-google-search>
+                                </div>
+                            </template>
+                            <template lwc:if={whoWhereStep}>
+                                <h2>If you know who the person or establishment is, please enter the details below</h2>
+                                <div class="row two-fields-row">
+                                    <lightning-input type="text" label="Person of interest’s first name" placeholder="First name" class="input-inline person-interest-input" data-name="personfirstname" value={welfareReport.firstName} onchange={handleFieldChange} max-length="40"></lightning-input>
+                                    <lightning-input type="text" label="Person of interest’s last name" placeholder="Last name" class="input-inline" data-name="personlastname" value={welfareReport.lastName} onchange={handleFieldChange} max-length="80"></lightning-input>
+                                </div>
+                                <div class="row">
+                                    <lightning-input type="text" label="Establishment name (if applicable)" placeholder="Establishment name or address" class="input-inline" data-name="establishmentname" value={welfareReport.establishmentName} onchange={handleFieldChange} max-length="255"></lightning-input>
+                                </div>
+                                <div class="row">
+                                    <c-rspcaqld-picklist label="How do you know the person of interest?" options={personInterestOptions.data} placeholder="Please select" data-name="personofinterest" value={welfareReport.personOfInterest} onchange={handleFieldChange}></c-rspcaqld-picklist>
+                                </div>
+                                <div class="row two-fields-row">
+                                    <lightning-input type="text" label="Location - house/apt number" placeholder="House/apt number" class="input-inline" data-name="locationhouse" value={welfareReport.locationHouseNumber} onchange={handleFieldChange} max-length="20"></lightning-input>
+                                    <lightning-input type="text" label="Location - street" placeholder="Street" class="input-inline" data-name="locationstreet" value={welfareReport.locationStreet} onchange={handleFieldChange} required max-length="100" message-when-value-missing={requiredText}></lightning-input>
+                                </div>
+                                <div class="row">
+                                    <lightning-input type="text" label="Location - city" placeholder="City" class="input-inline" data-name="locationcity" value={welfareReport.locationCity} onchange={handleFieldChange} required max-length="50" message-when-value-missing={requiredText}></lightning-input>
+                                </div>
+                                <div class="row two-fields-row">
+                                    <c-rspcaqld-picklist label="Location - state/territory" options={locationStates.data} placeholder="Please select" data-name="locationstate" value={welfareReport.locationState} onchange={handleFieldChange} required message-when-value-missing={requiredText}></c-rspcaqld-picklist>
+                                    <div class="location-field" onkeydown={handlePhoneKeydown}><lightning-input type="tel" label="Location - postcode" placeholder="Postcode" class="input-inline" data-name="locationpostcode" value={welfareReport.locationPostcode} onchange={handleFieldChange} required max-length="4" message-when-value-missing={requiredText}></lightning-input></div>
+                                </div>
+                                <div class="row">
+                                    <lightning-input type="text" label="Pinned location" placeholder="e.g. -27.586446610607815, 152.9223817819724" class="input-inline" data-name="geolocation" value={welfareReport.geolocation} onchange={handleFieldChange} max-length="100"></lightning-input>
+                                    <p class="small field-comment">Please provide geo-location reference if available</p>
+                                </div>
+                                <div class="row upload-row">
+                                    <h2>Location image<lightning-helptext content="This can be a screenshot of the pinned location on a map "></lightning-helptext></h2>
+                                    <div>
+                                        <template for:each={locationFiles} for:item="file" for:index="index">
+                                            <div class="uploaded-image-block" key={file.name}>
+                                                <img data-name={file.name} data-index={index} onclick={handleRemoveLocationFile} class="close-icon" src={closeWhite}>
+                                                <img class="uploaded-image" src={file.fileURL}>
+                                            </div>
+                                        </template>
+                                        <c-rspcaqld-file-upload onaddfile={handleAddLocationFile}></c-rspcaqld-file-upload>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <lightning-textarea label="Please provide a description of owner or person in possession of the animal(s)" class="input-textarea" data-name="poidescription" value={welfareReport.poiDescription} onchange={handleFieldChange} max-length="500"></lightning-textarea>
+                                    <p class="small field-comment">Please provide any detail you can which will help our inspectors identify the individuals involved, distinguishing features e.g., gender, hair colour, age, etc.</p>
+                                </div>
+                                <div class="row">
+                                    <lightning-textarea label="Is there any person at the location of the animal(s) who is potentially dangerous and a risk to the safety of an RSPCA Inspector?" class="input-textarea" data-name="inspectorhazard" value={welfareReport.inspectorHazard} onchange={handleFieldChange} max-length="500"></lightning-textarea>
+                                    <p class="small field-comment">If yes, please provide their details/description</p>
+                                </div>
+                            </template>
+                            <template lwc:if={whatWhenStep}>
+                                <div class="row two-fields-row">
+                                    <lightning-input type="date" label="Date" placeholder="dd/mm/yyyy" class="input-inline" data-name="date" value={welfareReport.date} onchange={handleFieldChange} required message-when-type-mismatch="Complete this field with format dd/mm/yyyy" message-when-bad-input="Complete this field with format dd/mm/yyyy" message-when-value-missing={requiredText}></lightning-input>
+                                    <lightning-input type="text" label="Time" placeholder="(e.g. 12:00pm)" class="input-inline" data-name="time" value={welfareReport.time} onchange={handleFieldChange}></lightning-input>
+                                </div>
+                                <div class="row">
+                                    <lightning-textarea label="Directions to animals of concern" class="input-textarea" data-name="directions" value={welfareReport.directions} onchange={handleFieldChange} required max-length="500" message-when-value-missing={requiredText}></lightning-textarea>
+                                    <p class="small field-comment">e.g. backyard of house, third paddock on the left with blue concrete fence</p>
+                                </div>
+                                <div class="row">
+                                    <lightning-textarea label="Please provide as much detail as possible about what you have observed, including how long this has been going on, and how often it occurs." class="input-textarea" data-name="observations" value={welfareReport.observations} onchange={handleFieldChange} required max-length="500" message-when-value-missing={requiredText}></lightning-textarea>
+                                </div>
+                            </template>
+                            <template lwc:if={animalStep}>
+                                <div class="row">
+                                    <lightning-input type="number" label="Total number of animals of concern" class="input-inline" placeholder="1" data-name="animalsnumber" value={welfareReport.animalsNumber} onchange={handleFieldChange} required message-when-value-missing={requiredText}></lightning-input>
+                                    <p class="small field-comment">Please provide your best estimate of the number of animals of concern</p>
+                                </div>
+    <!--                            <div class="row">-->
+    <!--                                <label><abbr>*</abbr>Total number of animals of concern</label>-->
+    <!--                                <div class="counters children">-->
+    <!--                                    <c-rspcaqld-counter data-name="under-two" min-value="1" value={welfareReport.animalsNumber} onchange={handleAnimalNumberChange} without-label></c-rspcaqld-counter>-->
+    <!--                                </div>-->
+    <!--                                <p class="small field-comment">Please provide your best estimate of the number of animals of concern</p>-->
+    <!--                            </div>-->
+                                <div class="row">
+                                    <lightning-textarea label="Please provide as much information as possible to describe all animals of concern" class="input-textarea" data-name="animaldescription" value={welfareReport.animalDescription} onchange={handleFieldChange} required max-length="500" message-when-value-missing={requiredText}></lightning-textarea>
+                                    <p class="small field-comment">e.g. animal type, breed, markings and/or colours</p>
+                                </div>
+                                <div class="row">
+                                    <lightning-textarea label="If the animal(s) are injured, please provide as much information as possible describing the injuries of each animal" class="input-textarea" data-name="injuries" value={welfareReport.injuries} onchange={handleFieldChange} max-length="500"></lightning-textarea>
+                                </div>
+                                <div class="row two-fields-row two-fields-row-absolute">
+                                    <lightning-input type="date" label="When were the animal(s) last seen?" placeholder="dd/mm/yyyy" class="input-inline" data-name="lastseendate" value={welfareReport.lastSeenDate} onchange={handleFieldChange} required message-when-type-mismatch="Complete this field with format dd/mm/yyyy" message-when-bad-input="Complete this field with format dd/mm/yyyy" message-when-value-missing={requiredText}></lightning-input>
+                                    <lightning-input type="text" placeholder="(e.g. 12:00pm)" class="input-inline" data-name="lastseentime" value={welfareReport.lastSeenTime} onchange={handleFieldChange}></lightning-input>
+                                </div>
+                                <div class="row upload-row">
+                                    <h2>Photos</h2>
+                                    <div>
+                                        <template for:each={files} for:item="file" for:index="index">
+                                            <div class="uploaded-image-block" key={file.name}>
+                                                <img data-name={file.name} data-index={index} onclick={handleRemoveFile} class="close-icon" src={closeWhite}>
+                                                <img class="uploaded-image" src={file.fileURL}>
+                                            </div>
+                                        </template>
+                                        <c-rspcaqld-file-upload onaddfile={handleAddFile}></c-rspcaqld-file-upload>
+                                    </div>
+                                </div>
+                            </template>
+    <!--                        <template lwc:if={reviewStep}>-->
+    <!--                            <div class="header-with-link">-->
+    <!--                                <h2>Report type</h2>-->
+    <!--                                <a class={editLinkClass} data-step="1" onclick={handleEditStep}>Edit</a>-->
+    <!--                            </div>-->
+    <!--                            <template lwc:if={isReport}>-->
+    <!--                                <div class="row review-card-row">-->
+    <!--                                    <c-rspcaqld-cards-report type="information"-->
+    <!--                                                             icon-url={finalCardIcon}-->
+    <!--                                                             header="Important"-->
+    <!--                                                             description="If the animal requires attention or the situation requires investigation, make a report"-->
+    <!--                                                             active="active"></c-rspcaqld-cards-report>-->
+    <!--                                </div>-->
+    <!--                            </template>-->
+    <!--                        </template>-->
+                            <template lwc:if={isNavButton}>
+                                <div class="row button-row">
+                                    <a onclick={handleBack} class="mobile-back-link button-link"><lightning-icon icon-name="utility:chevronleft" size="medium"></lightning-icon><span>Back</span></a>
+                                    <button class="green-btn with-icon" onclick={handleNext}><span>{nextLabel}</span><img src={arrowRightWhite}></button>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <template lwc:if={reviewStep}>
+                    <div class="review-block">
+                        <div class="page-data-form-info">
+                            <div class="graphic-icon">
+                                <div class="icon-block shape-1"><img src={activeStep.icon}></div>
+                            </div>
+                            <h1>{activeStep.header}</h1>
+                            <p class="medium">
+                                Time to review your report. Make sure all the details are correct and up to date, before making your submission.<br><br>
+                                Thank you so much for your time, effort and your care for animals.<br><br>
+                            </p>
+                        </div>
+                        <div class="mobile-row row">
+                            <h1>{activeStep.header}</h1>
+                            <p class="normal">Time to review your report. Make sure all the details are correct and up to date, before making your submission.</p>
+                            <p class="normal">Thank you so much for your time, effort and your care for animals.</p>
+                        </div>
+                        <hr>
+                        <div>
+                            <div class="header-with-link">
+                                <h4>Type of complaint</h4>
+                                <a class={editLinkClass} data-step="1" onclick={handleEditStep}>Edit</a>
+                            </div>
+                            <div class="row">
+                                <span class="label small">By completing this form I am confirming this animal's life is not in immediate risk and understand our officers may not be able to action within 48hrs.</span>
+                                <span class="medium"><c-rspcaqld-checkbox checked={welfareReport.welfareDeclaration} disabled></c-rspcaqld-checkbox></span>
+                            </div>
+                            <div class="row">
+                                <span class="label small">Due to the sensitive nature of investigations, RSPCA Qld cannot investigate incidents involving minors. These incidents need to be directed to Qld Police. Is the individual(s) involved over 18 years of age?</span>
+                                <span class="medium">{welfareReport.poiAgeDeclaration}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="header-with-link">
+                                <h4>Your contact details</h4>
+                                <a class={editLinkClass} data-step="2" onclick={handleEditStep}>Edit</a>
+                            </div>
+
+                            <div class="row">
+                                <span class="label small">Your name</span>
+                                <span class="medium">{contact.firstName} {contact.lastName}</span>
+                            </div>
+                            <div class="row">
+                                <span class="label small">Your contact details</span>
+                                <div>
+                                    <span class="medium">{contact.email}</span>
+                                    <span class="medium">{contact.phone}</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <span class="label small">Alternative phone</span>
+                                <span class="medium">{contact.alternatePhone}</span>
+                            </div>
+                            <div class="row">
+                                <span class="label small">Address</span>
+                                <span class="medium">{contact.address}</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="header-with-link">
+                                <h4>Who and Where</h4>
+                                <a class={editLinkClass} data-step="3" onclick={handleEditStep}>Edit</a>
+                            </div>
+
+                            <div class="row">
+                                <span class="label small">Person of interest</span>
+                                <span class="medium">{welfareReport.firstName} {welfareReport.lastName}</span>
+                            </div>
+                            <div class="row">
+                                <span class="label small">Establishment name</span>
+                                <span class="medium">{welfareReport.establishmentName}</span>
+                            </div>
+                            <div class="row">
+                                <span class="label small">How do you know the person of interest?</span>
+                                <span class="medium">{welfareReport.personOfInterest}</span>
+                            </div>
+                            <div class="row">
+                                <span class="label small">Location</span>
+                                <span class="medium">{welfareReport.locationHouseNumber} {welfareReport.locationStreet} {welfareReport.locationCity} {welfareReport.locationState} {welfareReport.locationPostcode}</span>
+                            </div>
+                            <div class="row">
+                                <span class="label small">Pinned location</span>
+                                <span class="medium">{welfareReport.geolocation}</span>
+                            </div>
+                            <div class="row">
+                                <span class="label small">Location image</span>
+                                <div class="images-block">
+                                    <template for:each={locationFiles} for:item="file">
+                                        <img key={file.name} src={file.fileURL}>
+                                    </template>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <span class="label small">Please provide a description of owner or person in possession of the animal(s)</span>
+                                <span class="medium"><lightning-formatted-rich-text value={welfareReport.poiDescription}></lightning-formatted-rich-text></span>
+                            </div>
+                            <div class="row">
+                                <span class="label small">Is there any person at the location of the animal(s) who is potentially dangerous and a risk to the safety of an RSPCA Inspector?</span>
+                                <span class="medium"><lightning-formatted-rich-text value={welfareReport.inspectorHazard}></lightning-formatted-rich-text></span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="header-with-link">
+                                <h4>What and When</h4>
+                                <a class={editLinkClass} data-step="4" onclick={handleEditStep}>Edit</a>
+                            </div>
+
+                            <div class="row">
+                                <span class="label small">Additional comments</span>
+                                <span class="medium"><lightning-formatted-date-time
+                                        value={welfareReport.date}
+                                        year="numeric"
+                                        month="long"
+                                        day="2-digit"
+                                        time-zone="Australia/Brisbane"
+                                ></lightning-formatted-date-time><template lwc:if={isTimeExists}> at {welfareReport.time}</template></span>
+                            </div>
+                            <div class="row">
+                                <span class="label small">Directions to animals of concern</span>
+                                <span class="medium"><lightning-formatted-rich-text value={welfareReport.directions}></lightning-formatted-rich-text></span>
+                            </div>
+                            <div class="row">
+                                <span class="label small">Please provide as much detail as possible about what you have observed, including how long this has been going on, and how often it occurs.</span>
+                                <span class="medium"><lightning-formatted-rich-text value={welfareReport.observations}></lightning-formatted-rich-text></span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="header-with-link">
+                                <h4>Animal description</h4>
+                                <a class={editLinkClass} data-step="5" onclick={handleEditStep}>Edit</a>
+                            </div>
+                            <div class="row">
+                                <span class="label small">Total number of animals of concern</span>
+                                <span class="medium">{welfareReport.animalsNumber}</span>
+                            </div>
+                            <div class="row">
+                                <span class="label small">Please provide as much information as possible to describe all animals of concern</span>
+                                <span class="medium"><lightning-formatted-rich-text value={welfareReport.animalDescription}></lightning-formatted-rich-text></span>
+                            </div>
+                            <div class="row">
+                                <span class="label small">If the animal(s) are injured, please provide as much information as possible describing the injuries of each animal</span>
+                                <span class="medium"><lightning-formatted-rich-text value={welfareReport.injuries}></lightning-formatted-rich-text></span>
+                            </div>
+                            <div class="row">
+                                <span class="label small">When were the animal(s) last seen?</span>
+                                <span class="medium"><lightning-formatted-date-time
+                                        value={welfareReport.lastSeenDate}
+                                        year="numeric"
+                                        month="long"
+                                        day="2-digit"
+                                        time-zone="Australia/Brisbane"
+                                ></lightning-formatted-date-time><template lwc:if={isLastSeenTimeExists}> at {welfareReport.lastSeenTime}</template></span>
+                            </div>
+                            <div class="row">
+                                <span class="label small">Photos</span>
+                                <div class="images-block">
+                                    <template for:each={files} for:item="file">
+                                        <img key={file.name} src={file.fileURL}>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="submit-buttons">
+                            <c-rspcaqld-checkbox label="I would like to subscribe to RSPCA Queensland communications" data-name="marketingoptin" label-left onchange={handleFieldChange} checked={cs.marketingOptIn} disabled={isSubmitting}></c-rspcaqld-checkbox>
+                            <c-rspcaqld-checkbox label="Agree to the privacy policy" data-name="privacypolicy" label-left required onchange={handleFieldChange} checked={cs.privacyPolicy} error={isPrivacyPolicyError} disabled={isSubmitting}></c-rspcaqld-checkbox>
+                            <button class={submitBtnClass} onclick={handleSubmit}><span>Submit welfare complaint</span><img src={arrowRightWhite}></button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

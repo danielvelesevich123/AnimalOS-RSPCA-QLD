@@ -1,0 +1,138 @@
+<template>
+    <div class="slds-grid">
+        <div class="slds-col slds-size_1-of-3">
+            <img class="profile-photo" src={animalVar.photoUrl} alt="Profile Photo">
+
+            <div class="slds-grid">
+                <div class="slds-col slds-m-top_small">
+                    <img class="royal-canin-logo" src="/resource/1660927663000/RoyalCaninLogo" alt="RSPCA Logo"/>
+                </div>
+                <div class="slds-col main-content slds-m-top_large slds-m-left_medium">
+                    I am fed Royal Canin generously supplied as the RSPCA National Nutritional Sponsor.
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_2-of-3 slds-m-left_small">
+            <div class="slds-grid">
+                <div class="slds-col">
+                    <div class="speech-bubble">
+                        Hey, I'm {animalVar.animalos__Animal_Name__c}
+                    </div>
+
+                </div>
+                <div class="slds-col">
+                </div>
+                <div class="slds-col">
+                    <div class="slds-grid slds-grid_align-end">
+                        <img class="rspca-logo" src="/resource/1660927663000/RspcaLogo" alt="RSPCA Logo"/>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-grid main-content slds-m-top_large">
+                <div class="slds-col slds-size_1-of-3">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2 field-label">
+                            ADOPTION FEE:
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-text-align_center">
+                            ${animalVar.animalos__Adoption_Fee__c}
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2 field-label">
+                            KENNEL:
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-text-align_center">
+                            {animalVar.animalos__Current_Unit__r.Name}
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2 field-label">
+                            ID:
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-text-align_center">
+                            {animalVar.Name}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class=dotted-line>
+
+            <div class="slds-grid main-content slds-m-top_small">
+                <div class="slds-col slds-size_1-of-3">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2 field-label">
+                            AGE:
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-text-align_center">
+                            {animalVar.Age_for_Adoption_Website__c}
+                        </div>
+                    </div>
+                </div>
+                <!--                            <div class="slds-col slds-size_1-of-3">-->
+                <!--                            </div>-->
+                <!--                            <div class="slds-col slds-size_1-of-3">-->
+                <!--                            </div>-->
+            </div>
+
+            <hr class=dotted-line>
+
+            <div class="slds-grid main-content slds-m-top_small">
+                <div class="slds-col slds-size_1-of-3">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2 field-label">
+                            BREED:
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-text-align_center">
+                            {animalVar.animalos__Primary_Breed__r.Name}
+<!--                            {animalVar.animalos__Primary_Breed__r.Name} / {animalVar.animalos__Secondary_Breed__r.Name}-->
+                        </div>
+                    </div>
+                </div>
+                <!--                            <div class="slds-col slds-size_1-of-3">-->
+                <!--                            </div>-->
+                <!--                            <div class="slds-col slds-size_1-of-3">-->
+                <!--                            </div>-->
+            </div>
+
+            <hr class=dotted-line>
+
+            <div class="slds-grid main-content slds-m-top_small">
+                <div class="slds-col slds-size_1-of-3">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2 field-label">
+                            SEX:
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-text-align_center">
+                            {animalVar.animalos__Gender__c}
+                        </div>
+                    </div>
+                </div>
+                <!--                            <div class="slds-col slds-size_1-of-3">-->
+                <!--                            </div>-->
+                <!--                            <div class="slds-col slds-size_1-of-3">-->
+                <!--                            </div>-->
+            </div>
+
+            <hr class=dotted-line>
+
+            <div class="slds-grid main-content slds-m-top_small">
+                <div class="slds-col">
+                    <div>
+                        <div class="field-label">
+                            ABOUT ME:
+                        </div>
+                        <div>
+                            <lightning-formatted-rich-text value={animalVar.animalos__Adoption_Profile__c}></lightning-formatted-rich-text>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

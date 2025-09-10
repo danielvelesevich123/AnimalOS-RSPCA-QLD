@@ -1,0 +1,13 @@
+<template>
+    <c-stencil lwc:if={isBusy} count="4" height="15"></c-stencil>
+    <template lwc:else>
+        <c-job-contacts lwc:if={contactId} view="animalWelfareContact" record-id={contactId} card-title="Job Contact History" hide-add-violence-button></c-job-contacts>
+        <div class="slds-m-vertical_medium" lwc:if={locationId}>
+            <c-job-contacts record-id={locationId} view="animalWelfareLocation" card-title="Job Location History" hide-add-violence-button></c-job-contacts>
+        </div>
+        <div class="slds-m-top_medium" lwc:if={jobLocationId}>
+            <c-job-contacts record-id={jobLocationId} view="animalWelfareLocation" card-title="Job Location History" hide-add-violence-button
+                                manage-selected-label="Add Selected Contacts to Job" onmanageselected={handleManageSelected}></c-job-contacts>
+        </div>
+    </template>
+</template>

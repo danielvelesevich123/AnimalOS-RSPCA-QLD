@@ -1,0 +1,31 @@
+<template>
+    <a class="cards-location" href={link}>
+        <div class={imageClass}>
+            <img src={imageUrl}>
+        </div>
+        <div class="cards-location-body">
+            <div class="cards-location-header"><h4>{header}</h4></div>
+            <div class="cards-location-category">
+                <template for:each={locationTypes} for:item="locationType">
+                    <div key={locationType.label}>
+                        <span class="icon-span"><img src={locationDark}></span>
+                        <span class="normal">{locationType.label}</span>
+                    </div>
+                </template>
+            </div>
+            <template if:false={isPetbarn}>
+                <div>
+                    <span class="normal">{categories}</span>
+                </div>
+            </template>
+            <div class="cards-location-address">
+                <span class="normal">{address}</span>
+            </div>
+            <template if:false={isPetbarn}>
+                <div class="cards-location-phone">
+                    <a href={phoneLink}><span class="normal">{phone}</span></a>
+                </div>
+            </template>
+        </div>
+    </a>
+</template>

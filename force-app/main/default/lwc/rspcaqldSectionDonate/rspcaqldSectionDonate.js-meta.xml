@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Section Donate</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Section Donate</masterLabel>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="customClass" type="String" label="Custom Class"/>
+            <property name="isHeader" type="Boolean" label="Display as Header"/>
+            <property datasource="First, Second" name="headerType" type="String" label="Header Type"/>
+            <property name="headerImage" type="String" label="Image"/>
+            <property name="header" type="String" label="Header Text"/>
+            <property name="description" type="String" label="Description Text"/>
+            <property name="icon" type="String" label="Icon"/>
+            <property datasource=", Official RSPCA Left, Official RSPCA Right" name="pawPrintLabel" type="String" label="Background Paw Print"/>
+            <property name="underHeaderText" type="String" label="Sub-section Header"/>
+            <property name="underHeaderInformationString" type="String" label="Sub-section Items String"/>
+            <property name="campaignId" type="String" label="Campaign ID"/>
+            <property name="donationOnceString" type="String" label="Once Donation String"/>
+            <property name="donationMonthlyString" type="String" label="Monthly Donation String"/>
+            <property datasource="Once, Monthly" name="donationFrequency" type="String" label="Donation Frequency"/>
+            <property name="donationFrequencyPrompt" type="String" label="Donation Frequency Prompt"/>
+            <property name="donationAmountPrompt" type="String" label="Donation Amount Prompt"/>
+            <property name="detailsHeaderPrompt" type="String" label="Your Details Header Prompt"/>
+            <property name="individualOrganisationSelector" type="String" label="Individual | Organisation Selector"/>
+            <property name="organisationNamePrompt" type="String" label="Organisation Name Prompt"/>
+            <property name="firstNamePrompt" type="String" label="First Name Prompt"/>
+            <property name="lastNamePrompt" type="String" label="Last Name Prompt"/>
+            <property name="emailAddressPrompt" type="String" label="Email Address Prompt"/>
+            <property name="mobilePrompt" type="String" label="Mobile Prompt"/>
+            <property name="addressPrompt" type="String" label="Address Prompt"/>
+            <property name="paymentMethodPrompt" type="String" label="Payment Method Prompt"/>
+            <property name="additionalInfoLabel" type="String" label="Additional Info Label"/>
+            <property name="additionalInfoPrompt" type="String" label="Additional Info Prompt"/>
+            <property name="customMetadata" type="String" label="Custom Metadata"/>
+            <property name="termsConditionsText" type="String" label="Terms &amp; Conditions Text"/>
+            <property name="newsletterSubscriptionText" type="String" label="Newsletter Subscription Text"/>
+            <property name="submissionConsentText" type="String" label="Submission Consent Text"/>
+            <property name="donationButtonColor" type="String" label="Donate Button - Color"/>
+            <property name="donationButtonFontColor" type="String" label="Donate Button - Font Color"/>
+            <property name="donationButtonIcon" type="String" label="Donate Button - Icon"/>
+            <property name="paymentButtonText" type="String" label="Payment Button - Text"/>
+            <property name="paymentButtonColor" type="String" label="Payment Button - Color"/>
+            <property name="paymentButtonFontColor" type="String" label="Payment Button - Font Color"/>
+            <property name="paymentButtonIcon" type="String" label="Payment Button - Icon"/>
+            <property name="confirmButtonText" type="String" label="Confirm Button - Text"/>
+            <property name="confirmButtonColor" type="String" label="Confirm Button - Color"/>
+            <property name="confirmButtonFontColor" type="String" label="Confirm Button - Font Color"/>
+            <property name="confirmButtonIcon" type="String" label="Confirm Button - Icon"/>
+            <property name="thankYouPageURL" type="String" label="Thank You Page URL"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

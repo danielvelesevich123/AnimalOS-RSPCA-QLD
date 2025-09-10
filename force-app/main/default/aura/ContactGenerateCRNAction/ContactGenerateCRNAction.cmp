@@ -1,0 +1,32 @@
+<aura:component description="ContactGenerateCRNAction" extends="c:vertic_Base" implements="force:lightningQuickActionWithoutHeader,force:appHostable,force:hasSObjectName">
+
+    <lightning:notificationsLibrary aura:id="notifyLib"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+
+    <aura:attribute name="message" type="String" default="Please note, this action will request BPAY Customer Reference Number. Click 'Confirm' to continue."/>
+    <aura:attribute name="disabled" type="Boolean" default="true"/>
+
+    <c:vertic_QuickActionModal aura:id="modal"
+                               heightPX="250"
+                               title="Generate BPAY CRN"
+                               widthPercentage="80"
+                               maxWidthRem="60"
+                               minWidthRem="20"
+                               showCancel="false">
+
+        <div class="slds-align--absolute-center" style="height: -webkit-fill-available;">
+            <div class="slds-text-align--center slds-text-body_regular">
+                <aura:if isTrue="{! not(empty(v.message)) }">
+                    <p>{! v.message }</p>
+                </aura:if>
+            </div>
+        </div>
+
+        <aura:set attribute="footer">
+            <lightning:button label="Close" variant="neutral" type="submit" onclick="{!c.handleCloseClick}"/>
+            <lightning:button label="Request BPAY CRN" variant="brand" type="submit" disabled="{! or(v.isBusy, v.disabled) }" onclick="{!c.handleRequestCRNClick}"/>
+        </aura:set>
+    </c:vertic_QuickActionModal>
+
+</aura:component>

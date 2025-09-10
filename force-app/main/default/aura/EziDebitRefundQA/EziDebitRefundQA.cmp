@@ -1,0 +1,38 @@
+<aura:component description="EziDebitRefundQA" extends="c:vertic_Base" implements="force:appHostable,force:lightningQuickActionWithoutHeader,force:hasRecordId">
+
+    <!-- ATTRIBUTE OVERRIDES -->
+    <aura:set attribute="processor" value="EziDebitRefundQAMetaProc"/>
+    <aura:set attribute="hideContentOnBusy" value="{!false}"/>
+
+    <!-- HANDLERS -->
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+    <aura:handler name="change" value="{!v.meta.dto.access}" action="{!c.handleDoneRendering}"/>
+
+    <aura:attribute name="screen" type="Aura.Component[]"/>
+
+    <aura:attribute type="Aura.Component[]" name="mainScreen">
+        <c:vertic_QuickActionModal aura:id="modal"
+                                   heightPX="350"
+                                   title="Refund"
+                                   widthPercentage="40"
+                                   maxWidthRem="40"
+                                   refreshOnCancel="{!true}"
+                                   showCancel="{!false}">
+
+            <div class="slds-m-vertical_medium slds-text-align--center">
+                This action will process a refund for the direct debit payment from the bank account. Refunds can only be processed for successful payments and must reference the PaymentIDs of the original transaction.
+            </div>
+
+            <aura:set attribute="footer">
+                <lightning:button label="Cancel" variant="neutral" type="submit" onclick="{!c.handleCloseClick}"/>
+                <lightning:button label="Confirm" variant="brand" type="submit" disabled="{!v.isBusy}" onclick="{!c.handleConfirm}"/>
+            </aura:set>
+
+        </c:vertic_QuickActionModal>
+    </aura:attribute>
+
+    <aura:if isTrue="{!not(empty(v.meta.dto))}">
+        {!v.screen}
+    </aura:if>
+
+</aura:component>

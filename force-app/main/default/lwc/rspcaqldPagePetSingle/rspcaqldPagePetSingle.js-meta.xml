@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Page Pet Single</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Page Pet Single</masterLabel>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Page_Layout</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="adoptLinkUrl" type="String" label="Adopt Link URL"/>
+            <property name="dogBonusOfferString" type="String" label="Dog Bonus Offer"/>
+            <property name="catBonusOfferString" type="String" label="Cat Bonus Offer"/>
+            <property name="upsellString" type="String" label="Dog Up-sell Panel"/>
+            <property name="puppyUpsellString" type="String" label="Puppy Up-sell Panel"/>
+            <property name="catUpsellString" type="String" label="Cat Up-sell Panel"/>
+            <property name="kittenUpsellString" type="String" label="Kitten Up-sell Panel"/>
+            <property name="farmyardUpsellString" type="String" label="Farmyard Up-sell Panel"/>
+            <property name="smallanimalUpsellString" type="String" label="Small Animal Up-sell Panel"/>
+            <property name="birdUpsellString" type="String" label="Bird Up-sell Panel"/>
+            <property name="howApplicationHeader" type="String" label="How Application Works - Header"/>
+            <property name="howApplicationDescription" type="String" label="How Application Works - Description"/>
+            <property name="howApplicationCards" type="String" label="How Application Works - Cards"/>
+            <property name="dogFaqsString" type="String" label="Dog FAQs"/>
+            <property name="dogFaqsLinkUrl" type="String" label="Dog FAQs Link URL"/>
+            <property name="puppyFaqsString" type="String" label="Puppy FAQs"/>
+            <property name="puppyFaqsLinkUrl" type="String" label="Puppy FAQs Link URL"/>
+            <property name="catFaqsString" type="String" label="Cat FAQs"/>
+            <property name="catFaqsLinkUrl" type="String" label="Cat FAQs Link URL"/>
+            <property name="kittenFaqsString" type="String" label="Kitten FAQs"/>
+            <property name="kittenFaqsLinkUrl" type="String" label="Kitten FAQs Link URL"/>
+            <property name="farmyardFaqsString" type="String" label="Farm Yard FAQs"/>
+            <property name="farmyardFaqsLinkUrl" type="String" label="Farm Yard FAQs Link URL"/>
+            <property name="reptileFaqsString" type="String" label="Reptile FAQs"/>
+            <property name="reptileFaqsLinkUrl" type="String" label="Reptile FAQs Link URL"/>
+            <property name="smallanimalFaqsString" type="String" label="Small Animal FAQs"/>
+            <property name="smallanimalFaqsLinkUrl" type="String" label="Small Animal FAQs Link URL"/>
+            <property name="birdFaqsString" type="String" label="Bird FAQs"/>
+            <property name="birdFaqsLinkUrl" type="String" label="Bird FAQs Link URL"/>
+            <property name="relatedArticlesKeys" type="String" label="Related Articles - Content Keys"/>
+            <property name="relatedArticlesHeader" type="String" label="Related Articles - Header"/>
+            <property name="relatedArticlesDescription" type="String" label="Related Articles - Description"/>
+            <property name="relatedArticlesLinkLabel" type="String" label="Related Articles - Link Label"/>
+            <property name="relatedArticlesLinkUrl" type="String" label="Related Articles - Link URL"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

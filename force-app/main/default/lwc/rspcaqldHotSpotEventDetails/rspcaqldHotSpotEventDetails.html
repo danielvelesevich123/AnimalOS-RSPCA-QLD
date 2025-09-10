@@ -1,0 +1,32 @@
+<template>
+    <div class="hot-spot-event-details">
+        <div class="hot-spot-ed-body">
+            <div class="hot-spot-ed-header">
+                <h4>{header}</h4>
+            </div>
+            <div class="hot-spot-ed-date">
+                <span class="icon-span"><img src={calendarWhite}></span>
+                <span class="normal">{date}</span>
+            </div>
+            <template lwc:if={isTime}>
+                <div class="hot-spot-ed-date">
+                    <span class="icon-span"><img src={clockWhite}></span>
+                    <span class="normal">{time}</span>
+                </div>
+            </template>
+            <div class="hot-spot-ed-date">
+                <span class="icon-span"><img src={locationWhite}></span>
+                <span class="hot-spot-ed-address">
+                    <template lwc:if={isAddressOne}><span class="normal">{addressOne},</span></template>
+                    <template lwc:if={isAddressTwo}><span class="normal">{addressTwo}</span></template>
+<!--                    <span class="normal">{otherAddress}</span>-->
+                </span>
+            </div>
+        </div>
+        <template lwc:if={isLink}>
+            <div class="hot-spot-ed-button">
+                <a class="green-btn" href={link} target="_blank">Learn More</a>
+            </div>
+        </template>
+    </div>
+</template>

@@ -1,0 +1,24 @@
+<template>
+    <div class={mainClass}>
+        <img class="dog-left-paw" src={officialRSPCAPaw}>
+        <img class="pet-paw" src={officialRSPCAPaw}>
+
+        <div class="page-home-pets-header">
+            <h1>{header}</h1>
+            <p class="large">{subheader}</p>
+        </div>
+        <div class="page-home-pets-body">
+            <div>
+                <a class="pet-tile" href={dogsLink.url}><img src={petsImages.dogs}><h4>{dogsLink.label}<lightning-icon icon-name="utility:chevronright"></lightning-icon></h4></a>
+                <a class="pet-tile" href={puppiesLink.url}><img src={petsImages.puppies}><h4>{puppiesLink.label}<lightning-icon icon-name="utility:chevronright"></lightning-icon></h4></a>
+                <a class="pet-tile" href={catsLink.url}><img src={petsImages.cats}><h4>{catsLink.label}<lightning-icon icon-name="utility:chevronright"></lightning-icon></h4></a>
+                <a class="pet-tile" href={kittensLink.url}><img src={petsImages.kittens}><h4>{kittensLink.label}<lightning-icon icon-name="utility:chevronright"></lightning-icon></h4></a>
+                <a class="pet-tile" href={reptilesLink.url}><img src={petsImages.reptilies}><h4>{reptilesLink.label}<lightning-icon icon-name="utility:chevronright"></lightning-icon></h4></a>
+                <a class="pet-tile farm-yard-pet-tile" href={farmyardLink.url}><img src={petsImages.farmyard}><h4>{farmyardLink.label}<lightning-icon icon-name="utility:chevronright"></lightning-icon></h4></a>
+                <a class="pet-tile small-animal-pet-tile" href={smallAnimalsLink.url}><img src={petsImages.smallanimals}><h4>{smallAnimalsLink.label}<lightning-icon icon-name="utility:chevronright"></lightning-icon></h4></a>
+                <a class="pet-tile" href={birdsLink.url}><img src={petsImages.birds}><h4>{birdsLink.label}<lightning-icon icon-name="utility:chevronright"></lightning-icon></h4></a>
+            </div>
+        </div>
+        <a class="button-link" href={browseAllAnimalsLink.url}>{browseAllAnimalsLink.label}</a>
+    </div>
+</template>

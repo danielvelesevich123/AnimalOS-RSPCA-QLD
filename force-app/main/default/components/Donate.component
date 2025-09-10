@@ -1,0 +1,450 @@
+<apex:component id="Donate">
+
+    <apex:variable value="{! 'Donate' }" var="cmpName"/>
+    <apex:variable value="{! cmpName + 'Template' }" var="defaultTemplateName"/>
+    <apex:variable value="{! 'c-' + cmpName }" var="defaultClassName"/>
+
+    <style>
+
+        .{!defaultClassName} {
+
+        }
+
+        .{!defaultClassName} .input-field {
+            height: 2.7rem;
+        }
+
+        /*.
+        {!defaultClassName}  .center-screen {*/
+        /*    overflow: hidden;*/
+        /*    position: absolute;*/
+        /*    width: 100%;*/
+        /*    height: 100%;*/
+        /*    display: flex;*/
+        /*    justify-content: center; !*centers items on the line (the x-axis by default)*!*/
+        /*    align-items: center; !*centers items on the cross-axis (y by default)*!*/
+        /*    margin: 50px 0;*/
+        /*}*/
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        .flex-container {
+            height: 100%;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .row {
+            width: auto;
+        }
+
+        .thank-you {
+            margin-top: 120px;
+            width: auto;
+        }
+
+        @media screen and (max-width: 500px) {
+            .c-spinner .loader {
+                left: 37% !important;
+            }
+        }
+
+        @media screen and (min-width: 600px) {
+            .row {
+                min-width: 500px;
+            }
+        }
+
+    </style>
+
+    <ang-script style="display: none;" type="text/ng-template" id="{!defaultTemplateName}">
+
+        <div class="{! defaultClassName } flex-container">
+
+            <div class="row" ng-if="!$ctrl.submitted">
+                <div ng-if="$ctrl.isAddressReady">
+
+                    <div class="slds-p-bottom_medium slds-m-top_large">
+                        <label for="amountField" class="slds-form-element__label slds-text-heading_small">Amount, $AUD</label>
+                        <input class="slds-input input-field" id="amountField" type="number"
+                               placeholder="Amount" required="true" min="0"
+                               ng-model="$ctrl.vm.dto.amount"
+                               ng-required="true"
+                        />
+                    </div>
+
+                    <fieldset class="slds-form-element slds-p-bottom_medium">
+                        <div class="slds-form-element__control">
+                                <span class="slds-radio slds-p-bottom_x-small">
+                                  <input type="radio"
+                                         name="donationType"
+                                         id="recurring"
+                                         ng-model="$ctrl.vm.dto.donationType"
+                                         value="recurring"
+                                         ng-change="$ctrl.handleDonationTypeChange()"
+                                  />
+                                  <label class="slds-radio__label" for="recurring">
+                                    <span class="slds-radio_faux"></span>
+                                    <span class="slds-form-element__label">Recurring</span>
+                                  </label>
+                                </span>
+                            <span class="slds-radio">
+                                  <input type="radio"
+                                         name="donationType"
+                                         id="oneOff"
+                                         ng-model="$ctrl.vm.dto.donationType"
+                                         value="oneOff"
+                                         ng-change="$ctrl.handleDonationTypeChange()"
+                                  />
+                                  <label class="slds-radio__label" for="oneOff">
+                                    <span class="slds-radio_faux"></span>
+                                    <span class="slds-form-element__label">One Off</span>
+                                  </label>
+                                </span>
+                        </div>
+                    </fieldset>
+
+                    <div class="slds-p-aroud_large slds-p-bottom_medium">
+                        <label for="emailField" class="slds-form-element__label slds-text-heading_small">Email</label>
+                        <input type="email" class="slds-input input-field" placeholder="Email" id="emailField" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+                               required="true" ng-model="$ctrl.vm.dto.email"
+                               ng-required="true" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/"/>
+                    </div>
+
+                    <div class="slds-p-aroud_large slds-p-bottom_medium">
+                        <label for="phoneField" class="slds-form-element__label slds-text-heading_small">Phone Number</label>
+                        <input type="tel" class="slds-input input-field" placeholder="Phone Number" id="phoneField"
+                               required="true" ng-model="$ctrl.vm.dto.phone"
+                               ng-required="true" />
+                    </div>
+
+                </div>
+
+                <div id="address-element" class="slds-scope address-input slds-p-bottom_large"></div>
+
+                <div id="payment-element" class="slds-scope payment-input"></div>
+
+                <div class="slds-align_absolute-center slds-p-top_large" style="margin-bottom: 120px;" ng-if="$ctrl.isPaymentReady">
+                    <button class="slds-button slds-button_neutral slds-size_1-of-1 slds-show_inline-block"
+                            ng-click="$ctrl.submit()"
+                            ng-disabled="$ctrl.isSubmitting">Submit
+                    </button>
+                </div>
+            </div>
+
+            <div class="thank-you" ng-if="$ctrl.submitted">
+                <div class="slds-text-heading_large">
+                    Thank you!
+                </div>
+
+                <br/>
+                <br/>
+
+                <button class="slds-button slds-button_neutral slds-size_1-of-1 slds-show_inline-block"
+                        ng-click="$ctrl.newDonation()">New Donation
+                </button>
+            </div>
+
+
+        </div>
+
+    </ang-script>
+
+
+    <script>
+        (function (app) {
+
+            var elem = document.getElementById('{!defaultTemplateName}');
+            var templateHTML = elem.innerHTML;
+            elem.parentElement.removeChild(elem);
+
+            var controller = function ($rootScope, $scope, remoteApi, $timeout, jobCounter) {
+
+                let ctrl = this;
+
+                let addressElement, paymentElement, addressData;
+                let stripe;
+                let elements;
+                let amountValue;
+
+                ctrl.$onInit = function () {
+                    console.log('INIT: {!cmpName}');
+
+                    initStripe()
+                }
+
+                ctrl.handleDonationTypeChange = () => {
+                    createElements();
+                }
+
+                ctrl.newDonation = () => {
+                    window.location.reload();
+                }
+
+                ctrl.submit = () => {
+
+                    if (!validateForm()) {
+                        return;
+                    }
+
+                    ctrl.isSubmitting = true;
+
+                    let donationType = ctrl.vm.dto.donationType;
+
+                    let submit = donationType == 'recurring' ? submitRecurring : submitOneOff;
+
+                    submit(ctrl.intent[donationType]).then(() => {
+                        $timeout(() => {
+                            ctrl.submitted = true;
+                        })
+                    }).catch(error => {
+                        if (error.type == 'validation_error') {
+                            return;
+                        }
+                        toastr.error(error.message);
+                    }).finally(() => {
+                        $timeout(() => {
+                            ctrl.isSubmitting = false;
+                        })
+                    })
+                }
+
+                let submitRecurring = (intent) => {
+                    return new Promise((resolve, reject) => {
+
+                        jobCounter.enqueue();
+
+                        let confirmSetup = () => {
+                            return new Promise((resolve, reject) => {
+
+                                if (intent.status == 'succeeded') {
+                                    return resolve({setupIntent: intent});
+                                }
+
+                                stripe.confirmSetup({
+                                    elements: elements,
+                                    redirect: 'if_required'
+                                }).then(function (result) {
+                                    if (result.error) {
+                                        return reject(result.error);
+                                    } else {
+                                        Object.assign(intent, result.setupIntent);
+                                        return resolve(result);
+                                    }
+                                })
+                            })
+                        }
+
+                        confirmSetup().then(function (result) {
+
+                            if (result && result.setupIntent && result.setupIntent.payment_method) {
+                                var paymentMethodId = result.setupIntent.payment_method;
+
+                                var request = {
+                                    processor: 'DonateSubmitProc',
+                                    dto: {
+                                        paymentMethodId: paymentMethodId,
+                                        amount: ctrl.vm.dto.amount,
+                                        email: ctrl.vm.dto.email,
+                                        phone: ctrl.vm.dto.phone,
+                                        addressData: addressData,
+                                        campaignName: new URLSearchParams(window.location.search).get('campaign')
+                                    }
+                                };
+
+                                remoteApi.execute(JSON.stringify(request)).then(function (result) {
+                                    var response = JSON.parse(result);
+                                    if (!response.isValid) {
+                                        return reject(response.error);
+                                    } else {
+                                        return resolve(result);
+                                    }
+                                }, function (error) {
+                                    return reject(error)
+                                });
+
+                            }
+
+                        }).catch((error) => {
+                            return reject(error);
+                        }).finally(() => {
+                            jobCounter.dequeue();
+                        });
+
+                    })
+                }
+
+                let submitOneOff = (intent) => {
+                    return new Promise((resolve, reject) => {
+                        var request = {
+                            processor: 'StripePaymentIntentUpdateProc',
+                            dto: {
+                                intentId: intent.id,
+                                amount: ctrl.vm.dto.amount,
+                                email: ctrl.vm.dto.email,
+                                phone: ctrl.vm.dto.phone,
+                                addressData: addressData,
+                                campaignName: new URLSearchParams(window.location.search).get('campaign')
+                            }
+                        };
+
+                        remoteApi.execute(JSON.stringify(request)).then(function (result) {
+                            var response = JSON.parse(result);
+                            if (!response.isValid) {
+                                return reject(response.error);
+                            } else {
+
+                                jobCounter.enqueue();
+
+                                stripe.confirmPayment({
+                                    elements: elements,
+                                    redirect: 'if_required',
+                                    confirmParams: {
+                                        // Return URL where the customer should be redirected after the PaymentIntent is confirmed.
+                                        // return_url: 'https://example.com',
+                                    },
+                                }).then(function (result) {
+                                    if (result.error) {
+                                        return reject(result.error);
+                                    } else {
+                                        return resolve(result);
+                                    }
+                                }).catch((error) => {
+                                    return reject(error);
+                                }).finally(() => {
+                                    jobCounter.dequeue();
+                                });
+                            }
+                        }, function (error) {
+                            return reject(error)
+                        });
+                    })
+                }
+
+                let initStripe = () => {
+                    stripe = Stripe(ctrl.vm.dto.publicKey);
+                    createElements();
+                }
+
+                let getIntent = () => {
+                    return new Promise((resolve, reject) => {
+                        let donationType = ctrl.vm.dto.donationType;
+                        ctrl.intent = ctrl.intent || {};
+                        let intent = ctrl.intent[donationType];
+
+                        if (intent) {
+                            return resolve(intent);
+                        } else {
+                            var request = {
+                                processor: donationType == 'recurring' ? 'StripeSetupIntentCreationProc' : 'StripePaymentIntentCreationProc',
+                                dto: {
+                                    amount: ctrl.vm.dto.amount,
+                                }
+                            };
+
+                            remoteApi.execute(JSON.stringify(request)).then(function (result) {
+                                var response = JSON.parse(result);
+                                if (!response.isValid) {
+                                    reject(response.error);
+                                } else {
+                                    ctrl.intent[donationType] = response.dto.intent;
+                                    resolve(response.dto.intent);
+                                }
+                            }, function (error) {
+                                reject(error)
+                            });
+                        }
+                    })
+                }
+
+                let createElements = () => {
+
+                    ctrl.isPaymentReady = false;
+
+                    jobCounter.enqueue();
+
+                    getIntent().then(intent => {
+                        elements = stripe.elements({
+                            clientSecret: intent.client_secret,
+                        });
+                        paymentElement = elements.create('payment', {});
+
+                        createAddressElement(elements);
+
+                        $timeout(function () {
+                            paymentElement.mount('#payment-element');
+                            paymentElement.on('ready', function (event) {
+                                $timeout(function () {
+                                    ctrl.isPaymentReady = true;
+                                });
+                            });
+                        });
+
+                    }).catch(error => {
+                        toastr.error(error.message);
+                    }).finally(() => {
+                        jobCounter.dequeue();
+                    });
+                }
+
+                let createAddressElement = (elements) => {
+
+                    // if (addressElement) {
+                    //     return;
+                    // }
+
+                    addressElement = elements.create('address', {mode: 'billing', display: {name: 'split'}});
+                    addressElement.mount('#address-element');
+
+                    addressElement.on('change', function (event) {
+                        addressData = event.value;
+                    });
+
+                    addressElement.on('ready', function (event) {
+                        $timeout(function () {
+                            ctrl.isAddressReady = true;
+                        });
+                    });
+                }
+
+                function validateForm() {
+                    const allValid = [
+                        ...document.querySelectorAll('input'),
+                    ].reduce((validSoFar, inputCmp) => {
+                        inputCmp.reportValidity();
+                        return validSoFar && inputCmp.checkValidity();
+                    }, true);
+                    if (allValid) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+
+            if (app) {
+                var directiveName = '{!cmpName}';
+                directiveName = directiveName.charAt(0).toLowerCase() + directiveName.slice(1);
+                app.component(
+                    directiveName, {
+                        template: templateHTML,
+                        controller: controller,
+                        bindings: {
+                            vm: '<'
+                        }
+                    }
+                )
+
+            }
+        })(window.app)
+    </script>
+
+</apex:component>

@@ -1,0 +1,4 @@
+<aura:component description="DownloadJobActivitiesQA"
+                implements="force:lightningQuickActionWithoutHeader,force:hasRecordId">
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+</aura:component>

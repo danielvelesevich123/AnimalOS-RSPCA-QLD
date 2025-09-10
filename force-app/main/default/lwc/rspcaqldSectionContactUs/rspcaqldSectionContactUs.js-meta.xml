@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Section Contact Us</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Section Contact Us</masterLabel>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="customClass" type="String" label="Custom Class"/>
+            <property name="customMetadata" type="String" label="Portal Setting Name" default="Main"/>
+            <property name="generalHeader" type="String" label="General Header" default="General enquiries"/>
+            <property name="generalDescription" type="String" label="General Description" default="Please send us a message via our online contact form and a member of our team will be in touch with you soon"/>
+            <property name="generalBodyString" type="String" label="General Body"/>
+            <property name="otherHeader" type="String" label="Other Header" default="Other Contact Details"/>
+            <property name="otherLeftColumnBodyString" type="String" label="Other Left Column Body"/>
+            <property name="otherRightColumnBodyString" type="String" label="Other Right Column Body"/>
+            <property name="thankYouMessage" type="String" label="Thank you message"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

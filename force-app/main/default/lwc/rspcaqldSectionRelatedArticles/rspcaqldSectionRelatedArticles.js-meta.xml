@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Section Related Articles</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Section Related Articles</masterLabel>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="customClass" type="String" label="Custom Class"/>
+            <property datasource="Articles,Cards,Events,Directors" name="contentType" type="String" label="Type" default="Articles"/>
+            <property name="isCategory" type="Boolean" label="Display Card Category"/>
+            <property name="contentString" type="String" label="Content String"/>
+            <property name="contentTypes" type="String" label="Content Type/s"/>
+            <property name="header" type="String" label="Header"/>
+            <property datasource="Huge,Large,Medium,Small,Ultra Small" name="headerSize" type="String" label="Header Size"/>
+            <property datasource="Huge,Large,Medium,Small,Ultra Small" name="headerMobileSize" type="String" label="Mobile Header Size"/>
+            <property name="description" type="String" label="Description"/>
+            <property name="linkLabel" type="String" label="Link Label"/>
+            <property name="linkUrl" type="String" label="Link URL"/>
+            <property name="isArray" type="Boolean" label="Display Array Icon for Link"/>
+            <property name="secondLinkLabel" type="String" label="Second Link Label"/>
+            <property name="secondLinkUrl" type="String" label="Second Link URL"/>
+            <property name="isShape" type="Boolean" label="Wedge Form"/>
+            <property name="isWhite" type="Boolean" label="White Form"/>
+            <property datasource=", Official RSPCA Left, Official RSPCA Right" name="printPawLabel" type="String" label="Paw Print"/>
+            <property datasource=", Official RSPCA Left, Official RSPCA Right" name="secondPrintPawLabel" type="String" label="Second Paw Print"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

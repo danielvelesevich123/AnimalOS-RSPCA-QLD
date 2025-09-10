@@ -1,0 +1,65 @@
+<apex:component id="ConfirmationOfDetailsStyles" layout="none">
+
+    <apex:variable value="{! 'ConfirmationOfDetailsStyles' }" var="cmpName"/>
+    <apex:variable value="{! cmpName + 'Template' }" var="defaultTemplateName"/>
+    <apex:variable value="{! 'c-' + cmpName }" var="defaultClassName"/>
+
+    <style>
+
+        .{!defaultClassName} {
+
+        }
+
+        @page {
+        }
+
+        html * {
+            font-family: sans-serif !important;
+        }
+
+        img {
+            height: 45px;
+        }
+
+        .header-text {
+            font-family: sans-serif;
+            justify-content: flex-end;
+            float: right;
+            font-size: 16px;
+            color: #1e8ab5;
+        }
+
+        table {
+            table-layout: fixed;
+        }
+
+        .bordered-table > table, th, td {
+            border: 1px solid #9ea9b5;
+            border-collapse: collapse;
+        }
+
+        .page {
+            margin-top: 25px;
+        }
+
+        .section-header {
+            background-color: #f2f2f2;
+        }
+
+        p {
+            margin: 2px 0;
+            padding-left: 10px;
+            word-break: break-all;
+        }
+
+        .animal-report-summary {
+
+        }
+
+        .animal-report-summary > p {
+            margin: 0;
+        }
+
+    </style>
+
+</apex:component>

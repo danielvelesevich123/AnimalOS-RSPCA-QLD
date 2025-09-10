@@ -1,0 +1,12 @@
+<aura:component description="DynamicBadges" extends="c:vertic_Base" implements="flexipage:availableForAllPageTypes,force:hasSObjectName">
+
+    <aura:attribute name="badges" type="List" default="[]"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+    <aura:handler event="force:refreshView" action="{!c.handleInit}"/>
+
+    <aura:iteration items="{!v.badges}" var="badge">
+        <c:DynamicBadge badge="{!badge}" recordId="{!v.recordId}"/>
+    </aura:iteration>
+
+</aura:component>

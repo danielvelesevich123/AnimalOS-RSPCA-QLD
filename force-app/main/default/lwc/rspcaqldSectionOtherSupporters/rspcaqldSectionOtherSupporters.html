@@ -1,0 +1,12 @@
+<template>
+    <div class={mainClass}>
+        <div class="other-supporters">
+            <h2>{header}</h2>
+            <div>
+                <template for:each={supporters} for:item="supporter">
+                    <a key={supporter.link} href={supporter.link}><p class="medium">{supporter.label}</p></a>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

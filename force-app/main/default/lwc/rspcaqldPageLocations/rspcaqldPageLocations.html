@@ -1,0 +1,59 @@
+<template>
+    <div class="page-container page-locations background-20">
+        <div class="medium-width page-filters">
+            <div class="cards-filters">
+                <div class="main">
+                    <div class="large"><lightning-input onchange={handleSearchChange} type="text" label="Search locations" placeholder="Enter a search term" class="input-inline" value={searchFilter}></lightning-input></div>
+                    <div class="large"><c-rspcaqld-picklist multiselect onchange={handleServiceChange} label="Services" placeholder="Select a category" options={serviceOptions.data} value={serviceFilter}></c-rspcaqld-picklist></div>
+                    <div class="medium"><c-rspcaqld-picklist read-only multiselect onchange={handleWithinChange} label="Within (km) radius of" placeholder="Select range" options={withins} value={withinFilter}></c-rspcaqld-picklist></div>
+                    <div class={postcodeClass}><lightning-input onchange={handlePostcodeChange} label="Postcode/suburb" placeholder="Postcode" class="input-inline" value={postcodeFilter}></lightning-input></div>
+                    <div class="reset-link"><a onclick={handleReset}><span class="xmedium">Reset</span><img src={closeDark} class="small"></a></div>
+                </div>
+            </div>
+        </div>
+        <div class="medium-width location-results">
+            <div class="location-cards">
+                <c-rspcaqld-cards-results-meta onorderchange={handleOrderChange}
+                                               onorderdirectionchange={handleOrderDirectionChange}
+                                               view-result={viewCount}
+                                               all-result={allCount}
+                                               order-value={orderOption}
+                                               order-direction={orderDirection}
+                                               order-options={orderOptions}></c-rspcaqld-cards-results-meta>
+                <template if:false={isFilterFound}>
+                    <h3>Oops! We couldn’t find an exact match for you, try broadening your search.</h3>
+                </template>
+                <div>
+                    <template for:each={pages} for:item="page">
+                        <template lwc:if={page.displayed} key={page.pageNumber}>
+                            <template for:each={page.cards} for:item="card">
+                                <div key={card.record.Id}>
+                                    <c-rspcaqld-cards-location image-url={card.record.Location_Image__c}
+                                                               is-petbarn={card.isPetbarn}
+                                                               location-types={card.locationTypes}
+                                                               categories={card.services}
+                                                               header={card.record.Name}
+                                                               address={card.locationCard}
+                                                               link={card.link}
+                                                               phone={card.record.Phone}></c-rspcaqld-cards-location>
+                                </div>
+                                <div key={card.record.Id} class="line-block"></div>
+                            </template>
+                        </template>
+                    </template>
+                </div>
+                <c-rspcaqld-cards-pagination onpagechange={handlePageChange} page-count={pageCount} current-page={currentPage}></c-rspcaqld-cards-pagination>
+            </div>
+            <div class="location-map">
+                <c-rspcaqld-cards-results-meta onorderchange={handleOrderChange}
+                                               onorderdirectionchange={handleOrderDirectionChange}
+                                               view-result={viewCount}
+                                               all-result={allCount}
+                                               order-value={orderOption}
+                                               order-direction={orderDirection}
+                                               order-options={orderOptions}></c-rspcaqld-cards-results-meta>
+                <iframe class="map-iframe" src={iframeSrc} width="100%" height="824" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</template>

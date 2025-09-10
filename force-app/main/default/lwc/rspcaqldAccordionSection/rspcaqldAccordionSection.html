@@ -1,0 +1,12 @@
+<template>
+    <div class={mainClass}>
+        <div class="accordion-section-header" onclick={handleOpen}>
+            <h4>{label}</h4>
+            <lightning-icon icon-name={iconClass}></lightning-icon>
+        </div>
+        <div class="accordion-section-body">
+            <p class="normal rich-text-description"><lightning-formatted-rich-text value={body}></lightning-formatted-rich-text></p>
+            <template lwc:if={isLink}><p><a class="button-link blue" style="margin-top: 10px;" href={linkUrl} target={linkTarget}>{linkLabel}</a></p></template>
+        </div>
+    </div>
+</template>

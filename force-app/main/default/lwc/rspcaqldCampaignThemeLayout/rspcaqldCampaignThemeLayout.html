@@ -1,0 +1,35 @@
+<template>
+    <header data-f6-region>
+        <template if:true={isHeader}>
+            <c-rspcaqld-campaign-header header-links-string={headerFooterLinksString}></c-rspcaqld-campaign-header>
+        </template>
+    </header>
+    <section data-f6-region class={mobileClass}>
+        <slot></slot>
+    </section>
+    <footer data-f6-region class={mobileClass}>
+        <c-rspcaqld-campaign-footer is-footer-promise={isFooterPromise}
+                                    footer-links-string={headerFooterLinksString}
+                                    our-promise-header={ourPromiseHeader}
+                                    our-promise-description={ourPromiseDescription}
+                                    our-promise-location-link={ourPromiseLocationLink}
+                                    our-promise-phone={ourPromisePhone}
+                                    our-promise-email={ourPromiseEmail}
+                                    footer-acknowledgement={footerAcknowledgement}
+                                    company-a-b-n={companyABN}
+                                    cookie-link={cookieLink}
+                                    is-facebook={isFacebook}
+                                    facebook-link={facebookLink}
+                                    mobile-facebook-link={mobileFacebookLink}
+                                    is-instagram={isInstagram}
+                                    instagram-link={instagramLink}
+                                    is-x-twitter={isXTwitter}
+                                    xtwitter-link={xtwitterLink}
+                                    is-linkedin={isLinkedin}
+                                    linkedin-link={linkedinLink}
+                                    is-youtube={isYoutube}
+                                    youtube-link={youtubeLink}
+                                    is-tiktok={isTiktok}
+                                    tiktok-link={tiktokLink}></c-rspcaqld-campaign-footer>
+    </footer>
+</template>

@@ -1,0 +1,49 @@
+<template>
+    <div class="slds-p-horizontal_large">
+        <lightning-card title={cardTitle}>
+            <div class="slds-p-horizontal_large">
+                <template lwc:if={animalHasPlans} for:each={animal.animalos__Animal_Action_Plans__r} for:item="animalActionPlan" id="animalActionPlans">
+                    <lightning-card title={animalActionPlan.animalos__Action_Plan__r.Name} key={animalActionPlan.Id}>
+                        <div class="slds-grid slds-wrap slds-gutters slds-p-horizontal_large">
+                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                <div class="slds-form-element slds-form-element_readonly">
+                                    <span class="slds-form-element__label">Interval</span>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element__static">
+                                            <lightning-formatted-text value={animalActionPlan.animalos__Action_Plan__r.animalos__Frequency_Interval__c}></lightning-formatted-text>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                <div class="slds-form-element slds-form-element_readonly">
+                                    <span class="slds-form-element__label">Frequency</span>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element__static">
+                                            <lightning-formatted-text value={animalActionPlan.animalos__Action_Plan__r.animalos__Frequency__c}></lightning-formatted-text>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                <div class="slds-form-element slds-form-element_readonly">
+                                    <span class="slds-form-element__label">Next Scheduled Date</span>
+                                    <div class="slds-form-element__control">
+                                        <div class="slds-form-element__static">
+                                            <lightning-formatted-date-time value={animalActionPlan.animalos__Next_Scheduled_Date__c}></lightning-formatted-date-time>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </lightning-card>
+                </template>
+                <template lwc:else>
+                    <c-scoped-notification-lwc icon-name="utility:warning">
+                        No Treatments
+                    </c-scoped-notification-lwc>
+                </template>
+            </div>
+        </lightning-card>
+    </div>
+</template>

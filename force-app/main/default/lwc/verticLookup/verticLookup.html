@@ -1,0 +1,170 @@
+<!-- Vertic Lookup -->
+<template>
+
+    <span class={elementContainerClasses}>
+        <label class="slds-form-element__label" if:false={labelHidden}><abbr class="slds-required" lwc:if={required} title="required">*</abbr>{label}</label>
+        <span class="slds-form-element__control" style="display: block">
+            <!--            slds-has-selection-->
+            <template lwc:if={readOnly}>
+                <span class={pillClasses} tabindex="0" lwc:if={selectedRecord}>
+                    <span class="slds-icon_container slds-icon-standard-default1 slds-pill__icon_container" title={objectLabel}>
+                        <lightning-icon icon-name={iconName} size="x-small"></lightning-icon>
+                    </span>
+                    <span class="slds-pill__label" data-value={selectedRecord.value}
+                          onclick={handleRecordOpen}>
+                        <template lwc:if={isClickable}>
+                            <a href="javascript:void(0)" data-id="selectedRecord" tabindex="-1">
+                                {selectedRecord.title}
+                            </a>
+                        </template>
+                        <template lwc:else>
+                            {selectedRecord.title}
+                        </template>
+                    </span>
+                </span>
+            </template>
+            <template lwc:else>
+                <div class="slds-combobox-group">
+                    <div class="slds-combobox_container slds-combobox-addon_start slds-combobox-addon_end">
+                        <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open">
+                            <div class={selectedRecordContainerClasses} lwc:if={selectedRecord}>
+                                <lightning-icon class="slds-combobox__input-entity-icon" icon-name={iconName} size="x-small"></lightning-icon>
+                                <button class="slds-input_faux slds-combobox__input slds-combobox__input-value" data-id="selectedRecord" onclick={handleRecordOpen} onkeyup={handleRecordKeyUp}
+                                        type="button">
+                                    <span class="slds-truncate">{selectedRecord.title}</span>
+                                </button>
+                                <template lwc:if={disabled}></template>
+                                <button lwc:else class="slds-button slds-button_icon slds-input__icon slds-input__icon_right" onclick={handleClearClick} title="Remove selected option">
+                                    <lightning-icon icon-name="utility:close" size="x-small"></lightning-icon>
+                                    <span class="slds-assistive-text">Remove selected option</span>
+                                </button>
+                            </div>
+                            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" lwc:else>
+                                <lightning-input data-id="searchInput"
+                                                 data-path="searchTerm"
+                                                 disabled={disabled}
+                                                 onblur={handleBlur}
+                                                 onchange={handleFieldChangeOverridden}
+                                                 onfocus={handleFocus}
+                                                 onkeydown={handleInputKeyDown}
+                                                 onkeyup={handleInputKeyUp}
+                                                 placeholder={placeholder}
+                                                 type="text"
+                                                 value={meta.dto.searchTerm}
+                                                 variant="label-hidden"
+                                ></lightning-input>
+                                <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
+                                    <c-vertic-spinner is-busy={isBusy} size="small"></c-vertic-spinner>
+                                    <lightning-icon icon-name={searchIconName} onclick={handleSearchClick} if:false={isBusy} size="x-small"></lightning-icon>
+                                </span>
+                            </div>
+                            <div class="slds-dropdown slds-dropdown_length-with-icon-7 slds-dropdown_fluid" lwc:if={showList}>
+                                <ul class="slds-listbox slds-listbox_vertical">
+                                    <li class="slds-listbox__item" lwc:if={showSearchForTerm}>
+                                        <div aria-selected="true" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term">
+                                            <span class="slds-media__figure slds-listbox__option-icon">
+                                                <span class="slds-icon_container slds-icon-utility-search" title="Search for term: ">
+                                                    <lightning-icon icon-name="utility:search" size="x-small"></lightning-icon>
+                                                    <span class="slds-assistive-text">Search for term: </span>
+                                                </span>
+                                            </span>
+                                            <span class="slds-media__body">
+                                              <span class="slds-listbox__option-text slds-listbox__option-text_entity"
+                                                    lwc:if={isSearching}>{searchingStatusMessage}</span>
+                                              <span class="slds-listbox__option-text slds-listbox__option-text_entity"
+                                                    lwc:if={showNoResultsMessage}>{noRecords}</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                    <template lwc:if={searchResultsFiltered}>
+                                        <li class="slds-listbox__item" data-value={searchResult.value} for:each={searchResultsFiltered} for:index="index" for:item="searchResult"
+                                            key={searchResult.guid}
+                                            onmousedown={handleSelect}>
+                                            <div class={searchResult.class}>
+                                                <span class="slds-media__figure slds-listbox__option-icon">
+                                                    <span class="slds-icon_container slds-icon-standard-default">
+                                                        <lightning-icon icon-name={iconName} size="small"></lightning-icon>
+                                                    </span>
+                                                </span>
+                                                <div class="slds-media__body">
+                                                    <span class="slds-listbox__option-text slds-listbox__option-text_entity">
+                                                        <lightning-formatted-rich-text value={searchResult.titleFormatted}></lightning-formatted-rich-text>
+                                                    </span>
+                                                    <div class="slds-listbox__option-meta slds-listbox__option-meta_entity slds-grid slds-wrap" style="white-space: break-spaces;" lwc:if={searchResult.subtitle}>{searchResult.subtitle}</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </template>
+                                    <li class="slds-listbox__item" lwc:if={allowNewRecords} onmousedown={handleAddNewClick}>
+                                        <div aria-selected="true" class="slds-media slds-listbox__option slds-listbox__option_entity slds-listbox__option_term">
+                                            <span class="slds-media__figure slds-listbox__option-icon">
+                                                <span class="slds-icon_container slds-icon-utility-search" title="Add new record">
+                                                    <lightning-icon icon-name="utility:add" size="x-small"></lightning-icon>
+                                                    <span class="slds-assistive-text">Add new record</span>
+                                                </span>
+                                            </span>
+                                            <span class="slds-media__body">
+                                              <span class="slds-listbox__option-text slds-listbox__option-text_entity">New {objectLabel}</span>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <template lwc:if={multiSelect}>
+                <template lwc:if={selectedRecords}>
+                    <span class="slds-listbox_selection-group" style="display: contents;">
+                        <ul class="slds-listbox slds-listbox_horizontal">
+                            <li class="slds-listbox-item" for:each={selectedRecords} for:item="selectedItem" for:index="index" key={selectedItem.guid}>
+                                <span class={selectedItem.pillClass} tabindex="0" data-value={selectedItem.value} onkeyup={handleRecordKeyUp}>
+                                    <span class="slds-icon_container slds-icon-standard-default1 slds-pill__icon_container" title={objectLabel}>
+                                        <lightning-helptext lwc:if={selectedItem.invalid} icon-name="utility:error" icon-variant="error" class="error-helptext" content={selectedItem.invalidMessage}
+                                                            alternative-text={selectedItem.invalidMessage}></lightning-helptext>
+                                        <lightning-icon lwc:else icon-name={iconName} size="x-small"></lightning-icon>
+                                    </span>
+                                    <span class="slds-pill__label" data-value={selectedItem.value}
+                                          onclick={handleRecordOpen}>
+                                        <template lwc:if={isClickable}>
+                                            <a href="javascript:void(0)" data-id="selectedRecord" tabindex="-1">
+                                                {selectedItem.title}
+                                            </a>
+                                        </template>
+                                        <template lwc:else>
+                                            {selectedItem.title}
+                                        </template>
+                                    </span>
+                                    <template lwc:if={readOnly}></template>
+                                    <template lwc:elseif={disabled}></template>
+                                    <template lwc:else>
+                                    <span class="slds-icon_container slds-pill__remove" title="Remove" style="cursor: pointer">
+                                        <lightning-icon icon-name="utility:close" size="x-small" data-value={selectedItem.value} onclick={handleClearClick}></lightning-icon>
+                                    </span>
+                                    </template>
+                                </span>
+                            </li>
+                        </ul>
+                    </span>
+                </template>
+                <template lwc:elseif={readOnly}>
+                    <template lwc:if={showNoneMessage}>
+                        <div>-- None --</div>
+                    </template>
+                </template>
+            </template>
+        </span>
+        <template lwc:if={errorMessages}>
+            <div class="slds-form-element__help" for:each={errorMessages} for:item="error" key={error}>
+                <template lwc:if={error.message}>
+                    {error.message}
+                </template>
+                <template if:false={error.message}>
+                    {error}
+                </template>
+            </div>
+        </template>
+    </span>
+
+</template>

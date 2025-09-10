@@ -1,0 +1,130 @@
+.main-content {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.rspca-logo {
+    max-height: 75px;
+    max-width: 275px;
+}
+
+.royal-canin-logo {
+    max-height: 75px;
+    max-width: 275px;
+}
+
+.profile-photo {
+    border: 10px solid transparent;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.field-label {
+    color: #74c067;
+    font-weight: bold;
+}
+
+.dotted-line{
+    border: none;
+    border-top: 1px dashed #dddddd;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.speech-bubble {
+    position: relative;
+    background: #0289c2;
+    border-radius: 1.5em;
+    width: 100%;
+    height: 90%;
+    text-align: center;
+    vertical-align: center;
+    line-height: 70px;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.speech-bubble:before{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    bottom:-30px;
+    right:87%;
+    height:60px;
+    border-right:60px solid #0289c2;
+    background:#0289c2; /* need this for webkit - bug in handling of border-radius */
+    /* css3 */
+    -webkit-border-bottom-right-radius:80px 50px;
+    -moz-border-radius-bottomright:80px 50px;
+    border-bottom-right-radius:80px 50px;
+    /* using translate to avoid undesired appearance in CSS2.1-capabable but CSS3-incapable browsers */
+    -webkit-transform:translate(0, -2px);
+    -moz-transform:translate(0, -2px);
+    -ms-transform:translate(0, -2px);
+    -o-transform:translate(0, -2px);
+    transform:translate(0, -2px);
+}
+
+.speech-bubble:after{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    bottom:-30px;
+    right:87%;
+    width:50px;
+    height:60px;
+    background:#fff;
+    /* css3 */
+    -webkit-border-bottom-right-radius:40px 50px;
+    -moz-border-radius-bottomright:40px 50px;
+    border-bottom-right-radius:40px 50px;
+    /* using translate to avoid undesired appearance in CSS2.1-capabable but CSS3-incapable browsers */
+    -webkit-transform:translate(-30px, -2px);
+    -moz-transform:translate(-30px, -2px);
+    -ms-transform:translate(-30px, -2px);
+    -o-transform:translate(-30px, -2px);
+    transform:translate(-30px, -2px);
+}
+
+.container{
+    height: 50em;
+    position: relative;
+    overflow: hidden;
+}
+
+.container > * {
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.container > *:first-child {
+    animation: 12s autoplay infinite ease-in-out}
+
+@keyframes autoplay {
+    0% {margin-top: 10em}
+    4% {margin-top: 0em}
+    31% {margin-top: 0em}
+    35% {margin-top: -10em}
+    64% {margin-top: -10em}
+    68% {margin-top: -20em}
+    96% {margin-top: -20em}
+    100% {margin-top: -30em}
+}
+
+/*.speech-bubble:after {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    bottom: 0;*/
+/*    left: 10%;*/
+/*    width: 0;*/
+/*    height: 0;*/
+/*    border: 24px solid transparent;*/
+/*    border-top-color: #0289c2;*/
+/*    border-bottom: 0;*/
+/*    border-left: 0;*/
+/*    margin-left: -12px;*/
+/*    margin-bottom: -24px;*/
+/*}*/

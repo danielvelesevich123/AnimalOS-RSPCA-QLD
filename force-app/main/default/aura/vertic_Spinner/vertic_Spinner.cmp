@@ -1,0 +1,28 @@
+<aura:component description="vertic_Spinner">
+    <aura:attribute name="isLoading" type="Boolean" required="{!true}" default="{!false}"/>
+    <aura:attribute name="hideContentOnLoading" type="Boolean" default="{!false}"/>
+    <aura:attribute name="blurContentOnLoading" type="Boolean" default="{!true}"/>
+    <aura:attribute name="size" type="Boolean" default="medium"/>
+    <aura:attribute name="spinnerVariant" type="Boolean" default="base"/>
+
+    <aura:if isTrue="{!not(v.blurContentOnLoading)}">
+        <aura:html tag="style">
+            .slds-spinner_container{
+                background-color: unset !important;
+            }
+        </aura:html>
+    </aura:if>
+
+    <div class="slds-is-relative">
+        <aura:if isTrue="{!v.isLoading}">
+            <lightning:spinner alternativeText="Loading..." size="{!v.size}" variant="{!v.spinnerVariant}"/>
+            <aura:if isTrue="{!not(v.hideContentOnLoading)}">
+                {!v.body}
+            </aura:if>
+            <aura:set attribute="else">
+                {!v.body}
+            </aura:set>
+        </aura:if>
+    </div>
+
+</aura:component>

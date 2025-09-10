@@ -1,0 +1,5 @@
+<template>
+    <div class="slds-m-vertical_medium" lwc:if={locationNearby.Id}>
+        <c-job-contacts record-id={locationNearby.Id} card-title={locationNearby.Name} hide-add-violence-button view={view}></c-job-contacts>
+    </div>
+</template>

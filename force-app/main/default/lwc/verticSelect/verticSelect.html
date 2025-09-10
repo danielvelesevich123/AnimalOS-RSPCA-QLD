@@ -1,0 +1,31 @@
+<!-- Vertic Select -->
+<template>
+    <div class={elementContainerClasses}>
+        <label class="slds-form-element__label" if:false={labelHidden}>
+            <abbr class="slds-required" if:true={required}>*</abbr><abbr class="slds-required" if:true={pseudoRequired}>*</abbr><span>{label}</span>
+        </label>
+        <div class="slds-form-element__control slds-grow">
+            <div class="slds-select_container">
+                <select class="slds-select" disabled={disabled} required={required} value={value} onchange={handleChange}>
+                    <option disabled if:true={placeholder} label={placeholder} selected value="">{placeholder}</option>
+                    <option if:true={noneLabel} label={noneLabel} value="">{noneLabel}</option>
+                    <template if:true={options}>
+                        <template for:each={options} for:index="index" for:item="option">
+                            <option key={option.label} label={option.label} value={option.value}>{option.label}</option>
+                        </template>
+                    </template>
+                </select>
+            </div>
+        </div>
+        <template if:true={errorMessages}>
+            <div class="slds-form-element__help" for:each={errorMessages} for:item="error" key={error}>
+                <template if:true={error.message}>
+                    {error.message}
+                </template>
+                <template if:false={error.message}>
+                    {error}
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

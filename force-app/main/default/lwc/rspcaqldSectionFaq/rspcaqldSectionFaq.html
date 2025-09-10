@@ -1,0 +1,21 @@
+<template>
+    <div class={parentClass}>
+        <div class={mainClass}>
+            <template if:true={isHeader}>
+                <div class="section-faq-header">
+                    <h1>{header}</h1>
+                    <a href={linkUrl}>{linkLabel}</a>
+                </div>
+            </template>
+            <div class="section-faq-accordion">
+                <c-rspcaqld-accordion>
+                    <template for:each={faqs} for:item="faq">
+                        <c-rspcaqld-accordion-section key={faq.label} label={faq.label} body={faq.body} link-url={faq.linkUrl} link-label={faq.linkLabel}>
+                        </c-rspcaqld-accordion-section>
+                    </template>
+                </c-rspcaqld-accordion>
+            </div>
+            <a class="mobile-header-link" href="#">Browse all FAQs</a>
+        </div>
+    </div>
+</template>

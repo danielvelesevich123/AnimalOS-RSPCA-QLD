@@ -1,0 +1,14 @@
+<aura:component description="OneDriveFilesQuickAction" implements="force:lightningQuickActionWithoutHeader,force:appHostable,force:hasRecordId,force:hasSObjectName">
+
+    <c:vertic_QuickActionModal aura:id="modal"
+                               title="Upload Photo/Video"
+                               heightPX="500"
+                               widthPercentage="60"
+                               maxWidthRem="80"
+                               minWidthRem="20"
+                               refreshOnCancel="{!true}"
+    >
+        <c:OneDriveFiles recordId="{!v.recordId}" sObjectName="{!v.sObjectName}"/>
+    </c:vertic_QuickActionModal>
+
+</aura:component>

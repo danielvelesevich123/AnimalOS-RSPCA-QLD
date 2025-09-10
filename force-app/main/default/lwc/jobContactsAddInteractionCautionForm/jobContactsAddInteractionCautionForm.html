@@ -1,0 +1,49 @@
+<template>
+    <lightning-card icon-name="standard:report" title="Add Caution" lwc:ref="addInteractionCautionForm">
+        <lightning-button-group slot="actions">
+            <lightning-button icon-name="utility:save" label="Submit" onclick={handleSubmitClick}></lightning-button>
+            <lightning-button icon-name="action:reject" label="Cancel" onclick={handleCancelClick}></lightning-button>
+        </lightning-button-group>
+        <div class="slds-is-relative slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
+                <c-vertic-select lwc:else
+                                 label="Source"
+                                 placeholder="Select an Option..."
+                                 onchange={handleSourceChange}
+                                 options={selectOptions.animalosCautionSourceOptions}
+                                 required
+                                 value={interactionCaution.animalos__Caution_Source__c}
+                ></c-vertic-select>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
+                <c-vertic-select lwc:else
+                                 label="Type"
+                                 placeholder="Select an Option..."
+                                 onchange={handleTypeChange}
+                                 options={selectOptions.animalosCautionTypeOptions}
+                                 required
+                                 value={interactionCaution.animalos__Caution_Type__c}
+                ></c-vertic-select>
+            </div>
+            <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
+            <div class="slds-col slds-size_1-of-1" lwc:else>
+                <lightning-textarea label="Details"
+                                    onchange={handleDetailsChange}
+                                    value={interactionCaution.animalos__Caution_Details__c}
+                ></lightning-textarea>
+            </div>
+            <div class="slds-col slds-size_1-of-1">
+                <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
+                <lightning-input lwc:else
+                                 type="datetime"
+                                 label="Date Time"
+                                 value={interactionCaution.animalos__Caution_Date_Time__c}
+                                 required
+                                 onchange={handleDateTimeChange}>
+                </lightning-input>
+            </div>
+        </div>
+    </lightning-card>
+</template>

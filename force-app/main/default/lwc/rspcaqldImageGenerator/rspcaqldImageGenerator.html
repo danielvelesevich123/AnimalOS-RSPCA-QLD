@@ -1,0 +1,28 @@
+<template>
+    <div class="image-generator">
+        <img class={className} src={image}>
+        <template lwc:if={isIconKey}><div class={iconBlockClass}><img class="default" src={iconImage}></div></template>
+        <template lwc:if={isVideo}>
+            <div class="video-block" onclick={handleVideo}>
+                <div><lightning-icon icon-name="utility:play" size="medium"></lightning-icon></div>
+                <p>play video</p>
+            </div>
+        </template>
+    </div>
+    <div class={videoClass} onclick={handleVideoPopupClick}>
+        <div class="pop-up pop-up-image-generator">
+            <div class="pop-up-close-block">
+                <a class="close-link" onclick={handleVideoClose}>
+                    <span>Close</span>
+                    <img class="medium" src={closeWhite}>
+                </a>
+            </div>
+            <div class="pop-up-body-block">
+                <template lwc:if={isVideoOpen}>
+                    <iframe src={videoUrl} frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </template>
+            </div>
+        </div>
+    </div>
+    <div class={backdropClass}></div>
+</template>

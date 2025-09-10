@@ -1,0 +1,27 @@
+<aura:component description="ConfirmationOfDetailsQA" implements="force:lightningQuickActionWithoutHeader,force:hasRecordId">
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+
+    <c:vertic_QuickActionModal aura:id="modal"
+                               heightPX="700"
+                               title="Confirmation of Details"
+                               widthPercentage="100"
+                               maxWidthRem="90"
+                               minWidthRem="30">
+        <div class="slds-grid slds-gutters_small slds-p-horizontal__small">
+            <div class="slds-col slds-has-flexi-truncate" role="listitem">
+                <c:vertic_ContentPreview aura:id="PDFContentEditor"
+                                         iFrameHeight="720px"/>
+            </div>
+        </div>
+
+        <aura:set attribute="footer">
+            <lightning:button type="button"
+                              label="Download PDF"
+                              variant="brand"
+                              class="slds-m-horizontal_small"
+                              onclick="{!c.handleDownloadPDFClick}">
+            </lightning:button>
+        </aura:set>
+    </c:vertic_QuickActionModal>
+
+</aura:component>

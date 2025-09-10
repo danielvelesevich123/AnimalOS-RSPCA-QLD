@@ -1,0 +1,29 @@
+<template>
+    <div class={checkboxClass}>
+        <template if:true={labelLeft}>
+            <label onclick={handleToggleClick}>
+                <template lwc:if={required}>
+                    <abbr>*</abbr>
+                </template>
+                <span><lightning-formatted-rich-text value={label}></lightning-formatted-rich-text></span>
+                <template lwc:if={isHelptext}>
+                    <lightning-helptext content={helptext}></lightning-helptext>
+                </template>
+            </label>
+        </template>
+        <div onclick={handleToggleClick}>
+            <span class={iconClass}>{iconName}</span>
+            <template lwc:if={isAdditionalLabel}>
+                <p class="medium">{additionalLabel}</p>
+            </template>
+        </div>
+        <template if:true={labelRight}>
+            <label onclick={handleToggleClick}>
+                <template lwc:if={required}><abbr>*</abbr></template>
+                <span><lightning-formatted-rich-text value={label}></lightning-formatted-rich-text></span></label>
+        </template>
+    </div>
+    <template if:true={error}>
+        <div class="slds-form-element__help">{errorMessage}</div>
+    </template>
+</template>

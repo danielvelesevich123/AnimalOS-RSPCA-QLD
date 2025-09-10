@@ -1,0 +1,42 @@
+<template>
+    <div class={picklistClass}>
+        <div>
+            <label>
+                <template lwc:if={required}>
+                    <abbr>*</abbr>
+                </template>
+                {label}
+                <template lwc:if={isHelptext}>
+                    <lightning-helptext content={helptext}></lightning-helptext>
+                </template>
+            </label>
+            <div class="input-icon">
+                <input class="slds-input"
+                       type="text"
+                       placeholder={placeholder}
+                       value={value}
+                       onclick={handleInputClick}
+                       oninput={handleInputChange}
+                       disabled={disabled}
+                       tabindex="0">
+                <template lwc:if={isAddressValue}><img src={closeDark} class="normal" onclick={handleIconClick}></template>
+            </div>
+            <template lwc:if={isOpen}>
+                <div class="dropdown-block">
+                    <ul class="dropdown-list">
+                        <template for:each={options} for:item="option">
+                            <li key={option.value} data-item={option.value} data-label={option.label} onclick={handleValueClick}>
+                                <div>
+                                    <span class="dropdown-label">{option.label}</span>
+                                </div>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+            </template>
+        </div>
+        <template lwc:if={hasError}>
+            <div class="slds-form-element__help">This field is required</div>
+        </template>
+    </div>
+</template>

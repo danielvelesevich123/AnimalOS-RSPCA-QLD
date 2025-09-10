@@ -1,0 +1,80 @@
+<template>
+    <template if:true={isShape}>
+        <img src={topleftWedge} class="section-cta-form-top-wedge">
+    </template>
+    <div class={mainClass}>
+        <div class="medium-width">
+            <template if:true={isPaw}>
+                <img class={printPawClass} src={printPaw} style={printPawStyle}>
+            </template>
+            <div class="section-cta-articles-info">
+                <h1 class={headerClass}>{header}</h1>
+                <template if:true={isDescription}>
+                    <p class="normal">{description}</p>
+                </template>
+                <template if:true={isLink}>
+                    <a class="button-link" href={linkUrl}>{linkLabel}
+                        <template if:true={isArray}><img class="medium" src={arrowRightIcon}></template>
+                    </a>
+                </template>
+            </div>
+            <div class="section-cta-articles-main">
+                <div class={articlesClass}>
+                    <template if:true={isArticles}>
+                        <template for:each={articles.data} for:item="article">
+                            <c-rspcaqld-cards-article key={article.key}
+                                                      link={article.link}
+                                                      image-url={article.image}
+                                                      header={article.title}
+                                                      category={article.category}
+                                                      is-category={isCategory}
+                                                      is-white={isWhite}
+                                                      description={article.excerpt}></c-rspcaqld-cards-article>
+                        </template>
+                    </template>
+                    <template if:true={isCards}>
+                        <template for:each={cards} for:item="card">
+                            <c-rspcaqld-cards-service icon-name={card.icon} key={card.header}
+                                                      header={card.header}
+                                                      description={card.description}
+                                                      link-label={card.linkLabel}
+                                                      link-url={card.linkUrl}></c-rspcaqld-cards-service>
+                        </template>
+                    </template>
+                    <template if:true={isEvents}>
+                        <template for:each={events.data} for:item="event">
+                            <c-rspcaqld-cards-event image-url={event.record.Campaign_Event_Image__c}
+                                                    event-id={event.record.Id}
+                                                    time={event.eventDate}
+                                                    key={event.record.Name}
+                                                    header={event.record.Name}
+                                                    address={event.address}></c-rspcaqld-cards-event>
+                        </template>
+                    </template>
+                    <template if:true={isDirectors}>
+                        <template for:each={directors} for:item="director">
+                            <c-rspcaqld-cards-team key={director.name} image-url={director.avatar}
+                                                   header={director.name}
+                                                   link={director.link}
+                                                   position={director.title}></c-rspcaqld-cards-team>
+                        </template>
+                    </template>
+                </div>
+                <template if:true={isSecondLink}>
+                    <a class="button-link" href={secondLinkUrl}>{secondLinkLabel}
+                        <img class="medium" src={arrowRightIcon}>
+                    </a>
+                </template>
+            </div>
+            <template if:true={isLink}>
+                <a class="mobile-header-link" href={linkUrl}>{linkLabel}</a>
+            </template>
+            <template if:true={isSecondPaw}>
+                <img class={secondPrintPawClass} src={secondPrintPaw}>
+            </template>
+        </div>
+    </div>
+    <template if:true={isShape}>
+        <img src={bottomrightWedge} class="section-cta-form-bottom-wedge">
+    </template>
+</template>

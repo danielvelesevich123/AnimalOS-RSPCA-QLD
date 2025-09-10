@@ -1,0 +1,33 @@
+<template>
+    <div class="page-partners-container" style={templateStyle}>
+        <div class={mainClass}>
+            <div class="partners-block">
+                <template if:true={isHeader}>
+                    <div class="header-with-link">
+                        <h2 class={headerClass}>{header}</h2>
+                        <a href={linkUrl}>{linkLabel}</a>
+                    </div>
+                </template>
+                <div class="page-partners-body">
+                    <template for:each={partners.data} for:item="partner">
+                        <c-rspcaqld-cards-partner key={partner.key}
+                                                  title={partner.title}
+                                                  description={partner.description}
+                                                  category= {partner.category}
+                                                  image-url={partner.logo}
+                                                  card-size={cardSize}
+                                                  is-title={isTitle}
+                                                  is-category={isCategory}
+                                                  is-white={isWhiteCards}
+                                                  is-display-popup={isDisplayPopup}
+                                                  is-disable-redirect={isDisableRedirect}
+                                                  link={partner.link}></c-rspcaqld-cards-partner>
+                    </template>
+                </div>
+                <template if:true={isLink}>
+                    <a class="mobile-header-link" href={linkUrl}>{linkLabel}</a>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

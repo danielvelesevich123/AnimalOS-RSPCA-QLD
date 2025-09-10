@@ -1,0 +1,69 @@
+<aura:component description="PetRescueSyncQA"
+                controller="vertic_CommonCtrl"
+                implements="force:lightningQuickActionWithoutHeader,force:hasRecordId">
+
+    <aura:attribute name="isBusy" type="Boolean" default="{!false}"/>
+    <aura:attribute name="meta" type="Map" default="{}"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+
+    <c:vertic_Utils context="{!this}"/>
+    <lightning:notificationsLibrary aura:id="notifyLib"/>
+
+    <c:vertic_QuickActionModal aura:id="modal"
+                               title="PetRescue Sync"
+                               heightPX="240"
+                               widthPercentage="60"
+                               maxWidthRem="80"
+                               minWidthRem="20"
+                               refreshOnCancel="{!true}"
+    >
+
+        <aura:set attribute="footer">
+            <lightning:button variant="brand"
+                              label="Submit"
+                              disabled="{!v.isBusy}"
+                              onclick="{!c.handleSubmitClick}"/>
+        </aura:set>
+
+        <aura:if isTrue="{!v.isBusy}">
+            <lightning:spinner alternativeText="Loading..." size="medium" variant="base"/>
+        </aura:if>
+
+        <aura:if isTrue="{!v.meta.dto}">
+            <div class="slds-grid slds-gutters slds-wrap" aura:id="form">
+                <div class="slds-col slds-size_1-of-3">
+                    <lightning:input label="PetRescue Id"
+                                     fieldLevelHelp="Enter the value manually if Animal already exists in PetRescue"
+                                     value="{!v.meta.dto.animal.PetRescue_Id__c}"
+                                     disabled="{!v.isBusy}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <c:vertic_Select label="Status"
+                                     options="{!v.meta.selectOptions.statusOptions}"
+                                     value="{!v.meta.dto.status}"
+                                     disabled="{!v.isBusy}"
+                                     required="{!true}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <c:verticLookup object="animalos__Location__c"
+                                    label="Location"
+                                    searchField="Name"
+                                    placeholder="Select a Location..."
+                                    iconTag="utility:home"
+                                    order="Name"
+                                    isClickable="{!true}"
+                                    showRecentRecords="{!true}"
+                                    filter="{!'Id IN (' + v.meta.dto.locationIds + ')'}"
+                                    disabled="{!v.isBusy}"
+                                    required="{!true}"
+                                    value="{!v.meta.dto.locationId}"
+                    />
+                </div>
+            </div>
+        </aura:if>
+    </c:vertic_QuickActionModal>
+
+</aura:component>

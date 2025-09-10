@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Section Video</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Section Video</masterLabel>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="customClass" type="String" label="Custom Class"/>
+            <property name="videoUrl" type="String" label="Video URL"/>
+            <property datasource="Medium,Large" name="videoSize" type="String" label="Video Size" default="Medium"/>
+            <property name="isPopup" type="Boolean" label="Display in Popup"/>
+            <property name="previewImage" type="String" label="Preview Image (if Popup)"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

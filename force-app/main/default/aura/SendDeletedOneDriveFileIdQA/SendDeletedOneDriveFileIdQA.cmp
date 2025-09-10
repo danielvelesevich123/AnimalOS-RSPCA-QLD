@@ -1,0 +1,55 @@
+<aura:component description="SendDeletedOneDriveFileIdQA"
+                controller="vertic_CommonCtrl"
+                implements="force:hasRecordId,force:lightningQuickActionWithoutHeader">
+
+    <aura:attribute name="isBusy" type="Boolean" default="{!false}"/>
+    <aura:attribute name="meta" type="Map" default="{}"/>
+
+    <c:vertic_Utils context="{!this}"/>
+
+    <c:vertic_QuickActionModal aura:id="modal"
+                               title="Send Deleted OneDrive File Id"
+                               heightPX="450"
+                               widthPercentage="70"
+                               maxWidthRem="80"
+                               minWidthRem="20"
+                               refreshOnCancel="{!true}"
+    >
+
+        <aura:if isTrue="{!empty(v.meta)}">
+            <div class="slds-is-relative">
+                <c:verticSpinner isBusy="{!v.isBusy}"></c:verticSpinner>
+                <lightning:layout horizontalAlign="center" multipleRows="true">
+                    <lightning:layoutItem padding="around-small">
+                        <div style="text-align: center;">
+                            <lightning:formattedText value="Are you sure you want to delete this file?"/>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+            </div>
+            <aura:set attribute="else">
+                <lightning:layoutItem padding="around-small">
+                    <lightning:formattedText value="{!'adoptAPet Response: ' + v.meta.dto.response.adoptAPet}"/>
+                </lightning:layoutItem>
+                <lightning:layoutItem padding="around-small">
+                    <lightning:formattedText value="{!'rspcanswmain Response: ' + v.meta.dto.response.rspcanswmain}"/>
+                </lightning:layoutItem>
+            </aura:set>
+        </aura:if>
+
+        <aura:set attribute="footer">
+            <aura:if isTrue="{!empty(v.meta)}">
+                <lightning:button variant="brand"
+                                  label="Submit"
+                                  disabled="{!v.isBusy}"
+                                  onclick="{!c.handleSubmitClick}"/>
+                <aura:set attribute="else">
+                    <lightning:button variant="brand"
+                                      label="Finish"
+                                      disabled="{!v.isBusy}"
+                                      onclick="{!c.handleFinishClick}"/>
+                </aura:set>
+            </aura:if>
+        </aura:set>
+    </c:vertic_QuickActionModal>
+</aura:component>

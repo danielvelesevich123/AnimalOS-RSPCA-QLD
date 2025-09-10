@@ -1,0 +1,21 @@
+<aura:component description="AnimalDailyObservationFlags" implements="flexipage:availableForAllPageTypes,force:hasRecordId" extends="c:vertic_Base">
+
+
+    <aura:attribute name="orangeFlags" type="String"/>
+    <aura:attribute name="redFlags" type="String"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+
+    <aura:if isTrue="{!not(empty(v.redFlags))}">
+        <c:ScopedNotification content="{!v.redFlags}" iconName="utility:error" theme="error" iconVariant="inverse"/>
+    </aura:if>
+
+    <aura:if isTrue="{!not(empty(v.orangeFlags))}">
+        <c:ScopedNotification content="{!v.orangeFlags}" iconName="utility:warning" theme="warning" iconVariant="inverse"/>
+    </aura:if>
+
+    <aura:if isTrue="{!and(empty(v.redFlags), empty(v.orangeFlags))}">
+        <c:ScopedNotification content="The animal has no current flags" iconName="utility:success" theme="success" iconVariant="inverse"/>
+    </aura:if>
+
+</aura:component>

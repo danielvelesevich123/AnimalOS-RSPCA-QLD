@@ -1,0 +1,133 @@
+<aura:component description="OneDriveFileItem" implements="force:lightningQuickAction">
+    <aura:attribute name="file" type="Map"/>
+    <aura:attribute name="isFullView" type="Boolean" access="global" default="{!true}"/>
+    <aura:attribute name="isDeleteAvailable" type="Boolean" access="global" default="{!true}"/>
+    <aura:attribute name="isPrimaryFileSelectionEnabled" type="Boolean" access="global" default="{!true}"/>
+    <aura:attribute name="isProfilePhotoSelectionEnabled" type="Boolean" access="global" default="{!true}"/>
+    <aura:attribute name="readOnly" type="Boolean" access="global" default="{!false}"/>
+
+    <aura:registerEvent name="onDelete" type="c:vertic_ComponentEvent"/>
+    <aura:registerEvent name="onDownload" type="c:vertic_ComponentEvent"/>
+    <aura:registerEvent name="onSendEmail" type="c:vertic_ComponentEvent"/>
+    <aura:registerEvent name="onFileView" type="c:vertic_ComponentEvent"/>
+    <aura:registerEvent name="onPrimaryClick" type="c:vertic_ComponentEvent"/>
+    <aura:registerEvent name="onProfilePhotoClick" type="c:vertic_ComponentEvent"/>
+
+    <c:vertic_ModalService aura:id="modalService"/>
+
+    <aura:if isTrue="{! v.isFullView}">
+        <tr>
+            <td scope="row">
+                <a>
+                    <div class="slds-truncate" onclick="{!c.handleFileView}" title="{!v.file.name}" value="{!v.file}">{!v.file.name}</div>
+                </a>
+            </td>
+            <td>
+                <div class="slds-truncate" title="{!v.file.sizeFormatted}">{!v.file.sizeFormatted}</div>
+            </td>
+
+
+            <td data-label="Start Date">
+                <ui:outputDate format="dd/MM/yyyy" value="{!v.file.createdDateTime}"/>
+            </td>
+            <td data-label="Modified Date">
+                <ui:outputDate format="dd/MM/yyyy" value="{!v.file.lastModifiedDateTime}"/>
+            </td>
+            <td data-label="Created By">
+                <div class="slds-truncate" title="{!v.file.createdBy}">{!v.file.createdBy}</div>
+            </td>
+            <td>
+
+                <lightning:buttonIcon class="slds-m-bottom_xxx-small"
+                                      iconName="utility:page"
+                                      variant="bare"
+                                      value="{!v.file}"
+                                      onclick="{!c.handleFileView}"
+                                      alternativeText="Preview"/>
+
+                <!--<aura:if isTrue="{!v.file.isButtonEmail}">-->
+                <!--<lightning:buttonIcon iconName="utility:email" variant="bare" onclick="{!c.handleFileSendToEmail}" value="{!v.file}" alternativeText="Email"/>-->
+                <!--</aura:if>-->
+
+                <lightning:buttonIcon class="slds-m-bottom_xxx-small"
+                                      iconName="utility:download"
+                                      variant="bare"
+                                      onclick="{!c.handleFileDownload}"
+                                      value="{!v.file}"
+                                      alternativeText="Download"
+                />
+
+                <lightning:buttonIcon class="slds-m-bottom_xxx-small"
+                                      iconName="utility:delete"
+                                      variant="bare"
+                                      onclick="{!c.handleFileDelete}"
+                                      value="{!v.file}"
+                                      alternativeText="Delete"
+                                      disabled="{!v.readOnly}"
+                />
+
+                <aura:if isTrue="{!v.isPrimaryFileSelectionEnabled }">
+                    <lightning:buttonIcon class="{!if(v.file.isPrimary == true, 'slds-m-bottom_xxx-small primary', 'slds-m-bottom_xxx-small')}"
+                                          iconName="utility:favorite"
+                                          variant="bare"
+                                          onclick="{!c.handleFilePrimaryClick}"
+                                          value="{!v.file}"
+                                          alternativeText="Primary"
+                                          disabled="{!v.readOnly}"
+                    />
+                </aura:if>
+
+                <aura:if isTrue="{!v.isProfilePhotoSelectionEnabled }">
+                    <lightning:buttonIcon class="{!if(v.file.isProfilePhoto == true, 'slds-m-bottom_xxx-small primary', 'slds-m-bottom_xxx-small')}"
+                                          iconName="utility:profile_alt"
+                                          variant="bare"
+                                          onclick="{!c.handleFileProfilePhotoClick}"
+                                          value="{!v.file}"
+                                          alternativeText="Primary"
+                                          disabled="{!v.readOnly}"
+                    />
+                </aura:if>
+
+                <aura:if isTrue="{! v.file.isFileOwner}">
+                    <lightning:buttonIcon class="slds-m-bottom_xxx-small"
+                                          iconName="utility:key"
+                                          variant="bare"
+                                          onclick="{!c.handleFilePermission}"
+                                          value="{!v.file}"
+                                          alternativeText="Permission"
+                    />
+                </aura:if>
+
+            </td>
+        </tr>
+        <aura:set attribute="else">
+            <tr>
+                <td scope="row" width="{! if(v.isDeleteAvailable, '12%', '6%')}">
+                    <lightning:buttonIcon class="slds-m-bottom_xx-small"
+                                          iconName="utility:download"
+                                          variant="bare"
+                                          onclick="{!c.handleFileDownload}"
+                                          value="{!v.file}"
+                                          alternativeText="Download"/>
+
+                    <aura:if isTrue="{! v.isDeleteAvailable}">
+                        <lightning:buttonIcon class="slds-m-bottom_xx-small"
+                                              iconName="utility:delete"
+                                              variant="bare"
+                                              onclick="{!c.handleFileDelete}"
+                                              value="{!v.file}"
+                                              alternativeText="Delete"
+                                              disabled="{!v.readOnly}"
+                        />
+                    </aura:if>
+
+                </td>
+                <td scope="row">
+                    <a>
+                        <div class="slds-truncate" onclick="{!c.handleFileView}" title="{!v.file.name}" value="{!v.file}">{!v.file.name}</div>
+                    </a>
+                </td>
+            </tr>
+        </aura:set>
+    </aura:if>
+</aura:component>

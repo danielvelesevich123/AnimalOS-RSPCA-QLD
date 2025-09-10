@@ -1,0 +1,31 @@
+<template>
+    <template if:true={isHeader}>
+        <h1 class={headerClass}>{header}</h1>
+    </template>
+    <div class={mainClass}>
+        <template for:each={cards} for:item="card">
+            <template if:true={isLMCards}>
+                <c-rspcaqld-cards-service icon-name={card.icon} key={card.key}
+                                          header={card.header}
+                                          description={card.description}
+                                          link-label={card.linkLabel}
+                                          link-url={card.linkUrl}></c-rspcaqld-cards-service>
+            </template>
+            <template if:true={isInfoCards}>
+                <c-rspcaqld-cards-feature key={card.key}
+                                          with-background={isInfoWhiteCards}
+                                          icon-name={card.icon}
+                                          header={card.header}
+                                          description={card.description}
+                                          link={card.link}></c-rspcaqld-cards-feature>
+            </template>
+            <template if:true={isInfoStepCards}>
+                <c-rspcaqld-cards-info-step key={card.key}
+                                        header={card.header}
+                                        description={card.description}
+                                        subdescription={card.subdescription}
+                                        icon-name={card.icon}></c-rspcaqld-cards-info-step>
+            </template>
+        </template>
+    </div>
+</template>

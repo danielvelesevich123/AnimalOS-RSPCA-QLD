@@ -1,0 +1,10 @@
+<template>
+    <div class={notificationClasses} role="status">
+        <div lwc:if={iconVisible} class="slds-media__figure">
+            <lightning-icon icon-name={iconName} size="small" alternative-text="Notification" variant={iconVariant}></lightning-icon>
+        </div>
+        <div class="slds-media__body">
+            <slot></slot>
+        </div>
+    </div>
+</template>

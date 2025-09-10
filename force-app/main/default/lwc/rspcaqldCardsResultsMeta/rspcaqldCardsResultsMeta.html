@@ -1,0 +1,11 @@
+<template>
+    <div class="cards-results">
+        <div class="cards-results-show">
+            <p class="small">Showing {viewResult} / {allResult} results</p>
+        </div>
+        <div class="cards-results-order">
+            <p class="small">Order results by</p>
+            <c-rspcaqld-picklist read-only onchange={handleChange} onchangeorder={handleChangeOrder} value={orderValue} order-direction={orderDirection} options={orderOptions} hide-selected></c-rspcaqld-picklist>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,73 @@
+<template>
+    <div class="page-container page-event">
+        <div class="page-header">
+            <div class="section-header">
+                <div class="section-header-elements">
+                    <div class="section-header-left-column">
+                        <h1>{event.record.Name}</h1>
+                        <div class="event-short-info">
+                            <div class="left"><img src={calendarWhite}><span class="xmedium">{event.shortEventDate}</span></div>
+                            <div class="right"><img src={locationWhite}><span class="xmedium">{event.shortAddress}</span></div>
+                        </div>
+                        <template lwc:if={isAction}>
+                            <div class="quick-links">
+                                <div>
+                                    <a class="green-btn action-link-btn" href={event.record.Event_URL__c} target="_blank">
+                                        <h5>Go to official page</h5>
+                                        <img class="medium" src={arrowRightWhite}>
+                                    </a>
+                                    <a class="right-icon-link" href={event.record.Event_URL__c} target="_blank">
+                                        <h5>Go to official page</h5>
+                                        <img class="medium" src={arrowRightWhite}>
+                                    </a>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="section-header-right-column">
+                        <img class="paw-print" src={headerBackground}>
+                        <img class="man-img" src={event.record.Campaign_Event_Image__c}>
+<!--                        <img class="logo" src={logo}>-->
+                        <div class="mobile-gradient"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-event-body wide-width">
+            <div class="page-event-body-desc rich-text-description">
+                <div class="mobile-event-details">
+                    <c-rspcaqld-hot-spot-event-details header="Dates & information"
+                                                       date={event.eventDateHotSpot}
+                                                       time={event.eventTime}
+                                                       address-one={event.firstAddressLine}
+                                                       address-two={event.secondAddressLine}
+                                                       link={event.record.Event_URL__c}></c-rspcaqld-hot-spot-event-details>
+                </div>
+                <lightning-formatted-rich-text value={event.record.Description__c}></lightning-formatted-rich-text>
+            </div>
+            <div class="page-event-body-details">
+                <c-rspcaqld-hot-spot-event-details header="Dates & information"
+                                                   date={event.eventDateHotSpot}
+                                                   time={event.eventTime}
+                                                   address-one={event.firstAddressLine}
+                                                   address-two={event.secondAddressLine}
+                                                   link={event.record.Event_URL__c}></c-rspcaqld-hot-spot-event-details>
+                <c-rspcaqld-hot-spot-subscribe></c-rspcaqld-hot-spot-subscribe>
+            </div>
+        </div>
+        <div class="page-event-actions wide-width">
+            <a class="neutral-btn" href="/get-involved/events"><img class="medium" src={arrowLeftDark}><span>Back to Events</span></a>
+            <c-rspcaqld-share-block facebook-link={facebookShareLink} linkedin-link={linkedinShareLink} twitter-link={twitterShareLink}></c-rspcaqld-share-block>
+        </div>
+        <template if:true={isMoreEvents}>
+            <div class="page-related-articles background-20">
+                <c-rspcaqld-section-related-articles content-string={event.relatedEvents} is-white
+                                                     content-type="Events"
+                                                     header="More events"
+                                                     description="Find other RSPCA events near you and show your support."
+                                                     link-label="Browse all events"
+                                                     link-url="/get-involved/events"></c-rspcaqld-section-related-articles>
+            </div>
+        </template>
+    </div>
+</template>

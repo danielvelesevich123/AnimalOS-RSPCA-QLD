@@ -1,0 +1,17 @@
+<!-- Job Contact Interaction Cautions -->
+<template>
+        <div class="slds-grid slds-gutters_xx-small">
+            <div class="slds-col slds-size_1-of-6 slds-truncate">
+                <lightning-formatted-url label={interactionCaution.animalos__Job_Contact__r.animalos__Job__r.Name} value={interactionCautionUrl}></lightning-formatted-url>
+            </div>
+            <div class="slds-col slds-size_1-of-6 slds-truncate">
+                <lightning-formatted-date-time value={interactionCaution.animalos__Caution_Date_Time__c}></lightning-formatted-date-time>
+            </div>
+            <div class="slds-col slds-size_2-of-6 slds-truncate">
+                <lightning-formatted-text value={interactionCautionSourceType}></lightning-formatted-text>
+            </div>
+            <div class="slds-col slds-size_2-of-6 slds-truncate">
+                <lightning-formatted-rich-text value={interactionCaution.animalos__Caution_Details__c}></lightning-formatted-rich-text>
+            </div>
+        </div>
+</template>

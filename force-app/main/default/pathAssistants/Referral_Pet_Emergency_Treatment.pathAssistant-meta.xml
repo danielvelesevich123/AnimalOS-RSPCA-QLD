@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>animalos__Referral__c</entityName>
+    <fieldName>animalos__Stage__c</fieldName>
+    <masterLabel>Referral - Pet Emergency Treatment</masterLabel>
+    <recordTypeName>Programs_Pet_Emergency_Treatment</recordTypeName>
+</PathAssistant>

@@ -1,0 +1,182 @@
+<template>
+    <div class="page-container background-20 page-pet-single">
+        <c-rspcaqld-lightbox oncloselightbox={handleCloseLightbox} images={images} selected-index={selectedLighboxHeaderIndex} selected-image={selectedLighboxHeaderImage}></c-rspcaqld-lightbox>
+        <div class="page-pet-header">
+            <img class="tiger-left-paw" src={officialRSPCAPaw}>
+            <template lwc:if={isNotCatAdoptionLocationType}><a class="green-btn with-icon mobile-apply-btn" href={adoptLink}><span>Apply to adopt me</span><img class="medium" src={arrowRightWhite}></a></template>
+            <div class="page-pet-header-images">
+                <div class="page-pet-header-selected-image">
+                    <img onclick={handleSelectedHeaderImageClick} src={selectedHeaderImage}>
+                </div>
+                <div class="page-pet-header-images-navigation">
+                    <div class="navigation-button-container"><template lwc:if={isImageArrows}><button onclick={handleHeaderImageClickLeft}><lightning-icon icon-name="utility:chevronleft" size="medium"></lightning-icon></button></template></div>
+                    <div class="page-pet-header-images-block">
+                        <template for:each={images} for:item="image" for:index="index">
+                            <div class="image-block" key={image.key}>
+                                <img onclick={handleHeaderImageClick} class={image.class} src={image.url} data-index={index}>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="navigation-button-container right"><template lwc:if={isImageArrows}><button onclick={handleHeaderImageClickRight}><lightning-icon icon-name="utility:chevronright" size="medium"></lightning-icon></button></template></div>
+                </div>
+            </div>
+            <div class="page-pet-header-info">
+                <div>
+                    <h1>{animal.Animal_Name__c}</h1>
+                    <h2>{animal.Web_Tagline__c}</h2>
+                </div>
+                <div class="page-pet-header-info-characteristics">
+                    <div><img src={dnaWhite}><span class="medium">{animal.Web_Display_Breed__c}</span></div>
+                    <div><img src={genderWhite}><span class="medium">{animal.Gender__c}</span></div>
+                    <div><img src={birthdayCakeWhite}><span class="medium">{animal.Age__c}</span></div>
+                    <div><img src={sizeWhite}><span class="medium">{animal.Size__c}</span></div>
+                    <template lwc:if={isFosterStatus}><div><img src={shelterHeartWhite}><span class="medium">I am in foster care</span></div></template>
+                    <div><img src={locationWhite}><span class="medium">{animal.Location_Name__c}</span></div>
+                    <div><img src={priceTagWhite}><span class="medium">${animal.Adoption_Fee__c} to adopt</span></div>
+                </div>
+                <template lwc:if={isNotCatAdoptionLocationType}><a class="green-btn with-icon desktop-apply-btn" href={adoptLink}><span>Apply to adopt me</span><img class="medium" src={arrowRightWhite}></a></template>
+            </div>
+        </div>
+        <img src={bottomrightWedge} class="section-cta-form-bottom-wedge">
+        <div class="page-pet-nav">
+            <div class="page-pet-nav-links">
+                <p class="medium">Jump to:</p>
+                <div>
+                    <a class={overviewTabClass} data-value="overview" onclick={handleNavTabClick}>Overview</a>
+                    <a class={storyTabClass} data-value="story" onclick={handleNavTabClick}>Story</a>
+                    <a class={faqTabClass} data-value="faq" onclick={handleNavTabClick}>FAQs</a>
+                    <a class={resourceTabClass} data-value="resource" onclick={handleNavTabClick}>Resources</a>
+                </div>
+            </div>
+            <template lwc:if={isNotCatAdoptionLocationType}><a class="green-btn with-icon" href={adoptLink}><span>Apply to adopt me</span><img class="medium" src={arrowRightWhite}></a></template>
+        </div>
+        <div class="page-pet-body wide-width">
+            <div class="mobile-pet-details">
+                <c-rspcaqld-hot-spot-pet-details checks={checks} ids={ids}></c-rspcaqld-hot-spot-pet-details>
+            </div>
+            <div class="page-pet-body-desc rich-text-description">
+                <h2>{animal.Animal_Name__c}'s Story</h2>
+                <p class="medium"><lightning-formatted-rich-text value={animal.Adoption_Summary__c}></lightning-formatted-rich-text></p>
+                <div class="page-pet-body-additional">
+                    <template for:each={bonusOffers} for:item="bonusOffer">
+                        <p key={bonusOffer.icon} class="large"><c-rspcaqld-c-m-s-image image-key={bonusOffer.icon}></c-rspcaqld-c-m-s-image><lightning-formatted-rich-text value={bonusOffer.text}></lightning-formatted-rich-text></p>
+                    </template>
+                </div>
+            </div>
+            <div class="page-pet-body-details">
+                <c-rspcaqld-hot-spot-pet-details checks={checks} ids={ids}></c-rspcaqld-hot-spot-pet-details>
+                <div class="hot-spot-quote">
+                    <div class="hot-spot-quote-image">
+                        <div class="icon-block shape-1"><c-rspcaqld-c-m-s-image image-key={upsell.icon}></c-rspcaqld-c-m-s-image></div>
+                    </div>
+                    <div class="hot-spot-quote-body">
+                        <h3><lightning-formatted-rich-text value={upsell.header}></lightning-formatted-rich-text></h3>
+                        <p class="normal"><lightning-formatted-rich-text value={upsell.description}></lightning-formatted-rich-text></p>
+                    </div>
+                    <div class="hot-spot-quote-link"><a href={upsell.linkUrl}>{upsell.linkLabel}<img class="medium" src={arrowRightBlue}></a></div>
+                </div>
+            </div>
+        </div>
+<!--        <div class="page-pet-diary">-->
+<!--            <h2>My  diary</h2>-->
+<!--            <div class="page-pet-diary-body">-->
+<!--                <button class="shape-1" onclick={handleDiaryClickLeft}></button>-->
+<!--                <div class="page-pet-diary-images wide-width">-->
+<!--                    <template for:each={images} for:item="image" for:index="index">-->
+<!--                        <div class="image-block" key={image.key}>-->
+<!--                            <img onclick={handleDiaryImageClick} src={image.url} data-index={index}>-->
+<!--                        </div>-->
+<!--                    </template>-->
+<!--                </div>-->
+<!--                <button class="shape-1" onclick={handleDiaryClickRight}></button>-->
+<!--            </div>-->
+<!--        </div>-->
+        <c-rspcaqld-lightbox images={images} selected-index={selectedDiaryIndex}  selected-image={selectedDiaryImage}></c-rspcaqld-lightbox>
+        <div class="page-pet-application medium-width">
+            <div class="page-pet-application-header">
+                <h1>{howApplicationHeader}</h1>
+                <p class="normal">{howApplicationDescription}</p>
+            </div>
+            <c-rspcaqld-section-cards cards-type="Information Step" cards-string={howApplicationCards}></c-rspcaqld-section-cards>
+        </div>
+        <div class="page-pet-adopt" style={adoptBackgroundStyle}>
+            <div class="blur">
+                <div class="adopt-content">
+                    <h1>Give {animal.Animal_Name__c} a home</h1>
+                    <div class="buttons">
+                        <button class="green-btn apply-adopt-btn" onclick={handleAdopt}>Apply to adopt</button>
+                        <h2>or</h2>
+                        <button class="green-btn share-btn" onclick={handleShare}>Share me</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="white-container">
+            <div class="page-pet-other-dogs shape-3">
+                <img class="dog-left-paw" src={officialRSPCAPaw}>
+                <img class="cat-right-paw" src={officialRSPCAPaw}>
+
+                <div class="medium-width">
+                    <div class="page-pet-other-dogs-header">
+                        <h1>More {multipleAnimalCategory} like {animal.Animal_Name__c}</h1>
+                        <a class="button-link" href="find-pet">Browse all pets</a>
+                    </div>
+                    <div class="page-pet-other-dogs-body">
+                        <template for:each={otherAnimals} for:item="otherAnimal">
+                            <div key={otherAnimal.Id}>
+                                <c-rspcaqld-cards-animal address={otherAnimal.Location_Name__c}
+                                                         animal-id={otherAnimal.Id}
+                                                         image-url={otherAnimal.Web_Hero_Image_URL__c}
+                                                         name={otherAnimal.Animal_Name__c}
+                                                         key-words={otherAnimal.Web_Tagline__c}
+                                                         animal-type={otherAnimal.Animal_Category__c}
+                                                         breed={otherAnimal.Web_Display_Breed__c}
+                                                         gender={otherAnimal.Gender__c}
+                                                         age-group={otherAnimal.Age__c}
+                                                         size={otherAnimal.Size__c}
+                                                         is-star={otherAnimal.Featured__c}
+                                                         is-white></c-rspcaqld-cards-animal>
+                            </div>
+                        </template>
+                    </div>
+                    <a class="mobile-header-link" href="find-pet">Browse all pets</a>
+                </div>
+            </div>
+        </div>
+        <c-rspcaqld-section-faq custom-class="page-faq" faqs-string={faqsString} link-url={faqsLinkUrl} is-white></c-rspcaqld-section-faq>
+        <div class="page-related-articles">
+            <c-rspcaqld-section-related-articles is-white content-type="Articles"
+                                                 content-string={relatedArticlesKeys}
+                                                 header={relatedArticlesHeader}
+                                                 description={relatedArticlesDescription}
+                                                 link-label={relatedArticlesLinkLabel}
+                                                 link-url={relatedArticlesLinkUrl}></c-rspcaqld-section-related-articles>
+        </div>
+    </div>
+    <div class={shareClass} onclick={handleSharePopupClick}>
+        <div class="share-pop-up">
+            <div class="share-pop-up-close-block">
+                <a class="close-link" onclick={handleShareClose}>
+                    <span>Close</span>
+                    <img class="medium" src={closeWhite}>
+                </a>
+            </div>
+            <div class="share-pop-up-body-block">
+                <div class="share-pop-up-header">
+                    <img src={shareImageURL}>
+                    <h4>Share</h4>
+                    <p class="medium">Share {animal.Animal_Name__c} as a post, or a message</p>
+                </div>
+                <div class="share-buttons">
+                    <div>
+                        <a class="shape-1" href={facebookShareLink}><img src={messengerWhite}></a>
+                        <a class="shape-1" href={emailLink}><img src={envelopeWhite}></a>
+                    </div>
+                    <a class="green-btn" onclick={handleCopyURL}>Copy URL</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class={backdropClass}></div>
+    <iframe src="/vforcesite/ToastPage" frameborder="0"></iframe>
+</template>

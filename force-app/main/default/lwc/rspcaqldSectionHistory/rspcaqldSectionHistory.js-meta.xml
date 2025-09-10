@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Section History</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Section History</masterLabel>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="customClass" type="String" label="Custom Class"/>
+            <property name="headerOne" type="String" label="Description Header"/>
+            <property name="descOne" type="String" label="Description Body"/>
+            <property name="headerTwo" type="String" label="Timeline Header"/>
+            <property name="descTwoString" type="String" label="Timeline Body"/>
+            <property name="buttonsString" type="String" label="Buttons"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

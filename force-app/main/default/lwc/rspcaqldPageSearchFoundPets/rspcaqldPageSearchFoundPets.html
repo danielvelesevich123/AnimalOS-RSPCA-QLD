@@ -1,0 +1,48 @@
+<template>
+    <div class="page-container page-search-found-pets background-20">
+        <div class="page-data-form">
+            <div class="page-data-form-info">
+                <div class="graphic-icon">
+                    <div class="icon-block shape-1"><lightning-icon icon-name="utility:priority"></lightning-icon></div>
+                </div>
+                <div class="desc">
+                    <h2>Have you lost an animal?</h2>
+                    <p class="medium">To register your lost pet with RSPCA, you’ll need to login.<br><br>If you have an account, please login. Otherwise, you can create an account now.</p>
+                    <a href="pet-service" class="button-link"><lightning-icon icon-name="utility:chevronleft"></lightning-icon><span>Back to Lost & Found</span></a>
+                </div>
+            </div>
+            <div class="page-data-form-form">
+                <h2>Pet details</h2>
+                <div class="row">
+                    <lightning-input field-level-help="test hover" type="text" label="Registration Number (if known)" class="input-inline" required="true"></lightning-input>
+                </div>
+                <div class="row">
+                    <c-rspcaqld-picklist multiselect label="Pet type" placeholder="All" options={options} field-level-help="test hover" required="true"></c-rspcaqld-picklist>
+                </div>
+                <div class="row">
+                    <lightning-input type="date" label="Date you found the pet" placeholder="dd/mm/yyyy" class="input-inline" field-level-help="test hover"></lightning-input>
+                </div>
+                <h2>Location</h2>
+                <div class="row">
+                    <lightning-radio-group name="radioGroup"
+                                           class="input-radiogroup"
+                                           label="Seach by:"
+                                           options={radioOptions}
+                                           type="radio"></lightning-radio-group>
+                </div>
+                <div class="row">
+                    <c-rspcaqld-picklist multiselect label="State" placeholder="QLD" options={options} field-level-help="test hover" required="true"></c-rspcaqld-picklist>
+                </div>
+                <div class="row">
+                    <c-rspcaqld-picklist multiselect label="Suburb" placeholder="Ipswitch, Gympie..." options={options} field-level-help="test hover"></c-rspcaqld-picklist>
+                </div>
+                <div class="row">
+                    <a href="#" class="button-link"><span>advanced search</span><lightning-icon icon-name="utility:chevronright"></lightning-icon></a>
+                </div>
+                <div class="row button-row">
+                    <button class="green-btn with-icon"><span>Find animals</span><img src={arrowRightWhite}></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,111 @@
+<template>
+    <div class="slds-grid slds-text-align_left slds-m-top_xx-small slds-grid_vertical-align-center">
+        <div class="slds-col slds-size_1-of-12"></div>
+        <div class="slds-col slds-size_1-of-12">
+            <lightning-button-icon icon-name={iconName} alternative-text={iconName} variant="bare" onclick={changeState}></lightning-button-icon>
+        </div>
+        <div class="slds-col slds-size_2-of-12 slds-truncate">
+            <lightning-formatted-url value={jobContactUrl} label={jobContact.Name} target="_blank"></lightning-formatted-url>
+        </div>
+        <div class="slds-col slds-size_3-of-12 slds-truncate">
+            <lightning-formatted-text value={jobContact.animalos__Contact_Type__c}></lightning-formatted-text>
+        </div>
+        <div class="slds-col slds-size_4-of-12 slds-truncate">
+            <lightning-formatted-url value={contactUrl} label={jobContact.animalos__Contact__r.Name} target="_blank"></lightning-formatted-url>
+        </div>
+        <div class="slds-col slds-size_1-of-12 slds-truncate flag-icon slds-text-align_right">
+            <lightning-formatted-rich-text value={jobContact.animalos__Advisory__c}></lightning-formatted-rich-text>&nbsp;
+        </div>
+    </div>
+    <div lwc:if={isExpanded} class="slds-m-top_medium slds-p-top_small slds-border_top">
+        <div class="slds-grid slds-wrap slds-text-align_left slds-grid_vertical-align-center">
+            <div class="slds-col slds-size_1-of-12"></div>
+            <div class="slds-col slds-size_2-of-12">
+                <b>
+                    <lightning-formatted-text value="Contact Details"></lightning-formatted-text>
+                </b>
+            </div>
+            <div class="slds-col slds-size_9-of-12 slds-border_bottom slds-p-bottom_small">
+                <div class="slds-grid slds-gutters_xx-small slds-grid_vertical-align-center">
+                    <div class="slds-col slds-size_1-of-4">
+                        <div class="slds-grid slds-gutters_x-small">
+                            <div class="slds-col slds-size_1-of-12">
+                                <lightning-icon icon-name="utility:outbound_call" size="xx-small"></lightning-icon>
+                            </div>
+                            <div class="slds-col slds-size_11-of-12 wrapped-content">
+                                <lightning-formatted-phone value={jobContact.animalos__Contact__r.MobilePhone}></lightning-formatted-phone>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <div class="slds-grid slds-gutters_x-small">
+                            <div class="slds-col slds-size_1-of-12">
+                                <lightning-icon icon-name="utility:outbound_call" size="xx-small"></lightning-icon>
+                            </div>
+                            <div class="slds-col slds-size_11-of-12 wrapped-content">
+                                <lightning-formatted-phone value={jobContact.animalos__Contact__r.Phone}></lightning-formatted-phone>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <div class="slds-grid slds-gutters_x-small">
+                            <div class="slds-col slds-size_1-of-12">
+                                <lightning-icon icon-name="utility:email" size="xx-small"></lightning-icon>
+                            </div>
+                            <div class="slds-col slds-size_11-of-12 wrapped-content">
+                                <lightning-formatted-email hide-icon value={jobContact.animalos__Contact__r.Email}></lightning-formatted-email>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <div class="slds-grid slds-gutters_x-small">
+                            <div class="slds-col slds-size_1-of-12">
+                                <lightning-icon icon-name="utility:location" size="xx-small"></lightning-icon>
+                            </div>
+                            <div class="slds-col slds-size_11-of-12 wrapped-content">
+                                <lightning-formatted-address city={jobContact.animalos__Contact__r.MailingCity}
+                                                             street={jobContact.animalos__Contact__r.MailingStreet}
+                                                             postal-code={jobContact.animalos__Contact__r.MailingPostalCode}
+                                                             province={jobContact.animalos__Contact__r.MailingState}
+                                                             country={jobContact.animalos__Contact__r.MailingCountry}
+                                ></lightning-formatted-address>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-12"></div>
+            <div class="slds-col slds-size_11-of-12">
+                <b>
+                    <lightning-formatted-text value="Cautions"></lightning-formatted-text>
+                </b>
+                <lightning-button-icon class="slds-m-left_x-small"
+                                       icon-name={cautionsIconName}
+                                       alternative-text={cautionsIconName}
+                                       variant="bare"
+                                       onclick={changeCautionsState}
+                ></lightning-button-icon>
+            </div>
+            <template lwc:if={isCautionsExpanded}>
+                <div class="slds-col slds-size_1-of-12"></div>
+                <div class="slds-col slds-size_2-of-12">
+                    <b>
+                        <lightning-formatted-text value="Job Cautions"></lightning-formatted-text>
+                    </b>
+                </div>
+                <div class="slds-col slds-size_9-of-12">
+                    <c-job-contact-interaction-cautions job-contact-id={jobContact.Id}></c-job-contact-interaction-cautions>
+                </div>
+                <div class="slds-col slds-size_1-of-12"></div>
+                <div class="slds-col slds-size_2-of-12">
+                    <b>
+                        <lightning-formatted-text value="All Cautions"></lightning-formatted-text>
+                    </b>
+                </div>
+                <div class="slds-col slds-size_9-of-12">
+                    <c-job-contact-interaction-cautions contact-id={jobContact.animalos__Contact__c}></c-job-contact-interaction-cautions>
+                </div>
+            </template>
+        </div>
+    </div>
+</template>

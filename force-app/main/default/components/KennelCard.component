@@ -1,0 +1,124 @@
+<apex:component id="KennelCard">
+    <apex:attribute name="dto" description="Data Transfer Object" type="Map"/>
+
+    <div class="page">
+        <apex:outputPanel rendered="{!if(dto['hasLogo'], true, false)}" layout="none">
+            <div class="bee-page-container">
+                <div class="bee-row bee-row-1">
+                    <div class="bee-row-content">
+                        <div class="bee-block bee-block-1 bee-image"><img alt="Logo" class="bee-fixedwidth" src="{!$Resource.RspcaLogo}" style="width:190px;"/></div>
+                    </div>
+                </div>
+            </div>
+        </apex:outputPanel>
+
+        <div class="bee-row bee-row-2 intro-left">
+            <div class="bee-row-content">
+                <div class="bee-col bee-col-2 bee-col-w5">
+                    <div class="bee-block bee-block-1 bee-spacer">
+                        <div class="spacer" style="height:1px;"></div>
+                    </div>
+                    <div class="bee-block bee-block-2 bee-image intro-image">
+                        <img alt="" class="bee-right bee-fixedwidth intro-pet-img" src="{!dto['animalPhoto']}"/>
+                    </div>
+
+                </div>
+
+
+                <div class="bee-col bee-col-1 bee-col-w7 intro-right" style="width: 480px;">
+                    <div class="bee-block bee-block-4 bee-table">
+                        <table style="table-layout:fixed;direction:ltr;background-color:transparent;font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;font-weight:400;color:#000000;text-align:left;letter-spacing:0px;">
+                            <tbody style="font-size: 18px;line-height:0.95;'">
+                            <tr>
+                                <td style="border-top:0px solid #dddddd;border-right:0px solid #dddddd;border-bottom:0px solid #dddddd;border-left:0px solid #dddddd;width:100px;text-transform: uppercase;font-weight: bold;">
+                                    Name
+                                </td>
+                                <td style="border-top:0px solid #dddddd;border-right:0px solid #dddddd;border-bottom:0px solid #dddddd;border-left:0px solid #dddddd;">
+                                    {!dto['animal']['animalos__Animal_Name__c']}
+                                </td>
+                            </tr>
+                            <tr style="background-color:#F9F9F9;">
+                                <td style="border-top:0px solid #dddddd;border-right:0px solid #dddddd;border-bottom:0px solid #dddddd;border-left:0px solid #dddddd;width:100px;text-transform: uppercase;font-weight: bold;">
+                                    Shelter ID
+                                </td>
+                                <td style="border-top:0px solid #dddddd;border-right:0px solid #dddddd;border-bottom:0px solid #dddddd;border-left:0px solid #dddddd;">
+                                    {!dto['animal']['animalos__Shelter_ID__c']}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border-top:0px solid #dddddd;border-right:0px solid #dddddd;border-bottom:0px solid #dddddd;border-left:0px solid #dddddd;width:100px;text-transform: uppercase;font-weight: bold;">
+                                    Breed
+                                </td>
+                                <td style="border-top:0px solid #dddddd;border-right:0px solid #dddddd;border-bottom:0px solid #dddddd;border-left:0px solid #dddddd;">{!dto['animalBreed']}
+                                </td>
+                            </tr>
+                            <tr style="background-color:#F9F9F9;">
+                                <td style="border-top:0px solid #dddddd;border-right:0px solid #dddddd;border-bottom:0px solid #dddddd;border-left:0px solid #dddddd;width:100px;text-transform: uppercase;font-weight: bold;">
+                                    Gender
+                                </td>
+                                <td style="border-top:0px solid #dddddd;border-right:0px solid #dddddd;border-bottom:0px solid #dddddd;border-left:0px solid #dddddd;">{!dto['animal']['animalos__Gender__c']}</td>
+                            </tr>
+                            <tr>
+                                <td style="border-top:0px solid #dddddd;border-right:0px solid #dddddd;border-bottom:0px solid #dddddd;border-left:0px solid #dddddd;width:100px;text-transform: uppercase;font-weight: bold;">
+                                    ID
+                                </td>
+                                <td style="border-top:0px solid #dddddd;border-right:0px solid #dddddd;border-bottom:0px solid #dddddd;border-left:0px solid #dddddd;">{!dto['animal']['Name']}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <apex:outputPanel rendered="{!IF(dto['showQRCode'] == true, true, false)}">
+                        <div class="intro-sub">
+                            <div class="bee-block bee-block-9 bee-image intro-sub-qr"><img alt="" class="bee-fixedwidth intro-sub-qr-img"
+                                                                                           src="{!dto['qrImage']}"
+                                                                                           style="width:130px;"/></div>
+                        </div>
+                    </apex:outputPanel>
+                </div>
+            </div>
+
+            <div class="bee-row bee-row-3">
+                <div class="bee-row-content">
+                    <div class="bee-col bee-col-1 bee-col-w12">
+                        <div class="bee-block bee-block-1 bee-divider">
+                            <div class="center bee-separator" style="border-top:3px solid #6cc24a;width:100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bee-block bee-block-2 bee-paragraph" style="height: 620px">
+                <p style="text-transform: uppercase;font-weight: bold;font-size: 18px">Shelter notes/cautions:</p>
+            </div>
+
+            <div class="bee-row bee-row-5">
+                <div class="bee-row-content">
+                    <div class="bee-col bee-col-1 bee-col-w12">
+                        <div class="bee-block bee-block-1 bee-divider">
+                            <div class="center bee-separator" style="border-top:3px solid #6cc24a;width:100%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--            <div class="bee-row bee-row-7">-->
+            <!--                <div class="bee-row-content" style="height: 285px">-->
+            <!--                    <div class="bee-col bee-col-2 bee-col-w8">-->
+            <!--                        <div class="bee-block bee-block-1 bee-heading more-body">-->
+            <!--                            <h3 style="color:#FFFFFF;direction:ltr;font-family:'Roboto', Tahoma, Verdana, Segoe, sans-serif;font-size:24px;font-weight:700;text-transform: uppercase;letter-spacing:normal;line-height:120%;text-align:left;margin-top:0;margin-bottom:0;">-->
+            <!--                                <span class="tinyMce-placeholder">More about me</span></h3>-->
+            <!--                        </div>-->
+            <!--                        <div class="bee-block bee-block-2 bee-paragraph">-->
+            <!--                            <p>-->
+            <!--                                <apex:outputText value="{!dto['animal']['animalos__Adoption_Profile__c']}" escape="false"/>-->
+            <!--                            </p>-->
+            <!--                        </div>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+            <!--            </div>-->
+
+
+        </div>
+    </div>
+</apex:component>

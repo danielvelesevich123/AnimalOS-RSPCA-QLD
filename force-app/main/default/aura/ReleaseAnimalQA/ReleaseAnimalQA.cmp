@@ -1,0 +1,167 @@
+<aura:component description="ReleaseAnimalQA" extends="c:vertic_Base"
+                implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,force:appHostable"
+                access="global">
+
+    <aura:attribute name="isBusy" type="Boolean" default="false"/>
+    <aura:attribute name="mode" type="String" default=""/>
+    <aura:attribute name="modeOptions" type="Map[]"
+                    default='[{"label": "Enter Address", "value": "address"},{"label": "Enter Coordinates", "value": "coordinates"},{"label": "Use Current Location", "value": "currentLocation"}]'/>
+    <aura:attribute name="googleKey" type="String" default=""/>
+    <aura:attribute name="latitude" type="Decimal" default=""/>
+    <aura:attribute name="longitude" type="Decimal" default=""/>
+    <aura:attribute name="address" type="Map" default="{}"/>
+    <aura:attribute name="userId" type="String" default=""/>
+    <aura:attribute name="jobId" type="String" default=""/>
+    <aura:attribute name="description" type="String" default=""/>
+    <aura:attribute name="stateOptions" type="List" default="[]"/>
+
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+
+    <c:vertic_QuickActionModal aura:id="modal"
+                               heightPX="450"
+                               title="Release Animal"
+                               widthPercentage="100"
+                               maxWidthRem="50"
+                               minWidthRem="30">
+
+        <div aura:id="form">
+            <div class="slds-text-align_center slds-m-bottom_medium">
+                <c:vertic_ButtonGroupSelect options="{!v.modeOptions}"
+                                            value="{!v.mode}"
+                                            buttonClass="slds-size_1-of-3"
+                                            class="slds-size_1-of-1 slds-show_inline-block"
+                                            disabled="{!v.isBusy}"
+                />
+            </div>
+
+            <div class="slds-grid slds-gutters slds-m-top_small">
+                <aura:if isTrue="{!v.mode == 'address'}">
+                    <div class="slds-col slds-size_1-of-2">
+                        <div>
+                            Enter address below
+                        </div>
+
+                        <div>
+                            <c:verticGoogleAddress addressDisabled="{!v.isBusy}"
+                                                   city="{!v.address.city}"
+                                                   country="{!v.address.country}"
+                                                   label="Address"
+                                                   postCode="{!v.address.postalCode}"
+                                                   required="{!true}"
+                                                   state="{!v.address.state}"
+                                                   street="{!v.address.street}"
+                                                   disabled="{!v.isBusy}"
+                            ></c:verticGoogleAddress>
+
+                            <!--                        <lightning:inputAddress-->
+                            <!--                                addressLabel="Address"-->
+                            <!--                                streetLabel="Street"-->
+                            <!--                                cityLabel="City"-->
+                            <!--                                countryLabel="Country"-->
+                            <!--                                provinceLabel="State"-->
+                            <!--                                postalCodeLabel="Postal Code"-->
+                            <!--                                street="{!v.address.street}"-->
+                            <!--                                city="{!v.address.city}"-->
+                            <!--                                country="{!v.address.country}"-->
+                            <!--                                province="{!v.address.state}"-->
+                            <!--                                provinceOptions="{!v.stateOptions}"-->
+                            <!--                                postalCode="{!v.address.postalCode}"-->
+                            <!--                                required="true"-->
+                            <!--                        />-->
+                        </div>
+                    </div>
+                </aura:if>
+
+                <aura:if isTrue="{!v.mode == 'coordinates'}">
+                    <div class="slds-col slds-size_1-of-2">
+                        <div>
+                            Enter coordinates below
+                        </div>
+
+                        <div>
+                            <lightning:input label="Latitude" type="text"
+                                             value="{!v.address.latitude}" required="true"
+                                             disabled="{!v.isBusy}"></lightning:input>
+                        </div>
+
+                        <div>
+                            <lightning:input label="Longitude" type="text"
+                                             value="{!v.address.longitude}" required="true"
+                                             disabled="{!v.isBusy}"></lightning:input>
+                        </div>
+                    </div>
+                </aura:if>
+
+                <aura:if isTrue="{!v.mode == 'currentLocation'}">
+                    <div class="slds-col slds-size_1-of-2">
+                        <div class="slds-m-bottom_small">
+                            <lightning:button variant="brand" label="Release Animal Here"
+                                              onclick="{!c.handleReleaseHereClick}"
+                                              disabled="{!v.isBusy}"></lightning:button>
+                        </div>
+
+                        <div>
+                            <p>
+                                Your current latitude is: {!v.address.latitude} <br/><br/>
+                                Your current longitude is: {!v.address.longitude}
+                            </p>
+                        </div>
+                    </div>
+                </aura:if>
+
+                <aura:if isTrue="{!v.mode != ''}">
+                    <div class="slds-col slds-size_1-of-2">
+                        <div class="slds-m-bottom_small">
+                            <c:verticLookup
+                                    label="Job"
+                                    object="animalos__Job__c"
+                                    placeholder="Please select Job..."
+                                    required="true"
+                                    searchMode="SOQL"
+                                    searchField="Name"
+                                    iconTag="case"
+                                    showRecentRecords="false"
+                                    isClickable="true"
+                                    value="{!v.jobId}"
+                                    disabled="{!v.isBusy}"
+                                    showAllRecords="true"
+                            ></c:verticLookup>
+                        </div>
+
+                        <div class="slds-m-bottom_small">
+                            <c:verticLookup
+                                    label="Released By"
+                                    object="User"
+                                    placeholder="Please select User..."
+                                    required="true"
+                                    searchMode="SOQL"
+                                    searchField="Name"
+                                    iconTag="contact"
+                                    showRecentRecords="false"
+                                    isClickable="true"
+                                    value="{!v.userId}"
+                                    disabled="{!v.isBusy}"
+                                    showAllRecords="true"
+                            ></c:verticLookup>
+                        </div>
+
+                        <div>
+                            <lightning:textarea label="Description" disabled="{!v.isBusy}"
+                                                value="{!v.description}"></lightning:textarea>
+                        </div>
+                    </div>
+                </aura:if>
+            </div>
+        </div>
+        <aura:set attribute="footer">
+            <lightning:button variant="brand"
+                              label="Submit"
+                              disabled="{!v.isBusy}"
+                              onclick="{!c.handleSubmitClick}"
+            />
+        </aura:set>
+    </c:vertic_QuickActionModal>
+</aura:component>

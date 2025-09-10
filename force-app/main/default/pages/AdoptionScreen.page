@@ -1,0 +1,29 @@
+<apex:page showHeader="false" sideBar="false">
+    <!-- Container for the LWC -->
+    <div id="lightningContainer"></div>
+
+    <apex:includeLightning />
+
+    <!-- Load the Lightning App and LWC -->
+    <script>
+
+        const urlParams = new URLSearchParams(window.parent.location.search);
+        // Get a specific parameter value
+        const unitId = urlParams.get('unitId');
+        // Use the parameter value in your code
+        console.log(unitId);
+
+        $Lightning.use("c:AdoptionScreenApp", function() {
+            $Lightning.createComponent(
+                "c:adoptionScreenPage", // LWC Component Name
+                {
+                    unitId: unitId
+                }, // Attributes (empty if none)
+                "lightningContainer", // ID of the container div
+                function(cmp) {
+                    console.log("LWC Component created!");
+                }
+            );
+        });
+    </script>
+</apex:page>

@@ -1,0 +1,71 @@
+<template>
+    <div class="slds-grid slds-text-align_left slds-m-top_xx-small">
+        <div class="slds-col slds-size_1-of-12">
+            <div class="slds-grid">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-button-icon icon-name={iconName} alternative-text={iconName} variant="bare" onclick={changeState}></lightning-button-icon>
+                </div>
+                <div class="slds-col slds-size_1-of-2 slds-text-align_right">
+                    <lightning-input disabled={disableSelect} checked={jobContact.selected} type="checkbox" onchange={handleSelectChange}></lightning-input>
+                </div>
+            </div>
+        </div>
+        <div class="slds-col slds-size_2-of-12 slds-truncate">
+            <lightning-formatted-url value={jobContactUrl} label={jobContact.Name} target="_blank"></lightning-formatted-url>
+        </div>
+        <div class="slds-col slds-size_2-of-12 slds-truncate">
+            <lightning-formatted-text value={jobContact.animalos__Contact_Type__c}></lightning-formatted-text>
+        </div>
+        <div class="slds-col slds-size_2-of-12 slds-truncate">
+            <lightning-formatted-url value={contactUrl} label={jobContact.animalos__Contact__r.Name} target="_blank"></lightning-formatted-url>
+        </div>
+        <div class="slds-col slds-size_5-of-12 slds-truncate flag-icon">
+            <div class="slds-grid">
+                <div class="slds-col slds-size_1-of-8 ">
+                    <lightning-formatted-rich-text value={jobContact.animalos__Advisory__c}></lightning-formatted-rich-text>&nbsp;
+                </div>
+                <div class="slds-col slds-size_7-of-8">
+                    <template for:each={jobContactAdvisories} for:index="index" for:item="jobContactAdvisory" lwc:if={showJobContactAdvisories}>
+                        <p key={jobContactAdvisory.short} class="slds-truncate">
+                            <lightning-formatted-text value={jobContactAdvisory.short}></lightning-formatted-text>
+                        </p>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div lwc:if={isExpanded} class="slds-m-left_xx-large slds-m-vertical_medium slds-p-vertical_small slds-border_bottom slds-border_top">
+        <div class="slds-grid slds-wrap slds-text-align_left">
+            <div class="slds-col slds-size_1-of-6">
+                <b>
+                    <lightning-formatted-text value="Job Details"></lightning-formatted-text>
+                </b>
+            </div>
+            <div class="slds-col slds-size_5-of-6 slds-border_bottom slds-m-bottom_small">
+                <div class="slds-grid">
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-formatted-text value={jobContact.animalos__Job__r.animalos__Status__c}></lightning-formatted-text>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-formatted-url  value={locationUrl} label={locationName} target="_blank"></lightning-formatted-url>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3">
+                        <lightning-formatted-url value={jobOwnerUrl} label={jobOwnerName} target="_blank"></lightning-formatted-url>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-6">
+                <b>
+                    <lightning-formatted-text value="All Cautions"></lightning-formatted-text>
+                </b>
+            </div>
+            <div class="slds-col slds-size_5-of-6 slds-border_bottom slds-m-bottom_small">
+                <template for:each={jobContactAdvisories} for:index="index" for:item="jobContactAdvisory" lwc:if={showJobContactAdvisories}>
+                    <p key={jobContactAdvisory.long} class="slds-truncate">
+                        <lightning-formatted-text value={jobContactAdvisory.long}></lightning-formatted-text>
+                    </p>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

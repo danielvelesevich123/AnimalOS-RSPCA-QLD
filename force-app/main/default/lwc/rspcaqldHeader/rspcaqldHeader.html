@@ -1,0 +1,330 @@
+<template>
+    <div class={mainClass} tabindex="0">
+        <div class={notificationClass}>
+            <template if:true={showAlert}>
+                <div class="notification-message">
+                    <lightning-icon icon-name="utility:warning"></lightning-icon>
+                    <span class="normal">
+                        <lightning-formatted-rich-text value={alertMessage}></lightning-formatted-rich-text>
+                    </span>
+                </div>
+            </template>
+            <a class="distress-link" onclick={handleReportClick}>
+                <lightning-formatted-rich-text value={notificationMessage}></lightning-formatted-rich-text>
+            </a>
+        </div>
+        <div class="navigation">
+            <a class="logo-block" style={whiteLogoStyle} href="../../../"><img src={whiteLogoURL}></a>
+            <a class="logo-block" style={colourLogoStyle} href="../../../"><img src={colourLogoURL}></a>
+            <div class="navigation-menu">
+                <nav>
+                    <ul>
+                        <li><a class={adoptClass} onclick={handleMenuClick} data-value="adopt">Adopt</a></li>
+                        <li><a class={involvedClass} onclick={handleMenuClick} data-value="involved">Get Involved</a></li>
+                        <li><a class={servicesClass} onclick={handleMenuClick} data-value="services">Services</a></li>
+                        <li><a class={resourcesClass} onclick={handleMenuClick} data-value="resources">Resources</a></li>
+                        <li><a class={aboutClass} onclick={handleMenuClick} data-value="about">About</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="navigation-utilities">
+                <a class="search-link" onclick={handleSearchClick}>
+                    <img src={magnifingGlassBlue} class="huge" style={searchCloseStyle}>
+                    <img src={magnifingGlassWhite} class="huge" style={searchOpenStyle}>
+                </a>
+                <a class="green-btn" href={donateLinkURL}>{donateLinkLabel}</a>
+                <button class="neutral-btn mobile-menu-btn" data-value="mobile" onclick={handleMobileMenuClick}>
+                    <lightning-icon icon-name={mobileMenuIconClass} size="medium"></lightning-icon>
+                </button>
+            </div>
+
+            <template if:true={isCurrent}>
+                <div class="breadcrumbs">
+                    <c-rspcaqld-navigation-breadcrumb breadcrumb-black={breadcrumbBlack} parents={parents} current={current}></c-rspcaqld-navigation-breadcrumb>
+                </div>
+            </template>
+        </div>
+
+        <div class={adoptSubmenuClass} style={submenuTopStyle}>
+            <c-rspcaqld-header-sub-nav header={adoptHeader}
+                                       description={adoptDescription}
+                                       link-label={adoptHeaderLinkLabel}
+                                       link-url={adoptHeaderLinkUrl}
+                                       articles-header={adoptArticlesHeader}
+                                       articles={adoptArticles}>
+                <a onclick={handleMenuClick} data-value="mobile" class="mobile-back"><lightning-icon icon-name="utility:chevronleft" size="medium"></lightning-icon><span>Adopt</span></a>
+                <div class="adopt-submenu">
+                    <hr>
+                    <div>
+                        <a class="navigation-title-link" href={adoptFindPetUrl}>
+                            <h4>Find your pet</h4>
+                            <lightning-icon icon-name="utility:chevronright"></lightning-icon>
+                        </a>
+                        <div class="animal-links">
+                            <div>
+                                <a href={adoptDogsLink}><img src={dogSitBlue}><span>Dogs</span></a>
+                                <a href={adoptPuppiesLink}><img src={dogFaceBlue}><span>Puppies</span></a>
+                                <a href={adoptCatsLink}><img src={catSitBlue}><span>Cats</span></a>
+                                <a href={adoptKittensLink}><img src={catFaceBlue}><span>Kittens</span></a>
+                            </div>
+                            <div>
+                                <a href={adoptReptilesLink}><img src={snakeBlue}><span>Reptiles</span></a>
+                                <a href={adoptSmallerAnimalsLink}><img src={mouseBlue}><span>Small Animals</span></a>
+                                <a href={adoptFarmYardLink}><img src={pigBlue}><span>Farm Yard</span></a>
+                                <a href={adoptBirdsLink}><img src={bigBirdBlue}><span>Birds</span></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="navigation-title-link" href={adoptLocationUrl}>
+                        <h4>See all adoption locations</h4>
+                        <lightning-icon icon-name="utility:chevronright"></lightning-icon>
+                    </a>
+                    <hr>
+                    <a class="neutral-btn" href={adoptFindPetUrl}>
+                        <span>Browse all pets</span>
+                        <img src={arrowRightBlue}>
+                    </a>
+                </div>
+            </c-rspcaqld-header-sub-nav>
+        </div>
+        <div class={involvedSubmenuClass} style={submenuTopStyle}>
+            <c-rspcaqld-header-sub-nav header={getInvolvedHeader}
+                                       description={getInvolvedDescription}
+                                       link-label={getInvolvedHeaderLinkLabel}
+                                       link-url={getInvolvedHeaderLinkUrl}
+                                       articles-header={getInvolvedArticlesHeader}
+                                       articles={getInvolvedArticles}>
+                <a onclick={handleMenuClick} data-value="mobile" class="mobile-back"><lightning-icon icon-name="utility:chevronleft" size="medium"></lightning-icon><span>Get Involved</span></a>
+                <div class="submenu">
+                    <div class="submenu-column">
+                        <template for:each={getInvolvedLeftColumnLinks} for:item="column">
+                            <hr key={column.headerLabel}>
+                            <div class="submenu-column-block" key={column.headerLabel}>
+                                <a class="navigation-title-link" href={column.headerUrl}>
+                                    <h4>{column.headerLabel}</h4>
+                                    <lightning-icon icon-name="utility:chevronright"></lightning-icon>
+                                </a>
+                                <div>
+                                    <template for:each={column.links} for:item="link">
+                                        <a key={link.label} href={link.url}>{link.label}</a>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+
+                    <div class="submenu-column">
+                        <template for:each={getInvolvedRightColumnLinks} for:item="column">
+                            <hr key={column.headerLabel}>
+                            <div class="submenu-column-block" key={column.headerLabel}>
+                                <a class="navigation-title-link" href={column.headerUrl}>
+                                    <h4>{column.headerLabel}</h4>
+                                    <lightning-icon icon-name="utility:chevronright"></lightning-icon>
+                                </a>
+                                <div>
+                                    <template for:each={column.links} for:item="link">
+                                        <a key={link.label} href={link.url}>{link.label}</a>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </c-rspcaqld-header-sub-nav>
+        </div>
+        <div class={servicesSubmenuClass} style={submenuTopStyle}>
+            <c-rspcaqld-header-sub-nav header={servicesHeader}
+                                       description={servicesDescription}
+                                       link-label={servicesHeaderLinkLabel}
+                                       link-url={servicesHeaderLinkUrl}
+                                       articles-header={servicesArticlesHeader}
+                                       articles={servicesArticles}>
+                <a onclick={handleMenuClick} data-value="mobile" class="mobile-back"><lightning-icon icon-name="utility:chevronleft" size="medium"></lightning-icon><span>Services</span></a>
+                <div class="submenu">
+                    <div class="submenu-column">
+                        <template for:each={servicesLeftColumnLinks} for:item="column">
+                            <hr key={column.headerLabel}>
+                            <div class="submenu-column-block" key={column.headerLabel}>
+                                <a class="navigation-title-link" href={column.headerUrl}>
+                                    <h4>{column.headerLabel}</h4>
+                                    <lightning-icon icon-name="utility:chevronright"></lightning-icon>
+                                </a>
+                                <div>
+                                    <template for:each={column.links} for:item="link">
+                                        <a key={link.label} href={link.url}>{link.label}</a>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="submenu-column">
+                        <template for:each={servicesRightColumnLinks} for:item="column">
+                            <hr key={column.headerLabel}>
+                            <div class="submenu-column-block" key={column.headerLabel}>
+                                <a class="navigation-title-link" href={column.headerUrl}>
+                                    <h4>{column.headerLabel}</h4>
+                                    <lightning-icon icon-name="utility:chevronright"></lightning-icon>
+                                </a>
+                                <div>
+                                    <template for:each={column.links} for:item="link">
+                                        <a key={link.label} href={link.url}>{link.label}</a>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </c-rspcaqld-header-sub-nav>
+        </div>
+        <div class={resourcesSubmenuClass} style={submenuTopStyle}>
+            <c-rspcaqld-header-sub-nav header={resourcesHeader}
+                                       description={resourcesDescription}
+                                       link-label={resourcesHeaderLinkLabel}
+                                       link-url={resourcesHeaderLinkUrl}
+                                       articles-header={resourcesArticlesHeader}
+                                       articles={resourcesArticles}>
+                <a onclick={handleMenuClick} data-value="mobile" class="mobile-back"><lightning-icon icon-name="utility:chevronleft" size="medium"></lightning-icon><span>Resources</span></a>
+                <div class="submenu">
+                    <div class="submenu-column">
+                        <template for:each={resourcesLeftColumnLinks} for:item="column">
+                            <hr key={column.headerLabel}>
+                            <div class="submenu-column-block" key={column.headerLabel}>
+                                <a class="navigation-title-link" href={column.headerUrl}>
+                                    <h4>{column.headerLabel}</h4>
+                                    <lightning-icon icon-name="utility:chevronright"></lightning-icon>
+                                </a>
+                                <div>
+                                    <template for:each={column.links} for:item="link">
+                                        <a key={link.label} href={link.url}>{link.label}</a>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="submenu-column">
+                        <template for:each={resourcesRightColumnLinks} for:item="column">
+                            <hr key={column.headerLabel}>
+                            <div class="submenu-column-block" key={column.headerLabel}>
+                                <a class="navigation-title-link" href={column.headerUrl}>
+                                    <h4>{column.headerLabel}</h4>
+                                    <lightning-icon icon-name="utility:chevronright"></lightning-icon>
+                                </a>
+                                <div>
+                                    <template for:each={column.links} for:item="link">
+                                        <a key={link.label} href={link.url}>{link.label}</a>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </c-rspcaqld-header-sub-nav>
+        </div>
+        <div class={aboutSubmenuClass} style={submenuTopStyle}>
+            <c-rspcaqld-header-sub-nav header={aboutHeader}
+                                       description={aboutDescription}
+                                       link-label={aboutHeaderLinkLabel}
+                                       link-url={aboutHeaderLinkUrl}
+                                       articles-header={aboutArticlesHeader}
+                                       articles={aboutArticles}>
+                <a onclick={handleMenuClick} data-value="mobile" class="mobile-back"><lightning-icon icon-name="utility:chevronleft" size="medium"></lightning-icon><span>About</span></a>
+                <div class="submenu">
+                    <div class="submenu-column">
+                        <template for:each={aboutLeftColumnLinks} for:item="column">
+                            <hr key={column.headerLabel}>
+                            <div class="submenu-column-block" key={column.headerLabel}>
+                                <a class="navigation-title-link" href={column.headerUrl}>
+                                    <h4>{column.headerLabel}</h4>
+                                    <lightning-icon icon-name="utility:chevronright"></lightning-icon>
+                                </a>
+                                <div>
+                                    <template for:each={column.links} for:item="link">
+                                        <a key={link.label} href={link.url}>{link.label}</a>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="submenu-column">
+                        <template for:each={aboutRightColumnLinks} for:item="column">
+                            <hr key={column.headerLabel}>
+                            <div class="submenu-column-block" key={column.headerLabel}>
+                                <a class="navigation-title-link" href={column.headerUrl}>
+                                    <h4>{column.headerLabel}</h4>
+                                    <lightning-icon icon-name="utility:chevronright"></lightning-icon>
+                                </a>
+                                <div>
+                                    <template for:each={column.links} for:item="link">
+                                        <a key={link.label} href={link.url}>{link.label}</a>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </c-rspcaqld-header-sub-nav>
+        </div>
+        <div class={searchSubmenuClass} style={submenuTopStyle}>
+            <div>
+                <a onclick={handleMenuClick} data-value="mobile" class="mobile-back"><lightning-icon icon-name="utility:chevronleft" size="medium"></lightning-icon><span>Search</span></a>
+                <div class="search-string">
+                    <lightning-input tabindex="0" data-id="search" label="Search" type="text" placeholder={searchPlaceholder} class="input-inline without-label" value={searchValue} onchange={handleSearchChange} onkeydown={handleSearchKeydown}></lightning-input>
+                    <a tabindex="0" class="green-btn" href={searchInputLink}>Search</a>
+                </div>
+                <div class="quick-links">
+                    <p class="small">Quick links...</p>
+                    <div class="quick-links-block">
+                        <template for:each={searchQuickLinks} for:item="searchQuickLink">
+                            <a tabindex="0" key={searchQuickLink.label} href={searchQuickLink.url}><span class="small">{searchQuickLink.label}</span></a>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class={mobileMenuClass}>
+            <div class="mobile-menu">
+                <nav>
+                    <ul>
+                        <li><a onclick={handleMenuClick} data-value="adopt"><span>Adopt</span><lightning-icon icon-name="utility:chevronright"></lightning-icon></a></li>
+                        <li><a onclick={handleMenuClick} data-value="involved"><span>Get Involved</span><lightning-icon icon-name="utility:chevronright"></lightning-icon></a></li>
+                        <li><a onclick={handleMenuClick} data-value="services"><span>Services</span><lightning-icon icon-name="utility:chevronright"></lightning-icon></a></li>
+                        <li><a onclick={handleMenuClick} data-value="resources"><span>Resources</span><lightning-icon icon-name="utility:chevronright"></lightning-icon></a></li>
+                        <li><a onclick={handleMenuClick} data-value="about"><span>About</span><lightning-icon icon-name="utility:chevronright"></lightning-icon></a></li>
+                        <li><hr></li>
+                        <li><a class="search-link" onclick={handleSearchClick}><span>Search</span><img src={magnifingGlassBlue} class="large"></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class={reportClass} onclick={handleReportPopupClick}>
+        <div class="report-pop-up">
+            <div class="report-pop-up-close-block">
+                <a class="close-link" onclick={handleReportClose}>
+                    <span>Close</span>
+                    <img src={closeWhite}>
+                </a>
+            </div>
+            <div class="report-pop-up-body-block">
+                <c-rspcaqld-cards-report type="urgent"
+                                         icon-name={urgentReportCardIcon}
+                                         header={urgentReportCardHeader}
+                                         description={urgentReportCardDescription}
+                                         link-label={urgentReportCardLinkLabel}
+                                         link-url={urgentReportCardLinkPhone}
+                                         active={isUrgentReport}
+                                         onselectreport={handleReportSelect}
+                ></c-rspcaqld-cards-report>
+                <c-rspcaqld-cards-report type="information"
+                                         icon-name={infoReportCardIcon}
+                                         header={infoReportCardHeader}
+                                         description={infoReportCardDescription}
+                                         link-label={infoReportCardLinkLabel}
+                                         link-url={infoReportCardLinkUrl}
+                                         active={isInformationReport}
+                                         onselectreport={handleReportSelect}></c-rspcaqld-cards-report>
+            </div>
+        </div>
+    </div>
+    <div class={backdropClass}></div>
+</template>

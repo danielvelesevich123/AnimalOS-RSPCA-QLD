@@ -1,0 +1,194 @@
+<apex:component id="ConfirmationOfDetails">
+
+    <apex:attribute name="dto" description="Data Transfer Object" type="Map"/>
+
+    <apex:variable value="{! 'ConfirmationOfDetails' }" var="cmpName"/>
+    <apex:variable value="{! cmpName + 'Template' }" var="defaultTemplateName"/>
+    <apex:variable value="{! 'c-' + cmpName }" var="defaultClassName"/>
+
+
+    <apex:repeat value="{!dto['animals']}" var="animal">
+        <div style="border: 1px solid #105484; height: 22.5cm">
+            <div style="border: 1px solid #105484; height: 21.9cm;margin: 10px">
+                <div class="bordered-table">
+                    <table style=" width: 100%;margin-right: auto;margin-left: auto;">
+                        <tbody>
+                        <tr>
+                            <td style="text-align: center">
+                                <img src="/resource/RspcaLogo" alt="logo" style="width: 250px;height: auto;"/>
+                            </td>
+                            <td style="text-align: center">
+                                <p><b style="font-size: 35px">Confirmation of Details</b></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="background-color: #105484">
+                                <p style="color: white;font-size: 10px">This document confirms the Owner Details, Secondary Contact Details and Animal Details that RSPCA QLD has provided to Central
+                                    Animal
+                                    Records. These
+                                    details will be linked to the microchip number below. No further action is required. Please allow up to 5 business days for the listing to be completed.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="background-color: #d82c24">
+                                <p style="color: white;font-size: 10px"><b style="font-size: 10px">The official Certificate of Identification will be sent via email once the listing is completed by
+                                        Central Animal Records (C.A.R.).</b></p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="padding: 15px">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td style="background-color: #d0d4cc">
+                                <p><b>Owner Details</b></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none">
+                                <p>
+                                    Name: {!dto['referral']['animalos__Contact__r']['Name']}
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none">
+                                <p>
+                                    Address: {!dto['referral']['animalos__Contact__r']['Full_Address__c']}
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none">
+                                <p>
+                                    Home: {!dto['referral']['animalos__Contact__r']['HomePhone']}
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none">
+                                <p>
+                                    Business: {!dto['referral']['animalos__Contact__r']['npe01__WorkPhone__c']}
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none">
+                                <p>
+                                    Moble: {!dto['referral']['animalos__Contact__r']['MobilePhone']}
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none">
+                                <p>
+                                    Fax: {!dto['referral']['animalos__Contact__r']['Fax']}
+                                </p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="padding: 15px;margin-top: 15px">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td style="background-color: #d0d4cc">
+                                <p><b>Animal Details</b></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none">
+                                <p>
+                                    Microchip Number: {!animal['animalos__Microchip_Number__c']}
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none">
+                                <p>
+                                    Name: {!animal['animalos__Animal_Name__c']}
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none">
+                                <p>
+                                    Sex: {!animal['animalos__Gender__c']}
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none">
+                                <p>
+                                    Breed: {!animal['animalBreed']}
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none">
+                                <p>
+                                    Species: {!animal['animalos__Type__c']}
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none">
+                                <p>
+                                    Colour: {!animal['animalos__Primary_Colour__c']}
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none">
+                                <p>
+                                    Date of Birth:
+                                    <apex:pageBlock rendered="{!IF(animal['animalos__Date_of_Birth__c'] == ' ', false, true)}">
+                                        <apex:outputText value=" {0, date, dd/MM/yyyy}">
+                                            <apex:param value="{!animal['animalos__Date_of_Birth__c']}"/>
+                                        </apex:outputText>
+                                    </apex:pageBlock>
+
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border: none">
+                                <p>
+                                    Implant Date:
+                                    <apex:pageBlock rendered="{!IF(animal['Microchip_Implant_Date__c'] == ' ', false, true)}">
+                                        <apex:outputText value=" {0, date, dd/MM/yyyy}">
+                                            <apex:param value="{!animal['Microchip_Implant_Date__c']}"/>
+                                        </apex:outputText>
+                                    </apex:pageBlock>
+                                </p>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <p style="color: #d82c24;text-align: center;padding-top: 10px;"><b>THIS IS NOT AN OFFICIAL CERTIFICATE OF IDENTIFICATION</b></p>
+            <p style="color: #105484;text-align: center;padding-bottom: 10px;"><b>THE OFFICIAL CERTIFICATE OF IDENTIFICATION WILL BE SENT VIA EMAIL AFTER THE LISTING IS COMPLETED BY C.A.R.</b></p>
+            <p style="color: #105484;text-align: center;padding-bottom: 10px;"><b>RSPCA QLD</b> provides this document to owners to highlight the details that have been passed on to <b>Central Animal
+                    Records</b>. Upon receiving the
+                prescribed identification
+                information from RSPCA QLD, Central Animal Records will link the Owner Details, Secondary Contact Details and Animal Details to the microchip number above. This process
+                can take up to 5 business days. Once the listing is complete, the owner will receive an official Certificate of Identification via email, which can be used to register the animal
+                with local councils.
+            </p>
+            <p style="color: #105484;text-align: center"><b>If any details need to be updated, this can be done after you receive your Certificate of Identification.</b></p>
+        </div>
+
+        <apex:pageBlock rendered="{!IF(animal['isLast'], false, true)}">
+            <div class="page-break"/>
+        </apex:pageBlock>
+    </apex:repeat>
+</apex:component>

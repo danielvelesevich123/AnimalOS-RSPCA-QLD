@@ -1,0 +1,31 @@
+<aura:component description="OneDriveProgressBar">
+
+    <!-- Attribute Overrides -->
+    <!-- <aura:set attribute="processor" value="vertic_GetPageReferenceContentProc"/> -->
+    <!-- <aura:set attribute="hideContentOnBusy" value="{!false}"/> -->
+
+
+    <!-- Attributes -->
+    <aura:attribute name="progressValue" type="Decimal" access="global" default="{!0}"/>
+    <aura:attribute name="fileSize" type="Decimal" access="global"/>
+
+    <!-- Events -->
+    <!-- <aura:registerEvent name="onSuccess" type="c:vertic_ComponentEvent"/>-->
+
+    <!-- Handlers -->
+     <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+
+    <!-- Methods -->
+    <!-- <aura:method name="refresh" action="{!c.handleInit}"></aura:method> -->
+
+    <div class="slds-grid slds-gutters_small slds-p-horizontal__small slds-m-v_x-large">
+        <div class="slds-col slds-has-flexi-truncate" role="listitem">
+            <br/>
+            <lightning:progressBar value="{!v.progressValue}"/>
+            <br/>
+            <p class="slds-text-align_center">{!v.progressValue}% of {!v.fileSize} MB</p>
+            <br/>
+        </div>
+    </div>
+
+</aura:component>

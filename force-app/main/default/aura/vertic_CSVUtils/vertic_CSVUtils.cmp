@@ -1,0 +1,41 @@
+<aura:component description="vertic_CSVUtils" controller="vertic_CommonCtrl">
+
+    <!-- Attribute Overrides -->
+    <!-- <aura:set attribute="processor" value="vertic_GetPageReferenceContentProc"/> -->
+    <!-- <aura:set attribute="hideContentOnBusy" value="{!false}"/> -->
+
+
+    <!-- Attributes -->
+    <!-- <aura:attribute name="params" type="Map" access="global" required="{!true}"/> -->
+
+    <!-- Events -->
+    <!-- <aura:registerEvent name="onSuccess" type="c:vertic_ComponentEvent"/>-->
+
+    <!-- Handlers -->
+    <!-- <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/> -->
+
+    <c:vertic_Utils context="{!this}"/>
+
+    <!-- Methods -->
+
+    <!-- [{"col1": 1, "col2", 2}, {"col1": 1, "col2", 2}] -->
+    <aura:method name="fromObjects" action="{!c.handleObjectToCSV}">
+        <aura:attribute name="obj" type="Map" required="{!true}"/>
+    </aura:method>
+
+    <!-- [["col1", "col2"], ["col1", "col2"] -->
+    <aura:method name="fromArrays" action="{!c.handleArrayToCSV}">
+        <aura:attribute name="rows" type="Map" required="{!true}"/>
+    </aura:method>
+
+    <aura:method name="fromProcessor" action="{!c.handleProcessorToCSV}">
+        <aura:attribute name="processor" type="String" required="{!true}"/>
+        <aura:attribute name="requests" type="LIST" required="{!true}"/>
+    </aura:method>
+
+    <aura:method name="download" action="{!c.handleDownload}">
+        <aura:attribute name="csv" type="String" required="{!true}"/>
+        <aura:attribute name="fileName" type="String"/>
+    </aura:method>
+
+</aura:component>

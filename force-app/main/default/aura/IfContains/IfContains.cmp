@@ -1,0 +1,24 @@
+<aura:component description="IfContains">
+
+    <!-- Attribute Overrides -->
+
+    <!-- Attributes -->
+    <aura:attribute name="value" type="String"/>
+    <aura:attribute name="contains" type="String"/>
+    <aura:attribute name="not" type="String"/>
+
+    <aura:attribute name="isContains" type="Boolean" access="private"/>
+
+    <!-- Events -->
+    <!-- <aura:registerEvent name="onSuccess" type="c:vertic_ComponentEvent"/>-->
+
+    <!-- Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+    <aura:handler name="change" value="{!v.value}" action="{!c.handleInit}"/>
+    <aura:handler name="change" value="{!v.contains}" action="{!c.handleInit}"/>
+
+    <aura:if isTrue="{!v.isContains}">
+        {!v.body}
+    </aura:if>
+
+</aura:component>

@@ -1,0 +1,70 @@
+<template>
+    <div class={mainClass}>
+        <div class="page-data-form">
+            <div class="page-data-form-info">
+                <div class="desc">
+                    <h1>{generalHeader}</h1>
+                    <p class="medium"><lightning-formatted-rich-text value={generalDescription}></lightning-formatted-rich-text></p>
+                    <template for:each={generalBody} for:item="block">
+                        <div key={generalHeader}><lightning-formatted-rich-text value={block}></lightning-formatted-rich-text></div>
+                    </template>
+                </div>
+            </div>
+            <div class="page-data-form-form">
+                <div class="row">
+                    <h2>Contact form</h2>
+                </div>
+                <div class="row">
+                    <lightning-input disabled={isSubmitting} type="text" label="First Name" placeholder="First Name" class="input-inline" data-name="first-name" required="true" value={contact.firstName} onchange={handleFieldChange} message-when-value-missing={requiredText} max-length="40"></lightning-input>
+                    <lightning-input disabled={isSubmitting} type="text" label="Last Name" placeholder="Last Name" class="input-inline" data-name="last-name" required="true" value={contact.lastName} onchange={handleFieldChange} message-when-value-missing={requiredText} max-length="80"></lightning-input>
+                </div>
+                <div class="row">
+                    <lightning-input disabled={isSubmitting} type="email" label="Email" placeholder="Email" class="input-inline email-input" data-name="email" required="true" value={contact.email} onchange={handleFieldChange} onblur={validateEmail} max-length="80" message-when-bad-input="The email address is incorrect" message-when-pattern-mismatch="The email address is incorrect" message-when-type-mismatch="The email address is incorrect" message-when-value-missing={requiredText}></lightning-input>
+                </div>
+                <div class="row" onkeydown={handlePhoneKeydown}>
+                    <lightning-input disabled={isSubmitting} type="tel" label="Phone Number" placeholder="Phone Number" class="input-inline phone-input" data-name="phone" required="true" value={contact.phone} onchange={handleFieldChange} onblur={validatePhone} message-when-value-missing={requiredText}></lightning-input>
+                </div>
+                <div class="row">
+                    <lightning-textarea disabled={isSubmitting} label="Message" placeholder="Message" class="input-textarea" data-name="description" value={cs.description} onchange={handleFieldChange}></lightning-textarea>
+                </div>
+                <div class="checkbox-row">
+                    <template lwc:if={isNewsletterRequired}>
+                        <c-rspcaqld-checkbox disabled={isSubmitting} checked={cs.marketingOptin} label={portalSetting.Subscribe_to_Newsletter_Text__c} data-name="marketing-optin" onchange={handleFieldChange}></c-rspcaqld-checkbox>
+                    </template>
+                    <template lwc:if={isPrivacyPolicy}>
+                        <c-rspcaqld-checkbox required disabled={isSubmitting} checked={cs.privacyPolicy} label={portalSetting.Privacy_Statement_Text__c} data-name="privacy-policy" onchange={handleFieldChange} error={isPrivacyPolicyError} error-message="To continue, please read and agree to the privacy statement"></c-rspcaqld-checkbox>
+                    </template>
+                </div>
+                <div class="row button-row">
+                    <button disabled={isSubmitting} class="green-btn with-icon" onclick={handleSubmit}><span>Submit form</span><img class="medium" src={arrowRightWhite}></button>
+                </div>
+            </div>
+            <div class={submittedClass}><h3>{thankYouMessage}</h3></div>
+        </div>
+        <div class="page-contact-details">
+            <h1>{otherHeader}</h1>
+            <div class="page-contact-details-columns">
+                <div class="page-contact-details-column">
+                    <template for:each={otherLeftColumnBody} for:item="block">
+                        <div key={block.header} class="page-contact-details-column-block">
+                            <h2>{block.header}</h2>
+                            <template for:each={block.details} for:item="detail">
+                                <div key={block.header}><lightning-formatted-rich-text value={detail}></lightning-formatted-rich-text></div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+                <div class="page-contact-details-column">
+                    <template for:each={otherRightColumnBody} for:item="block">
+                        <div key={block.header} class="page-contact-details-column-block">
+                            <h2>{block.header}</h2>
+                            <template for:each={block.details} for:item="detail">
+                                <div key={block.header}><lightning-formatted-rich-text value={detail}></lightning-formatted-rich-text></div>
+                            </template>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

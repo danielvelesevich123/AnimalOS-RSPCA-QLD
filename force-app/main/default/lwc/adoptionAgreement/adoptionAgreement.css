@@ -1,0 +1,59 @@
+:host {
+    --lwc-formLabelFontSize: 0.875rem;
+    --lwc-inputStaticFontSize: 1rem;
+    --lwc-spacingXLarge: 1rem;
+    --lwc-tableColorBackgroundHeader: #f3f3f3;
+    --slds-g-color-neutral-base-95:#f3f3f3;
+    --slds-c-button-text-color: #0093D0;
+    --slds-c-button-text-color-hover: #0093D0;
+    --lwc-brandPrimary: #0093D0;
+    --slds-c-button-text-color-active: #0093D0;
+    --slds-c-button-color-border-active: #0093D0;
+    --slds-c-checkbox-mark-color-foreground: #0093D0;
+    --lwc-cardFontWeight: 700;
+}
+
+.main-content {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.inform-collection {
+    text-transform: uppercase;
+    color: #0093D0;
+    font-weight: bold;
+}
+
+.logo-align {
+    text-align: center;
+}
+
+.header-text-align {
+    text-align: center;
+}
+
+.signature-date-align {
+    text-align: left;
+}
+
+@media (min-width: 64em) {
+    .main-content {
+        margin-left: 5rem;
+        margin-right: 5rem;
+    }
+}
+
+@media (min-width: 48em) {
+    .logo-align {
+        text-align: left;
+    }
+
+    .header-text-align {
+        text-align: right;
+    }
+
+    .signature-date-align {
+        text-align: right;
+    }
+}

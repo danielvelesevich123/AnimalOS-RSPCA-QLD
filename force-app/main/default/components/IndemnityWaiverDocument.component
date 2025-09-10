@@ -1,0 +1,58 @@
+<apex:component id="IndemnityWaiverDocument">
+
+    <apex:attribute name="dto" description="Data Transfer Object" type="Map"/>
+
+    <apex:variable value="{! 'IndemnityWaiverDocument' }" var="cmpName"/>
+    <apex:variable value="{! cmpName + 'Template' }" var="defaultTemplateName"/>
+    <apex:variable value="{! 'c-' + cmpName }" var="defaultClassName"/>
+
+
+    <img src="/resource/1669292077000/RSPCALogoBlack"/>
+
+    <p class="header"><b>Indemnity Waiver Contract</b></p>
+    <p class="text-margin"><b>Animal Details</b></p>
+
+    <table>
+        <tbody>
+        <tr>
+            <td style="width: 50%">
+                <p>Animal Reference:</p>
+                <p>{!dto['animal']['Name']}</p>
+            </td>
+            <td style="width: 50%">
+                <p>Tag Number:</p>
+                <p>{!dto['animal']['Tag_Number__c']}</p>
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 50%">
+                <p>Name:</p>
+                <p>{!dto['animal']['animalos__Animal_Name__c']}</p>
+            </td>
+            <td style="width: 50%">
+                <p>Animal Breed</p>
+                <p>{!dto['animal']['animalBreed']}</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p>Microchip Number:</p>
+                <p>{!dto['animal']['animalos__Microchip_Number__c']}</p>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+    <p class="text-margin"><b>Adopter's Details</b></p>
+    <p class="text-margin">Adopter’s Name (first and</p>
+    <p>Surname):_________________________________________________________________________________</p>
+    <p class="text-margin"><b>Indemnity/Waiver Contract</b></p>
+    <p class="text-margin">I am adopting the animal as described above. By signing below, I acknowledge that the RSPCA NSW has informed me of possible issues with the animal I am adopting. I agree to care for the animal for the rest of its life in a manner that is necessary. The RSPCA NSW will not be held responsible for financial assistance to care for the animal. I accept full responsibility for any ongoing or future treatment / assistance warranted. I understand that I am adopting the animal "as is", and I understand the issues outlined below.</p>
+    <p class="text-margin">Adopter's Signature_________________________________________________________________________</p>
+    <apex:repeat value="{!dto['animal']['indemnityWaiverContent']}" var="indemnityWaiverAssignment" id="indemnityWaiverAssignmentsRepeat">
+        <p class="text-margin"><b>{!indemnityWaiverAssignment['animalos__Indemnity_Waiver__r']['Name']}</b></p>
+        <p>
+            <apex:outputText value="{!indemnityWaiverAssignment['animalos__Animal_Indemnity_Waiver_Content__c']}" escape="false"/>
+        </p>
+    </apex:repeat>
+</apex:component>

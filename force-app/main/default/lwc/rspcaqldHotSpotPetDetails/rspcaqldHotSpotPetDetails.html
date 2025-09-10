@@ -1,0 +1,28 @@
+<template>
+    <div class="hot-spot-pet-details">
+        <div class="hot-spot-pd-header">
+            <h3>Health details</h3>
+        </div>
+        <div class="hot-spot-pd-body">
+            <div class="hot-spot-pd-checks">
+                <template for:each={checks} for:item="check" for:index="index">
+                    <template if:true={check.value}>
+                        <div key={check.label} class="check-line">
+                            <span class="icon-span"><lightning-icon icon-name="utility:check" size="medium"></lightning-icon></span>
+                            <span class="label">{check.label}</span>
+                        </div>
+                    </template>
+                </template>
+            </div>
+            <div class="hot-spot-pd-ids">
+                <div class="divider"><hr/></div>
+                <template for:each={ids} for:item="id" for:index="index">
+                    <div key={id} class="id-line">
+                        <span class="icon-span"><lightning-icon icon-name="utility:topic2" size="medium"></lightning-icon></span>
+                        <span class="label">{id}</span>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

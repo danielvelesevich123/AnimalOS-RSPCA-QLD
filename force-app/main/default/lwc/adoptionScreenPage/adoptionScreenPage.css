@@ -1,0 +1,89 @@
+.main-content {
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.rspca-logo {
+    max-height: 75px;
+    max-width: 275px;
+}
+
+.royal-canin-logo {
+    max-height: 75px;
+    max-width: 275px;
+}
+
+.profile-photo {
+    border: 10px solid transparent;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.field-label {
+    color: #74c067;
+    font-weight: bold;
+}
+
+.dotted-line{
+    border: none;
+    border-top: 1px dashed #dddddd;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.speech-bubble {
+    position: relative;
+    background: #0289c2;
+    border-radius: 1.5em;
+    width: 100%;
+    height: 90%;
+    text-align: center;
+    vertical-align: center;
+    line-height: 70px;
+    color: white;
+    font-family: "Roboto", sans-serif;
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.speech-bubble:before{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    bottom:-30px;
+    right:87%;
+    height:60px;
+    border-right:60px solid #0289c2;
+    background:#0289c2; /* need this for webkit - bug in handling of border-radius */
+    /* css3 */
+    -webkit-border-bottom-right-radius:80px 50px;
+    -moz-border-radius-bottomright:80px 50px;
+    border-bottom-right-radius:80px 50px;
+    /* using translate to avoid undesired appearance in CSS2.1-capabable but CSS3-incapable browsers */
+    -webkit-transform:translate(0, -2px);
+    -moz-transform:translate(0, -2px);
+    -ms-transform:translate(0, -2px);
+    -o-transform:translate(0, -2px);
+    transform:translate(0, -2px);
+}
+
+.speech-bubble:after{
+    content:"";
+    position:absolute;
+    z-index:-1;
+    bottom:-30px;
+    right:87%;
+    width:50px;
+    height:60px;
+    background:#fff;
+    /* css3 */
+    -webkit-border-bottom-right-radius:40px 50px;
+    -moz-border-radius-bottomright:40px 50px;
+    border-bottom-right-radius:40px 50px;
+    /* using translate to avoid undesired appearance in CSS2.1-capabable but CSS3-incapable browsers */
+    -webkit-transform:translate(-30px, -2px);
+    -moz-transform:translate(-30px, -2px);
+    -ms-transform:translate(-30px, -2px);
+    -o-transform:translate(-30px, -2px);
+    transform:translate(-30px, -2px);
+}

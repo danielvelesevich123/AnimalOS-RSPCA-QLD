@@ -1,0 +1,38 @@
+<template>
+    <div class="slds-grid slds-text-align_left slds-m-top_xx-small">
+        <div class="slds-col slds-size_1-of-12">
+            <lightning-button-icon icon-name={iconName} alternative-text={iconName} variant="bare" onclick={changeState}></lightning-button-icon>
+        </div>
+        <div class="slds-col slds-size_2-of-12 slds-truncate">
+            <lightning-formatted-url value={jobUrl} label={jobName} target="_blank"></lightning-formatted-url>
+        </div>
+        <div class="slds-col slds-size_2-of-12 slds-truncate">
+            <lightning-formatted-date-time value={jobCreatedDate}></lightning-formatted-date-time>
+        </div>
+        <div class="slds-col slds-size_3-of-12 slds-truncate">
+            <lightning-formatted-text value={jobStatus}></lightning-formatted-text>
+        </div>
+        <div class="slds-col slds-size_3-of-12 slds-truncate">
+            <lightning-formatted-url value={jobOwnerUrl} label={jobOwnerName} target="_blank"></lightning-formatted-url>
+        </div>
+        <div class="slds-col slds-size_1-of-12 slds-truncate flag-icon slds-text-align_right">
+            <lightning-formatted-rich-text value={currentJobAdvisory}></lightning-formatted-rich-text>&nbsp;
+        </div>
+    </div>
+    <div lwc:if={isExpanded} class="slds-m-vertical_medium slds-p-vertical_small slds-border_bottom slds-border_top">
+        <template for:each={jobContacts} for:index="index" for:item="jobContact" lwc:if={showJobContactsTable}>
+            <c-job-contact onaction={handleJobContactAction}
+                                     key={jobContact.Id}
+                                     view={view}
+                                     job-contact={jobContact}
+                                     index={index}
+                                     disable-select={disableSelect}
+            ></c-job-contact>
+        </template>
+        <template lwc:else>
+            <c-scoped-notification-lwc icon-name="utility:warning">
+                There are no Job Contacts.
+            </c-scoped-notification-lwc>
+        </template>
+    </div>
+</template>

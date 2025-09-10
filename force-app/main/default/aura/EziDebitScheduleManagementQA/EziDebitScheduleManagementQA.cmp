@@ -1,0 +1,70 @@
+<aura:component description="EziDebitScheduleManagementQA" implements="force:hasRecordId,force:lightningQuickActionWithoutHeader" controller="vertic_CommonCtrl">
+    <aura:attribute name="isBusy" type="Boolean" default="{!false}"/>
+    <aura:attribute name="meta" type="Map" default="{}"/>
+    <aura:attribute name="selectedAction" type="String" default="cancel"/>
+    <aura:attribute name="closedReason" type="String"/>
+    <aura:attribute name="actionOptions" type="List" default="[
+        {'label': 'Cancel Schedule', 'value': 'cancel'},
+        {'label': 'Migrate to Stripe', 'value': 'migrate'}
+    ]"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <c:vertic_Utils context="{!this}"/>
+
+    <c:vertic_QuickActionModal aura:id="modal"
+                               heightPX="400"
+                               title="EziDebit Schedule Management"
+                               refreshOnCancel="{!true}"
+                               cancelLabel="Close"
+                               minWidthRem="60">
+
+
+        <c:vertic_Spinner isLoading="{!v.isBusy}">
+            <div class="slds-grid slds-wrap slds-gutters slds-p-around_x-small">
+                <div class="slds-col slds-size_1-of-2">
+                    <c:vertic_Select label="Please select an action"
+                                     value="{!v.selectedAction}"
+                                     required="{!true}"
+                                     options="{!v.actionOptions}"
+                                     disabled="{!v.isBusy}"
+                    />
+                </div>
+                <aura:if isTrue="{!v.selectedAction == 'migrate'}">
+                    <div class="slds-col slds-size_1-of-1">
+                        <c:ScopedNotification>
+                            Current Recurring Donation will be closed and a new one will be created. You will be redirected to the new RD page to complete the Stripe setup.
+                        </c:ScopedNotification>
+                    </div>
+                </aura:if>
+                <aura:if isTrue="{!v.selectedAction == 'cancel'}">
+                    <div class="slds-col slds-size_1-of-2"></div>
+                    <div class="slds-col slds-size_1-of-2">
+                        <c:vertic_Select label="Please select a reason"
+                                         value="{!v.closedReason}"
+                                         required="{!true}"
+                                         options="{!v.meta.selectOptions.npspClosedReasonOptions}"
+                                         disabled="{!v.isBusy}"
+                        />
+                    </div>
+                    <div class="slds-col slds-size_1-of-1">
+                        <c:ScopedNotification>
+                            Current Recurring Donation will be closed.
+                        </c:ScopedNotification>
+                    </div>
+
+                </aura:if>
+            </div>
+        </c:vertic_Spinner>
+
+        <aura:set attribute="footer">
+            <lightning:button label="Submit"
+                              disabled="{!v.isBusy}"
+                              variant="brand"
+                              onclick="{!c.handleSubmitClick}"
+            />
+        </aura:set>
+
+
+    </c:vertic_QuickActionModal>
+</aura:component>

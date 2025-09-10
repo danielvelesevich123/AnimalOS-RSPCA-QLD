@@ -1,0 +1,25 @@
+<aura:component description="OneDriveFileDeleteConfirmation"  extends="c:vertic_Modal">
+    <aura:attribute name="file" type="Map" />
+    <aura:attribute name="fileName" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+
+    <div>Are you sure you would like to delete this file: "{!v.fileName}" ?</div>
+
+    <aura:set attribute="footer">
+
+        <lightning:button type="button"
+                          label="No, Cancel"
+                          onclick="{!c.handleCancel}"
+
+        />
+
+        <lightning:button type="button"
+                          label="Yes, delete"
+                          variant="destructive"
+                          disabled="{!v.isBusy == true}"
+                          onclick="{!c.handleDelete}"
+                          value="{!v.file}"
+
+        />
+    </aura:set>
+</aura:component>

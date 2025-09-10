@@ -1,0 +1,30 @@
+<template>
+    <div class={mainClass} tabindex="0">
+        <div class="navigation">
+            <a class="logo-block" href="/"><img src={logoUrl}></a>
+            <div class="navigation-menu">
+                <nav>
+                    <ul>
+                        <template for:each={headerLinks} for:item="headerLink">
+                            <li key={headerLink.label}><a class="navigation-link black" href={headerLink.link}>{headerLink.label}</a></li>
+                        </template>
+                    </ul>
+                </nav>
+            </div>
+            <button class="neutral-btn mobile-menu-btn" data-value="mobile" onclick={handleMobileMenuClick}>
+                <lightning-icon icon-name={mobileMenuIconClass} size="medium"></lightning-icon>
+            </button>
+        </div>
+        <div class={mobileMenuClass}>
+            <div class="mobile-menu">
+                <nav>
+                    <ul>
+                        <template for:each={headerLinks} for:item="headerLink">
+                            <li key={headerLink.label}><a href={headerLink.link}><span>{headerLink.label}</span><lightning-icon icon-name="utility:chevronright"></lightning-icon></a></li>
+                        </template>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</template>

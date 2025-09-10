@@ -1,0 +1,38 @@
+<template>
+    <div class="hot-spot-subscribe">
+        <div class="hot-spot-s-header">
+            <h4>{header}</h4>
+        </div>
+        <div class="hot-spot-nl-input">
+            <lightning-input type="text"
+                             disabled={isSubmitting}
+                             label="First name"
+                             placeholder="First name"
+                             class="input-inline without-label first-name"
+                             onchange={handleFirstNameChange}
+                             value={firstName}></lightning-input>
+            <lightning-input type="text"
+                             disabled={isSubmitting}
+                             label="Last name"
+                             placeholder="Last name"
+                             class="input-inline without-label last-name"
+                             onchange={handleLastNameChange}
+                             value={lastName}></lightning-input>
+            <lightning-input type="email"
+                             disabled={isSubmitting}
+                             label="Email"
+                             placeholder="Email"
+                             class="input-inline without-label email"
+                             message-when-bad-input="The email address is incorrect"
+                             message-when-pattern-mismatch="The email address is incorrect"
+                             message-when-type-mismatch="The email address is incorrect"
+                             onchange={handleEmailChange}
+                             value={email}></lightning-input>
+        </div>
+        <div class="hot-spot-ed-button">
+            <button disabled={isSubmitting} class="green-btn" onclick={handleClick}>{subscribeButton}</button>
+            <p class="small"><lightning-formatted-rich-text value={tcAndPP}></lightning-formatted-rich-text></p>
+        </div>
+    </div>
+    <div class={submittedClass}><h3>{thankYouMessage}</h3></div>
+</template>

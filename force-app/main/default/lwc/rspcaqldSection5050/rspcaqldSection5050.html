@@ -1,0 +1,51 @@
+<template>
+    <div class={mainClass}>
+        <div class="horizontal">
+            <div class={rlMainClass}>
+                <c-rspcaqld-image-generator video-url={videoUrl}
+                                            icon-key={icon}
+                                            class-name={iClass}
+                                            image-url={image}></c-rspcaqld-image-generator>
+            </div>
+            <div class="section-5050-body">
+                <div class="header">
+                    <template if:true={isSubheader}><h4>{subHeader}</h4></template>
+                    <template if:true={isHeader}><h2>{header}</h2></template>
+                </div>
+                <template if:true={isDescription}>
+                    <p class={descriptionClass}><lightning-formatted-rich-text value={description}></lightning-formatted-rich-text></p>
+                    <template if:true={isQuote}>
+                        <p class="quote-author small">{quoteAuthor}</p>
+                    </template>
+                </template>
+                <template if:true={isQuickLinks}>
+                    <div class="quick-links">
+                        <template for:each={qlinks} for:item="link">
+                            <a href={link.url} key={link.label}>{link.label}</a>
+                        </template>
+                    </div>
+                </template>
+                <template if:true={isButton}>
+                    <template lwc:if={isButtonScrollClass}>
+                        <a class="green-btn with-icon" onclick={handleClick}>
+                            <span>{buttonLabel}</span>
+                            <img class="large" src={arrowRightWhite}>
+                        </a>
+                    </template>
+                    <template lwc:else>
+                        <a class="green-btn with-icon" href={buttonLink}>
+                            <span>{buttonLabel}</span>
+                            <img class="large" src={arrowRightWhite}>
+                        </a>
+                    </template>
+                </template>
+            </div>
+            <div class={lrMainClass}>
+                <c-rspcaqld-image-generator video-url={videoUrl}
+                                            icon-key={icon}
+                                            class-name={iClass}
+                                            image-url={image}></c-rspcaqld-image-generator>
+            </div>
+        </div>
+    </div>
+</template>

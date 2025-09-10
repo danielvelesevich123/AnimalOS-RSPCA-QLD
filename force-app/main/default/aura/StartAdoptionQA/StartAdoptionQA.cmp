@@ -1,0 +1,90 @@
+<aura:component description="StartAdoptionQA"
+                controller="vertic_CommonCtrl"
+                implements="force:lightningQuickActionWithoutHeader,force:appHostable,force:hasRecordId,force:hasSObjectName"
+                access="global">
+
+    <aura:attribute name="isBusy" type="Boolean" default="false"/>
+    <aura:attribute name="contact" type="Map" default="{}"/>
+
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+    <lightning:navigation aura:id="navService"/>
+    <c:vertic_Utils context="{!this}"/>
+
+    <c:vertic_QuickActionModal aura:id="modal"
+                               heightPX="500"
+                               title="Start Adoption"
+                               widthPercentage="100"
+                               maxWidthRem="60"
+                               minWidthRem="30">
+
+        <div aura:id="form">
+            <div class="slds-grid slds-wrap slds-gutters slds-p-horizontal_xxx-small slds-m-horizontal_xxx-small slds-p-bottom_small">
+                <div class="slds-col slds-size_1-of-1">
+                    <h1>This process will create an Adoption record for you and open it after you have selected or created a Contact.</h1>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning:input label="First Name"
+                                     aura:id="firstName"
+                                     value="{!v.contact.FirstName}"
+                                     required="{!true}"
+                                     disabled="{!v.isBusy}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning:input label="Last Name"
+                                     value="{!v.contact.LastName}"
+                                     required="{!true}"
+                                     disabled="{!v.isBusy}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <lightning:input type="date"
+                                     label="Birthdate"
+                                     value="{!v.contact.Birthdate}"
+                                     disabled="{!v.isBusy}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <lightning:input type="email"
+                                     label="Email"
+                                     required="{!true}"
+                                     value="{!v.contact.Email}"
+                                     disabled="{!v.isBusy}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <lightning:input type="tel"
+                                     label="Mobile Phone"
+                                     value="{!v.contact.MobilePhone}"
+                                     pattern="[0-9\+]?[0-9\- ]*"
+                                     maxlength="12"
+                                     required="{!true}"
+                                     messageWhenPatternMismatch="Only plus, dash, space and digits are allowed."
+                                     minlength="9"
+                                     disabled="{!v.isBusy}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-m-top_medium">
+                    <c:verticGoogleAddress addressDisabled="{!v.isBusy}"
+                                           city="{!v.contact.MailingCity}"
+                                           country="{!v.contact.MailingCountry}"
+                                           label="Address"
+                                           onchange="{!c.handleAddressChange}"
+                                           postCode="{!v.contact.MailingPostalCode}"
+                                           required="{!true}"
+                                           state="{!v.contact.MailingState}"
+                                           street="{!v.contact.MailingStreet}"
+                                           disabled="{!v.isBusy}"
+                    ></c:verticGoogleAddress>
+                </div>
+            </div>
+        </div>
+        <aura:set attribute="footer">
+            <lightning:button variant="brand"
+                              label="Submit"
+                              disabled="{!v.isBusy}"
+                              onclick="{!c.handleSubmitClick}"
+            />
+        </aura:set>
+    </c:vertic_QuickActionModal>
+</aura:component>

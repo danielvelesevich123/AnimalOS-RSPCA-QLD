@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Section Subscribe</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Section Subscribe</masterLabel>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="customMetadata" type="String" label="Portal Setting Name" default="Main"/>
+            <property name="header" type="String" label="Header Text"/>
+            <property name="tcAndPP" type="String" label="Terms &amp; Conditions and Privacy Policy"/>
+            <property name="subscribeButton" type="String" label="Subscribe Button"/>
+            <property name="thankYouMessage" type="String" label="Thank you message"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

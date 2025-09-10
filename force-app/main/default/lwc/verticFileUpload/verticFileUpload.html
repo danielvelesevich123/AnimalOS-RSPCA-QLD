@@ -1,0 +1,31 @@
+<!-- Vertic File Upload -->
+<template>
+    <div class="slds-text-align_left">
+        <div class="slds-is-relative" style="height: 4rem;position: absolute;width: 13.5rem;">
+            <c-vertic-spinner is-busy={isBusy}></c-vertic-spinner>
+        </div>
+        <lightning-file-upload
+                accept={acceptedFormats}
+                label={label}
+                name="fileUploader"
+                onuploadfinished={handleUploadFinished}
+                record-id={recordId}
+        ></lightning-file-upload>
+
+        <template if:true={fileName}>
+            <div style="display: flex;" class="slds-m-top_x-small">
+                <template if:true={downloadUrl}>
+                    <div class="slds-m-right_x-small">
+
+                        <lightning-icon alternative-text="Uploaded"
+                                        icon-name="doctype:attachment"
+                                        size="xx-small"
+                                        title="Uploaded"
+                        ></lightning-icon>
+                    </div>
+                    <a href={downloadUrl} target="_blank">{fileName}</a>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>

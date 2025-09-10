@@ -1,0 +1,23 @@
+<template>
+    <div class={mainClass}>
+        <div class="header-with-link">
+            <h1>{header}</h1>
+            <a href={headerLinkUrl}>{headerLinkLabel}</a>
+        </div>
+        <div class="page-home-resources-body">
+            <div class="resource-tile">
+                <c-rspcaqld-image-generator class-name="shape-4" image-url={imageOneUrl}></c-rspcaqld-image-generator>
+                <a class="resource-header-link" href={cardOneLink}><h3>{cardOneLabel}</h3><lightning-icon class="chevron" icon-name="utility:chevronright"></lightning-icon><lightning-icon class="arrow" icon-name="utility:forward"></lightning-icon></a>
+            </div>
+            <div class="resource-tile">
+                <c-rspcaqld-image-generator class-name="shape-4" image-url={imageTwoUrl}></c-rspcaqld-image-generator>
+                <a class="resource-header-link" href={cardTwoLink}><h3>{cardTwoLabel}</h3><lightning-icon class="chevron" icon-name="utility:chevronright"></lightning-icon><lightning-icon class="arrow" icon-name="utility:forward"></lightning-icon></a>
+            </div>
+            <div class="resource-tile">
+                <c-rspcaqld-image-generator class-name="shape-4" image-url={imageThreeUrl}></c-rspcaqld-image-generator>
+                <a class="resource-header-link" href={cardThreeLink}><h3>{cardThreeLabel}</h3><lightning-icon class="chevron" icon-name="utility:chevronright"></lightning-icon><lightning-icon class="arrow" icon-name="utility:forward"></lightning-icon></a>
+            </div>
+        </div>
+        <a class="mobile-header-link" href={headerLinkUrl}>{headerLinkLabel}</a>
+    </div>
+</template>

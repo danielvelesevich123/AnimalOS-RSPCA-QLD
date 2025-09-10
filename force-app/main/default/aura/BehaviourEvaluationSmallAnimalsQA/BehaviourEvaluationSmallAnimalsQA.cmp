@@ -1,0 +1,178 @@
+<aura:component description="BehaviourEvaluationSmallAnimalsQA" controller="vertic_CommonCtrl" implements="force:hasRecordId,force:lightningQuickActionWithoutHeader">
+
+    <aura:attribute name="isBusy" type="Boolean" default="{!false}"/>
+    <aura:attribute name="meta" type="Map" default="{}"/>
+    <aura:attribute name="behavioursExhibitedValue" type="List" default="[]"/>
+    <aura:attribute name="householdRecommendationsValue" type="List" default="[]"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+
+    <c:vertic_Utils context="{!this}"/>
+    <lightning:notificationsLibrary aura:id="notifyLib"/>
+
+    <c:vertic_QuickActionModal aura:id="modal"
+                               title="Add Behaviour Eval - SAE"
+                               heightPX="750"
+                               widthPercentage="60"
+                               maxWidthRem="80"
+                               minWidthRem="20"
+                               refreshOnCancel="{!true}"
+    >
+
+        <aura:set attribute="footer">
+            <lightning:button disabled="{!v.isBusy}"
+                              label="Submit"
+                              onclick="{!c.handleSubmit}"
+                              variant="brand"
+            />
+        </aura:set>
+
+        <c:vertic_Spinner isLoading="{!v.isBusy}">
+            <div class="slds-grid slds-wrap">
+
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <lightning:input label="Assessment Date/Time"
+                                     type="datetime"
+                                     value="{!v.meta.dto.assessment.animalos__Assessment_Date_Time__c}"
+                                     disabled="{!v.isBusy}"
+                    />
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <c:vertic_Select label="Location"
+                                     value="{!v.meta.dto.assessment.Location__c}"
+                                     disabled="{!v.isBusy}"
+                                     options="{!v.meta.selectOptions.locationOptions}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <lightning:textarea label="Other Location"
+                                        value="{!v.meta.dto.assessment.Other_Location__c}"
+                                        disabled="{!v.isBusy}"
+                                        maxlength="255"
+                    />
+                </div>
+
+
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <div class="slds-grid slds-grid_vertical-align-center">
+                        <label>Social Response SAE</label>
+                        <c:customHelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.socialResponseHelpText}"/>
+                    </div>
+                    <c:vertic_Select label="Social Response SAE"
+                                     value="{!v.meta.dto.assessment.Social_Response_SAE__c}"
+                                     disabled="{!v.isBusy}"
+                                     class="label-hidden"
+                                     options="{!v.meta.selectOptions.socialResponseSAEOptions}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <lightning:textarea label="Social Response Comments"
+                                        value="{!v.meta.dto.assessment.Social_Response_Comments__c}"
+                                        disabled="{!v.isBusy}"
+                    />
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <div class="slds-grid slds-grid_vertical-align-center">
+                        <label>Handling SAE</label>
+                        <c:customHelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.handlingHelpText}"/>
+                    </div>
+                    <c:vertic_Select label="Handling SAE"
+                                     value="{!v.meta.dto.assessment.Handling_SAE__c}"
+                                     disabled="{!v.isBusy}"
+                                     class="label-hidden"
+                                     options="{!v.meta.selectOptions.handlingSAEOptions}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <lightning:textarea label="Handling Comments"
+                                        value="{!v.meta.dto.assessment.Handling_Comments__c}"
+                                        disabled="{!v.isBusy}"
+                    />
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <div class="slds-grid slds-grid_vertical-align-center">
+                        <label>Exploration SAE</label>
+                        <c:customHelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.explorationHelpText}"/>
+                    </div>
+                    <c:vertic_Select label="Exploration SAE"
+                                     value="{!v.meta.dto.assessment.Exploration_SAE__c}"
+                                     disabled="{!v.isBusy}"
+                                     class="label-hidden"
+                                     options="{!v.meta.selectOptions.explorationSAEOptions}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <lightning:textarea label="Exploration Comments"
+                                        value="{!v.meta.dto.assessment.Exploration_Comments__c}"
+                                        disabled="{!v.isBusy}"
+                    />
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <div class="slds-grid slds-grid_vertical-align-center">
+                        <label>Body Language SAE</label>
+                        <c:customHelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.bodyLanguageHelpText}"/>
+                    </div>
+                    <c:vertic_Select label="Body Language SAE"
+                                     value="{!v.meta.dto.assessment.Body_Language_SAE__c}"
+                                     disabled="{!v.isBusy}"
+                                     class="label-hidden"
+                                     options="{!v.meta.selectOptions.bodyLanguageSAEOptions}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <lightning:textarea label="Body Language Comments"
+                                        value="{!v.meta.dto.assessment.Body_Language_Comments__c}"
+                                        disabled="{!v.isBusy}"
+                    />
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <div class="slds-grid slds-grid_vertical-align-center">
+                        <label>Behaviours Exhibited SAE</label>
+                        <c:customHelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.behavioursExhibitedHelpText}"/>
+                    </div>
+                    <lightning:dualListbox label="Behaviours Exhibited SAE"
+                                           sourceLabel="Available"
+                                           selectedLabel="Selected"
+                                           options="{!v.meta.selectOptions.behavioursExhibitedOptions}"
+                                           value="{!v.behavioursExhibitedValue}"
+                                           variant="label-hidden"
+                                           onchange="{!c.handleBehavioursExhibitedChanged}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <lightning:textarea label="Behaviours Exhibited Comments"
+                                        value="{!v.meta.dto.assessment.Behaviours_Exhibited_Comments__c}"
+                                        disabled="{!v.isBusy}"
+                    />
+                </div>
+
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <div class="slds-grid slds-grid_vertical-align-center">
+                        <label>Household Recommendations SAE</label>
+                        <c:customHelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.householdRecommendationsHelpText}"/>
+                    </div>
+                    <lightning:dualListbox label="Household Recommendations SAE"
+                                           sourceLabel="Available"
+                                           selectedLabel="Selected"
+                                           options="{!v.meta.selectOptions.householdRecommendationsOptions}"
+                                           value="{!v.householdRecommendationsValue}"
+                                           variant="label-hidden"
+                                           onchange="{!c.handleHouseHoldRecommendationsChanged}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
+                    <lightning:textarea label="Household Recommendations Comments"
+                                        value="{!v.meta.dto.assessment.Household_Recommendation_Comments__c}"
+                                        disabled="{!v.isBusy}"
+                    />
+                </div>
+            </div>
+        </c:vertic_Spinner>
+    </c:vertic_QuickActionModal>
+
+</aura:component>

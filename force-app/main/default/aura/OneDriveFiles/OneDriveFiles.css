@@ -1,0 +1,27 @@
+/**
+ * Created by verticdev on 19/12/19.
+ */
+.THIS .slds-file-selector {
+    width: 100%;
+}
+.THIS .slds-file-selector_files .slds-file-selector__body  {
+    display: block;
+}
+.THIS .slds-file-selector--files .slds-file-selector__body   {
+    display: block;
+}
+.THIS .slds-file-selector__button {
+    display: block;
+}
+.THIS .slds-file-selector__text {
+    padding-top: 10px;
+}
+.THIS .slds-file-selector__dropzone {
+    width: 100%;
+    height: 91px;
+}
+.THIS .slds-file-selector__body {
+    vertical-align: middle;
+    margin-top: 15px;
+    height: 50%;
+}

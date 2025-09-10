@@ -1,0 +1,26 @@
+<aura:component description="FileAccessRestrictionsModal" extends="c:vertic_Modal">
+
+    <!-- Attribute Overrides -->
+<!--    <aura:set attribute="processor" value="FileAccessRestrictionsModalMetaProc"/>-->
+    <aura:attribute name="OneDriveFileId" type="String"/>
+
+    <aura:handler name="init" action="{!c.handleInit}" value="{!this}"/>
+
+    <lightning:dualListbox name="languages"
+                           label= "Select Profiles"
+                           sourceLabel="Available"
+                           selectedLabel="Selected"
+                           fieldLevelHelp="Select the profiles that you want to give access to the file"
+                           options="{!v.meta.selectOptions.availableProfilesOptions}"
+                           value="{!v.meta.dto.oneDriveFilePermission.Available_Profiles_Text__c}"
+                           onchange="{! c.handleChange }"/>
+
+
+
+    <aura:set attribute="footer">
+        <lightning:button label="Cancel" type="button" onclick="{!c.handleCancelClick}"/>
+        <lightning:button label="Submit" variant="brand" onclick="{!c.handleSaveClick}"/>
+    </aura:set>
+
+
+</aura:component>

@@ -1,0 +1,28 @@
+<template>
+    <div class="page-container page-director background-20">
+        <div class="page-header"><div class="section-header"></div></div>
+        <div class="page-director-body">
+            <div class="director-header">
+                <div>
+                    <h1>{director.name}</h1>
+                    <h5>{director.title}</h5>
+                </div>
+                <img src={director.avatar}>
+            </div>
+            <p class="medium rich-text-description"><lightning-formatted-rich-text value={director.description}></lightning-formatted-rich-text></p>
+        </div>
+        <template lwc:if={isOtherDirectors}>
+            <div class="page-stories">
+                <c-rspcaqld-section-related-articles is-white print-paw-label="Tiger Left"
+                                                     content-type="Directors"
+                                                     content-string={otherDirectorsString}
+                                                     content-type-link={contentLink}
+                                                     header={otherHeader}
+                                                     header-size={headerSize}
+                                                     header-mobile-size={headerMobileSize}
+                                                     link-label={viewLinkLabel}
+                                                     link-url={viewLinkUrl}></c-rspcaqld-section-related-articles>
+            </div>
+        </template>
+    </div>
+</template>

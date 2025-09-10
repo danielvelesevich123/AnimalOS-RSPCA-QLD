@@ -1,0 +1,156 @@
+<template>
+        <lightning-card title={animal.animalos__Animal_Name__c}>
+            <div class="slds-grid slds-wrap slds-gutters slds-p-horizontal_large">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Animal ID</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={animal.Name}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Type</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={animal.animalos__Type__c}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Gender</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={animal.animalos__Gender__c}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Primary Breed</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={primaryBreedName}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Secondary Breed</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={secondaryBreedName}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Color 1</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={animal.animalos__Primary_Colour__c}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Color 2</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={animal.animalos__Secondary_Colour__c}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Shelter Tag</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={animal.Tag_Number__c}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Microchip Number</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={animal.animalos__Microchip_Number__c}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Microchip Source</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={animal.animalos__Microchip_Source__c}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Microchip Company</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={animal.Microchip_Company__c}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Microchip Implanted Date</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-date-time value={animal.Microchip_Implant_Date__c}></lightning-formatted-date-time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Neutered/Spayed</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={neuteredSpayed}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Neutered/Spayed Source</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={animal.animalos__Neutered_Spayed_Source__c}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-4">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Neutered/Spayed Date</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-date-time value={animal.animalos__Neutered_Spayed_Date_Time__c}></lightning-formatted-date-time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </lightning-card>
+</template>

@@ -1,0 +1,131 @@
+<template>
+    <div class="slds-card slds-card_boundary">
+        <c-job-contacts-add-interaction-caution-form
+                lwc:if={showAddViolenceForm}
+                is-inspector={isInspector}
+                is-contact-centre-user={isContactCentreUser}
+                onsubmit={handleAddViolenceFormSubmit}
+                oncancel={handleAddViolenceFormCancel}
+        ></c-job-contacts-add-interaction-caution-form>
+        <lightning-card>
+            <div slot="title">
+                <lightning-formatted-text value={jobContact.animalos__Contact_Type__c}></lightning-formatted-text>&nbsp;&dash;&nbsp;
+                <lightning-formatted-url lwc:if={jobContactHasId} value={jobContactUrl} label={jobContact.Name} target="_blank"></lightning-formatted-url>
+                <lightning-formatted-text lwc:else value="New"></lightning-formatted-text>
+            </div>
+            <lightning-button-group slot="actions" lwc:if={showActions}>
+                <lightning-button icon-name="action:delete" label="Delete" onclick={handleDeleteClick} disabled={isBusy}></lightning-button>
+                <lightning-button icon-name="action:edit" label="Edit" onclick={handleEditClick} disabled={isBusy}></lightning-button>
+                <lightning-button icon-name="action:add_relationship" label="Add Caution" onclick={handleAddViolenceClick} disabled={isBusy}></lightning-button>
+            </lightning-button-group>
+
+            <div class="slds-m-horizontal_x-small" lwc:if={showWarning}>
+                <c-scoped-notification-lwc theme="warning" icon-name="utility:warning">Please Add Caution to the POI.</c-scoped-notification-lwc>
+            </div>
+
+            <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Name</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                                <lightning-formatted-url lwc:elseif={contactHasId} value={contactUrl} label={contactName} target="_blank"></lightning-formatted-url>
+                                <lightning-formatted-text lwc:else value={contactName}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Mobile Phone</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                                <lightning-formatted-phone lwc:else value={jobContact.animalos__Contact__r.MobilePhone}></lightning-formatted-phone>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Phone</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                                <lightning-formatted-phone lwc:else value={jobContact.animalos__Contact__r.Phone}></lightning-formatted-phone>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Email</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                                <lightning-formatted-email lwc:else value={jobContact.animalos__Contact__r.Email}></lightning-formatted-email>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Birthdate</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                                <lightning-formatted-date-time lwc:else value={jobContact.animalos__Contact__r.Birthdate}></lightning-formatted-date-time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">ID Number</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                                <lightning-formatted-text lwc:else value={jobContact.animalos__Contact__r.ID_Number__c}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Contact Address</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                                <lightning-formatted-text lwc:else value={jobContactFullAddress}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Advisory</span>
+                        <div class="slds-form-element__control">
+                            <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                            <div lwc:else class="slds-form-element__static slds-grid">
+                                <div class="slds-col slds-size_1-of-8">
+                                    <span class="flag-icon"><img width="32px" height="32px" src={violenceIcon} alt="Indicator"/>&nbsp;</span>
+                                </div>
+                                <div class="slds-col slds-size_7-of-8">
+                                    <template lwc:if={showContactAdvisories} for:each={contactAdvisories} for:index="index" for:item="contactAdvisory">
+                                        <p key={contactAdvisory} class="slds-truncate">
+                                            <lightning-formatted-text value={contactAdvisory}></lightning-formatted-text>&nbsp;
+                                        </p>
+                                    </template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-m-horizontal_medium slds-m-top_medium" lwc:if={showActions}>
+                <c-animal-welfare-violence-histories job-contact={jobContact} onsearchcompleted={handleSearchCompleted}></c-animal-welfare-violence-histories>
+            </div>
+        </lightning-card>
+    </div>
+</template>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <description>Vertic File Upload</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Vertic File Upload</masterLabel>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightning__AppPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage, lightningCommunity__Default, lightning__AppPage">
+            <property name="label" type="String" label="Upload Label" description="Upload Label"/>
+            <property name="driveName" type="String" label="Drive Name" description="Drive Name"/>
+            <property name="fileNamePrefix" type="String" label="Prefix" description="Folder Name Prefix"/>
+            <property name="fileNamePostfix" type="String" label="Postfix" description="Folder Name Postfix"/>
+            <property name="acceptedFormats" type="String" label="Accepted Formats" description="Accepted Formats"/>
+            <property name="folderFieldName" type="String" label="Folder Name Field" description="The field that will be used as a name of the record folder in one drive"/>
+            <property name="fileFieldName" type="String" label="File Name Field" description="The field that will be used as a name of the record in one drive"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

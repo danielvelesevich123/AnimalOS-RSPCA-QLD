@@ -1,0 +1,12 @@
+<template>
+    <div class="cards-info-step">
+        <div class="cards-info-step-image">
+            <div class="icon-block shape-1"><img src={iconURL.data}></div>
+        </div>
+        <div class="cards-info-step-body">
+            <h4>{header}</h4>
+            <p class="normal rich-text-description"><lightning-formatted-rich-text value={description}></lightning-formatted-rich-text></p>
+            <template if:true={isSubdescription}><p class="small">{subdescription}</p></template>
+        </div>
+    </div>
+</template>

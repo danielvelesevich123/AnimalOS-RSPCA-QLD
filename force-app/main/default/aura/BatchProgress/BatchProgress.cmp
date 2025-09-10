@@ -1,0 +1,41 @@
+<aura:component description="BatchProgress" extends="c:vertic_Base">
+
+    <!-- Attribute Overrides -->
+    <aura:set attribute="hideContentOnBusy" value="{!false}"/>
+    <aura:set attribute="forceHiddenSpinner" value="{!true}"/>
+
+    <!-- Attributes -->
+    <aura:attribute name="title" type="String" default="Please Wait..." access="public"/>
+    <aura:attribute name="isVisible" type="Boolean" default="{!false}" access="private"/>
+    <aura:attribute type="Id" name="batchId" access="private"/>
+    <aura:attribute name="progress" type="Integer" default="0"/>
+    <aura:attribute name="progressCMP" type="Aura.Component[]">
+        <lightning:progressBar value="{! v.progress }"/>
+    </aura:attribute>
+    <aura:attribute name="successMessage" type="String" />
+
+    <!-- Events -->
+    <aura:registerEvent name="onComplete" type="c:vertic_ComponentEvent"/>
+
+    <!-- Handlers -->
+    <!-- <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>-->
+
+    <aura:method name="showProgress" access="public" action="{! c.handleShowProgress }">
+        <aura:attribute name="batchId" type="Id"/>
+    </aura:method>
+
+    <aura:if isTrue="{! v.isVisible }">
+        <div class="slds-m-around--medium">
+            <h2 class="slds-m-bottom--small slds-text-align_center">
+                {!v.title}
+            </h2>
+            <aura:if isTrue="{!empty(v.body)}">
+                {!v.progressCMP}
+                <aura:set attribute="else">
+                    {!v.body}
+                </aura:set>
+            </aura:if>
+        </div>
+    </aura:if>
+
+</aura:component>

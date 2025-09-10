@@ -1,0 +1,69 @@
+<template>
+    <div class="slds-card slds-card_boundary slds-m-bottom_medium" lwc:if={showAddViolenceForm}>
+        <c-job-contacts-add-interaction-caution-form
+                job-contact-id={addViolenceJobContactId}
+                onsubmit={handleSubmitAddViolenceForm}
+                oncancel={handleCancelAddViolenceForm}
+                is-contact-centre-user={isContactCentreUser}
+                is-inspector={isInspector}
+        ></c-job-contacts-add-interaction-caution-form>
+    </div>
+    <div class="slds-is-relative" lwc:if={showAddJobContactFlow}>
+        <lightning-flow
+                flow-api-name="Add_Job_Contact"
+                flow-input-variables={addJobContactFlowInputs}
+                onstatuschange={handleFlowStatusChange}
+        ></lightning-flow>
+    </div>
+    <div class="slds-card slds-card_boundary">
+        <lightning-card icon-name="standard:call_history" title={cardTitle}>
+            <lightning-button-group slot="actions">
+                <div lwc:if={isLocationsNearbyView}>
+                    <lightning-formatted-rich-text value={locationAdvisory}></lightning-formatted-rich-text>&nbsp;
+                </div>
+                <template lwc:else>
+                    <lightning-button lwc:if={showRefreshButton} disabled={disableSelect} icon-name="action:refresh" label="Refresh" onclick={handleRefreshClick}></lightning-button>
+                    <lightning-button lwc:if={showAddViolenceButton} disabled={disableSelect} icon-name="action:add_relationship" label="Add Caution" onclick={handleAddCautionClick}></lightning-button>
+                    <lightning-button lwc:if={showAddJobContactButton} disabled={disableSelect} icon-name="action:add_relationship" label="Add Job Contact" onclick={handleAddJobContactClick}></lightning-button>
+                    <lightning-button lwc:if={showManageSelectedButton}
+                                      disabled={disableSelect}
+                                      icon-name="action:add_relationship"
+                                      label={manageSelectedLabel}
+                                      onclick={handleManageSelectedClick}>
+                    </lightning-button>
+                </template>
+            </lightning-button-group>
+            <template lwc:if={showContent}>
+                <div class=slds-m-horizontal_medium>
+                    <c-job-contacts-headers view={view} disable-select={disableSelect} onselectall={handleSelectAllChange} lwc:if={hasJobContacts}></c-job-contacts-headers>
+                    <template for:each={jobContacts} for:index="index" for:item="jobContact" lwc:if={showJobContactsTable}>
+                        <c-job-contact onaction={handleJobContactAction}
+                                                 key={jobContact.Id}
+                                                 view={view}
+                                                 job-contact={jobContact}
+                                                 index={index}
+                                                 disable-select={disableSelect}
+                        ></c-job-contact>
+                    </template>
+                    <template for:each={jobContactsByJobs} for:index="index" for:item="jobContacts" lwc:elseif={showJobContactsByJobsTable}>
+                        <c-job-contacts-job onaction={handleJobContactsByJobAction}
+                                                key={uniqueKey}
+                                                view={view}
+                                                job-contacts={jobContacts}
+                                                index={index}
+                                                disable-select={disableSelect}
+                        ></c-job-contacts-job>
+                    </template>
+                    <template lwc:else>
+                        <c-scoped-notification-lwc icon-name="utility:warning">
+                            There are no Job Contacts.
+                        </c-scoped-notification-lwc>
+                    </template>
+                </div>
+            </template>
+            <div lwc:else class="slds-m-horizontal_medium">
+                <c-stencil count="4" height="10"></c-stencil>
+            </div>
+        </lightning-card>
+    </div>
+</template>

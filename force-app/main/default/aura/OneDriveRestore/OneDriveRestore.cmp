@@ -1,0 +1,133 @@
+<aura:component description="OneDriveRestore" extends="c:vertic_Modal">
+    <c:OneDriveUtils aura:id="OneDriveUtils" onLoad="{!c.handleInit}"/>
+    <!--<aura:handler name="destroy" value="{!this}" action="{!c.destroyHandler}" />-->
+
+    <aura:attribute name="files" type="Map"/>
+    <aura:attribute name="isBusy" type="Boolean" default="true"/>
+    <aura:attribute name="isFullView" type="Boolean" access="global" default="true"/>
+    <aura:attribute name="isDeleteAvailable" type="Boolean" access="global" default="true"/>
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="sObjectName" type="String"/>
+    <aura:attribute name="driveId" type="String"/>
+    <aura:attribute name="folderName" type="String" default="false"/>
+    <aura:attribute name="isFiles" type="Boolean" default="false"/>
+
+    <c:vertic_ModalService aura:id="modalService"/>
+
+    <lightning:notificationsLibrary aura:id="notificationLib"/>
+
+
+    <aura:if isTrue="{! v.isFullView}">
+
+        <lightning:card title="Bin"
+                        iconName="standard:recycle_bin"
+                        class="slds-card_boundary forceRelatedListCardDesktop slds-text-align--left">
+            <aura:if isTrue="{! v.isFiles}">
+
+                <p class="slds-p-horizontal_small">
+                    <!-- HEADER -->
+                <table class="slds-table slds-table_bordered slds-table_striped slds-table_cell-buffer slds-table_fixed-layout">
+                    <thead>
+                    <tr class="slds-text-heading_label">
+                        <th scope="col">
+                            <div class="slds-truncate" title="Name">FILE NAME</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Size">FILE SIZE</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Created Date">CREATED DATE</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Modified Date">DELETE DATE</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate">Restore</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate">Delete</div>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <aura:iteration var="file" items="{!v.files}">
+                        <c:IfContains value="{!file.name}" contains="DELETED_">
+
+                            <c:OneDriveRestoreItem file="{!file}"
+                                                   isFullView="{! v.isFullView}"
+                                                   onDelete="{!c.HandleOneDriveFileDelete}"
+                                                   onRestore="{!c.handleFileRestore}"
+                                                   onSendEmail="{!c.HandleSendEmail}"
+                                                   onFileView="{!c.HandleFileView}"
+                                                   onRemove="{!c.handleFileRemove}"
+                            />
+
+                        </c:IfContains>
+                    </aura:iteration>
+                    </tbody>
+                </table>
+                </p>
+                <aura:set attribute="else">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-text-align_center slds-p-vertical--medium">
+                            <aura:if isTrue="{!v.isBusy}">
+                                <aura:set attribute="else">
+                                    <div class="slds-text-longform">
+                                        <h3 class="slds-text-heading_medium">No files</h3>
+                                        <p class="slds-text-body_regular">There are no deleted files</p>
+                                    </div>
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                    </div>
+                </aura:set>
+            </aura:if>
+
+            <aura:set attribute="footer">
+                <div class="slds-text-align--right">
+                    <lightning:button type="button"
+                                      label="Cancel"
+                                      variant="brand"
+                                      onclick="{!c.handleCancel}"
+
+                    />
+                </div>
+            </aura:set>
+        </lightning:card>
+
+
+        <aura:set attribute="else">
+            <aura:if isTrue="{! v.isFiles}">
+                <table class="slds-table slds-table_fixed-layout">
+                    <tbody>
+                    <aura:iteration var="file" items="{!v.files}">
+                        <c:IfContains value="{!file.name}" contains="DELETED_">
+
+                            <c:OneDriveRestoreItem file="{!file}"
+                                                   isFullView="{! v.isFullView}"
+                                                   isDeleteAvailable="{! v.isDeleteAvailable}"
+                                                   onDelete="{!c.HandleOneDriveFileDelete}"
+                                                   onRestore="{!c.handleFileRestore}"
+                                                   onSendEmail="{!c.HandleSendEmail}"
+                                                   onFileView="{!c.HandleFileView}"/>
+                        </c:IfContains>
+
+                    </aura:iteration>
+
+                    </tbody>
+                </table>
+                <aura:set attribute="else">
+                    <div class="slds-grid">
+                        <div class="slds-col slds-text-align_center slds-p-vertical--medium">
+                            <div class="slds-text-longform">
+                                <h3 class="slds-text-heading_medium">No files</h3>
+                                <p class="slds-text-body_regular">There are no deleted files</p>
+                            </div>
+                        </div>
+                    </div>
+                </aura:set>
+            </aura:if>
+        </aura:set>
+    </aura:if>
+
+</aura:component>

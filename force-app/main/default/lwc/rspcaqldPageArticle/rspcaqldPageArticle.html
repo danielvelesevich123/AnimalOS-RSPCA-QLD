@@ -1,0 +1,74 @@
+<template>
+    <template lwc:if={isActive}>
+        <div class="page-container page-article background-20">
+            <div class="page-header">
+                <div class="section-header">
+                    <div class="section-header-elements">
+                        <div class="section-header-left-column">
+                            <h1>{article.title}</h1>
+                            <h5>
+                                <span>Posted on {article.formatPublishedDate} in {article.typeLabel}</span><br>
+                                <span>by {author.name}</span>
+                            </h5>
+                            <img class="paw-print" src={officialRSPCAPaw}>
+                        </div>
+                        <div class="section-header-right-column">
+                            <img class="man-img shape-1" src={article.image}>
+                            <img class="paw-print" src={officialRSPCAPaw}>
+                            <div class="mobile-gradient"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="page-article-body wide-width">
+                <div class="page-article-body-desc">
+                    <div class="page-article-body-main rich-text-description">
+                        <lightning-formatted-rich-text value={article.body}></lightning-formatted-rich-text>
+                    </div>
+                    <c-rspcaqld-hot-spot-author image-url={author.avatar}
+                                                name={author.name}
+                                                title={author.title}
+                                                description={author.description}>
+                    </c-rspcaqld-hot-spot-author>
+                    <c-rspcaqld-hot-spot-c-t-a image-url={cta.image} header={cta.header} link-label={cta.linkLabel} link-url={cta.linkUrl}></c-rspcaqld-hot-spot-c-t-a>
+                    <c-rspcaqld-hot-spot-subscribe header={hotspotSubscribeHeader}
+                                                   tc-and-p-p={hotspotSubscribeTCAndPP}
+                                                   subscribe-button={hotspotSubscribeButtonHeader}
+                                                   thank-you-message={hotspotSubscribeThankYouMessage}></c-rspcaqld-hot-spot-subscribe>
+                    <div class="page-article-actions">
+                        <a class="button-link" href={backLink}><img class="medium" src={arrowLeftDark}><span>Back</span></a>
+                        <c-rspcaqld-share-block facebook-link={facebookShareLink} linkedin-link={linkedinShareLink} twitter-link={twitterShareLink}></c-rspcaqld-share-block>
+                    </div>
+                </div>
+                <div class="page-article-body-details">
+                    <c-rspcaqld-hot-spot-author image-url={author.avatar}
+                                                name={author.name}
+                                                title={author.title}
+                                                description={author.description}>
+                    </c-rspcaqld-hot-spot-author>
+                    <c-rspcaqld-hot-spot-c-t-a image-url={cta.image} header={cta.header} link-label={cta.linkLabel} link-url={cta.linkUrl}></c-rspcaqld-hot-spot-c-t-a>
+                    <c-rspcaqld-hot-spot-subscribe header={hotspotSubscribeHeader}
+                                                   tc-and-p-p={hotspotSubscribeTCAndPP}
+                                                   subscribe-button={hotspotSubscribeButtonHeader}
+                                                   thank-you-message={hotspotSubscribeThankYouMessage}
+                    ></c-rspcaqld-hot-spot-subscribe>
+                </div>
+            </div>
+            <div class="page-subscribe">
+                <c-rspcaqld-section-subscribe header={subscribeHeader}
+                                              tc-and-p-p={subscribeTCAndPP}
+                                              subscribe-button={subscribeButtonHeader}
+                ></c-rspcaqld-section-subscribe>
+            </div>
+            <div class="page-related-articles background-20">
+                <c-rspcaqld-section-related-articles is-shape is-category
+                                                     content-type="Articles"
+                                                     content-string={relatedArticles}
+                                                     header={relatedArticlesHeader}
+                                                     description={relatedArticlesDescription}
+                                                     link-label={relatedArticlesLinkLabel}
+                                                     link-url={relatedArticlesLinkURL}></c-rspcaqld-section-related-articles>
+            </div>
+        </div>
+    </template>
+</template>

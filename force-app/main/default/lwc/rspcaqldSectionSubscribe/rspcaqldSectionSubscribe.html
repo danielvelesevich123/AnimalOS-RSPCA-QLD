@@ -1,0 +1,38 @@
+<template>
+    <div class="section-subscribe">
+        <div class="section-subscribe-header">
+            <h2>{header}</h2>
+        </div>
+        <div class="section-subscribe-input">
+            <lightning-input type="text"
+                             disabled={isSubmitting}
+                             label="First name"
+                             placeholder="First name"
+                             class="input-inline without-label first-name"
+                             onchange={handleFirstNameChange}
+                             value={firstName}></lightning-input>
+            <lightning-input type="text"
+                             disabled={isSubmitting}
+                             label="Last name"
+                             placeholder="Last name"
+                             class="input-inline without-label last-name"
+                             onchange={handleLastNameChange}
+                             value={lastName}></lightning-input>
+            <lightning-input type="email"
+                             disabled={isSubmitting}
+                             label="Email"
+                             placeholder="Email address"
+                             class="input-inline without-label email"
+                             message-when-bad-input="The email address is incorrect"
+                             message-when-pattern-mismatch="The email address is incorrect"
+                             message-when-type-mismatch="The email address is incorrect"
+                             onchange={handleEmailChange}
+                             value={email}></lightning-input>
+            <button disabled={isSubmitting} class="green-btn" onclick={handleClick}>{subscribeButton}</button>
+        </div>
+        <div class="section-subscribe-links">
+            <p class="small"><lightning-formatted-rich-text value={tcAndPP}></lightning-formatted-rich-text></p>
+        </div>
+    </div>
+    <div class={submittedClass}><h3>{thankYouMessage}</h3></div>
+</template>

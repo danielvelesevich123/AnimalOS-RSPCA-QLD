@@ -1,0 +1,428 @@
+<!-- Adoption Agreement -->
+<template>
+    <c-toast lwc:ref="toast"></c-toast>
+    <div class="slds-p-around_medium">
+        <div class="main-content">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col logo-align slds-size_1-of-1 slds-medium-size_1-of-3">
+                    <img id="RspcaLogo" src={logo} width="220" height="55" alt="RSPCA QLD Logo"/>
+                </div>
+                <div class="slds-col slds-text-align_center slds-size_1-of-1 slds-medium-size_1-of-3">
+                    <h2 class="inform-collection">
+                        <br/>
+                        Animal Adoption Agreement
+                        <br/>
+                    </h2>
+                </div>
+                <div class="slds-col header-text-align slds-size_1-of-1 slds-medium-size_1-of-3">
+                    RSPCA QLD
+                    <br/>(02) 6287 8100
+                    <br/>RON: R251000223
+                </div>
+            </div>
+
+            <div class="slds-is-relative">
+                <c-vertic-spinner is-busy={isBusy}></c-vertic-spinner>
+                <template lwc:if={showContent}>
+                    <div class="slds-m-vertical_large">
+                        <lightning-progress-indicator current-step={currentStep}>
+                            <lightning-progress-step key={step.name}
+                                                     label={step.label}
+                                                     value={step.name}
+                                                     for:each={steps}
+                                                     for:item="step"
+                                                     for:index="index"
+                                                     onclick={selectedStepChange}>
+                            </lightning-progress-step>
+                        </lightning-progress-indicator>
+                    </div>
+                    <template lwc:if={showOwnerDetailsStep}>
+                        <div class="slds-m-vertical_large slds-card slds-card_boundary">
+                            <lightning-card title="Owner Details" icon-name="standard:contact">
+                                <div class="slds-grid slds-wrap slds-gutters slds-p-horizontal_large">
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                        <div class="slds-form-element slds-form-element_readonly">
+                                            <span class="slds-form-element__label">Person Name</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    <lightning-formatted-text value={referralName}></lightning-formatted-text>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                        <div class="slds-form-element slds-form-element_readonly">
+                                            <span class="slds-form-element__label">Person Address</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    <lightning-formatted-text value={meta.dto.referral.Address__c}></lightning-formatted-text>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                        <div class="slds-form-element slds-form-element_readonly">
+                                            <span class="slds-form-element__label">Email</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    <lightning-formatted-email value={meta.dto.referral.Email__c}></lightning-formatted-email>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-3">
+                                        <div class="slds-form-element slds-form-element_readonly">
+                                            <span class="slds-form-element__label">Mobile</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    <lightning-formatted-text value={meta.dto.referral.Mobile__c}></lightning-formatted-text>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                                        <div class="slds-form-element slds-form-element_readonly">
+                                            <span class="slds-form-element__label">Home Phone</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    <lightning-formatted-text value={meta.dto.referral.Home_Phone__c}></lightning-formatted-text>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                                        <div class="slds-form-element slds-form-element_readonly">
+                                            <span class="slds-form-element__label">Work Phone</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    <lightning-formatted-text value={meta.dto.referral.Work_Phone__c}></lightning-formatted-text>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                                        <div class="slds-form-element slds-form-element_readonly">
+                                            <span class="slds-form-element__label">Person ID</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    <lightning-formatted-text value={meta.dto.referral.Contact_Code__c}></lightning-formatted-text>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                                        <div class="slds-form-element slds-form-element_readonly">
+                                            <span class="slds-form-element__label">Receipt #</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    <lightning-formatted-text value={receiptNumber}></lightning-formatted-text>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                                        <div class="slds-form-element slds-form-element_readonly">
+                                            <span class="slds-form-element__label">Receipt Date</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    <lightning-formatted-date-time value={today}></lightning-formatted-date-time>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-2">
+                                        <div class="slds-form-element slds-form-element_readonly">
+                                            <span class="slds-form-element__label">Adopted Date</span>
+                                            <div class="slds-form-element__control">
+                                                <div class="slds-form-element__static">
+                                                    <lightning-formatted-date-time value={meta.dto.referral.animalos__Scheduled_Date_Time__c}></lightning-formatted-date-time>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </lightning-card>
+                        </div>
+                        <div class="slds-card slds-card_boundary">
+                            <lightning-card title="Personal Information Collection Notice" icon-name="standard:note">
+                                <div class="slds-p-horizontal_large">
+                                    <div><p>By completing this form, you have provided personal information to The Royal Society for the Prevention of Cruelty to Animals (QLD) Limited (RSPCA QLD).</p>
+                                    </div>
+                                    <div>
+                                        <p>Further details about how we manage personal information is contained in our Privacy Policy at&nbsp;
+                                            <a href="https://www.rspcaqld.org.au">www.rspca-qld.org.au</a>
+                                        </p>
+                                    </div>
+                                    <div><p>I have read the Privacy Policy before providing my personal information and I agree to its terms.</p></div>
+                                    <div><p>In accordance with the above, RSPCA QLD may use or share your personal information with third party suppliers engaged by us for marketing purposes.</p>
+                                    </div>
+                                    <div class="slds-grid slds-wrap slds-gutters slds-m-vertical_small">
+                                        <div class="slds-col slds-size_5-of-6"><p><b>If you do not wish to have your personal information used in that way, please opt out here:</b></p></div>
+                                        <div class="slds-col slds-size_1-of-6 slds-align_absolute-center">
+                                            <lightning-input variant="label-hidden"
+                                                             label="If you do not wish to have your personal information used in that way, please opt out here:"
+                                                             type="checkbox"
+                                                             disabled={isBusy}
+                                                             checked={meta.dto.referral.Third_Party_Marketing_Opt_Out__c}
+                                                             onchange={handleThirdPartMarketingChange}>
+                                            </lightning-input>
+                                        </div>
+                                        <div class="slds-col slds-size_5-of-6"><p><b>I would like to receive promotions, pet advice and special offers from the Royal Canin’s Healthy Pets Club:</b></p>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-6 slds-align_absolute-center">
+                                            <lightning-input label="I would like to receive promotions, pet advice and special offers from the Royal Canin’s Healthy Pets Club:"
+                                                             type="checkbox"
+                                                             disabled={isBusy}
+                                                             variant="label-hidden"
+                                                             checked={meta.dto.referral.Royal_Canin_s_Healthy_Pets_Club_Opt_In__c}
+                                                             onchange={handleRoyalCanineChange}>
+                                            </lightning-input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </lightning-card>
+                        </div>
+                        <div class="slds-m-vertical_large slds-card slds-card_boundary">
+                            <lightning-card title="Animal Details" icon-name="utility:animal_and_nature">
+                                <template for:each={meta.dto.animals} for:item="animal" id="details">
+                                    <c-adoption-agreement-animal-details animal={animal} key={animal.Id}></c-adoption-agreement-animal-details>
+                                </template>
+                            </lightning-card>
+                        </div>
+                    </template>
+                    <template lwc:elseif={showTestOutcomesAndTreatmentsStep}>
+                        <div class="slds-m-vertical_large slds-card slds-card_boundary">
+                            <lightning-card title="Test Outcomes" icon-name="standard:outcome">
+                                <template for:each={meta.dto.animals} for:item="animal" id="testOutcomes">
+                                    <c-adoption-agreement-animal-test-outcomes animal={animal} key={animal.Id}></c-adoption-agreement-animal-test-outcomes>
+                                </template>
+                                <div class="slds-p-horizontal_large">
+                                    <c-scoped-notification-lwc icon-name="utility:warning">
+                                        <b>Feline FIV/FeLV</b> - For Felines that have tested negative OR have not been tested, we suggest that you have your cat retested for FIV no less than sixty
+                                        (60)
+                                        days
+                                        after the
+                                        initial
+                                        test to rule out a recent infection. Please discuss this with your vet.
+                                    </c-scoped-notification-lwc>
+                                </div>
+                            </lightning-card>
+                        </div>
+                        <div class="slds-card slds-card_boundary">
+                            <lightning-card title="Treatments" icon-name="standard:medication">
+                                <template for:each={meta.dto.animals} for:item="animal" id="treatments">
+                                    <c-adoption-agreement-animal-treatments animal={animal} key={animal.Id}></c-adoption-agreement-animal-treatments>
+                                </template>
+                                <div class="slds-p-horizontal_large">
+                                    <c-scoped-notification-lwc icon-name="utility:warning" for:each={meta.dto.animalTypesInformation} for:item="animalTypeInformation" key={animalTypeInformation.Id}>
+                                        <p><b>{animalTypeInformation.Label}</b></p>
+                                        <p>
+                                            <lightning-formatted-text value={animalTypeInformation.Information__c}></lightning-formatted-text>
+                                        </p>
+                                    </c-scoped-notification-lwc>
+                                </div>
+                            </lightning-card>
+                        </div>
+                    </template>
+                    <template lwc:elseif={showIndemnityWaiverContractStep}>
+                        <div class="slds-card slds-card_boundary">
+                            <lightning-card title="Indemnity Waiver Contract" icon-name="standard:contract">
+                                <div class="slds-p-horizontal_large">
+                                    <p>
+                                        I, {referralName} am adopting the animal as described above. By signing below, I acknowledge that the RSPCA QLD has informed me of possible issues
+                                        with
+                                        the animal I am adopting. I agree to care for the animal for the rest of its life in a manner that is necessary. The RSPCA QLD will not be held responsible for
+                                        financial
+                                        assistance
+                                        to
+                                        care for the animal. I accept full responsibility for any ongoing or future treatment assistance warranted. I understand that I am adopting the animal "as is",
+                                        and I
+                                        understand the
+                                        issues outlined below.
+                                    </p>
+                                    <template for:each={meta.dto.animals} for:item="animal" id="animalsIndemnityWaivers">
+                                        <c-adoption-agreement-animal-indemnity-waivers animal={animal} key={animal.Id}></c-adoption-agreement-animal-indemnity-waivers>
+                                    </template>
+                                    <div>
+                                        <p>If you would like more information about this condition, please ask to speak with one of our veterinarians. As a new owner you are committed to and solely
+                                            responsible for
+                                            this animal's health and any further costs required.</p>
+                                    </div>
+                                    <div class="slds-grid slds-wrap">
+                                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_2-of-3">
+                                            <span class="slds-form-element__label">Adopter Signature</span>
+                                            <div>
+                                                <c-capture-signature height="60" width="200"></c-capture-signature>
+                                            </div>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                                            <span class="slds-form-element__label">Date</span>
+                                            <div>
+                                                <lightning-formatted-date-time value={today}></lightning-formatted-date-time>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </lightning-card>
+                        </div>
+                    </template>
+                    <template lwc:elseif={showEvaluationSummaryStep}>
+                        <div class="slds-card slds-card_boundary">
+                            <lightning-card title="Animal Evaluation Summary" icon-name="utility:summary">
+                                <div class="slds-p-horizontal_large">
+                                    <template for:each={meta.dto.dogs} for:item="animal" id="dogs">
+                                        <c-adoption-agreement-dog animal={animal} key={animal.Id}></c-adoption-agreement-dog>
+                                    </template>
+                                </div>
+                            </lightning-card>
+                        </div>
+                    </template>
+                    <template lwc:elseif={showAdoptionAgreementStep}>
+                        <div class="slds-m-vertical_large slds-card slds-card_boundary">
+                            <lightning-card title="Adoption Agreement" icon-name="standard:contract">
+                                <div class="slds-grid slds-wrap slds-gutters slds-p-horizontal_large">
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <ol class="slds-list_ordered">
+                                            <li>I, the purchaser of the animal detailed above, agree to accept the animal
+                                                with all faults and abnormalities that may be present at the time of
+                                                adoption or that may develop in the future. I accept full responsibility for
+                                                the animal’s care and the costs of that care, including veterinary
+                                                expenses, and exonerate RSPCA Qld from any further responsibility or
+                                                liability in respect to the animal.
+                                            </li>
+                                            <li>
+                                                I understand and accept the following adoption conditions:
+                                                <ul class="slds-list_dotted slds-is-nested">
+                                                    <li>
+                                                        I can return the animal to RSPCA QLD within thirty (30) days of
+                                                        adoption if for any reason the animal is unsuited to the new home. I
+                                                        will be offered an exchange animal or a refund on the adoption price
+                                                        less a $100 administration and consumables fee.
+                                                    </li>
+                                                    <li>
+                                                        RSPCA Qld will provide a health warranty (i.e., consultation and
+                                                        treatment) for sickness or abnormalities that become evident within
+                                                        14 days of adoption. The health warranty does not cover injury or
+                                                        misfortune. If RSPCA determines, for whatever reason, that an
+                                                        abnormality or illness will not be treated, I will be offered an exchange
+                                                        animal or a full refund on the adoption price. I will accept RSPCA’s
+                                                        decision about whether a condition will or will not be treated, and if I
+                                                        disagree with that decision I reserve the right to keep the animal and
+                                                        have it treated at my own expense.
+                                                    </li>
+                                                    <li>
+                                                        The health warranty only applies to veterinary consultations
+                                                        conducted or sanctioned by RSPCA Qld. If I choose to take the animal
+                                                        to a private vet I will take full responsibility for all expenses incurred.
+                                                    </li>
+                                                    <li>A refund for the adoption fee can only be processed via the same
+                                                        transaction method and card used to purchase the animal. For cash
+                                                        payments, if a cash refund is not possible a direct bank transfer will be
+                                                        made.
+                                                    </li>
+                                                    <li>
+                                                        The animal I am adopting must not be used as a food item (human or
+                                                        animal).
+                                                    </li>
+                                                    <li>
+                                                        The animal I am adopting must never be used for breeding purposes.
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                I understand the following important points about the health of the
+                                                animal I am adopting:
+                                                <ul class="slds-list_dotted slds-is-nested">
+                                                    <li>
+                                                        It has been health checked by a veterinarian and has received routine
+                                                        veterinary treatments and in some cases non-routine treatments to
+                                                        remedy existing medical issues. Although the tests and treatments
+                                                        help to ensure the animal is in good health, this can never be
+                                                        guaranteed. I accept this uncertainty and indemnify RSPCA Qld from
+                                                        any liability for health issues that were not noted.
+                                                    </li>
+                                                    <li>
+                                                        Any existing health or behavioural issue that has been noted by
+                                                        RSPCA experts will be disclosed in an indemnity. I take full
+                                                        responsibility for ensuring I read, understand and accept the
+                                                        conditions of all disclosed indemnities.
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li>
+                                                I undertake to register my animal with the relevant government authority
+                                                within 14 days of adoption, if required by law.
+                                            </li>
+                                            <li>
+                                                The animal I am adopting may have been implanted with an ID
+                                                microchip, which will be registered with CAR. If my adopted animal has a
+                                                microchip, I undertake to ensure my animal’s microchip contact details
+                                                are kept up to date with CAR (by going to <a href="https://car.com.au/pages/forms-hub#ownerforms">https://car.com.au/pages/forms-hub#ownerforms</a>
+                                                and using the Change of Address or Change of Ownership facilities).
+                                            </li>
+                                            <li>
+                                                RSPCA Queensland collects your personal information (that information
+                                                identifying you, directly or indirectly), to provide you with the information
+                                                about animal products and services, caring for your animal, events,
+                                                training and education, animal adoption, animal welfare issues and for
+                                                fundraising purposes unless you tell us that you don’t want it used for
+                                                direct marketing purposes (which you can do at any time in accordance
+                                                with our Privacy Policy). Detailed information about how we collect and
+                                                use information is contained in our Privacy Policy, which is available at <a href="https://www.rspcaqld.org.au">www.rspcaqld.org.au</a>
+                                                or by emailing <a href="mailto:privacyofficer@rspcaqld.org.au">privacyofficer@rspcaqld.org.au</a> or
+                                                phoning <a href="tel:07 3426 9999">07 3426 9999</a>. By signing this document, the purchaser agrees
+                                                to the conditions stated above.
+                                            </li>
+                                        </ol>
+                                        <div class="slds-m-vertical_small">
+                                            <b>
+                                                My signature below certifies my acceptance of all terms and conditions detailed above
+                                            </b>
+                                        </div>
+
+                                    </div>
+                                    <div class="slds-col slds-size_1-of-1">
+                                        <div class="slds-grid slds-gutters slds-wrap slds-p-horizontal_large">
+                                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_2-of-3">
+                                                <span class="slds-form-element__label">Adopter Signature</span>
+                                                <div>
+                                                    <c-capture-signature height="60" width="200"></c-capture-signature>
+                                                </div>
+                                            </div>
+                                            <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                                                <span class="slds-form-element__label">Date</span>
+                                                <div>
+                                                    <lightning-formatted-date-time value={today}></lightning-formatted-date-time>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </lightning-card>
+                        </div>
+                    </template>
+
+                    <div class="slds-text-align_center slds-m-top_small slds-m-bottom_large">
+                        <lightning-button-group>
+                            <lightning-button lwc:if={notFirstStep} icon-name="utility:arrow_left" label="Previous" onclick={previousClick} disabled={isBusy}></lightning-button>
+                            <lightning-button lwc:if={notLastStep} icon-name="utility:arrow_right" icon-position="right" label="Next" onclick={nextClick} disabled={isBusy}></lightning-button>
+                            <lightning-button lwc:if={lastStep} icon-name="utility:save" label="Save" onclick={saveClick} disabled={isBusy}></lightning-button>
+                            <lightning-button lwc:if={sendButtonEnabled} icon-name="utility:sender_email" label="Send" onclick={sendClick} disabled={isBusy}></lightning-button>
+                        </lightning-button-group>
+                    </div>
+                </template>
+                <template lwc:elseif={isSubmitted}>
+                    <c-scoped-notification-lwc icon-name="utility:warning" class="slds-text-align_center">
+                        Thank you for submitting this form! You will receive an email with PDF document in next 2-3 minutes.
+                    </c-scoped-notification-lwc>
+                </template>
+                <template lwc:elseif={isSent}>
+                    <c-scoped-notification-lwc icon-name="utility:warning" class="slds-text-align_center">
+                        {referralName} will receive an email with link to sign an Adoption Agreement in next 2-3 minutes.
+                    </c-scoped-notification-lwc>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>

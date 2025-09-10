@@ -1,0 +1,8 @@
+<design:component>
+    <design:attribute name="title" label="Title" default="Async Processes"/>
+    <design:attribute name="groupKey" label="Group Key" default="{recordId}" description="Group Key to filter Async Processes. For example: AsyncProcess-{recordId}."/>
+    <design:attribute name="iconName" label="Icon Name" default="utility:flow"/>
+    <design:attribute name="limit" label="Limit" default="100"/>
+    <design:attribute name="orderBy" label="Order By" default="Name"/>
+    <design:attribute name="fields" label="Fields" default="Id,Status__c,Payload__c"/>
+</design:component>

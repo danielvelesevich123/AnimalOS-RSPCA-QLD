@@ -1,0 +1,69 @@
+<template>
+    <div class="slds-card slds-card_boundary">
+        <lightning-card>
+            <lightning-button-group slot="actions" lwc:if={showActions}>
+                <lightning-button icon-name="action:delete" label="Delete" onclick={handleDeleteClick}></lightning-button>
+                <lightning-button icon-name="action:edit" label="Edit" onclick={handleEditClick}></lightning-button>
+            </lightning-button-group>
+            <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Animal Type</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={animalReport.animalos__Animal_Type__c}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2" lwc:if={animalReport.animalos__Cruelty_Type__c}>
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Cruelty Type</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={animalReport.animalos__Cruelty_Type__c}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2" lwc:if={animalReport.Rescue_Type__c}>
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Rescue Type</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-text value={animalReport.Rescue_Type__c}></lightning-formatted-text>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Animal Breed</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <c-vertic-lookup label="Animal Breed"
+                                                 object="animalos__Breed__c"
+                                                 search-field="Name"
+                                                 search-mode="SOQL"
+                                                 value={animalReport.animalos__Breed__c}
+                                                 read-only
+                                                 label-hidden
+                                ></c-vertic-lookup>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly">
+                        <span class="slds-form-element__label">Number of Animals</span>
+                        <div class="slds-form-element__control">
+                            <div class="slds-form-element__static">
+                                <lightning-formatted-number value={animalReport.animalos__Number_of_Animals__c}></lightning-formatted-number>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </lightning-card>
+    </div>
+</template>

@@ -1,0 +1,7 @@
+<design:component label="NSPS+ Scoped Notification">
+    <design:attribute name="content" label="Content" default="Content"/>
+    <design:attribute name="theme" label="Theme" dataSource="success,info,warning,error" default="info"/>
+
+    <design:attribute name="iconName" label="Icon" default="utility:info"/>
+    <design:attribute name="iconVariant" label="Icon Variant" dataSource="info,inverse,success,warning,error" default="info"/>
+</design:component>

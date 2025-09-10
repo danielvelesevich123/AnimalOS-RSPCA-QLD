@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Campaign Theme Layout</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Campaign Theme Layout</masterLabel>
+    <targets>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Theme_Layout</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="isHeader" type="Boolean" default="false" label="Display Header"/>
+            <property name="headerFooterLinksString" type="String" label="Header Footer Links"/>
+            <property name="isFooterPromise" type="Boolean" default="false" label="Display Footer Promise"/>
+            <property name="ourPromiseHeader" type="String" label="Our Promise - Header"/>
+            <property name="ourPromiseDescription" type="String" label="Our Promise - Description"/>
+            <property name="ourPromiseLocationLink" type="String" label="Our Promise - Location"/>
+            <property name="ourPromisePhone" type="String" label="Our Promise - Phone"/>
+            <property name="ourPromiseEmail" type="String" label="Our Promise - Email"/>
+            <property name="footerAcknowledgement" type="String" label="Footer Acknowledgement"/>
+            <property name="companyABN" type="String" label="Company ABN"/>
+            <property name="cookieLink" type="String" label="Cookie Statement Link"/>
+            <property name="isFacebook" type="Boolean" label="Display Facebook"/>
+            <property name="facebookLink" type="String" label="Facebook Link Desktop"/>
+            <property name="mobileFacebookLink" type="String" label="Facebook Link Mobile"/>
+            <property name="isInstagram" type="Boolean" label="Display Instagram"/>
+            <property name="instagramLink" type="String" label="Instagram Link"/>
+            <property name="isXTwitter" type="Boolean" label="Display X"/>
+            <property name="xtwitterLink" type="String" label="X Link"/>
+            <property name="isLinkedin" type="Boolean" label="Display Linkedin"/>
+            <property name="linkedinLink" type="String" label="Linkedin Link"/>
+            <property name="isYoutube" type="Boolean" label="Display Youtube"/>
+            <property name="youtubeLink" type="String" label="Youtube Link"/>
+            <property name="isTiktok" type="Boolean" label="Display TikTok"/>
+            <property name="tiktokLink" type="String" label="TikTok Link"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

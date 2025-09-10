@@ -1,0 +1,35 @@
+<template>
+    <div class="page-container page-our-impact-single background-20">
+        <div class="page-header"><div class={sectionHeaderClass}>
+            <template lwc:if={isNotVideoOrImage}><h1>{report.title}</h1></template>
+        </div></div>
+        <div class={bodyClass}>
+            <template lwc:if={isVideoOrImage}>
+                <h1>{report.title}</h1>
+                <div class="page-video">
+                    <template if:true={isVideo}>
+                        <iframe width="560" height="315" src={report.bannerVideo} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </template>
+                    <template if:true={isImage}>
+                        <c-rspcaqld-image-generator class-name="shape-4"
+                                                    image-url={report.bannerImage}></c-rspcaqld-image-generator>
+                    </template>
+                </div>
+            </template>
+            <p class="large rich-text-description"><lightning-formatted-rich-text value={report.description}></lightning-formatted-rich-text></p>
+            <div class="page-our-impact-single-buttons">
+                <template if:true={isImpactReport}>
+                    <button class="green-btn" onclick={handleImpactDownload}><lightning-icon icon-name="utility:page"></lightning-icon><span>Download impact report</span></button>
+                </template>
+                <template if:true={isFinancialReport}>
+                    <button class="neutral-btn" onclick={handleFinancialDownload}><lightning-icon icon-name="utility:contract_doc"></lightning-icon><span>Download financial report</span></button>
+                </template>
+            </div>
+            <div class="page-impact-actions">
+                <a class="button-link" href="/our-impact"><img class="medium" src={arrowLeftDark}><span>Back</span></a>
+                <c-rspcaqld-share-block facebook-link={facebookShareLink} linkedin-link={linkedinShareLink} twitter-link={twitterShareLink}></c-rspcaqld-share-block>
+            </div>
+            <iframe class="download_iframe" style="display:none;"></iframe>
+        </div>
+    </div>
+</template>

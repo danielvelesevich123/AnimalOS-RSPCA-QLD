@@ -1,0 +1,15 @@
+<aura:component description="OneDriveFileDownload" extends="c:vertic_Modal">
+    <aura:attribute name="payload" type="Map"/>
+
+
+    <lightning:formattedUrl value="{!v.payload.downloadLink}" tooltip="click to download" label="Click to download"  onclick="{!c.handleClose}" target="_blank" />
+
+    <aura:set attribute="footer">
+
+        <lightning:button type="button"
+                          label="Close"
+                          onclick="{!c.handleClose}"
+
+        />
+    </aura:set>
+</aura:component>

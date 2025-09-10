@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Iframe</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Iframe</masterLabel>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="iframeSrc" type="String" label="Iframe URL"/>
+            <property name="iframeWidth" type="String" label="Iframe Width"/>
+            <property name="iframeHeight" type="String" label="Iframe Height"/>
+            <property name="marginTop" type="String" label="Margin Top"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

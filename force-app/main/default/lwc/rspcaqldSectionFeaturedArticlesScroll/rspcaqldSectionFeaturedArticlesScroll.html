@@ -1,0 +1,24 @@
+<template>
+    <div class={mainClass}>
+        <div class="page-home-articles-header">
+            <h2>{header}</h2>
+            <div>
+                <button class="neutral-arrow-btn left" onclick={handleClickLeft}><lightning-icon icon-name="utility:chevronleft" size="medium"></lightning-icon></button>
+                <button class="neutral-arrow-btn right" onclick={handleClickRight}><lightning-icon icon-name="utility:chevronright" size="medium"></lightning-icon></button>
+            </div>
+        </div>
+        <div class="page-home-articles-body">
+            <template for:each={articles.data} for:item="article">
+                <c-rspcaqld-card key={article.key}
+                                 image-url={article.image}
+                                 header={article.title}
+                                 description={article.excerpt}
+                                 link={article.link}></c-rspcaqld-card>
+            </template>
+        </div>
+        <div class="mobile-arrow-buttons">
+            <button class="neutral-arrow-btn left" onclick={handleClickLeft}><lightning-icon icon-name="utility:chevronleft" size="medium"></lightning-icon></button>
+            <button class="neutral-arrow-btn right" onclick={handleClickRight}><lightning-icon icon-name="utility:chevronright" size="medium"></lightning-icon></button>
+        </div>
+    </div>
+</template>

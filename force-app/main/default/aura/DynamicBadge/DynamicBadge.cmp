@@ -1,0 +1,16 @@
+<aura:component description="DynamicBadge" extends="c:vertic_Base">
+
+    <aura:attribute name="isVisible" type="Boolean" default="{!false}"/>
+    <aura:attribute name="badge" type="Map"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+    <aura:handler name="change" value="{!v.badge}" action="{!c.handleInit}"/>
+
+    <aura:if isTrue="{!v.isVisible == true}">
+        <lightning:icon iconName="{!v.badge.Icon__c}"
+                        title="{!v.badge.Title__c}"
+                        alternativeText="{!v.badge.Title__c}"
+        />
+    </aura:if>
+
+</aura:component>

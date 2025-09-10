@@ -1,0 +1,108 @@
+<template>
+    <div class={mainClass} style={headerStyle}>
+        <div class="section-header-elements" style={headerElementsStyle}>
+            <div class="section-header-left-column">
+                <template if:true={isHeader}><h1 style={headerTextStyle}><lightning-formatted-rich-text value={header}></lightning-formatted-rich-text></h1></template>
+                <template if:true={isSubheader}><h4 style={headerTextStyle}><lightning-formatted-rich-text value={subheader}></lightning-formatted-rich-text></h4></template>
+                <template if:true={isDescription}><p style={headerTextStyle} class="large"><lightning-formatted-rich-text value={description}></lightning-formatted-rich-text></p></template>
+
+                <template if:true={isSearchString}>
+                    <div class="search-string">
+                        <lightning-input type="text" placeholder="Search our resources" class="input-inline without-label" label="Search"></lightning-input>
+                        <button class="green-btn">Search</button>
+                    </div>
+                </template>
+
+                <template if:true={isLinks}>
+                    <div class="quick-links">
+                        <template if:true={isQuickLinksLabel}>
+                            <h4>{quickLinksLabel}</h4>
+                        </template>
+                        <div>
+                            <template if:true={isActionLink}>
+                                <button class="green-btn action-link-btn" onclick={handleActionClick}>
+                                    <template if:false={isQuickLinksIconRight}><template lwc:if={alink.isIcon}><c-rspcaqld-c-m-s-image class-name="medium" image-key={alink.icon}></c-rspcaqld-c-m-s-image></template></template>
+                                    <h5>{alink.label}</h5>
+                                    <template if:true={isQuickLinksIconRight}><template lwc:if={alink.isIcon}><c-rspcaqld-c-m-s-image class-name="medium" image-key={alink.icon}></c-rspcaqld-c-m-s-image></template></template>
+                                </button>
+                                <a class={linkClass} onclick={handleActionClick}>
+                                    <template if:false={isQuickLinksIconRight}><template lwc:if={alink.isIcon}><c-rspcaqld-c-m-s-image class-name="medium" image-key={alink.icon}></c-rspcaqld-c-m-s-image></template></template>
+                                    <h5>{alink.label}</h5>
+                                    <template if:true={isQuickLinksIconRight}><template lwc:if={alink.isIcon}><c-rspcaqld-c-m-s-image class-name="medium" image-key={alink.icon}></c-rspcaqld-c-m-s-image></template></template>
+                                </a>
+                            </template>
+                            <template if:true={isQuickLinks}>
+                                <button class={mobileQlinkBtn} data-value={firstLink.url} onclick={handleButtonClick}>
+                                    <template if:false={isQuickLinksIconRight}><template lwc:if={firstLink.isIcon}><c-rspcaqld-c-m-s-image class-name="medium" image-key={firstLink.icon}></c-rspcaqld-c-m-s-image></template></template>
+                                    <h5>{firstLink.label}</h5>
+                                    <template if:true={isQuickLinksIconRight}><template lwc:if={firstLink.isIcon}><c-rspcaqld-c-m-s-image class-name="medium" image-key={firstLink.icon}></c-rspcaqld-c-m-s-image></template></template>
+                                </button>
+                                <button class={mobileQlinkPopupBtn} onclick={handlePopupOpen}><lightning-icon icon-name="utility:chevrondown" size="medium"></lightning-icon></button>
+
+                                <template for:each={qlinks} for:item="link">
+                                    <a class={linkClass} href={link.url} key={link.label}>
+                                        <template if:false={isQuickLinksIconRight}><template lwc:if={link.isIcon}><c-rspcaqld-c-m-s-image class-name="medium" image-key={link.icon}></c-rspcaqld-c-m-s-image></template></template>
+                                        <h5>{link.label}</h5>
+                                        <template if:true={isQuickLinksIconRight}><template lwc:if={link.isIcon}><c-rspcaqld-c-m-s-image class-name="medium" image-key={link.icon}></c-rspcaqld-c-m-s-image></template></template>
+                                    </a>
+                                </template>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
+            <div class={headerRightColumnClass}>
+                <template if:false={isHidePawPrint}>
+                    <img class={pawPrintClass} src={pawPrint}>
+                </template>
+                <template if:true={isImage}>
+                    <img style={imageStyle} class={imageClass} src={image}>
+                </template>
+                <div class="mobile-gradient"></div>
+            </div>
+        </div>
+        <template if:true={isLMCards}>
+            <div class="page-cards medium-width">
+                <template for:each={lmCards} for:item="card">
+                    <c-rspcaqld-cards-service icon-name={card.icon} key={card.key}
+                                              header={card.header}
+                                              description={card.description}
+                                              link-label={card.linkLabel}
+                                              link-url={card.linkUrl}></c-rspcaqld-cards-service>
+                </template>
+            </div>
+        </template>
+        <template if:true={isInfoCards}>
+            <div class="page-cards medium-width">
+                <template for:each={iCards} for:item="card">
+                    <c-rspcaqld-cards-feature key={card.key}
+                                              icon-name={card.icon}
+                                              header={card.header}
+                                              description={card.description}></c-rspcaqld-cards-feature>
+                </template>
+            </div>
+        </template>
+    </div>
+    <div class={linksPopupClass}>
+        <div class="pop-up">
+            <div class="pop-up-body-block">
+                <div class="support-header">
+                    <h2>{quickLinksLabel}</h2>
+                    <a class="close-link" onclick={handlePopupClose}>
+                        <img class="medium" src={closeDark}>
+                    </a>
+                </div>
+                <div class="support-body">
+                    <template for:each={qlinks} for:item="link">
+                        <button class="green-btn" key={link.label} data-value={link.url} onclick={handleButtonClick}>
+                            <template if:false={isQuickLinksIconRight}><c-rspcaqld-c-m-s-image image-key={link.icon}></c-rspcaqld-c-m-s-image></template>
+                            <span>{link.label}</span>
+                            <template if:true={isQuickLinksIconRight}><c-rspcaqld-c-m-s-image image-key={link.icon}></c-rspcaqld-c-m-s-image></template>
+                        </button>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class={backdropClass}></div>
+</template>

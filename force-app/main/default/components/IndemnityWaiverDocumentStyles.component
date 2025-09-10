@@ -1,0 +1,63 @@
+<apex:component id="IndemnityWaiverDocumentQAStyles" layout="none">
+
+    <apex:variable value="{! 'IndemnityWaiverDocumentQAStyles' }" var="cmpName"/>
+    <apex:variable value="{! cmpName + 'Template' }" var="defaultTemplateName"/>
+    <apex:variable value="{! 'c-' + cmpName }" var="defaultClassName"/>
+
+    <style>
+
+        .{!defaultClassName} {
+
+        }
+
+        @page {
+            margin: 0.5cm;
+        }
+
+        html * {
+            font-size: 1em !important;
+            font-family: sans-serif !important;
+        }
+
+        img {
+            height: 60px;
+        }
+
+        .header {
+            text-align: center;
+            margin-top: 16px;
+        }
+
+        .text-margin {
+            margin-top: 12px;
+        }
+
+        table {
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 15px;
+        }
+
+        table, th, td {
+            border: 1px solid #9ea9b5;
+            border-collapse: collapse;
+        }
+
+        .page {
+            margin-top: 25px;
+        }
+
+        .section-header {
+            background-color: #f2f2f2;
+        }
+
+        p {
+            margin: 2px 0;
+            padding-left: 10px;
+            word-break: break-all;
+        }
+
+    </style>
+
+</apex:component>

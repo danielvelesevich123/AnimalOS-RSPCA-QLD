@@ -1,0 +1,77 @@
+<aura:component description="OneDriveUtils" extends="c:vertic_Base" >
+
+    <aura:attribute name="nameCredentials" type="String" access="global" />
+    <aura:attribute name="siteName" type="String" required="true" access="global" default="AnimalOSSharePointIntegration"/>
+
+    <aura:attribute name="driveIdToSObjectName" type="Map" access="public"/>
+
+    <aura:registerEvent name="onLoad" type="c:vertic_ComponentEvent" />
+    <aura:registerEvent name="onProgress" type="c:vertic_ComponentEvent" />
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+
+    <aura:method name="upload" access="global" action="{!c.handleUpload}">
+        <aura:attribute name="files" type="Object[]" required="{!true}"/>
+        <aura:attribute name="sObjectName" type="String" required="{!true}"/>
+        <aura:attribute name="folderName" type="String" required="{!true}"/>
+        <aura:attribute name="options" type="Map" default="{}"/>
+    </aura:method>
+
+    <aura:method name="uploadFile" access="global" action="{!c.handleUploadFile}">
+        <aura:attribute name="files" type="Object" required="{!true}"/>
+        <aura:attribute name="sObjectName" type="String" required="{!true}"/>
+        <aura:attribute name="folderName" type="String" required="{!true}"/>
+        <aura:attribute name="options" type="Map" default="{}"/>
+    </aura:method>
+
+    <aura:method name="driveItems" access="public" action="{!c.handleDriveItems}">
+        <aura:attribute name="sObjectName" type="String" required="{!true}"/>
+        <aura:attribute name="folderName" type="String" required="{!true}"/>
+        <aura:attribute name="options" type="Map" default="{}"/>
+    </aura:method>
+
+    <aura:method name="renameItem" access="global" action="{!c.handleRename}">
+        <aura:attribute name="itemId" type="String" required="{!true}"/>
+        <aura:attribute name="name" type="String" required="{!true}"/>
+        <aura:attribute name="options" type="Map" default="{}"/>
+
+    </aura:method>
+
+    <aura:method name="deleteItem" access="global" action="{!c.handleDelete}">
+        <aura:attribute name="sObjectName" type="String" required="{!true}"/>
+        <aura:attribute name="folderName" type="String" required="{!true}"/>
+        <aura:attribute name="itemId" type="String" required="{!true}"/>
+        <aura:attribute name="name" type="String" required="{!true}"/>
+        <aura:attribute name="options" type="Map" default="{}"/>
+
+    </aura:method>
+
+    <aura:method name="archiveItem" access="global" action="{!c.handleArchive}">
+        <aura:attribute name="sObjectName" type="String" required="{!true}"/>
+        <aura:attribute name="folderName" type="String" required="{!true}"/>
+        <aura:attribute name="itemId" type="String" required="{!true}"/>
+        <aura:attribute name="name" type="String" required="{!true}"/>
+        <aura:attribute name="options" type="Map" default="{}"/>
+
+    </aura:method>
+
+    <aura:method name="unArchiveItem" access="global" action="{!c.handleUnArchive}">
+        <aura:attribute name="sObjectName" type="String" required="{!true}"/>
+        <aura:attribute name="folderName" type="String" required="{!true}"/>
+        <aura:attribute name="itemId" type="String" required="{!true}"/>
+        <aura:attribute name="name" type="String" required="{!true}"/>
+        <aura:attribute name="options" type="Map" default="{}"/>
+
+    </aura:method>
+
+    <aura:method name="getLink" access="global" action="{!c.handleGetLink}">
+        <aura:attribute name="sObjectName" type="String" required="{!true}"/>
+        <aura:attribute name="folderName" type="String" required="{!true}"/>
+        <aura:attribute name="itemId" type="String" required="{!true}"/>
+        <aura:attribute name="options" type="Map" default="{}"/>
+
+    </aura:method>
+
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+
+</aura:component>

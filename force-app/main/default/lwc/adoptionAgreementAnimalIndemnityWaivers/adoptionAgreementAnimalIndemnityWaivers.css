@@ -1,0 +1,7 @@
+:host {
+    --lwc-spacingXLarge: 1rem;
+}
+
+.scroll-rich-text {
+    overflow-x: scroll;
+}

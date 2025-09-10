@@ -1,0 +1,12 @@
+<!-- Job Contact Interaction Cautions -->
+<template>
+    <c-stencil lwc:if={isBusy} count="5" height="10"></c-stencil>
+    <template lwc:elseif={hasInteractionCautions} for:each={interactionCautions} for:item="interactionCaution" for:index="index">
+        <c-job-contact-interaction-caution index={index} key={interactionCaution.Id} interaction-caution={interactionCaution} view={view}></c-job-contact-interaction-caution>
+    </template>
+    <template lwc:else>
+        <div>
+            {noRecordsMessage}
+        </div>
+    </template>
+</template>

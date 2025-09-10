@@ -1,0 +1,36 @@
+<!-- Vertic Photo -->
+<template>
+    <c-vertic-base record-id={recordId}>
+        <div class="slds-grid slds-wrap slds-text-align_center slds-is-relative" if:true={meta}>
+            <c-vertic-spinner is-busy={isBusy}></c-vertic-spinner>
+            <div class="slds-col slds-size_1-of-1">
+                <template if:true={meta.dto.photoUrl}>
+                    <lightning-avatar if:false={recordPage} class="profile-photo" size="large" src={meta.dto.photoUrl} initials={meta.dto.initials} fallback-icon-name="standard:user"
+                                      alternative-text={meta.dto.name}></lightning-avatar>
+                    <img if:true={recordPage} src={meta.dto.photoUrl} class="record-page-image" alt={meta.dto.name}/>
+                </template>
+                <template if:false={meta.dto.photoUrl}>
+                    <lightning-avatar if:false={recordPage} class="profile-photo" size="large" src={meta.dto.photoUrl_old} initials={meta.dto.initials} fallback-icon-name="standard:user"
+                                      alternative-text={meta.dto.name}></lightning-avatar>
+                    <img if:true={recordPage} src="https://s3-us-west-1.amazonaws.com/sfdc-demo/image-placeholder.png" class="record-page-image" alt={meta.dto.name}/>
+                </template>
+                <span if:true={showHelpText} class="upload-photo-help-text">To upload a photo, click the camera icon below</span>
+            </div>
+            <div class="slds-col slds-size_1-of-1">
+                <lightning-helptext class={buttonClass} onclick={handlePhotoClick} icon-name="utility:photo" title="Upload Photo"></lightning-helptext>
+                <input type="file"
+                       data-id="fileInput"
+                       style="display: none;"
+                       name="imageUpload"
+                       accept=".jpg, .jpeg, .png, .gif"
+                       onchange={handleCurrentFileChange}
+                />
+                <lightning-helptext icon-name="utility:delete"
+                                    title="Remove Profile Image"
+                                    onclick={handleRemoveProfileImageClick}
+                                    if:true={meta.dto.oneDriveFileId}
+                ></lightning-helptext>
+            </div>
+        </div>
+    </c-vertic-base>
+</template>

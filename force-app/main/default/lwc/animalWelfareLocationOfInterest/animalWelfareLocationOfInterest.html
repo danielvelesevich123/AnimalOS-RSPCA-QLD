@@ -1,0 +1,157 @@
+<!-- Animal Welfare Location Of Interest -->
+<template>
+    <div class="slds-card slds-card_boundary slds-m-top_medium">
+        <lightning-card icon-name="standard:address">
+            <div slot="title">
+                <lightning-formatted-url value={locationOfInterestUrl} label="Location of Interest" target="_blank" lwc:if={locationOfInterest.Id}></lightning-formatted-url>
+                <lightning-formatted-text value="Location of Interest" lwc:else></lightning-formatted-text>
+                <span class="slds-m-left_small searching-text" lwc:if={showSearchMessage}>
+                <lightning-icon size="xx-small" icon-name="utility:search" class=slds-m-right_x-small></lightning-icon>
+                {searchMessage}
+            </span>
+            </div>
+            <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small" data-id="form">
+                <div class="slds-col slds-size_1-of-2">
+                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
+                    <lightning-input data-path="Name"
+                                     lwc:else
+                                     value={locationOfInterest.Name}
+                                     label="Location of Interest Name"
+                                     disabled={isSearch}
+                                     onchange={handleLOINameChange}
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-4">
+                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
+                    <lightning-input data-path="animalos__Address__Latitude__s"
+                                     lwc:else
+                                     value={locationOfInterest.animalos__Address__Latitude__s}
+                                     label="Latitude"
+                                     type="text"
+                                     min="-90"
+                                     max="90"
+                                     pattern="^-?([1-8]?[0-9](\.\d+)?|90(\.0+)?)$"
+                                     message-when-pattern-mismatch="Latitude should be a decimal number in a range [-90, 90]"
+                                     disabled={isSearch}
+                                     onchange={handleCoordinatesChange}
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-4">
+                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
+                    <lightning-input data-path="animalos__Address__Longitude__s"
+                                     lwc:else
+                                     value={locationOfInterest.animalos__Address__Longitude__s}
+                                     label="Longitude"
+                                     type="text"
+                                     pattern="^-?((1[0-7][0-9]|[1-9]?[0-9])(\.\d+)?|180(\.0+)?)$"
+                                     message-when-pattern-mismatch="Longitude should be a decimal number in a range [-180, 180]"
+                                     disabled={isSearch}
+                                     onchange={handleCoordinatesChange}
+                    ></lightning-input>
+                </div>
+                <div class="slds-col slds-size_1-of-1">
+                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
+                    <lightning-input-address lwc:else
+                                             show-address-lookup
+                                             address-lookup-label="Address"
+                                             street-label="Street"
+                                             city-label="City"
+                                             country-label="Country"
+                                             disabled={isSearch}
+                                             province-label="Province"
+                                             postal-code-label="Postal Code"
+                                             city={locationOfInterest.animalos__Address__City__s}
+                                             country={locationOfInterest.animalos__Address__CountryCode__s}
+                                             postal-code={locationOfInterest.animalos__Address__PostalCode__s}
+                                             province={locationOfInterest.animalos__Address__StateCode__s}
+                                             street={locationOfInterest.animalos__Address__Street__s}
+                                             onchange={handleLOIAddressChange}
+                    ></lightning-input-address>
+                </div>
+                <div class="slds-col slds-size_1-of-1">
+                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
+                    <div class="slds-card slds-card_boundary slds-m-top_medium">
+                        <lightning-card icon-name="utility:shield" title="Location Safety">
+                            <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
+                                <div class="slds-col slds-size_1-of-3">
+                                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
+                                    <lightning-input data-path="POI_Time_at_Location__c"
+                                                     lwc:else
+                                                     value={locationOfInterest.POI_Time_at_Location__c}
+                                                     label="How long as the POI been living at the address?"
+                                                     disabled={isSearch}
+                                                     onchange={handleLOIFieldChange}
+                                    ></lightning-input>
+                                </div>
+                                <div class="slds-col slds-size_1-of-3">
+                                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
+                                    <lightning-input data-path="Number_of_Residents__c"
+                                                     lwc:else
+                                                     step="1"
+                                                     min="0"
+                                                     value={locationOfInterest.Number_of_Residents__c}
+                                                     label="Number of Residents"
+                                                     type="number"
+                                                     disabled={isSearch}
+                                                     onchange={handleLOIFieldChange}
+                                    ></lightning-input>
+                                </div>
+                                <div class="slds-col slds-size_1-of-3">
+                                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
+                                    <c-vertic-select data-path="Children_at_Location__c"
+                                                     disabled={isSearch}
+                                                     lwc:else
+                                                     placeholder="Select an Option..."
+                                                     label="Are there any children at the address?"
+                                                     onchange={handleLOIFieldChange}
+                                                     options={yesNoOptions}
+                                                     value={locationOfInterest.Children_at_Location__c}
+                                    ></c-vertic-select>
+                                </div>
+                                <div class="slds-col slds-size_1-of-1">
+                                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
+                                    <lightning-textarea data-path="Children_Details__c"
+                                                        lwc:else
+                                                        value={locationOfInterest.Children_Details__c}
+                                                        label="Children Details"
+                                                        disabled={isSearch}
+                                                        onchange={handleLOIFieldChange}
+                                    ></lightning-textarea>
+                                </div>
+                                <div class="slds-col slds-size_1-of-1">
+                                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
+                                    <lightning-textarea data-path="Location_Safety_Concerns__c"
+                                                        lwc:else
+                                                        value={locationOfInterest.Location_Safety_Concerns__c}
+                                                        label="Is there any reason Inspectors should be concerned for their safety at the property?"
+                                                        disabled={isSearch}
+                                                        onchange={handleLOIFieldChange}
+                                    ></lightning-textarea>
+                                </div>
+                            </div>
+                        </lightning-card>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-m-top_medium" lwc:if={showHistory}>
+                    <c-job-contacts record-id={locationOfInterest.Id}
+                                    view="animalWelfareLocation"
+                                    card-title="Location Of Interest History"
+                                    hide-add-violence-button
+                                    lwc:ref="locationHistory"
+                                    manage-selected-label="Add Selected Contacts to Job"
+                                    onmanageselected={handleManageSelected}>
+                    </c-job-contacts>
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-m-top_medium" lwc:if={showLocationsNearby}>
+                    <c-locations-nearby record-id={locationOfInterest.Id}
+                                        view="animalWelfareLocationsNearby"
+                                        lwc:ref="locationsNearby"
+                                        job={jobVar}
+                                        card-title="Jobs Nearby"
+                                        distance="0.05"
+                    ></c-locations-nearby>
+                </div>
+            </div>
+        </lightning-card>
+    </div>
+</template>

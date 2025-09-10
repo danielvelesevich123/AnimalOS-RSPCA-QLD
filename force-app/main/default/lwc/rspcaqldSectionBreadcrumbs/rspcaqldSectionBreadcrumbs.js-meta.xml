@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Section Breadcrumbs</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Section Breadcrumbs</masterLabel>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="currentPage" type="String" label="Current Page"/>
+            <property name="parentsString" type="String" label="Parent Pages"/>
+            <property name="isBlack" type="Boolean" label="Black Breadcrumbs"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

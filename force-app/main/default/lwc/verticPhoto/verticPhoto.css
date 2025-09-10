@@ -1,0 +1,33 @@
+.profile-photo {
+    border-radius: 3.5rem;
+    width: 9rem;
+    height: 9rem;
+    border: 2px solid lightgrey;
+}
+
+.upload-photo-help-text {
+    font-size: 0.5rem;
+    max-width: 4rem;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.upload-photo-button {
+    margin-left: -3.7rem;
+}
+
+.record-page-image {
+    width: max-content;
+    height: max-content;
+}
+
+.round-image {
+    max-width: 15rem;
+    max-height: 15rem;
+    border-radius: 7.5rem;
+    vertical-align: middle;
+    height: auto;
+    width: auto;
+    border: spacingNone;
+}

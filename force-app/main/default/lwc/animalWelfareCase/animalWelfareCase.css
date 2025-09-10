@@ -1,0 +1,23 @@
+:host {
+    --lwc-varSpacingVerticalSmall: 1rem;
+    --lwc-tableColorBackgroundHeader: #f3f3f3;
+    --slds-g-color-neutral-base-95:#f3f3f3;
+    --slds-c-button-text-color: #0093D0;
+    --slds-c-button-text-color-hover: #0093D0;
+    --lwc-brandPrimary: #0093D0;
+    --slds-c-button-text-color-active: #0093D0;
+    --slds-c-button-color-border-active: #0093D0;
+    --slds-c-checkbox-mark-color-foreground: #0093D0;
+}
+
+.main-content {
+    font-family: "Roboto", sans-serif;
+    font-weight: normal;
+}
+
+.inform-collection {
+    text-transform: uppercase;
+    color: #0093D0;
+    font-weight: bold;
+    font-size: 18px;
+}

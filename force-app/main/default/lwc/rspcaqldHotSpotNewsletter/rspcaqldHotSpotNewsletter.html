@@ -1,0 +1,18 @@
+<template>
+    <div class="hot-spot-newsletter">
+        <div class="hot-spot-nl-header">
+            <h4>Sign up for our e-newsletter to get event updates.</h4>
+        </div>
+        <div class="hot-spot-nl-input">
+            <p class="normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <lightning-input type="text"
+                             placeholder="Your email address"
+                             class="input-inline"
+                             onchange={handleEmailChange}
+                             value={value}></lightning-input>
+        </div>
+        <div class="hot-spot-ed-button">
+            <button class="green-btn" onclick={handleClick}>Subscribe</button>
+        </div>
+    </div>
+</template>

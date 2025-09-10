@@ -1,0 +1,59 @@
+<aura:component description="InsightRaffleDonationImportModal" extends="c:vertic_Modal">
+
+    <!-- Attribute Overrides -->
+    <!-- <aura:set attribute="processor" value="vertic_GetPageReferenceContentProc"/> -->
+    <!-- <aura:set attribute="hideContentOnBusy" value="{!false}"/> -->
+
+
+    <!-- Attributes -->
+    <!-- <aura:attribute name="params" type="Map" access="global" required="{!true}"/> -->
+
+    <!-- Events -->
+    <!-- <aura:registerEvent name="onSuccess" type="c:vertic_ComponentEvent"/>-->
+
+    <!-- Handlers -->
+    <!-- <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/> -->
+
+    <!-- Methods -->
+    <!-- <aura:method name="refresh" action="{!c.handleInit}"></aura:method> -->
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+
+    <div aura:id="form" class="slds-form" >
+
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-p-top_small slds-size_1-of-1">
+                <span>Please provide the Raffle Campaign Name for the donations to be attributed to.</span>
+            </div>
+            <div class="slds-col slds-p-top_small slds-size_1-of-1">
+                <lightning:input name="ticketPurchaseCampaignName"
+                                 label="Insight Raffle Campaign Name"
+                                 required="true"
+                                 value="{! v.meta.dto.insightRaffleCampaignName }"/>
+            </div>
+<!--            <div class="slds-col slds-p-top_small slds-size_1-of-2">-->
+<!--                <lightning:input label="Start Date"-->
+<!--                                 type="date"-->
+<!--                                 class="slds-size_3-of-6"-->
+<!--                                 required="{!true}"-->
+<!--                                 value="{! v.meta.dto.startDate }"-->
+<!--                />-->
+<!--            </div>-->
+
+<!--            <div class="slds-col slds-p-top_small slds-size_1-of-2">-->
+<!--                <lightning:input label="End Date"-->
+<!--                                 type="date"-->
+<!--                                 class="slds-size_3-of-6"-->
+<!--                                 required="{!true}"-->
+<!--                                 value="{! v.meta.dto.endDate }"-->
+<!--                />-->
+<!--            </div>-->
+        </div>
+
+    </div>
+
+    <aura:set attribute="footer">
+        <lightning:button label="Cancel" type="button" onclick="{!c.handleCancelClick}"/>
+        <lightning:button label="Submit" variant="brand" onclick="{!c.handleSaveClick}"/>
+    </aura:set>
+
+</aura:component>

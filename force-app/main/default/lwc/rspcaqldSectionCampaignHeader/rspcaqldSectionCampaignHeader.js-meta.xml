@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <description>Section Campaign Header</description>
+    <isExposed>true</isExposed>
+    <masterLabel>Section Campaign Header</masterLabel>
+    <targets>
+        <target>lightningCommunity__Default</target>
+        <target>lightningCommunity__Page</target>
+    </targets>
+
+    <targetConfigs>
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="recordId" type="String" label="Campaign Id"/>
+            <property name="logoKey" type="String" label="Logo Key"/>
+            <property name="imageUrl" type="String" label="Image URL"/>
+            <property name="imageKey" type="String" label="Image Content Key"/>
+            <property datasource=", Official RSPCA Left, Official RSPCA Right" name="pawPrintLabel" type="String" label="Background Paw Print"/>
+            <property name="header" type="String" label="Header" required="true"/>
+            <property name="headerHeight" type="Integer" label="Custom Header Height"/>
+            <property name="imageHeight" type="Integer" label="Custom Image Height"/>
+            <property name="description" type="String" label="Description"/>
+            <property name="buttonLink" type="String" label="Button Link"/>
+            <property name="buttonClass" type="String" label="Button Class"/>
+            <property name="buttonColor" type="String" label="Button Color"/>
+            <property name="buttonLabel" type="String" label="Button Label"/>
+            <property name="buttonLabelColor" type="String" label="Button Label Color"/>
+            <property name="buttonIcon" type="String" label="Button Icon"/>
+            <property datasource="Yes, No" name="displayProgressBar" type="String" label="Display Campaign Progress Bar"/>
+            <property name="campaignGoalHeader" type="String" label="Campaign Goal Header"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
