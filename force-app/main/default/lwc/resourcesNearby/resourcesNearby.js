@@ -1,13 +1,13 @@
 import {api, track, LightningElement} from 'lwc';
 import {execute, showToast} from 'c/verticUtils';
 
-export default class AnimalsNearby extends LightningElement {
+export default class ResourcesNearby extends LightningElement {
     @api recordId;
-    @api cardTitle = 'Animals Nearby';
+    @api cardTitle = 'Rescue Resources Nearby';
     @api distance = '0.05';
-    @api animalStatusFilter = '';
-    @track animalReferralsByJobs = [];
-    @track jobStatusOptions = [];
+    @track selectedSkills = '';
+    @track resources = [];
+    @track skillsOptions = [];
 
     isBusy = false;
     distanceOptions = [
@@ -29,14 +29,14 @@ export default class AnimalsNearby extends LightningElement {
     @api
     refresh() {
         this.isBusy = true;
-        return execute('AnimalsNearbyMetaProc', {
+        return execute('ResourcesNearbyMetaProc', {
             recordId: this.recordId,
             distance: this.distance,
-            animalStatusFilter: this.animalStatusFilter
+            selectedSkills: this.selectedSkills
         })
             .then(response => {
-                this.animalReferralsByJobs = response.dto.animalReferralsByJobs || [];
-                this.jobStatusOptions = response.selectOptions.jobStatusOptions || [];
+                this.resources = response.dto.resources || [];
+                this.skillsOptions = response.selectOptions.skillsOptions || [];
             })
             .catch(ex => {
                 showToast(this, 'Error', Array.isArray(ex) ? ex[0].message : ex.message || ex.body.message, 'error');
@@ -50,12 +50,16 @@ export default class AnimalsNearby extends LightningElement {
         return this.isBusy === false;
     }
 
-    get showAnimalReferralsByJobsTable() {
-        return this.animalReferralsByJobs && this.animalReferralsByJobs.length > 0;
+    get showResourcesTable() {
+        return this.resources && this.resources.length > 0;
     }
 
     get uniqueKey() {
         return `${Date.now()}-${Math.random().toString(36).substring(2, 9)}`;
+    }
+
+    get distanceLabel() {
+        return this.distanceOptions.find(option => option.value === this.distance)?.label || '';
     }
 
     handleDistanceChange(event) {
@@ -63,8 +67,8 @@ export default class AnimalsNearby extends LightningElement {
         this.refresh();
     }
 
-    handleStatusChange(event) {
-        this.jobStatusFilter = event.target.value;
+    handleSkillsChange(event) {
+        this.selectedSkills = event.target.value;
         this.refresh();
     }
 

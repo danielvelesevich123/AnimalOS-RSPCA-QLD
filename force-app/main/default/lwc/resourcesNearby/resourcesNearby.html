@@ -1,0 +1,70 @@
+<template>
+    <div class="slds-card slds-card_boundary">
+        <lightning-card icon-name="utility:animal_and_nature" title={cardTitle}>
+            <lightning-button-group slot="actions">
+                <lightning-button disabled={isBusy} icon-name="action:refresh" label="Refresh" onclick={handleRefreshClick}></lightning-button>
+            </lightning-button-group>
+            <div class="slds-m-horizontal_medium">
+                <c-vertic-select label="Distance"
+                                 placeholder="Select an Option..."
+                                 onchange={handleDistanceChange}
+                                 options={distanceOptions}
+                                 value={distance}
+                                 disabled={isBusy}
+                ></c-vertic-select>
+                <c-stencil count="1" height="10" lwc:if={isBusy}></c-stencil>
+                <c-vertic-multi-select disabled={isBusy}
+                                       lwc:else
+                                       label="Select Skills"
+                                       onchange={handleSkillsChange}
+                                       options={skillsOptions}
+                                       placeholder="Select Skills..."
+                                       value={selectedSkills}
+                ></c-vertic-multi-select>
+                <template lwc:if={showContent}>
+                    <template for:each={resources} for:index="index" for:item="resource" lwc:if={showResourcesTable}>
+                        <div class="slds-card slds-card_boundary slds-m-top_small" key={uniqueKey}>
+                            <lightning-card icon-name="standard:call_history" title={cardTitle}>
+                                <div class="slds-m-horizontal_medium">
+                                    <div class="slds-grid slds-text-align_left slds-color__background_gray-3 slds-m-bottom_x-small slds-m-top_small">
+                                        <div class="slds-col slds-size_2-of-12 slds-truncate">
+                                            <span class="slds-form-element__label">Name</span>
+                                        </div>
+                                        <div class="slds-col slds-size_2-of-12 slds-truncate">
+                                            <span class="slds-form-element__label">Company</span>
+                                        </div>
+                                        <div class="slds-col slds-size_2-of-12 slds-truncate">
+                                            <span class="slds-form-element__label">Mobile</span>
+                                        </div>
+                                        <div class="slds-col slds-size_2-of-12 slds-truncate">
+                                            <span class="slds-form-element__label">Phone</span>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-12 slds-truncate">
+                                            <span class="slds-form-element__label">Distance</span>
+                                        </div>
+                                        <div class="slds-col slds-size_3-of-12 slds-truncate">
+                                            <span class="slds-form-element__label">Skills</span>
+                                        </div>
+                                    </div>
+                                    <c-resources-nearby-resource resource={resource}
+                                                                 index={index}
+                                    ></c-resources-nearby-resource>
+                                </div>
+                            </lightning-card>
+                        </div>
+                    </template>
+                    <template lwc:else>
+                        <c-scoped-notification-lwc icon-name="utility:warning">
+                            There are no resources within {distanceLabel} and with selected skills.
+                        </c-scoped-notification-lwc>
+                    </template>
+                </template>
+                <div lwc:else>
+                    <c-stencil count="4" height="10"></c-stencil>
+                </div>
+            </div>
+        </lightning-card>
+    </div>
+</template>
+
+
