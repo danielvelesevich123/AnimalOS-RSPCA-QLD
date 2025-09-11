@@ -1,0 +1,39 @@
+<template>
+    <div class="slds-card slds-card_boundary slds-m-top_small">
+        <lightning-card icon-name="standard:call_history" title={cardTitle}>
+            <div class="slds-m-horizontal_medium">
+                <div class="slds-grid slds-text-align_left slds-color__background_gray-3 slds-m-bottom_x-small slds-m-top_small">
+                    <div class="slds-col slds-size_1-of-12 slds-truncate">
+                        <span class="slds-form-element__label">Animal ID</span>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12 slds-truncate">
+                        <span class="slds-form-element__label">Animal Type</span>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12 slds-truncate">
+                        <span class="slds-form-element__label">Job Number</span>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12 slds-truncate">
+                        <span class="slds-form-element__label">Created Date</span>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12 slds-truncate">
+                        <span class="slds-form-element__label">Status</span>
+                    </div>
+                    <div class="slds-col slds-size_2-of-12 slds-truncate">
+                        <span class="slds-form-element__label">Owner</span>
+                    </div>
+                    <div class="slds-col slds-size_1-of-12 slds-truncate">
+                        <span class="slds-form-element__label">Advisory</span>
+                    </div>
+                </div>
+                <template for:each={animalReferrals} for:index="index" for:item="animalReferral">
+                    <c-animals-nearby-animal-referral key={animalReferral.Id}
+                                                      animal-referral={animalReferral}
+                                                      index={index}
+                    ></c-animals-nearby-animal-referral>
+                </template>
+            </div>
+        </lightning-card>
+    </div>
+</template>
+
+

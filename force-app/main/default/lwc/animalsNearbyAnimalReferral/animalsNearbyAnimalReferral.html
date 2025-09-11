@@ -1,0 +1,27 @@
+<template>
+    <div class="slds-grid slds-text-align_left slds-m-top_xx-small">
+        <div class="slds-col slds-size_1-of-12 slds-truncate">
+            <lightning-formatted-url value={animalUrl} label={animalName} target="_blank"></lightning-formatted-url>
+        </div>
+        <div class="slds-col slds-size_2-of-12 slds-truncate">
+            <lightning-formatted-url value={animalType} label={animalType} target="_blank"></lightning-formatted-url>
+        </div>
+        <div class="slds-col slds-size_2-of-12 slds-truncate">
+            <lightning-formatted-url value={jobUrl} label={jobName} target="_blank"></lightning-formatted-url>
+        </div>
+        <div class="slds-col slds-size_2-of-12 slds-truncate">
+            <lightning-formatted-date-time value={jobCreatedDate}></lightning-formatted-date-time>
+        </div>
+        <div class="slds-col slds-size_2-of-12 slds-truncate">
+            <lightning-formatted-text value={jobStatus}></lightning-formatted-text>
+        </div>
+        <div class="slds-col slds-size_2-of-12 slds-truncate">
+            <lightning-formatted-url value={jobOwnerUrl} label={jobOwnerName} target="_blank"></lightning-formatted-url>
+        </div>
+        <div class="slds-col slds-size_1-of-12 slds-truncate flag-icon">
+            <lightning-formatted-rich-text value={jobAdvisory}></lightning-formatted-rich-text>&nbsp;
+        </div>
+    </div>
+</template>
+
+

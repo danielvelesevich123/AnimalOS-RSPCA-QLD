@@ -1,0 +1,37 @@
+<template>
+    <div class="slds-card slds-card_boundary">
+        <lightning-card icon-name="utility:animal_and_nature" title={cardTitle}>
+            <lightning-button-group slot="actions">
+                <lightning-button disabled={isBusy} icon-name="action:refresh" label="Refresh" onclick={handleRefreshClick}></lightning-button>
+            </lightning-button-group>
+            <div class="slds-m-horizontal_medium">
+                <c-vertic-select label="Distance"
+                                 placeholder="Select an Option..."
+                                 onchange={handleDistanceChange}
+                                 options={distanceOptions}
+                                 value={distance}
+                                 disabled={isBusy}
+                ></c-vertic-select>
+
+                <template lwc:if={showContent}>
+                    <template for:each={animalReferralsByJobs} for:index="index" for:item="animalReferrals" lwc:if={showAnimalReferralsByJobsTable}>
+                        <c-animals-nearby-job key={uniqueKey}
+                                             animal-referrals={animalReferrals}
+                                             index={index}
+                        ></c-animals-nearby-job>
+                    </template>
+                    <template lwc:else>
+                        <c-scoped-notification-lwc icon-name="utility:warning">
+                            There are no nearby jobs with existing animal referrals.
+                        </c-scoped-notification-lwc>
+                    </template>
+                </template>
+                <div lwc:else>
+                    <c-stencil count="4" height="10"></c-stencil>
+                </div>
+            </div>
+        </lightning-card>
+    </div>
+</template>
+
+
