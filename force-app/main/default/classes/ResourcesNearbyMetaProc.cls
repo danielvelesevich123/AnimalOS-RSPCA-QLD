@@ -41,9 +41,9 @@ public class ResourcesNearbyMetaProc extends vertic_MetadataProcessor implements
         };
 
         String selectedSkills = this.request.getString('selectedSkills');
+        List<String> selectedSkillsList = new List<String>();
         if (String.isNotBlank(selectedSkills)) {
-            selectedSkills = '\'' + String.join(selectedSkills.split(','), '\',\'') + '\'';
-            conditions.add(('Id IN (SELECT animalos__Resource__c FROM animalos__Resource_Skill__c WHERE animalos__Skill__r.Name IN (' + selectedSkills + '))'));
+            selectedSkillsList = selectedSkills.split(';');
         }
 
         fflib_QueryFactory resourcesSOQL = new fflib_QueryFactory(animalos__Resource__c.SObjectType)
@@ -53,17 +53,46 @@ public class ResourcesNearbyMetaProc extends vertic_MetadataProcessor implements
 
         resourcesSOQL.subselectQuery(animalos__Resource_Skill__c.SObjectType)
                 .selectFields(new Set<String>{
+                        'Name',
                         'animalos__Skill__r.Name'
                 });
 
 
-        System.debug(resourcesSOQL.toSOQL());
-        this.response.addSelectOptions('skillsOptions', vertic_Utils.sObjects.toSelectOptions([SELECT Id, Name FROM animalos__Skill__c], 'Name', 'Name'));
-        this.response.getMapper().mapAnyValue('resources', Database.queryWithBinds(resourcesSOQL.toSOQL(), new Map<String, Object>{
+        List<animalos__Resource__c> resources = Database.queryWithBinds(resourcesSOQL.toSOQL(), new Map<String, Object>{
                 'jobVarAddress' => jobVarAddress,
                 'distance' => distance
-        }, AccessLevel.USER_MODE));
+        }, AccessLevel.USER_MODE);
+
+        List<animalos__Resource__c> resourcesToRender = new List<animalos__Resource__c>();
+
+        for (animalos__Resource__c res : resources) {
+            if (!selectedSkillsList.isEmpty()) {
+                Boolean hasSkills = res.animalos__Resource_Skills__r != null && !res.animalos__Resource_Skills__r.isEmpty();
+
+                if (hasSkills) {
+                    Set<String> existingSkillsNames = new Set<String>();
+
+                    for (animalos__Resource_Skill__c resSkill : res.animalos__Resource_Skills__r) {
+                        existingSkillsNames.add(resSkill.animalos__Skill__r.Name);
+                    }
+
+                    for (String skillName : selectedSkillsList) {
+                        if (!existingSkillsNames.contains(skillName)) {
+                            hasSkills = false;
+                            break;
+                        }
+                    }
+                }
+
+                if (hasSkills) {
+                    resourcesToRender.add(res);
+                }
+            } else {
+                resourcesToRender.add(res);
+            }
+        }
+
+        this.response.addSelectOptions('skillsOptions', vertic_Utils.sObjects.toSelectOptions([SELECT Id, Name FROM animalos__Skill__c], 'Name', 'Name'));
+        this.response.getMapper().mapAnyValue('resources', resourcesToRender);
     }
 }
-
-
