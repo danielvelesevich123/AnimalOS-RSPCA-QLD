@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__AnimalOS_Job_Compact_Layout</fullName>
+    <fields>Name</fields>
+    <fields>OwnerId</fields>
+    <fields>animalos__Advisory__c</fields>
+    <fields>animalos__Priority__c</fields>
+    <fields>animalos__Status__c</fields>
+    <fields>animalos__Full_Address__c</fields>
+    <label>AnimalOS Job Compact Layout</label>
+</CompactLayout>

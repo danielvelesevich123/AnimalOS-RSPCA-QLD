@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Job_Categorisation__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Job Categorisation</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Insufficient Food and Water</fullName>
+                <default>false</default>
+                <label>Insufficient Food and Water</label>
+            </value>
+            <value>
+                <fullName>Insufficient Shelter</fullName>
+                <default>false</default>
+                <label>Insufficient Shelter</label>
+            </value>
+            <value>
+                <fullName>Ill-treatment (direct physical abuse)</fullName>
+                <default>false</default>
+                <label>Ill-treatment (direct physical abuse)</label>
+            </value>
+            <value>
+                <fullName>Tied continuously or locked in a small pen/cage</fullName>
+                <default>false</default>
+                <label>Tied continuously or locked in a small pen/cage</label>
+            </value>
+            <value>
+                <fullName>Breeder or Pet Shop Inspection</fullName>
+                <default>false</default>
+                <label>Breeder or Pet Shop Inspection</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Abandonment</fullName>
+                <default>false</default>
+                <label>Abandonment</label>
+            </value>
+            <value>
+                <fullName>Vet treatment</fullName>
+                <default>false</default>
+                <label>Vet treatment</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Current_Job_Advisory__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IF(
+OR(animalos__Number_of_Observed_Physical_Violence__c &gt; 0, animalos__Number_of_Observed_Verbal_Abuse__c &gt; 0, animalos__Number_of_Observed_Firearms_Weapons__c &gt; 0, animalos__Number_of_Observed_Substance_Abuse__c &gt; 0, animalos__Number_of_Observed_Known_to_Police__c &gt; 0),
+IMAGE(&quot;/resource/animalos__indicatorIcons/red.png&quot;,&quot;RED&quot;, 16, 32),
+IF(
+OR(animalos__Number_of_Reported_Physical_Violence__c &gt; 0, animalos__Number_of_Reported_Verbal_Abuse__c &gt; 0, animalos__Number_of_Reported_Firearms_Weapons__c &gt; 0, animalos__Number_of_Reported_Substance_Abuse__c &gt; 0, animalos__Number_of_Reported_Known_to_Police__c &gt; 0),
+IMAGE(&quot;/resource/animalos__indicatorIcons/yellow.png&quot;,&quot;YELLOW&quot;, 16, 32),
+IMAGE(&quot;/resource/animalos__indicatorIcons/default.png&quot;,&quot;DEFAULT&quot;, 16, 32)
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Current Job Advisory</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

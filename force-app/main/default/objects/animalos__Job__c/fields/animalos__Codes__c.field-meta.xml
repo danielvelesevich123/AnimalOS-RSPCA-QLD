@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Codes__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Codes</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Abandoned</fullName>
+                <default>false</default>
+                <label>Abandoned</label>
+            </value>
+            <value>
+                <fullName>Advertisement of an Animal</fullName>
+                <default>false</default>
+                <label>Advertisement of an Animal</label>
+            </value>
+            <value>
+                <fullName>Animal fighting</fullName>
+                <default>false</default>
+                <label>Animal fighting</label>
+            </value>
+            <value>
+                <fullName>Animal in hot vehicle</fullName>
+                <default>false</default>
+                <label>Animal in hot vehicle</label>
+            </value>
+            <value>
+                <fullName>Animal Owner Requesting Assistance</fullName>
+                <default>false</default>
+                <label>Animal Owner Requesting Assistance</label>
+            </value>
+            <value>
+                <fullName>Animal Stuck in Tree</fullName>
+                <default>false</default>
+                <label>Animal Stuck In Tree</label>
+            </value>
+            <value>
+                <fullName>Animal Trapped</fullName>
+                <default>false</default>
+                <label>Animal Trapped</label>
+            </value>
+            <value>
+                <fullName>Animal Trapped in Water</fullName>
+                <default>false</default>
+                <label>Animal Trapped in Water</label>
+            </value>
+            <value>
+                <fullName>Animal Unattended</fullName>
+                <default>false</default>
+                <label>Animal Unattended</label>
+            </value>
+            <value>
+                <fullName>Anonymous report</fullName>
+                <default>false</default>
+                <label>Anonymous report</label>
+            </value>
+            <value>
+                <fullName>AWIR</fullName>
+                <default>false</default>
+                <label>AWIR</label>
+            </value>
+            <value>
+                <fullName>Baiting</fullName>
+                <default>false</default>
+                <label>Baiting</label>
+            </value>
+            <value>
+                <fullName>Bird in Building</fullName>
+                <default>false</default>
+                <label>Bird in Building</label>
+            </value>
+            <value>
+                <fullName>Breeder</fullName>
+                <default>false</default>
+                <label>Breeder</label>
+            </value>
+            <value>
+                <fullName>Bushfire</fullName>
+                <default>false</default>
+                <label>Bushfire</label>
+            </value>
+            <value>
+                <fullName>C2 Bat</fullName>
+                <default>false</default>
+                <label>C2 Bat</label>
+            </value>
+            <value>
+                <fullName>C3 Bat</fullName>
+                <default>false</default>
+                <label>C3 Bat</label>
+            </value>
+            <value>
+                <fullName>Circus Insp</fullName>
+                <default>false</default>
+                <label>Circus Insp</label>
+            </value>
+            <value>
+                <fullName>Cock Fighting</fullName>
+                <default>false</default>
+                <label>Cock Fighting</label>
+            </value>
+            <value>
+                <fullName>Concern For Welfare</fullName>
+                <default>false</default>
+                <label>Concern For Welfare</label>
+            </value>
+            <value>
+                <fullName>Cruelty</fullName>
+                <default>false</default>
+                <label>Cruelty</label>
+            </value>
+            <value>
+                <fullName>Dead</fullName>
+                <default>false</default>
+                <label>Dead</label>
+            </value>
+            <value>
+                <fullName>Displaced Wildlife</fullName>
+                <default>false</default>
+                <label>Displaced Wildlife</label>
+            </value>
+            <value>
+                <fullName>Dog/Cat Attack</fullName>
+                <default>false</default>
+                <label>Dog/cat Attack</label>
+            </value>
+            <value>
+                <fullName>Dog Fighting</fullName>
+                <default>false</default>
+                <label>Dog Fighting</label>
+            </value>
+            <value>
+                <fullName>Drain Rescue</fullName>
+                <default>false</default>
+                <label>Drain Rescue</label>
+            </value>
+            <value>
+                <fullName>Drought</fullName>
+                <default>false</default>
+                <label>Drought</label>
+            </value>
+            <value>
+                <fullName>Exercise Inadequate</fullName>
+                <default>false</default>
+                <label>Exercise Inadequate</label>
+            </value>
+            <value>
+                <fullName>Feedlot Insp</fullName>
+                <default>false</default>
+                <label>Feedlot Insp</label>
+            </value>
+            <value>
+                <fullName>Fire Event</fullName>
+                <default>false</default>
+                <label>Fire Event</label>
+            </value>
+            <value>
+                <fullName>Fishing Line Entanglement</fullName>
+                <default>false</default>
+                <label>Fishing Line Entanglement</label>
+            </value>
+            <value>
+                <fullName>Flood Event</fullName>
+                <default>false</default>
+                <label>Flood Event</label>
+            </value>
+            <value>
+                <fullName>Food &amp; Water</fullName>
+                <default>false</default>
+                <label>Food &amp; Water</label>
+            </value>
+            <value>
+                <fullName>Greyhound Complaint</fullName>
+                <default>false</default>
+                <label>Greyhound Complaint</label>
+            </value>
+            <value>
+                <fullName>HEA Bequest Assistance Request</fullName>
+                <default>false</default>
+                <label>HEA Bequest Assistance Request</label>
+            </value>
+            <value>
+                <fullName>Heat Distress</fullName>
+                <default>false</default>
+                <label>Heat Distress</label>
+            </value>
+            <value>
+                <fullName>Heat Related</fullName>
+                <default>false</default>
+                <label>Heat Related</label>
+            </value>
+            <value>
+                <fullName>Hit By Car</fullName>
+                <default>false</default>
+                <label>Hit By Car</label>
+            </value>
+            <value>
+                <fullName>Hoarding</fullName>
+                <default>false</default>
+                <label>Hoarding</label>
+            </value>
+            <value>
+                <fullName>Home alone</fullName>
+                <default>false</default>
+                <label>Home alone</label>
+            </value>
+            <value>
+                <fullName>Ill Treatment</fullName>
+                <default>false</default>
+                <label>Ill Treatment</label>
+            </value>
+            <value>
+                <fullName>Inappropriate Breeding</fullName>
+                <default>false</default>
+                <label>Inappropriate Breeding</label>
+            </value>
+            <value>
+                <fullName>Inappropriate transport</fullName>
+                <default>false</default>
+                <label>Inappropriate transport</label>
+            </value>
+            <value>
+                <fullName>Injured</fullName>
+                <default>false</default>
+                <label>Injured</label>
+            </value>
+            <value>
+                <fullName>Inspectorate Assistance Request</fullName>
+                <default>false</default>
+                <label>Inspectorate Assistance Request</label>
+            </value>
+            <value>
+                <fullName>Kennel Inspection</fullName>
+                <default>false</default>
+                <label>Kennel Inspection</label>
+            </value>
+            <value>
+                <fullName>Killed</fullName>
+                <default>false</default>
+                <label>Killed</label>
+            </value>
+            <value>
+                <fullName>Koala Requiring Rescue</fullName>
+                <default>false</default>
+                <label>Koala Requiring Rescue</label>
+            </value>
+            <value>
+                <fullName>Koala Sighting</fullName>
+                <default>false</default>
+                <label>Koala Sighting</label>
+            </value>
+            <value>
+                <fullName>Livestock Rescue</fullName>
+                <default>false</default>
+                <label>Livestock Rescue</label>
+            </value>
+            <value>
+                <fullName>Living Conditions</fullName>
+                <default>false</default>
+                <label>Living Conditions</label>
+            </value>
+            <value>
+                <fullName>Locked In House</fullName>
+                <default>false</default>
+                <label>Locked In House</label>
+            </value>
+            <value>
+                <fullName>Locked In Shed</fullName>
+                <default>false</default>
+                <label>Locked In Shed</label>
+            </value>
+            <value>
+                <fullName>Locked In Shop</fullName>
+                <default>false</default>
+                <label>Locked In Shop</label>
+            </value>
+            <value>
+                <fullName>Locked In Small Pen</fullName>
+                <default>false</default>
+                <label>Locked In Small Pen</label>
+            </value>
+            <value>
+                <fullName>Minor</fullName>
+                <default>false</default>
+                <label>Minor</label>
+            </value>
+            <value>
+                <fullName>No exercise | Confined | Tethered</fullName>
+                <default>false</default>
+                <label>No exercise | Confined | Tethered</label>
+            </value>
+            <value>
+                <fullName>No treatment</fullName>
+                <default>false</default>
+                <label>No treatment</label>
+            </value>
+            <value>
+                <fullName>Oiled Wildlife</fullName>
+                <default>false</default>
+                <label>Oiled Wildlife</label>
+            </value>
+            <value>
+                <fullName>Orphaned Juvenile</fullName>
+                <default>false</default>
+                <label>Orphaned Juvenile</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Other Entanglement</fullName>
+                <default>false</default>
+                <label>Other Entanglement</label>
+            </value>
+            <value>
+                <fullName>Other prohibited &amp; regulated conduct</fullName>
+                <default>false</default>
+                <label>Other prohibited &amp; regulated conduct</label>
+            </value>
+            <value>
+                <fullName>Overcrowded</fullName>
+                <default>false</default>
+                <label>Overcrowded</label>
+            </value>
+            <value>
+                <fullName>Owner Surrender</fullName>
+                <default>false</default>
+                <label>Owner Surrender</label>
+            </value>
+            <value>
+                <fullName>Pet shop</fullName>
+                <default>false</default>
+                <label>Pet shop</label>
+            </value>
+            <value>
+                <fullName>Poisoning</fullName>
+                <default>false</default>
+                <label>Poisoning</label>
+            </value>
+            <value>
+                <fullName>Poor Condition</fullName>
+                <default>false</default>
+                <label>Poor Condition</label>
+            </value>
+            <value>
+                <fullName>Poultry Inspection</fullName>
+                <default>false</default>
+                <label>Poultry Inspection</label>
+            </value>
+            <value>
+                <fullName>Premises Inspection</fullName>
+                <default>false</default>
+                <label>Premises Inspection</label>
+            </value>
+            <value>
+                <fullName>Prohibited devices &amp; items</fullName>
+                <default>false</default>
+                <label>Prohibited devices &amp; items</label>
+            </value>
+            <value>
+                <fullName>Prohibited Surgical procedures</fullName>
+                <default>false</default>
+                <label>Prohibited Surgical procedures</label>
+            </value>
+            <value>
+                <fullName>Prohibition Order Breached</fullName>
+                <default>false</default>
+                <label>Prohibition Order Breached</label>
+            </value>
+            <value>
+                <fullName>Provide Emergency Relief</fullName>
+                <default>false</default>
+                <label>Provide Emergency Relief</label>
+            </value>
+            <value>
+                <fullName>Req Rescue</fullName>
+                <default>false</default>
+                <label>Req Rescue</label>
+            </value>
+            <value>
+                <fullName>Rescue at Height</fullName>
+                <default>false</default>
+                <label>Rescue at Height</label>
+            </value>
+            <value>
+                <fullName>Riding Sch Insp</fullName>
+                <default>false</default>
+                <label>Riding Sch Insp</label>
+            </value>
+            <value>
+                <fullName>Rodeo Insp</fullName>
+                <default>false</default>
+                <label>Rodeo Insp</label>
+            </value>
+            <value>
+                <fullName>Roof Cavity</fullName>
+                <default>false</default>
+                <label>Roof Cavity</label>
+            </value>
+            <value>
+                <fullName>Sale Yard Insp</fullName>
+                <default>false</default>
+                <label>Sale Yard Insp</label>
+            </value>
+            <value>
+                <fullName>Second-hand report</fullName>
+                <default>false</default>
+                <label>Second-hand report</label>
+            </value>
+            <value>
+                <fullName>Shelter Assistance Request</fullName>
+                <default>false</default>
+                <label>Shelter Assistance Request</label>
+            </value>
+            <value>
+                <fullName>Shelter Inadequate</fullName>
+                <default>false</default>
+                <label>Shelter Inadequate</label>
+            </value>
+            <value>
+                <fullName>Sick/Illness</fullName>
+                <default>false</default>
+                <label>Sick/Illness</label>
+            </value>
+            <value>
+                <fullName>Special Rescue Request</fullName>
+                <default>false</default>
+                <label>Special Rescue Request</label>
+            </value>
+            <value>
+                <fullName>Stable Insp</fullName>
+                <default>false</default>
+                <label>Stable Insp</label>
+            </value>
+            <value>
+                <fullName>Tied Continually</fullName>
+                <default>false</default>
+                <label>Tied Continually</label>
+            </value>
+            <value>
+                <fullName>Transport Unsatisfactory</fullName>
+                <default>false</default>
+                <label>Transport Unsatisfactory</label>
+            </value>
+            <value>
+                <fullName>Vet Treatment</fullName>
+                <default>false</default>
+                <label>Vet Treatment</label>
+            </value>
+            <value>
+                <fullName>Wildlife Release</fullName>
+                <default>false</default>
+                <label>Wildlife Release</label>
+            </value>
+            <value>
+                <fullName>Wildlife Reunite</fullName>
+                <default>false</default>
+                <label>Wildlife Reunite</label>
+            </value>
+            <value>
+                <fullName>Zoo and/or Exhibited Animal</fullName>
+                <default>false</default>
+                <label>Zoo and/or Exhibited Animal</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

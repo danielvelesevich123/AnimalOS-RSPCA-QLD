@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Source__c</fullName>
+    <label>Source</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Public</fullName>
+                <default>false</default>
+                <label>Public</label>
+            </value>
+            <value>
+                <fullName>Veterinary Surgery, External</fullName>
+                <default>false</default>
+                <label>Veterinary Surgery, External</label>
+            </value>
+            <value>
+                <fullName>Email</fullName>
+                <default>false</default>
+                <label>Email</label>
+            </value>
+            <value>
+                <fullName>NULL</fullName>
+                <default>false</default>
+                <label>NULL</label>
+            </value>
+            <value>
+                <fullName>Wildcare/other Wildlife Org</fullName>
+                <default>false</default>
+                <label>Wildcare/other Wildlife Org</label>
+            </value>
+            <value>
+                <fullName>Ambulance</fullName>
+                <default>false</default>
+                <label>Ambulance</label>
+            </value>
+            <value>
+                <fullName>Rspca Inspectorate</fullName>
+                <default>false</default>
+                <label>Rspca Inspectorate</label>
+            </value>
+            <value>
+                <fullName>Qld Govt, Qld Police Service</fullName>
+                <default>false</default>
+                <label>Qld Govt, Qld Police Service</label>
+            </value>
+            <value>
+                <fullName>Qld Govt, Local Government</fullName>
+                <default>false</default>
+                <label>Qld Govt, Local Government</label>
+            </value>
+            <value>
+                <fullName>Message Bank</fullName>
+                <default>false</default>
+                <label>Message Bank</label>
+            </value>
+            <value>
+                <fullName>Rspca Shelter, Dakabin</fullName>
+                <default>false</default>
+                <label>Rspca Shelter, Dakabin</label>
+            </value>
+            <value>
+                <fullName>Rspca Administration</fullName>
+                <default>false</default>
+                <label>Rspca Administration</label>
+            </value>
+            <value>
+                <fullName>Rspca Shelter, Regional</fullName>
+                <default>false</default>
+                <label>Rspca Shelter, Regional</label>
+            </value>
+            <value>
+                <fullName>Qld Govt, Other</fullName>
+                <default>false</default>
+                <label>Qld Govt, Other</label>
+            </value>
+            <value>
+                <fullName>Rspca Wildlife Dept.</fullName>
+                <default>false</default>
+                <label>Rspca Wildlife Dept.</label>
+            </value>
+            <value>
+                <fullName>Rspca Veterinary Services</fullName>
+                <default>false</default>
+                <label>Rspca Veterinary Services</label>
+            </value>
+            <value>
+                <fullName>Mail</fullName>
+                <default>false</default>
+                <label>Mail</label>
+            </value>
+            <value>
+                <fullName>Qld Govt, Dept. Primary Industries &amp; Fisheries</fullName>
+                <default>false</default>
+                <label>Qld Govt, Dept. Primary Industries &amp; Fisheries</label>
+            </value>
+            <value>
+                <fullName>Animal Welfare League</fullName>
+                <default>false</default>
+                <label>Animal Welfare League</label>
+            </value>
+            <value>
+                <fullName>Qld Govt, Dept. Housing</fullName>
+                <default>false</default>
+                <label>Qld Govt, Dept. Housing</label>
+            </value>
+            <value>
+                <fullName>Real Estate Agent</fullName>
+                <default>false</default>
+                <label>Real Estate Agent</label>
+            </value>
+            <value>
+                <fullName>Spca/other Animal Welfare Org</fullName>
+                <default>false</default>
+                <label>Spca/other Animal Welfare Org</label>
+            </value>
+            <value>
+                <fullName>Vet</fullName>
+                <default>false</default>
+                <label>Vet</label>
+            </value>
+            <value>
+                <fullName>Rspca Shelter, Fairfield</fullName>
+                <default>false</default>
+                <label>Rspca Shelter, Fairfield</label>
+            </value>
+            <value>
+                <fullName>Rspca Volunteers</fullName>
+                <default>false</default>
+                <label>Rspca Volunteers</label>
+            </value>
+            <value>
+                <fullName>Fax</fullName>
+                <default>false</default>
+                <label>Fax</label>
+            </value>
+            <value>
+                <fullName>Qld Govt, Qld Health</fullName>
+                <default>false</default>
+                <label>Qld Govt, Qld Health</label>
+            </value>
+            <value>
+                <fullName>General Dispatch Request</fullName>
+                <default>false</default>
+                <label>General Dispatch Request</label>
+            </value>
+            <value>
+                <fullName>Qld Govt. Dept. Emergency Services</fullName>
+                <default>false</default>
+                <label>Qld Govt. Dept. Emergency Services</label>
+            </value>
+            <value>
+                <fullName>Crime Stoppers</fullName>
+                <default>false</default>
+                <label>Crime Stoppers</label>
+            </value>
+            <value>
+                <fullName>Rspca Foster Care</fullName>
+                <default>false</default>
+                <label>Rspca Foster Care</label>
+            </value>
+            <value>
+                <fullName>Rspca Retail</fullName>
+                <default>false</default>
+                <label>Rspca Retail</label>
+            </value>
+            <value>
+                <fullName>Qld Govt, Qld Parks &amp; Wildlife/epa</fullName>
+                <default>false</default>
+                <label>Qld Govt, Qld Parks &amp; Wildlife/epa</label>
+            </value>
+            <value>
+                <fullName>Rspca Fundraising</fullName>
+                <default>false</default>
+                <label>Rspca Fundraising</label>
+            </value>
+            <value>
+                <fullName>Community Support Volunteer Organisation</fullName>
+                <default>false</default>
+                <label>Community Support Volunteer Organisation</label>
+            </value>
+            <value>
+                <fullName>Social Media</fullName>
+                <default>false</default>
+                <label>Social Media</label>
+            </value>
+            <value>
+                <fullName>Racing Qld</fullName>
+                <default>false</default>
+                <label>Racing Qld</label>
+            </value>
+            <value>
+                <fullName>Rspca Executive Services</fullName>
+                <default>false</default>
+                <label>Rspca Executive Services</label>
+            </value>
+            <value>
+                <fullName>Cruelty Complaint</fullName>
+                <default>false</default>
+                <label>Cruelty Complaint</label>
+            </value>
+            <value>
+                <fullName>Cyclone Yasi</fullName>
+                <default>false</default>
+                <label>Cyclone Yasi</label>
+            </value>
+            <value>
+                <fullName>Qld Govt, Dept. Natural Recources, Mines &amp; Water</fullName>
+                <default>false</default>
+                <label>Qld Govt, Dept. Natural Recources, Mines &amp; Water</label>
+            </value>
+            <value>
+                <fullName>Routine Inspection</fullName>
+                <default>false</default>
+                <label>Routine Inspection</label>
+            </value>
+            <value>
+                <fullName>Rspca Animal Training &amp; Behaviour</fullName>
+                <default>false</default>
+                <label>Rspca Animal Training &amp; Behaviour</label>
+            </value>
+            <value>
+                <fullName>QWRC</fullName>
+                <default>false</default>
+                <label>QWRC</label>
+            </value>
+            <value>
+                <fullName>Security officer</fullName>
+                <default>false</default>
+                <label>Security officer</label>
+            </value>
+            <value>
+                <fullName>Veterinarian</fullName>
+                <default>false</default>
+                <label>Veterinarian</label>
+            </value>
+            <value>
+                <fullName>GC.C.C</fullName>
+                <default>false</default>
+                <label>GC.C.C</label>
+            </value>
+            <value>
+                <fullName>pt macquarie city council</fullName>
+                <default>false</default>
+                <label>pt macquarie city council</label>
+            </value>
+            <value>
+                <fullName>Logan City Council</fullName>
+                <default>false</default>
+                <label>Logan City Council</label>
+            </value>
+            <value>
+                <fullName>Fire Brigade</fullName>
+                <default>false</default>
+                <label>Fire Brigade</label>
+            </value>
+            <value>
+                <fullName>Animal Refuge</fullName>
+                <default>false</default>
+                <label>Animal Refuge</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

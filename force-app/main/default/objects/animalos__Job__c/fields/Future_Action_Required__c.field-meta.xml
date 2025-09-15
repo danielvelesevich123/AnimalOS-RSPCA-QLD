@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Future_Action_Required__c</fullName>
+    <label>Future Action Required</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Attendance</fullName>
+                <default>false</default>
+                <label>Attendance</label>
+            </value>
+            <value>
+                <fullName>Awaiting Reply</fullName>
+                <default>false</default>
+                <label>Awaiting Reply</label>
+            </value>
+            <value>
+                <fullName>Office Task</fullName>
+                <default>false</default>
+                <label>Office Task</label>
+            </value>
+            <value>
+                <fullName>Phone Call</fullName>
+                <default>false</default>
+                <label>Phone Call</label>
+            </value>
+            <value>
+                <fullName>Ref to other Org</fullName>
+                <default>false</default>
+                <label>Ref to other Org</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

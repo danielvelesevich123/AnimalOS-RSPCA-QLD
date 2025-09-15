@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Full_Address__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IF( NOT(ISBLANK(animalos__Address__Street__s)), animalos__Address__Street__s &amp; &apos;, &apos;, &apos;&apos;) &amp; animalos__Address__City__s &amp; &apos;, &apos; &amp; TEXT(animalos__Address__StateCode__s) &amp; &apos; &apos; &amp; animalos__Address__PostalCode__s &amp; &apos; &apos; &amp; TEXT(animalos__Address__CountryCode__s)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Full Address</label>
+    <required>false</required>
+    <securityClassification>Internal</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

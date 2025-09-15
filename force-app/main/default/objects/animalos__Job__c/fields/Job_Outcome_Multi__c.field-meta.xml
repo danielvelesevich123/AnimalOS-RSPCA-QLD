@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Job_Outcome_Multi__c</fullName>
+    <label>Job Outcome Multi</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Ambulance</fullName>
+                <default>false</default>
+                <label>Ambulance</label>
+            </value>
+            <value>
+                <fullName>Animal Welfare League</fullName>
+                <default>false</default>
+                <label>Animal Welfare League</label>
+            </value>
+            <value>
+                <fullName>Formal Caution</fullName>
+                <default>false</default>
+                <label>Formal Caution</label>
+            </value>
+            <value>
+                <fullName>Intel Only</fullName>
+                <default>false</default>
+                <label>Intel Only</label>
+            </value>
+            <value>
+                <fullName>No Further Action</fullName>
+                <default>false</default>
+                <label>No Further Action</label>
+            </value>
+            <value>
+                <fullName>Other Agency</fullName>
+                <default>false</default>
+                <label>Other Agency</label>
+            </value>
+            <value>
+                <fullName>Penalty Infringement Notice</fullName>
+                <default>false</default>
+                <label>Penalty Infringement Notice</label>
+            </value>
+            <value>
+                <fullName>Police</fullName>
+                <default>false</default>
+                <label>Police</label>
+            </value>
+            <value>
+                <fullName>Prosecution/CAN</fullName>
+                <default>false</default>
+                <label>Prosecution/CAN</label>
+            </value>
+            <value>
+                <fullName>Advisory letter issued</fullName>
+                <default>false</default>
+                <label>Advisory letter issued</label>
+            </value>
+            <value>
+                <fullName>Animals Seized</fullName>
+                <default>false</default>
+                <label>Animals Seized</label>
+            </value>
+            <value>
+                <fullName>Animals Surrendered</fullName>
+                <default>false</default>
+                <label>Animals Surrendered</label>
+            </value>
+            <value>
+                <fullName>Attended – advice provided</fullName>
+                <default>false</default>
+                <label>Attended – advice provided</label>
+            </value>
+            <value>
+                <fullName>Attended - Treatment obtained</fullName>
+                <default>false</default>
+                <label>Attended - Treatment obtained</label>
+            </value>
+            <value>
+                <fullName>AWD – Compliance obtained</fullName>
+                <default>false</default>
+                <label>AWD – Compliance obtained</label>
+            </value>
+            <value>
+                <fullName>AWD – No compliance obtained</fullName>
+                <default>false</default>
+                <label>AWD – No compliance obtained</label>
+            </value>
+            <value>
+                <fullName>Duplicate job</fullName>
+                <default>false</default>
+                <label>Duplicate job</label>
+            </value>
+            <value>
+                <fullName>Emergency relief provided</fullName>
+                <default>false</default>
+                <label>Emergency relief provided</label>
+            </value>
+            <value>
+                <fullName>Forfeiture application not approved</fullName>
+                <default>false</default>
+                <label>Forfeiture application not approved</label>
+            </value>
+            <value>
+                <fullName>Forfeiture approved</fullName>
+                <default>false</default>
+                <label>Forfeiture approved</label>
+            </value>
+            <value>
+                <fullName>Insufficient evidence to continue investigation</fullName>
+                <default>false</default>
+                <label>Insufficient evidence to continue investigation</label>
+            </value>
+            <value>
+                <fullName>Insufficient evidence to open investigation</fullName>
+                <default>false</default>
+                <label>Insufficient evidence to open investigation</label>
+            </value>
+            <value>
+                <fullName>Insufficient powers to Obtain Information</fullName>
+                <default>false</default>
+                <label>Insufficient powers to Obtain Information</label>
+            </value>
+            <value>
+                <fullName>No ACPA offence</fullName>
+                <default>false</default>
+                <label>No ACPA offence</label>
+            </value>
+            <value>
+                <fullName>No Attendance – advice provided</fullName>
+                <default>false</default>
+                <label>No Attendance – advice provided</label>
+            </value>
+            <value>
+                <fullName>No attendance – treatment provided</fullName>
+                <default>false</default>
+                <label>No attendance – treatment provided</label>
+            </value>
+            <value>
+                <fullName>No welfare issue</fullName>
+                <default>false</default>
+                <label>No welfare issue</label>
+            </value>
+            <value>
+                <fullName>Pending FBOE</fullName>
+                <default>false</default>
+                <label>Pending FBOE</label>
+            </value>
+            <value>
+                <fullName>Pending forfeiture</fullName>
+                <default>false</default>
+                <label>Pending forfeiture</label>
+            </value>
+            <value>
+                <fullName>Prosecution commenced</fullName>
+                <default>false</default>
+                <label>Prosecution commenced</label>
+            </value>
+            <value>
+                <fullName>Prosecution not proceeding</fullName>
+                <default>false</default>
+                <label>Prosecution not proceeding</label>
+            </value>
+            <value>
+                <fullName>Referred to Community Liaison Officer</fullName>
+                <default>false</default>
+                <label>Referred to Community Liaison Officer</label>
+            </value>
+            <value>
+                <fullName>Referred to DPI</fullName>
+                <default>false</default>
+                <label>Referred to DPI</label>
+            </value>
+            <value>
+                <fullName>Referred to QPS</fullName>
+                <default>false</default>
+                <label>Referred to QPS</label>
+            </value>
+            <value>
+                <fullName>Referred to QRIC</fullName>
+                <default>false</default>
+                <label>Referred to QRIC</label>
+            </value>
+            <value>
+                <fullName>Warning letter issued</fullName>
+                <default>false</default>
+                <label>Warning letter issued</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>
