@@ -22,16 +22,16 @@
                                        value={selectedSkills}
                 ></c-vertic-multi-select>
                 <template lwc:if={showContent}>
-                    <template for:each={resources} for:index="index" for:item="resource" lwc:if={showResourcesTable}>
-                        <div class="slds-card slds-card_boundary slds-m-top_small" key={uniqueKey}>
-                            <lightning-card icon-name="standard:call_history" title={cardTitle}>
+                    <template lwc:if={showResourcesTable}>
+                        <div class="slds-card slds-card_boundary slds-m-top_small">
+                            <lightning-card icon-name="standard:search" title="Search Results">
                                 <div class="slds-m-horizontal_medium">
                                     <div class="slds-grid slds-text-align_left slds-color__background_gray-3 slds-m-bottom_x-small slds-m-top_small">
                                         <div class="slds-col slds-size_2-of-12 slds-truncate">
                                             <span class="slds-form-element__label">Name</span>
                                         </div>
                                         <div class="slds-col slds-size_2-of-12 slds-truncate">
-                                            <span class="slds-form-element__label">Company</span>
+                                            <span class="slds-form-element__label">Organisation</span>
                                         </div>
                                         <div class="slds-col slds-size_2-of-12 slds-truncate">
                                             <span class="slds-form-element__label">Mobile</span>
@@ -46,10 +46,13 @@
                                             <span class="slds-form-element__label">Skills</span>
                                         </div>
                                     </div>
-                                    <c-resources-nearby-resource resource={resource}
-                                                                 index={index}
-                                                                 job-id={recordId}
-                                    ></c-resources-nearby-resource>
+                                    <template for:each={resources} for:index="index" for:item="resource">
+                                        <c-resources-nearby-resource resource={resource}
+                                                                     key={uniqueKey}
+                                                                     index={index}
+                                                                     job-id={recordId}
+                                        ></c-resources-nearby-resource>
+                                    </template>
                                 </div>
                             </lightning-card>
                         </div>
@@ -65,5 +68,14 @@
                 </div>
             </div>
         </lightning-card>
+
+        <div lwc:if={showMap} class="slds-m-horizontal_medium">
+            <lightning-map
+                    map-markers={mapMarkers}
+                    markers-title="Resources Nearby"
+                    onmarkerselect={handleMarkerSelect}
+                    selected-marker-value={selectedMarkerValue}
+            ></lightning-map>
+        </div>
     </div>
 </template>

@@ -2,13 +2,25 @@ public class ResourcesNearbyMetaProc extends vertic_MetadataProcessor implements
 
     Set<String> resourceFields = new Set<String>{
             'Id',
-            'animalos__Contact__r.Id',
-            'animalos__Contact__r.Name',
-            'animalos__Contact__r.Account.Name',
-            'animalos__Contact__r.Phone',
-            'animalos__Contact__r.Email',
-            'animalos__Contact__r.MobilePhone',
-            'Current_Location__c'
+            'Contact__r.Id',
+            'Contact__c',
+            'Contact__r.Name',
+            'Contact__r.Account.Name',
+            'Contact__r.Account.Id',
+            'Contact__r.AccountId',
+            'Contact__r.Phone',
+            'Contact__r.Email',
+            'Contact__r.MobilePhone',
+            'Current_Location__c',
+            'Current_Location__Latitude__s',
+            'Current_Location__Longitude__s',
+            'Current_Location__Street__s',
+            'Current_Location__City__s',
+            'Current_Location__StateCode__s',
+            'Current_Location__PostalCode__s',
+            'Current_Location__CountryCode__s',
+            'Name',
+            'Full_Current_Location__c'
     };
 
     public override vertic_Response process(vertic_Request request) {
@@ -25,7 +37,11 @@ public class ResourcesNearbyMetaProc extends vertic_MetadataProcessor implements
         String recordId = this.request.getRequiredString('recordId');
 
         animalos__Job__c jobVar = (animalos__Job__c) vertic_Utils.arrays.firstOrException([
-                SELECT Id, animalos__Full_Address__c, animalos__Address__c
+                SELECT Id, animalos__Full_Address__c, animalos__Address__c,
+                        animalos__Address__Latitude__s, animalos__Address__Longitude__s, animalos__Address__Street__s,
+                        animalos__Address__City__s, animalos__Address__StateCode__s, animalos__Address__PostalCode__s,
+                        animalos__Address__CountryCode__s,
+                        animalos__Description__c, Name
                 FROM animalos__Job__c
                 WHERE Id = :recordId
                 AND animalos__Address__Latitude__s != NULL
@@ -93,7 +109,21 @@ public class ResourcesNearbyMetaProc extends vertic_MetadataProcessor implements
             }
         }
 
+        vertic_DTO resourcesDTO = new vertic_DTO();
+        resourcesDTO.getMapper().mapFromListSObjects('resources', resourcesToRender);
+
+
+        for (vertic_DTO resourceDTO : resourcesDTO.getDTOs('resources')) {
+            resourceDTO.put('distance', ((Decimal) Location.getDistance(
+                    Location.newInstance(jobVar.animalos__Address__Latitude__s, jobVar.animalos__Address__Longitude__s),
+                    Location.newInstance(resourceDTO.getDecimal('Current_Location__Latitude__s'), resourceDTO.getDecimal('Current_Location__Longitude__s')),
+                    'km'
+            )).setScale(2) + 'km');
+        }
+
         this.response.addSelectOptions('skillsOptions', vertic_Utils.sObjects.toSelectOptions([SELECT Id, Name FROM animalos__Skill__c], 'Name', 'Name'));
-        this.response.getMapper().mapAnyValue('resources', resourcesToRender);
+        this.response.getMapper()
+                .mapAnyValue('resources', resourcesDTO.get('resources'))
+                .mapFromSObject('jobVar', jobVar);
     }
 }
