@@ -74,5 +74,3 @@ export default class ResourcesNearby extends LightningElement {
         this.refresh();
     }
 }
-
-

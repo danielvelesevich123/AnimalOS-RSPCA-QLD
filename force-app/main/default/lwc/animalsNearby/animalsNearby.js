@@ -72,6 +72,3 @@ export default class AnimalsNearby extends LightningElement {
         this.refresh();
     }
 }
-
-
-

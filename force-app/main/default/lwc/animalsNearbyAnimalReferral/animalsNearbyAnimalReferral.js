@@ -44,5 +44,3 @@ export default class AnimalsNearbyAnimalReferral extends LightningElement {
         return this.animalReferral.animalos__Job__r.animalos__Advisory__c;
     }
 }
-
-

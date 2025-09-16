@@ -71,5 +71,3 @@ public class AnimalsNearbyMetaProc extends vertic_MetadataProcessor implements D
         this.response.getMapper().mapAnyValue('animalReferralsByJobs', animalReferralsByJobs);
     }
 }
-
-

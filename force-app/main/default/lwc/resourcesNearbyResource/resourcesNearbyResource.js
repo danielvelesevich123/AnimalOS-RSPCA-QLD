@@ -29,5 +29,3 @@ export default class ResourcesNearbyResource extends LightningElement {
         return this.resource.animalos__Resource_Skills__r?.records || [];
     }
 }
-
-
