@@ -1,7 +1,7 @@
 <template>
     <div class="slds-grid slds-text-align_left slds-m-top_xx-small">
         <div class="slds-col slds-size_2-of-12 slds-truncate">
-            <lightning-formatted-url value={userUrl} label={userName} target="_blank"></lightning-formatted-url>
+            <lightning-formatted-url value={contactUrl} label={contactName} target="_blank"></lightning-formatted-url>
         </div>
         <div class="slds-col slds-size_2-of-12 slds-truncate">
             <lightning-formatted-text value={companyName}></lightning-formatted-text>
@@ -13,7 +13,7 @@
             <lightning-formatted-phone value={phone}></lightning-formatted-phone>
         </div>
         <div class="slds-col slds-size_1-of-12 slds-truncate">
-            <lightning-formatted-text value={distanceToJob}></lightning-formatted-text>
+            <c-resources-nearby-resource-distance job-id={jobId} resource-id={resource.Id}></c-resources-nearby-resource-distance>
         </div>
         <div class="slds-col slds-size_3-of-12">
             <template for:each={skills} for:item="skill">

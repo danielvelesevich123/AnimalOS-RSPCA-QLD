@@ -27,23 +27,21 @@ export default class ResourcesNearby extends LightningElement {
     }
 
     @api
-    refresh() {
+    async refresh() {
         this.isBusy = true;
-        return execute('ResourcesNearbyMetaProc', {
-            recordId: this.recordId,
-            distance: this.distance,
-            selectedSkills: this.selectedSkills
-        })
-            .then(response => {
-                this.resources = response.dto.resources || [];
-                this.skillsOptions = response.selectOptions.skillsOptions || [];
-            })
-            .catch(ex => {
-                showToast(this, 'Error', Array.isArray(ex) ? ex[0].message : ex.message || ex.body.message, 'error');
-            })
-            .finally(() => {
-                this.isBusy = false;
-            })
+        try {
+            let response = await execute('ResourcesNearbyMetaProc', {
+                recordId: this.recordId,
+                distance: this.distance,
+                selectedSkills: this.selectedSkills
+            });
+            this.resources = response.dto.resources || [];
+            this.skillsOptions = response.selectOptions.skillsOptions || [];
+        } catch (ex) {
+            showToast(this, 'Error', Array.isArray(ex) ? ex[0].message : ex.message || ex.body.message, 'error');
+        } finally {
+            this.isBusy = false;
+        }
     }
 
     get showContent() {

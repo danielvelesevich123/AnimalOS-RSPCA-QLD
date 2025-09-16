@@ -1,12 +1,13 @@
 public class ResourcesNearbyMetaProc extends vertic_MetadataProcessor implements Database.AllowsCallouts {
 
     Set<String> resourceFields = new Set<String>{
-            'animalos__User__r.Id',
-            'animalos__User__r.Name',
-            'animalos__User__r.CompanyName',
-            'animalos__User__r.Phone',
-            'animalos__User__r.Email',
-            'animalos__User__r.MobilePhone',
+            'Id',
+            'animalos__Contact__r.Id',
+            'animalos__Contact__r.Name',
+            'animalos__Contact__r.Account.Name',
+            'animalos__Contact__r.Phone',
+            'animalos__Contact__r.Email',
+            'animalos__Contact__r.MobilePhone',
             'Current_Location__c'
     };
 
