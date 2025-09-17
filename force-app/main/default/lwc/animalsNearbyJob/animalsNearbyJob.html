@@ -28,6 +28,7 @@
                 <template for:each={animalReferrals} for:index="index" for:item="animalReferral">
                     <c-animals-nearby-animal-referral key={animalReferral.Id}
                                                       animal-referral={animalReferral}
+                                                      job={job}
                                                       index={index}
                     ></c-animals-nearby-animal-referral>
                 </template>

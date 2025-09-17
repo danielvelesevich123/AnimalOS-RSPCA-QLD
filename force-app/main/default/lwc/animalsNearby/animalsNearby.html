@@ -12,22 +12,32 @@
                                  value={distance}
                                  disabled={isBusy}
                 ></c-vertic-select>
-
-                <template lwc:if={showContent}>
-                    <template for:each={animalReferralsByJobs} for:index="index" for:item="animalReferrals" lwc:if={showAnimalReferralsByJobsTable}>
-                        <c-animals-nearby-job key={uniqueKey}
-                                             animal-referrals={animalReferrals}
-                                             index={index}
-                        ></c-animals-nearby-job>
-                    </template>
+                <div lwc:if={isBusy}>
+                    <c-stencil count="4" height="10"></c-stencil>
+                </div>
+                <div lwc:elseif={showContent}>
+                    <div class={containerClass} lwc:if={showJobsTable}>
+                        <template for:each={jobs} for:index="index" for:item="job">
+                            <c-animals-nearby-job
+                                    key={uniqueKey}
+                                    job={job}
+                                    index={index}
+                            ></c-animals-nearby-job>
+                        </template>
+                    </div>
                     <template lwc:else>
                         <c-scoped-notification-lwc icon-name="utility:warning">
                             There are no nearby jobs with existing animal referrals.
                         </c-scoped-notification-lwc>
                     </template>
-                </template>
-                <div lwc:else>
-                    <c-stencil count="4" height="10"></c-stencil>
+                </div>
+                <div lwc:if={showMap} class="slds-m-top_medium slds-border_top">
+                    <lightning-map
+                            map-markers={mapMarkers}
+                            markers-title="Jobs Nearby"
+                            onmarkerselect={handleMarkerSelect}
+                            selected-marker-value={selectedMarkerValue}
+                    ></lightning-map>
                 </div>
             </div>
         </lightning-card>

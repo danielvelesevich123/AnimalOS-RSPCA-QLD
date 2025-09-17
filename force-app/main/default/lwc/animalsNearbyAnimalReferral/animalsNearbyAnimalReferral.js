@@ -2,18 +2,19 @@ import {api, LightningElement} from 'lwc';
 
 export default class AnimalsNearbyAnimalReferral extends LightningElement {
     @api animalReferral;
+    @api job;
     @api index;
 
     get jobUrl() {
-        return location.hostname + '/' + this.animalReferral.animalos__Job__c;
+        return location.hostname + '/' + this.job.Id;
     }
 
     get jobCreatedDate() {
-        return this.animalReferral.animalos__Job__r.CreatedDate;
+        return this.job.CreatedDate;
     }
 
     get jobName() {
-        return this.animalReferral.animalos__Job__r.Name;
+        return this.job.Name;
     }
 
     get animalUrl() {
@@ -29,18 +30,18 @@ export default class AnimalsNearbyAnimalReferral extends LightningElement {
     }
 
     get jobStatus() {
-        return this.animalReferral.animalos__Job__r.animalos__Status__c;
+        return this.job.animalos__Status__c;
     }
 
     get jobOwnerUrl() {
-        return location.hostname + '/' + this.animalReferral.animalos__Job__r.OwnerId;
+        return location.hostname + '/' + this.job.OwnerId;
     }
 
     get jobOwnerName() {
-        return this.animalReferral.animalos__Job__r.Owner.Name;
+        return this.job.Owner.Name;
     }
 
     get jobAdvisory() {
-        return this.animalReferral.animalos__Job__r.animalos__Advisory__c;
+        return this.job.animalos__Advisory__c;
     }
 }

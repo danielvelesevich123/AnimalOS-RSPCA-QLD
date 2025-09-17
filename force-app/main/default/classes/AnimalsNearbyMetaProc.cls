@@ -4,14 +4,27 @@ public class AnimalsNearbyMetaProc extends vertic_MetadataProcessor implements D
             'animalos__Animal__r.Id',
             'animalos__Animal__r.Name',
             'animalos__Animal__r.animalos__Type__c',
-            'animalos__Job__c',
-            'animalos__Job__r.Name',
-            'animalos__Job__r.CreatedDate',
-            'animalos__Job__r.animalos__Full_Address__c',
-            'animalos__Job__r.animalos__Advisory__c',
-            'animalos__Job__r.animalos__Status__c',
-            'animalos__Job__r.OwnerId',
-            'animalos__Job__r.Owner.Name'
+            'animalos__Job__c'
+    };
+
+    Set<String> jobFields = new Set<String>{
+            'Id',
+            'Name',
+            'CreatedDate',
+            'animalos__Full_Address__c',
+            'animalos__Address__c',
+            'animalos__Address__Latitude__s',
+            'animalos__Address__Longitude__s',
+            'animalos__Address__Street__s',
+            'animalos__Address__City__s',
+            'animalos__Address__StateCode__s',
+            'animalos__Address__PostalCode__s',
+            'animalos__Address__CountryCode__s',
+            'animalos__Description__c',
+            'animalos__Status__c',
+            'animalos__Advisory__c',
+            'OwnerId',
+            'Owner.Name'
     };
 
     public override vertic_Response process(vertic_Request request) {
@@ -30,44 +43,45 @@ public class AnimalsNearbyMetaProc extends vertic_MetadataProcessor implements D
         String animalStatusFilter = this.request.getString('animalStatusFilter');
 
         animalos__Job__c jobVar = (animalos__Job__c) vertic_Utils.arrays.firstOrException([
-                SELECT Id, animalos__Full_Address__c, animalos__Address__c
+                SELECT Id, animalos__Full_Address__c, animalos__Address__c, animalos__Address__Longitude__s, animalos__Address__Latitude__s,
+                        animalos__Address__StateCode__s, animalos__Address__PostalCode__s, animalos__Address__CountryCode__s, animalos__Address__Street__s,
+                        animalos__Address__City__s, Name, animalos__Description__c
                 FROM animalos__Job__c
                 WHERE Id = :recordId
         ]);
 
-        List<animalos__Job__c> jobsNearby = [
-                SELECT Id
-                FROM animalos__Job__c
-                WHERE DISTANCE(animalos__Address__c, :jobVar.animalos__Address__c, 'km') < :distance
-                AND Id != :recordId
-        ];
-
-        Set<Id> jobsNearByIds = vertic_Utils.sObjects.getIdFieldValues(jobsNearby, animalos__Job__c.Id);
-
-        List<String> conditions = new List<String>{
-                '(animalos__Job__c IN :jobsNearByIds)'
-        };
+        List<String> animalReferralConditions = new List<String>();
 
         if (String.isNotBlank(animalStatusFilter)) {
             animalStatusFilter = '\'' + String.join(animalStatusFilter.split(','), '\',\'') + '\'';
-            conditions.add('(animalos__Animal__r.animalos__Status__c IN (' + animalStatusFilter + '))');
+            animalReferralConditions.add('(animalos__Animal__r.animalos__Status__c IN (' + animalStatusFilter + '))');
         }
 
-        String animalReferralSOQL = new fflib_QueryFactory(animalos__Animal_Referral__c.SObjectType)
-                .selectFields(animalReferralFields)
-                .setCondition(String.join(conditions, ' AND '))
-                .toSOQL();
+        fflib_QueryFactory jobsSOQL = new fflib_QueryFactory(animalos__Job__c.SObjectType)
+                .selectFields(this.jobFields)
+                .setCondition('(DISTANCE(animalos__Address__c, :jobAddress, \'km\') < :distance) AND Id != :recordId');
 
-        List<animalos__Animal_Referral__c> animalReferrals = Database.query(animalReferralSOQL);
-        Set<Id> jobIds = vertic_Utils.sObjects.getIdFieldValues(animalReferrals, animalos__Animal_Referral__c.animalos__Job__c);
+        jobsSOQL.subselectQuery(animalos__Animal_Referral__c.SObjectType)
+                .selectFields(this.animalReferralFields)
+                .setCondition(String.join(animalReferralConditions, ' AND '));
 
-        List<List<SObject>> animalReferralsByJobs = new List<List<SObject>>();
-        Map<String, List<SObject>> animalReferralsByJobIds = vertic_Utils.sObjects.getSObjectsListByAnyFieldMap(animalReferrals, animalos__Animal_Referral__c.animalos__Job__c);
 
-        for(String jobId : animalReferralsByJobIds.keySet()) {
-            animalReferralsByJobs.add(animalReferralsByJobIds.get(jobId));
+        List<animalos__Job__c> jobs = Database.queryWithBinds(jobsSOQL.toSOQL(), new Map<String, Object>{
+                'jobAddress' => jobVar.animalos__Address__c,
+                'recordId' => recordId,
+                'distance' => distance
+        }, AccessLevel.USER_MODE);
+
+        //leave only jobs with referrals
+        List<animalos__Job__c> jobsWithReferrals = new List<animalos__Job__c>();
+        for (animalos__Job__c jobItem : jobs) {
+            if (jobItem.animalos__Animal_Referrals__r != null && !jobItem.animalos__Animal_Referrals__r.isEmpty()) {
+                jobsWithReferrals.add(jobItem);
+            }
         }
 
-        this.response.getMapper().mapAnyValue('animalReferralsByJobs', animalReferralsByJobs);
+        this.response.getMapper()
+                .mapFromListSObjects('jobs', jobsWithReferrals)
+                .mapFromSObject('currentJob', jobVar);
     }
 }
