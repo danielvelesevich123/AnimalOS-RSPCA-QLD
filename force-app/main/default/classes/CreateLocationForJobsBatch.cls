@@ -4,7 +4,8 @@ global class CreateLocationForJobsBatch extends vertic_AbstractProcessor impleme
                 'SELECT Id, animalos__Address__CountryCode__s, animalos__Address__StateCode__s, animalos__Address__City__s,' +
                         'animalos__Address__Street__s, animalos__Address__PostalCode__s, animalos__Full_Address__c, animalos__Address__Latitude__s, animalos__Address__Longitude__s ' +
                         'FROM animalos__Job__c ' +
-                        'WHERE animalos__Location_Of_Interest__c = NULL LIMIT 25000');
+                        'WHERE animalos__Location_Of_Interest__c = NULL ' +
+                        'AND animalos__Address__Street__s != NULL');
     }
 
     global void execute(Database.BatchableContext BC, List<sObject> scope) {
@@ -16,7 +17,19 @@ global class CreateLocationForJobsBatch extends vertic_AbstractProcessor impleme
 
     private void run(List<SObject> scope) {
         for (animalos__Job__c job : (List<animalos__Job__c>) scope) {
-            Map<String, Object> fullAddressDetails = animalos.PolygonUtils.getFullAddressDetailsByAddress(job.animalos__Full_Address__c);
+            Map<String, Object> fullAddressDetails;
+            try {
+                fullAddressDetails = animalos.PolygonUtils.getFullAddressDetailsByAddress(job.animalos__Full_Address__c);
+            } catch (Exception ex) {
+                insert new animalos.Logging().setGroup('Job Location - ' + job.Id)
+                        .addDetails(ex)
+                        .addPayload('recordId', job.Id)
+                        .setType('Error')
+                        .setProcess('CreateLocationForJobsBatch')
+                        .build();
+                return;
+            }
+
             vertic_DTO fullAddressDetailsDTO = new vertic_DTO(fullAddressDetails);
 
             if (fullAddressDetailsDTO.getBoolean('success') == true) {
@@ -41,7 +54,8 @@ global class CreateLocationForJobsBatch extends vertic_AbstractProcessor impleme
                             AND animalos__Address__PostalCode__s = :job.animalos__Address__PostalCode__s
                             AND animalos__Address__City__s = :job.animalos__Address__City__s
                             AND animalos__Address__StateCode__s = :job.animalos__Address__StateCode__s
-                    ) OR (
+                    )
+                    OR (
                             animalos__Address__Latitude__s != NULL
                             AND animalos__Address__Longitude__s != NULL
                             AND animalos__Address__Street__s != NULL
