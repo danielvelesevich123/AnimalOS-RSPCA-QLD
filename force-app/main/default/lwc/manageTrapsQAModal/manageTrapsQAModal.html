@@ -1,0 +1,102 @@
+<!-- Manage Traps QA Modal -->
+<template>
+
+    <lightning-modal-header label="Manage Traps"></lightning-modal-header>
+    <lightning-modal-body>
+        <c-vertic-spinner is-busy={isBusy}></c-vertic-spinner>
+
+        <template lwc:if={isLocationOfInterestStep}>
+            <div lwc:if={showLocationOfInterest}>
+                <c-animal-welfare-location-of-interest lwc:ref="locationOfInterestCmp"
+                                                       record-id={locationOfInterestId}
+                                                       location-of-interest={locationOfInterest}
+                                                       hide-location-safety
+                ></c-animal-welfare-location-of-interest>
+            </div>
+        </template>
+
+        <template lwc:if={isTrapsStep}>
+            <div lwc:ref="trapsTable">
+                <table class="slds-table slds-table_fixed-layout slds-table_bordered slds-table_cell-buffer">
+                    <thead>
+                    <tr>
+                        <th style="width: 75px"></th>
+                        <th>Name</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <template for:each={resources} for:item="resource" for:index="index" lwc:if={resources}>
+                        <tr key={resource.Id}>
+                            <td>
+                                <lightning-input label="Is Selected"
+                                                 variant="label-hidden"
+                                                 type="checkbox-button"
+                                                 checked={resource.isSelected}
+                                                 data-path="isSelected"
+                                                 data-index={index}
+                                                 onchange={handleResourceFieldChange}
+                                                 disabled={isBusy}
+                                ></lightning-input>
+                            </td>
+                            <td>
+                                <lightning-formatted-text value={resource.Name}></lightning-formatted-text>
+                            </td>
+                            <td>
+                                <lightning-combobox label="Status"
+                                                    value={resource.Status__c}
+                                                    data-path="Status__c"
+                                                    data-index={index}
+                                                    onchange={handleResourceFieldChange}
+                                                    options={statusOptions}
+                                                    disabled={isBusy}
+                                                    required={resource.isSelected}
+                                ></lightning-combobox>
+                            </td>
+                        </tr>
+                    </template>
+                    <template lwc:if={noResources}>
+                        <tr>
+                            <td colspan="3" class="slds-p-around_none">
+                                <c-scoped-notification-lwc icon-name="utility:warning" class-name="slds-text-align_center">
+                                    No Available Resources.
+                                </c-scoped-notification-lwc>
+                            </td>
+                        </tr>
+                    </template>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <div class="slds-grid slds-gutters_x-small slds-grid_vertical-align-center">
+            <div class="slds-col slds-grow-none">
+                <lightning-button label={leftButtonLabel}
+                                  variant="neutral"
+                                  onclick={handleLeftButtonClick}
+                                  disabled={isBusy}
+                ></lightning-button>
+            </div>
+            <div class="slds-col">
+                <lightning-progress-indicator current-step={currentStep}>
+                    <lightning-progress-step key={step.name}
+                                             label={step.label}
+                                             value={step.name}
+                                             for:each={steps}
+                                             for:item="step"
+                                             for:index="index"
+                    ></lightning-progress-step>
+                </lightning-progress-indicator>
+            </div>
+            <div class="slds-col slds-grow-none">
+                <lightning-button label={rightButtonLabel}
+                                  variant="brand"
+                                  onclick={handleRightButtonClick}
+                                  disabled={isBusy}
+                ></lightning-button>
+            </div>
+        </div>
+    </lightning-modal-footer>
+</template>

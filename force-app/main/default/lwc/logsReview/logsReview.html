@@ -1,0 +1,29 @@
+<!-- Logs Review -->
+<template>
+    <lightning-card  title="Logs" icon-name="action:log_event">
+        <lightning-button-icon slot="actions" onclick={refresh} disabled={refreshButtonDisabled} icon-name="action:refresh"></lightning-button-icon>
+        <template lwc:if={hasGroupAndRecordId}>
+                <c-stencil count="4" height="15" lwc:if={isBusy}></c-stencil>
+                <template lwc:else>
+                    <div class="slds-is-relative">
+                        <template lwc:if={hasErrorMessage}>
+                            <c-scoped-notification-lwc icon-name="utility:error" theme="error" icon-variant="inverse">{errorMessage}</c-scoped-notification-lwc>
+                        </template>
+                        <lightning-datatable
+                                lwc:elseif={hasLogs}
+                                key-field="Id"
+                                hide-checkbox-column
+                                data={logs}
+                                onrowaction={handleRowAction}
+                                columns={columns}>
+                        </lightning-datatable>
+                        <c-scoped-notification-lwc lwc:else>No related Logs.</c-scoped-notification-lwc>
+                        <c-vertic-spinner is-busy={isProcessing}></c-vertic-spinner>
+                    </div>
+                </template>
+        </template>
+        <div class="slds-m-horizontal_medium" lwc:else>
+            <c-scoped-notification-lwc>Please provide group and recordId value.</c-scoped-notification-lwc>
+        </div>
+    </lightning-card>
+</template>

@@ -68,7 +68,7 @@
                                              onchange={handleLOIAddressChange}
                     ></lightning-input-address>
                 </div>
-                <div class="slds-col slds-size_1-of-1">
+                <div class="slds-col slds-size_1-of-1" lwc:if={showLocationSafety}>
                     <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
                     <div class="slds-card slds-card_boundary slds-m-top_medium">
                         <lightning-card icon-name="utility:shield" title="Location Safety">
@@ -141,15 +141,6 @@
                                     manage-selected-label="Add Selected Contacts to Job"
                                     onmanageselected={handleManageSelected}>
                     </c-job-contacts>
-                </div>
-                <div class="slds-col slds-size_1-of-1 slds-m-top_medium" lwc:if={showLocationsNearby}>
-                    <c-locations-nearby record-id={locationOfInterest.Id}
-                                        view="animalWelfareLocationsNearby"
-                                        lwc:ref="locationsNearby"
-                                        job={jobVar}
-                                        card-title="Jobs Nearby"
-                                        distance="0.05"
-                    ></c-locations-nearby>
                 </div>
             </div>
         </lightning-card>

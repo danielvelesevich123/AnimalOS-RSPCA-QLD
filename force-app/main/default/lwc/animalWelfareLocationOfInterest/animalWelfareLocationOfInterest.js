@@ -1,5 +1,5 @@
 import {LightningElement, api} from 'lwc';
-import {execute, showToast, validate} from 'c/verticUtils';
+import {execute, showToast, validate, copy} from 'c/verticUtils';
 
 const delay = 500; // Delay in milliseconds for search
 export default class AnimalWelfareLocationOfInterest extends LightningElement {
@@ -13,8 +13,12 @@ export default class AnimalWelfareLocationOfInterest extends LightningElement {
         {label: 'Yes', value: 'Yes'},
         {label: 'No', value: 'No'}
     ];
+    @api
+    hideLocationSafety = false;
 
     async connectedCallback() {
+        this.locationOfInterest = copy(this.locationOfInterest);
+
         if (this.recordId) {
             this.locationOfInterest.Id = this.recordId;
             this.searchBy = 'Id';
@@ -80,10 +84,6 @@ export default class AnimalWelfareLocationOfInterest extends LightningElement {
         return this.locationOfInterest.animalos__Address__Street__s || this.locationOfInterest.Id;
     }
 
-    get showLocationsNearby() {
-        return this.locationAddressNotEmpty && this.isSearch === false;
-    }
-
     get showHistory() {
         return this.isSearch === false && this.locationOfInterest.Id;
     }
@@ -128,7 +128,7 @@ export default class AnimalWelfareLocationOfInterest extends LightningElement {
         this.locationOfInterest.animalos__Address__PostalCode__s = event.target.postalCode;
         this.locationOfInterest.animalos__Address__CountryCode__s = event.target.country === 'Australia' ? 'AU' : event.target.country;
         this.searchBy = 'Address';
-        this.search();
+        this.search(true);
     }
 
     handleManageSelected(event) {
@@ -218,5 +218,9 @@ export default class AnimalWelfareLocationOfInterest extends LightningElement {
         this.locationOfInterest.animalos__Address__CountryCode__s = address.country;
         this.searchBy = 'Address';
         this.search();
+    }
+
+    get showLocationSafety() {
+        return this.hideLocationSafety === false;
     }
 }
