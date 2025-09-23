@@ -1,0 +1,27 @@
+<template>
+    <div class="slds-card slds-card_boundary slds-m-bottom_small">
+        <lightning-card icon-name="utility:anchor" title="All Traps">
+            <lightning-button-group slot="actions">
+                <lightning-button disabled={isBusy} icon-name="action:refresh" label="Refresh" onclick={refresh}></lightning-button>
+            </lightning-button-group>
+            <div class="slds-m-horizontal_medium">
+                <div lwc:if={isBusy}>
+                    <c-stencil count="4" height="10"></c-stencil>
+                </div>
+                <div lwc:elseif={showMap}>
+                    <lightning-map
+                            map-markers={mapMarkers}
+                            markers-title="Jobs Nearby"
+                            onmarkerselect={handleMarkerSelect}
+                            selected-marker-value={selectedMarkerValue}
+                    ></lightning-map>
+                </div>
+                <template lwc:else>
+                    <c-scoped-notification-lwc icon-name="utility:warning">
+                        There are no traps in field.
+                    </c-scoped-notification-lwc>
+                </template>
+            </div>
+        </lightning-card>
+    </div>
+</template>
