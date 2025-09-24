@@ -14,7 +14,7 @@
                                  disabled={isBusy}
                 ></c-vertic-select>
                 <div class="slds-m-top_medium">
-                    <c-sobject-filters sobject-api-name="Contact" title="Additional Filters" lwc:ref="filters" is-busy={isSearch}></c-sobject-filters>
+                    <c-sobject-filters sobject-api-name="Account" title="Additional Filters" lwc:ref="filters" is-busy={isSearch}></c-sobject-filters>
                 </div>
                 <div class="slds-card slds-card_boundary slds-m-top_medium">
                     <lightning-card icon-name="standard:search">
@@ -23,33 +23,27 @@
                             <span lwc:else>{searchCardTitle}</span>
                         </div>
                         <template lwc:if={showContent}>
-                            <template lwc:if={showContactsTable}>
+                            <template lwc:if={showAccountsTable}>
                                 <div class="slds-m-horizontal_medium">
                                     <div class="slds-grid slds-text-align_left slds-color__background_gray-3 slds-m-bottom_x-small slds-m-top_small">
-                                        <div class="slds-col slds-size_2-of-12 slds-truncate">
+                                        <div class="slds-col slds-size_3-of-12 slds-truncate">
                                             <span class="slds-form-element__label">Name</span>
                                         </div>
-                                        <div class="slds-col slds-size_2-of-12 slds-truncate">
-                                            <span class="slds-form-element__label">Organisation</span>
-                                        </div>
-                                        <div class="slds-col slds-size_2-of-12 slds-truncate">
-                                            <span class="slds-form-element__label">Mobile</span>
-                                        </div>
-                                        <div class="slds-col slds-size_2-of-12 slds-truncate">
+                                        <div class="slds-col slds-size_3-of-12 slds-truncate">
                                             <span class="slds-form-element__label">Phone</span>
                                         </div>
-                                        <div class="slds-col slds-size_3-of-12 slds-truncate">
+                                        <div class="slds-col slds-size_4-of-12 slds-truncate">
                                             <span class="slds-form-element__label">Email</span>
                                         </div>
-                                        <div class="slds-col slds-size_1-of-12 slds-truncate">
+                                        <div class="slds-col slds-size_2-of-12 slds-truncate">
                                             <span class="slds-form-element__label">Distance</span>
                                         </div>
                                     </div>
-                                    <template for:each={contacts} for:index="index" for:item="contact">
-                                        <c-contacts-nearby-contact contact={contact}
+                                    <template for:each={accounts} for:index="index" for:item="account">
+                                        <c-accounts-nearby-account account={account}
                                                                    key={uniqueKey}
                                                                    index={index}
-                                        ></c-contacts-nearby-contact>
+                                        ></c-accounts-nearby-account>
                                     </template>
                                 </div>
                             </template>
@@ -72,7 +66,7 @@
         <div lwc:if={showMap} class="slds-m-horizontal_medium slds-border_top">
             <lightning-map
                     map-markers={mapMarkers}
-                    markers-title="Contacts Nearby"
+                    markers-title="Accounts Nearby"
                     onmarkerselect={handleMarkerSelect}
                     selected-marker-value={selectedMarkerValue}
             ></lightning-map>

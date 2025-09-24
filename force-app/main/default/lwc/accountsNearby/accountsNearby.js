@@ -1,13 +1,13 @@
 import {api, LightningElement} from 'lwc';
 import {execute, showToast} from 'c/verticUtils';
 
-export default class ContactsNearby extends LightningElement {
+export default class AccountsNearby extends LightningElement {
     @api recordId;
-    @api cardTitle = 'Search Contacts';
+    @api cardTitle = 'Search Accounts';
     @api distance = '0.05';
     jobVar;
     mapMarkers = [];
-    contacts = [];
+    accounts = [];
     isBusy = false;
     isSearch = false;
     distanceOptions = [
@@ -38,14 +38,14 @@ export default class ContactsNearby extends LightningElement {
     async search() {
         if (this.recordId) {
             try {
-                let response = await execute('ContactsNearbyMetaProc', {
+                let response = await execute('AccountsNearbyMetaProc', {
                     recordId: this.recordId,
                     distance: this.distance,
                     filters: this.refs?.filters?.filters
                 });
-                this.contacts = response.dto.contacts.records || [];
-                this.limit = response.dto.contacts.limit || 0;
-                this.hasMore = response.dto.contacts.hasMore || false;
+                this.accounts = response.dto.accounts.records || [];
+                this.limit = response.dto.accounts.limit || 0;
+                this.hasMore = response.dto.accounts.hasMore || false;
                 this.jobVar = response.dto.jobVar;
                 this.initMapMarkers();
             } catch (ex) {
@@ -65,8 +65,8 @@ export default class ContactsNearby extends LightningElement {
         return this.isBusy === false;
     }
 
-    get showContactsTable() {
-        return this.contacts && this.contacts.length > 0;
+    get showAccountsTable() {
+        return this.accounts && this.accounts.length > 0;
     }
 
     get uniqueKey() {
@@ -78,7 +78,7 @@ export default class ContactsNearby extends LightningElement {
     }
 
     get showMap() {
-        return this.isBusy === false && this.isSubmit === false && this.contacts !== undefined && this.contacts.length && this.contacts.length > 0 && this.mapMarkers && this.mapMarkers.length > 0;
+        return this.isBusy === false && this.isSubmit === false && this.accounts !== undefined && this.accounts.length && this.accounts.length > 0 && this.mapMarkers && this.mapMarkers.length > 0;
     }
 
     handleDistanceChange(event) {
@@ -114,37 +114,49 @@ export default class ContactsNearby extends LightningElement {
             }
         });
 
-        this.contacts.forEach(contact => {
-            let contactDescription = '';
-            if (contact.MobilePhone) {
-                contactDescription += 'Mobile: ' + contact.MobilePhone + '\n';
+        this.accounts.forEach(account => {
+            let accountDescription = '';
+            if (account.Phone) {
+                accountDescription += 'Phone: ' + account.Phone + '\n';
             }
-            if (contact.Phone) {
-                contactDescription += 'Phone: ' + contact.Phone + '\n';
+            if (account.Email__c) {
+                accountDescription += 'Email: ' + account.Email__c + '\n';
             }
-            if (contact.Email) {
-                contactDescription += 'Email: ' + contact.Email + '\n';
-            }
-            if (contact.Account?.Name) {
-                contactDescription += 'Organisation: ' + contact.Account.Name + '\n';
-            }
-            if (contactDescription.endsWith('\n')) {
-                contactDescription = contactDescription.slice(0, -1);
+            if (accountDescription.endsWith('\n')) {
+                accountDescription = accountDescription.slice(0, -1);
             }
 
-            this.mapMarkers.push({
-                location: {
-                    City: contact.MailingCity,
-                    Country: contact.MailingCountry,
-                    PostalCode: contact.MailingPostalCode,
-                    State: contact.MailingState,
-                    Street: contact.MailingStreet
-                },
-                value: 'CONTACT' + contact.Id,
-                icon: 'standard:contact',
-                title: contact.Name,
-                description: contactDescription
-            });
+            if(account.ShippingStreet) {
+                this.mapMarkers.push({
+                    location: {
+                        City: account.ShippingCity,
+                        Country: account.ShippingCountry,
+                        PostalCode: account.ShippingPostalCode,
+                        State: account.ShippingState,
+                        Street: account.ShippingStreet
+                    },
+                    value: 'ACCOUNT1' + account.Id,
+                    icon: 'standard:contact',
+                    title: account.Name,
+                    description: accountDescription
+                });
+            }
+
+            if(account.BillingStreet) {
+                this.mapMarkers.push({
+                    location: {
+                        City: account.BillingCity,
+                        Country: account.BillingCountry,
+                        PostalCode: account.BillingPostalCode,
+                        State: account.BillingState,
+                        Street: account.BillingStreet
+                    },
+                    value: 'ACCOUNT2' + account.Id,
+                    icon: 'standard:contact',
+                    title: account.Name,
+                    description: accountDescription
+                });
+            }
         });
     }
 

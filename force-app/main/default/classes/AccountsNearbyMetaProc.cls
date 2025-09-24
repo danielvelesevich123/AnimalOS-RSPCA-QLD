@@ -1,22 +1,23 @@
-public class ContactsNearbyMetaProc extends vertic_MetadataProcessor implements Database.AllowsCallouts {
+public class AccountsNearbyMetaProc extends vertic_MetadataProcessor implements Database.AllowsCallouts {
 
     public static final Integer NEARBY_LIMIT = 100;
-    Set<String> contactsFields = new Set<String>{
+    Set<String> accountFields = new Set<String>{
             'Id',
             'Name',
-            'Email',
-            'Account.Name',
-            'Account.Id',
-            'AccountId',
+            'Email__c',
             'Phone',
-            'Email',
-            'MobilePhone',
-            'MailingAddress',
-            'MailingCity',
-            'MailingState',
-            'MailingPostalCode',
-            'MailingCountry',
-            'MailingStreet'
+            'ShippingAddress',
+            'ShippingCity',
+            'ShippingState',
+            'ShippingPostalCode',
+            'ShippingCountry',
+            'ShippingStreet',
+            'BillingAddress',
+            'BillingCity',
+            'BillingState',
+            'BillingPostalCode',
+            'BillingCountry',
+            'BillingStreet'
     };
 
     public override vertic_Response process(vertic_Request request) {
@@ -48,7 +49,7 @@ public class ContactsNearbyMetaProc extends vertic_MetadataProcessor implements 
         Decimal distance = this.request.getDecimal('distance') == null ? 1 : this.request.getDecimal('distance');
         Address jobVarAddress = jobVar.animalos__Address__c;
         List<String> conditions = new List<String>{
-                '(DISTANCE(MailingAddress, :jobVarAddress, \'km\') < :distance)'
+                '(((DISTANCE(ShippingAddress, :jobVarAddress, \'km\') < :distance) OR (DISTANCE(BillingAddress, :jobVarAddress, \'km\') < :distance)) AND RecordType.DeveloperName = \'Organization\')'
         };
 
         if (this.request.has('filters')) {
@@ -63,18 +64,18 @@ public class ContactsNearbyMetaProc extends vertic_MetadataProcessor implements 
             }
         }
 
-        fflib_QueryFactory contactsSOQL = new fflib_QueryFactory(Contact.SObjectType)
-                .selectFields(this.contactsFields)
+        fflib_QueryFactory accountsSOQL = new fflib_QueryFactory(Account.SObjectType)
+                .selectFields(this.accountFields)
                 .setCondition(String.join(conditions, ' AND '))
                 .setLimit(NEARBY_LIMIT + 1);
 
-        List<Contact> contacts = Database.queryWithBinds(contactsSOQL.toSOQL(), new Map<String, Object>{
+        List<Account> accounts = Database.queryWithBinds(accountsSOQL.toSOQL(), new Map<String, Object>{
                 'jobVarAddress' => jobVarAddress,
                 'distance' => distance
         }, AccessLevel.USER_MODE);
 
         this.response.getMapper()
-                .mapFromListSObjects('contacts', contacts, null, NEARBY_LIMIT)
+                .mapFromListSObjects('accounts', accounts, null, NEARBY_LIMIT)
                 .mapFromSObject('jobVar', jobVar);
     }
 }

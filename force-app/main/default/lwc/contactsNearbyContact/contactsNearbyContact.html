@@ -1,6 +1,6 @@
 <template>
     <div class="slds-grid slds-text-align_left slds-m-top_xx-small slds-border_bottom">
-        <div class="slds-col slds-size_3-of-12 slds-truncate">
+        <div class="slds-col slds-size_2-of-12 slds-truncate">
             <lightning-formatted-url value={contactUrl} label={contactName} target="_blank"></lightning-formatted-url>
         </div>
         <div class="slds-col slds-size_2-of-12 slds-truncate">
@@ -14,6 +14,9 @@
         </div>
         <div class="slds-col slds-size_3-of-12 slds-truncate">
             <lightning-formatted-email value={email}></lightning-formatted-email>
+        </div>
+        <div class="slds-col slds-size_1-of-12 slds-truncate">
+            <lightning-formatted-text value={distance}></lightning-formatted-text>
         </div>
     </div>
 </template>
