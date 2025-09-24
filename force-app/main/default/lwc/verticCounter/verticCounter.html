@@ -1,23 +1,24 @@
-<!-- Vertic Counter -->
 <template>
-    <div data-id="container">
-        <lightning-button-icon class="slds-m-top_x-large slds-m-right_xx-small"
-                               icon-name="utility:ban" variant="bare"
+    <div data-id="container" class="animalos-counter">
+        <lightning-button-icon class="slds-m-bottom_x-small slds-m-right_xx-small btn-minus"
+                               icon-name="utility:ban" variant="bare" disabled={disabled}
                                alternative-text="Decrease" title="Decrease"
                                onclick={handleDecrease}></lightning-button-icon>
         <lightning-input type="number"
                          label={label}
                          variant={variant}
                          value={value}
+                         field-level-help={helpText}
                          placeholder={placeholder}
                          required={required}
                          disabled={disabled}
+                         step={step}
                          min={min}
                          max={max}
                          onchange={handleValueChange}
-                         ></lightning-input>
-        <lightning-button-icon class="slds-m-top_x-large slds-m-left_xx-small"
-                               icon-name="utility:new" variant="bare"
+        ></lightning-input>
+        <lightning-button-icon class="slds-m-bottom_x-small slds-m-left_xx-small btn-plus"
+                               icon-name="utility:new" variant="bare" disabled={disabled}
                                alternative-text="Increase" title="Increase"
                                onclick={handleIncrease}></lightning-button-icon>
     </div>

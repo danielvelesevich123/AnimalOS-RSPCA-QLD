@@ -75,8 +75,8 @@ export default class VerticMultiSelect extends BaseElement {
         // if (event) {
         //     event.target.value = '';
         // } else {
-            let select = this.template.querySelector('c-vertic-select');
-            select.setValue(undefined);
+        let select = this.template.querySelector('c-vertic-select');
+        select.setValue(undefined);
         // }
     }
 

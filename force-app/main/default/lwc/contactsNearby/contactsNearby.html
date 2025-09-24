@@ -1,0 +1,78 @@
+<template>
+    <div class="slds-card slds-card_boundary">
+        <lightning-card icon-name="standard:contact" title={cardTitle}>
+            <lightning-button-group slot="actions">
+                <lightning-button disabled={isBusy} icon-name="action:refresh" label="Search" onclick={handleSearchClick}></lightning-button>
+            </lightning-button-group>
+            <div class="slds-m-horizontal_medium slds-is-relative">
+                <c-vertic-spinner is-busy={isSearch}></c-vertic-spinner>
+                <c-vertic-select label="Distance to Job"
+                                 placeholder="Select an Option..."
+                                 onchange={handleDistanceChange}
+                                 options={distanceOptions}
+                                 value={distance}
+                                 disabled={isBusy}
+                ></c-vertic-select>
+                <div class="slds-m-top_medium">
+                    <c-sobject-filters sobject-api-name="Contact" title="Additional Filters" lwc:ref="filters" is-busy={isSearch}></c-sobject-filters>
+                </div>
+                <div class="slds-card slds-card_boundary slds-m-top_medium">
+                    <lightning-card icon-name="standard:search">
+                        <div slot="title">
+                            <c-stencil count="1" height="10" width="100" lwc:if={isBusy}></c-stencil>
+                            <span lwc:else>{searchCardTitle}</span>
+                        </div>
+                        <template lwc:if={showContent}>
+                            <template lwc:if={showContactsTable}>
+                                <div class="slds-m-horizontal_medium">
+                                    <div class="slds-grid slds-text-align_left slds-color__background_gray-3 slds-m-bottom_x-small slds-m-top_small">
+                                        <div class="slds-col slds-size_3-of-12 slds-truncate">
+                                            <span class="slds-form-element__label">Name</span>
+                                        </div>
+                                        <div class="slds-col slds-size_2-of-12 slds-truncate">
+                                            <span class="slds-form-element__label">Organisation</span>
+                                        </div>
+                                        <div class="slds-col slds-size_2-of-12 slds-truncate">
+                                            <span class="slds-form-element__label">Mobile</span>
+                                        </div>
+                                        <div class="slds-col slds-size_2-of-12 slds-truncate">
+                                            <span class="slds-form-element__label">Phone</span>
+                                        </div>
+                                        <div class="slds-col slds-size_3-of-12 slds-truncate">
+                                            <span class="slds-form-element__label">Email</span>
+                                        </div>
+                                    </div>
+                                    <template for:each={contacts} for:index="index" for:item="contact">
+                                        <c-contacts-nearby-contact contact={contact}
+                                                                   key={uniqueKey}
+                                                                   index={index}
+                                        ></c-contacts-nearby-contact>
+                                    </template>
+                                </div>
+                            </template>
+                            <template lwc:else>
+                                <c-scoped-notification-lwc icon-name="utility:warning">
+                                    There are no resources within {distanceLabel} and selected filters.
+                                </c-scoped-notification-lwc>
+                            </template>
+                        </template>
+                        <div lwc:else>
+                            <div class="slds-m-horizontal_medium">
+                                <c-stencil count="4" height="10"></c-stencil>
+                            </div>
+                        </div>
+                    </lightning-card>
+                </div>
+            </div>
+        </lightning-card>
+
+        <div lwc:if={showMap} class="slds-m-horizontal_medium slds-border_top">
+            <lightning-map
+                    map-markers={mapMarkers}
+                    markers-title="Contacts Nearby"
+                    onmarkerselect={handleMarkerSelect}
+                    selected-marker-value={selectedMarkerValue}
+            ></lightning-map>
+        </div>
+    </div>
+</template>

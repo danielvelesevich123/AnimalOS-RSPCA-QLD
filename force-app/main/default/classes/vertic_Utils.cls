@@ -1571,6 +1571,72 @@ public class vertic_Utils {
             }
             return false;
         }
+
+        public Map<String, Map<String, Object>> getFieldsInfo(SObjectType sObjType) {
+            List<SObjectField> sobjectFields = sObjType.getDescribe().fields.getMap().values();
+            Map<String, Map<String, Object>> fieldsMap = new Map<String, Map<String, Object>>();
+
+            for (SObjectField field : sobjectFields) {
+                DescribeFieldResult fieldDescribe = field.getDescribe();
+                String fieldName = fieldDescribe.getName();
+                DisplayType fieldType = fieldDescribe.getType();
+
+                Map<String, Object> fieldMap = new Map<String, Object>(new Map<String, Object>{
+                        'sObjectType' => sObjType.getDescribe().getName(),
+                        'name' => fieldName,
+                        'localName' => fieldDescribe.getLocalName(),
+                        'label' => fieldDescribe.getLabel(),
+                        'defaultValue' => fieldDescribe.getDefaultValue(),
+                        'required' => fieldDescribe.isCreateable() && !fieldDescribe.isNillable() && !fieldDescribe.isDefaultedOnCreate(),
+                        'type' => fieldType
+                });
+
+                Integer scale = fieldDescribe.getScale();
+                if (scale > 0) {
+                    fieldMap.put('step', Decimal.valueOf('0.' + '1'.leftPad(fieldDescribe.getScale(), '0')).setScale(fieldDescribe.getScale()) + '');
+                }
+
+                String helpText = fieldDescribe.getInlineHelpText();
+                fieldMap.put('helpText', helpText);
+
+                if (DisplayType.REFERENCE == fieldType) {
+                    DescribeSObjectResult referenceDescribe = fieldDescribe.getReferenceTo().get(0).getDescribe();
+                    fieldMap.put('sObject', referenceDescribe.getName());
+                    fieldMap.put('sObjectLabel', referenceDescribe.getLabel());
+
+                    if (referenceDescribe.fields.getMap().keySet().contains('name') || referenceDescribe.fields.getMap().keySet().contains('Name')) {
+                        fieldMap.put('searchField', 'Name');
+                    } else {
+                        fieldMap.put('searchField', referenceDescribe.getName() + 'Number');
+                    }
+
+                    fieldMap.put('isClickable', true);
+                    if (referenceDescribe.fields.getMap().containsKey('Description') && referenceDescribe.fields.getMap().get('Description').getDescribe().getType() == DisplayType.STRING) {
+                        fieldMap.put('searchField', 'Name,Description');
+                        fieldMap.put('subtitleField', 'Description');
+                    }
+                    if ('RecordTypeId'.equalsIgnoreCase(fieldName)) {
+                        fieldMap.put('filter', 'SobjectType = \'' + sObjType + '\' AND IsActive = TRUE');
+                        fieldMap.put('isClickable', false);
+                    }
+
+                }
+
+                if (DisplayType.PICKLIST == fieldType || DisplayType.MULTIPICKLIST == fieldType) {
+                    if (fieldDescribe.isDependentPicklist()) {
+                        fieldMap.put('dependentOptions', vertic_Utils.picklists.getDependentOptions(sObjType, fieldDescribe.getController(), field));
+                        fieldMap.put('isDepended', true);
+                        fieldMap.put('controllingField', fieldDescribe.getController() + '');
+                    } else {
+                        fieldMap.put('selectOptions', vertic_Utils.picklists.getPicklistValuesAsSelectOptions(field));
+                    }
+                }
+
+                fieldsMap.put((String) fieldMap.get('name'), fieldMap);
+            }
+
+            return fieldsMap;
+        }
     }
 
 

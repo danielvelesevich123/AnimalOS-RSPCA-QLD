@@ -1,6 +1,6 @@
 import executeApex from '@salesforce/apex/vertic_CommonCtrl.execute';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
-import FORM_FACTOR from '@salesforce/client/formFactor';
+import FORM_FACTOR from "@salesforce/client/formFactor";
 
 const showToast = (page, title, message, type, messageData, mode) => {
     const toastEvt = new ShowToastEvent({
@@ -152,10 +152,10 @@ const validateComponents = (components) => {
             }
 
         }
-    })
+    });
 
     return validationResult;
-}
+};
 
 const validate = (containerComponent, options) => {
     options = options || {}
@@ -211,14 +211,14 @@ const flatten = (data) => {
 
     recurse(data, "");
     return result;
-}
+};
 
 const chunk = (array, n) => {
     if (!array.length) {
         return [];
     }
     return [array.slice(0, n)].concat(this.chunk(array.slice(n), n));
-}
+};
 
 const getURlParams = () => {
     return decodeURI(location.search)
@@ -233,7 +233,7 @@ const getURlParams = () => {
             values[key ? key.toLowerCase() : key] = value;
             return values
         }, {});
-}
+};
 
 const formatPhone = (val, isMobile = true) => {
     val = val.replace(/\D/g, '');
@@ -258,6 +258,37 @@ const formatPhone = (val, isMobile = true) => {
     return val;
 };
 
+
+const handleFieldChange = (map, event) => {
+    let path = event.target.getAttribute('data-path');
+    let index = event.target.getAttribute('data-index');
+    let isCheckbox = event.target.type === 'toggle' || event.target.type === 'checkbox' || event.target.type === 'checkbox-button';
+    let value = isCheckbox ? event.target.checked : event.target?.selectedValues || event.target?.value || event.detail?.value;
+    path = path.replaceAll('[data-index]', '[' + index + ']');
+    return setMapValue(map, path, value);
+}
+
+const setMapValue = (map, path, value) => {
+    if (!path || path.length === 0) {
+        return value;
+    }
+    if (!Array.isArray(path)) {
+        path = path.split('.');
+    }
+
+    let key = path[0];
+    if (key.startsWith('[') && key.endsWith(']')) {
+        key = parseInt(key.substring(0, key.length - 1).substring(1));
+    }
+
+    map[key] = map[key] || {};
+
+    path.splice(0, 1);
+    map[key] = setMapValue(map[key], path, value);
+
+    return map;
+}
+
 const formatName = val => {
     if (val) {
         val = val.trim();
@@ -276,9 +307,81 @@ const formatName = val => {
     return val;
 };
 
-const isMobile = () =>  {
+const copy = (obj) => {
+    return JSON.parse(JSON.stringify(obj));
+};
+
+const capitalize = str => {
+    if (typeof str !== 'string' || str.length === 0) {
+        return str;
+    }
+
+    return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+const isMobile = () => {
     return FORM_FACTOR === 'Small';
 };
+
+const formatState = (state) => {
+    switch (state) {
+        case 'New South Wales' :
+            return 'NSW';
+        case 'South Australia' :
+            return 'SA';
+        case 'Tasmania' :
+            return 'TAS';
+        case 'Victoria' :
+            return 'VIC';
+        case 'Western Australia' :
+            return 'WA';
+        case 'Northern Territory' :
+            return 'NT';
+        case 'Queensland' :
+            return 'QLD';
+        case 'Australian Capital Territory' :
+            return 'ACT';
+        default :
+            return state;
+    }
+};
+
+const getMapValue = (map, path) => {
+    if (!path) {
+        return map;
+    }
+
+    path = path.split('.');
+
+    path.forEach(key => {
+        map = map[key]
+    });
+
+    return map;
+}
+
+const sortByField = (array, field, direction) => {
+    if (!field) return;
+    direction = direction.includes('asc') || direction.includes('ASC') ? 1 : -1;
+    array = [...array].sort((a, b) => {
+        let aValue = getMapValue(a, field);
+        let bValue = getMapValue(b, field);
+        // For Name, use string compare
+        if (aValue === undefined || aValue === null) aValue = '';
+        if (bValue === undefined || bValue === null) bValue = '';
+        if (typeof aValue === 'string' && typeof bValue === 'string') {
+            return aValue.localeCompare(bValue, undefined, {sensitivity: 'base'}) * direction;
+        }
+
+        // For dates, compare as Date
+        if (Object.prototype.toString.call(aValue) === '[object Date]' && Object.prototype.toString.call(bValue) === '[object Date]') {
+            return (new Date(aValue) - new Date(bValue)) * direction;
+        }
+        // Fallback
+        return (aValue > bValue ? 1 : aValue < bValue ? -1 : 0) * direction;
+    });
+    return array;
+}
 
 export {
     showToast,
@@ -289,5 +392,10 @@ export {
     getURlParams,
     formatPhone,
     formatName,
-    isMobile
+    copy,
+    capitalize,
+    isMobile,
+    formatState,
+    handleFieldChange,
+    sortByField
 }

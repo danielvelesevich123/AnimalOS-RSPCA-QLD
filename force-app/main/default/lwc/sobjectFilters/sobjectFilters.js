@@ -1,0 +1,94 @@
+import {api, track, LightningElement} from 'lwc';
+import {execute, showToast,handleFieldChange} from 'c/verticUtils';
+
+export default class SobjectFilters extends LightningElement {
+    @api sobjectApiName;
+    @api title = 'Filters';
+    isBusy = false;
+    @track searchFields = [{guid: new Date().getTime()}];
+    fieldsInfoMap = {};
+    selectOptions = {};
+
+    async connectedCallback() {
+        this.isBusy = true;
+        try {
+            let response = await execute('SobjectFilterMetaProc', {
+                sobjectApiName: this.sobjectApiName
+            });
+            this.selectOptions = response.selectOptions;
+            //sort fieldOptions alphabetically
+            this.selectOptions.fieldOptions.sort((a, b) => a.label.localeCompare(b.label));
+            this.fieldsInfoMap = response.dto.fieldsInfoMap;
+            this.searchFields[0].fieldOptions = this.selectOptions.fieldOptions;
+        } catch (ex) {
+            showToast(this, 'Error', Array.isArray(ex) ? ex[0].message : ex.message || ex.body.message, 'error');
+        } finally {
+            this.isBusy = false;
+        }
+    }
+
+    handleFieldChange(event) {
+        let map = event.target.dataset.map,
+            path = event.target.dataset.path,
+            index = event.target.dataset.index;
+        handleFieldChange(this[map], event);
+
+        switch (map) {
+            case 'searchFields':
+                switch (path) {
+                    case '[data-index].fieldName':
+                        let field = this.searchFields[index];
+                        field.value = null;
+                        field.operator = null;
+                        field.fieldInfo = this.fieldsInfoMap[field.fieldName];
+                        field.operatorOptions = this.operatorOptions(field.fieldInfo.type);
+                        this.resetSearchFieldsSelectOptions();
+                        break;
+                }
+                break;
+        }
+    }
+
+    handleRemoveSearchFieldClick(event) {
+        let index = event.target.dataset.index;
+        this.searchFields.splice(index, 1);
+        this.resetSearchFieldsSelectOptions();
+    }
+
+    handleAddSearchFieldClick() {
+        this.searchFields = [...this.searchFields, {guid: new Date().getTime()}];
+        this.resetSearchFieldsSelectOptions();
+    }
+
+    resetSearchFieldsSelectOptions() {
+        let selectedOptions = this.searchFields.map(field => field.fieldName);
+
+        this.searchFields.forEach(field => {
+            field.fieldOptions = this.selectOptions.fieldOptions.filter(item => !selectedOptions.includes(item.value) || item.value === field.fieldName);
+        });
+    }
+
+    operatorOptions(type) {
+        switch (type) {
+            case 'BOOLEAN':
+            case 'ID':
+            case 'REFERENCE':
+            case 'PICKLIST':
+            case 'MULTIPICKLIST':
+                return this.selectOptions.operatorLimitedOptions;
+            case 'DATE':
+            case 'DATETIME':
+            case 'DOUBLE':
+            case 'PERCENT':
+            case 'INTEGER':
+            case 'CURRENCY':
+                return this.selectOptions.operatorExtendedOptions;
+        }
+        return this.selectOptions.operatorAllOptions;
+    }
+
+    @api
+    get filters() {
+        return JSON.parse(JSON.stringify(this.searchFields));
+    }
+}

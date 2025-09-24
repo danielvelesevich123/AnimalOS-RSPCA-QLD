@@ -20,7 +20,7 @@ export default class VerticLookup extends NavigationMixin(BaseElement) {
     @api showNoneMessage = false;
     @api searchDebounce = 500;
     @api showRecentRecords = false;
-    @api showAllRecords = false;
+    @api showAlRecords = false;
     @api isClickable = false;
     @api allowNewRecords = false;
     @api objectLabel;
@@ -40,6 +40,7 @@ export default class VerticLookup extends NavigationMixin(BaseElement) {
     @api valueField = 'Id';
     @api searchMode = 'SOSL';
     @api pillClass;
+    @api recordLockConditions;
     // Private
     focused;
     isSearching;
@@ -49,7 +50,7 @@ export default class VerticLookup extends NavigationMixin(BaseElement) {
         super.connectedCallback();
         this.doInit(); // To just set meta to default values
         this.meta.dto.searchTerm = '';
-        if (this.showRecentRecords || this.value || this.showAllRecords) {
+        if (this.showRecentRecords || this.value || this.showAlRecords) {
             this.search();
         }
     }
@@ -75,7 +76,7 @@ export default class VerticLookup extends NavigationMixin(BaseElement) {
 
         // We search only when the user typed more than 1 symbol as SOSL does not support 1 symbol in the filter.
         // When less than 1 symbol AND show all records enabled the search mode switches to SOQL and able to find all the records.
-        if ((this.meta.dto.searchTerm && this.meta.dto.searchTerm.length > (this.searchMode === 'SOQL' ? 0 : 1)) || this.showAllRecords === true) {
+        if ((this.meta.dto.searchTerm && this.meta.dto.searchTerm.length > (this.searchMode === 'SOQL' ? 0 : 1)) || this.showAlRecords == true) {
             this.isSearching = true;
             setTimeout(this.search.bind(this, this.meta.dto.searchTerm.slice()), this.searchDebounce);
         }
@@ -126,7 +127,7 @@ export default class VerticLookup extends NavigationMixin(BaseElement) {
 
     handleFocus(event) {
         this.focused = true;
-        if (this.showAllRecords) {
+        if (this.showAlRecords) {
             this.search();
         }
     }
@@ -198,7 +199,7 @@ export default class VerticLookup extends NavigationMixin(BaseElement) {
     }
 
     get showList() {
-        return this.focused && !this.selectedRecord && (this.showAllRecords == true || this.isSearching || this.filteredResultsFound || (this.noFilteredResultsFound && this.meta.dto.searchTerm));
+        return this.focused && !this.selectedRecord && (this.showAlRecords == true || this.isSearching || this.filteredResultsFound || (this.noFilteredResultsFound && this.meta.dto.searchTerm));
     }
 
     get filteredResultsFound() {
@@ -263,7 +264,7 @@ export default class VerticLookup extends NavigationMixin(BaseElement) {
     }
 
     get iconName() {
-        return (this.iconTag && (this.iconTag.startsWith('custom') || this.iconTag.startsWith('utility')) ? this.iconTag : 'standard:' + this.iconTag) || 'default';
+        return (this.iconTag && this.iconTag.startsWith('custom') ? this.iconTag : 'standard:' + this.iconTag) || 'default';
     }
 
     focusOnResultLine(focusedIndex) {
@@ -310,7 +311,8 @@ export default class VerticLookup extends NavigationMixin(BaseElement) {
                     searchMode: this.searchMode,
                     multiSelect: this.multiSelect,
                     showRecentRecords: this.showRecentRecords,
-                    showAllRecords: this.showAllRecords
+                    showAlRecords: this.showAlRecords,
+                    recordLockConditions: this.recordLockConditions
                 }
             ).then(meta => {
                 this.meta.dto.recentResults = meta.dto.recentResults;
@@ -336,7 +338,7 @@ export default class VerticLookup extends NavigationMixin(BaseElement) {
         }
         let selectedRecordsClone = this.selectedRecords;
         // If search term is empty we reset results to hide "No records found" text
-        if (this.showAllRecords == true && !this.meta.dto.searchTerm) {
+        if (this.showAlRecords == true && !this.meta.dto.searchTerm) {
             this.meta.dto.searchResults = this.meta.dto.searchResults;
         } else if (!this.meta.dto.searchTerm && (!this.value || this.multiSelect)) {
             // If there are recent records then we show them
@@ -356,6 +358,8 @@ export default class VerticLookup extends NavigationMixin(BaseElement) {
         if (this.searchResultsFound) {
             this.meta.dto.searchResults.forEach(result => result.class = this.listBoxOptionClass);
         }
+
+        this.triggerLoadEvent();
     }
 
     @api
@@ -388,5 +392,20 @@ export default class VerticLookup extends NavigationMixin(BaseElement) {
                 value: this.value
             }
         }));
+    }
+
+    triggerLoadEvent() {
+        this.dispatchEvent(new CustomEvent('load', {
+            bubbles: false,
+            composed: false,
+            detail: {
+                value: this.value
+            }
+        }));
+    }
+
+    @api
+    focus() {
+        this.refs.input.focus();
     }
 }

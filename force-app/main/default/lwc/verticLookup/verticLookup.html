@@ -2,7 +2,7 @@
 <template>
 
     <span class={elementContainerClasses}>
-        <label class="slds-form-element__label" if:false={labelHidden}><abbr class="slds-required" lwc:if={required} title="required">*</abbr>{label}</label>
+        <label class="slds-form-element__label" lwc:if={label}><abbr class="slds-required" lwc:if={required} title="required">*</abbr>{label}</label>
         <span class="slds-form-element__control" style="display: block">
             <!--            slds-has-selection-->
             <template lwc:if={readOnly}>
@@ -52,6 +52,7 @@
                                                  type="text"
                                                  value={meta.dto.searchTerm}
                                                  variant="label-hidden"
+                                                 lwc:ref="input"
                                 ></lightning-input>
                                 <span class="slds-icon_container slds-icon-utility-search slds-input__icon slds-input__icon_right">
                                     <c-vertic-spinner is-busy={isBusy} size="small"></c-vertic-spinner>
@@ -77,7 +78,7 @@
                                         </div>
                                     </li>
                                     <template lwc:if={searchResultsFiltered}>
-                                        <li class="slds-listbox__item" data-value={searchResult.value} for:each={searchResultsFiltered} for:index="index" for:item="searchResult"
+                                        <li class={searchResult.listItemClass} data-value={searchResult.value} for:each={searchResultsFiltered} for:index="index" for:item="searchResult"
                                             key={searchResult.guid}
                                             onmousedown={handleSelect}>
                                             <div class={searchResult.class}>
@@ -86,12 +87,15 @@
                                                         <lightning-icon icon-name={iconName} size="small"></lightning-icon>
                                                     </span>
                                                 </span>
-                                                <div class="slds-media__body">
+                                                <span class="slds-media__body">
                                                     <span class="slds-listbox__option-text slds-listbox__option-text_entity">
                                                         <lightning-formatted-rich-text value={searchResult.titleFormatted}></lightning-formatted-rich-text>
                                                     </span>
-                                                    <div class="slds-listbox__option-meta slds-listbox__option-meta_entity slds-grid slds-wrap" style="white-space: break-spaces;" lwc:if={searchResult.subtitle}>{searchResult.subtitle}</div>
-                                                </div>
+                                                    <span class="slds-listbox__option-meta slds-listbox__option-meta_entity" lwc:if={searchResult.subtitle}>{searchResult.subtitle}</span>
+                                                </span>
+                                                 <span lwc:if={searchResult.isLocked}>
+                                                     <lightning-icon icon-name="utility:lock" size="small"></lightning-icon>
+                                                </span>
                                             </div>
                                         </li>
                                     </template>
@@ -155,7 +159,7 @@
                 </template>
             </template>
         </span>
-        <template lwc:if={errorMessages}>
+        <template lwc:if={hasErrors}>
             <div class="slds-form-element__help" for:each={errorMessages} for:item="error" key={error}>
                 <template lwc:if={error.message}>
                     {error.message}
