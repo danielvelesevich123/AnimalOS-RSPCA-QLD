@@ -2,7 +2,7 @@
     <div class="slds-card slds-card_boundary">
         <lightning-card icon-name="standard:contact" title={cardTitle}>
             <lightning-button-group slot="actions">
-                <lightning-button disabled={isBusy} icon-name="action:refresh" label="Search" onclick={handleSearchClick}></lightning-button>
+                <lightning-button disabled={searchDisabled} icon-name="action:refresh" label="Search" onclick={handleSearchClick}></lightning-button>
             </lightning-button-group>
             <div class="slds-m-horizontal_medium slds-is-relative">
                 <c-vertic-spinner is-busy={isSearch}></c-vertic-spinner>

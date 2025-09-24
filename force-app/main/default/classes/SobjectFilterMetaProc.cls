@@ -22,7 +22,6 @@ public class SobjectFilterMetaProc extends vertic_MetadataProcessor implements D
         for (String fieldName : sObjectFieldByName.keySet()) {
             DescribeFieldResult describeFieldResultVar = sObjectFieldByName.get(fieldName).getDescribe();
 
-
             if (!describeFieldResultVar.isAccessible()) {
                 fieldsInfoMap.remove(describeFieldResultVar.getName());
                 continue;

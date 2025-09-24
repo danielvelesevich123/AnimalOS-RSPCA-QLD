@@ -316,5 +316,21 @@
                              onchange={handleFieldChange}
             ></lightning-input>
         </template>
+        <template lwc:elseif={isPHONE}>
+            <lightning-input label={label}
+                             name={fieldName}
+                             field-level-help={helpText}
+                             type="text"
+                             class={cssClass}
+                             value={value}
+                             disabled={disabled}
+                             variant={variant}
+                             placeholder={placeholderFormula}
+                             pattern={pattern}
+                             message-when-pattern-mismatch={messageWhenPatternMismatch}
+                             required={required}
+                             onchange={handleFieldChange}
+            ></lightning-input>
+        </template>
     </template>
 </template>

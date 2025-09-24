@@ -34,6 +34,10 @@ export default class ContactsNearby extends LightningElement {
         this.search();
     }
 
+    get searchDisabled() {
+        return this.isBusy || this.isSearch;
+    }
+
     @api
     async search() {
         if (this.recordId) {
@@ -78,7 +82,7 @@ export default class ContactsNearby extends LightningElement {
     }
 
     get showMap() {
-        return this.isBusy === false && this.isSubmit === false && this.contacts !== undefined && this.contacts.length && this.contacts.length > 0 && this.mapMarkers && this.mapMarkers.length > 0;
+        return this.isBusy === false && this.isSearch === false && this.contacts !== undefined && this.contacts.length && this.contacts.length > 0 && this.mapMarkers && this.mapMarkers.length > 0;
     }
 
     handleDistanceChange(event) {
