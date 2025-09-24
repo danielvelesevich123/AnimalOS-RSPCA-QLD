@@ -1,9 +1,9 @@
-import {api, track, LightningElement} from 'lwc';
+import {api, LightningElement} from 'lwc';
 import {execute, showToast} from 'c/verticUtils';
 
 export default class ContactsNearby extends LightningElement {
     @api recordId;
-    @api cardTitle = 'Contacts Nearby';
+    @api cardTitle = 'Search Contacts';
     @api distance = '0.05';
     jobVar;
     mapMarkers = [];
