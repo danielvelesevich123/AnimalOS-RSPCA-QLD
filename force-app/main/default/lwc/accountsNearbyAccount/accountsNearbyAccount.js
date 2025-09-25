@@ -16,8 +16,12 @@ export default class AccountsNearbyAccount extends LightningElement {
         return this.account.Phone;
     }
 
-    get distance() {
-        return this.account.distance;
+    get distanceBilling() {
+        return this.account.distanceBilling;
+    }
+
+    get distanceShipping() {
+        return this.account.distanceShipping;
     }
 
     get email() {

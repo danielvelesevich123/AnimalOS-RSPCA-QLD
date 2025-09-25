@@ -16,7 +16,9 @@ public class ContactsNearbyMetaProc extends vertic_MetadataProcessor implements 
             'MailingState',
             'MailingPostalCode',
             'MailingCountry',
-            'MailingStreet'
+            'MailingStreet',
+            'MailingLatitude',
+            'MailingLongitude'
     };
 
     public override vertic_Response process(vertic_Request request) {
@@ -73,8 +75,24 @@ public class ContactsNearbyMetaProc extends vertic_MetadataProcessor implements 
                 'distance' => distance
         }, AccessLevel.USER_MODE);
 
+        vertic_DTO contactsDTOs = new vertic_DTO();
+        contactsDTOs.getMapper().mapFromListSObjects('contacts', contacts);
+
+        for (vertic_DTO contactDTO : contactsDTOs.getDTOs('contacts')) {
+            contactDTO.put('distance', ((Decimal) Location.getDistance(
+                    Location.newInstance(jobVar.animalos__Address__Latitude__s, jobVar.animalos__Address__Longitude__s),
+                    Location.newInstance(contactDTO.getDecimal('MailingLatitude'), contactDTO.getDecimal('MailingLongitude')),
+                    'km'
+            )).setScale(2) + 'km');
+        }
+
         this.response.getMapper()
-                .mapFromListSObjects('contacts', contacts, null, NEARBY_LIMIT)
+                .mapAnyValue('contacts', new Map<String, Object>{
+                        'limit' => NEARBY_LIMIT,
+                        'hasMore' => contacts.size() > NEARBY_LIMIT,
+                        'records' => contactsDTOs.get('contacts')
+
+                })
                 .mapFromSObject('jobVar', jobVar);
     }
 }

@@ -3,14 +3,17 @@
         <div class="slds-col slds-size_3-of-12 slds-truncate">
             <lightning-formatted-url value={accountUrl} label={accountName} target="_blank"></lightning-formatted-url>
         </div>
-        <div class="slds-col slds-size_3-of-12 slds-truncate">
+        <div class="slds-col slds-size_2-of-12 slds-truncate">
             <lightning-formatted-phone value={phone}></lightning-formatted-phone>
         </div>
-        <div class="slds-col slds-size_4-of-12 slds-truncate">
+        <div class="slds-col slds-size_3-of-12 slds-truncate">
             <lightning-formatted-email value={email}></lightning-formatted-email>
         </div>
         <div class="slds-col slds-size_2-of-12 slds-truncate">
-            <lightning-formatted-text value={distance}></lightning-formatted-text>
+            <lightning-formatted-text value={distanceShipping}></lightning-formatted-text>
+        </div>
+        <div class="slds-col slds-size_2-of-12 slds-truncate">
+            <lightning-formatted-text value={distanceBilling}></lightning-formatted-text>
         </div>
     </div>
 </template>

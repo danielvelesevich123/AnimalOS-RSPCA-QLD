@@ -17,7 +17,11 @@ public class AccountsNearbyMetaProc extends vertic_MetadataProcessor implements 
             'BillingState',
             'BillingPostalCode',
             'BillingCountry',
-            'BillingStreet'
+            'BillingStreet',
+            'ShippingLatitude',
+            'ShippingLongitude',
+            'BillingLatitude',
+            'BillingLongitude'
     };
 
     public override vertic_Response process(vertic_Request request) {
@@ -74,8 +78,62 @@ public class AccountsNearbyMetaProc extends vertic_MetadataProcessor implements 
                 'distance' => distance
         }, AccessLevel.USER_MODE);
 
+        vertic_DTO accountsDTO = new vertic_DTO();
+        accountsDTO.getMapper().mapFromListSObjects('accounts', accounts);
+
+        for (vertic_DTO accountDTO : accountsDTO.getDTOs('accounts')) {
+            Location jobLocation = Location.newInstance(jobVar.animalos__Address__Latitude__s, jobVar.animalos__Address__Longitude__s);
+            Boolean hasShipping = accountDTO.getDecimal('ShippingLatitude') != null && accountDTO.getDecimal('ShippingLongitude') != null;
+            Boolean hasBilling = accountDTO.getDecimal('BillingLatitude') != null && accountDTO.getDecimal('BillingLongitude') != null;
+
+            Decimal distanceShipping = hasShipping ? ((Decimal) Location.getDistance(
+                    jobLocation,
+                    Location.newInstance(accountDTO.getDecimal('ShippingLatitude'), accountDTO.getDecimal('ShippingLongitude')),
+                    'km'
+            )).setScale(2) : null;
+
+            if(distanceShipping != null && distance >= distanceShipping) {
+                accountDTO.put('distanceShipping', distanceShipping + 'km');
+            } else {
+                accountDTO.put('ShippingLatitude', null);
+                accountDTO.put('ShippingLongitude', null);
+                accountDTO.put('ShippingAddress', null);
+                accountDTO.put('ShippingCity', null);
+                accountDTO.put('ShippingState', null);
+                accountDTO.put('ShippingPostalCode', null);
+                accountDTO.put('ShippingCountry', null);
+                accountDTO.put('ShippingStreet', null);
+                accountDTO.put('distanceShipping', null);
+            }
+
+            Double distanceBilling = hasBilling ? ((Decimal) Location.getDistance(
+                    jobLocation,
+                    Location.newInstance(accountDTO.getDecimal('BillingLatitude'), accountDTO.getDecimal('BillingLongitude')),
+                    'km'
+            )).setScale(2) : null;
+
+            if(distanceBilling != null && distance >= distanceBilling) {
+                accountDTO.put('distanceBilling', distanceBilling + 'km');
+            } else {
+                accountDTO.put('BillingLatitude', null);
+                accountDTO.put('BillingLongitude', null);
+                accountDTO.put('BillingAddress', null);
+                accountDTO.put('BillingCity', null);
+                accountDTO.put('BillingState', null);
+                accountDTO.put('BillingPostalCode', null);
+                accountDTO.put('BillingCountry', null);
+                accountDTO.put('BillingStreet', null);
+                accountDTO.put('billingDistance', null);
+            }
+        }
+
         this.response.getMapper()
-                .mapFromListSObjects('accounts', accounts, null, NEARBY_LIMIT)
+                .mapAnyValue('accounts', new Map<String, Object>{
+                        'limit' => NEARBY_LIMIT,
+                        'hasMore' => accounts.size() > NEARBY_LIMIT,
+                        'records' => accountsDTO.get('accounts')
+
+                })
                 .mapFromSObject('jobVar', jobVar);
     }
 }

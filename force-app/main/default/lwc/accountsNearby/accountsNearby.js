@@ -141,7 +141,7 @@ export default class AccountsNearby extends LightningElement {
                     },
                     value: 'ACCOUNT1' + account.Id,
                     icon: 'standard:contact',
-                    title: account.Name,
+                    title: account.Name + ' (Shipping)',
                     description: accountDescription
                 });
             }
@@ -157,7 +157,7 @@ export default class AccountsNearby extends LightningElement {
                     },
                     value: 'ACCOUNT2' + account.Id,
                     icon: 'standard:contact',
-                    title: account.Name,
+                    title: account.Name + ' (Billing)',
                     description: accountDescription
                 });
             }

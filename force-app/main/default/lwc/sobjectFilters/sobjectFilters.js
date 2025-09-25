@@ -19,7 +19,6 @@ export default class SobjectFilters extends LightningElement {
             //sort fieldOptions alphabetically
             this.selectOptions.fieldOptions.sort((a, b) => a.label.localeCompare(b.label));
             this.fieldsInfoMap = response.dto.fieldsInfoMap;
-            this.searchFields[0].fieldOptions = this.selectOptions.fieldOptions;
         } catch (ex) {
             showToast(this, 'Error', Array.isArray(ex) ? ex[0].message : ex.message || ex.body.message, 'error');
         } finally {
@@ -42,7 +41,6 @@ export default class SobjectFilters extends LightningElement {
                         field.operator = null;
                         field.fieldInfo = this.fieldsInfoMap[field.fieldName];
                         field.operatorOptions = this.operatorOptions(field.fieldInfo.type);
-                        this.resetSearchFieldsSelectOptions();
                         break;
                 }
                 break;
@@ -52,20 +50,10 @@ export default class SobjectFilters extends LightningElement {
     handleRemoveSearchFieldClick(event) {
         let index = event.target.dataset.index;
         this.searchFields.splice(index, 1);
-        this.resetSearchFieldsSelectOptions();
     }
 
     handleAddSearchFieldClick() {
         this.searchFields = [...this.searchFields, {guid: new Date().getTime()}];
-        this.resetSearchFieldsSelectOptions();
-    }
-
-    resetSearchFieldsSelectOptions() {
-        let selectedOptions = this.searchFields.map(field => field.fieldName);
-
-        this.searchFields.forEach(field => {
-            field.fieldOptions = this.selectOptions.fieldOptions.filter(item => !selectedOptions.includes(item.value) || item.value === field.fieldName);
-        });
     }
 
     operatorOptions(type) {
