@@ -167,6 +167,11 @@
                 <label>Fishing Line Entanglement</label>
             </value>
             <value>
+                <fullName>Flighted Bird</fullName>
+                <default>false</default>
+                <label>Flighted Bird</label>
+            </value>
+            <value>
                 <fullName>Flood Event</fullName>
                 <default>false</default>
                 <label>Flood Event</label>
