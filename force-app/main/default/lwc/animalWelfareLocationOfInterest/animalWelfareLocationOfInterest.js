@@ -1,5 +1,6 @@
 import {LightningElement, api} from 'lwc';
 import {execute, showToast, validate, copy} from 'c/verticUtils';
+import animalWelfareLocationOfInterestGlobalStyles from "./animalWelfareLocationOfInterest-global-styles.css";
 
 const delay = 500; // Delay in milliseconds for search
 export default class AnimalWelfareLocationOfInterest extends LightningElement {
@@ -7,7 +8,7 @@ export default class AnimalWelfareLocationOfInterest extends LightningElement {
     isInit;
     isSearch;
     @api locationOfInterest = {};
-    searchBy;
+    searchBy = 'Id';
     searchMessage;
     yesNoOptions = [
         {label: 'Yes', value: 'Yes'},
@@ -21,7 +22,6 @@ export default class AnimalWelfareLocationOfInterest extends LightningElement {
 
         if (this.recordId) {
             this.locationOfInterest.Id = this.recordId;
-            this.searchBy = 'Id';
             this.isInit = true;
             await this.search();
             this.isInit = false;
@@ -96,18 +96,9 @@ export default class AnimalWelfareLocationOfInterest extends LightningElement {
         this.locationOfInterest = this.handleFieldChange(this.locationOfInterest, event);
     }
 
-    handleLOINameChange(event) {
-        this.handleLOIFieldChange(event);
-        if (this.locationOfInterest.Name && this.locationOfInterest.Name.length > 3) {
-            this.searchBy = 'Name';
-            this.search(true);
-        }
-    }
-
     handleCoordinatesChange(event) {
         this.locationOfInterest = this.handleFieldChange(this.locationOfInterest, event);
         if (this.locationOfInterest.animalos__Address__Latitude__s && this.locationOfInterest.animalos__Address__Longitude__s) {
-            this.searchBy = 'Coordinates';
             this.search(true);
         }
     }
@@ -127,8 +118,14 @@ export default class AnimalWelfareLocationOfInterest extends LightningElement {
         this.locationOfInterest.animalos__Address__StateCode__s = this.formatState(event.target.province);
         this.locationOfInterest.animalos__Address__PostalCode__s = event.target.postalCode;
         this.locationOfInterest.animalos__Address__CountryCode__s = event.target.country === 'Australia' ? 'AU' : event.target.country;
-        this.searchBy = 'Address';
-        this.search(true);
+    }
+
+    handleSearchAddressChange(event) {
+        this.locationOfInterest.animalos__Address__Street__s = event.target.street;
+        this.locationOfInterest.animalos__Address__City__s = event.target.city;
+        this.locationOfInterest.animalos__Address__StateCode__s = this.formatState(event.target.state);
+        this.locationOfInterest.animalos__Address__PostalCode__s = event.target.postCode;
+        this.locationOfInterest.animalos__Address__CountryCode__s = event.target.country === 'Australia' ? 'AU' : event.target.country;
     }
 
     handleManageSelected(event) {
@@ -144,13 +141,17 @@ export default class AnimalWelfareLocationOfInterest extends LightningElement {
         }
     }
 
+    handleLOILookupChange(event) {
+        this.handleLOIFieldChange(event);
+        if (this.locationOfInterest.Id) {
+            this.search();
+        }
+    }
+
     refreshHistoryComponents() {
         if (this.locationAddressNotEmpty) {
             if (this.refs.locationHistory) {
                 this.refs.locationHistory.refresh();
-            }
-            if (this.refs.locationsNearby) {
-                this.refs.locationsNearby.refresh();
             }
         }
     }
@@ -222,5 +223,17 @@ export default class AnimalWelfareLocationOfInterest extends LightningElement {
 
     get showLocationSafety() {
         return this.hideLocationSafety === false;
+    }
+
+    get searchByAddress() {
+        return this.searchBy === 'Address';
+    }
+
+    get searchByName() {
+        return this.searchBy === 'Id';
+    }
+
+    get searchByCoordinates() {
+        return this.searchBy === 'Coordinates';
     }
 }

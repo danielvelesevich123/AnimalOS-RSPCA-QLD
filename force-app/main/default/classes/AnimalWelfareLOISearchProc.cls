@@ -15,16 +15,10 @@ public without sharing class AnimalWelfareLOISearchProc extends vertic_AbstractP
         String condition;
         Map<String, Object> binds = new Map<String, Object>();
 
-        if('Id'.equalsIgnoreCase(searchBy)) {
+        if ('Id'.equalsIgnoreCase(searchBy)) {
             String locationOfInterestId = this.request.getRequiredString('locationOfInterest.Id');
             condition = 'Id = :locationOfInterestId';
             binds.put('locationOfInterestId', locationOfInterestId);
-        }
-
-        if ('Name'.equalsIgnoreCase(searchBy)) {
-            String name = '%' + locationOfInterestDTO.getRequiredString('Name') + '%';
-            condition = 'Name LIKE :name';
-            binds.put('name', name);
         }
 
         if ('Coordinates'.equalsIgnoreCase(searchBy)) {
@@ -53,7 +47,7 @@ public without sharing class AnimalWelfareLOISearchProc extends vertic_AbstractP
 
             List<String> conditions = new List<String>();
             if (!String.isBlank(street)) {
-                street = '' + street.remove('Street').remove('St').remove('St.').trim() + '';
+                street = '' + street.remove('Street').remove('St ').remove('St.').trim() + '';
                 conditions.add('animalos__Address__Street__s LIKE :street');
                 binds.put('street', street);
             }
@@ -106,5 +100,18 @@ public without sharing class AnimalWelfareLOISearchProc extends vertic_AbstractP
 
         locationOfInterestDTO.getMap().remove('Id');
         this.response.put('locationOfInterest', locationOfInterestDTO.getMap());
+
+        if (String.isBlank(locationOfInterestDTO.getString('Name'))) {
+            this.response.put('locationOfInterest.Name', String.format(
+                    '{0}, {1}, {2} {3} {4}',
+                    new List<String>{
+                            vertic_Utils.objects.defaultIfNull(locationOfInterestDTO.getString('animalos__Address__Street__s'), ''),
+                            vertic_Utils.objects.defaultIfNull(locationOfInterestDTO.getString('animalos__Address__City__s'), ''),
+                            vertic_Utils.objects.defaultIfNull(locationOfInterestDTO.getString('animalos__Address__StateCode__s'), ''),
+                            vertic_Utils.objects.defaultIfNull(locationOfInterestDTO.getString('animalos__Address__PostalCode__s'), ''),
+                            vertic_Utils.objects.defaultIfNull(locationOfInterestDTO.getString('animalos__Address__CountryCode__s'), '')
+                    }
+            ));
+        }
     }
 }

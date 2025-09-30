@@ -31,19 +31,6 @@ public without sharing class AnimalWelfareCaseSubmitProc extends vertic_Abstract
 
         animalos__Location_Of_Interest__c locationOfInterestVar = new animalos__Location_Of_Interest__c();
         this.request.getMapper().mapToSObject('locationOfInterest', locationOfInterestVar);
-        if (String.isBlank(locationOfInterestVar.Name)) {
-            locationOfInterestVar.Name = String.format(
-                    '{0}, {1}, {2} {3} {4}',
-                    new List<String>{
-                            vertic_Utils.objects.defaultIfNull(locationOfInterestVar.animalos__Address__Street__s, ''),
-                            vertic_Utils.objects.defaultIfNull(locationOfInterestVar.animalos__Address__City__s, ''),
-                            vertic_Utils.objects.defaultIfNull(locationOfInterestVar.animalos__Address__StateCode__s, ''),
-                            vertic_Utils.objects.defaultIfNull(locationOfInterestVar.animalos__Address__PostalCode__s, ''),
-                            vertic_Utils.objects.defaultIfNull(locationOfInterestVar.animalos__Address__CountryCode__s, '')
-                    }
-            );
-        }
-
         uow.registerUpsert(locationOfInterestVar);
 
         //Save & Create Job action
@@ -217,8 +204,8 @@ public without sharing class AnimalWelfareCaseSubmitProc extends vertic_Abstract
 
         caseVar.Subject = String.join(new List<String>(caseSubjectParts), ' - ');
 
+        System.debug(locationOfInterestVar);
         uow.commitWork();
-
 
         List<AccountContactRelation> accountContactRelations = [
                 SELECT Id, ContactId, AccountId

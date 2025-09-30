@@ -192,7 +192,7 @@ export default class AnimalWelfareCase extends LightningElement {
                     ],
                     'sticky'
                 );
-                window.location.href = 'https://' + window.location.hostname + '/' + response.dto.caseVar?.Id;
+                // window.location.href = 'https://' + window.location.hostname + '/' + response.dto.caseVar?.Id;
             })
             .catch(errors => {
                 showToast(this, 'Error', Array.isArray(errors) ? errors[0].message : errors.message, 'error');

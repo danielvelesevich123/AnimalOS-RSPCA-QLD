@@ -17,6 +17,7 @@ export default class VerticGoogleAddress extends BaseElement {
     @api searchDebounce = 500;
     @api showAdditionalFields;
     @api addressDisabled;
+    @api searchOnly = false;
     @api hideUnit;
     selectedOption;
     filteredOptions = [];
@@ -41,8 +42,12 @@ export default class VerticGoogleAddress extends BaseElement {
         }
 
         if (this.streetOnly) {
-            this.showAdditionalFields = true;
+            this.setShowAdditionalFields(true);
         }
+    }
+
+    setShowAdditionalFields(value) {
+        this.showAdditionalFields = this.searchOnly === false && value;
     }
 
     get searchTerm() {
@@ -244,7 +249,7 @@ export default class VerticGoogleAddress extends BaseElement {
 
                 this.streetFormat();
 
-                this.showAdditionalFields = true;
+                this.setShowAdditionalFields(true);
 
                 this.validate();
 
@@ -283,11 +288,11 @@ export default class VerticGoogleAddress extends BaseElement {
     }
 
     handleEnterManuallyClick(event) {
-        this.showAdditionalFields = true;
+        this.setShowAdditionalFields(true);
     }
 
     handleClearAddressClick(event) {
-        this.showAdditionalFields = false;
+        this.setShowAdditionalFields(false);
 
         this.unit = null;
         this.streetOnly = null;

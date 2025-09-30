@@ -11,22 +11,31 @@
             </span>
             </div>
             <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small" data-id="form">
-                <div class="slds-col slds-size_1-of-2">
+                <div class="slds-col slds-size_1-of-2" lwc:if={searchByName}>
                     <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
-                    <lightning-input data-path="Name"
+                    <c-vertic-lookup data-path="Id"
                                      lwc:else
-                                     value={locationOfInterest.Name}
-                                     label="Location of Interest Name"
+                                     label="Search existing by Name"
+                                     icon-name="utility:location"
+                                     object="animalos__Location_Of_Interest__c"
+                                     search-field="Name"
+                                     search-mode="SOQL"
+                                     placeholder="Search Location of Interest..."
+                                     onchange={handleLOILookupChange}
+                                     value={locationOfInterest.Id}
                                      disabled={isSearch}
-                                     onchange={handleLOINameChange}
-                    ></lightning-input>
+                    ></c-vertic-lookup>
                 </div>
-                <div class="slds-col slds-size_1-of-4">
+                <div class="slds-col slds-size_1-of-2" lwc:if={searchByAddress}>
+                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
+                    <c-vertic-google-address lwc:else search-only label="Search by Google Address" onchange={handleSearchAddressChange}></c-vertic-google-address>
+                </div>
+                <div class="slds-col slds-size_1-of-4" lwc:if={searchByCoordinates}>
                     <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
                     <lightning-input data-path="animalos__Address__Latitude__s"
                                      lwc:else
                                      value={locationOfInterest.animalos__Address__Latitude__s}
-                                     label="Latitude"
+                                     label="Search by Latitude"
                                      type="text"
                                      min="-90"
                                      max="90"
@@ -36,12 +45,12 @@
                                      onchange={handleCoordinatesChange}
                     ></lightning-input>
                 </div>
-                <div class="slds-col slds-size_1-of-4">
+                <div class="slds-col slds-size_1-of-4" lwc:if={searchByCoordinates}>
                     <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
                     <lightning-input data-path="animalos__Address__Longitude__s"
                                      lwc:else
                                      value={locationOfInterest.animalos__Address__Longitude__s}
-                                     label="Longitude"
+                                     label="and Longitude"
                                      type="text"
                                      pattern="^-?((1[0-7][0-9]|[1-9]?[0-9])(\.\d+)?|180(\.0+)?)$"
                                      message-when-pattern-mismatch="Longitude should be a decimal number in a range [-180, 180]"
@@ -50,23 +59,57 @@
                     ></lightning-input>
                 </div>
                 <div class="slds-col slds-size_1-of-1">
-                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
-                    <lightning-input-address lwc:else
-                                             show-address-lookup
-                                             address-lookup-label="Address"
-                                             street-label="Street"
-                                             city-label="City"
-                                             country-label="Country"
-                                             disabled={isSearch}
-                                             province-label="Province"
-                                             postal-code-label="Postal Code"
-                                             city={locationOfInterest.animalos__Address__City__s}
-                                             country={locationOfInterest.animalos__Address__CountryCode__s}
-                                             postal-code={locationOfInterest.animalos__Address__PostalCode__s}
-                                             province={locationOfInterest.animalos__Address__StateCode__s}
-                                             street={locationOfInterest.animalos__Address__Street__s}
-                                             onchange={handleLOIAddressChange}
-                    ></lightning-input-address>
+                    <div class="slds-card slds-card_boundary slds-m-top_medium">
+                        <lightning-card icon-name="utility:location" title="Basic Information">
+                            <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
+                                <div class="slds-col slds-size_1-of-2">
+                                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
+                                    <lightning-input data-path="Name"
+                                                     value={locationOfInterest.Name}
+                                                     label="Location of Interest Name"
+                                                     disabled={isSearch}
+                                                     lwc:else
+                                                     onchange={handleLOIFieldChange}
+                                    ></lightning-input>
+                                </div>
+                                <div class="slds-col slds-size_1-of-4">
+                                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
+                                    <lightning-input lwc:else
+                                                     value={locationOfInterest.animalos__Address__Latitude__s}
+                                                     label="Latitude"
+                                                     type="text"
+                                                     read-only
+                                    ></lightning-input>
+                                </div>
+                                <div class="slds-col slds-size_1-of-4">
+                                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
+                                    <lightning-input lwc:else
+                                                     value={locationOfInterest.animalos__Address__Longitude__s}
+                                                     label="Longitude"
+                                                     read-only
+                                                     type="text"
+                                    ></lightning-input>
+                                </div>
+                                <div class="slds-col slds-size_1-of-1">
+                                    <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
+                                    <lightning-input-address lwc:else
+                                                             street-label="Street"
+                                                             city-label="City"
+                                                             country-label="Country"
+                                                             disabled={isSearch}
+                                                             province-label="Province"
+                                                             postal-code-label="Postal Code"
+                                                             city={locationOfInterest.animalos__Address__City__s}
+                                                             country={locationOfInterest.animalos__Address__CountryCode__s}
+                                                             postal-code={locationOfInterest.animalos__Address__PostalCode__s}
+                                                             province={locationOfInterest.animalos__Address__StateCode__s}
+                                                             street={locationOfInterest.animalos__Address__Street__s}
+                                                             onchange={handleLOIAddressChange}
+                                    ></lightning-input-address>
+                                </div>
+                            </div>
+                        </lightning-card>
+                    </div>
                 </div>
                 <div class="slds-col slds-size_1-of-1" lwc:if={showLocationSafety}>
                     <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>

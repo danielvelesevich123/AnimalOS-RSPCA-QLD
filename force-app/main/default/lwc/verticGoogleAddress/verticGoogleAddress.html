@@ -3,19 +3,19 @@
     <div class="slds-grid slds-gutters_small slds-m-bottom_medium" if:false={disabled}>
         <div class="slds-col slds-has-flexi-truncate" role="listitem">
             <label class="slds-form-element__label"><abbr class="slds-required" title="required" if:true={required}>*</abbr>{label}</label>
+            <template if:false={searchOnly}>
+                <a href="javascript:void(0)" class="slds-text-align_right" onclick={handleEnterManuallyClick} style="display: inline-flex; float: right;" if:false={showAdditionalFields}>
+                    <div style="text-decoration: underline">
+                        Enter Address manually
+                    </div>
+                </a>
 
-            <a href="javascript:void(0)" class="slds-text-align_right" onclick={handleEnterManuallyClick} style="display: inline-flex; float: right;" if:false={showAdditionalFields}>
-                <div style="text-decoration: underline">
-                    Enter Address manually
-                </div>
-            </a>
-
-            <a href="javascript:void(0)" class="slds-text-align_right" onclick={handleClearAddressClick} style="display: inline-flex; float: right;" if:true={showAdditionalFields}>
-                <div style="text-decoration: underline">
-                    Clear Address
-                </div>
-            </a>
-
+                <a href="javascript:void(0)" class="slds-text-align_right" onclick={handleClearAddressClick} style="display: inline-flex; float: right;" if:true={showAdditionalFields}>
+                    <div style="text-decoration: underline">
+                        Clear Address
+                    </div>
+                </a>
+            </template>
             <div class={elementContainerClasses}>
                 <div class="slds-form-element__control">
                     <div class="slds-combobox_container slds-has-inline-listbox">
