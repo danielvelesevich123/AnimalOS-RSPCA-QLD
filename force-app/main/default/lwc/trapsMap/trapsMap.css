@@ -1,0 +1,16 @@
+.map-container {
+    height: 750px;
+}
+
+.map-container lightning-map {
+    height: 100%;
+}
+
+.list-item {
+    cursor: pointer;
+}
+
+.list-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}

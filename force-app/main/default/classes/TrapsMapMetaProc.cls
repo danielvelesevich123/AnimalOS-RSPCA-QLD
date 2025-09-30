@@ -12,12 +12,10 @@ public class TrapsMapMetaProc extends vertic_MetadataProcessor implements Databa
 
     private void doInit() {
         List<animalos__Job_Activity__c> traps = [
-                SELECT Id, Name, animalos__Job__r.Name, Days_in_Field__c, animalos__Address__Street__s, animalos__Address__City__s, animalos__Address__StateCode__s, animalos__Address__PostalCode__s,
-                        animalos__Address__CountryCode__s
+                SELECT Id, Name, animalos__Job__r.Name, Days_in_Field__c, animalos__Address__Street__s, animalos__Address__City__s,
+                        animalos__Address__StateCode__s, animalos__Address__PostalCode__s, animalos__Address__CountryCode__s
                 FROM animalos__Job_Activity__c
-                WHERE animalos__Start_Date_Time__c != NULL
-                AND animalos__Status__c = 'In Progress'
-                AND RecordType.DeveloperName = 'Trap'
+                WHERE Id IN (SELECT animalos__Job_Activity__c FROM animalos__Assigned_Resource__c WHERE animalos__Resource__r.animalos__Type__c = 'Trap' AND Trap_Status__c = 'Set')
         ];
 
         this.response.getMapper().mapFromListSObjects('jobActivities', traps);

@@ -8,14 +8,37 @@
                 <div lwc:if={isBusy}>
                     <c-stencil count="4" height="10"></c-stencil>
                 </div>
-                <div lwc:elseif={showMap}>
-                    <lightning-map
-                            map-markers={mapMarkers}
-                            markers-title="Jobs Nearby"
-                            onmarkerselect={handleMarkerSelect}
-                            selected-marker-value={selectedMarkerValue}
-                    ></lightning-map>
-                </div>
+                <template lwc:elseif={showMap}>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_4-of-5 map-container">
+                            <lightning-map
+                                    map-markers={mapMarkers}
+                                    markers-title="Active Set Traps"
+                                    onmarkerselect={handleMarkerSelect}
+                                    selected-marker-value={selectedMarkerValue}
+                                    list-view="hidden"
+                                    center={mapCenter}
+                                    zoom-level={zoomLevel}
+                            ></lightning-map>
+                        </div>
+                        <div class="slds-col slds-size_1-of-5 slds-scrollable_y map-container slds-p-left_small">
+                            <div class="slds-card slds-card_boundary">
+                                <lightning-card title="Active Set Traps" icon-name="utility:anchor">
+                                        <template for:each={jobActivities} for:item="ja" for:index="index">
+                                            <div key={ja.Id} class="list-item slds-border_bottom slds-p-vertical_x-small slds-p-horizontal_medium" data-id={ja.Id} onclick={handleListItemClick}>
+                                                <div class="slds-text-title_bold slds-truncate">
+                                                    <lightning-formatted-url value={ja.Name} label={ja.Name} data-id={ja.Id} onclick={handleOpenRecordClick}
+                                                                             target="_blank"></lightning-formatted-url>
+                                                </div>
+                                                <div class="slds-text-body_small slds-truncate">Job: {ja.animalos__Job__r.Name}</div>
+                                                <div class="slds-text-body_small slds-truncate">Days in Field: {ja.Days_in_Field__c}</div>
+                                            </div>
+                                        </template>
+                                </lightning-card>
+                            </div>
+                        </div>
+                    </div>
+                </template>
                 <template lwc:else>
                     <c-scoped-notification-lwc icon-name="utility:warning">
                         There are no traps in field.
