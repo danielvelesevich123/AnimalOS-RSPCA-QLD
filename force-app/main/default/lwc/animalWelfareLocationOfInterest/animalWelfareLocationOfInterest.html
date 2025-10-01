@@ -11,11 +11,32 @@
             </span>
             </div>
             <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small" data-id="form">
+                <div class="slds-col slds-size_1-of-1 slds-m-bottom_small">
+                    <lightning-button-group>
+                        <lightning-button label="Search by Name"
+                                          variant={searchByNameVariant}
+                                          data-value="Id"
+                                          onclick={handleSearchByClick}
+                                          disabled={isSearch}
+                        ></lightning-button>
+                        <lightning-button label="Search by Address"
+                                          variant={searchByAddressVariant}
+                                          data-value="Address"
+                                          onclick={handleSearchByClick}
+                                          disabled={isSearch}
+                        ></lightning-button>
+                        <lightning-button label="Search by Coordinates"
+                                          variant={searchByCoordinatesVariant}
+                                          data-value="Coordinates"
+                                          onclick={handleSearchByClick}
+                                          disabled={isSearch}
+                        ></lightning-button>
+                    </lightning-button-group>
+                </div>
                 <div class="slds-col slds-size_1-of-2" lwc:if={searchByName}>
                     <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
                     <c-vertic-lookup data-path="Id"
                                      lwc:else
-                                     label="Search existing by Name"
                                      icon-name="utility:location"
                                      object="animalos__Location_Of_Interest__c"
                                      search-field="Name"
@@ -28,14 +49,14 @@
                 </div>
                 <div class="slds-col slds-size_1-of-2" lwc:if={searchByAddress}>
                     <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
-                    <c-vertic-google-address lwc:else search-only label="Search by Google Address" onchange={handleSearchAddressChange}></c-vertic-google-address>
+                    <c-vertic-google-address lwc:else search-only onchange={handleSearchAddressChange}></c-vertic-google-address>
                 </div>
                 <div class="slds-col slds-size_1-of-4" lwc:if={searchByCoordinates}>
                     <c-stencil count="1" height="15" lwc:if={isInit}></c-stencil>
                     <lightning-input data-path="animalos__Address__Latitude__s"
                                      lwc:else
                                      value={locationOfInterest.animalos__Address__Latitude__s}
-                                     label="Search by Latitude"
+                                     label="Latitude"
                                      type="text"
                                      min="-90"
                                      max="90"
@@ -50,7 +71,7 @@
                     <lightning-input data-path="animalos__Address__Longitude__s"
                                      lwc:else
                                      value={locationOfInterest.animalos__Address__Longitude__s}
-                                     label="and Longitude"
+                                     label="Longitude"
                                      type="text"
                                      pattern="^-?((1[0-7][0-9]|[1-9]?[0-9])(\.\d+)?|180(\.0+)?)$"
                                      message-when-pattern-mismatch="Longitude should be a decimal number in a range [-180, 180]"
@@ -68,6 +89,7 @@
                                                      value={locationOfInterest.Name}
                                                      label="Location of Interest Name"
                                                      disabled={isSearch}
+                                                     required
                                                      lwc:else
                                                      onchange={handleLOIFieldChange}
                                     ></lightning-input>

@@ -2,7 +2,7 @@
 <template>
     <div class="slds-grid slds-gutters_small slds-m-bottom_medium" if:false={disabled}>
         <div class="slds-col slds-has-flexi-truncate" role="listitem">
-            <label class="slds-form-element__label"><abbr class="slds-required" title="required" if:true={required}>*</abbr>{label}</label>
+            <label class="slds-form-element__label" lwc:if={label}><abbr class="slds-required" title="required" if:true={required}>*</abbr>{label}</label>
             <template if:false={searchOnly}>
                 <a href="javascript:void(0)" class="slds-text-align_right" onclick={handleEnterManuallyClick} style="display: inline-flex; float: right;" if:false={showAdditionalFields}>
                     <div style="text-decoration: underline">

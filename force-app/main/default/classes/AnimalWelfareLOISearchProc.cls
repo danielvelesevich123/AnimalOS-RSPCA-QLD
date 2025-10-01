@@ -14,6 +14,13 @@ public without sharing class AnimalWelfareLOISearchProc extends vertic_AbstractP
         animalos__Location_Of_Interest__c locationVar;
         String condition;
         Map<String, Object> binds = new Map<String, Object>();
+        Decimal latitude = locationOfInterestDTO.getDecimal('animalos__Address__Latitude__s');
+        Decimal longitude = locationOfInterestDTO.getDecimal('animalos__Address__Longitude__s');
+        String street = locationOfInterestDTO.getString('animalos__Address__Street__s');
+        String city = locationOfInterestDTO.getString('animalos__Address__City__s');
+        String stateCode = locationOfInterestDTO.getString('animalos__Address__StateCode__s');
+        String postalCode = locationOfInterestDTO.getString('animalos__Address__PostalCode__s');
+        String countryCode = locationOfInterestDTO.getString('animalos__Address__CountryCode__s');
 
         if ('Id'.equalsIgnoreCase(searchBy)) {
             String locationOfInterestId = this.request.getRequiredString('locationOfInterest.Id');
@@ -22,9 +29,6 @@ public without sharing class AnimalWelfareLOISearchProc extends vertic_AbstractP
         }
 
         if ('Coordinates'.equalsIgnoreCase(searchBy)) {
-            Decimal latitude = locationOfInterestDTO.getDecimal('animalos__Address__Latitude__s');
-            Decimal longitude = locationOfInterestDTO.getDecimal('animalos__Address__Longitude__s');
-
             if (latitude == null || longitude == null) {
                 throw new vertic_Structs.MissingDataException('Please, provide both latitude and longitude for the search.');
             }
@@ -35,21 +39,13 @@ public without sharing class AnimalWelfareLOISearchProc extends vertic_AbstractP
         }
 
         if ('Address'.equalsIgnoreCase(searchBy)) {
-            String street = locationOfInterestDTO.getRequiredString('animalos__Address__Street__s');
-            String city = locationOfInterestDTO.getString('animalos__Address__City__s');
-            String stateCode = locationOfInterestDTO.getString('animalos__Address__StateCode__s');
-            String postalCode = locationOfInterestDTO.getString('animalos__Address__PostalCode__s');
-            String countryCode = locationOfInterestDTO.getString('animalos__Address__CountryCode__s');
-
-            if (String.isBlank(city) && String.isBlank(stateCode) && String.isBlank(postalCode) && String.isBlank(countryCode)) {
-                throw new vertic_Structs.MissingDataException('Please, provide at least one address field for the search.');
-            }
-
             List<String> conditions = new List<String>();
             if (!String.isBlank(street)) {
                 street = '' + street.remove('Street').remove('St ').remove('St.').trim() + '';
                 conditions.add('animalos__Address__Street__s LIKE :street');
                 binds.put('street', street);
+            } else {
+                throw new vertic_Structs.MissingDataException('Please, provide the street for the search.');
             }
             if (!String.isBlank(city)) {
                 conditions.add('animalos__Address__City__s LIKE :city');
@@ -101,7 +97,7 @@ public without sharing class AnimalWelfareLOISearchProc extends vertic_AbstractP
         locationOfInterestDTO.getMap().remove('Id');
         this.response.put('locationOfInterest', locationOfInterestDTO.getMap());
 
-        if (String.isBlank(locationOfInterestDTO.getString('Name'))) {
+        if (String.isBlank(locationOfInterestDTO.getString('Name')) && String.isNotBlank(street)) {
             this.response.put('locationOfInterest.Name', String.format(
                     '{0}, {1}, {2} {3} {4}',
                     new List<String>{
