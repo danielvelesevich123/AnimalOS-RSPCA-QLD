@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Set_Defaults</name>
+        <label>Set Defaults</label>
+        <locationX>217</locationX>
+        <locationY>49</locationY>
+        <assignmentItems>
+            <assignToReference>recurringDonation.npe03__Amount__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recurringDonation.npe03__Amount__c</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <interviewLabel>On Before Recurring Donation Creation (NPSP+ Template) {!$Flow.CurrentDateTime}</interviewLabel>
+    <isTemplate>true</isTemplate>
+    <label>On Before Recurring Donation Creation (NPSP+ Template)</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Set_Defaults</targetReference>
+        </connector>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <description>The Failure Message</description>
+        <name>FlowFaultMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>recurringDonation</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>npe03__Recurring_Donation__c</objectType>
+    </variables>
+</Flow>

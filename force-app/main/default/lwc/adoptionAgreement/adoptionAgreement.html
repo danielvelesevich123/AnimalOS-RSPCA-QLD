@@ -197,16 +197,6 @@
                                 <template for:each={meta.dto.animals} for:item="animal" id="testOutcomes">
                                     <c-adoption-agreement-animal-test-outcomes animal={animal} key={animal.Id}></c-adoption-agreement-animal-test-outcomes>
                                 </template>
-                                <div class="slds-p-horizontal_large">
-                                    <c-scoped-notification-lwc icon-name="utility:warning">
-                                        <b>Feline FIV/FeLV</b> - For Felines that have tested negative OR have not been tested, we suggest that you have your cat retested for FIV no less than sixty
-                                        (60)
-                                        days
-                                        after the
-                                        initial
-                                        test to rule out a recent infection. Please discuss this with your vet.
-                                    </c-scoped-notification-lwc>
-                                </div>
                             </lightning-card>
                         </div>
                         <div class="slds-card slds-card_boundary">
@@ -402,6 +392,12 @@
                             </lightning-card>
                         </div>
                     </template>
+
+                    <div class="slds-text-align_center slds-m-top_small slds-m-bottom_large" lwc:if={sendButtonEnabled}>
+                        <c-scoped-notification-lwc>
+                            <b>Clicking Send will email the adoption agreement to the specified adopter, allowing them to complete the agreement on their device.</b>
+                        </c-scoped-notification-lwc>
+                    </div>
 
                     <div class="slds-text-align_center slds-m-top_small slds-m-bottom_large">
                         <lightning-button-group>

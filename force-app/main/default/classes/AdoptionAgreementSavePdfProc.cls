@@ -92,6 +92,13 @@ public without sharing class AdoptionAgreementSavePdfProc extends vertic_Abstrac
                                                 this.pdfDocumentId
                                         }
                                 }
+                        },
+                        'contentAttachments' => new List<Map<String, Object>>{
+                                new Map<String, Object>{
+                                        'proc' => 'ConfirmationOfDetailsQA',
+                                        'fileName' => 'Confirmation of Details.pdf',
+                                        'recordId' => whatId
+                                }
                         }
                 }
         });

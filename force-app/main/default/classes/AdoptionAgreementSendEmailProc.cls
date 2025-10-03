@@ -26,8 +26,17 @@ public without sharing class AdoptionAgreementSendEmailProc extends vertic_Abstr
                 )
         ], 'Referral has empty Contact, email can not be sent');
 
+        List<Map<String, Object>> contentAttachments = new List<Map<String, Object>>{
+                new Map<String, Object>{
+                        'proc' => 'ConfirmationOfDetailsQA',
+                        'fileName' => 'Confirmation of Details.pdf',
+                        'recordId' => referralId
+                }
+        };
+
         Vertic_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(adoptionAgreementTemplate.DeveloperName, relatedContact, referralId)
                 .setOrgWideEmail(vertic_Utils.strings.defaultIfBlank(vertic_SettingService.getValue('ADOPTION_AGREEMENT_ORG_WIDE_EMAIL'), 'developer@vertic.com.au'))
+                .setContentAttachments(contentAttachments)
                 .toAsyncProcess();
 
         asyncProc.Group_Key__c = referralId;

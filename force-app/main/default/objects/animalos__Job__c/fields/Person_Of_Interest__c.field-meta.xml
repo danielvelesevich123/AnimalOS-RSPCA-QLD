@@ -5,7 +5,7 @@
     <label>Person Of Interest</label>
     <referenceTo>Contact</referenceTo>
     <relationshipLabel>Jobs (Person Of Interest)</relationshipLabel>
-    <relationshipName>Jobs</relationshipName>
+    <relationshipName>Jobs1</relationshipName>
     <required>false</required>
     <trackFeedHistory>false</trackFeedHistory>
     <trackHistory>false</trackHistory>

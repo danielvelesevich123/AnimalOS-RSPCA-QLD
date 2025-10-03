@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Sub_Status__c</fullName>
+    <label>Sub Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Awaiting Recheck</fullName>
+                <default>false</default>
+                <label>Awaiting Recheck</label>
+            </value>
+            <value>
+                <fullName>Pending Prosecution</fullName>
+                <default>false</default>
+                <label>Pending Prosecution</label>
+            </value>
+            <value>
+                <fullName>Awaiting Notification Response</fullName>
+                <default>false</default>
+                <label>Awaiting Notification Response</label>
+            </value>
+            <value>
+                <fullName>Awaiting Further Information</fullName>
+                <default>false</default>
+                <label>Awaiting Further Information</label>
+            </value>
+            <value>
+                <fullName>Attended – CC left</fullName>
+                <default>false</default>
+                <label>Attended – CC left</label>
+            </value>
+            <value>
+                <fullName>Attended – enquires continuing</fullName>
+                <default>false</default>
+                <label>Attended – enquires continuing</label>
+            </value>
+            <value>
+                <fullName>Awaiting AWD Compliance Check</fullName>
+                <default>false</default>
+                <label>Awaiting AWD Compliance Check</label>
+            </value>
+            <value>
+                <fullName>Covering Inspector - Assigned</fullName>
+                <default>false</default>
+                <label>Covering Inspector - Assigned</label>
+            </value>
+            <value>
+                <fullName>Covering Inspector – Awaiting Attendance</fullName>
+                <default>false</default>
+                <label>Covering Inspector – Awaiting Attendance</label>
+            </value>
+            <value>
+                <fullName>Covering Inspector – Preliminary Enquiries Made</fullName>
+                <default>false</default>
+                <label>Covering Inspector – Preliminary Enquiries Made</label>
+            </value>
+            <value>
+                <fullName>Notes outstanding</fullName>
+                <default>false</default>
+                <label>Notes outstanding</label>
+            </value>
+            <value>
+                <fullName>Pending Forfeiture Application</fullName>
+                <default>false</default>
+                <label>Pending Forfeiture Application</label>
+            </value>
+            <value>
+                <fullName>Pending Forfeiture decision</fullName>
+                <default>false</default>
+                <label>Pending Forfeiture decision</label>
+            </value>
+            <value>
+                <fullName>Pending FBOE</fullName>
+                <default>false</default>
+                <label>Pending FBOE</label>
+            </value>
+            <value>
+                <fullName>Pending FBOE Application Decision</fullName>
+                <default>false</default>
+                <label>Pending FBOE Application Decision</label>
+            </value>
+            <value>
+                <fullName>Preliminary inquiries made</fullName>
+                <default>false</default>
+                <label>Preliminary inquiries made</label>
+            </value>
+            <value>
+                <fullName>Prosecution Commenced</fullName>
+                <default>false</default>
+                <label>Prosecution Commenced</label>
+            </value>
+            <value>
+                <fullName>Trap Set</fullName>
+                <default>false</default>
+                <label>Trap Set</label>
+            </value>
+            <value>
+                <fullName>Caller Contacted</fullName>
+                <default>false</default>
+                <label>Caller Contacted</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

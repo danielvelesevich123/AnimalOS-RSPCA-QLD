@@ -4,6 +4,25 @@
     <active>true</active>
     <label>Inspectorate</label>
     <picklistValues>
+        <picklist>Caller_Frequents_Area__c</picklist>
+        <values>
+            <fullName>Everyday</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Once Per Week</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>One Time</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Several Times Per Week</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Complexity__c</picklist>
         <values>
             <fullName>Advanced</fullName>
@@ -649,6 +668,85 @@
         </values>
         <values>
             <fullName>pt macquarie city council</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>Sub_Status__c</picklist>
+        <values>
+            <fullName>Attended %E2%80%93 CC left</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Attended %E2%80%93 enquires continuing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting AWD Compliance Check</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Further Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Notification Response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Recheck</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Caller Contacted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Covering Inspector %E2%80%93 Awaiting Attendance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Covering Inspector %E2%80%93 Preliminary Enquiries Made</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Covering Inspector - Assigned</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Notes outstanding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending FBOE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending FBOE Application Decision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending Forfeiture Application</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending Forfeiture decision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending Prosecution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Preliminary inquiries made</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prosecution Commenced</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trap Set</fullName>
             <default>false</default>
         </values>
     </picklistValues>

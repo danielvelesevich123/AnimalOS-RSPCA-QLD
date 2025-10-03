@@ -63,7 +63,7 @@ public without sharing class AnimalWelfareFindExistingRecords extends vertic_Abs
                             Email,
                             Account.Name,
                             AccountId,
-                            POI_Description__c,
+                            animalos__POI_Description__c,
                             ID_Number__c,
                             ID_Type__c,
                             Birthdate,
@@ -92,7 +92,7 @@ public without sharing class AnimalWelfareFindExistingRecords extends vertic_Abs
                 existingContact.Phone = contactVar.Phone ?? existingContact.Phone;
                 existingContact.Email = contactVar.Email ?? existingContact.Email;
                 existingContact.AccountId = contactVar.AccountId ?? existingContact.AccountId;
-                existingContact.POI_Description__c = contactVar.POI_Description__c ?? existingContact.POI_Description__c;
+                existingContact.animalos__POI_Description__c = contactVar.animalos__POI_Description__c ?? existingContact.animalos__POI_Description__c;
                 existingContact.ID_Type__c = contactVar.ID_Type__c ?? existingContact.ID_Type__c;
                 existingContact.ID_Number__c = contactVar.ID_Number__c ?? existingContact.ID_Number__c;
                 existingContact.Birthdate = contactVar.Birthdate ?? existingContact.Birthdate;

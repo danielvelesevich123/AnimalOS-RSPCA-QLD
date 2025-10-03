@@ -62,7 +62,7 @@ public with sharing class AOS_JobSummaryQAMetaProc extends vertic_MetadataProces
                         animalos__Contact__r.Email,
 
                         animalos__Contact__r.Full_Address__c, animalos__Contact__r.npe01__WorkPhone__c,
-                        animalos__Contact__r.POI_Description__c
+                        animalos__Contact__r.animalos__POI_Description__c
                 FROM animalos__Job_Contact__c
                 WHERE animalos__Job__c IN :jobIds AND animalos__Contact__c != NULL
         ], animalos__Job_Contact__c.animalos__Job__c);
@@ -221,8 +221,8 @@ public with sharing class AOS_JobSummaryQAMetaProc extends vertic_MetadataProces
                     }
 
                     // TODO: AOS remove POI_Description__c from the logic
-                    if (!String.isBlank(jobContact.animalos__Contact__r.POI_Description__c)) {
-                        POIDescription += jobContact.animalos__Contact__r.POI_Description__c + '\n';
+                    if (!String.isBlank(jobContact.animalos__Contact__r.animalos__POI_Description__c)) {
+                        POIDescription += jobContact.animalos__Contact__r.animalos__POI_Description__c + '\n';
                     }
                 }
             }

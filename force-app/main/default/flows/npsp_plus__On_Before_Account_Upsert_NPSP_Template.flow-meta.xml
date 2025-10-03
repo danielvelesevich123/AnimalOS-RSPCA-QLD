@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>49.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Set_Defaults</name>
+        <label>Set Defaults</label>
+        <locationX>551</locationX>
+        <locationY>51</locationY>
+        <assignmentItems>
+            <assignToReference>account.Name</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>account.Name</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <decisions>
+        <name>Operation_Type</name>
+        <label>Operation Type</label>
+        <locationX>252</locationX>
+        <locationY>51</locationY>
+        <defaultConnector>
+            <targetReference>Set_Defaults</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Is Update</defaultConnectorLabel>
+        <rules>
+            <name>Is_Creation</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>account.Id</leftValueReference>
+                <operator>WasSet</operator>
+                <rightValue>
+                    <booleanValue>false</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Defaults</targetReference>
+            </connector>
+            <label>Is Creation</label>
+        </rules>
+    </decisions>
+    <interviewLabel>On Before Account Upsert (NPSP+ Template) {!$Flow.CurrentDateTime}</interviewLabel>
+    <isTemplate>true</isTemplate>
+    <label>On Before Account Upsert (NPSP+ Template)</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Operation_Type</targetReference>
+        </connector>
+    </start>
+    <status>Obsolete</status>
+    <variables>
+        <name>account</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <objectType>Account</objectType>
+    </variables>
+    <variables>
+        <description>The Failure Message</description>
+        <name>FlowFaultMessage</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

@@ -15,7 +15,7 @@ export default class AdoptionAgreement extends LightningElement {
     isSent = false;
 
     get sendButtonEnabled() {
-        return this.meta.dto.isGuest === false;
+        return this.meta.dto.isGuest === false && this.lastStep;
     }
 
     get hasAnyDogs() {
@@ -132,7 +132,7 @@ export default class AdoptionAgreement extends LightningElement {
             let signature = this.template.querySelector('c-capture-signature').getBase64Data();
 
 
-            if (this.meta.dto.isGuest === true && (!signature || signature.length < 700)) {
+            if (this.meta.dto.isGuest === true && (!signature || signature.length < 800)) {
                 this.refs.toast.showToast('error', this.showAdoptionAgreementStep ? 'Please sign the Adoption Agreement.' : 'Please sign the Indemnity Waiver Contract.');
                 return false;
             }
@@ -144,17 +144,17 @@ export default class AdoptionAgreement extends LightningElement {
             if (this.showIndemnityWaiverContractStep) {
                 this.indemnityWaiverContractSignature = signature;
             }
+        }
 
-            if (isSave === true) {
-                if (!this.indemnityWaiverContractSignature || this.indemnityWaiverContractSignature.length < 700) {
-                    this.refs.toast.showToast('error', 'Please sign the Indemnity Waiver Contract.');
-                    return false;
-                }
+        if (isSave === true) {
+            if (!this.indemnityWaiverContractSignature || this.indemnityWaiverContractSignature.length < 800) {
+                this.refs.toast.showToast('error', 'Please sign the Indemnity Waiver Contract.');
+                return false;
+            }
 
-                if (!this.adoptionAgreementSignature || this.adoptionAgreementSignature.length < 700) {
-                    this.refs.toast.showToast('error', 'Please sign the Adoption Agreement.');
-                    return false;
-                }
+            if (!this.adoptionAgreementSignature || this.adoptionAgreementSignature.length < 800) {
+                this.refs.toast.showToast('error', 'Please sign the Adoption Agreement.');
+                return false;
             }
         }
         return true;

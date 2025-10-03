@@ -15,6 +15,7 @@
                 <option value="ApexPage" />
                 <option value="ApexTrigger" />
                 <option value="AuraDefinitionBundle" />
+                <option value="Flow" />
                 <option value="LightningComponentBundle" />
                 <option value="PathAssistant" />
               </list>

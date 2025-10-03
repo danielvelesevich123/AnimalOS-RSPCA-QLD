@@ -16,7 +16,7 @@ public without sharing class StartAdoptionQASubmitProc extends vertic_AbstractPr
         vertic_Utils.sObjects.deduplicate(contactVar);
 
         if (contactVar.Id != null) {
-            Boolean isPersonOfInterest = ((Contact) vertic_Utils.arrays.firstOrException([SELECT POI_Flag__c FROM Contact WHERE Id = :contactVar.Id])).POI_Flag__c;
+            Boolean isPersonOfInterest = ((Contact) vertic_Utils.arrays.firstOrException([SELECT animalos__POI_Flag__c FROM Contact WHERE Id = :contactVar.Id])).animalos__POI_Flag__c;
             Boolean doNotAllowAdoptions = ((Contact) vertic_Utils.arrays.firstOrException([SELECT Do_Not_Allow_Adoptions__c FROM Contact WHERE Id = :contactVar.Id])).Do_Not_Allow_Adoptions__c;
             if (isPersonOfInterest) {
                 throw new vertic_Structs.InvalidDataException('Contact is a Person Of Interest, we cannot process the Adoption. Please contact RSPCA for more information.');

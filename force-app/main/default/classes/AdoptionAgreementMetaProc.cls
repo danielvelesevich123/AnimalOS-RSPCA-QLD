@@ -77,6 +77,19 @@ public without sharing class AdoptionAgreementMetaProc extends vertic_MetadataPr
                         FIV_FeLV_Test_Outcome__c,
                         FIV_Date_Administered__c,
                         General_interactions_with_dogs__c,
+                        Crossbreed__c,
+                        animalos__Neutered_Spayed_Date_Time__c,
+                        animalos__Current_Site__c,
+                        animalos__Current_Site__r.Name,
+                        animalos__Current_Site__r.Street_Address__c,
+                        animalos__Current_Site__r.Suburb__c,
+                        animalos__Current_Site__r.State__c,
+                        animalos__Current_Site__r.Postcode__c,
+                        animalos__Current_Site__r.Site_Phone__c,
+                        Microchip_Company__c,
+                        animalos__Current_Weight__c,
+                        Neutered_Spayed_By__c,
+                        Neutered_Spayed_By__r.Name,
                         (
                                 SELECT Id, Name, animalos__Animal__r.animalos__Animal_Name__c, Specific_Animal__c, animalos__Active__c,
                                         animalos__Action_Plan__r.Name, animalos__Action_Plan__r.animalos__Frequency_Interval__c,
@@ -97,6 +110,18 @@ public without sharing class AdoptionAgreementMetaProc extends vertic_MetadataPr
                                         animalos__Indemnity_Waiver__r.animalos__Type__c,
                                         Indemnity_Waiver_Title__c
                                 FROM animalos__Animal_Indemnity_Waivers__r
+                        ),
+                        (
+                                SELECT
+                                        Id,
+                                        animalos__Animal__c,
+                                        animalos__Description__c,
+                                        animalos__Date_Time_Action_Completed__c
+                                FROM animalos__Animal_Actions__r
+                                WHERE
+                                        RecordType.DeveloperName = 'Treatment'
+                                        OR RecordType.DeveloperName = 'Medicine'
+                                ORDER BY animalos__Date_Time_Action_Completed__c ASC
                         )
                 FROM animalos__Animal__c
                 WHERE Id
@@ -117,6 +142,11 @@ public without sharing class AdoptionAgreementMetaProc extends vertic_MetadataPr
                         Third_Party_Marketing_Opt_Out__c,
                         Royal_Canin_s_Healthy_Pets_Club_Opt_In__c,
                         animalos__Contact__r.Name,
+                        animalos__Contact__r.MailingStreet,
+                        animalos__Contact__r.MailingCity,
+                        animalos__Contact__r.MailingState,
+                        animalos__Contact__r.MailingPostalCode,
+                        animalos__Contact__r.MobilePhone,
                         Address__c,
                         Home_Phone__c,
                         Contact_Code__c,
@@ -172,6 +202,7 @@ public without sharing class AdoptionAgreementMetaProc extends vertic_MetadataPr
             for (Map<String, Object> animalMap : animalsMap) {
                 animalMap.put('hasTreatments', animalMap.containsKey('animalos__Animal_Action_Plans__r') ? true : false);
                 animalMap.put('hasWaivers', animalMap.containsKey('animalos__Animal_Indemnity_Waivers__r') ? true : false);
+                animalMap.put('hasActions', animalMap.containsKey('animalos__Animal_Actions__r') ? true : false);
             }
         }
 
