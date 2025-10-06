@@ -85,7 +85,8 @@ export default class AnimalWelfareCase extends LightningElement {
         ['Shelter & Living Conditions', ['Insufficient shelter']],
         ['Tied continuously or locked in a small pen/cage', ['Locked In Small Pen', 'Tied Continually']],
         ['Deceased animals', ['Dead']],
-        ['Other', []]
+        ['Other', []],
+        ['Animal Flighted', ['Flighted Bird']]
     ]);
 
     connectedCallback() {
