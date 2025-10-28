@@ -22,9 +22,14 @@
                 <label>Advertisement of an Animal</label>
             </value>
             <value>
-                <fullName>Animal fighting</fullName>
+                <fullName>AH Owner Medical Assist</fullName>
                 <default>false</default>
-                <label>Animal fighting</label>
+                <label>AH Owner Medical Assist</label>
+            </value>
+            <value>
+                <fullName>Animal fighting/Prohibited event</fullName>
+                <default>false</default>
+                <label>Animal fighting/Prohibited event</label>
             </value>
             <value>
                 <fullName>Animal in hot vehicle</fullName>
@@ -32,39 +37,34 @@
                 <label>Animal in hot vehicle</label>
             </value>
             <value>
-                <fullName>Animal Owner Requesting Assistance</fullName>
-                <default>false</default>
-                <label>Animal Owner Requesting Assistance</label>
-            </value>
-            <value>
-                <fullName>Animal Stuck in Tree</fullName>
-                <default>false</default>
-                <label>Animal Stuck In Tree</label>
-            </value>
-            <value>
-                <fullName>Animal Trapped</fullName>
-                <default>false</default>
-                <label>Animal Trapped</label>
-            </value>
-            <value>
-                <fullName>Animal Trapped in Water</fullName>
-                <default>false</default>
-                <label>Animal Trapped in Water</label>
-            </value>
-            <value>
                 <fullName>Animal Unattended</fullName>
                 <default>false</default>
                 <label>Animal Unattended</label>
             </value>
             <value>
-                <fullName>Anonymous report</fullName>
+                <fullName>Assistance Request - Animal Owner</fullName>
                 <default>false</default>
-                <label>Anonymous report</label>
+                <label>Assistance Request - Animal Owner</label>
             </value>
             <value>
-                <fullName>AWIR</fullName>
+                <fullName>Assistance Request - HEA Bequest</fullName>
                 <default>false</default>
-                <label>AWIR</label>
+                <label>Assistance Request - HEA Bequest</label>
+            </value>
+            <value>
+                <fullName>Assistance Request - Inspectorate</fullName>
+                <default>false</default>
+                <label>Assistance Request - Inspectorate</label>
+            </value>
+            <value>
+                <fullName>Assistance Request - Provide Emergency Relief</fullName>
+                <default>false</default>
+                <label>Assistance Request - Provide Emergency Relief</label>
+            </value>
+            <value>
+                <fullName>Assistance Request - Shelter</fullName>
+                <default>false</default>
+                <label>Assistance Request - Shelter</label>
             </value>
             <value>
                 <fullName>Baiting</fullName>
@@ -72,44 +72,9 @@
                 <label>Baiting</label>
             </value>
             <value>
-                <fullName>Bird in Building</fullName>
+                <fullName>Cause Captive Animal To Be Injured/killed By Dog</fullName>
                 <default>false</default>
-                <label>Bird in Building</label>
-            </value>
-            <value>
-                <fullName>Breeder</fullName>
-                <default>false</default>
-                <label>Breeder</label>
-            </value>
-            <value>
-                <fullName>Bushfire</fullName>
-                <default>false</default>
-                <label>Bushfire</label>
-            </value>
-            <value>
-                <fullName>C2 Bat</fullName>
-                <default>false</default>
-                <label>C2 Bat</label>
-            </value>
-            <value>
-                <fullName>C3 Bat</fullName>
-                <default>false</default>
-                <label>C3 Bat</label>
-            </value>
-            <value>
-                <fullName>Circus Insp</fullName>
-                <default>false</default>
-                <label>Circus Insp</label>
-            </value>
-            <value>
-                <fullName>Cock Fighting</fullName>
-                <default>false</default>
-                <label>Cock Fighting</label>
-            </value>
-            <value>
-                <fullName>Concern For Welfare</fullName>
-                <default>false</default>
-                <label>Concern For Welfare</label>
+                <label>Cause Captive Animal To Be Injured/killed By Dog</label>
             </value>
             <value>
                 <fullName>Cruelty</fullName>
@@ -117,64 +82,49 @@
                 <label>Cruelty</label>
             </value>
             <value>
-                <fullName>Dead</fullName>
-                <default>false</default>
-                <label>Dead</label>
-            </value>
-            <value>
-                <fullName>Displaced Wildlife</fullName>
-                <default>false</default>
-                <label>Displaced Wildlife</label>
-            </value>
-            <value>
                 <fullName>Dog/Cat Attack</fullName>
                 <default>false</default>
                 <label>Dog/cat Attack</label>
             </value>
             <value>
-                <fullName>Dog Fighting</fullName>
+                <fullName>Emergency - Fire Event</fullName>
                 <default>false</default>
-                <label>Dog Fighting</label>
+                <label>Emergency - Fire Event</label>
             </value>
             <value>
-                <fullName>Drain Rescue</fullName>
+                <fullName>Emergency - Flood Event</fullName>
                 <default>false</default>
-                <label>Drain Rescue</label>
+                <label>Emergency - Flood Event</label>
             </value>
             <value>
-                <fullName>Drought</fullName>
+                <fullName>Emergency - Heat Related</fullName>
                 <default>false</default>
-                <label>Drought</label>
+                <label>Emergency - Heat Related</label>
             </value>
             <value>
-                <fullName>Exercise Inadequate</fullName>
+                <fullName>Emergency - Oiled Wildlife</fullName>
                 <default>false</default>
-                <label>Exercise Inadequate</label>
+                <label>Emergency - Oiled Wildlife</label>
             </value>
             <value>
-                <fullName>Feedlot Insp</fullName>
+                <fullName>Emergency Relief</fullName>
                 <default>false</default>
-                <label>Feedlot Insp</label>
+                <label>Emergency Relief</label>
             </value>
             <value>
-                <fullName>Fire Event</fullName>
+                <fullName>Entanglement - Fishing Line</fullName>
                 <default>false</default>
-                <label>Fire Event</label>
+                <label>Entanglement - Fishing Line</label>
             </value>
             <value>
-                <fullName>Fishing Line Entanglement</fullName>
+                <fullName>Entanglement - Other</fullName>
                 <default>false</default>
-                <label>Fishing Line Entanglement</label>
+                <label>Entanglement - Other</label>
             </value>
             <value>
                 <fullName>Flighted Bird</fullName>
                 <default>false</default>
                 <label>Flighted Bird</label>
-            </value>
-            <value>
-                <fullName>Flood Event</fullName>
-                <default>false</default>
-                <label>Flood Event</label>
             </value>
             <value>
                 <fullName>Food &amp; Water</fullName>
@@ -237,9 +187,34 @@
                 <label>Injured</label>
             </value>
             <value>
+                <fullName>Inspec ref Community Officer</fullName>
+                <default>false</default>
+                <label>Inspec ref Community Officer</label>
+            </value>
+            <value>
                 <fullName>Inspectorate Assistance Request</fullName>
                 <default>false</default>
                 <label>Inspectorate Assistance Request</label>
+            </value>
+            <value>
+                <fullName>Insufficient Food</fullName>
+                <default>false</default>
+                <label>Insufficient Food</label>
+            </value>
+            <value>
+                <fullName>Insufficient Shelter</fullName>
+                <default>false</default>
+                <label>Insufficient Shelter</label>
+            </value>
+            <value>
+                <fullName>Insufficient Water</fullName>
+                <default>false</default>
+                <label>Insufficient Water</label>
+            </value>
+            <value>
+                <fullName>Keep or Use Animal for Blooding</fullName>
+                <default>false</default>
+                <label>Keep or Use Animal for Blooding</label>
             </value>
             <value>
                 <fullName>Kennel Inspection</fullName>
@@ -250,6 +225,11 @@
                 <fullName>Killed</fullName>
                 <default>false</default>
                 <label>Killed</label>
+            </value>
+            <value>
+                <fullName>Kill or injure</fullName>
+                <default>false</default>
+                <label>Kill or injure</label>
             </value>
             <value>
                 <fullName>Koala Requiring Rescue</fullName>
@@ -352,9 +332,19 @@
                 <label>Poisoning</label>
             </value>
             <value>
+                <fullName>POI Under 18</fullName>
+                <default>false</default>
+                <label>POI Under 18</label>
+            </value>
+            <value>
                 <fullName>Poor Condition</fullName>
                 <default>false</default>
                 <label>Poor Condition</label>
+            </value>
+            <value>
+                <fullName>Pouch Check</fullName>
+                <default>false</default>
+                <label>Pouch Check</label>
             </value>
             <value>
                 <fullName>Poultry Inspection</fullName>
@@ -397,6 +387,26 @@
                 <label>Rescue at Height</label>
             </value>
             <value>
+                <fullName>Rescue - at Height</fullName>
+                <default>false</default>
+                <label>Rescue - at Height</label>
+            </value>
+            <value>
+                <fullName>Rescue - Livestock</fullName>
+                <default>false</default>
+                <label>Rescue - Livestock</label>
+            </value>
+            <value>
+                <fullName>Rescue - Roof Cavity</fullName>
+                <default>false</default>
+                <label>Rescue - Roof Cavity</label>
+            </value>
+            <value>
+                <fullName>Rescue - Special Request</fullName>
+                <default>false</default>
+                <label>Rescue - Special Request</label>
+            </value>
+            <value>
                 <fullName>Riding Sch Insp</fullName>
                 <default>false</default>
                 <label>Riding Sch Insp</label>
@@ -437,6 +447,11 @@
                 <label>Sick/Illness</label>
             </value>
             <value>
+                <fullName>Sick/ Illness</fullName>
+                <default>false</default>
+                <label>Sick/ Illness</label>
+            </value>
+            <value>
                 <fullName>Special Rescue Request</fullName>
                 <default>false</default>
                 <label>Special Rescue Request</label>
@@ -452,9 +467,44 @@
                 <label>Tied Continually</label>
             </value>
             <value>
+                <fullName>Transport - Non animal</fullName>
+                <default>false</default>
+                <label>Transport - Non animal</label>
+            </value>
+            <value>
                 <fullName>Transport Unsatisfactory</fullName>
                 <default>false</default>
                 <label>Transport Unsatisfactory</label>
+            </value>
+            <value>
+                <fullName>Trapped - Bird in Building</fullName>
+                <default>false</default>
+                <label>Trapped - Bird in Building</label>
+            </value>
+            <value>
+                <fullName>Trapped - Drain Rescue</fullName>
+                <default>false</default>
+                <label>Trapped - Drain Rescue</label>
+            </value>
+            <value>
+                <fullName>Trapped - in Water</fullName>
+                <default>false</default>
+                <label>Trapped - in Water</label>
+            </value>
+            <value>
+                <fullName>Trapped - Other</fullName>
+                <default>false</default>
+                <label>Trapped - Other</label>
+            </value>
+            <value>
+                <fullName>Trapped - Stuck in Tree</fullName>
+                <default>false</default>
+                <label>Trapped - Stuck in Tree</label>
+            </value>
+            <value>
+                <fullName>Vet Pick Up</fullName>
+                <default>false</default>
+                <label>Vet Pick Up</label>
             </value>
             <value>
                 <fullName>Vet Treatment</fullName>
@@ -462,14 +512,34 @@
                 <label>Vet Treatment</label>
             </value>
             <value>
+                <fullName>Wildlife - Displaced/Sighting</fullName>
+                <default>false</default>
+                <label>Wildlife - Displaced/Sighting</label>
+            </value>
+            <value>
                 <fullName>Wildlife Release</fullName>
                 <default>false</default>
                 <label>Wildlife Release</label>
             </value>
             <value>
+                <fullName>Wildlife - Release</fullName>
+                <default>false</default>
+                <label>Wildlife - Release</label>
+            </value>
+            <value>
                 <fullName>Wildlife Reunite</fullName>
                 <default>false</default>
                 <label>Wildlife Reunite</label>
+            </value>
+            <value>
+                <fullName>Wildlife - Reunite</fullName>
+                <default>false</default>
+                <label>Wildlife - Reunite</label>
+            </value>
+            <value>
+                <fullName>Wildlife - Transport</fullName>
+                <default>false</default>
+                <label>Wildlife - Transport</label>
             </value>
             <value>
                 <fullName>Zoo and/or Exhibited Animal</fullName>

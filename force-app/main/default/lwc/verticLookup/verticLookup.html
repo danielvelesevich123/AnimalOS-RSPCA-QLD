@@ -2,7 +2,7 @@
 <template>
 
     <span class={elementContainerClasses}>
-        <label class="slds-form-element__label" lwc:if={label}><abbr class="slds-required" lwc:if={required} title="required">*</abbr>{label}</label>
+        <label class="slds-form-element__label" lwc:if={showLabel}><abbr class="slds-required" lwc:if={required} title="required">*</abbr>{label}</label>
         <span class="slds-form-element__control" style="display: block">
             <!--            slds-has-selection-->
             <template lwc:if={readOnly}>

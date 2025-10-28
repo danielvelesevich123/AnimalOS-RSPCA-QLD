@@ -84,6 +84,8 @@ public without sharing class ReleaseAnimalQASubmitProc extends vertic_AbstractPr
         }
 
         animalVar.Animal_Released_By__c = userId;
+        animalVar.animalos__Stage__c = 'Out';
+        animalVar.animalos__Status__c = 'Returned to Habitat';
 
         insert referralVar;
 

@@ -183,8 +183,8 @@ public without sharing class AnimalWelfareCaseSubmitProc extends vertic_Abstract
                     }
                 }
 
-                if ('Informant'.equalsIgnoreCase(jobContactVar.animalos__Contact_Type__c)) {
-                    caseSubjectParts.add((String.isNotBlank(contactVar.FirstName) ? contactVar.FirstName + ' ' : '') + contactVar.LastName);
+                if ('Person Of Interest'.equalsIgnoreCase(jobContactVar.animalos__Contact_Type__c)) {
+                    caseSubjectParts.add((String.isNotBlank(contactVar.FirstName) ? contactVar.FirstName + ' ' : 'Unknown ') + contactVar.LastName);
                     uow.registerRelationship(caseVar, Case.ContactId, contactVar);
                 }
                 //Save & Create Job action

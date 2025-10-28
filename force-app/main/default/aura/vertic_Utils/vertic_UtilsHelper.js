@@ -35,9 +35,6 @@
         return {
             callApex: this.callApex,
             execute: this.execute,
-            check: function () {
-                console.log('CHECK!!!')
-            },
             showToast: this.showToast,
             validateInputs: this.validateInputs,
             validate: this.validate,
@@ -45,7 +42,13 @@
             createComponent: this.createComponent,
             flatten: this.flatten,
             chunk: this.chunk,
-            getURlParams: this.getURlParams
+            getURlParams: this.getURlParams,
+            showError: this.showError,
+            showErrors: this.showErrors,
+            showSuccess: this.showSuccess,
+            callApexPromise: this.callApexPromise,
+            executePromise: this.executePromise,
+            sequencePromises: this.sequencePromises
         }
 
     },
@@ -82,8 +85,52 @@
             }
         });
 
-        $A.enqueueAction(action)
+        $A.enqueueAction(action);
 
+    },
+
+    sequencePromises: function (promises) {
+        let results = [],
+            chain = Promise.resolve();
+
+        promises.forEach(p => {
+            chain = chain
+                .then(p)
+                .then(response => {
+                    results.push(response);
+                    return Promise.resolve(results);
+                })
+                .catch(errors => {
+                    results.push({
+                        isValid: false,
+                        message: errors
+                    });
+                    return Promise.resolve(results);
+                })
+        });
+        return chain;
+    },
+
+    callApexPromise: function (action, params) {
+        return new Promise(function (resolve, reject) {
+            action.setParams(params);
+            action.setBackground();
+            action.setCallback(this, $A.getCallback(function (response) {
+                let state = response.getState();
+                if (state === "SUCCESS") {
+                    let retVal = response.getReturnValue();
+                    return resolve(retVal);
+                } else if (state === "ERROR") {
+                    let errors = response.getError();
+                    if (errors && errors.length && errors[0] && errors[0].message) {
+                        return reject(new Error(errors[0].message));
+                    } else {
+                        return reject(new Error("Unknown error!"));
+                    }
+                }
+            }));
+            $A.enqueueAction(action);
+        });
     },
 
     execute: function (cmp, processor, request, success, fail) {
@@ -98,7 +145,7 @@
                     fail(errors);
                     reject(errors);
                 } else {
-                    reject(errors);
+                    throw errors;
                 }
             };
 
@@ -110,24 +157,51 @@
                     processor: processor,
                     requestJSON: JSON.stringify(request)
                 },
-                $A.getCallback(function (responseJSON) {
+                function (responseJSON) {
                     var response = JSON.parse(responseJSON);
                     console.log(processor, 'RESPONSE', response);
                     if (response.isValid !== true) {
                         failFn.call(that, response.errors);
                         reject(response.errors);
                     } else {
-                        if(success !== undefined){
+                        if (success !== undefined) {
                             success.call(this, response);
                         }
                         resolve(response);
                     }
-                }),
+                },
                 failFn
             );
 
         }));
 
+    },
+
+    executePromise: function (cmp, processor, request, showToast) {
+        let that = this;
+
+        console.log(processor, 'REQUEST', request);
+
+        return that.callApexPromise(
+            cmp.get('c.execute'),
+            {
+                processor: processor,
+                requestJSON: JSON.stringify(request)
+            }
+        )
+            .then($A.getCallback(responseJSON => {
+                let response = JSON.parse(responseJSON);
+                if (response.isValid !== true) {
+                    console.error(response.errors);
+                    if (showToast === undefined || showToast === true) {
+                        this.showErrors(cmp, response.errors);
+                    }
+                    return Promise.reject(response.errors);
+                } else {
+                    console.log(processor, 'RESPONSE', response);
+                    return Promise.resolve(response);
+                }
+            }));
     },
 
     showToast: function (params) {
@@ -140,6 +214,36 @@
             console.log('NO TOAST', params);
             alert(params.title || params.message || 'NO TOAST: ' + JSON.stringify(params));
         }
+    },
+
+    showError: function (component, error) {
+        this.showErrors(component, [error]);
+    },
+
+    showErrors: function (component, errors) {
+        if(!errors) {
+            return;
+        }
+
+        if(!Array.isArray(errors)) {
+            errors = [errors];
+        }
+
+        for (let i = 0; i < errors.length; i++) {
+            this.showToast({
+                "title": "Error",
+                "message": errors[i].message,
+                "type": "error"
+            });
+        }
+    },
+
+    showSuccess: function (component, message) {
+        this.showToast({
+            "title": "Success",
+            "message": message,
+            "type": "success"
+        });
     },
 
     validateInputs: function (component, inputIds) {
@@ -185,7 +289,6 @@
                     validationErrors.forEach(function (validationErrorField) {
                         if (validity[validationErrorField] == true) {
                             var errorMessageField = 'v.messageWhen' + capitalizeFirstLetter(validationErrorField);
-                            // debugger
                             var errorMessage = inputCmp.get(errorMessageField);
                             if (errorMessage) {
                                 errors.push(errorMessage);
@@ -221,10 +324,9 @@
             'lightning:textarea',
             'lightning:radioGroup',
             'lightning:checkboxGroup',
-            'c:strike_lookup',
-            'c:strike_multiSelectPicklist',
-            'c:strike_lookup_clickable',
-            'c:vertic_Validity'
+            'c:vertic_Lookup',
+            'c:verticLookup',
+            'c:verticMultiSelect'
         ];
 
         var inputComponents = [];
@@ -286,10 +388,13 @@
             }
 
             if (inputCmp) {
-
                 var validity;
                 try {
-                    validity = inputCmp.get('v.validity');
+                    if (inputCmp.getType && (inputCmp.getType() === 'animalos:vertic_Lookup' || inputCmp.getType() === 'animalos:verticLookup')) {
+                        validity = undefined;
+                    } else {
+                        validity = inputCmp.get('v.validity');
+                    }
                 } catch (e) {
                 }
 
@@ -302,14 +407,15 @@
 
                     var hasShowErrorMethod = inputCmp.get('c.showError') != undefined;
                     var hasHideErrorMethod = inputCmp.get('c.hideError') != undefined;
-                    if(hasShowErrorMethod == true){
+                    var hasValidateMethod = inputCmp.validate !== undefined;
+                    if (hasShowErrorMethod == true) {
 
                         var isRequired = inputCmp.get('v.required');
                         var hasError = inputCmp.get('v.error');
                         var errorMessage = inputCmp.get('v.errorMessage');
                         var isEmptyValue = $A.util.isEmpty(inputCmp.get('v.value'));
 
-                        if (isRequired && isEmptyValue){
+                        if (isRequired && isEmptyValue) {
 
                             inputCmp.showError('Complete this field.');
 
@@ -335,6 +441,18 @@
                         }
                     }
 
+                    if (inputCmp.validate != null && !inputCmp.validate()) {
+                        let errorMessages = (inputCmp.get('v.errorMessages') || []).filter(error => error.message ? error.message !== 'Complete this field.' : error !== 'Complete this field.');
+                        if (!errorMessages || errorMessages.length === 0) {
+                            errorMessages = [inputCmp.get('v.label') + ': Complete this field.'];
+                        }
+                        validationResult.errorsByInputs.push({
+                            inputCmp: inputCmp,
+                            errors: errorMessages
+                        });
+                        validationResult.allValid = false;
+                    }
+
                 } else if (validity && validity.valid == false) {
 
                     var errors = [];
@@ -347,7 +465,7 @@
                                 errors.push(inputCmp.get('v.label') + ': ' + errorMessage);
                             } else {
                                 errors.push(inputCmp.get('v.label') + ': ' + (
-                                    ($A.util.isEmpty(inputCmp.get('v.value')) ? inputCmp.get('v.messageWhenValueMissing')  : inputCmp.get('v.messageWhenBadInput')) || inputCmp.get('v.label'))
+                                    ($A.util.isEmpty(inputCmp.get('v.value')) ? inputCmp.get('v.messageWhenValueMissing') : inputCmp.get('v.messageWhenBadInput')) || inputCmp.get('v.label'))
                                 );
                             }
                         }
@@ -360,7 +478,6 @@
 
                     validationResult.allValid = false;
 
-                    // debugger
 
                     if (inputCmp.reportValidity != undefined) {
                         inputCmp.reportValidity();

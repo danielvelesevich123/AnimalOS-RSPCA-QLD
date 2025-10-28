@@ -6,12 +6,12 @@
         <name>Add_Assigned_Resource_to_collection</name>
         <label>Add Assigned Resource</label>
         <locationX>338</locationX>
-        <locationY>1106</locationY>
+        <locationY>1622</locationY>
         <assignmentItems>
             <assignToReference>AssignedResource.animalos__Job_Activity__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Create_Job_Activity</elementReference>
+                <elementReference>jobActivity.Id</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -36,12 +36,12 @@
         <name>Assign_Current_User</name>
         <label>Assign Current User</label>
         <locationX>182</locationX>
-        <locationY>1682</locationY>
+        <locationY>2198</locationY>
         <assignmentItems>
             <assignToReference>AssignedResource.animalos__Job_Activity__c</assignToReference>
             <operator>Assign</operator>
             <value>
-                <elementReference>Create_Job_Activity</elementReference>
+                <elementReference>jobActivity.Id</elementReference>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -60,6 +60,64 @@
         </assignmentItems>
         <connector>
             <targetReference>Any_Assigned_Resources</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Assign_Other_Job_Activity_Values</name>
+        <label>Assign Other Job Activity Values</label>
+        <locationX>314</locationX>
+        <locationY>458</locationY>
+        <assignmentItems>
+            <assignToReference>jobActivity.RecordTypeId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Rescue_Attendance_Record_Type.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>jobActivity.animalos__Activity_Note__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Activity_Note</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>jobActivity.animalos__Start_Date_Time__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Start_Date_Time</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>jobActivity.animalos__Job__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>recordId</elementReference>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>jobActivity.animalos__Status__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Completed</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>jobActivity.animalos__Type_of_Work__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <stringValue>Inspection</stringValue>
+            </value>
+        </assignmentItems>
+        <assignmentItems>
+            <assignToReference>jobActivity.animalos__End_Date_Time__c</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>End_Date_Time</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Create_Job_Activity</targetReference>
         </connector>
     </assignments>
     <choices>
@@ -96,7 +154,7 @@
         <name>Any_Assigned_Resources</name>
         <label>Any Assigned Resources?</label>
         <locationX>314</locationX>
-        <locationY>1874</locationY>
+        <locationY>2390</locationY>
         <defaultConnector>
             <targetReference>FinishScreen</targetReference>
         </defaultConnector>
@@ -121,7 +179,7 @@
         <name>Any_Resources_Selected</name>
         <label>Any Resources Selected?</label>
         <locationX>314</locationX>
-        <locationY>782</locationY>
+        <locationY>1298</locationY>
         <defaultConnector>
             <targetReference>Get_Current_User_Resource</targetReference>
         </defaultConnector>
@@ -146,7 +204,7 @@
         <name>Current_User_Has_Resource</name>
         <label>Current User Has Resource</label>
         <locationX>314</locationX>
-        <locationY>1574</locationY>
+        <locationY>2090</locationY>
         <defaultConnector>
             <targetReference>Any_Assigned_Resources</targetReference>
         </defaultConnector>
@@ -168,10 +226,35 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Is_Flighted_Bird</name>
+        <label>Is Flighted Bird</label>
+        <locationX>314</locationX>
+        <locationY>674</locationY>
+        <defaultConnector>
+            <targetReference>Get_Resources</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Flighted Bird Job Code Doesn&apos;t Exist</defaultConnectorLabel>
+        <rules>
+            <name>Flighted_Bird_Job_Code_Exists</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Job.animalos__Codes__c</leftValueReference>
+                <operator>Contains</operator>
+                <rightValue>
+                    <stringValue>Flighted Bird</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Flighted_Bird_Screen</targetReference>
+            </connector>
+            <label>Flighted Bird Job Code Exists</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Other_Resources_Selected</name>
         <label>Other Resources Selected?</label>
         <locationX>470</locationX>
-        <locationY>998</locationY>
+        <locationY>1514</locationY>
         <defaultConnector>
             <targetReference>Loop_through_Selected_Resources</targetReference>
         </defaultConnector>
@@ -193,6 +276,14 @@
         </rules>
     </decisions>
     <dynamicChoiceSets>
+        <name>OutcomeChoiceSet</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>animalos__Job_Outcome__c</picklistField>
+        <picklistObject>animalos__Job__c</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
         <name>ServicesProvidedChoiceSet</name>
         <dataType>Multipicklist</dataType>
         <displayField xsi:nil="true"/>
@@ -212,7 +303,7 @@
         <name>Loop_through_Selected_Resources</name>
         <label>Loop through Selected Resources</label>
         <locationX>250</locationX>
-        <locationY>890</locationY>
+        <locationY>1406</locationY>
         <collectionReference>InspectorsDataTable.selectedRows</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -245,7 +336,7 @@
         <name>Create_Assigned_Resource</name>
         <label>Create Assigned Resource</label>
         <locationX>50</locationX>
-        <locationY>1982</locationY>
+        <locationY>2498</locationY>
         <connector>
             <targetReference>Finish_Screen</targetReference>
         </connector>
@@ -259,88 +350,21 @@
         <name>Create_Job_Activity</name>
         <label>Create Job Activity</label>
         <locationX>314</locationX>
-        <locationY>458</locationY>
+        <locationY>566</locationY>
         <connector>
-            <targetReference>Get_Resources</targetReference>
+            <targetReference>Is_Flighted_Bird</targetReference>
         </connector>
         <faultConnector>
             <isGoTo>true</isGoTo>
             <targetReference>Error_Screen</targetReference>
         </faultConnector>
-        <inputAssignments>
-            <field>Equipment_Used__c</field>
-            <value>
-                <elementReference>Equipment_Used</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Location_s_Attended__c</field>
-            <value>
-                <elementReference>Location_s_Attended</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Outcome__c</field>
-            <value>
-                <elementReference>Outcome</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>RecordTypeId</field>
-            <value>
-                <elementReference>Get_Rescue_Attendance_Record_Type.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Spoke_to_Caller__c</field>
-            <value>
-                <elementReference>Spoke_to_Caller</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>animalos__Activity_Note__c</field>
-            <value>
-                <elementReference>Activity_Note</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>animalos__End_Date_Time__c</field>
-            <value>
-                <elementReference>End_Date_Time</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>animalos__Job__c</field>
-            <value>
-                <elementReference>Get_Job.Id</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>animalos__Start_Date_Time__c</field>
-            <value>
-                <elementReference>Start_Date_Time</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>animalos__Status__c</field>
-            <value>
-                <stringValue>Completed</stringValue>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>animalos__Type_of_Work__c</field>
-            <value>
-                <stringValue>Inspection</stringValue>
-            </value>
-        </inputAssignments>
-        <object>animalos__Job_Activity__c</object>
-        <storeOutputAutomatically>true</storeOutputAutomatically>
+        <inputReference>jobActivity</inputReference>
     </recordCreates>
     <recordLookups>
         <name>Get_Current_User_Resource</name>
         <label>Get Current User Resource</label>
         <locationX>314</locationX>
-        <locationY>1466</locationY>
+        <locationY>1982</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Current_User_Has_Resource</targetReference>
@@ -392,7 +416,7 @@
         <locationY>350</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Create_Job_Activity</targetReference>
+            <targetReference>Assign_Other_Job_Activity_Values</targetReference>
         </connector>
         <faultConnector>
             <isGoTo>true</isGoTo>
@@ -421,7 +445,7 @@
         <name>Get_Resources</name>
         <label>Get Resources</label>
         <locationX>314</locationX>
-        <locationY>566</locationY>
+        <locationY>1082</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Select_Resources</targetReference>
@@ -442,6 +466,16 @@
         <object>animalos__Resource__c</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordLookups>
+    <recordUpdates>
+        <name>Update_Job_Activity</name>
+        <label>Update Job Activity</label>
+        <locationX>182</locationX>
+        <locationY>890</locationY>
+        <connector>
+            <targetReference>Get_Resources</targetReference>
+        </connector>
+        <inputReference>jobActivity</inputReference>
+    </recordUpdates>
     <screens>
         <name>Error_Screen</name>
         <label>Error Screen</label>
@@ -470,7 +504,7 @@
         <name>Finish_Screen</name>
         <label>Finish Screen</label>
         <locationX>50</locationX>
-        <locationY>2090</locationY>
+        <locationY>2606</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -494,7 +528,7 @@
         <name>FinishScreen</name>
         <label>Finish Screen</label>
         <locationX>578</locationX>
-        <locationY>1982</locationY>
+        <locationY>2498</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -502,6 +536,272 @@
             <name>FinishText</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Created Job Activity with no Assigned Resources.  These can be added manually later on if needed. &lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Flighted_Bird_Screen</name>
+        <label>Flighted Bird Screen</label>
+        <locationX>182</locationX>
+        <locationY>782</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Update_Job_Activity</targetReference>
+        </connector>
+        <fields>
+            <name>Flighted_Bird_Screen_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Flighted_Bird_Screen_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <fieldType>ObjectProvided</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <objectFieldReference>jobActivity.Activity_Location__c</objectFieldReference>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <fields>
+                    <fieldType>ObjectProvided</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <objectFieldReference>jobActivity.Preferred_Capture_Method__c</objectFieldReference>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <fields>
+                    <fieldType>ObjectProvided</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <objectFieldReference>jobActivity.MOP_Ability_to_Help__c</objectFieldReference>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <fields>
+                    <fieldType>ObjectProvided</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <objectFieldReference>jobActivity.Time_Of_Day_Sighted__c</objectFieldReference>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <fields>
+                    <fieldType>ObjectProvided</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <objectFieldReference>jobActivity.Rescue_Group__c</objectFieldReference>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Flighted_Bird_Screen_Section1_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <fieldType>ObjectProvided</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <objectFieldReference>jobActivity.Caller_Frequents_Area__c</objectFieldReference>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <fields>
+                    <fieldType>ObjectProvided</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <objectFieldReference>jobActivity.Other_Capture_Methods__c</objectFieldReference>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <fields>
+                    <fieldType>ObjectProvided</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <objectFieldReference>jobActivity.Entanglement_Type__c</objectFieldReference>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>jobActivity.Behaviour_Around_MOP__c</objectFieldReference>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>jobActivity.Feeding_Routine__c</objectFieldReference>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>jobActivity.Type_Of_Food__c</objectFieldReference>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>jobActivity.Injury_Description__c</objectFieldReference>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>jobActivity.Location_Information__c</objectFieldReference>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>addFile</name>
+            <extensionName>forceContent:fileUpload</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>label</name>
+                <value>
+                    <stringValue>Add Files</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>multiple</name>
+                <value>
+                    <booleanValue>true</booleanValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>recordId</name>
+                <value>
+                    <elementReference>jobActivity.Id</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
             <styleProperties>
                 <verticalAlignment>
                     <stringValue>top</stringValue>
@@ -556,7 +856,7 @@
                     <isRequired>true</isRequired>
                     <styleProperties>
                         <verticalAlignment>
-                            <stringValue>top</stringValue>
+                            <stringValue>bottom</stringValue>
                         </verticalAlignment>
                         <width>
                             <stringValue>12</stringValue>
@@ -564,14 +864,10 @@
                     </styleProperties>
                 </fields>
                 <fields>
-                    <name>Spoke_to_Caller</name>
-                    <choiceReferences>Yes</choiceReferences>
-                    <choiceReferences>No</choiceReferences>
-                    <dataType>String</dataType>
-                    <fieldText>Spoke to Caller</fieldText>
-                    <fieldType>DropdownBox</fieldType>
+                    <fieldType>ObjectProvided</fieldType>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <objectFieldReference>jobActivity.Spoke_to_Caller__c</objectFieldReference>
                     <styleProperties>
                         <verticalAlignment>
                             <stringValue>top</stringValue>
@@ -601,7 +897,7 @@
                     <isRequired>false</isRequired>
                     <styleProperties>
                         <verticalAlignment>
-                            <stringValue>top</stringValue>
+                            <stringValue>bottom</stringValue>
                         </verticalAlignment>
                         <width>
                             <stringValue>12</stringValue>
@@ -609,13 +905,10 @@
                     </styleProperties>
                 </fields>
                 <fields>
-                    <name>Outcome</name>
-                    <choiceReferences>outc</choiceReferences>
-                    <dataType>String</dataType>
-                    <fieldText>Outcome</fieldText>
-                    <fieldType>DropdownBox</fieldType>
+                    <fieldType>ObjectProvided</fieldType>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>false</isRequired>
+                    <objectFieldReference>jobActivity.Outcome__c</objectFieldReference>
                     <styleProperties>
                         <verticalAlignment>
                             <stringValue>top</stringValue>
@@ -660,11 +953,10 @@
             </styleProperties>
         </fields>
         <fields>
-            <name>Location_s_Attended</name>
-            <fieldText>Location/s Attended</fieldText>
-            <fieldType>LargeTextArea</fieldType>
+            <fieldType>ObjectProvided</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>false</isRequired>
+            <objectFieldReference>jobActivity.Location_s_Attended__c</objectFieldReference>
             <styleProperties>
                 <verticalAlignment>
                     <stringValue>top</stringValue>
@@ -675,11 +967,10 @@
             </styleProperties>
         </fields>
         <fields>
-            <name>Equipment_Used</name>
-            <fieldText>Equipment Used</fieldText>
-            <fieldType>LargeTextArea</fieldType>
+            <fieldType>ObjectProvided</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>false</isRequired>
+            <objectFieldReference>jobActivity.Equipment_Used__c</objectFieldReference>
             <styleProperties>
                 <verticalAlignment>
                     <stringValue>top</stringValue>
@@ -696,7 +987,7 @@
         <name>Select_Resources</name>
         <label>Select Resources</label>
         <locationX>314</locationX>
-        <locationY>674</locationY>
+        <locationY>1190</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -804,6 +1095,14 @@
         <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>animalos__Assigned_Resource__c</objectType>
+    </variables>
+    <variables>
+        <name>jobActivity</name>
+        <dataType>SObject</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <objectType>animalos__Job_Activity__c</objectType>
     </variables>
     <variables>
         <name>recordId</name>

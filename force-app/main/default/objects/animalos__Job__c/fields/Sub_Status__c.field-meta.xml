@@ -8,6 +8,7 @@
     <trackTrending>false</trackTrending>
     <type>Picklist</type>
     <valueSet>
+        <controllingField>animalos__Status__c</controllingField>
         <restricted>true</restricted>
         <valueSetDefinition>
             <sorted>false</sorted>
@@ -107,5 +108,61 @@
                 <label>Caller Contacted</label>
             </value>
         </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Under Investigation</controllingFieldValue>
+            <valueName>Awaiting Recheck</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Investigation</controllingFieldValue>
+            <valueName>Awaiting Further Information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Investigation</controllingFieldValue>
+            <valueName>Attended – CC left</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Investigation</controllingFieldValue>
+            <valueName>Attended – enquires continuing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Investigation</controllingFieldValue>
+            <valueName>Covering Inspector - Assigned</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Investigation</controllingFieldValue>
+            <valueName>Covering Inspector – Awaiting Attendance</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Investigation</controllingFieldValue>
+            <valueName>Notes outstanding</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Investigation</controllingFieldValue>
+            <valueName>Preliminary inquiries made</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Reg Action</controllingFieldValue>
+            <valueName>Pending Prosecution</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Reg Action</controllingFieldValue>
+            <valueName>Awaiting AWD Compliance Check</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Reg Action</controllingFieldValue>
+            <valueName>Pending Forfeiture Application</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Reg Action</controllingFieldValue>
+            <valueName>Pending Forfeiture decision</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Reg Action</controllingFieldValue>
+            <valueName>Pending FBOE</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Reg Action</controllingFieldValue>
+            <valueName>Pending FBOE Application Decision</valueName>
+        </valueSettings>
     </valueSet>
 </CustomField>

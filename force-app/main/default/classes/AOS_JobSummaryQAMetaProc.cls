@@ -99,12 +99,35 @@ public with sharing class AOS_JobSummaryQAMetaProc extends vertic_MetadataProces
                         )
                 );
 
+        Boolean isEmail = this.request.getBoolean('isEmail') == true;
+
+        dto.put('isEmail', isEmail);
+
+        String contactId = this.request.getString('contactId');
+
+        Boolean hasContact = String.isNotBlank(contactId);
+
+        if (isEmail == true && hasContact) {
+
+            Contact contactVar = (Contact) vertic_Utils.arrays.firstOrDefault([
+                SELECT Id, Name
+                FROM Contact
+                WHERE Id = :contactId
+            ], new Contact(FirstName = '', LastName = ''));
+            hasContact = contactVar.Id != null;
+            dto.put('contact', contactVar);
+        }
+
+        dto.put('hasContact', hasContact);
+
         components.add(new Component.AOS_JobSummary(
                 dto = dto.getMap()
         ));
 
         this.response.dto.put('components', components);
-        this.response.dto.put('head-component', new Component.AOS_JobSummaryStyles());
+        this.response.dto.put('head-component', new Component.AOS_JobSummaryStyles(
+            isEmail = isEmail
+        ));
 
     }
 
@@ -220,7 +243,6 @@ public with sharing class AOS_JobSummaryQAMetaProc extends vertic_MetadataProces
                         others.add(jobContact);
                     }
 
-                    // TODO: AOS remove POI_Description__c from the logic
                     if (!String.isBlank(jobContact.animalos__Contact__r.animalos__POI_Description__c)) {
                         POIDescription += jobContact.animalos__Contact__r.animalos__POI_Description__c + '\n';
                     }

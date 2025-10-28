@@ -211,7 +211,7 @@
         <expression>CASESAFEID({!$User.Id})</expression>
     </formulas>
     <interviewLabel>Job- Add Inspection with Assigned Resources {!$Flow.CurrentDateTime}</interviewLabel>
-    <label>Job - Add Inspection with Assigned Resources (AnimalOS)</label>
+    <label>Job - Add Inspection with Assigned Resources (AnimalOS) v1.2</label>
     <loops>
         <name>Loop_through_Selected_Resources</name>
         <label>Loop through Selected Resources</label>
@@ -588,64 +588,10 @@
             </styleProperties>
         </fields>
         <fields>
-            <name>Introduction_Screen_Section1</name>
-            <fieldType>RegionContainer</fieldType>
-            <fields>
-                <name>Introduction_Screen_Section1_Column1</name>
-                <fieldType>Region</fieldType>
-                <fields>
-                    <name>Notebook_Number</name>
-                    <dataType>String</dataType>
-                    <fieldText>Notebook Number</fieldText>
-                    <fieldType>InputField</fieldType>
-                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-                    <isRequired>true</isRequired>
-                    <styleProperties>
-                        <verticalAlignment>
-                            <stringValue>top</stringValue>
-                        </verticalAlignment>
-                        <width>
-                            <stringValue>12</stringValue>
-                        </width>
-                    </styleProperties>
-                </fields>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>6</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
-            <fields>
-                <name>Introduction_Screen_Section1_Column2</name>
-                <fieldType>Region</fieldType>
-                <fields>
-                    <name>Page_Number</name>
-                    <dataType>String</dataType>
-                    <fieldText>Page Number (eg 1-17)</fieldText>
-                    <fieldType>InputField</fieldType>
-                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
-                    <isRequired>true</isRequired>
-                    <styleProperties>
-                        <verticalAlignment>
-                            <stringValue>top</stringValue>
-                        </verticalAlignment>
-                        <width>
-                            <stringValue>12</stringValue>
-                        </width>
-                    </styleProperties>
-                </fields>
-                <inputParameters>
-                    <name>width</name>
-                    <value>
-                        <stringValue>6</stringValue>
-                    </value>
-                </inputParameters>
-                <isRequired>false</isRequired>
-            </fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>false</isRequired>
-            <regionContainerType>SectionWithoutHeader</regionContainerType>
+            <objectFieldReference>SOV_JobActivity.animalos__Type_of_Work__c</objectFieldReference>
             <styleProperties>
                 <verticalAlignment>
                     <stringValue>top</stringValue>
@@ -656,10 +602,10 @@
             </styleProperties>
         </fields>
         <fields>
-            <name>Introduction_Screen_Section2</name>
+            <name>Introduction_Screen_Section1</name>
             <fieldType>RegionContainer</fieldType>
             <fields>
-                <name>Introduction_Screen_Section2_Column1</name>
+                <name>Introduction_Screen_Section1_Column1</name>
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>Start_Date_Time</name>
@@ -689,7 +635,7 @@
                 <isRequired>false</isRequired>
             </fields>
             <fields>
-                <name>Introduction_Screen_Section2_Column2</name>
+                <name>Introduction_Screen_Section1_Column2</name>
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>End_Date_Time</name>
@@ -757,10 +703,10 @@
             </styleProperties>
         </fields>
         <fields>
-            <name>Introduction_Screen_Section3</name>
+            <name>Introduction_Screen_Section2</name>
             <fieldType>RegionContainer</fieldType>
             <fields>
-                <name>Introduction_Screen_Section3_Column1</name>
+                <name>Introduction_Screen_Section2_Column1</name>
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>Recheck</name>
@@ -787,7 +733,7 @@
                 <isRequired>false</isRequired>
             </fields>
             <fields>
-                <name>Introduction_Screen_Section3_Column2</name>
+                <name>Introduction_Screen_Section2_Column2</name>
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>Awaiting_Notification_Response</name>
@@ -796,6 +742,74 @@
                     <fieldType>InputField</fieldType>
                     <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
                     <isRequired>true</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <name>Introduction_Screen_Section3</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Introduction_Screen_Section3_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Notebook_Number</name>
+                    <dataType>String</dataType>
+                    <fieldText>Notebook Number</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
+                    <styleProperties>
+                        <verticalAlignment>
+                            <stringValue>top</stringValue>
+                        </verticalAlignment>
+                        <width>
+                            <stringValue>12</stringValue>
+                        </width>
+                    </styleProperties>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Introduction_Screen_Section3_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Page_Number</name>
+                    <dataType>String</dataType>
+                    <fieldText>Page Number (eg 1-17)</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+                    <isRequired>false</isRequired>
                     <styleProperties>
                         <verticalAlignment>
                             <stringValue>top</stringValue>

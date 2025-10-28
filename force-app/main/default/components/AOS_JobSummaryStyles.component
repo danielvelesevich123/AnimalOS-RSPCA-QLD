@@ -1,5 +1,7 @@
 <apex:component id="AOS_JobSummaryStyles" layout="none">
 
+    <apex:attribute name="isEmail" description="Is Email" type="Boolean"/>
+
     <apex:variable value="{! 'AOS_JobSummaryStyles' }" var="cmpName"/>
     <apex:variable value="{! cmpName + 'Template' }" var="defaultTemplateName"/>
     <apex:variable value="{! 'c-' + cmpName }" var="defaultClassName"/>
@@ -54,7 +56,9 @@
         p {
             margin: 2px 0;
             padding-left: 10px;
-            word-break: break-all;
+            <apex:outputPanel layout="none" rendered="{!isEmail != true}">
+                word-break: break-all;
+            </apex:outputPanel>
         }
 
         .animal-report-summary {

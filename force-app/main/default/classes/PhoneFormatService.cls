@@ -1,5 +1,25 @@
 public without sharing class PhoneFormatService {
 
+    private static final List<String> CONTACT_PHONE_FIELDS = new List<String>{
+            'Phone',
+            'MobilePhone',
+            'HomePhone',
+            'npe01__WorkPhone__c',
+            'OtherPhone'
+    };
+
+    public static void formatContactPhones(Contact contactVar) {
+        if (contactVar == null) return;
+
+        for (String phoneField : CONTACT_PHONE_FIELDS) {
+            if (contactVar.get(phoneField) == null) {
+                continue;
+            }
+
+            contactVar.put(phoneField, formatPhone((String) contactVar.get(phoneField)));
+        }
+    }
+
     public static String formatPhone(String inputPhone) {
         if (inputPhone == null) {
             return null;

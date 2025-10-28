@@ -78,7 +78,11 @@ public class vertic_Structs {
         protected abstract String getValue(vertic_DTO dtoVar);
 
         public virtual String apply(vertic_DTO dtoVar, String targetStr) {
-            String expressionStrToReplace = ('{!' + this.source + '}');
+            return this.apply(dtoVar, targetStr, false);
+        }
+
+        public virtual String apply(vertic_DTO dtoVar, String targetStr, Boolean mergeFieldWithoutExclamationSymbol) {
+            String expressionStrToReplace = mergeFieldWithoutExclamationSymbol ? ('{' + this.source + '}') : ('{!' + this.source + '}');
             String escapedExpressionStrToReplace = expressionStrToReplace.replaceAll('\\p{Punct}', '\\\\$0');
             return targetStr.replaceAll(escapedExpressionStrToReplace, this.getValue(dtoVar));
         }

@@ -6,12 +6,33 @@
     <apex:variable value="{! cmpName + 'Template' }" var="defaultTemplateName"/>
     <apex:variable value="{! 'c-' + cmpName }" var="defaultClassName"/>
 
-    <apex:repeat value="{!dto['jobs']}" var="job" id="jobRepeat">
-        <div class="header-text">CRUELTY COMPLAINT SUMMARY</div>
 
-        <div class="header">
-            <img src="/resource/1660927663000/RspcaLogo"/>
+    <apex:outputPanel rendered="{!AND(dto['isEmail'] == true, dto['hasContact'] == true)}">
+        <div style="margin: 25px 0 25px 0;">
+            <p>Dear {! dto['contact'].Name},</p>
+            <br></br>
+            <p>Please find the <b>Cruelty Complaint Summary</b> detailed below.</p>
         </div>
+    </apex:outputPanel>
+
+    <apex:repeat value="{!dto['jobs']}" var="job" id="jobRepeat">
+
+        <apex:outputPanel rendered="{!dto['isEmail'] != true}">
+            <div class="header-text">CRUELTY COMPLAINT SUMMARY</div>
+
+            <div class="header">
+                <apex:outputPanel rendered="{!dto['isEmail'] == false}">
+                    <img src="/resource/1660927663000/RspcaLogo"/>
+                </apex:outputPanel>
+
+                <!-- <apex:outputPanel rendered="{!dto['isEmail'] == true}">
+                    <c:vertic_DocumentImage
+                        documentUniqueName="RSPCA_Logo"
+                        cssStyles="width: 232px; height: 67px; max-width: 232px; max-height: 67px; min-width: 232px; min-height: 67px;"
+                    />
+                </apex:outputPanel> -->
+            </div>
+        </apex:outputPanel>
 
         <table style="table-layout: fixed">
             <tbody>
@@ -368,7 +389,7 @@
                 </td>
                 <td colspan="3" style="vertical-align: top">
                     <p>
-                        {! job['animalos__Important_Notes__c']}
+                        <apex:outputtext style="white-space:pre-wrap;" value="{!job['animalos__Important_Notes__c']}" escape="true"/>
                     </p>
                 </td>
             </tr>
@@ -501,4 +522,8 @@
             <div class="page-break"/>
         </apex:outputPanel>
     </apex:repeat>
+
+    <apex:outputPanel rendered="{!dto['isEmail'] == true}">
+        <c:EmailSignatureRSPCA />
+    </apex:outputPanel>
 </apex:component>

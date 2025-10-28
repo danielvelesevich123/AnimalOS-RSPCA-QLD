@@ -2604,12 +2604,16 @@ public class vertic_Utils {
         }
 
         public String compose(String template, Map<String, Object> dtoMap) {
-            return this.compose(template, new vertic_DTO(dtoMap));
+            return this.compose(template, new vertic_DTO(dtoMap), false);
         }
 
-        public String compose(String template, vertic_DTO dto) {
+        public String compose(String template, Map<String, Object> dtoMap, Boolean mergeFieldWithoutExclamationSymbol) {
+            return this.compose(template, new vertic_DTO(dtoMap), mergeFieldWithoutExclamationSymbol);
+        }
 
-            String reExp = '(?s)(\\{!.+?\\})';
+        public String compose(String template, vertic_DTO dto, Boolean mergeFieldWithoutExclamationSymbol) {
+
+            String reExp = mergeFieldWithoutExclamationSymbol ? '(?s)(\\{.+?\\})' : '(?s)(\\{!.+?\\})';
 
             Pattern patternVar = Pattern.compile(reExp);
             Matcher matcherVar = patternVar.matcher(template);
@@ -2618,7 +2622,6 @@ public class vertic_Utils {
 
             while (matcherVar.find()) {
                 for (Integer i = 1; i <= matcherVar.groupCount(); i++) {
-                    System.debug(matcherVar.group(i));
                     String placeholder = matcherVar.group(i);
                     placeholders.add(placeholder);
                 }
@@ -2628,10 +2631,10 @@ public class vertic_Utils {
 
             for (String placeholder : placeholders) {
 
-                vertic_Structs.Expression expressionVar = getExpression(placeholder);
+                vertic_Structs.Expression expressionVar = getExpression(placeholder, mergeFieldWithoutExclamationSymbol);
 
                 try {
-                    result = expressionVar.apply(dto, result);
+                    result = expressionVar.apply(dto, result, mergeFieldWithoutExclamationSymbol);
                 } catch (Exception ex) {
                     throw new vertic_Structs.ProcessException('Unable to apply merge field: ' + placeholder);
                 }
@@ -2640,23 +2643,37 @@ public class vertic_Utils {
             return result;
         }
 
-        public vertic_Structs.Expression getExpression(String placeholder) {
+        public vertic_Structs.Expression getExpression(String placeholder, Boolean mergeFieldWithoutExclamationSymbol) {
             vertic_Structs.Expression expressionVar;
 
             if (String.isBlank(placeholder)) {
                 return expressionVar;
             }
 
-            // Remove the brackets  {! }
-            String expressionStr = placeholder.substring(2, placeholder.length() - 1);
+            String expressionStr = placeholder.subString(mergeFieldWithoutExclamationSymbol ? 1 : 2, placeholder.length() - 1);
 
-            if (expressionStr.startsWithIgnoreCase('DOCUMENT_IMAGE(')) {
-                expressionVar = new vertic_Structs.DocumentImageExpression(expressionStr);
-            } else {
-                expressionVar = new vertic_Structs.MergeFieldExpression(expressionStr);
-            }
+            expressionVar = new vertic_Structs.MergeFieldExpression(expressionStr);
 
             return expressionVar;
+        }
+
+        public Set<String> extractMergeFields(String template) {
+
+            String reExp = '(?s)(\\{!.+?\\})';
+
+            Pattern patternVar = Pattern.compile(reExp);
+            Matcher matcherVar = patternVar.matcher(template);
+
+            Set<String> fieldNames = new Set<String>();
+
+            while (matcherVar.find()) {
+                for (Integer i = 1; i <= matcherVar.groupCount(); i++) {
+                    String placeholder = matcherVar.group(i);
+                    fieldNames.add(placeholder.substringBetween('{!', '}'));
+                }
+            }
+
+            return fieldNames;
         }
 
     }

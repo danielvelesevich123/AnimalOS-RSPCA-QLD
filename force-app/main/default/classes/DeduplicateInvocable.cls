@@ -3,6 +3,9 @@ public without sharing class DeduplicateInvocable {
     @InvocableMethod(label='Deduplicate Invocable')
     public static List<SObject> checkingForDuplicateEntries(List<SObject> sObjects) {
         convertFlowPicklistFieldValues(sObjects[0]);
+        if (Contact.SObjectType == sObjects[0]?.getSObjectType()) {
+            PhoneFormatService.formatContactPhones((Contact) sObjects[0]);
+        }
         vertic_Utils.sObjects.deduplicate(sObjects[0], null);
         return sObjects;
     }

@@ -1,4 +1,4 @@
-<aura:component description="vertic_ContentPreview" extends="c:vertic_Base">
+<aura:component description="vertic_ContentPreview" extends="c:vertic_Base" implements="lightning:availableForFlowScreens">
 
     <!-- Attribute Overrides -->
     <aura:set attribute="processor" value="vertic_GetPageReferenceContentProc"/>
@@ -7,6 +7,7 @@
 
     <!-- Attributes -->
     <aura:attribute name="params" type="Map" access="global"/>
+    <aura:attribute name="paramsJSON" type="String" access="global"/>
     <aura:attribute name="paramsString" type="String" access="global"/>
     <aura:attribute name="iFrameWidth" type="String" default="100%" access="global"/>
     <aura:attribute name="iFrameHeight" type="String" access="global"/>

@@ -1,0 +1,5 @@
+<design:component>
+    <design:attribute label="JSON Params" name="paramsJSON"/>
+    <design:attribute label="Preview Width" name="iFrameWidth"/>
+    <design:attribute label="Preview Height" name="iFrameHeight"/>
+</design:component>

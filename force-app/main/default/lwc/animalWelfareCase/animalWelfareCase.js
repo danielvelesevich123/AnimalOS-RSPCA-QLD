@@ -259,6 +259,9 @@ export default class AnimalWelfareCase extends LightningElement {
                 this.job.animalos__Codes__c = [...codes].join(';');
                 this.resetCaseForm();
                 break;
+            case 'animalos__Priority__c':
+                this.caseVar.Priority = this.job.animalos__Priority__c;
+                break;
         }
 
     }
@@ -325,15 +328,66 @@ export default class AnimalWelfareCase extends LightningElement {
 
     handleJobContactPhoneBlur(event) {
         let path = event.target.getAttribute('data-path');
+        let value = event.target.value;
+
+        // Remove all whitespace first
+        let cleanValue = value?.replace(/\s/g, '') || '';
 
         switch (path) {
             case 'animalos__Contact__r.MobilePhone':
-                this.jobContact.animalos__Contact__r.MobilePhone = event.target.value?.replaceAll(' ', '')?.replace(/^(.{4})(.{3})(.*)$/, '$1 $2 $3');
+                this.jobContact.animalos__Contact__r.MobilePhone = this.formatMobilePhone(cleanValue);
                 break;
             case 'animalos__Contact__r.Phone':
-                this.jobContact.animalos__Contact__r.Phone = event.target.value?.replaceAll(' ', '')?.replace(/^(.{4})(.{3})(.*)$/, '$1 $2 $3');
+                this.jobContact.animalos__Contact__r.Phone = this.formatLandlinePhone(cleanValue);
                 break;
         }
+    }
+
+    formatMobilePhone(value) {
+        if (!value) return '';
+
+        // Handle +61433352553 format - format as +61433 352 553
+        let match = value.match(/^\+614(\d{2})(\d{3})(\d+)$/);
+        if (match) {
+            return `+614${match[1]} ${match[2]} ${match[3]}`;
+        }
+
+        // Handle 61433352553 format (without +) - format as +61433 352 553
+        match = value.match(/^614(\d{2})(\d{3})(\d+)$/);
+        if (match) {
+            return `+614${match[1]} ${match[2]} ${match[3]}`;
+        }
+
+        // Handle existing 0433352553 format - format as 0433 352 553
+        match = value.match(/^04(\d{2})(\d{3})(\d+)$/);
+        if (match) {
+            return `04${match[1]} ${match[2]} ${match[3]}`;
+        }
+        return value;
+    }
+
+    formatLandlinePhone(value) {
+        if (!value) return '';
+
+        // Handle (07)97956021 format - format as (07) 9795 6021
+        let match = value.match(/^\(07\)(\d{4})(\d{4})$/);
+        if (match) {
+            return `(07) ${match[1]} ${match[2]}`;
+        }
+
+        // Handle 0797956021 format - format as (07) 9795 6021
+        match = value.match(/^07(\d{4})(\d{4})$/);
+        if (match) {
+            return `(07) ${match[1]} ${match[2]}`;
+        }
+
+        // Handle 97956021 format (8 digits) - format as 9795 6021
+        match = value.match(/^(\d{4})(\d{4})$/);
+        if (match) {
+            return `${match[1]} ${match[2]}`;
+        }
+
+        return value;
     }
 
     handleJobContactTypeChange(event) {
@@ -514,7 +568,7 @@ export default class AnimalWelfareCase extends LightningElement {
 
         let animalReports = JSON.parse(JSON.stringify(this.animalReports)) || [];
         let selectedTypes = [...animalReports.map(report => report.animalos__Cruelty_Type__c), ...animalReports.map(report => report.Rescue_Type__c)],
-            jobCodes = new Set();
+            jobCodes = new Set(this.job.animalos__Codes__c?.split(';') || []);
 
         if (selectedTypes) {
             selectedTypes.forEach((selectedType => {

@@ -250,6 +250,10 @@
                                                          disabled={isJobContactSearching}
                                                          onchange={handleJobContactFieldChange}
                                                          onblur={handleJobContactPhoneBlur}
+                                                         type="tel"
+                                                         max-length="15"
+                                                         pattern="^\+?[\d\(\)\s]*$"
+                                                         message-when-pattern-mismatch="Phone number can contain only digits, spaces, +, and brackets ()"
                                         ></lightning-input>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
@@ -261,6 +265,10 @@
                                                          disabled={isJobContactSearching}
                                                          onchange={handleJobContactFieldChange}
                                                          onblur={handleJobContactPhoneBlur}
+                                                         type="tel"
+                                                         max-length="15"
+                                                         pattern="^\+?[\d\(\)\s]*$"
+                                                         message-when-pattern-mismatch="Phone number can contain only digits, spaces, +, and brackets ()"
                                         ></lightning-input>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">

@@ -25,11 +25,11 @@ public without sharing class vertic_DocumentImageCtrl {
         }
 
         return String.format(
-            'https://c.{2}.content.force.com/servlet/servlet.ImageServer?id={0}&oid={1}',
+            'https://{2}file.force.com/servlet/servlet.ImageServer?id={0}&oid={1}',
             new List<String>{
                 docId,
                 UserInfo.getOrganizationId(),
-                organizationVar.InstanceName
+                Url.getOrgDomainUrl().getHost().remove('my.salesforce.com')
             }
         );
     }

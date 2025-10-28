@@ -2,8 +2,13 @@
     handleInit: function(cmp, event, helper){
 
         var params = cmp.get('v.params');
+        var paramsJSON = cmp.get('v.paramsJSON');
 
-        if(!params){
+        if (paramsJSON) {
+            params = JSON.parse(paramsJSON);
+        }
+
+        if (!params) {
             return;
         }
 
@@ -16,7 +21,7 @@
         cmp.set('v.paramsString', paramsList.join('&'));
 
         var request = {
-            params: cmp.get('v.params') || {}
+            params: params || {}
         };
 
         helper.execute(

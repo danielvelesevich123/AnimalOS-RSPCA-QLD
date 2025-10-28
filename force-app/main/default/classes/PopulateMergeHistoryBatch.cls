@@ -2,6 +2,7 @@ public class PopulateMergeHistoryBatch implements Database.Batchable<SObject>, S
     private Set<String> recordIds;
     private String filter;
     private Integer queryLimit;
+    private static Set<Id> processedContactIds = new Set<Id>();
 
     public PopulateMergeHistoryBatch(){
     }
@@ -37,25 +38,49 @@ public class PopulateMergeHistoryBatch implements Database.Batchable<SObject>, S
     }
 
     public void execute(Database.BatchableContext context, List<SObject> scope) {
-            List<Merge_History__c> mergeHistoriesToInsert = new List<Merge_History__c>();
+        List<Merge_History__c> mergeHistoriesToInsert = new List<Merge_History__c>();
+        List<Contact> contactsToUpdate = new List<Contact>();
 
-            for (Contact contactVar : (List<Contact>) scope) {
+        if(!scope.isEmpty()){
+            Set<Id> contactIds = new Set<Id>();
+            for(Contact contactVar : (List<Contact>)scope) {
+                contactIds.add(contactVar.Id);
+                processedContactIds.add(contactVar.Id);
+            }
+
+            Map<String, Merge_History__c> existingMergeHistoriesMap = new Map<String, Merge_History__c>();
+            for(Merge_History__c existingHistory : [
+                    SELECT Id, Contact__c, Type__c, Name
+                    FROM Merge_History__c
+                    WHERE Contact__c IN :contactIds
+            ]) {
+                String historyKey = existingHistory.Contact__c + '|' + existingHistory.Type__c + '|' + existingHistory.Name;
+                existingMergeHistoriesMap.put(historyKey, existingHistory);
+            }
+
+            for (Contact contactVar : (List<Contact>)scope) {
                 if (String.isNotBlank(contactVar.BPAY_CRN__c)) {
-                    Merge_History__c mergeHistory = new Merge_History__c();
-                    mergeHistory.Contact__c = contactVar.Id;
-                    mergeHistory.Type__c = 'BPAY CRN';
-                    mergeHistory.Name = contactVar.BPAY_CRN__c;
+                    String historyKey = contactVar.Id + '|BPAY CRN|' + contactVar.BPAY_CRN__c;
 
-                    mergeHistoriesToInsert.add(mergeHistory);
+                    if(!existingMergeHistoriesMap.containsKey(historyKey)) {
+                        Merge_History__c mergeHistory = new Merge_History__c();
+                        mergeHistory.Contact__c = contactVar.Id;
+                        mergeHistory.Type__c = 'BPAY CRN';
+                        mergeHistory.Name = contactVar.BPAY_CRN__c;
+                        mergeHistoriesToInsert.add(mergeHistory);
+                    }
                 }
 
                 if (String.isNotBlank(contactVar.Second_BPAY_CRN__c)) {
-                    Merge_History__c mergeHistory = new Merge_History__c();
-                    mergeHistory.Contact__c = contactVar.Id;
-                    mergeHistory.Type__c = 'Second BPAY CRN';
-                    mergeHistory.Name = contactVar.Second_BPAY_CRN__c;
+                    String historyKey = contactVar.Id + '|Second BPAY CRN|' + contactVar.Second_BPAY_CRN__c;
 
-                    mergeHistoriesToInsert.add(mergeHistory);
+                    if(!existingMergeHistoriesMap.containsKey(historyKey)) {
+                        Merge_History__c mergeHistory = new Merge_History__c();
+                        mergeHistory.Contact__c = contactVar.Id;
+                        mergeHistory.Type__c = 'Second BPAY CRN';
+                        mergeHistory.Name = contactVar.Second_BPAY_CRN__c;
+                        mergeHistoriesToInsert.add(mergeHistory);
+                    }
                 }
 
                 if (String.isNotBlank(contactVar.BPAY_CRN_History__c)) {
@@ -68,12 +93,16 @@ public class PopulateMergeHistoryBatch implements Database.Batchable<SObject>, S
 
                     for (String bpayNumber : splitStringsWithoutDuplicates) {
                         if (String.isNotBlank(bpayNumber)) {
-                            Merge_History__c mergeHistory = new Merge_History__c();
-                            mergeHistory.Contact__c = contactVar.Id;
-                            mergeHistory.Type__c = bpayNumber.startsWith('2') ? 'Second BPAY CRN' : 'BPAY CRN';
-                            mergeHistory.Name = bpayNumber;
+                            String type = bpayNumber.startsWith('2') ? 'Second BPAY CRN' : 'BPAY CRN';
+                            String historyKey = contactVar.Id + '|' + type + '|' + bpayNumber;
 
-                            mergeHistoriesToInsert.add(mergeHistory);
+                            if(!existingMergeHistoriesMap.containsKey(historyKey)) {
+                                Merge_History__c mergeHistory = new Merge_History__c();
+                                mergeHistory.Contact__c = contactVar.Id;
+                                mergeHistory.Type__c = type;
+                                mergeHistory.Name = bpayNumber;
+                                mergeHistoriesToInsert.add(mergeHistory);
+                            }
                         }
                     }
                 }
@@ -84,23 +113,30 @@ public class PopulateMergeHistoryBatch implements Database.Batchable<SObject>, S
 
                     for (String bpayNumber : splitStringsWithoutDuplicates) {
                         if (String.isNotBlank(bpayNumber)) {
-                            Merge_History__c mergeHistory = new Merge_History__c();
-                            mergeHistory.Contact__c = contactVar.Id;
-                            mergeHistory.Type__c = bpayNumber.startsWith('2') ? 'Second BPAY CRN' : 'BPAY CRN';
-                            mergeHistory.Name = bpayNumber;
+                            String type = bpayNumber.startsWith('2') ? 'Second BPAY CRN' : 'BPAY CRN';
+                            String historyKey = contactVar.Id + '|' + type + '|' + bpayNumber;
 
-                            mergeHistoriesToInsert.add(mergeHistory);
+                            if(!existingMergeHistoriesMap.containsKey(historyKey)) {
+                                Merge_History__c mergeHistory = new Merge_History__c();
+                                mergeHistory.Contact__c = contactVar.Id;
+                                mergeHistory.Type__c = type;
+                                mergeHistory.Name = bpayNumber;
+                                mergeHistoriesToInsert.add(mergeHistory);
+                            }
                         }
                     }
                 }
 
                 if (String.isNotBlank(contactVar.ShelterBuddy_ID_PID__c)) {
-                    Merge_History__c mergeHistory = new Merge_History__c();
-                    mergeHistory.Contact__c = contactVar.Id;
-                    mergeHistory.Type__c = 'ShelterBuddy ID (PID)';
-                    mergeHistory.Name = contactVar.ShelterBuddy_ID_PID__c;
+                    String historyKey = contactVar.Id + '|ShelterBuddy ID (PID)|' + contactVar.ShelterBuddy_ID_PID__c;
 
-                    mergeHistoriesToInsert.add(mergeHistory);
+                    if(!existingMergeHistoriesMap.containsKey(historyKey)) {
+                        Merge_History__c mergeHistory = new Merge_History__c();
+                        mergeHistory.Contact__c = contactVar.Id;
+                        mergeHistory.Type__c = 'ShelterBuddy ID (PID)';
+                        mergeHistory.Name = contactVar.ShelterBuddy_ID_PID__c;
+                        mergeHistoriesToInsert.add(mergeHistory);
+                    }
                 }
 
                 if (String.isNotBlank(contactVar.Merged_PIDs__c)) {
@@ -113,12 +149,15 @@ public class PopulateMergeHistoryBatch implements Database.Batchable<SObject>, S
 
                     for (String shelterBuddyId : splitStringsWithoutDuplicates) {
                         if (String.isNotBlank(shelterBuddyId)) {
-                            Merge_History__c mergeHistory = new Merge_History__c();
-                            mergeHistory.Contact__c = contactVar.Id;
-                            mergeHistory.Type__c = 'ShelterBuddy ID (PID)';
-                            mergeHistory.Name = shelterBuddyId;
+                            String historyKey = contactVar.Id + '|ShelterBuddy ID (PID)|' + shelterBuddyId;
 
-                            mergeHistoriesToInsert.add(mergeHistory);
+                            if(!existingMergeHistoriesMap.containsKey(historyKey)) {
+                                Merge_History__c mergeHistory = new Merge_History__c();
+                                mergeHistory.Contact__c = contactVar.Id;
+                                mergeHistory.Type__c = 'ShelterBuddy ID (PID)';
+                                mergeHistory.Name = shelterBuddyId;
+                                mergeHistoriesToInsert.add(mergeHistory);
+                            }
                         }
                     }
                 }
@@ -133,12 +172,15 @@ public class PopulateMergeHistoryBatch implements Database.Batchable<SObject>, S
 
                     for (String shelterBuddyId : splitStringsWithoutDuplicates) {
                         if (String.isNotBlank(shelterBuddyId)) {
-                            Merge_History__c mergeHistory = new Merge_History__c();
-                            mergeHistory.Contact__c = contactVar.Id;
-                            mergeHistory.Type__c = 'ShelterBuddy ID (PID)';
-                            mergeHistory.Name = shelterBuddyId;
+                            String historyKey = contactVar.Id + '|ShelterBuddy ID (PID)|' + shelterBuddyId;
 
-                            mergeHistoriesToInsert.add(mergeHistory);
+                            if(!existingMergeHistoriesMap.containsKey(historyKey)) {
+                                Merge_History__c mergeHistory = new Merge_History__c();
+                                mergeHistory.Contact__c = contactVar.Id;
+                                mergeHistory.Type__c = 'ShelterBuddy ID (PID)';
+                                mergeHistory.Name = shelterBuddyId;
+                                mergeHistoriesToInsert.add(mergeHistory);
+                            }
                         }
                     }
                 }
@@ -152,7 +194,12 @@ public class PopulateMergeHistoryBatch implements Database.Batchable<SObject>, S
                 insert mergeHistoriesToInsert;
             }
 
+        fflib_SObjectDomain.getTriggerEvent(ContactMergeHistoryDomain.class).disableAll();
+
             update scope;
+
+        fflib_SObjectDomain.getTriggerEvent(ContactMergeHistoryDomain.class).enableAll();
+    }
     }
 
     public void finish(Database.BatchableContext context) {

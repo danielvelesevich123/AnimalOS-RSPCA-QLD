@@ -408,4 +408,9 @@ export default class VerticLookup extends NavigationMixin(BaseElement) {
     focus() {
         this.refs.input.focus();
     }
+
+    get showLabel() {
+        return this.labelHidden === false || !this.label;
+    }
+
 }

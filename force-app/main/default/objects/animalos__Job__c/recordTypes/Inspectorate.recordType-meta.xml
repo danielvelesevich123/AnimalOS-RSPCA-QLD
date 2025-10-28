@@ -787,7 +787,7 @@
     <picklistValues>
         <picklist>animalos__Codes__c</picklist>
         <values>
-            <fullName>AWIR</fullName>
+            <fullName>AH Owner Medical Assist</fullName>
             <default>false</default>
         </values>
         <values>
@@ -795,15 +795,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Advertisement of an Animal</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Animal Unattended</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Animal fighting</fullName>
+            <fullName>Animal fighting%2FProhibited event</fullName>
             <default>false</default>
         </values>
         <values>
@@ -811,31 +803,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Anonymous report</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Baiting</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Breeder</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Bushfire</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Circus Insp</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Cock Fighting</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Concern For Welfare</fullName>
+            <fullName>Cause Captive Animal To Be Injured%2Fkilled By Dog</fullName>
             <default>false</default>
         </values>
         <values>
@@ -843,47 +815,11 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Dead</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Dog Fighting</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Drought</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Exercise Inadequate</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Feedlot Insp</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Food %26 Water</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Greyhound Complaint</fullName>
+            <fullName>Emergency Relief</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>Heat Distress</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Hoarding</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Home alone</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Ill Treatment</fullName>
             <default>false</default>
         </values>
         <values>
@@ -895,35 +831,31 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Kennel Inspection</fullName>
+            <fullName>Inspec ref Community Officer</fullName>
             <default>false</default>
         </values>
         <values>
-            <fullName>Killed</fullName>
+            <fullName>Insufficient Food</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insufficient Shelter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insufficient Water</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Keep or Use Animal for Blooding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kill or injure</fullName>
             <default>false</default>
         </values>
         <values>
             <fullName>Living Conditions</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Locked In House</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Locked In Shed</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Locked In Shop</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Locked In Small Pen</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Minor</fullName>
             <default>false</default>
         </values>
         <values>
@@ -935,15 +867,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Other</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Other prohibited %26 regulated conduct</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Overcrowded</fullName>
+            <fullName>POI Under 18</fullName>
             <default>false</default>
         </values>
         <values>
@@ -951,19 +875,7 @@
             <default>false</default>
         </values>
         <values>
-            <fullName>Poisoning</fullName>
-            <default>false</default>
-        </values>
-        <values>
             <fullName>Poor Condition</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Poultry Inspection</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Premises Inspection</fullName>
             <default>false</default>
         </values>
         <values>
@@ -976,50 +888,6 @@
         </values>
         <values>
             <fullName>Prohibition Order Breached</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Req Rescue</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Riding Sch Insp</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Rodeo Insp</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Sale Yard Insp</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Second-hand report</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Shelter Inadequate</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Stable Insp</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Tied Continually</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Transport Unsatisfactory</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Vet Treatment</fullName>
-            <default>false</default>
-        </values>
-        <values>
-            <fullName>Zoo and%2For Exhibited Animal</fullName>
             <default>false</default>
         </values>
     </picklistValues>
