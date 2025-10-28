@@ -47,7 +47,7 @@ export default class VerticSelect extends BaseElement {
             bubbles: false,
             composed: false
         }));
-        this.template.querySelector('select').style.color = 'initial';;
+        this.template.querySelector('select').style.color = 'initial';
     }
 
     get elementContainerClasses() {

@@ -1,6 +1,6 @@
 <template>
     <div class="slds-card slds-card_boundary slds-m-top_medium">
-        <lightning-card title="Movement Tracker" icon-name="standard:location">
+        <lightning-card title="Movement Tracker Custom" icon-name="standard:location">
             <div class="slds-m-around_medium slds-is-relative">
                 <!-- Current Animal Info -->
                 <div class="slds-box slds-theme_shade slds-m-bottom_medium">
@@ -14,25 +14,58 @@
 
                 <!-- Date Range Inputs -->
                 <div class="slds-grid slds-gutters slds-m-bottom_medium">
-                    <div class="slds-col slds-size_1-of-2">
+                    <div class="slds-col slds-size_1-of-4">
                         <lightning-input
                                 type="date"
+                                data-map="filter"
+                                data-path="startDate"
                                 name="startDate"
                                 label="Start Date"
-                                value={startDate}
-                                onchange={handleStartDateChange}
+                                value={filter.startDate}
+                                disabled={isLoading}
+                                placeholder="Select Start Date..."
+                                onchange={handleFieldChange}
                                 required>
                         </lightning-input>
                     </div>
-                    <div class="slds-col slds-size_1-of-2">
+                    <div class="slds-col slds-size_1-of-4">
                         <lightning-input
                                 type="date"
                                 name="endDate"
+                                data-map="filter"
+                                data-path="endDate"
                                 label="End Date"
-                                value={endDate}
-                                onchange={handleEndDateChange}
+                                value={filter.endDate}
+                                disabled={isLoading}
+                                onchange={handleFieldChange}
+                                placeholder="Select End Date..."
                                 required>
                         </lightning-input>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <c-vertic-select
+                                label="Animal Stage"
+                                value={filter.animalStage}
+                                data-map="filter"
+                                data-path="animalStage"
+                                disabled={isLoading}
+                                none-label="-- None --"
+                                options={selectOptions.animalosStageOptions}
+                                onchange={handleAnimalStageChange}
+                                placeholder="Select Animal Stage...">
+                        </c-vertic-select>
+                    </div>
+                    <div class="slds-col slds-size_1-of-4">
+                        <lightning-combobox
+                                label="Animal Status"
+                                value={filter.animalStatus}
+                                data-map="filter"
+                                data-path="animalStatus"
+                                options={animalStatusOptions}
+                                onchange={handleFieldChange}
+                                placeholder="Select Animal Status..."
+                                disabled={isAnimalStatusDisabled}>
+                        </lightning-combobox>
                     </div>
                 </div>
 
@@ -49,7 +82,16 @@
                         <lightning-button
                                 variant="neutral"
                                 label="Clear"
+                                disabled={isLoading}
+                                class="slds-m-right_small"
                                 onclick={handleClear}>
+                        </lightning-button>
+                        <lightning-button
+                                variant="brand"
+                                lwc:if={hasResults}
+                                label="Download CSV"
+                                disabled={isLoading}
+                                onclick={handleDownloadCSVClick}>
                         </lightning-button>
                     </div>
                 </div>
@@ -90,9 +132,9 @@
                                         columns={columns}
                                         hide-checkbox-column="true"
                                         show-row-number-column="true"
-                                        resize-column-disabled="true"
-                                        sorted-direction="asc"
-                                        sorted-by="matchedAnimalName">
+                                        sorted-by={sortedBy}
+                                        sorted-direction={sortedDirection}
+                                        onsort={handleSort}>
                                 </lightning-datatable>
                             </div>
                         </div>

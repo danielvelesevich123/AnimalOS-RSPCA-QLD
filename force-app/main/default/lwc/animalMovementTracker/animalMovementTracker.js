@@ -1,5 +1,5 @@
-import {LightningElement, api} from 'lwc';
-import {execute, showToast, validate} from 'c/verticUtils';
+import {LightningElement, api, track} from 'lwc';
+import {execute, showToast, validate, exportCSVFile, sortByField, handleFieldChange} from 'c/verticUtils';
 
 const COLUMNS = [
     {
@@ -17,8 +17,12 @@ const COLUMNS = [
     },
     {
         label: 'Matched Block',
-        fieldName: 'matchedBlock',
-        type: 'text',
+        fieldName: 'matchedBlockUrl',
+        type: 'url',
+        typeAttributes: {
+            label: {fieldName: 'matchedBlockName'},
+            target: '_blank'
+        },
         sortable: true,
         cellAttributes: {
             alignment: 'left'
@@ -27,6 +31,7 @@ const COLUMNS = [
     {
         label: 'Unit Vicinity',
         fieldName: 'unitReference',
+        initialWidth: 300,
         type: 'text',
         sortable: true,
         cellAttributes: {
@@ -37,6 +42,7 @@ const COLUMNS = [
     {
         label: 'Days Exposed',
         fieldName: 'daysExposed',
+        initialWidth: 80,
         type: 'number',
         sortable: true,
         cellAttributes: {
@@ -73,15 +79,17 @@ const COLUMNS = [
 
 export default class AnimalMovementTracker extends LightningElement {
     @api recordId;
+    @track filter = {};
 
     isLoading = false;
     error;
     animalRecord;
-    startDate;
-    endDate;
+    selectOptions = {};
+    dependentOptions = {};
+    animalStatusOptions = [];
     movementData = [];
-    hasResults = false;
-
+    sortedBy = 'matchedAnimalName';
+    sortedDirection = 'asc';
     columns = COLUMNS;
 
     connectedCallback() {
@@ -97,6 +105,8 @@ export default class AnimalMovementTracker extends LightningElement {
                 recordId: this.recordId
             });
             this.animalRecord = response.dto.animal;
+            this.selectOptions = response.selectOptions;
+            this.dependentOptions = response.dependentOptions;
             this.error = undefined;
         } catch (ex) {
             this.error = Array.isArray(ex) ? ex[0].message : ex.message || ex.body?.message;
@@ -106,12 +116,18 @@ export default class AnimalMovementTracker extends LightningElement {
         }
     }
 
-    handleStartDateChange(event) {
-        this.startDate = event.target.value;
+    handleFieldChange(event) {
+        let map = event.target.dataset.map,
+            path = event.target.dataset.path,
+            index = event.target.dataset.index;
+        handleFieldChange(this[map], event);
     }
 
-    handleEndDateChange(event) {
-        this.endDate = event.target.value;
+    handleAnimalStageChange(event) {
+        this.filter.animalStatus = '';
+        const selectedStage = event.target.value;
+        this.animalStatusOptions = this.dependentOptions.animalosStatusOptions[selectedStage];
+        handleFieldChange(this.filter, event);
     }
 
     async handleSearch() {
@@ -123,7 +139,7 @@ export default class AnimalMovementTracker extends LightningElement {
         }
 
         // Additional date range validation
-        if (new Date(this.startDate) > new Date(this.endDate)) {
+        if (new Date(this.filter.startDate) > new Date(this.filter.endDate)) {
             showToast(this, 'Validation Error', 'Start date must be before or equal to end date.', 'error');
             return;
         }
@@ -134,12 +150,18 @@ export default class AnimalMovementTracker extends LightningElement {
         try {
             let response = await execute('MovementTrackerSearchProc', {
                 animalId: this.recordId,
-                startDate: this.startDate,
-                endDate: this.endDate
+                startDate: this.filter.startDate,
+                endDate: this.filter.endDate,
+                animalStatus: this.filter.animalStatus,
+                animalStage: this.filter.animalStage
             });
 
             this.movementData = AnimalMovementTracker.processMovementData(response.dto.results || []);
-            this.hasResults = this.movementData.length > 0;
+
+            // Apply current sort after loading new data
+            if (this.hasResults) {
+                this.sortData();
+            }
 
             if (this.hasResults) {
                 showToast(this, 'Analysis Complete', `Found ${this.movementData.length} movement overlap(s) where animals shared blocks during the specified period.`, 'success');
@@ -161,17 +183,45 @@ export default class AnimalMovementTracker extends LightningElement {
                 // URLs for clickable links
                 matchedAnimalUrl: location.hostname + '/' + record.matchedAnimalId,
                 currentMovementUrl: location.hostname + '/' + record.currentMovementId,
-                matchedMovementUrl: location.hostname + '/' + record.matchedMovementId
+                matchedMovementUrl: location.hostname + '/' + record.matchedMovementId,
+                matchedBlockUrl: location.hostname + '/' + record.matchedBlockId
             };
         });
     }
 
     handleClear() {
-        this.startDate = '';
-        this.endDate = '';
+        this.filter.startDate = {};
         this.movementData = [];
-        this.hasResults = false;
         this.error = undefined;
+        this.sortedBy = 'matchedAnimalName';
+        this.sortedDirection = 'asc';
+    }
+
+    handleSort(event) {
+        const {fieldName, sortDirection} = event.detail;
+        this.sortedBy = fieldName;
+        this.sortedDirection = sortDirection;
+        this.sortData();
+    }
+
+    sortData() {
+        this.movementData = sortByField(this.movementData, this.sortedBy, this.sortedDirection);
+    }
+
+    handleDownloadCSVClick(){
+        exportCSVFile({
+            matchedAnimalName: 'Matched Animal',
+            matchedAnimalCurrentSiteName: 'Matched Animal Current Site',
+            matchedAnimalCurrentBlockName: 'Matched Animal Current Block',
+            matchedAnimalCurrentUnitName: 'Matched Animal Current Unit',
+            matchedAnimalStage: 'Matched Animal Stage',
+            matchedAnimalStatus: 'Matched Animal Status',
+            matchedBlock: 'Matched Block',
+            unitReference: 'Unit Vicinity',
+            daysExposed: 'Days Exposed',
+            currentMovementName: 'Movement',
+            matchedMovementName: 'Matched Movement'
+        }, this.movementData, this.animalRecord.Name + '_Movement_Overlap_Report' + (this.filter.startDate ? '_From_' + this.filter.startDate : '') + (this.filter.endDate ? '_To_' + this.filter.endDate : ''));
     }
 
     get isSearchDisabled() {
@@ -180,5 +230,13 @@ export default class AnimalMovementTracker extends LightningElement {
 
     get currentAnimalName() {
         return this.animalRecord?.Name || 'Unknown Animal';
+    }
+
+    get hasResults() {
+        return this.movementData.length > 0;
+    }
+
+    get isAnimalStatusDisabled() {
+        return this.isLoading === true || !this.filter.animalStage || this.filter.animalStage === '';
     }
 }

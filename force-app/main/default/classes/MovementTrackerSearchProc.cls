@@ -1,6 +1,10 @@
 public without sharing class MovementTrackerSearchProc extends vertic_AbstractProcessor {
     private Set<String> fieldsToSOQL = new Set<String>{
-            'Id', 'Name', 'animalos__Animal__c', 'animalos__Animal__r.Name',
+            'Id', 'Name', 'animalos__Animal__c', 'animalos__Animal__r.Name', 'animalos__Type__c',
+            'animalos__Animal__r.animalos__Status__c', 'animalos__Animal__r.animalos__Stage__c',
+            'animalos__Animal__r.animalos__Current_Unit__c', 'animalos__Animal__r.animalos__Current_Unit__r.Name',
+            'animalos__Animal__r.animalos__Current_Block__c', 'animalos__Animal__r.animalos__Current_Block__r.Name',
+            'animalos__Animal__r.animalos__Current_Site__c', 'animalos__Animal__r.animalos__Current_Site__r.Name',
             'animalos__Location__c', 'animalos__Location__r.Name', 'animalos__Location__r.animalos__Parent_Block__c',
             'animalos__Location__r.animalos__Parent_Block__r.Name',
             'animalos__Start_Date_Time__c', 'animalos__End_Date_Time__c'
@@ -43,59 +47,101 @@ public without sharing class MovementTrackerSearchProc extends vertic_AbstractPr
         List<Map<String, Object>> results = new List<Map<String, Object>>();
         if (!targetAnimalMovements.isEmpty()) {
             Set<Id> targetBlockIds = new Set<Id>();
+            Set<Id> fosterIds = new Set<Id>();
 
             for (animalos__Movement__c movement : targetAnimalMovements) {
+                //for foster movements find animals with movements to the same foster.
+                if ('Foster'.equalsIgnoreCase(movement.animalos__Type__c)) {
+                    fosterIds.add(movement.animalos__Location__c);
+                    continue;
+                }
                 if (movement.animalos__Location__r?.animalos__Parent_Block__c != null) {
                     targetBlockIds.add(movement.animalos__Location__r.animalos__Parent_Block__c);
                 }
             }
 
+            String animalStatus = this.request.getString('animalStatus');
+            String animalStage = this.request.getString('animalStage');
+            String condition = 'animalos__Start_Date_Time__c != NULL AND animalos__Animal__c != :animalId AND ' +
+                    'animalos__Start_Date_Time__c <= :endDateTime AND (animalos__End_Date_Time__c >= :startDateTime OR animalos__End_Date_Time__c = NULL)';
+
+            if (String.isNotBlank(animalStatus)) {
+                condition += ' AND animalos__Animal__r.animalos__Status__c = :animalStatus';
+            }
+
+            if (String.isNotBlank(animalStage)) {
+                condition += ' AND animalos__Animal__r.animalos__Stage__c = :animalStage';
+            }
+
+            List<animalos__Movement__c> overlappingMovements = new List<animalos__Movement__c>();
             if (!targetBlockIds.isEmpty()) {
                 List<animalos__Movement__c> otherAnimalMovements = Database.query(
                         new fflib_QueryFactory(animalos__Movement__c.SObjectType)
                                 .selectFields(this.fieldsToSOQL)
-                                .setCondition('animalos__Start_Date_Time__c != NULL AND animalos__Animal__c != :animalId AND animalos__Location__r.animalos__Parent_Block__c IN :targetBlockIds AND ' +
-                                        'animalos__Start_Date_Time__c <= :endDateTime AND (animalos__End_Date_Time__c >= :startDateTime OR animalos__End_Date_Time__c = NULL)')
+                                .setCondition(condition + ' AND animalos__Location__r.animalos__Parent_Block__c IN :targetBlockIds')
                                 .addOrdering(animalos__Movement__c.animalos__Start_Date_Time__c, fflib_QueryFactory.SortOrder.ASCENDING, true)
                                 .toSOQL()
                 );
-
-                results = this.processMovementOverlaps(targetAnimalMovements, otherAnimalMovements, startDate, endDate);
-                this.response.getMapper().mapAnyValue('results', results);
+                overlappingMovements.addAll(otherAnimalMovements);
             }
+
+            if (!fosterIds.isEmpty()) {
+                List<animalos__Movement__c> otherAnimalMovementsForFosters = Database.query(
+                        new fflib_QueryFactory(animalos__Movement__c.SObjectType)
+                                .selectFields(this.fieldsToSOQL)
+                                .setCondition(condition + ' AND animalos__Location__c IN :fosterIds')
+                                .addOrdering(animalos__Movement__c.animalos__Start_Date_Time__c, fflib_QueryFactory.SortOrder.ASCENDING, true)
+                                .toSOQL()
+                );
+                overlappingMovements.addAll(otherAnimalMovementsForFosters);
+            }
+            this.response.getMapper().mapAnyValue('results', this.processMovementOverlaps(targetAnimalMovements, overlappingMovements, startDate, endDate));
         }
     }
 
-    private List<Map<String, Object>> processMovementOverlaps(List<animalos__Movement__c> targetMovements, List<animalos__Movement__c> otherMovements, Date analysisStartDate, Date analysisEndDate) {
+    private List<Map<String, Object>> processMovementOverlaps(List<animalos__Movement__c> targetMovements, List<animalos__Movement__c> overlappingMovements, Date analysisStartDate, Date analysisEndDate) {
         List<Map<String, Object>> results = new List<Map<String, Object>>();
 
         // Compare each target movement against each matching movement
         for (animalos__Movement__c targetMovement : targetMovements) {
-            Id targetBlockId = targetMovement.animalos__Location__r.animalos__Parent_Block__c;
+            Boolean isFosterType = 'Foster'.equalsIgnoreCase(targetMovement.animalos__Type__c);
+            for (animalos__Movement__c overlappingMovement : overlappingMovements) {
+                if (isFosterType && targetMovement.animalos__Location__c != overlappingMovement.animalos__Location__c) {
+                    continue;
+                }
 
-            for (animalos__Movement__c matchingMovement : otherMovements) {
-                Id matchingBlockId = matchingMovement.animalos__Location__r.animalos__Parent_Block__c;
+                if (!isFosterType && targetMovement.animalos__Location__r?.animalos__Parent_Block__c != overlappingMovement.animalos__Location__r?.animalos__Parent_Block__c) {
+                    continue;
+                }
 
-                if (targetBlockId == matchingBlockId) {
-                    String currentLocationName = targetMovement.animalos__Location__r?.Name;
-                    String matchedLocationName = matchingMovement.animalos__Location__r?.Name;
-                    Integer daysExposed = this.calculateOverlapDays(targetMovement, matchingMovement, analysisStartDate, analysisEndDate);
-                    if (daysExposed > 0) {
-                        results.add(new Map<String, Object>{
-                                'currentMovementId' => targetMovement.Id,
-                                'currentMovementName' => targetMovement.Name,
-                                'matchedMovementId' => matchingMovement.Id,
-                                'matchedMovementName' => matchingMovement.Name,
-                                'matchedAnimalId' => matchingMovement.animalos__Animal__c,
-                                'matchedAnimalName' => matchingMovement.animalos__Animal__r?.Name,
-                                'matchedBlock' => matchingMovement.animalos__Location__r?.animalos__Parent_Block__r?.Name,
-                                'currentLocationName' => currentLocationName,
-                                'matchedLocationName' => matchedLocationName,
-                                'unitReference' => (currentLocationName != null ? currentLocationName : 'Unknown') + ' → ' + (matchedLocationName != null ? matchedLocationName : 'Unknown'),
-                                'daysExposed' => this.calculateOverlapDays(targetMovement, matchingMovement, analysisStartDate, analysisEndDate),
-                                'id' => targetMovement.Id + '_' + matchingMovement.Id
-                        });
-                    }
+                String currentLocationName = targetMovement.animalos__Location__r?.Name;
+                String matchedLocationName = overlappingMovement.animalos__Location__r?.Name;
+                Integer daysExposed = this.calculateOverlapDays(targetMovement, overlappingMovement, analysisStartDate, analysisEndDate);
+
+                if (daysExposed > 0) {
+                    results.add(new Map<String, Object>{
+                            'currentMovementId' => targetMovement.Id,
+                            'currentMovementName' => targetMovement.Name,
+                            'matchedMovementId' => overlappingMovement.Id,
+                            'matchedMovementName' => overlappingMovement.Name,
+                            'matchedAnimalId' => overlappingMovement.animalos__Animal__c,
+                            'matchedAnimalName' => overlappingMovement.animalos__Animal__r?.Name,
+                            'matchedAnimalCurrentUnitId' => overlappingMovement.animalos__Animal__r?.animalos__Current_Unit__c,
+                            'matchedAnimalCurrentUnitName' => overlappingMovement.animalos__Animal__r?.animalos__Current_Unit__r?.Name,
+                            'matchedAnimalCurrentBlockId' => overlappingMovement.animalos__Animal__r?.animalos__Current_Block__c,
+                            'matchedAnimalCurrentBlockName' => overlappingMovement.animalos__Animal__r?.animalos__Current_Block__r?.Name,
+                            'matchedAnimalCurrentSiteId' => overlappingMovement.animalos__Animal__r?.animalos__Current_Site__c,
+                            'matchedAnimalCurrentSiteName' => overlappingMovement.animalos__Animal__r?.animalos__Current_Site__r?.Name,
+                            'matchedAnimalStatus' => overlappingMovement.animalos__Animal__r?.animalos__Status__c,
+                            'matchedAnimalStage' => overlappingMovement.animalos__Animal__r?.animalos__Stage__c,
+                            'matchedBlockName' => overlappingMovement.animalos__Location__r?.animalos__Parent_Block__r?.Name,
+                            'matchedBlockId' => overlappingMovement.animalos__Location__r?.animalos__Parent_Block__c,
+                            'currentLocationName' => currentLocationName,
+                            'matchedLocationName' => matchedLocationName,
+                            'unitReference' => (currentLocationName != null ? currentLocationName : 'Unknown') + ' → ' + (matchedLocationName != null ? matchedLocationName : 'Unknown'),
+                            'daysExposed' => this.calculateOverlapDays(targetMovement, overlappingMovement, analysisStartDate, analysisEndDate),
+                            'id' => targetMovement.Id + '_' + overlappingMovement.Id
+                    });
                 }
             }
         }
