@@ -820,6 +820,23 @@ public class vertic_Utils {
                 date2
             });
         }
+
+        public Date min(List<Date> dates){
+            Date minDate;
+            for (Date dateVar : dates) {
+                if(minDate == null || dateVar < minDate){
+                    minDate = dateVar;
+                }
+            }
+            return minDate;
+        }
+
+        public Date min(Date date1, Date date2){
+            return min(new List<Date>{
+                    date1,
+                    date2
+            });
+        }
     }
 
 

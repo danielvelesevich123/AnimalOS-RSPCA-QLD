@@ -1,0 +1,58 @@
+<aura:component description="JobFinalisationNotificationQA" extends="c:vertic_Base" implements="force:lightningQuickActionWithoutHeader,force:hasRecordId">
+
+    <aura:attribute type="List" name="availableIds"/>
+    <aura:attribute type="String" name="contactId"/>
+    <aura:attribute type="String" name="emailTemplate" default=""/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+
+    <c:vertic_QuickActionModal aura:id="modal"
+                               heightPX="300"
+                               title="Job Finalisation Notification"
+                               widthPercentage="50"
+                               maxWidthRem="90"
+                               minWidthRem="30">
+        <div class="slds-grid slds-gutters_small slds-p-horizontal__small slds-m-top_small">
+            <div class="slds-col slds-has-flexi-truncate">
+                <div>
+                    <lightning:select name="emailTemplateSelect" label="Email Template" required="true" value="{!v.emailTemplate}" disabled="{!v.isBusy}">
+                        <option value="" disabled="disabled" hidden="hidden">Select Email Template</option>
+                        <option value="Finalised_under_RRDJT_1750337614538">Finalised under RRDJT</option>
+                        <option value="Finalised_under_18_years_1750337918773">Finalised (under 18 years)</option>
+                        <option value="Finalised_no_offence_1750337991688">Finalised no offence</option>
+                        <option value="Finalised_insufficient_information_1750338058014">Finalised – insufficient information</option>
+                        <option value="Finalised_Inspector_attended_1750338182875">Finalised – Inspector attended</option>
+                        <option value="Referred_to_DPI_1750338323175">Referred to DPI</option>
+                    </lightning:select>
+                </div>
+            </div>
+            <div class="slds-col slds-has-flexi-truncate">
+                <div>
+                    <c:verticLookup
+                            filter="{!'Id IN ' + v.availableIds}"
+                            label="Contact"
+                            object="Contact"
+                            placeholder="Please select Contact..."
+                            required="true"
+                            searchMode="SOQL"
+                            searchField="Name"
+                            iconTag="contact"
+                            showRecentRecords="false"
+                            isClickable="true"
+                            value="{!v.contactId}"
+                            disabled="{!v.isBusy}"
+                            showAllRecords="true"
+                    ></c:verticLookup>
+                </div>
+            </div>
+        </div>
+
+        <aura:set attribute="footer">
+            <lightning:button type="button"
+                              label="Send Notification"
+                              variant="brand"
+                              onclick="{!c.handleSubmitClick}">
+            </lightning:button>
+        </aura:set>
+    </c:vertic_QuickActionModal>
+</aura:component>

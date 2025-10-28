@@ -1,0 +1,123 @@
+<aura:component description="WildlifeAnimalIntakeAnimals"
+                controller="vertic_CommonCtrl"
+                implements="lightning:availableForFlowScreens"
+                access="global">
+
+    <aura:attribute name="isBusy" type="Boolean" default="{!false}"/>
+    <aura:attribute name="meta" type="Map" default="{}"/>
+    <aura:attribute name="animalJSON" type="String"/>
+    <aura:attribute name="referralId" type="String"/>
+    <aura:attribute name="isTableView" type="Boolean" default="{!false}"/>
+
+    <c:vertic_Utils context="{!this}"/>
+
+    <lightning:notificationsLibrary aura:id="notifyLib"/>
+    <c:vertic_ModalService aura:id="modalService"/>
+
+    <lightning:card title="Animals" iconName="utility:animal_and_nature" class="slds-card_boundary">
+        <aura:set attribute="actions">
+            <lightning:button label="Add Animal"
+                              disabled="{!v.isBusy}"
+                              iconName="utility:add"
+                              onclick="{!c.handleNewAnimalClick}"/>
+        </aura:set>
+        <aura:set attribute="body">
+            <c:Spinner isLoading="{!v.isBusy}">
+                <div class="slds-m-horizontal_medium" aura:id="animalsTable">
+                    <aura:if isTrue="{!not(empty(v.meta.dto.animals))}">
+                        <aura:if isTrue="{!v.isTableView}">
+                            <table class="slds-table slds-table_bordered slds-table_fixed-layout">
+                                <thead>
+                                <tr>
+                                    <th style="width: 4%">
+                                        <div class="slds-truncate" title="#">
+                                            #
+                                        </div>
+                                    </th>
+                                    <th style="width: 15%">
+                                        <div class="slds-truncate" title="Microchip Number">
+                                            Microchip Number
+                                        </div>
+                                    </th>
+                                    <th style="width: 10%">
+                                        <div class="slds-truncate" title="Animal Class">
+                                            Animal Class
+                                        </div>
+                                    </th>
+                                    <th style="width: 10%">
+                                        <div class="slds-truncate" title="Gender">
+                                            Gender
+                                        </div>
+                                    </th>
+                                    <th style="width: 10%">
+                                        <div class="slds-truncate" title="Type">
+                                            Type
+                                        </div>
+                                    </th>
+                                    <th style="width: 15%">
+                                        <div class="slds-truncate" title="Primary Breed">
+                                            Primary Breed
+                                        </div>
+                                    </th>
+                                    <th style="width: 10%">
+                                        <div class="slds-truncate" title="Stage">
+                                            Stage
+                                        </div>
+                                    </th>
+                                    <th style="width: 10%">
+                                        <div class="slds-truncate" title="Status">
+                                            Status
+                                        </div>
+                                    </th>
+                                    <th style="width: 8%">
+                                        <div class="slds-truncate" title="Shelter ID">
+                                            Shelter ID
+                                        </div>
+                                    </th>
+                                    <th style="width: 8%">
+                                        <div class="slds-truncate" title="Actions">
+                                        </div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <aura:iteration items="{!v.meta.dto.animals}" var="animal" indexVar="indexVar">
+                                        <c:WildlifeAnimalIntakeAnimalItem isBusy="{!v.isBusy}"
+                                                                   animal="{!animal}"
+                                                                   selectOptions="{!v.meta.selectOptions}"
+                                                                   dependentOptions="{!v.meta.dependentOptions}"
+                                                                   hasEnhancedAccess="{!v.meta.dto.hasEnhancedAccess}"
+                                                                   indexVar="{!indexVar}"
+                                                                   onaction="{!c.handleAction}"
+                                                                   isTableView="{!v.isTableView}"
+                                                                   showStageAndStatus="{!v.meta.dto.isInboundRecordType}"
+                                        />
+                                    </aura:iteration>
+                                </tbody>
+                            </table>
+                            <aura:set attribute="else">
+                                <aura:iteration items="{!v.meta.dto.animals}" var="animal" indexVar="indexVar">
+                                    <c:WildlifeAnimalIntakeAnimalItem isBusy="{!v.isBusy}"
+                                                               animal="{!animal}"
+                                                               selectOptions="{!v.meta.selectOptions}"
+                                                               dependentOptions="{!v.meta.dependentOptions}"
+                                                               hasEnhancedAccess="{!v.meta.dto.hasEnhancedAccess}"
+                                                               indexVar="{!indexVar}"
+                                                               onaction="{!c.handleAction}"
+                                                               isTableView="{!v.isTableView}"
+                                                               showStageAndStatus="{!v.meta.dto.isInboundRecordType}"
+                                    />
+                                </aura:iteration>
+                            </aura:set>
+                        </aura:if>
+                        <aura:set attribute="else">
+                            <c:ScopedNotification class="slds-text-align_center">
+                                No items to display.
+                            </c:ScopedNotification>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </c:Spinner>
+        </aura:set>
+    </lightning:card>
+</aura:component>

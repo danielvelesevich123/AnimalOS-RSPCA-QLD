@@ -1,0 +1,80 @@
+<aura:component description="WildlifeAnimalIntakeMovementItem">
+
+    <aura:attribute name="movement" type="map" default="{}"/>
+    <aura:attribute name="isBusy" type="Boolean" default="{!false}"/>
+    <aura:attribute name="isCopying" type="Boolean" default="{!false}"/>
+    <aura:attribute name="selectOptions" type="Map" default="{}"/>
+    <aura:attribute name="indexVar" type="Integer"/>
+
+    <aura:registerEvent name="onaction" type="c:vertic_ComponentEvent"/>
+
+    <lightning:card class="slds-card_boundary slds-m-horizontal_medium">
+        <aura:set attribute="actions">
+            <lightning:button iconName="utility:copy"
+                              label="Copy to all animals"
+                              onclick="{!c.handleCopyToAllClick}"
+                              value="copyToAllAnimals"
+            />
+        </aura:set>
+        <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small slds-grid_vertical-align-start">
+            <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_3-of-12 slds-align-middle">
+                <lightning:input value="{!v.movement.title}" label="Title" readonly="{!true}" class="slds-truncate"></lightning:input>
+            </div>
+            <aura:if isTrue="{!not(v.isCopying)}">
+                <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_3-of-12">
+                    <c:verticLookup object="animalos__Location__c"
+                                    value="{!v.movement.site}"
+                                    searchField="Name"
+                                    label="Site"
+                                    filter="RecordType.Name = 'Site'"
+                                    disabled="{!v.isBusy}"
+                                    class="slds-p-bottom_x-small"
+                                    required="{!true}"
+                                    isClickable="{!true}"
+                                    showAlRecords="{!true}"
+                                    order="LastViewedDate DESC"
+                    />
+                </div>
+                <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_2-of-12">
+                    <c:verticLookup object="animalos__Location__c"
+                                    value="{!v.movement.block}"
+                                    searchField="Name"
+                                    label="Block"
+                                    filter="{!'RecordType.Name = \'Block\' AND animalos__Parent_Block__c = \'' + v.movement.site + '\''}"
+                                    disabled="{!or(v.isBusy, empty(v.movement.site))}"
+                                    class="slds-p-bottom_x-small"
+                                    required="{!true}"
+                                    isClickable="{!true}"
+                                    showAlRecords="{!true}"
+                                    order="LastViewedDate DESC"
+                    />
+                </div>
+                <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_2-of-12">
+                    <c:verticLookup object="animalos__Location__c"
+                                    searchMode="SOQL"
+                                    label="Unit"
+                                    value="{!v.movement.animalos__Location__c}"
+                                    searchField="Name"
+                                    subtitleField="animalos__Unit_Status__c"
+                                    filter="{!'RecordType.Name = \'Unit\' AND animalos__Parent_Block__c = \'' + v.movement.block + '\''}"
+                                    recordLockConditions='[{"field":"animalos__Unavailable_for_Boarding__c","operator":"=","value":true}]'
+                                    disabled="{!or(v.isBusy, empty(v.movement.block))}"
+                                    class="slds-p-bottom_x-small"
+                                    required="{!true}"
+                                    isClickable="{!true}"
+                                    showAlRecords="{!true}"
+                                    order="LastViewedDate DESC"
+                    />
+                </div>
+            </aura:if>
+            <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_2-of-12">
+                <c:vertic_Select aura:id="siteMovementReasonPicklist"
+                                 label="Movement Reason"
+                                 options="{!v.selectOptions.animalosMovementReasonOptions}"
+                                 value="{!v.movement.animalos__Movement_Reason__c}"
+                                 disabled="{!v.isBusy}"
+                />
+            </div>
+        </div>
+    </lightning:card>
+</aura:component>

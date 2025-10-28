@@ -1,0 +1,98 @@
+<!-- Create Animal Actions QA Modal -->
+<template>
+    <lightning-modal-header label="Create Animal Actions"></lightning-modal-header>
+    <lightning-modal-body class="slds-is-relative">
+        <c-vertic-spinner is-busy={isBusy}></c-vertic-spinner>
+
+        <lightning-card>
+            <lightning-button-group slot="actions">
+                <lightning-button label="Add Action" onclick={handleAddActionClick}></lightning-button>
+            </lightning-button-group>
+        </lightning-card>
+
+
+        <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+            <thead>
+            <tr>
+                <th>Action Type</th>
+                <th>Status</th>
+                <th>Date/Time of Action</th>
+                <th>Medicine</th>
+                <th>Description</th>
+            </tr>
+            </thead>
+            <tbody>
+            <template for:each={animalActions} for:item="animalAction" for:index="index">
+                <tr key={animalAction.guid} style="vertical-align: top;">
+                    <td>
+                        <lightning-combobox label="Action Type"
+                                            variant="label-hidden"
+                                            options={selectOptions.recordTypeOptions}
+                                            value={animalAction.RecordTypeId}
+                                            disabled
+                        ></lightning-combobox>
+                    </td>
+                    <td>
+                        <lightning-combobox label="Action Status"
+                                            variant="label-hidden"
+                                            options={selectOptions.animalosActionStatusOptions}
+                                            value={animalAction.animalos__Action_Status__c}
+                                            onchange={handleFieldChange}
+                                            data-map="animalActions"
+                                            data-index={index}
+                                            data-path="[data-index].animalos__Action_Status__c"
+                        ></lightning-combobox>
+                    </td>
+                    <td>
+                        <lightning-input label="Date/Time of Action"
+                                         type="datetime"
+                                         variant="label-hidden"
+                                         value={animalAction.animalos__Date_Time_of_Action__c}
+                                         onchange={handleFieldChange}
+                                         data-map="animalActions"
+                                         data-index={index}
+                                         data-path="[data-index].animalos__Date_Time_of_Action__c"
+                        ></lightning-input>
+                    </td>
+                    <td>
+                        <c-vertic-lookup label="Medicine"
+                                         object="animalos__Medicine__c"
+                                         search-field="Name"
+                                         search-mode="SOQL"
+                                         value={animalAction.medicineId}
+                                         label-hidden
+                                         onchange={handleFieldChange}
+                                         data-map="animalActions"
+                                         data-index={index}
+                                         data-path="[data-index].medicineId"
+                        ></c-vertic-lookup>
+                    </td>
+                    <td>
+                        <lightning-input label="Description"
+                                         type="text"
+                                         value={animalAction.animalos__Description__c}
+                                         variant="label-hidden"
+                                         onchange={handleFieldChange}
+                                         data-map="animalActions"
+                                         data-index={index}
+                                         data-path="[data-index].animalos__Description__c"
+                        ></lightning-input>
+                    </td>
+                </tr>
+            </template>
+            </tbody>
+        </table>
+
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <div class="slds-grid slds-gutters_xx-small ">
+            <div class="slds-col slds-grow-none slds-col_bump-left">
+                <lightning-button label="Save" variant="brand" onclick={handleSaveClick} disabled={isBusy}></lightning-button>
+            </div>
+
+            <div class="slds-col slds-grow-none slds-col_bump-right">
+                <lightning-button label="Cancel" onclick={handleCancelClick} disabled={isBusy}></lightning-button>
+            </div>
+        </div>
+    </lightning-modal-footer>
+</template>

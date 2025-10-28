@@ -1,0 +1,4 @@
+<design:component>
+    <design:attribute label="Referral JSON" name="referralJSON"/>
+    <design:attribute label="Animal JSON" name="animalJSON"/>
+</design:component>

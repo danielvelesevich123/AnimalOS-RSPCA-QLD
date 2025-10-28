@@ -1,0 +1,53 @@
+<aura:component description="WildlifeAnimalIntakeFlowStep"
+                controller="vertic_CommonCtrl"
+                implements="lightning:availableForFlowScreens"
+                access="global">
+
+    <aura:attribute name="referralJSON" type="String"/>
+    <aura:attribute name="animalJSON" type="String"/>
+    <aura:attribute name="isTableView" type="Boolean" default="{!true}"/>
+    <aura:attribute name="meta" type="Map" default="{}"/>
+    <aura:attribute name="steps" type="List" default="['animals', 'movements']"/>
+    <aura:attribute name="currentStep" type="String" default="animals"/>
+    <aura:attribute name="isBusy" type="Boolean" default="{!false}"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+
+    <c:vertic_Utils context="{!this}"/>
+    <lightning:notificationsLibrary aura:id="notifyLib"/>
+
+    <aura:if isTrue="{!equals(v.currentStep, 'animals')}">
+            <c:WildlifeAnimalIntakeAnimals isTableView="{!v.isTableView}" animalJSON="{!v.animalJSON}" meta="{!v.meta}" isBusy="{!v.isBusy}" aura:id="animals"/>
+    </aura:if>
+    <aura:if isTrue="{!equals(v.currentStep, 'movements')}">
+        <c:WildlifeAnimalIntakeMovements meta="{!v.meta}" isBusy="{!v.isBusy}" aura:id="movements"/>
+    </aura:if>
+
+    <div class="slds-text-align_right slds-m-top_medium">
+        <lightning:button type="button"
+                          label="Previous"
+                          variant="neutral"
+                          aura:id="BACK"
+                          disabled="{!v.isBusy}"
+                          onclick="{!c.handleNavigation}"
+        />
+        <aura:if isTrue="{!and(equals(v.currentStep, 'animals'), v.meta.dto.isInboundRecordType)}">
+            <lightning:button type="button"
+                              label="Next"
+                              variant="brand"
+                              aura:id="NEXT"
+                              disabled="{!v.isBusy}"
+                              onclick="{!c.handleNavigation}"
+            />
+        </aura:if>
+        <aura:if isTrue="{!or(equals(v.currentStep, 'movements'), and(equals(v.currentStep, 'animals'), not(v.meta.dto.isInboundRecordType)))}">
+            <lightning:button type="button"
+                              label="Finish"
+                              variant="brand"
+                              aura:id="FINISH"
+                              disabled="{!v.isBusy}"
+                              onclick="{!c.handleNavigation}"
+            />
+        </aura:if>
+    </div>
+</aura:component>

@@ -1,0 +1,252 @@
+<aura:component description="WildlifeAnimalIntakeQANewAnimalModal" controller="vertic_CommonCtrl" extends="c:vertic_Modal">
+
+    <aura:attribute name="selectOptions" type="Map" access="public" default="{}"/>
+    <aura:attribute name="dependentOptions" type="Map" access="public" default="{}"/>
+    <aura:attribute name="animal" type="Map" default="{}"/>
+    <aura:attribute name="animalReferral" type="Map" default="{}"/>
+    <aura:attribute name="isBusy" type="Boolean" default="{!false}"/>
+    <aura:attribute name="existingAnimalId" type="String"/>
+    <aura:attribute name="additionalFields" type="List" default="[]"/>
+    <aura:attribute name="animalReferralFields" type="List" default="[]"/>
+    <aura:attribute name="animalLookupFields" type="String"/>
+    <aura:attribute name="isInboundRecordType" type="Boolean" default="{!false}"/>
+
+    <aura:set attribute="footer">
+        <lightning:button variant="neutral"
+                          label="Cancel"
+                          disabled="{!v.isBusy}"
+                          onclick="{!c.handleCancelClick}"
+        />
+        <lightning:button variant="brand"
+                          label="Submit"
+                          disabled="{!v.isBusy}"
+                          onclick="{!c.handleSubmitClick}"
+        />
+        <lightning:button variant="brand"
+                          label="Submit And New"
+                          disabled="{!v.isBusy}"
+                          onclick="{!c.handleSubmitAndNewClick}"
+        />
+    </aura:set>
+
+    <c:vertic_Utils context="{!this}"/>
+    <c:vertic_ModalService aura:id="modalService"/>
+
+    <aura:handler name="change" value="{!v.existingAnimalId}" action="{!c.handleExistingAnimalIdChange}"/>
+
+    <c:Spinner isLoading="{!v.isBusy}">
+
+        <lightning:card class="slds-card_boundary slds-m-bottom_medium" title="Search Existing Animal By Animal ID or Microchip Number" iconName="utility:search">
+            <div class="slds-grid slds-gutters_x-small slds-m-horizontal_x-small">
+                <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-4">
+                    <c:verticLookup labelHidden="{!true}"
+                                    object="animalos__Animal__c"
+                                    searchField="Name,animalos__Microchip_Number__c,animalos__Second_Microchip_Number__c"
+                                    isClickable="{!true}"
+                                    showRecentRecords="{!true}"
+                                    aura:id="existingAnimalLookup"
+                                    subtitleField="animalos__Microchip_Number__c,animalos__Second_Microchip_Number__c"
+                                    additionalFields="{!v.animalLookupFields}"
+                                    value="{!v.existingAnimalId}"
+                                    onchange="{!c.handleExistingAnimalIdChange}"
+                                    disabled="{!v.isBusy}"
+                                    placeholder="Select Animal..."
+                    />
+                </div>
+            </div>
+        </lightning:card>
+
+        <aura:if isTrue="{!not(empty(v.existingAnimalId))}">
+            <div class="slds-p-vertical_small">
+                <animalos:Alerts recordId="{!v.existingAnimalId}"/>
+            </div>
+        </aura:if>
+
+        <div aura:id="animalForm">
+            <lightning:card class="slds-card_boundary slds-m-bottom_medium" title="Animal Details" iconName="utility:animal_and_nature">
+                <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
+                    <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                        <lightning:input label="Microchip Number"
+                                         value="{!v.animal.animalos__Microchip_Number__c}"
+                                         placeholder="000000000000000"
+                                         maxlength="15"
+                                         pattern="[a-zA-Z0-9]{10}|[a-zA-Z0-9]{15}"
+                                         disabled="{!v.isBusy}"
+                                         messageWhenPatternMismatch="Microchip Number must be either 10 or 15 characters and contain only numbers and letters"
+                        />
+                    </div>
+                    <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                        <lightning:input label="Second Microchip Number"
+                                         value="{!v.animal.animalos__Second_Microchip_Number__c}"
+                                         placeholder="000000000000000"
+                                         maxlength="15"
+                                         pattern="[a-zA-Z0-9]{10}|[a-zA-Z0-9]{15}"
+                                         disabled="{!v.isBusy}"
+                                         messageWhenPatternMismatch="Microchip Number must be either 10 or 15 characters and contain only numbers and letters"
+                        />
+                    </div>
+                    <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                        <c:vertic_Select label="Gender"
+                                         options="{!v.selectOptions.animalosGenderOptions}"
+                                         value="{!v.animal.animalos__Gender__c}"
+                                         disabled="{!v.isBusy}"
+                        />
+                    </div>
+                    <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                        <c:vertic_Select label="Animal Class"
+                                         required="{!true}"
+                                         options="{!v.selectOptions.animalosClassOptions}"
+                                         value="{!v.animal.animalos__Class__c}"
+                                         disabled="{!v.isBusy}"
+                        />
+                    </div>
+                    <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                        <aura:if isTrue="{!not(v.isBusy)}">
+                            <c:vertic_Select label="Type"
+                                             dependentOptions="{!v.dependentOptions.animalosTypeOptions}"
+                                             value="{!v.animal.animalos__Type__c}"
+                                             isDepended="{!true}"
+                                             dependsOn="{!v.animal.animalos__Class__c}"
+                                             required="{!true}"
+                                             disabled="{!or(v.isBusy, empty(v.animal.animalos__Class__c))}"
+                            />
+                        </aura:if>
+                    </div>
+                    <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                        <aura:if isTrue="{!not(v.isBusy)}">
+                            <c:vertic_Select label="Age Group"
+                                             dependentOptions="{!v.dependentOptions.animalosAgeGroupOptions}"
+                                             isDepended="{!true}"
+                                             value="{!v.animal.animalos__Age_Group__c}"
+                                             dependsOn="{!v.animal.animalos__Type__c}"
+                                             disabled="{!or(v.isBusy, empty(v.animal.animalos__Type__c))}"
+                                             required="{!or(equals(v.animal.animalos__Type__c, 'Dog'), or(equals(v.animal.animalos__Type__c, 'Puppy'), or(equals(v.animal.animalos__Type__c, 'Cat'), equals(v.animal.animalos__Type__c, 'Kitten'))))}"
+                            />
+                        </aura:if>
+                    </div>
+                    <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                        <c:verticLookup label="Primary Breed"
+                                        required="{!true}"
+                                        filter="{!'animalos__Type__c INCLUDES (\'' + v.animal.animalos__Type__c + '\')'}"
+                                        object="animalos__Breed__c"
+                                        onload="{!c.handlePrimaryBreedLookupLoad}"
+                                        showRecentRecords="{!true}"
+                                        aura:id="primaryBreedLookup"
+                                        value="{!v.animal.animalos__Primary_Breed__c}"
+                                        placeholder="Select Breed..."
+                                        disabled="{!or(empty(v.animal.animalos__Type__c), v.isBusy)}"
+                        />
+                    </div>
+                    <aura:if isTrue="{!v.isInboundRecordType}">
+                        <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                            <aura:if isTrue="{!not(v.isBusy)}">
+                                <c:vertic_Select label="Stage"
+                                                 options="{!v.selectOptions.animalosStageOptions}"
+                                                 value="{!v.animal.animalos__Stage__c}"
+                                                 required="{!true}"
+                                                 disabled="{!v.isBusy}"
+                                />
+                            </aura:if>
+                        </div>
+                        <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                            <aura:if isTrue="{!not(v.isBusy)}">
+                                <c:vertic_Select label="Status"
+                                                 dependentOptions="{!v.dependentOptions.animalosStatusOptions}"
+                                                 value="{!v.animal.animalos__Status__c}"
+                                                 isDepended="{!true}"
+                                                 dependsOn="{!v.animal.animalos__Stage__c}"
+                                                 required="{!true}"
+                                                 disabled="{!or(v.isBusy, empty(v.animal.animalos__Stage__c))}"
+                                />
+                            </aura:if>
+                        </div>
+                    </aura:if>
+                    <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                        <lightning:input label="Shelter ID"
+                                         value="{!v.animal.animalos__Shelter_ID__c}"
+                                         maxlength="255"
+                                         disabled="{!v.isBusy}"
+                        />
+                    </div>
+                </div>
+            </lightning:card>
+            <aura:if isTrue="{!not(empty(v.additionalFields))}">
+                <lightning:card title="Additional Details" iconName="utility:animal_and_nature" class="slds-m-bottom_medium slds-card_boundary">
+                    <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
+                        <aura:iteration items="{!v.additionalFields}" var="field" indexVar="indexVar">
+                            <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                                <c:vertic_Input aura:id="input"
+                                                fieldLabel="{!field.label}"
+                                                fieldName="{!field.name}"
+                                                fieldType="{!field.type}"
+                                                valueVar="{!field.defaultValue}"
+                                                showRecentRecords="{!field.showRecentRecords}"
+                                                sObject="{!field.sObject}"
+                                                searchField="{!field.searchField}"
+                                                subtitleField="{!field.subtitleField}"
+                                                allowNewRecords="{!field.allowNewRecords}"
+                                                isClickable="{!field.isClickable}"
+                                                options="{!field.selectOptions}"
+                                                dependentOptions="{!field.dependentOptions}"
+                                                controllingField="{!field.controllingField}"
+                                                filter="{!field.filter}"
+                                                isDepended="{!field.isDepended}"
+                                                decimalStep="{!field.step}"
+                                                required="{!field.required}"
+                                                placeholder="{!if(field.type == 'REFERENCE', 'Select a ' + field.sObjectLabel + '...', '')}"
+                                                disabled="{!v.isBusy}"
+                                                helpText="{!field.helpText}"
+                                                pattern="{!field.pattern}"
+                                                formatPattern="{!field.formatPattern}"
+                                                formatGroups="{!field.formatGroups}"
+                                                messageWhenPatternMismatch="{!field.messageWhenPatternMismatch}"
+                                                onNewCreateClick="{!c.handleNewRecordClick}"
+                                                record="{!v.animal}"
+                                />
+                            </div>
+                        </aura:iteration>
+                    </div>
+                </lightning:card>
+            </aura:if>
+            <aura:if isTrue="{!not(empty(v.animalReferralFields))}">
+                <lightning:card title="Animal Referral Details" iconName="utility:notebook" class="slds-m-bottom_medium slds-card_boundary">
+                    <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
+                        <aura:iteration items="{!v.animalReferralFields}" var="field" indexVar="indexVar">
+                            <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4">
+                                <c:vertic_Input aura:id="input"
+                                                fieldLabel="{!field.label}"
+                                                fieldName="{!field.name}"
+                                                fieldType="{!field.type}"
+                                                valueVar="{!field.defaultValue}"
+                                                showRecentRecords="{!field.showRecentRecords}"
+                                                sObject="{!field.sObject}"
+                                                searchField="{!field.searchField}"
+                                                subtitleField="{!field.subtitleField}"
+                                                allowNewRecords="{!field.allowNewRecords}"
+                                                isClickable="{!field.isClickable}"
+                                                options="{!field.selectOptions}"
+                                                dependentOptions="{!field.dependentOptions}"
+                                                controllingField="{!field.controllingField}"
+                                                filter="{!field.filter}"
+                                                isDepended="{!field.isDepended}"
+                                                decimalStep="{!field.step}"
+                                                required="{!field.required}"
+                                                placeholder="{!if(field.type == 'REFERENCE', 'Select a ' + field.sObjectLabel + '...', '')}"
+                                                disabled="{!v.isBusy}"
+                                                helpText="{!field.helpText}"
+                                                pattern="{!field.pattern}"
+                                                formatPattern="{!field.formatPattern}"
+                                                formatGroups="{!field.formatGroups}"
+                                                messageWhenPatternMismatch="{!field.messageWhenPatternMismatch}"
+                                                onNewCreateClick="{!c.handleNewRecordClick}"
+                                                record="{!v.animalReferral}"
+                                />
+                            </div>
+                        </aura:iteration>
+                    </div>
+                </lightning:card>
+            </aura:if>
+        </div>
+    </c:Spinner>
+
+</aura:component>

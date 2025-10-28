@@ -961,7 +961,13 @@
                     <elementReference>Get_Referral_JSON.recordJSON</elementReference>
                 </value>
             </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <inputParameters>
+                <name>animalJSON</name>
+                <value>
+                    <elementReference>Get_Animal_JSON.recordJSON</elementReference>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>ResetValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
             <styleProperties>
@@ -983,7 +989,7 @@
             <targetReference>Get_SObject_Type</targetReference>
         </connector>
     </start>
-    <status>Draft</status>
+    <status>Active</status>
     <subflows>
         <name>Domestic_Rescue_Subflow</name>
         <label>Domestic Rescue Subflow</label>
@@ -1248,7 +1254,7 @@
         <name>animalVar</name>
         <dataType>SObject</dataType>
         <isCollection>false</isCollection>
-        <isInput>true</isInput>
+        <isInput>false</isInput>
         <isOutput>false</isOutput>
         <objectType>animalos__Animal__c</objectType>
     </variables>

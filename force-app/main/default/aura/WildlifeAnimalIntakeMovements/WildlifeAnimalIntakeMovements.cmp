@@ -1,0 +1,28 @@
+<aura:component description="WildlifeAnimalIntakeMovements">
+
+    <aura:attribute name="isBusy" type="Boolean" default="{!false}"/>
+    <aura:attribute name="isCopying" type="Boolean" default="{!false}"/>
+    <aura:attribute name="meta" type="Map" default="{}"/>
+
+
+    <c:Spinner isLoading="{!v.isBusy}">
+        <aura:if isTrue="{!not(empty(v.meta.dto.movements))}">
+            <div aura:id="movementItems">
+                <aura:iteration items="{!v.meta.dto.movements}" var="movement" indexVar="indexVar">
+                    <aura:if isTrue="{! notequals(movement.animalos__Animal__r.animalos__Stage__c, 'Pre-Intake')}">
+                        <c:WildlifeAnimalIntakeMovementItem movement="{!movement}"
+                                                     selectOptions="{!v.meta.selectOptions}"
+                                                     isBusy="{!v.isBusy}"
+                                                     indexVar="{!indexVar}"
+                                                     onaction="{!c.handleAction}"
+                                                     isCopying="{!v.isCopying}"
+                        >
+                        </c:WildlifeAnimalIntakeMovementItem>
+                    </aura:if>
+
+                </aura:iteration>
+            </div>
+        </aura:if>
+    </c:Spinner>
+
+</aura:component>

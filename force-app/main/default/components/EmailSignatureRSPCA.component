@@ -1,0 +1,136 @@
+<apex:component id="EmailSignatureRSPCA" layout="none">
+    <apex:attribute name="dto" description="Data Transfer Object" type="Map" />
+
+    <!-- <footer style="position: fixed; left: 0; bottom: 0;"> -->
+        <div style="page-break-after: always"/>
+        <div style="padding-top: 15px;">
+            <div style="text-align: left; font-family: Verdana;">
+
+                <div style="white-space: nowrap;  color: rgb(0, 133, 202);">
+                    <span style="font-weight: 700; font-size: 14px;">David&nbsp;Casey</span>
+                    <span style="font-weight: 400; font-size: 12px;">&nbsp;(He/Him)</span>
+                </div>
+
+                <div style="white-space: nowrap; font-size: 12px; color: rgb(0, 133, 202);">
+                    <span style="font-weight: 700; color: rgb(0, 133, 202);">Business&nbsp;Analyst</span>
+                    <span style="font-weight: 700; vertical-align: top; color: rgb(108, 194, 74);">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                    <span style="font-weight: 400; color: rgb(0, 133, 202);">Digital&nbsp;and&nbsp;Technology&nbsp;Services</span>
+                </div>
+
+                <div style="white-space: nowrap; font-size: 12px;">
+                    <span style="color: rgb(0, 146, 207);"><a href="mailto:david.casey@rspcaqld.org.au" target="_blank" style="color: rgb(0, 146, 207); text-decoration: none;">david.casey@rspcaqld.org.au</a></span>
+                    <span style="font-weight: 700; vertical-align: top; color: rgb(108, 194, 74);">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+                    <span style="color: rgb(0, 146, 207); font-weight: 400;">
+                        <a style="color: rgb(0, 146, 207); text-decoration: none;" href="https://www.rspcaqld.org.au" target="_blank"> rspcaqld.org.au</a>
+                    </span>
+                </div>
+
+                <div style="line-height: normal; padding-top: 15px; padding-bottom: 15px; vertical-align: top;">
+                    <span style="font-size: 0px;">
+                        <c:vertic_DocumentImage documentUniqueName="RSPCA_Logo"
+                            cssStyles="width: 232px; height: 67px; max-width: 232px; max-height: 67px; min-width: 232px; min-height: 67px;"
+                        />
+                    </span>
+                </div>
+
+                <div>
+                    <div style="white-space: nowrap; font-size: 14px; color: rgb(0, 133, 202);">
+                        <span style="font-weight: 700;">Wacol&nbsp;Animal&nbsp;Care&nbsp;Campus
+                            <br></br>
+                        </span>
+                    </div>
+                </div>
+
+                <div>
+                    <div style="white-space: nowrap; font-size: 14px; color: rgb(0, 133, 202);">
+                        <span style=" color: rgb(0, 0, 1);">139&nbsp;Wacol&nbsp;Station&nbsp;Road,&nbsp;</span>
+                        <span style="color: rgb(0, 0, 1);">Wacol&nbsp;</span>
+                        <span style="color: rgb(0, 0, 1);">QLD&nbsp;</span>
+                        <span style="color: rgb(0, 0, 1);">4076</span>
+                    </div>
+                </div>
+
+                <table cellspacing="0" cellpadding="0" style="line-height: normal; border-collapse: collapse; border-spacing: 0px; box-sizing: border-box; border: 1px solid #00000000 !important;">
+                    <tbody>
+                        <tr>
+                            <td align="left" style="line-height: normal; text-align: center; border: 1px solid #00000000 !important;">
+                                <span style="font-size: 0px;">
+                                    <c:vertic_DocumentImage documentUniqueName="Signature_Animal"
+                                        cssStyles="width: 40px; height: 26px; max-width: 40px; max-height: 26px; min-width: 40px; min-height: 26px;"
+                                    />
+                                </span>
+                            </td>
+                            <td align="left" style="line-height: normal; vertical-align: middle; border: 1px solid #00000000 !important;">
+                                <div style="line-height: normal; font-size: 10.5px; color: rgb(0, 0, 1);">
+                                    <span style="font-weight: 700;">RSPCA Queensland</span>
+                                    <span style="font-weight: 400;">
+                                        acknowledges the Aboriginal and Torres Strait Islander peoples as the Traditional Owners and Custodians of the lands, waters, animals and plants where we live, learn and work.
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div style="padding-top: 15px; padding-bottom: 15px;">
+                    <span style="font-size: 0px; padding-right: 5px; vertical-align: top;">
+                        <a href="https://www.facebook.com/rspcaqld"
+                            style="text-decoration: none;">
+
+                            <c:vertic_DocumentImage documentUniqueName="Signature_Facebook"
+                                cssStyles="width: 33px; height: 33px; max-width: 33px; max-height: 33px; min-width: 33px; min-height: 33px;"
+                            />
+                        </a>
+                    </span>
+
+                    <span style="font-size: 0px; padding-right: 5px; vertical-align: top;">
+                        <a href="https://www.instagram.com/rspcaqld"
+                            style="text-decoration: none;">
+
+                            <c:vertic_DocumentImage documentUniqueName="Signature_Instagram"
+                                cssStyles="width: 33px; height: 33px; max-width: 33px; max-height: 33px; min-width: 33px; min-height: 33px;"
+                            />
+                        </a>
+                    </span>
+
+                    <span style="font-size: 0px; padding-right: 5px; vertical-align: top;">
+                        <a href="https://www.tiktok.com/@rspcaqld"
+                            style="text-decoration: none;">
+
+                            <c:vertic_DocumentImage documentUniqueName="Signature_Tiktok"
+                                cssStyles="width: 33px; height: 33px; max-width: 33px; max-height: 33px; min-width: 33px; min-height: 33px;"
+                            />
+                        </a>
+                    </span>
+
+                    <span style="font-size: 0px; padding-right: 5px; vertical-align: top;">
+                        <a href="https://www.linkedin.com/company/rspcaqld"
+                            style="text-decoration: none;">
+
+                            <c:vertic_DocumentImage documentUniqueName="Signature_Linkedin"
+                                cssStyles="width: 33px; height: 33px; max-width: 33px; max-height: 33px; min-width: 33px; min-height: 33px;"
+                            />
+                        </a>
+                    </span>
+                </div>
+
+                <div style="line-height: normal; vertical-align: top;">
+                    <span style="font-size: 12px;">
+                        <a href="https://app.betterimpact.com/PublicEnterprise/d08ba0a7-3030-4bd7-9f28-768fb1dbcc1a"
+                            target="_blank"
+                            style="text-decoration: none;">
+
+                            <c:vertic_DocumentImage documentUniqueName="Signature_Footer_Image"
+                                alt="Volunteer and make a difference with RSPCA Qld."
+                                cssStyles="width: 650px; height: 150px; max-width: 650px; max-height: 150px; min-width: 650px; min-height: 150px;"
+                            />
+                        </a>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- <img src="{!URLFOR($Resource.DMReceipting, 'DMReceipting/footer.png')}" style="width: 100%" /> -->
+    <!-- </footer> -->
+</apex:component>

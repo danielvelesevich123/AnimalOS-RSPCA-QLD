@@ -1,0 +1,30 @@
+<aura:component description="WildlifeAnimalIntakeBulkCloneModal" controller="vertic_CommonCtrl" extends="c:vertic_Modal">
+
+    <aura:attribute name="numberOfAnimals" type="Integer" default="1"/>
+
+    <c:vertic_Utils context="{!this}"/>
+
+    <aura:set attribute="footer">
+        <lightning:button label="Cancel"
+                          type="button"
+                          variant="neutral"
+                          onclick="{! c.handleCancelClick }"
+        />
+        <lightning:button label="Submit"
+                          type="button"
+                          variant="brand"
+                          onclick="{! c.handleSubmitClick }"
+        />
+    </aura:set>
+
+    <div aura:id="form">
+        <lightning:input label="Number of Animals (1-500)"
+                         type="number"
+                         value="{!v.numberOfAnimals}"
+                         min="1"
+                         max="500"
+                         required="{!true}"
+        />
+    </div>
+
+</aura:component>
