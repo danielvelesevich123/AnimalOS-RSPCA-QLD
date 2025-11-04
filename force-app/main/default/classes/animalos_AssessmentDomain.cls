@@ -142,6 +142,8 @@ public without sharing class animalos_AssessmentDomain extends fflib_SObjectDoma
 
                 assessment.Flags__c = '';
 
+                Decimal totalScore = 0;
+
                 for (String assessmentField : picklistValueScoreMatrix.keySet()) {
                     Map<String, Object> fieldScoreMap = (Map<String, Object>) picklistValueScoreMatrix.get(assessmentField);
 
@@ -180,6 +182,7 @@ public without sharing class animalos_AssessmentDomain extends fflib_SObjectDoma
 
                     Assessment_Score__c assessmentScore = assessmentScoreByAssessmentIdAndScoreCategory.get(assessment.Id + '' + categoryName) ?? new Assessment_Score__c();
                     assessmentScore.Score__c = score;
+                    totalScore += score;
 
                     if (assessmentScore.Id == null) {
                         assessmentScore.Name = categoryName;
@@ -188,6 +191,8 @@ public without sharing class animalos_AssessmentDomain extends fflib_SObjectDoma
                     this.uow.registerUpsert(assessmentScore);
                     this.uow.registerRelationship(assessmentScore, Assessment_Score__c.animalos_Assessment__c, assessment);
                 }
+
+                assessment.animalos__Total_Score__c = totalScore;
             }
         }
     }

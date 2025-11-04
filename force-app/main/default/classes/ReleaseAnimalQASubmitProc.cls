@@ -1,4 +1,4 @@
-public without sharing class ReleaseAnimalQASubmitProc extends vertic_AbstractProcessor{
+public without sharing class ReleaseAnimalQASubmitProc extends vertic_AbstractProcessor {
     public override vertic_Response process(vertic_Request request) {
         this.request = request;
 
@@ -7,7 +7,7 @@ public without sharing class ReleaseAnimalQASubmitProc extends vertic_AbstractPr
         return this.response;
     }
 
-    private void doSubmit(){
+    private void doSubmit() {
         String animalId = this.request.getString('recordId');
         Decimal latitude = this.request.getDecimal('address.latitude');
         Decimal longitude = this.request.getDecimal('address.longitude');
@@ -19,24 +19,27 @@ public without sharing class ReleaseAnimalQASubmitProc extends vertic_AbstractPr
         String jobId = this.request.getString('jobId');
         String description = this.request.getString('description');
 
-        animalos__Animal__c animalVar = (animalos__Animal__c)vertic_Utils.arrays.firstOrNull(
-                [
-                        SELECT
-                                Id,
-                                Name
-                        FROM animalos__Animal__c
-                        WHERE Id = : animalId
-                ]
+        animalos__Animal__c animalVar = (animalos__Animal__c) vertic_Utils.arrays.firstOrNull(
+        [
+                SELECT
+                        Id,
+                        Name,
+                        animalos__Current_Site__c,
+                        animalos__Current_Block__c,
+                        animalos__Current_Unit__c
+                FROM animalos__Animal__c
+                WHERE Id = :animalId
+        ]
         );
 
-        User userVar = (User)vertic_Utils.arrays.firstOrNull(
+        User userVar = (User) vertic_Utils.arrays.firstOrNull(
         [
                 SELECT
                         Id,
                         FirstName,
                         LastName
                 FROM User
-                WHERE Id = : userId
+                WHERE Id = :userId
         ]
         );
 
@@ -47,7 +50,9 @@ public without sharing class ReleaseAnimalQASubmitProc extends vertic_AbstractPr
         referralVar.animalos__Stage__c = 'New';
         referralVar.animalos__Scheduled_Date_Time__c = Datetime.now();
 
-        referralVar.animalos__Job__c = jobId;
+        if (String.isNotBlank(jobId)) {
+            referralVar.animalos__Job__c = jobId;
+        }
         referralVar.Animal__c = animalId;
 
         referralVar.Name = String.format(
@@ -66,19 +71,19 @@ public without sharing class ReleaseAnimalQASubmitProc extends vertic_AbstractPr
         referralVar.Referral_Address__Longitude__s = longitude;
 
         switch on state {
-            when 'Queensland'{
+            when 'Queensland' {
                 referralVar.Referral_Address__StateCode__s = 'QLD';
             }
-            when 'New South Wales'{
+            when 'New South Wales' {
                 referralVar.Referral_Address__StateCode__s = 'NSW';
             }
-            when 'Victoria'{
+            when 'Victoria' {
                 referralVar.Referral_Address__StateCode__s = 'VIC';
             }
-            when 'South Australia'{
+            when 'South Australia' {
                 referralVar.Referral_Address__StateCode__s = 'SA';
             }
-            when 'Western Australia'{
+            when 'Western Australia' {
                 referralVar.Referral_Address__StateCode__s = 'WA';
             }
         }
@@ -88,6 +93,15 @@ public without sharing class ReleaseAnimalQASubmitProc extends vertic_AbstractPr
         animalVar.animalos__Status__c = 'Returned to Habitat';
 
         insert referralVar;
+
+        animalos__Animal_Referral__c animalReferral = new animalos__Animal_Referral__c(
+                animalos__Animal__c = animalVar.Id,
+                animalos__Referral__c = referralVar.Id,
+                animalos__Unit__c = animalVar.animalos__Current_Unit__c,
+                animalos__Block__c = animalVar.animalos__Current_Block__c,
+                animalos__Site__c = animalVar.animalos__Current_Site__c
+        );
+        insert animalReferral;
 
         update animalVar;
     }

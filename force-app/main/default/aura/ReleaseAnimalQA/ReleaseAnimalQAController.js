@@ -15,8 +15,8 @@
     handleReleaseHereClick : function(cmp, event, helper){
         if(navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position){
-                console.log("Latitude is: " + position.coords.latitude);
-                console.log("Longitude is: " + position.coords.longitude);
+                console.log('Latitude is: '  + position.coords.latitude);
+                console.log('Longitude is: '  + position.coords.longitude);
 
                 cmp.set('v.address.latitude', position.coords.latitude);
                 cmp.set('v.address.longitude', position.coords.longitude);
@@ -29,11 +29,11 @@
             cmp,
             'ReleaseAnimalQASubmitProc',
             {
-                "recordId": cmp.get("v.recordId"),
-                "address": cmp.get("v.address"),
-                "userId" : cmp.get("v.userId"),
-                "jobId" : cmp.get("v.jobId"),
-                "description" : cmp.get("v.description")
+                recordId: cmp.get('v.recordId'),
+                address: cmp.get('v.address'),
+                userId : cmp.get('v.userId'),
+                jobId : cmp.get('v.jobId'),
+                description : cmp.get('v.description')
             },
             function (response) {
                 cmp.find('notifLib').showToast({

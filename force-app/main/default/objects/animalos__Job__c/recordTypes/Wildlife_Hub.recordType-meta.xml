@@ -790,6 +790,18 @@
             <fullName>Vet Pick Up</fullName>
             <default>false</default>
         </values>
+        <values>
+            <fullName>Wildlife - Release</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wildlife - Reunite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wildlife - Transport</fullName>
+            <default>false</default>
+        </values>
     </picklistValues>
     <picklistValues>
         <picklist>animalos__Job_Categorisation__c</picklist>
