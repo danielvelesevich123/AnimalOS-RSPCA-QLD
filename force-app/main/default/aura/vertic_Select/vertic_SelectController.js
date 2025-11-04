@@ -1,19 +1,20 @@
 ({
-    handleInit: function (cmp, event, helper) {
+    handleInit: function(cmp, event, helper){
         helper.processDependent(cmp, event, helper);
     },
 
-    handleDependentChange: function (cmp, event, helper) {
+    handleDependentChange: function(cmp, event, helper){
         helper.processDependent(cmp, event, helper);
     },
 
-    handleChange: function (cmp, event, helper) {
-        let changeEvent = cmp.getEvent("onchange");
-        changeEvent.setParams({
+    handleValueChange: function(cmp, event, helper){
+        var completeEvent = cmp.getEvent("onchange");
+        completeEvent.setParams({
             payload: {
-                value: cmp.get('v.value')
+                name: event.getSource().get('v.name'),
+                value: event.getSource().get('v.value')
             }
         });
-        changeEvent.fire();
+        completeEvent.fire();
     }
 })
