@@ -34,11 +34,11 @@ public without sharing class OneDriveCreateFolderProc extends vertic_AbstractPro
             Map<String, Object> file = (Map<String,Object>) fileObj;
 
             asyncProcesses.add(OneDriveMoveFileToFolder.enqueueVAP(
-                this.request.getString('driveId'),
-                (String)file.get('id'),
-                newFolderId,
-                (String)file.get('name'),
-                this.request.getString('newOneDriveFolderName')
+                    this.request.getString('driveId'),
+                    (String)file.get('id'),
+                    newFolderId,
+                    (String)file.get('name'),
+                    this.request.getString('newOneDriveFolderName')
             ));
         }
 

@@ -11,6 +11,7 @@
     <aura:attribute name="isFirst" type="Boolean" description="The record" default="true"/>
     <aura:attribute name="driveName" type="String" description="" default=""/>
     <aura:attribute name="folderNamePostfix" type="String" description="" default=""/>
+    <aura:attribute name="fileNamePrefix" type="String" description="" default=""/>
     <aura:attribute name="enablePrimaryFileSelection" type="Boolean" default="false"/>
     <aura:attribute name="enableProfilePhotoFileSelection" type="Boolean" default="false"/>
     <aura:attribute name="isFilesLoad" type="Boolean" default="false"/>
@@ -25,6 +26,8 @@
     <aura:attribute name="apiNameLookupField" type="String" access="global" description="API Name Lookup field if needs to override recordName"/>
     <aura:attribute name="readOnly" type="Boolean" access="global" default="{!false}"/>
     <aura:attribute name="hasEnhancedAccess" type="Boolean" default="{!false}"/>
+    <aura:attribute name="restrictAccess" type="Boolean" default="{!false}"/>
+    <aura:attribute name="acceptedTypes" type="String" default="*"/>
 
     <force:recordData aura:id="recordLoader"
                       recordId="{!v.recordId}"
@@ -35,6 +38,7 @@
 
     <c:OneDriveUtils aura:id="OneDriveUtils"
                      onLoad="{!c.handleInit}"
+                     restrictAccess="{!v.restrictAccess}"
                      onProgress="{!c.handleOnProgress}"
     />
     <c:toast aura:id="toast"/>
@@ -45,6 +49,8 @@
                  description="A method which update folder name with created record Id">
         <aura:attribute name="recordName" type="String"/>
     </aura:method>
+
+    <aura:method name="reInit" action="{!c.handleInit}"/>
 
     <lightning:quickActionAPI aura:id="quickActionAPI"/>
 
@@ -153,7 +159,7 @@
                                  name="file1"
                                  type="file"
                                  multiple="{!true}"
-                                 accept="*"
+                                 accept="{!v.acceptedTypes}"
                                  disabled="{!or(v.readOnly, v.isFilesLoad)}"
                                  onchange="{!c.handleFilesChange}"
                 />

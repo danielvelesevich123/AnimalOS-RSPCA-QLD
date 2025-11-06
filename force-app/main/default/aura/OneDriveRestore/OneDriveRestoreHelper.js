@@ -10,7 +10,7 @@
                 cmp,
                 'vertic_HttpRequestProc',
                 {
-                     endpoint: 'callout:OneDrive/drives/' + driveId  + '/root:/' + recordName  + ':/children',
+                    endpoint: 'callout:OneDrive/drives/' + driveId  + '/root:/' + recordName  + ':/children',
 
                     // endpoint: 'callout:OneDrive/me/drive/root/children/' + encodeURIComponent(cmp.get('v.recordName')) + '/children',
                     // endpoint: 'callout:OneDrive/drives/' + payload.cmp.driveId + '/items/' + encodeURIComponent(payload.deleteId) ,

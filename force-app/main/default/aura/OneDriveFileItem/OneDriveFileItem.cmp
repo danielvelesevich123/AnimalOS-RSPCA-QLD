@@ -83,7 +83,7 @@
                                           variant="bare"
                                           onclick="{!c.handleFileProfilePhotoClick}"
                                           value="{!v.file}"
-                                          alternativeText="Primary"
+                                          alternativeText="Profile Image"
                                           disabled="{!v.readOnly}"
                     />
                 </aura:if>

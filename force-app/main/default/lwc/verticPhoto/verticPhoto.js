@@ -14,6 +14,7 @@ export default class VerticPhoto extends BaseElement {
     @api folderNamePostfix;
     @api recordPage;
     @api showHelpText = false;
+    @api removeUploadButton = false;
 
 
     connectedCallback() {
@@ -205,5 +206,9 @@ export default class VerticPhoto extends BaseElement {
                     }
                 })
         }
+    }
+
+    get uploadEnabled() {
+        return this.removeUploadButton === false;
     }
 }

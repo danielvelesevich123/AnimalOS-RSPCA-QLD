@@ -29,9 +29,9 @@ public without sharing class OneDriveMigrateFoldersProc extends vertic_AbstractP
 
     private void nextStep() {
         OneDriveGetFolderProc.enqueueVAP(
-            this.request.getString('oldOneDriveFolderName'),
-            this.request.getString('newOneDriveFolderName'),
-            this.drives.get(this.overrides.get(this.request.getString('recordApiName')))
+                this.request.getString('oldOneDriveFolderName'),
+                this.request.getString('newOneDriveFolderName'),
+                this.drives.get(this.overrides.get(this.request.getString('recordApiName')))
         );
     }
 
@@ -48,9 +48,9 @@ public without sharing class OneDriveMigrateFoldersProc extends vertic_AbstractP
     public static Vertic_Async_Process__c enqueueVAP(String oldOneDriveFolderName, String newOneDriveFolderName, String recordApiName){
         Vertic_Async_Process__c verticAsyncProcessVar = new Vertic_Async_Process__c();
         Map<String, Object> requestMap = new Map<String, Object>{
-            'oldOneDriveFolderName' => oldOneDriveFolderName,
-            'newOneDriveFolderName' => newOneDriveFolderName,
-            'recordApiName' => recordApiName
+                'oldOneDriveFolderName' => oldOneDriveFolderName,
+                'newOneDriveFolderName' => newOneDriveFolderName,
+                'recordApiName' => recordApiName
         };
         verticAsyncProcessVar.Processor__c = 'OneDriveMigrateFoldersProc';
         verticAsyncProcessVar.Payload__c = JSON.serialize(requestMap);

@@ -14,9 +14,11 @@ public class OneDriveUtils {
 
         Map<String, Object> responseMap = (Map<String, Object>) JSON.deserializeUntyped((String) response.dto.get('response'));
 
-        for (Object value : (List<Object>) responseMap.get('value')) {
-            Map<String, Object> objectMap = (Map<String, Object>) value;
-            drives.put((String) objectMap.get('name'), (String) objectMap.get('id'));
+        if(responseMap != null && !responseMap.isEmpty() && responseMap.get('value') != null) {
+            for (Object value : (List<Object>) responseMap.get('value')) {
+                Map<String, Object> objectMap = (Map<String, Object>) value;
+                drives.put((String) objectMap.get('name'), (String) objectMap.get('id'));
+            }
         }
 
         return drives;
@@ -26,7 +28,7 @@ public class OneDriveUtils {
         Map<String, String> responseDrives = new Map<String, String>();
 
         vertic_Response response = new vertic_HttpRequestProc().process(new vertic_Request(new Map<String, Object>{
-                'endpoint' => 'callout:OneDrive/drives/' + drive + '/root:/' + folderName + ':/children',
+                'endpoint' => 'callout:OneDrive/drives/' + drive + '/root:/' + folderName + ':/children?$expand=thumbnails',
                 'method' => 'GET',
                 'headers' => new Map<String, Object>{
                         'Content-Type' => 'application/json',
@@ -109,7 +111,7 @@ public class OneDriveUtils {
         }));
     }
 
-    public static void copyFile(String oldDriveId, String itemId, String newDriveId, String newFolderId, String fileName) {
+    public static vertic_Response copyFile(String oldDriveId, String itemId, String newDriveId, String newFolderId, String fileName) {
 
         List<String> nameParts = fileName.split('\\.');
         fileName = fileName.replace('.' + nameParts[nameParts.size() - 1], ' (Copy).' + nameParts[nameParts.size() - 1]);
@@ -131,6 +133,8 @@ public class OneDriveUtils {
                         }
                 )
         }));
+
+        return response;
     }
 
     public static String getPublicLink(String drive, String itemId) {
@@ -177,7 +181,7 @@ public class OneDriveUtils {
 
 
     public static String uploadSmallFile(String drive, String folderId, String fileName, String file, Boolean returnId) { // up to 4mb
-        fileName = fileName.replace(' ', '_');
+        fileName = fileName.replace(' ', '%20');
         vertic_Request request = new vertic_Request(new Map<String, Object>{
                 'endpoint' => 'callout:OneDrive/drives/' + drive + '/items/' + folderId + ':/' + fileName + ':/content',
                 'method' => 'PUT',

@@ -2,8 +2,8 @@
 
     <aura:attribute name="nameCredentials" type="String" access="global" />
     <aura:attribute name="siteName" type="String" required="true" access="global" default="AnimalOSSharePointIntegration"/>
-
     <aura:attribute name="driveIdToSObjectName" type="Map" access="public"/>
+    <aura:attribute name="restrictAccess" type="Boolean" access="public" default="{!false}"/>
 
     <aura:registerEvent name="onLoad" type="c:vertic_ComponentEvent" />
     <aura:registerEvent name="onProgress" type="c:vertic_ComponentEvent" />

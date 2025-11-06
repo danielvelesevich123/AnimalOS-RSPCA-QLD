@@ -193,8 +193,8 @@
         return new Promise(function (resolve, reject) {
 
             var fileName = payload.file.name;
-            if (payload.prefix != null) {
-                fileName = payload.prefix + payload.file.name;
+            if (payload.prefix && payload.prefix !== '' && payload.prefix !== null && payload.prefix !== undefined) {
+                fileName = payload.prefix + ' ' + payload.file.name;
             }
 
             var request = {
@@ -330,7 +330,7 @@
             var items = [];
             payload.helper.execute(payload.cmp, 'vertic_HttpRequestProc',
                 {
-                    endpoint: 'callout:OneDrive/drives/' + payload.drive + '/root:/' + encodeURIComponent(payload.folder) + ':/children',
+                    endpoint: 'callout:OneDrive/drives/' + payload.drive + '/root:/' + encodeURIComponent(payload.folder) + ':/children?$expand=thumbnails',
                     headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
@@ -350,11 +350,8 @@
                             files: files
                         }
                     ).then(function (response2) {
+                        let restrictAccess = payload.cmp.get("v.restrictAccess") === true;
                         var isRestore = true;
-
-                        console.log(response2);
-                        console.log(JSON.parse(JSON.stringify(response2)));
-                        console.log(JSON.stringify(response2));
 
                         const fileMapByOneDriveId = new Map(
                             Object
@@ -368,9 +365,8 @@
                             file.sizeFormatted = payload.helper.bytesToSize(file.size);
                             file.isFileOwner = fileMapByOneDriveId.get(file.id).isFileOwner;
                             file.createdBy = fileMapByOneDriveId.get(file.id).createdBy;
-
-
-                            if (file.isFileOwner == true || fileMapByOneDriveId.get(file.id).userHasAccess == true) {
+                            let hasAccessByProfile = fileMapByOneDriveId.get(file.id).userHasAccess === true;
+                            if ((restrictAccess && file.isFileOwner === true) || !restrictAccess &&  (file.isFileOwner === true || hasAccessByProfile === true)) {
                                 items.push(file);
                             }
                         });

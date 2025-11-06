@@ -24,10 +24,10 @@ public without sharing class OneDriveMoveFileToFolder extends vertic_AbstractPro
     private void moveFileToFolder() {
 
         OneDriveUtils.moveFileToFolder(
-            this.request.getString('driveId'),
-            this.request.getString('fileId'),
-            this.request.getString('newFolderId'),
-            this.request.getString('fileName')
+                this.request.getString('driveId'),
+                this.request.getString('fileId'),
+                this.request.getString('newFolderId'),
+                this.request.getString('fileName')
         );
 
     }
@@ -36,10 +36,10 @@ public without sharing class OneDriveMoveFileToFolder extends vertic_AbstractPro
         Vertic_Async_Process__c verticAsyncProcessVar = new Vertic_Async_Process__c();
 
         Map<String, Object> request = new Map<String, Object>{
-            'driveId' => driveId,
-            'fileId' => fileId,
-            'newFolderId' => newFolderId,
-            'fileName' => fileName
+                'driveId' => driveId,
+                'fileId' => fileId,
+                'newFolderId' => newFolderId,
+                'fileName' => fileName
         };
 
         verticAsyncProcessVar.Processor__c = 'OneDriveMoveFileToFolder';

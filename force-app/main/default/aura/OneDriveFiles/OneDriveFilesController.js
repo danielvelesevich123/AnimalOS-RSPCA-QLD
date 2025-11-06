@@ -41,6 +41,17 @@
         let uploadingFiles = [];
         for (let i = 0; i < files.length; i++) {
             let file = files.item(i);
+            let acceptedFormats = cmp.get('v.acceptedTypes');
+            if(acceptedFormats !== '*') {
+                let fileNameParts = file.name.split('.');
+                let extension = '.' + fileNameParts[fileNameParts.length - 1].toLowerCase();
+
+                if (acceptedFormats.indexOf(extension) === -1) {
+                    cmp.find('toast')
+                        .showToast('error', 'The file format is not supported. Please upload a file with one of the following formats: ' + acceptedFormats);
+                    return;
+                }
+            }
             uploadingFiles.push({
                 name: file.name,
                 size: file.size,
@@ -56,7 +67,7 @@
         cmp.set('v.isFilesLoad', true);
         let oneDriveUtils = cmp.find("OneDriveUtils");
 
-        oneDriveUtils.upload(files, sObjectName, recordName)
+        oneDriveUtils.upload(files, sObjectName, recordName, {prefix: cmp.get('v.fileNamePrefix')})
             .then($A.getCallback((value) => {
                 filesToUpload = value;
                 return oneDriveUtils.driveItems(sObjectName, recordName, {recordId: cmp.get('v.recordId')})
@@ -79,6 +90,7 @@
             .finally($A.getCallback(() => {
                 cmp.set('v.isFilesLoad', false);
                 cmp.set('v.files', []);
+                $A.enqueueAction(cmp.get('c.handleInit'));
             }));
     },
 
@@ -254,5 +266,26 @@
         file.progress = payload.progress;
         files[payload.index] = file;
         cmp.set('v.files', files);
+    },
+
+    handleSort: function (cmp, event, helper) {
+        let sortOption = event.getParams().payload.sortOption;
+
+        var files = cmp.get('v.meta.dto.files');
+        var filesInitial = cmp.get('v.meta.dto.files');
+
+        if (sortOption === 'File Name') {
+            files = [...files].sort((a, b) => a.name.localeCompare(b.name));
+        } else if (sortOption === 'Created Date') {
+            files = files.sort((a, b) => a.createdDateTime.localeCompare(b.createdDateTime));
+        } else if (sortOption === 'Created By') {
+            files = files.sort((a, b) => a.createdBy.localeCompare(b.createdBy));
+        } else if (sortOption === '') {
+            files = filesInitial;
+        }
+
+        cmp.set('v.meta.dto.files', files);
+        let carousel = Array.isArray(cmp.find('carousel')) ? cmp.find('carousel')[0] : cmp.find('carousel');
+        carousel.resetFiles();
     }
 })

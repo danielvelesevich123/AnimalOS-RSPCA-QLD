@@ -2,9 +2,12 @@
     <design:attribute label="Title" name="title" default="Files" description="Title"/>
     <design:attribute label="Drive Name" name="driveName" description="Specify if needed drive name is different then SObject name"/>
     <design:attribute label="Folder Name Postfix" name="folderNamePostfix" description="Folder postfix"/>
+    <design:attribute label="File Name Prefix" name="fileNamePrefix" description="File prefix"/>
     <design:attribute label="Target SObject Name (Community)" name="sObjectName" description="Community workaround, force:hasSObjectName doesn't work in Community"/>
     <design:attribute label="SObject Name" name="overriddenSObjectName" description="Specify sObjectName of the record for whom needed to display files"/>
     <design:attribute label="Lookup API Name" name="apiNameLookupField" description="Specify Lookup API Name for the record for whom needed to display files"/>
-    <design:attribute label="Enable a Primary file Selection" name="enablePrimaryFileSelection" description=""/>
+    <design:attribute label="Accepted File Formats" name="acceptedTypes" description="Specify comma-delimited formats of files to be added. Default value is '*'(any format)"/>
+    <design:attribute label="Enable a Primary file Selection" name="enablePrimaryFileSelection" description="Enable Primary File Selection"/>
     <design:attribute label="Enable a Profile Photo Selection" name="enableProfilePhotoFileSelection" description=""/>
+    <design:attribute label="Restrict Access" name="restrictAccess" description="Only files that current user is owned will be rendered."/>
 </design:component>

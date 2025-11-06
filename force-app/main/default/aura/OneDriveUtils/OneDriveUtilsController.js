@@ -50,10 +50,7 @@
         var driveIdToSObjectName = cmp.get('v.driveIdToSObjectName');
         var options = args.options || {};
 
-
-        if (options.size > 0 && options.has('prefix')) {
-            prefix = options.get('prefix');
-        }
+        prefix = options.prefix;
 
         return new Promise(function (resolve, reject) {
             var all = [];

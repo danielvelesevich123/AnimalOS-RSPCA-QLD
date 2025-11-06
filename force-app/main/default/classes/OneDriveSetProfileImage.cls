@@ -25,7 +25,7 @@ public without sharing class OneDriveSetProfileImage extends vertic_AbstractProc
         String sObjectTypeNameString = recordId.getSobjectType() == animalos__Animal__c.SObjectType ? 'animalos_Animal__c' : OneDriveCreateFileSObjectProc.getLookupFieldName(sObjectTypeName);
 
         String oneDriveFilesQuery = 'SELECT Id, Is_Primary__c, Profile_Image__c, File_Link__c, Name, File_ID__c FROM OneDrive_File__c WHERE ' +
-            sObjectTypeNameString.remove('__c') + '__c = ' + '\'' + recordId + '\'';
+                sObjectTypeNameString.remove('__c') + '__c = ' + '\'' + recordId + '\'';
 
         List<OneDrive_File__c> oneDriveFiles = Database.query(oneDriveFilesQuery);
         List<OneDrive_File__c> oneDriveFilesForUpdate = new List<OneDrive_File__c>();
@@ -42,7 +42,7 @@ public without sharing class OneDriveSetProfileImage extends vertic_AbstractProc
             }
 
             if (vertic_Utils.sObjects.isSomeFieldChanged(oneDriveFile, oneDriveFileClone, new List<String>{
-                'Profile_Image__c'
+                    'Profile_Image__c'
             })) {
                 oneDriveFilesForUpdate.add(oneDriveFile);
             }

@@ -44,7 +44,7 @@ public without sharing class OneDriveSetPrimaryFile extends vertic_AbstractProce
             }
 
             if(vertic_Utils.sObjects.isSomeFieldChanged(oneDriveFile, oneDriveFileClone, new List<String>{
-                'Is_Primary__c'
+                    'Is_Primary__c'
             })){
                 oneDriveFilesForUpdate.add(oneDriveFile);
             }

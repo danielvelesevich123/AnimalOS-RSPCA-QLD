@@ -32,11 +32,11 @@ public without sharing class OneDriveCheckIsExistFolderProc extends vertic_Abstr
                 Map<String, Object> file = (Map<String,Object>) fileObj;
 
                 asyncProcesses.add(OneDriveMoveFileToFolder.enqueueVAP(
-                    this.request.getString('driveId'),
-                    (String)file.get('id'),
-                    this.request.getString('isExistFolderId'),
-                    (String)file.get('name'),
-                    this.request.getString('newOneDriveFolderName')
+                        this.request.getString('driveId'),
+                        (String)file.get('id'),
+                        this.request.getString('isExistFolderId'),
+                        (String)file.get('name'),
+                        this.request.getString('newOneDriveFolderName')
                 ));
             }
 

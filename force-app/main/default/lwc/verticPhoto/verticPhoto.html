@@ -16,7 +16,7 @@
                 </template>
                 <span if:true={showHelpText} class="upload-photo-help-text">To upload a photo, click the camera icon below</span>
             </div>
-            <div class="slds-col slds-size_1-of-1">
+            <div class="slds-col slds-size_1-of-1" lwc:if={uploadEnabled}>
                 <lightning-helptext class={buttonClass} onclick={handlePhotoClick} icon-name="utility:photo" title="Upload Photo"></lightning-helptext>
                 <input type="file"
                        data-id="fileInput"
