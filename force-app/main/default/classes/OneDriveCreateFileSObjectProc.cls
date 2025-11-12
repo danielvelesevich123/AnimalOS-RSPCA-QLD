@@ -113,6 +113,7 @@ public without sharing class OneDriveCreateFileSObjectProc extends vertic_Abstra
     private void copyFiles(Id fromId, List<OneDrive_File__c> files) {
         if (fromId.getSobjectType() == Case.SObjectType && !files.isEmpty()) {
             this.sendNotificationToCaseCreatedByUser(fromId);
+            this.copyFilesToJob(fromId, files);
         }
         this.asyncProcess.enqueue();
     }
@@ -151,4 +152,64 @@ public without sharing class OneDriveCreateFileSObjectProc extends vertic_Abstra
             this.asyncProcess.add(asyncProc);
         }
     }
+
+    private void copyFilesToJob(Id fromId, List<OneDrive_File__c> files) {
+//        animalos__Job__c job = (animalos__Job__c) vertic_Utils.arrays.firstOrNull([
+//                SELECT Id, OwnerId
+//                FROM animalos__Job__c
+//                WHERE Case__c = :fromId
+//                ORDER BY CreatedDate DESC
+//                LIMIT 1
+//        ]);
+//
+//        if (job == null) {
+//            return;
+//        }
+//
+//        User userVar = (User) vertic_Utils.arrays.firstOrNull([
+//                SELECT Id, Email
+//                FROM User
+//                WHERE Id = :job.OwnerId
+//        ]);
+//
+//        EmailTemplate fileAddedEmailNotification = (EmailTemplate) vertic_Utils.arrays.firstOrNull([
+//                SELECT DeveloperName, Name
+//                FROM EmailTemplate
+//                WHERE DeveloperName = 'AOS_File_Added_Job_Notification_1732550007034'
+//        ]);
+//
+//
+//        vertic_Request request = new vertic_Request();
+//        request.getMapper().mapFromListSObjects('files', files);
+//        request.put('fromRecordId', fromId);
+//        request.put('fromLookupFieldName', 'Case__c');
+//        request.put('toRecordId', job.Id);
+//        request.put('toLookupFieldName', 'animalos_Job__c');
+//        Vertic_Async_Process__c vap = vertic_AsyncProcess.create(OneDriveCopyFilesToFolderProc.class, request.getMap());
+//        vap.Group_Key__c = 'COPY_FILE_FROM_CASE_TO_JOB-' + job.Id;
+//
+//        this.asyncProcess.add(vap);
+//
+//        if (fileAddedEmailNotification != null && userVar != null) {
+//            List<Map<String, Object>> contentAttachments = new List<Map<String, Object>>{
+//                    new Map<String, Object>{
+//                            'proc' => 'AOS_JobSummaryQA',
+//                            'fileName' => 'Job Summary.pdf',
+//                            'jobId' => job.Id
+//                    }
+//            };
+//            Vertic_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(
+//                    fileAddedEmailNotification.DeveloperName,
+//                    userVar,
+//                    job.Id
+//            )
+//                    .setOrgWideEmail('inspectors@rspcansw.org.au')
+//                    .setContentAttachments(contentAttachments)
+//                    .toAsyncProcess();
+//            asyncProc.Allowed_Attempts__c = 3;
+//
+//            this.asyncProcess.add(asyncProc);
+//        }
+    }
+
 }

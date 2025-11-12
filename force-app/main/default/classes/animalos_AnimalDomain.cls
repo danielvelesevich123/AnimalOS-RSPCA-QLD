@@ -83,7 +83,7 @@ public without sharing class animalos_AnimalDomain extends fflib_SObjectDomain i
         Map<String, SObject> activeAnimalAlertByAnimalId = vertic_Utils.sObjects.getSObjectsByAnyFieldMap([
                 SELECT Id, animalos__Target_Record_Id__c, animalos__Alert_Message__c
                 FROM animalos__Alert__c
-                WHERE animalos__Target_Record_Id__c IN :animalIds AND animalos__Alert_Message__c = 'The animal is enrolled in the Home Ever After program.'
+                WHERE animalos__Target_Record_Id__c IN :animalIds AND animalos__Alert_Message__c = 'This is a HEA/BEQUEST pet.  DO NOT EUTHANISE.  VETS, please read animal notes. Any concerns please contact Philanthropy on 07 3258 5645.'
                 AND animalos__Start_Date_Time__c <= TODAY AND (animalos__End_Date_Time__c = NULL OR animalos__End_Date_Time__c > TODAY)
         ], animalos__Alert__c.animalos__Target_Record_Id__c);
 
@@ -92,29 +92,32 @@ public without sharing class animalos_AnimalDomain extends fflib_SObjectDomain i
             Boolean isCreated = Trigger.isInsert && existingRecords == null;
             Boolean isUpdated = Trigger.isUpdate && existingRecords != null && vertic_Utils.sObjects.isSomeFieldChanged(
                     animal, existingRecords.get(animal.Id), new List<SObjectField>{
-                            animalos__Animal__c.Opportunity_Record_Type__c
+                            animalos__Animal__c.Opportunity__c
                     }
             );
 
-            if ((isCreated || isUpdated) && 'Home_Ever_After'.equals(animal.Opportunity_Record_Type__c)) {
+            if ((isCreated || isUpdated) && animal.Opportunity__c != null) {
                 animalAlertsForUpsert.add(
                         new animalos__Alert__c(
                                 animalos__Target_Record_Id__c = animal.Id,
-                                animalos__Alert_Message__c = '<p>The animal is enrolled in the Home Ever After program.</p>',
+                                animalos__Alert_Message__c = 'This is a HEA/BEQUEST pet.  DO NOT EUTHANISE.  VETS, please read animal notes. Any concerns please contact Philanthropy on 07 3258 5645.',
+                                animalos__Message_Formatted__c = '<p><b>This is a HEA/BEQUEST pet.  DO NOT EUTHANISE.  VETS, please read animal notes. Any concerns please contact Philanthropy on 07 3258 5645.</b></p>',
                                 animalos__Start_Date_Time__c = Datetime.now(),
                                 animalos__Active__c = true,
-                                animalos__Display_Created_Date__c = true,
+                                animalos__Display_Created_Date__c = false,
                                 animalos__Modal_Button_Label__c = 'Acknowledge',
                                 animalos__Modal_Title__c = 'Alert',
                                 animalos__Mode__c = 'Sticky',
                                 animalos__Style__c = 'Alert',
-                                animalos__Target_Object__c = 'animalos__animal__c'
+                                animalos__Target_Object__c = 'animalos__animal__c',
+                                animalos__Variant__c = 'Error'
                         )
                 );
-            } else if (isUpdated && !'Home_Ever_After'.equals(animal.Opportunity_Record_Type__c)) {
+            } else if (isUpdated && animal.Opportunity__c == null) {
                 animalos__Alert__c activeAlert = (animalos__Alert__c) activeAnimalAlertByAnimalId.get(animal.Id);
                 if (activeAlert != null) {
                     activeAlert.animalos__End_Date_Time__c = Datetime.now();
+                    activeAlert.animalos__Active__c = false;
                     animalAlertsForUpsert.add(activeAlert);
                 }
             }

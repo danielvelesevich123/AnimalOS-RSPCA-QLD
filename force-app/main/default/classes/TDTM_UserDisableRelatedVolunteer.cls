@@ -19,6 +19,7 @@ global class TDTM_UserDisableRelatedVolunteer extends animalos.TDTM.Handler impl
 
         if (!users.isEmpty()) {
             Set<Id> contactIds = vertic_Utils.sObjects.getIdFieldValues(users, User.ContactId);
+            List<animalos__Log__c> logs = new List<animalos__Log__c>();
 
             Map<String, Object> locationVolunteersByContactIds = vertic_Utils.sObjects.getSObjectsListByAnyFieldMap([
                     SELECT Id, Volunteer__c
@@ -33,15 +34,38 @@ global class TDTM_UserDisableRelatedVolunteer extends animalos.TDTM.Handler impl
 
                 if (locationVolunteers != null && !locationVolunteers.isEmpty()) {
                     for (Location_Volunteer__c locationVolunteer : locationVolunteers) {
-                        locationVolunteer.Status__c = 'Inactive';
+                        logs.add(
+                                new animalos.Logging()
+                                        .setProcess('TDTM_UserDisableRelatedVolunteer.DisableLocationVolunteerProc')
+                                        .addPayload('recordId', locationVolunteer.Id)
+                                        .build()
+                        );
                     }
-
-                    locationVolunteersForUpdate.addAll(locationVolunteers);
                 }
             }
 
-            update locationVolunteersForUpdate;
+            System.enqueueJob(new AOS_ProcessLogQueueable(logs));
         }
-
     }
+
+    public without sharing class DisableLocationVolunteerProc extends vertic_AbstractProcessor {
+        public override vertic_Response process(vertic_Request request) {
+            this.request = request;
+
+            String recordId = this.request.getString('recordId');
+
+            Location_Volunteer__c locationVolunteer = (Location_Volunteer__c) vertic_Utils.arrays.firstOrException([
+                    SELECT Id, Status__c
+                    FROM Location_Volunteer__c
+                    WHERE Id = :recordId
+            ], 'No Location Volunteer with Id: ' + recordId);
+
+            locationVolunteer.Status__c = 'Inactive';
+
+            update locationVolunteer;
+
+            return this.response;
+        }
+    }
+
 }
