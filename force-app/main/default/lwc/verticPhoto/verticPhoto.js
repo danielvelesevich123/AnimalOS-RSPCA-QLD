@@ -3,6 +3,7 @@ import BaseElement, {showToast} from "c/verticBase";
 import {loadStyle, loadScript} from 'lightning/platformResourceLoader';
 import smartcropLib from '@salesforce/resourceUrl/smartcrop';
 import LightningConfirm from 'lightning/confirm';
+import PLACEHOLDER_URL from "@salesforce/resourceUrl/animalos__ImagePlaceholder";
 
 export default class VerticPhoto extends BaseElement {
     smartcropVar;
@@ -15,6 +16,7 @@ export default class VerticPhoto extends BaseElement {
     @api recordPage;
     @api showHelpText = false;
     @api removeUploadButton = false;
+    placeholderUrl = PLACEHOLDER_URL;
 
 
     connectedCallback() {

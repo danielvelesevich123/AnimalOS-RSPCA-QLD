@@ -12,7 +12,7 @@
                 <template if:false={meta.dto.photoUrl}>
                     <lightning-avatar if:false={recordPage} class="profile-photo" size="large" src={meta.dto.photoUrl_old} initials={meta.dto.initials} fallback-icon-name="standard:user"
                                       alternative-text={meta.dto.name}></lightning-avatar>
-                    <img if:true={recordPage} src="https://s3-us-west-1.amazonaws.com/sfdc-demo/image-placeholder.png" class="record-page-image" alt={meta.dto.name}/>
+                    <img if:true={recordPage} src={placeholderUrl} class="record-page-image" alt={meta.dto.name}/>
                 </template>
                 <span if:true={showHelpText} class="upload-photo-help-text">To upload a photo, click the camera icon below</span>
             </div>
