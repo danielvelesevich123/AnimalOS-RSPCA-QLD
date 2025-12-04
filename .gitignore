@@ -52,3 +52,5 @@ target/
 **/tsconfig*.json
 **/*.tsbuildinfo
 settings.json
+
+**/graphql.config.yml

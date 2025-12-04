@@ -69,6 +69,7 @@
                         <sortOrder>1</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
+                    <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
                 <groupingSortProperties/>
                 <header>Current Animals - Petbarn</header>
@@ -120,6 +121,7 @@
                         <sortOrder>1</sortOrder>
                     </flexTableSortInfo>
                     <hideChatterPhotos>true</hideChatterPhotos>
+                    <useReportTableSetting>false</useReportTableSetting>
                 </flexComponentProperties>
                 <groupingSortProperties/>
                 <header>Current Animal Alerts - Petbarn</header>
