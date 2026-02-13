@@ -32,7 +32,8 @@
                                 additionalFields: additionalFields,
                                 animalReferralFields: animalReferralFields,
                                 animalLookupFields: cmp.get('v.meta.dto.animalLookupFields'),
-                                isInboundRecordType: cmp.get('v.meta.dto.isInboundRecordType')
+                                isInboundRecordType: cmp.get('v.meta.dto.isInboundRecordType'),
+                                recordTypeDevName: cmp.get('v.meta.dto.recordTypeDeveloperName')
                             },
                             {
                                 header: 'Edit Animal',
@@ -74,7 +75,8 @@
                                 additionalFields: additionalFields,
                                 animalReferralFields: animalReferralFields,
                                 animalLookupFields: cmp.get('v.meta.dto.animalLookupFields'),
-                                isInboundRecordType: cmp.get('v.meta.dto.isInboundRecordType')
+                                isInboundRecordType: cmp.get('v.meta.dto.isInboundRecordType'),
+                                recordTypeDevName: cmp.get('v.meta.dto.recordTypeDeveloperName')
                             },
                             {
                                 header: 'Clone Animal',

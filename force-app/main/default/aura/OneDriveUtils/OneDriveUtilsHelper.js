@@ -365,6 +365,7 @@
                             file.sizeFormatted = payload.helper.bytesToSize(file.size);
                             file.isFileOwner = fileMapByOneDriveId.get(file.id).isFileOwner;
                             file.createdBy = fileMapByOneDriveId.get(file.id).createdBy;
+                            file.isCommunityUser = fileMapByOneDriveId.get(file.id).isCommunityUser;
                             let hasAccessByProfile = fileMapByOneDriveId.get(file.id).userHasAccess === true;
                             if ((restrictAccess && file.isFileOwner === true) || !restrictAccess &&  (file.isFileOwner === true || hasAccessByProfile === true)) {
                                 items.push(file);

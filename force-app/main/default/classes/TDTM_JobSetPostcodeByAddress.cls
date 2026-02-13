@@ -22,7 +22,7 @@ global class TDTM_JobSetPostcodeByAddress extends animalos.TDTM.Handler implemen
         Map<String, Postcode__c> postcodesBySuburbAndPostcode = new Map<String, Postcode__c>();
 
         for (Postcode__c postcode : postcodes) {
-            postcodesBySuburbAndPostcode.put(postcode.Suburb__c + ' ' + postcode.Postcode__c, postcode);
+            postcodesBySuburbAndPostcode.put(postcode.Suburb__c.toLowerCase() + ' ' + postcode.Postcode__c.toLowerCase(), postcode);
         }
 
         for (animalos__Job__c job : (List<animalos__Job__c>) records) {
@@ -39,7 +39,7 @@ global class TDTM_JobSetPostcodeByAddress extends animalos.TDTM.Handler implemen
             );
 
             if ((isCreated || isUpdated) && String.isNotBlank(job.animalos__Address__City__s) && String.isNotBlank(job.animalos__Address__PostalCode__s)) {
-                Postcode__c postcode = (Postcode__c) postcodesBySuburbAndPostcode.get(job.animalos__Address__City__s + ' ' + job.animalos__Address__PostalCode__s);
+                Postcode__c postcode = (Postcode__c) postcodesBySuburbAndPostcode.get(job.animalos__Address__City__s.toLowerCase() + ' ' + job.animalos__Address__PostalCode__s.toLowerCase());
 
                 if (postcode == null) {
                     continue;

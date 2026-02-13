@@ -15,7 +15,7 @@
     <filters>
         <field>RECORDTYPE</field>
         <operation>equals</operation>
-        <value>animalos__Job__c.Rescue</value>
+        <value>01292000001kcDJ</value>
     </filters>
     <label>Rescue Jobs</label>
 </ListView>

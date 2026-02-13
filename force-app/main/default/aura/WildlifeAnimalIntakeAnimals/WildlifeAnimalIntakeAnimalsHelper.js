@@ -13,7 +13,8 @@
                     additionalFields: additionalFields,
                     animalReferralFields: animalReferralFields,
                     animal: JSON.parse(cmp.get('v.animalJSON')),
-                    isInboundRecordType: cmp.get('v.meta.dto.isInboundRecordType')
+                    isInboundRecordType: cmp.get('v.meta.dto.isInboundRecordType'),
+                    recordTypeDevName: cmp.get('v.meta.dto.recordTypeDeveloperName')
                 },
                 {
                     header: 'New Animal',

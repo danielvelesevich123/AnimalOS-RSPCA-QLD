@@ -10,6 +10,12 @@
     <aura:attribute name="animalReferralFields" type="List" default="[]"/>
     <aura:attribute name="animalLookupFields" type="String"/>
     <aura:attribute name="isInboundRecordType" type="Boolean" default="{!false}"/>
+    <aura:attribute name="recordTypeDevName" type="String"/>
+
+    <aura:attribute access="private" name="koalaRescueRT" type="String" default="Koala_Rescue"/>
+    <aura:attribute access="private" name="wildlifeRescueRT" type="String" default="Wildlife_Rescue"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
 
     <aura:set attribute="footer">
         <lightning:button variant="neutral"
@@ -86,6 +92,22 @@
                         />
                     </div>
                     <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                        <lightning:input label="Animal Name"
+                                         value="{!v.animal.animalos__Animal_Name__c}"
+                                         fieldLevelHelp="If no Animal Name is entered, the Animal will be assigned their Animal ID as the Animal Name."
+                                         disabled="{!v.isBusy}"
+                        />
+                    </div>
+                    <aura:if isTrue="{!equals(v.recordTypeDevName, v.koalaRescueRT)}">
+                        <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                            <lightning:input label="KRS Number"
+                                             value="{!v.animal.KRS_Number__c}"
+                                             disabled="{!v.isBusy}"
+                                             maxlength="255"
+                            />
+                        </div>
+                    </aura:if>
+                    <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
                         <c:vertic_Select label="Gender"
                                          options="{!v.selectOptions.animalosGenderOptions}"
                                          value="{!v.animal.animalos__Gender__c}"
@@ -137,6 +159,26 @@
                                         disabled="{!or(empty(v.animal.animalos__Type__c), v.isBusy)}"
                         />
                     </div>
+                    <aura:if isTrue="{!equals(v.recordTypeDevName, v.wildlifeRescueRT)}">
+                        <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                            <aura:if isTrue="{!not(v.isBusy)}">
+                                <c:vertic_Select label="Primary Colour"
+                                                 options="{!v.selectOptions.animalosPrimaryColourOptions}"
+                                                 value="{!v.animal.animalos__Primary_Colour__c}"
+                                                 disabled="{!v.isBusy}"
+                                />
+                            </aura:if>
+                        </div>
+                        <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
+                            <aura:if isTrue="{!not(v.isBusy)}">
+                                <c:vertic_Select label="Secondary Colour"
+                                                 options="{!v.selectOptions.animalosSecondaryColourOptions}"
+                                                 value="{!v.animal.animalos__Secondary_Colour__c}"
+                                                 disabled="{!v.isBusy}"
+                                />
+                            </aura:if>
+                        </div>
+                    </aura:if>
                     <aura:if isTrue="{!v.isInboundRecordType}">
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
                             <aura:if isTrue="{!not(v.isBusy)}">

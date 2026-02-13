@@ -13,7 +13,7 @@ public without sharing class SendEmailAsyncProcessInvocable {
                                     ? vertic_SettingService.getValue(request.settingsOrgWideEmailAddress, request.orgWideEmailAddress)
                                     : request.orgWideEmailAddress;
 
-        vertic_SendEmailProc.EmailAsyncProcess emailAsyncProcessVar;
+//        vertic_SendEmailProc.EmailAsyncProcess emailAsyncProcessVar;
 
         Map<String, Object> emailParametersMap = getEmailParametersMap(request);
 
@@ -32,19 +32,19 @@ public without sharing class SendEmailAsyncProcessInvocable {
         // ";contactId=" &
         // {!contactVar.Id}
 
-        emailAsyncProcessVar = new vertic_SendEmailProc.EmailAsyncProcess(
-            (String) emailParametersMap.get('vfComponent'),
-                emailParametersMap
-        ).setTargetId(request.contactId)
-                .setOrgWideEmail(defaultOrgWideEmail)
-                .setSaveAsActivity(request.saveAsActivity)
-                .setSubject(request.subject);
+//        emailAsyncProcessVar = new vertic_SendEmailProc.EmailAsyncProcess(
+//            (String) emailParametersMap.get('vfComponent'),
+//                emailParametersMap
+//        ).setTargetId(request.contactId)
+//                .setOrgWideEmail(defaultOrgWideEmail)
+//                .setSaveAsActivity(request.saveAsActivity)
+//                .setSubject(request.subject);
 
-        Vertic_Async_Process__c asyncProc = emailAsyncProcessVar.toAsyncProcess();
-
-        asyncProc.Group_Key__c = request.recordId;
-
-        new vertic_AsyncProcess().add(asyncProc).enqueue();
+//        Vertic_Async_Process__c asyncProc = emailAsyncProcessVar.toAsyncProcess();
+//
+//        asyncProc.Group_Key__c = request.recordId;
+//
+//        new vertic_AsyncProcess().add(asyncProc).enqueue();
 
     }
 

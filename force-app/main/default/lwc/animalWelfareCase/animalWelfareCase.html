@@ -474,17 +474,15 @@
                                         ></lightning-input>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isRescueRecordType}>
-                                        <c-vertic-lookup data-id="conditionLookup"
-                                                         data-path="Condition__c"
-                                                         disabled={isBusy}
-                                                         label="Condition"
-                                                         object="animalos__Condition__c"
-                                                         onchange={handleAnimalReportFieldChange}
-                                                         search-field="Name"
-                                                         search-mode="SOQL"
-                                                         filter="animalos__Condition_Type__c = 'Welfare'"
-                                                         value={animalReport.Condition__c}
-                                        ></c-vertic-lookup>
+                                        <c-picklist-input data-path="Condition__c"
+                                                          sobject-type="animalos__Animal_Report__c"
+                                                          sobject-field="Condition__c"
+                                                          disabled={isBusy}
+                                                          label="Condition"
+                                                          onchange={handleAnimalReportFieldChange}
+                                                          value={animalReport.Condition__c}
+                                                          autocomplete
+                                        ></c-picklist-input>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isInspectorateRecordType}>
                                         <c-vertic-select

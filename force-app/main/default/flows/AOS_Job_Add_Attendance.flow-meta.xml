@@ -6,7 +6,7 @@
         <name>Add_Assigned_Resource_to_collection</name>
         <label>Add Assigned Resource</label>
         <locationX>338</locationX>
-        <locationY>1622</locationY>
+        <locationY>1730</locationY>
         <assignmentItems>
             <assignToReference>AssignedResource.animalos__Job_Activity__c</assignToReference>
             <operator>Assign</operator>
@@ -36,7 +36,7 @@
         <name>Assign_Current_User</name>
         <label>Assign Current User</label>
         <locationX>182</locationX>
-        <locationY>2198</locationY>
+        <locationY>2306</locationY>
         <assignmentItems>
             <assignToReference>AssignedResource.animalos__Job_Activity__c</assignToReference>
             <operator>Assign</operator>
@@ -63,10 +63,26 @@
         </connector>
     </assignments>
     <assignments>
+        <name>Assign_Job_Activity_Default_Values</name>
+        <label>Assign Job Activity Default Values</label>
+        <locationX>314</locationX>
+        <locationY>350</locationY>
+        <assignmentItems>
+            <assignToReference>jobActivity.RecordTypeId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Rescue_Attendance_Record_Type.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Introduction_Screen</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Assign_Other_Job_Activity_Values</name>
         <label>Assign Other Job Activity Values</label>
         <locationX>314</locationX>
-        <locationY>458</locationY>
+        <locationY>566</locationY>
         <assignmentItems>
             <assignToReference>jobActivity.RecordTypeId</assignToReference>
             <operator>Assign</operator>
@@ -100,13 +116,6 @@
             <operator>Assign</operator>
             <value>
                 <stringValue>Completed</stringValue>
-            </value>
-        </assignmentItems>
-        <assignmentItems>
-            <assignToReference>jobActivity.animalos__Type_of_Work__c</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <stringValue>Inspection</stringValue>
             </value>
         </assignmentItems>
         <assignmentItems>
@@ -154,7 +163,7 @@
         <name>Any_Assigned_Resources</name>
         <label>Any Assigned Resources?</label>
         <locationX>314</locationX>
-        <locationY>2390</locationY>
+        <locationY>2498</locationY>
         <defaultConnector>
             <targetReference>FinishScreen</targetReference>
         </defaultConnector>
@@ -179,7 +188,7 @@
         <name>Any_Resources_Selected</name>
         <label>Any Resources Selected?</label>
         <locationX>314</locationX>
-        <locationY>1298</locationY>
+        <locationY>1406</locationY>
         <defaultConnector>
             <targetReference>Get_Current_User_Resource</targetReference>
         </defaultConnector>
@@ -204,7 +213,7 @@
         <name>Current_User_Has_Resource</name>
         <label>Current User Has Resource</label>
         <locationX>314</locationX>
-        <locationY>2090</locationY>
+        <locationY>2198</locationY>
         <defaultConnector>
             <targetReference>Any_Assigned_Resources</targetReference>
         </defaultConnector>
@@ -229,7 +238,7 @@
         <name>Is_Flighted_Bird</name>
         <label>Is Flighted Bird</label>
         <locationX>314</locationX>
-        <locationY>674</locationY>
+        <locationY>782</locationY>
         <defaultConnector>
             <targetReference>Get_Resources</targetReference>
         </defaultConnector>
@@ -254,7 +263,7 @@
         <name>Other_Resources_Selected</name>
         <label>Other Resources Selected?</label>
         <locationX>470</locationX>
-        <locationY>1514</locationY>
+        <locationY>1622</locationY>
         <defaultConnector>
             <targetReference>Loop_through_Selected_Resources</targetReference>
         </defaultConnector>
@@ -291,6 +300,14 @@
         <picklistField>animalos__Services_Provided__c</picklistField>
         <picklistObject>animalos__Job_Activity__c</picklistObject>
     </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>typeOfWorkChoiceSet</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>animalos__Type_of_Work__c</picklistField>
+        <picklistObject>animalos__Job_Activity__c</picklistObject>
+    </dynamicChoiceSets>
     <environments>Default</environments>
     <formulas>
         <name>caseSafeUserId</name>
@@ -303,7 +320,7 @@
         <name>Loop_through_Selected_Resources</name>
         <label>Loop through Selected Resources</label>
         <locationX>250</locationX>
-        <locationY>1406</locationY>
+        <locationY>1514</locationY>
         <collectionReference>InspectorsDataTable.selectedRows</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -336,7 +353,7 @@
         <name>Create_Assigned_Resource</name>
         <label>Create Assigned Resource</label>
         <locationX>50</locationX>
-        <locationY>2498</locationY>
+        <locationY>2606</locationY>
         <connector>
             <targetReference>Finish_Screen</targetReference>
         </connector>
@@ -350,7 +367,7 @@
         <name>Create_Job_Activity</name>
         <label>Create Job Activity</label>
         <locationX>314</locationX>
-        <locationY>566</locationY>
+        <locationY>674</locationY>
         <connector>
             <targetReference>Is_Flighted_Bird</targetReference>
         </connector>
@@ -364,7 +381,7 @@
         <name>Get_Current_User_Resource</name>
         <label>Get Current User Resource</label>
         <locationX>314</locationX>
-        <locationY>1982</locationY>
+        <locationY>2090</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Current_User_Has_Resource</targetReference>
@@ -392,7 +409,7 @@
         <locationY>134</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Introduction_Screen</targetReference>
+            <targetReference>Get_Rescue_Attendance_Record_Type</targetReference>
         </connector>
         <faultConnector>
             <targetReference>Error_Screen</targetReference>
@@ -413,15 +430,11 @@
         <name>Get_Rescue_Attendance_Record_Type</name>
         <label>Get Rescue Attendance Record Type</label>
         <locationX>314</locationX>
-        <locationY>350</locationY>
+        <locationY>242</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Assign_Other_Job_Activity_Values</targetReference>
+            <targetReference>Assign_Job_Activity_Default_Values</targetReference>
         </connector>
-        <faultConnector>
-            <isGoTo>true</isGoTo>
-            <targetReference>Error_Screen</targetReference>
-        </faultConnector>
         <filterLogic>and</filterLogic>
         <filters>
             <field>SobjectType</field>
@@ -445,7 +458,7 @@
         <name>Get_Resources</name>
         <label>Get Resources</label>
         <locationX>314</locationX>
-        <locationY>1082</locationY>
+        <locationY>1190</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Select_Resources</targetReference>
@@ -454,12 +467,26 @@
             <isGoTo>true</isGoTo>
             <targetReference>Error_Screen</targetReference>
         </faultConnector>
-        <filterLogic>and</filterLogic>
+        <filterLogic>1 AND (2 OR 3)</filterLogic>
         <filters>
             <field>animalos__Active__c</field>
             <operator>EqualTo</operator>
             <value>
                 <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <filters>
+            <field>animalos__Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Rescue</stringValue>
+            </value>
+        </filters>
+        <filters>
+            <field>animalos__Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Volunteer</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
@@ -470,7 +497,7 @@
         <name>Update_Job_Activity</name>
         <label>Update Job Activity</label>
         <locationX>182</locationX>
-        <locationY>890</locationY>
+        <locationY>998</locationY>
         <connector>
             <targetReference>Get_Resources</targetReference>
         </connector>
@@ -479,7 +506,7 @@
     <screens>
         <name>Error_Screen</name>
         <label>Error Screen</label>
-        <locationX>1898</locationX>
+        <locationX>1634</locationX>
         <locationY>242</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
@@ -504,7 +531,7 @@
         <name>Finish_Screen</name>
         <label>Finish Screen</label>
         <locationX>50</locationX>
-        <locationY>2606</locationY>
+        <locationY>2714</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -528,7 +555,7 @@
         <name>FinishScreen</name>
         <label>Finish Screen</label>
         <locationX>578</locationX>
-        <locationY>2498</locationY>
+        <locationY>2606</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -552,7 +579,7 @@
         <name>Flighted_Bird_Screen</name>
         <label>Flighted Bird Screen</label>
         <locationX>182</locationX>
-        <locationY>782</locationY>
+        <locationY>890</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -818,17 +845,31 @@
         <name>Introduction_Screen</name>
         <label>Introduction Screen</label>
         <locationX>314</locationX>
-        <locationY>242</locationY>
+        <locationY>458</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Get_Rescue_Attendance_Record_Type</targetReference>
+            <targetReference>Assign_Other_Job_Activity_Values</targetReference>
         </connector>
         <fields>
             <name>Job_Id_Text</name>
             <fieldText>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Job Id: {!Get_Job.Name}&lt;/span&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>jobActivity.animalos__Type_of_Work__c</objectFieldReference>
             <styleProperties>
                 <verticalAlignment>
                     <stringValue>top</stringValue>
@@ -987,7 +1028,7 @@
         <name>Select_Resources</name>
         <label>Select Resources</label>
         <locationX>314</locationX>
-        <locationY>1190</locationY>
+        <locationY>1298</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>

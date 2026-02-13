@@ -14,7 +14,8 @@ public with sharing class WildlifeAnimalIntakeMetaProc extends vertic_MetadataPr
             'animalos__Stage__c',
             'animalos__Status__c',
             'animalos__Age_Group__c',
-            'animalos__Shelter_ID__c'
+            'animalos__Shelter_ID__c',
+            'KRS_Number__c'
     };
 
     public override vertic_Response process(vertic_Request request) {

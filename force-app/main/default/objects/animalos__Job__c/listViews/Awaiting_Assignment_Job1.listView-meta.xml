@@ -14,7 +14,7 @@
     <filters>
         <field>RECORDTYPE</field>
         <operation>equals</operation>
-        <value>animalos__Job__c.Inspectorate</value>
+        <value>01292000001kcDI</value>
     </filters>
     <label>Awaiting Assignment</label>
     <queue>Awaiting_Assignment</queue>

@@ -269,6 +269,7 @@ public class AnimalWelfareCaseMetaProc extends vertic_MetadataProcessor {
                             How_high_is_the_animal_metres__c,
                             Cause_of_Affliction__c,
                             Other_Cause_of_Affliction__c,
+                            Condition__c,
                             Id
                     FROM animalos__Animal_Report__c
                     WHERE animalos__Job__c = :jobId
@@ -336,6 +337,7 @@ public class AnimalWelfareCaseMetaProc extends vertic_MetadataProcessor {
 
         this.response.put('inspectorateRecordTypeId', vertic_Utils.sObjects.recordTypeIdByAPIName(animalos__Job__c.SObjectType, 'Inspectorate'));
         this.response.put('rescueRecordTypeId', vertic_Utils.sObjects.recordTypeIdByAPIName(animalos__Job__c.SObjectType, 'Rescue'));
+        this.response.put('wildlifeHubRecordTypeId', vertic_Utils.sObjects.recordTypeIdByAPIName(animalos__Job__c.SObjectType, 'Wildlife_Hub'));
     }
 
     private void initSelectOptions() {

@@ -11,9 +11,17 @@ public without sharing class StartAdoptionQASubmitProc extends vertic_AbstractPr
     private void doSubmit() {
         String animalId = this.request.getRequiredString('recordId');
         Contact contactVar = new Contact();
+        Contact alternateContactVar = new Contact();
         this.request.getMapper().mapToSObject('contact', contactVar);
+        this.request.getMapper().mapToSObject('alternateContact', alternateContactVar);
+
+        Boolean isAlternateContactFilled = String.isNotBlank(alternateContactVar.FirstName) && String.isNotBlank(alternateContactVar.LastName);
 
         vertic_Utils.sObjects.deduplicate(contactVar);
+
+        if (isAlternateContactFilled == true) {
+            vertic_Utils.sObjects.deduplicate(alternateContactVar);
+        }
 
         if (contactVar.Id != null) {
             Boolean isPersonOfInterest = ((Contact) vertic_Utils.arrays.firstOrException([SELECT animalos__POI_Flag__c FROM Contact WHERE Id = :contactVar.Id])).animalos__POI_Flag__c;
@@ -27,12 +35,34 @@ public without sharing class StartAdoptionQASubmitProc extends vertic_AbstractPr
             }
         }
 
+        if (alternateContactVar.Id != null && isAlternateContactFilled == true) {
+            Boolean isPersonOfInterest = ((Contact) vertic_Utils.arrays.firstOrException([SELECT animalos__POI_Flag__c FROM Contact WHERE Id = :alternateContactVar.Id])).animalos__POI_Flag__c;
+            Boolean doNotAllowAdoptions = ((Contact) vertic_Utils.arrays.firstOrException([SELECT Do_Not_Allow_Adoptions__c FROM Contact WHERE Id = :alternateContactVar.Id])).Do_Not_Allow_Adoptions__c;
+            if (isPersonOfInterest) {
+                throw new vertic_Structs.InvalidDataException('Alternate Contact is a Person Of Interest, we cannot process the Adoption. Please contact RSPCA for more information.');
+            }
+
+            if (doNotAllowAdoptions) {
+                throw new vertic_Structs.InvalidDataException('We are unable to process an adoption for this specific individual. Please contact your coordinator for more details.');
+            }
+        }
+
         if (contactVar.Id == null) {
             insert contactVar;
         } else {
             Database.DMLOptions dml = new Database.DMLOptions();
             dml.duplicateRuleHeader.allowSave = true;
             Database.update(contactVar, dml);
+        }
+
+        if (isAlternateContactFilled == true) {
+            if (alternateContactVar.Id == null) {
+                insert alternateContactVar;
+            } else {
+                Database.DMLOptions dml = new Database.DMLOptions();
+                dml.duplicateRuleHeader.allowSave = true;
+                Database.update(alternateContactVar, dml);
+            }
         }
 
         animalos__Animal__c animalVar = (animalos__Animal__c) vertic_Utils.arrays.firstOrException([
@@ -55,6 +85,10 @@ public without sharing class StartAdoptionQASubmitProc extends vertic_AbstractPr
                         }
                 ));
 
+        if (isAlternateContactFilled == true) {
+            referralVar.Alternate_Contact__c = alternateContactVar.Id;
+        }
+
         insert referralVar;
 
         animalos__Animal_Referral__c animalReferralVar = new animalos__Animal_Referral__c(
@@ -69,5 +103,4 @@ public without sharing class StartAdoptionQASubmitProc extends vertic_AbstractPr
 
         this.response.put('referralId', referralVar.Id);
     }
-
 }

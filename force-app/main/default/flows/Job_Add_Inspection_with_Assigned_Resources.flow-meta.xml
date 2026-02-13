@@ -6,7 +6,7 @@
         <name>Add_Assigned_Resource_to_collection</name>
         <label>Add Assigned Resource</label>
         <locationX>338</locationX>
-        <locationY>1814</locationY>
+        <locationY>1922</locationY>
         <assignmentItems>
             <assignToReference>AssignedResource.animalos__Job_Activity__c</assignToReference>
             <operator>Assign</operator>
@@ -36,7 +36,7 @@
         <name>Assign_Current_User</name>
         <label>Assign Current User</label>
         <locationX>182</locationX>
-        <locationY>1298</locationY>
+        <locationY>1406</locationY>
         <assignmentItems>
             <assignToReference>AssignedResource.animalos__Job_Activity__c</assignToReference>
             <operator>Assign</operator>
@@ -62,6 +62,22 @@
             <targetReference>Any_Resources_Selected</targetReference>
         </connector>
     </assignments>
+    <assignments>
+        <name>Assign_Job_Activity_Record_Type</name>
+        <label>Assign Job Activity Record Type</label>
+        <locationX>314</locationX>
+        <locationY>650</locationY>
+        <assignmentItems>
+            <assignToReference>SOV_JobActivity.RecordTypeId</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Get_Inspection_Record_Type.Id</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Introduction_Screen</targetReference>
+        </connector>
+    </assignments>
     <customProperties>
         <name>ScreenProgressIndicator</name>
         <value>
@@ -72,7 +88,7 @@
         <name>Any_Assigned_Resources</name>
         <label>Any Assigned Resources?</label>
         <locationX>314</locationX>
-        <locationY>2174</locationY>
+        <locationY>2282</locationY>
         <defaultConnector>
             <targetReference>FinishScreen</targetReference>
         </defaultConnector>
@@ -97,7 +113,7 @@
         <name>Any_Resources_Selected</name>
         <label>Any Resources Selected?</label>
         <locationX>314</locationX>
-        <locationY>1490</locationY>
+        <locationY>1598</locationY>
         <defaultConnector>
             <targetReference>Any_Assigned_Resources</targetReference>
         </defaultConnector>
@@ -122,7 +138,7 @@
         <name>Current_User_Has_Resource</name>
         <label>Current User Has Resource</label>
         <locationX>314</locationX>
-        <locationY>1190</locationY>
+        <locationY>1298</locationY>
         <defaultConnector>
             <targetReference>Any_Resources_Selected</targetReference>
         </defaultConnector>
@@ -163,7 +179,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Introduction_Screen</targetReference>
+                <targetReference>Get_Inspection_Record_Type</targetReference>
             </connector>
             <label>Completed</label>
         </rules>
@@ -172,7 +188,7 @@
         <name>Other_Resources_Selected</name>
         <label>Other Resources Selected?</label>
         <locationX>470</locationX>
-        <locationY>1706</locationY>
+        <locationY>1814</locationY>
         <defaultConnector>
             <targetReference>Loop_through_Selected_Resources</targetReference>
         </defaultConnector>
@@ -216,7 +232,7 @@
         <name>Loop_through_Selected_Resources</name>
         <label>Loop through Selected Resources</label>
         <locationX>250</locationX>
-        <locationY>1598</locationY>
+        <locationY>1706</locationY>
         <collectionReference>InspectorsDataTable.selectedRows</collectionReference>
         <iterationOrder>Asc</iterationOrder>
         <nextValueConnector>
@@ -249,7 +265,7 @@
         <name>Create_Assigned_Resource</name>
         <label>Create Assigned Resource</label>
         <locationX>50</locationX>
-        <locationY>2282</locationY>
+        <locationY>2390</locationY>
         <connector>
             <targetReference>Finish_Screen</targetReference>
         </connector>
@@ -263,7 +279,7 @@
         <name>Create_Job_Activity</name>
         <label>Create Job Activity</label>
         <locationX>314</locationX>
-        <locationY>1082</locationY>
+        <locationY>1190</locationY>
         <connector>
             <targetReference>Current_User_Has_Resource</targetReference>
         </connector>
@@ -366,7 +382,7 @@
         <inputAssignments>
             <field>animalos__Type_of_Work__c</field>
             <value>
-                <stringValue>Inspection</stringValue>
+                <elementReference>SOV_JobActivity.animalos__Type_of_Work__c</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -382,7 +398,7 @@
         <name>Get_Current_User_Resource</name>
         <label>Get Current User Resource</label>
         <locationX>314</locationX>
-        <locationY>974</locationY>
+        <locationY>1082</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Create_Job_Activity</targetReference>
@@ -407,10 +423,10 @@
         <name>Get_Inspection_Record_Type</name>
         <label>Get Inspection Record Type</label>
         <locationX>314</locationX>
-        <locationY>650</locationY>
+        <locationY>542</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
-            <targetReference>Get_Resources</targetReference>
+            <targetReference>Assign_Job_Activity_Record_Type</targetReference>
         </connector>
         <faultConnector>
             <isGoTo>true</isGoTo>
@@ -463,7 +479,7 @@
         <name>Get_Resources</name>
         <label>Get Resources</label>
         <locationX>314</locationX>
-        <locationY>758</locationY>
+        <locationY>866</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Select_Resources</targetReference>
@@ -485,6 +501,13 @@
             <operator>NotEqualTo</operator>
             <value>
                 <elementReference>$User.Id</elementReference>
+            </value>
+        </filters>
+        <filters>
+            <field>animalos__Type__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Inspectorate</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>false</getFirstRecordOnly>
@@ -519,7 +542,7 @@
         <name>Finish_Screen</name>
         <label>Finish Screen</label>
         <locationX>50</locationX>
-        <locationY>2390</locationY>
+        <locationY>2498</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -543,7 +566,7 @@
         <name>FinishScreen</name>
         <label>Finish Screen</label>
         <locationX>578</locationX>
-        <locationY>2282</locationY>
+        <locationY>2390</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -567,12 +590,12 @@
         <name>Introduction_Screen</name>
         <label>Introduction Screen</label>
         <locationX>314</locationX>
-        <locationY>542</locationY>
+        <locationY>758</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Get_Inspection_Record_Type</targetReference>
+            <targetReference>Get_Resources</targetReference>
         </connector>
         <fields>
             <name>Job_Id_Text</name>
@@ -592,6 +615,20 @@
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>false</isRequired>
             <objectFieldReference>SOV_JobActivity.animalos__Type_of_Work__c</objectFieldReference>
+            <styleProperties>
+                <verticalAlignment>
+                    <stringValue>top</stringValue>
+                </verticalAlignment>
+                <width>
+                    <stringValue>12</stringValue>
+                </width>
+            </styleProperties>
+        </fields>
+        <fields>
+            <fieldType>ObjectProvided</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
+            <objectFieldReference>SOV_JobActivity.Entry_Power__c</objectFieldReference>
             <styleProperties>
                 <verticalAlignment>
                     <stringValue>top</stringValue>
@@ -923,7 +960,7 @@
         <name>Select_Resources</name>
         <label>Select Resources</label>
         <locationX>314</locationX>
-        <locationY>866</locationY>
+        <locationY>974</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -1022,7 +1059,7 @@
         <locationX>402</locationX>
         <locationY>350</locationY>
         <connector>
-            <targetReference>Introduction_Screen</targetReference>
+            <targetReference>Get_Inspection_Record_Type</targetReference>
         </connector>
         <flowName>Job_Safety_Assessment</flowName>
         <inputAssignments>

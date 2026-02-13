@@ -1,10 +1,51 @@
 ({
     handleAddressChange: function (cmp, event, helper) {
-        cmp.set('v.contact.MailingStreet', event.getParam('street'));
-        cmp.set('v.contact.MailingCity', event.getParam('city'));
-        cmp.set('v.contact.MailingState', event.getParam('state'));
-        cmp.set('v.contact.MailingPostalCode', event.getParam('postCode'));
-        cmp.set('v.contact.MailingCountry', event.getParam('country'));
+
+        let street = event.getParam('street');
+        let city = event.getParam('city');
+        let state = event.getParam('state');
+        let postCode = event.getParam('postCode');
+        let country = event.getParam('country');
+
+        if (street) {
+            cmp.set('v.contact.MailingStreet', street);
+        }
+        if (city) {
+            cmp.set('v.contact.MailingCity', city);
+        }
+        if (state) {
+            cmp.set('v.contact.MailingState', state);
+        }
+        if (postCode) {
+            cmp.set('v.contact.MailingPostalCode', postCode);
+        }
+        if (country) {
+            cmp.set('v.contact.MailingCountry', country);
+        }
+    },
+
+    handleAlternateAddressChange: function (cmp, event, helper) {
+        let street = event.getParam('street');
+        let city = event.getParam('city');
+        let state = event.getParam('state');
+        let postCode = event.getParam('postCode');
+        let country = event.getParam('country');
+
+        if (street) {
+            cmp.set('v.alternateContact.MailingStreet', street);
+        }
+        if (city) {
+            cmp.set('v.alternateContact.MailingCity', city);
+        }
+        if (state) {
+            cmp.set('v.alternateContact.MailingState', state);
+        }
+        if (postCode) {
+            cmp.set('v.alternateContact.MailingPostalCode', postCode);
+        }
+        if (country) {
+            cmp.set('v.alternateContact.MailingCountry', country);
+        }
     },
 
     handleSubmitClick: function (cmp, event, helper) {
@@ -14,8 +55,21 @@
 
         let validationResult = cmp.utils.validate(cmp.find('form'));
 
+        let contactAddressValidationResult = cmp.find('contactAddress').validate();
+        let alternativeContactAddressValidationResult = cmp.find('alternateContactAddress').validate();
+
         if (validationResult.allValid !== true) {
             errorMessagesCmp.showErrors(validationResult.getErrorMessages(), true);
+            return;
+        }
+
+        if (contactAddressValidationResult !== true) {
+            errorMessagesCmp.showErrors(['Please complete the Contact address.']);
+            return;
+        }
+
+        if (alternativeContactAddressValidationResult !== true) {
+            errorMessagesCmp.showErrors(['Please complete the Alternative Contact address.']);
             return;
         }
 
@@ -27,6 +81,7 @@
                 'StartAdoptionQASubmitProc',
                 {
                     contact: cmp.get('v.contact'),
+                    alternateContact: cmp.get('v.alternateContact'),
                     recordId: cmp.get('v.recordId')
                 },
                 function () {

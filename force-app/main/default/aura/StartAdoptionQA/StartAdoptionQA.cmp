@@ -5,6 +5,7 @@
 
     <aura:attribute name="isBusy" type="Boolean" default="false"/>
     <aura:attribute name="contact" type="Map" default="{}"/>
+    <aura:attribute name="alternateContact" type="Map" default="{}"/>
 
     <lightning:notificationsLibrary aura:id="notifLib"/>
     <lightning:navigation aura:id="navService"/>
@@ -16,6 +17,8 @@
                                widthPercentage="100"
                                maxWidthRem="60"
                                minWidthRem="30">
+
+        <c:vertic_Spinner isLoading="{!v.isBusy}">
 
         <div aura:id="form">
             <div class="slds-grid slds-wrap slds-gutters slds-p-horizontal_xxx-small slds-m-horizontal_xxx-small slds-p-bottom_small">
@@ -65,7 +68,8 @@
                     />
                 </div>
                 <div class="slds-col slds-size_1-of-1 slds-m-top_medium">
-                    <c:verticGoogleAddress addressDisabled="{!v.isBusy}"
+                    <c:verticGoogleAddress aura:id="contactAddress"
+                                           addressDisabled="{!v.isBusy}"
                                            city="{!v.contact.MailingCity}"
                                            country="{!v.contact.MailingCountry}"
                                            label="Address"
@@ -78,7 +82,70 @@
                     ></c:verticGoogleAddress>
                 </div>
             </div>
+            <div class="slds-grid slds-wrap slds-gutters slds-p-horizontal_xxx-small slds-m-horizontal_xxx-small slds-p-bottom_small">
+                <div class="slds-col slds-size_1-of-1">
+                    <h1>Alternate Contact</h1>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning:input label="First Name"
+                                     aura:id="alternateFirstName"
+                                     value="{!v.alternateContact.FirstName}"
+                                     required="{!true}"
+                                     disabled="{!v.isBusy}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning:input label="Last Name"
+                                     value="{!v.alternateContact.LastName}"
+                                     required="{!true}"
+                                     disabled="{!v.isBusy}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <lightning:input type="date"
+                                     label="Birthdate"
+                                     value="{!v.alternateContact.Birthdate}"
+                                     disabled="{!v.isBusy}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <lightning:input type="email"
+                                     label="Email"
+                                     value="{!v.alternateContact.Email}"
+                                     required="{!true}"
+                                     disabled="{!v.isBusy}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-3">
+                    <lightning:input type="tel"
+                                     label="Mobile Phone"
+                                     value="{!v.alternateContact.MobilePhone}"
+                                     pattern="[0-9\+]?[0-9\- ]*"
+                                     maxlength="12"
+                                     required="{!true}"
+                                     messageWhenPatternMismatch="Only plus, dash, space and digits are allowed."
+                                     minlength="9"
+                                     disabled="{!v.isBusy}"
+                    />
+                </div>
+                <div class="slds-col slds-size_1-of-1 slds-m-top_medium">
+                    <c:verticGoogleAddress aura:id="alternateContactAddress"
+                                           addressDisabled="{!v.isBusy}"
+                                           city="{!v.alternateContact.MailingCity}"
+                                           country="{!v.alternateContact.MailingCountry}"
+                                           label="Address"
+                                           onchange="{!c.handleAlternateAddressChange}"
+                                           postCode="{!v.alternateContact.MailingPostalCode}"
+                                           state="{!v.alternateContact.MailingState}"
+                                           street="{!v.alternateContact.MailingStreet}"
+                                           required="{!true}"
+                                           disabled="{!v.isBusy}"
+                    ></c:verticGoogleAddress>
+                </div>
+            </div>
         </div>
+
+        </c:vertic_Spinner>
         <aura:set attribute="footer">
             <lightning:button variant="brand"
                               label="Submit"

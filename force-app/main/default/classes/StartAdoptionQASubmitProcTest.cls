@@ -4,10 +4,14 @@ private class StartAdoptionQASubmitProcTest {
     static void testBehavior() {
         Contact contactVar = new Contact(
                 LastName = 'StartAdoptionQASubmitProc',
-
                 Email = 'SurrenderApplicationSubmitProcTest@mail.com'
         );
-        insert contactVar;
+        Contact alternateContactVar = new Contact(
+                FirstName = 'Alternate',
+                LastName = 'StartAdoptionQASubmitProcAlternate',
+                Email = 'StartAdoptionQASubmitProcAlternate@test.com'
+        );
+        insert new List<Contact>{contactVar, alternateContactVar};
 
         animalos__Breed__c animalBreed = new animalos__Breed__c(
                 animalos__Type__c = 'Dog',
@@ -31,9 +35,11 @@ private class StartAdoptionQASubmitProcTest {
 
         vertic_Request request = new vertic_Request(new Map<String, Object>{
                 'contact' => contactVar,
+                'alternateContact' => alternateContactVar,
                 'recordId' => animalVar.Id
         });
         request.getMapper().mapFromSObject('contact', contactVar);
+        request.getMapper().mapFromSObject('alternateContact', alternateContactVar);
 
 
         vertic_Response response = new StartAdoptionQASubmitProc().process(request);

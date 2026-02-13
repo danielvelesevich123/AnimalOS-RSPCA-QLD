@@ -49,22 +49,6 @@
     </actionCalls>
     <apiVersion>64.0</apiVersion>
     <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
-    <assignments>
-        <name>Assign_Recipient</name>
-        <label>Assign Recipient</label>
-        <locationX>0</locationX>
-        <locationY>0</locationY>
-        <assignmentItems>
-            <assignToReference>contactVar.Id</assignToReference>
-            <operator>Assign</operator>
-            <value>
-                <elementReference>Contact_Recipient.recordId</elementReference>
-            </value>
-        </assignmentItems>
-        <connector>
-            <targetReference>Preview_Email</targetReference>
-        </connector>
-    </assignments>
     <customProperties>
         <name>ScreenProgressIndicator</name>
         <value>
@@ -163,18 +147,12 @@
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
         <connector>
-            <targetReference>Assign_Recipient</targetReference>
+            <targetReference>Preview_Email</targetReference>
         </connector>
         <fields>
-            <name>Contact_Recipient</name>
-            <extensionName>flowruntime:lookup</extensionName>
+            <name>Contact_Lookup</name>
+            <extensionName>c:verticLookup</extensionName>
             <fieldType>ComponentInstance</fieldType>
-            <inputParameters>
-                <name>fieldApiName</name>
-                <value>
-                    <stringValue>MasterRecordId</stringValue>
-                </value>
-            </inputParameters>
             <inputParameters>
                 <name>label</name>
                 <value>
@@ -182,9 +160,21 @@
                 </value>
             </inputParameters>
             <inputParameters>
-                <name>objectApiName</name>
+                <name>object</name>
                 <value>
                     <stringValue>Contact</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>iconTag</name>
+                <value>
+                    <stringValue>contact</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>placeholder</name>
+                <value>
+                    <stringValue>Select a Contact...</stringValue>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -193,9 +183,24 @@
                     <booleanValue>true</booleanValue>
                 </value>
             </inputParameters>
+            <inputParameters>
+                <name>searchField</name>
+                <value>
+                    <stringValue>Name</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>subtitleField</name>
+                <value>
+                    <stringValue>Account.Name,MobilePhone,Email</stringValue>
+                </value>
+            </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
-            <storeOutputAutomatically>true</storeOutputAutomatically>
+            <outputParameters>
+                <assignToReference>contactVar.Id</assignToReference>
+                <name>value</name>
+            </outputParameters>
             <styleProperties>
                 <verticalAlignment>
                     <stringValue>top</stringValue>

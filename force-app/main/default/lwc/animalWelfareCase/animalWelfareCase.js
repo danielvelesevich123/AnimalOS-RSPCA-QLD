@@ -27,12 +27,16 @@ export default class AnimalWelfareCase extends LightningElement {
 
     inspectorateRecordTypeId;
     rescueRecordTypeId;
+    wildlifeHubRecordTypeId;
     inspectorateStatusOptions;
     rescueStatusOptions;
+    wildlifeHubStatusOptions;
     inspectoratePriorityOptions;
     rescuePriorityOptions;
+    wildlifeHubPriorityOptions;
     inspectorateCodesOptions;
     rescueCodesOptions;
+    wildlifeHubCodesOptions;
 
     @wire(getPicklistValues, {recordTypeId: "$inspectorateRecordTypeId", fieldApiName: JOB_STATUS})
     inspectorateStatusOptionsResults({error, data}) {
@@ -45,6 +49,13 @@ export default class AnimalWelfareCase extends LightningElement {
     rescueStatusOptionsResults({error, data}) {
         if (data) {
             this.rescueStatusOptions = data.values;
+        }
+    }
+
+    @wire(getPicklistValues, {recordTypeId: "$wildlifeHubRecordTypeId", fieldApiName: JOB_STATUS})
+    wildlifeHubStatusOptionsResults({error, data}) {
+        if (data) {
+            this.wildlifeHubStatusOptions = data.values;
         }
     }
 
@@ -62,6 +73,13 @@ export default class AnimalWelfareCase extends LightningElement {
         }
     }
 
+    @wire(getPicklistValues, {recordTypeId: "$wildlifeHubRecordTypeId", fieldApiName: JOB_PRIORITY})
+    wildlifeHubPriorityOptionsResults({error, data}) {
+        if (data) {
+            this.wildlifeHubPriorityOptions = data.values;
+        }
+    }
+
     @wire(getPicklistValues, {recordTypeId: "$inspectorateRecordTypeId", fieldApiName: JOB_CODES})
     inspectorateCodesOptionsResults({error, data}) {
         if (data) {
@@ -73,6 +91,13 @@ export default class AnimalWelfareCase extends LightningElement {
     rescueCodesOptionsResults({error, data}) {
         if (data) {
             this.rescueCodesOptions = data.values;
+        }
+    }
+
+    @wire(getPicklistValues, {recordTypeId: "$wildlifeHubRecordTypeId", fieldApiName: JOB_CODES})
+    wildlifeHubCodesOptionsResults({error, data}) {
+        if (data) {
+            this.wildlifeHubCodesOptions = data.values;
         }
     }
 
@@ -126,6 +151,7 @@ export default class AnimalWelfareCase extends LightningElement {
                 this.currentStep = 'callerInformation';
                 this.inspectorateRecordTypeId = response.dto.inspectorateRecordTypeId;
                 this.rescueRecordTypeId = response.dto.rescueRecordTypeId;
+                this.wildlifeHubRecordTypeId = response.dto.wildlifeHubRecordTypeId;
             })
             .catch(errors => {
                 showToast(this, 'Error', Array.isArray(errors) ? errors[0].message : errors.message, 'error');
@@ -273,7 +299,25 @@ export default class AnimalWelfareCase extends LightningElement {
             this.animalReport.animalos__Cruelty_Type__c = null;
         } else if (this.isInspectorateRecordType) {
             this.job.Complexity__c = null;
+            this.animalReport.Rescue_Type__c = null;
+        } else {
+            this.animalReport.animalos__Cruelty_Type__c = null;
+            this.animalReport.Rescue_Type__c = null;
         }
+
+        if (this.animalReports.length > 0) {
+            this.animalReports.forEach(report => {
+                if (this.isRescueRecordType) {
+                    report.animalos__Cruelty_Type__c = null;
+                } else if (this.isInspectorateRecordType) {
+                    report.Rescue_Type__c = null;
+                } else {
+                    report.animalos__Cruelty_Type__c = null;
+                    report.Rescue_Type__c = null;
+                }
+            });
+        }
+        this.setJobCodes();
 
         this.resetCaseForm();
     }
@@ -567,8 +611,14 @@ export default class AnimalWelfareCase extends LightningElement {
     setJobCodes() {
 
         let animalReports = JSON.parse(JSON.stringify(this.animalReports)) || [];
-        let selectedTypes = [...animalReports.map(report => report.animalos__Cruelty_Type__c), ...animalReports.map(report => report.Rescue_Type__c)],
-            jobCodes = new Set(this.job.animalos__Codes__c?.split(';') || []);
+        let selectedTypes = [
+            ...animalReports.map(report => report.animalos__Cruelty_Type__c),
+            ...animalReports.map(report => report.Rescue_Type__c)
+        ],
+        jobCodes = new Set(this.job.animalos__Codes__c?.split(';') || []);
+
+        selectedTypes = selectedTypes.filter(type => type !== undefined && type !== null && type !== '');
+        jobCodes = new Set([...jobCodes].filter(code => code !== undefined && code !== null && code !== ''));
 
         if (selectedTypes) {
             selectedTypes.forEach((selectedType => {
@@ -582,7 +632,7 @@ export default class AnimalWelfareCase extends LightningElement {
                             });
                         }
 
-                        let code = this.jobCodesOptions.find(option => option.value === selectedType);
+                        let code = this.jobCodesOptions.find(option => option.value === typeVar);
                         if (code) {
                             jobCodes.add(code.value);
                         }
@@ -652,15 +702,38 @@ export default class AnimalWelfareCase extends LightningElement {
     }
 
     get jobStatusOptions() {
-        return this.job.RecordTypeId ? (this.isInspectorateRecordType ? this.inspectorateStatusOptions : this.rescueStatusOptions) || this.selectOptions.animalosStatusOptions : this.selectOptions.animalosStatusOptions;
+        return this.job.RecordTypeId
+                ? (
+                    this.isInspectorateRecordType
+                    ? this.inspectorateStatusOptions
+                    : this.isWildlifeHubRecordType
+                        ? this.wildlifeHubStatusOptions
+                        : this.rescueStatusOptions
+                ) || this.selectOptions.animalosStatusOptions
+                : this.selectOptions.animalosStatusOptions;
     }
 
     get jobPriorityOptions() {
-        return this.job.RecordTypeId ? (this.isInspectorateRecordType ? this.inspectoratePriorityOptions : this.rescuePriorityOptions) || this.selectOptions.animalosPriorityOptions : this.selectOptions.animalosStatusOptions;
+        return this.job.RecordTypeId
+                ? (
+                    this.isInspectorateRecordType
+                    ? this.inspectoratePriorityOptions : this.isWildlifeHubRecordType
+                        ? this.wildlifeHubPriorityOptions
+                        : this.rescuePriorityOptions
+                ) || this.selectOptions.animalosPriorityOptions
+                : this.selectOptions.animalosStatusOptions;
     }
 
     get jobCodesOptions() {
-        return this.job.RecordTypeId ? (this.isInspectorateRecordType ? this.inspectorateCodesOptions : this.rescueCodesOptions) || this.selectOptions.animalosCodesOptions : this.selectOptions.animalosCodesOptions;
+        return this.job.RecordTypeId
+                ? (
+                    this.isInspectorateRecordType
+                    ? this.inspectorateCodesOptions
+                    : this.isWildlifeHubRecordType
+                        ? this.wildlifeHubCodesOptions
+                        : this.rescueCodesOptions
+                ) || this.selectOptions.animalosCodesOptions
+                : this.selectOptions.animalosCodesOptions;
     }
 
     get isDomestic() {
@@ -765,6 +838,10 @@ export default class AnimalWelfareCase extends LightningElement {
 
     get isInspectorateRecordType() {
         return this.job.RecordTypeId && this.job.RecordTypeId === (this.selectOptions.recordTypeOptions || []).find(option => option.label === 'Inspectorate')?.value;
+    }
+
+    get isWildlifeHubRecordType() {
+        return this.job.RecordTypeId && this.job.RecordTypeId === (this.selectOptions.recordTypeOptions || []).find(option => option.label === 'Wildlife Hub')?.value;
     }
 
     get isAnimalAtHeight() {

@@ -27,9 +27,9 @@ global class CalcRollupsAnimalReferral extends animalos.vertic_SequentialSchedul
                 SELECT Id, animalos__Animal__c, animalos__Referral__r.RecordType.DeveloperName, animalos__Referral__r.animalos__Stage__c
                 FROM animalos__Animal_Referral__c
                 WHERE animalos__Animal__c IN :records AND animalos__Referral__r.RecordType.DeveloperName IN (
-                        'Animal_Intake_Bequests_incoming_offspring_and_Transfer_In', 'Inbound_Animal',
-                        'Information_Pre_surrender_Pet_Reunite', 'Inspectorate_Animal', 'Stray',
-                        'Return_Animals_returned_less_that_14_days_post_adoption', 'Surrender',
+                        'Inbound_Generic', 'Inbound_Animal',
+                        'Information', 'Inbound_Enforcement', 'Inbound_Stray',
+                        'Inbound_Return', 'Inbound_Surrender',
                         'Adoption', 'Outbound_Animal'
                 )
         ], animalos__Animal_Referral__c.animalos__Animal__c);

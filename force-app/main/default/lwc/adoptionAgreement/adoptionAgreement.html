@@ -199,10 +199,19 @@
                                 </template>
                             </lightning-card>
                         </div>
+
                         <div class="slds-card slds-card_boundary">
-                            <lightning-card title="Treatments" icon-name="standard:medication">
+                            <lightning-card title="Treatments History" icon-name="standard:medication">
+                               <template for:each={meta.dto.animals} for:item="animal" id="treatmentsHistory">
+                                    <c-adoption-agreement-animal-treatments animal={animal} key={animal.Id} type="Treatments History"></c-adoption-agreement-animal-treatments>
+                               </template>
+                           </lightning-card>
+                       </div>
+
+                       <div class="slds-card slds-card_boundary">
+                            <lightning-card title="Upcoming Treatments" icon-name="standard:medication">
                                 <template for:each={meta.dto.animals} for:item="animal" id="treatments">
-                                    <c-adoption-agreement-animal-treatments animal={animal} key={animal.Id}></c-adoption-agreement-animal-treatments>
+                                    <c-adoption-agreement-animal-treatments animal={animal} key={animal.Id} type="Upcoming Treatments"></c-adoption-agreement-animal-treatments>
                                 </template>
                                 <div class="slds-p-horizontal_large">
                                     <c-scoped-notification-lwc icon-name="utility:warning" for:each={meta.dto.animalTypesInformation} for:item="animalTypeInformation" key={animalTypeInformation.Id}>

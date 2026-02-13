@@ -17,11 +17,6 @@
                 <label>Abandoned</label>
             </value>
             <value>
-                <fullName>Advertisement of an Animal</fullName>
-                <default>false</default>
-                <label>Advertisement of an Animal</label>
-            </value>
-            <value>
                 <fullName>AH Owner Medical Assist</fullName>
                 <default>false</default>
                 <label>AH Owner Medical Assist</label>
@@ -37,9 +32,9 @@
                 <label>Animal in hot vehicle</label>
             </value>
             <value>
-                <fullName>Animal Unattended</fullName>
+                <fullName>Animal Stuck in Tree</fullName>
                 <default>false</default>
-                <label>Animal Unattended</label>
+                <label>Animal Stuck In Tree</label>
             </value>
             <value>
                 <fullName>Assistance Request - Animal Owner</fullName>
@@ -122,54 +117,14 @@
                 <label>Entanglement - Other</label>
             </value>
             <value>
-                <fullName>Flighted Bird</fullName>
-                <default>false</default>
-                <label>Flighted Bird</label>
-            </value>
-            <value>
-                <fullName>Food &amp; Water</fullName>
-                <default>false</default>
-                <label>Food &amp; Water</label>
-            </value>
-            <value>
-                <fullName>Greyhound Complaint</fullName>
-                <default>false</default>
-                <label>Greyhound Complaint</label>
-            </value>
-            <value>
-                <fullName>HEA Bequest Assistance Request</fullName>
-                <default>false</default>
-                <label>HEA Bequest Assistance Request</label>
-            </value>
-            <value>
                 <fullName>Heat Distress</fullName>
                 <default>false</default>
                 <label>Heat Distress</label>
             </value>
             <value>
-                <fullName>Heat Related</fullName>
-                <default>false</default>
-                <label>Heat Related</label>
-            </value>
-            <value>
                 <fullName>Hit By Car</fullName>
                 <default>false</default>
                 <label>Hit By Car</label>
-            </value>
-            <value>
-                <fullName>Hoarding</fullName>
-                <default>false</default>
-                <label>Hoarding</label>
-            </value>
-            <value>
-                <fullName>Home alone</fullName>
-                <default>false</default>
-                <label>Home alone</label>
-            </value>
-            <value>
-                <fullName>Ill Treatment</fullName>
-                <default>false</default>
-                <label>Ill Treatment</label>
             </value>
             <value>
                 <fullName>Inappropriate Breeding</fullName>
@@ -217,64 +172,14 @@
                 <label>Keep or Use Animal for Blooding</label>
             </value>
             <value>
-                <fullName>Kennel Inspection</fullName>
-                <default>false</default>
-                <label>Kennel Inspection</label>
-            </value>
-            <value>
-                <fullName>Killed</fullName>
-                <default>false</default>
-                <label>Killed</label>
-            </value>
-            <value>
                 <fullName>Kill or injure</fullName>
                 <default>false</default>
                 <label>Kill or injure</label>
             </value>
             <value>
-                <fullName>Koala Requiring Rescue</fullName>
-                <default>false</default>
-                <label>Koala Requiring Rescue</label>
-            </value>
-            <value>
-                <fullName>Koala Sighting</fullName>
-                <default>false</default>
-                <label>Koala Sighting</label>
-            </value>
-            <value>
-                <fullName>Livestock Rescue</fullName>
-                <default>false</default>
-                <label>Livestock Rescue</label>
-            </value>
-            <value>
                 <fullName>Living Conditions</fullName>
                 <default>false</default>
                 <label>Living Conditions</label>
-            </value>
-            <value>
-                <fullName>Locked In House</fullName>
-                <default>false</default>
-                <label>Locked In House</label>
-            </value>
-            <value>
-                <fullName>Locked In Shed</fullName>
-                <default>false</default>
-                <label>Locked In Shed</label>
-            </value>
-            <value>
-                <fullName>Locked In Shop</fullName>
-                <default>false</default>
-                <label>Locked In Shop</label>
-            </value>
-            <value>
-                <fullName>Locked In Small Pen</fullName>
-                <default>false</default>
-                <label>Locked In Small Pen</label>
-            </value>
-            <value>
-                <fullName>Minor</fullName>
-                <default>false</default>
-                <label>Minor</label>
             </value>
             <value>
                 <fullName>No exercise | Confined | Tethered</fullName>
@@ -287,49 +192,14 @@
                 <label>No treatment</label>
             </value>
             <value>
-                <fullName>Oiled Wildlife</fullName>
-                <default>false</default>
-                <label>Oiled Wildlife</label>
-            </value>
-            <value>
                 <fullName>Orphaned Juvenile</fullName>
                 <default>false</default>
                 <label>Orphaned Juvenile</label>
             </value>
             <value>
-                <fullName>Other</fullName>
-                <default>false</default>
-                <label>Other</label>
-            </value>
-            <value>
-                <fullName>Other Entanglement</fullName>
-                <default>false</default>
-                <label>Other Entanglement</label>
-            </value>
-            <value>
-                <fullName>Other prohibited &amp; regulated conduct</fullName>
-                <default>false</default>
-                <label>Other prohibited &amp; regulated conduct</label>
-            </value>
-            <value>
-                <fullName>Overcrowded</fullName>
-                <default>false</default>
-                <label>Overcrowded</label>
-            </value>
-            <value>
-                <fullName>Owner Surrender</fullName>
-                <default>false</default>
-                <label>Owner Surrender</label>
-            </value>
-            <value>
                 <fullName>Pet shop</fullName>
                 <default>false</default>
                 <label>Pet shop</label>
-            </value>
-            <value>
-                <fullName>Poisoning</fullName>
-                <default>false</default>
-                <label>Poisoning</label>
             </value>
             <value>
                 <fullName>POI Under 18</fullName>
@@ -347,16 +217,6 @@
                 <label>Pouch Check</label>
             </value>
             <value>
-                <fullName>Poultry Inspection</fullName>
-                <default>false</default>
-                <label>Poultry Inspection</label>
-            </value>
-            <value>
-                <fullName>Premises Inspection</fullName>
-                <default>false</default>
-                <label>Premises Inspection</label>
-            </value>
-            <value>
                 <fullName>Prohibited devices &amp; items</fullName>
                 <default>false</default>
                 <label>Prohibited devices &amp; items</label>
@@ -370,21 +230,6 @@
                 <fullName>Prohibition Order Breached</fullName>
                 <default>false</default>
                 <label>Prohibition Order Breached</label>
-            </value>
-            <value>
-                <fullName>Provide Emergency Relief</fullName>
-                <default>false</default>
-                <label>Provide Emergency Relief</label>
-            </value>
-            <value>
-                <fullName>Req Rescue</fullName>
-                <default>false</default>
-                <label>Req Rescue</label>
-            </value>
-            <value>
-                <fullName>Rescue at Height</fullName>
-                <default>false</default>
-                <label>Rescue at Height</label>
             </value>
             <value>
                 <fullName>Rescue - at Height</fullName>
@@ -407,74 +252,14 @@
                 <label>Rescue - Special Request</label>
             </value>
             <value>
-                <fullName>Riding Sch Insp</fullName>
-                <default>false</default>
-                <label>Riding Sch Insp</label>
-            </value>
-            <value>
-                <fullName>Rodeo Insp</fullName>
-                <default>false</default>
-                <label>Rodeo Insp</label>
-            </value>
-            <value>
-                <fullName>Roof Cavity</fullName>
-                <default>false</default>
-                <label>Roof Cavity</label>
-            </value>
-            <value>
-                <fullName>Sale Yard Insp</fullName>
-                <default>false</default>
-                <label>Sale Yard Insp</label>
-            </value>
-            <value>
-                <fullName>Second-hand report</fullName>
-                <default>false</default>
-                <label>Second-hand report</label>
-            </value>
-            <value>
-                <fullName>Shelter Assistance Request</fullName>
-                <default>false</default>
-                <label>Shelter Assistance Request</label>
-            </value>
-            <value>
-                <fullName>Shelter Inadequate</fullName>
-                <default>false</default>
-                <label>Shelter Inadequate</label>
-            </value>
-            <value>
                 <fullName>Sick/Illness</fullName>
                 <default>false</default>
                 <label>Sick/Illness</label>
             </value>
             <value>
-                <fullName>Sick/ Illness</fullName>
-                <default>false</default>
-                <label>Sick/ Illness</label>
-            </value>
-            <value>
-                <fullName>Special Rescue Request</fullName>
-                <default>false</default>
-                <label>Special Rescue Request</label>
-            </value>
-            <value>
-                <fullName>Stable Insp</fullName>
-                <default>false</default>
-                <label>Stable Insp</label>
-            </value>
-            <value>
-                <fullName>Tied Continually</fullName>
-                <default>false</default>
-                <label>Tied Continually</label>
-            </value>
-            <value>
                 <fullName>Transport - Non animal</fullName>
                 <default>false</default>
                 <label>Transport - Non animal</label>
-            </value>
-            <value>
-                <fullName>Transport Unsatisfactory</fullName>
-                <default>false</default>
-                <label>Transport Unsatisfactory</label>
             </value>
             <value>
                 <fullName>Trapped - Bird in Building</fullName>
@@ -502,14 +287,14 @@
                 <label>Trapped - Stuck in Tree</label>
             </value>
             <value>
+                <fullName>Unrestrained Dog</fullName>
+                <default>false</default>
+                <label>Unrestrained Dog</label>
+            </value>
+            <value>
                 <fullName>Vet Pick Up</fullName>
                 <default>false</default>
                 <label>Vet Pick Up</label>
-            </value>
-            <value>
-                <fullName>Vet Treatment</fullName>
-                <default>false</default>
-                <label>Vet Treatment</label>
             </value>
             <value>
                 <fullName>Wildlife - Displaced/Sighting</fullName>
@@ -517,19 +302,9 @@
                 <label>Wildlife - Displaced/Sighting</label>
             </value>
             <value>
-                <fullName>Wildlife Release</fullName>
-                <default>false</default>
-                <label>Wildlife Release</label>
-            </value>
-            <value>
                 <fullName>Wildlife - Release</fullName>
                 <default>false</default>
                 <label>Wildlife - Release</label>
-            </value>
-            <value>
-                <fullName>Wildlife Reunite</fullName>
-                <default>false</default>
-                <label>Wildlife Reunite</label>
             </value>
             <value>
                 <fullName>Wildlife - Reunite</fullName>
@@ -540,11 +315,6 @@
                 <fullName>Wildlife - Transport</fullName>
                 <default>false</default>
                 <label>Wildlife - Transport</label>
-            </value>
-            <value>
-                <fullName>Zoo and/or Exhibited Animal</fullName>
-                <default>false</default>
-                <label>Zoo and/or Exhibited Animal</label>
             </value>
         </valueSetDefinition>
     </valueSet>

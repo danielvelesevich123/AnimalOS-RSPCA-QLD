@@ -38,7 +38,8 @@ public with sharing class AOS_JobSummaryQAMetaProc extends vertic_MetadataProces
                         animalos__Address__c, animalos__Codes__c, animalos__Full_Address__c,
                         animalos__Property_Directions__c, animalos__Location_Of_Interest__c, animalos__Important_Notes__c,
                         animalos__Address__Street__s, animalos__Address__Latitude__s, animalos__Address__Longitude__s,
-                        animalos__Animal_Report_Summary__c, CreatedDate, Owner.Name, animalos__Priority__c, (
+                        animalos__Animal_Report_Summary__c, CreatedDate, Owner.Name, animalos__Priority__c,
+                        animalos__Job_Outcome__c, Job_Outcome_Multi__c, (
                         SELECT Id
                         FROM animalos__Job_Activities2__r
                         ORDER BY CreatedDate DESC

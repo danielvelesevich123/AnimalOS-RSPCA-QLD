@@ -88,7 +88,7 @@
                     />
                 </aura:if>
 
-                <aura:if isTrue="{! v.file.isFileOwner}">
+                <aura:if isTrue="{! and(v.file.isFileOwner, not(v.file.isCommunityUser))}">
                     <lightning:buttonIcon class="slds-m-bottom_xxx-small"
                                           iconName="utility:key"
                                           variant="bare"

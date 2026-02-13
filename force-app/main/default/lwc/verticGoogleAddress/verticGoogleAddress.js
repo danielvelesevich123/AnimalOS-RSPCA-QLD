@@ -68,7 +68,10 @@ export default class VerticGoogleAddress extends BaseElement {
     @api
     validate() {
         this.clearErrors();
-        let hasNoError = this.required === true && this.street && this.city && this.state || this.required !== true || this.required === undefined;
+        let hasNoError = !!(this.required === true && !this.showAdditionalFields && this.street && this.city && this.state)
+                         || !!(this.required === true && this.showAdditionalFields === true && this.street && this.city && this.state && this.postCode && this.country)
+                         || (this.required !== true || this.required === undefined);
+
         if (!hasNoError) {
             this.showErrors(['Complete this field.']);
         }
@@ -112,7 +115,14 @@ export default class VerticGoogleAddress extends BaseElement {
         }
         this.dispatchEvent(new CustomEvent('change', {
             bubbles: false,
-            composed: false
+            composed: false,
+            detail: {
+                country: this.country,
+                state: this.state,
+                city: this.city,
+                postCode: this.postCode,
+                street: this.street
+            }
         }));
     }
 

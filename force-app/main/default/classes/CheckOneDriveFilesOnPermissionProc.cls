@@ -32,7 +32,7 @@ public without sharing class CheckOneDriveFilesOnPermissionProc extends vertic_A
             filesId.add(String.valueOf(fileMap.get('id')));
         }
 
-        User currentUser = [SELECT Id, Profile.Name FROM User WHERE Id = :UserInfo.getUserId()].get(0);
+        User currentUser = [SELECT Id, Profile.Name, Profile.UserLicense.Name FROM User WHERE Id = :UserInfo.getUserId()].get(0);
 
         fflib_QueryFactory queryFactory = new fflib_QueryFactory(OneDrive_File__c.SObjectType)
                 .selectFields(new Set<String>{
@@ -73,12 +73,14 @@ public without sharing class CheckOneDriveFilesOnPermissionProc extends vertic_A
             }
 
 
+            Boolean isCommunityUser = currentUser.Profile.UserLicense.Name.containsIgnoreCase('Customer Community');
             Boolean isFileOwner = oneDriveFilePermission == null ? false : currentUser.Id == oneDriveFilePermission.OwnerId;
             Boolean userHasAccess = oneDriveFilePermission == null ? true :
                     oneDriveFilePermission.Available_Profiles_Text__c == null ? true : oneDriveFilePermission.Available_Profiles_Text__c.contains(currentUser.Profile?.Name);
 
 
             this.response.getMapper().mapAnyValue(oneDriveFileId, new Map<String, Object>{
+                    'isCommunityUser' => isCommunityUser,
                     'isFileOwner' => isFileOwner,
                     'userHasAccess' => userHasAccess,
                     'createdBy' => oneDriveFile?.CreatedBy?.Name

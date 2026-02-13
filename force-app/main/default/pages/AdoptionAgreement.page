@@ -614,10 +614,8 @@
                                 {!animal['Neutered_Spayed_By__r']['Name']}
                             </apex:outputPanel>
                             <br/>
-                            <br/>
 
-                            SIGNATURE HERE
-                            <br/>
+                            <apex:image id="desexSignature" value="{!$Resource.Desex_Signature}" height="100" alt="Signature"/>
                             <br/>
 
                             On behalf of RSPCA Qld
@@ -750,22 +748,18 @@
                     <apex:outputPanel rendered="{!animal['hasActions'] == true}">
                         <table>
                             <tr>
-                                <th class="header-table" style="width: 10%;"></th>
                                 <th class="header-table" style="width: 40%;"><b>Vet Treatment Type</b></th>
-                                <th class="header-table" style="width: 30%;"><b>Date Given</b></th>
+                                <th class="header-table" style="width: 40%;"><b>Date Given</b></th>
                                 <th class="header-table" style="width: 20%;"><b>Type</b></th>
                             </tr>
 
                             <apex:repeat value="{!animal['animalos__Animal_Actions__r']}" var="actionVar" id="actions">
                                 <tr>
-                                    <th class="header-table" style="width: 10%; padding-bottom: 10px; padding-top: 10px;">
-                                        <b>NUM</b>
-                                    </th>
                                     <th class="header-table" style="width: 40%;">
                                         {!actionVar['animalos__Description__c']}
                                     </th>
-                                    <th class="header-table" style="width: 30%;">
-                                        {!actionVar['animalos__Date_Time_Action_Completed__c']}
+                                    <th class="header-table" style="width: 40%;">
+                                        {!actionVar['animalos__Date_Time_Action__c']}
                                     </th>
                                     <th class="header-table" style="width: 20%;">
                                     </th>
@@ -908,7 +902,47 @@
                 </table>
                 <div class="page-break"></div>
                 <div class="inform-collection">
-                    ANIMAL TREATMENTS
+                ANIMAL TREATMENTS HISTORY
+                </div>
+
+                <apex:repeat value="{!dto['animals']}" var="animal" id="animalActions">
+                    <apex:outputPanel rendered="{!animal['hasActions']}">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <th colspan="4" class="alignCenter">
+                                    <b>
+                                        {!animal['animalos__Animal_Name__c'] + ' Treatments History'}
+                                    </b>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td width="66%">
+                                        Description
+                                </td>
+                                <td width="34%">
+                                        Date
+                                </td>
+                            </tr>
+                            <apex:repeat value="{!animal['animalos__Animal_Actions__r']}" var="animalAction" id="animalActions">
+                                <tr>
+                                    <td>
+                                        {!animalAction['animalos__Description__c']}
+                                    </td>
+                                    <td>
+                                        {!animalAction['animalos__Date_Time_Action__c']}
+                                    </td>
+                                </tr>
+                            </apex:repeat>
+                            </tbody>
+                        </table>
+                    </apex:outputPanel>
+                    <br/>
+                    <br/>
+                </apex:repeat>
+
+                <div class="inform-collection">
+                   ANIMAL UPCOMING TREATMENTS
                 </div>
 
                 <apex:repeat value="{!dto['animals']}" var="animal" id="animalPlans">
@@ -918,7 +952,7 @@
                             <tr>
                                 <th colspan="4" class="alignCenter">
                                     <b>
-                                        {!'Animal Treatments - ' + animal['animalos__Animal_Name__c']}
+                                        {! animal['animalos__Animal_Name__c'] + ' Upcoming Treatments '}
                                     </b>
                                 </th>
                             </tr>

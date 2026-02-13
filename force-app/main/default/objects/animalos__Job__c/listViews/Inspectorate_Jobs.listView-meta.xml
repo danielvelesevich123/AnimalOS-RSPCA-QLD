@@ -12,10 +12,5 @@
     <columns>CREATED_DATE</columns>
     <columns>animalos__Address__City__s</columns>
     <filterScope>Everything</filterScope>
-    <filters>
-        <field>RECORDTYPE</field>
-        <operation>equals</operation>
-        <value>animalos__Job__c.Inspectorate</value>
-    </filters>
     <label>Inspectorate Jobs</label>
 </ListView>

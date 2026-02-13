@@ -118,9 +118,10 @@ public without sharing class AdoptionAgreementMetaProc extends vertic_MetadataPr
                                         animalos__Description__c,
                                         animalos__Date_Time_Action_Completed__c
                                 FROM animalos__Animal_Actions__r
-                                WHERE
-                                        RecordType.DeveloperName = 'Treatment'
-                                        OR RecordType.DeveloperName = 'Medicine'
+                                WHERE RecordType.Name = 'Treatment'
+                                    AND animalos__Date_Time_Action_Completed__c != NULL
+                                    AND animalos__Date_Time_Action_Completed__c <= TODAY
+                                    AND Id IN (SELECT animalos__Animal_Action__c FROM animalos__Medicine_Used__c)
                                 ORDER BY animalos__Date_Time_Action_Completed__c ASC
                         )
                 FROM animalos__Animal__c
@@ -200,9 +201,9 @@ public without sharing class AdoptionAgreementMetaProc extends vertic_MetadataPr
             this.response.put('hasDogs', dogs.size() > 0);
             List<Map<String, Object>> animalsMap = (List<Map<String, Object>>) this.response.get('animals');
             for (Map<String, Object> animalMap : animalsMap) {
+                animalMap.put('hasActions', animalMap.containsKey('animalos__Animal_Actions__r') ? true : false);
                 animalMap.put('hasTreatments', animalMap.containsKey('animalos__Animal_Action_Plans__r') ? true : false);
                 animalMap.put('hasWaivers', animalMap.containsKey('animalos__Animal_Indemnity_Waivers__r') ? true : false);
-                animalMap.put('hasActions', animalMap.containsKey('animalos__Animal_Actions__r') ? true : false);
             }
         }
 
