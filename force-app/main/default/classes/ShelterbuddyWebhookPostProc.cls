@@ -18,16 +18,16 @@ public without sharing class ShelterbuddyWebhookPostProc extends vertic_Abstract
 
     private void doSubmit() {
 
-        insert new Vertic_Async_Process__c(
-                Processor__c = '' + ShelterbuddyWebhookPostProc.class,
-                Payload__c = JSON.serialize(new Map<String, Object>{
+        insert new aos_Async_Process__c(
+                aos_Processor__c = '' + ShelterbuddyWebhookPostProc.class,
+                aos_Payload__c = JSON.serialize(new Map<String, Object>{
                     'headers' => this.request.headers,
                     'body' => this.request.getMap()
                 }),
-                Autorun__c = true,
-                Is_Queueable__c = false,
-                Status__c = 'Failed',
-                Description__c = 'Test shelterbuddy webhooks'
+                aos_Autorun__c = true,
+                aos_Is_Queueable__c = false,
+                aos_Status__c = 'Failed',
+                aos_Description__c = 'Test shelterbuddy webhooks'
         );
 
         Savepoint sp = Database.setSavepoint();
@@ -52,7 +52,7 @@ public without sharing class ShelterbuddyWebhookPostProc extends vertic_Abstract
 
             requestMapDump = JSON.serialize(requestMap);
 
-            vertic_Response flowResponseVar = new vertic_FlowSettingProc().process(requestMap);
+            vertic_Response flowResponseVar;
 
             System.debug(flowResponseVar);
             if(flowResponseVar.isValid != true){
@@ -67,15 +67,15 @@ public without sharing class ShelterbuddyWebhookPostProc extends vertic_Abstract
             this.response.error = new vertic_Structs.ErrorDetails(e.getMessage());
             this.response.isValid = false;
 
-            Vertic_Async_Process__c asyncProcess = new Vertic_Async_Process__c(
-                    Autorun__c = true,
-                    Allowed_Attempts__c = 3,
-                    Is_Queueable__c = false,
-                    Status__c = 'Pending',
-                    Processor__c = 'vertic_FlowSettingProc',
-                    Payload__c = requestMapDump,
-                    Details__c = e.getMessage(),
-                    Description__c = 'Automated retry of Failed REST Flow Processing'
+            aos_Async_Process__c asyncProcess = new aos_Async_Process__c(
+                    aos_Autorun__c = true,
+                    aos_Allowed_Attempts__c = 3,
+                    aos_Is_Queueable__c = false,
+                    aos_Status__c = 'Pending',
+                    aos_Processor__c = 'vertic_FlowSettingProc',
+                    aos_Payload__c = requestMapDump,
+                    aos_Details__c = e.getMessage(),
+                    aos_Description__c = 'Automated retry of Failed REST Flow Processing'
             );
             insert asyncProcess;
         } finally {

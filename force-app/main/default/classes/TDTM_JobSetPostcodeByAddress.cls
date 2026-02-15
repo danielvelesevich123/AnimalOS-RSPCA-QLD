@@ -12,17 +12,17 @@ global class TDTM_JobSetPostcodeByAddress extends animalos.TDTM.Handler implemen
         Set<String> postcodesSet = vertic_Utils.sObjects.getStringFieldValues(records, animalos__Job__c.animalos__Address__PostalCode__s);
         Set<String> cities = vertic_Utils.sObjects.getStringFieldValues(records, animalos__Job__c.animalos__Address__City__s);
 
-        List<Postcode__c> postcodes = [
-                SELECT Id, Postcode__c, Suburb__c
-                FROM Postcode__c
-                WHERE Postcode__c IN :postcodesSet AND Suburb__c IN :cities
-                AND Postcode__c != NULL AND Suburb__c != NULL
+        List<aos_Postcode__c> postcodes = [
+                SELECT Id, aos_Postcode__c, aos_Suburb__c
+                FROM aos_Postcode__c
+                WHERE aos_Postcode__c IN :postcodesSet AND aos_Suburb__c IN :cities
+                AND aos_Postcode__c != NULL AND aos_Suburb__c != NULL
         ];
 
-        Map<String, Postcode__c> postcodesBySuburbAndPostcode = new Map<String, Postcode__c>();
+        Map<String, aos_Postcode__c> postcodesBySuburbAndPostcode = new Map<String, aos_Postcode__c>();
 
-        for (Postcode__c postcode : postcodes) {
-            postcodesBySuburbAndPostcode.put(postcode.Suburb__c.toLowerCase() + ' ' + postcode.Postcode__c.toLowerCase(), postcode);
+        for (aos_Postcode__c postcode : postcodes) {
+            postcodesBySuburbAndPostcode.put(postcode.aos_Suburb__c.toLowerCase() + ' ' + postcode.aos_Postcode__c.toLowerCase(), postcode);
         }
 
         for (animalos__Job__c job : (List<animalos__Job__c>) records) {
@@ -39,13 +39,13 @@ global class TDTM_JobSetPostcodeByAddress extends animalos.TDTM.Handler implemen
             );
 
             if ((isCreated || isUpdated) && String.isNotBlank(job.animalos__Address__City__s) && String.isNotBlank(job.animalos__Address__PostalCode__s)) {
-                Postcode__c postcode = (Postcode__c) postcodesBySuburbAndPostcode.get(job.animalos__Address__City__s.toLowerCase() + ' ' + job.animalos__Address__PostalCode__s.toLowerCase());
+                aos_Postcode__c postcode = (aos_Postcode__c) postcodesBySuburbAndPostcode.get(job.animalos__Address__City__s.toLowerCase() + ' ' + job.animalos__Address__PostalCode__s.toLowerCase());
 
                 if (postcode == null) {
                     continue;
                 }
 
-                job.Postcode__c = postcode.Id;
+                job.aos_Postcode__c = postcode.Id;
             }
         }
     }

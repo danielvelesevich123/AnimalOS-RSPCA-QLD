@@ -121,7 +121,7 @@ public without sharing class AdoptionAgreementSavePdfProc extends vertic_Abstrac
                 )
         ]);
 
-        Vertic_Async_Process__c adoptionAgreementOwnerNotificationAsyncProc = new vertic_SendEmailProc.EmailAsyncProcess(
+        aos_Async_Process__c adoptionAgreementOwnerNotificationAsyncProc = new vertic_SendEmailProc.EmailAsyncProcess(
                 adoptionAgreementOwnerNotificationTemplate.DeveloperName,
                 userVar,
                 whatId

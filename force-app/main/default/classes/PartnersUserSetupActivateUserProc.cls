@@ -34,14 +34,14 @@ public class PartnersUserSetupActivateUserProc extends vertic_AbstractProcessor 
                 insert userVar;
             } else if (userVar.Id != null) {
                 if (isLog) {
-                    List<Location_Volunteer__c> locationVolunteers = [
+                    List<aos_Location_Volunteer__c> locationVolunteers = [
                             SELECT Id
-                            FROM Location_Volunteer__c
-                            WHERE User__c = :userVar.Id
+                            FROM aos_Location_Volunteer__c
+                            WHERE aos_User__c = :userVar.Id
                     ];
 
-                    for (Location_Volunteer__c locationVolunteer : locationVolunteers) {
-                        locationVolunteer.Status__c = 'Active';
+                    for (aos_Location_Volunteer__c locationVolunteer : locationVolunteers) {
+                        locationVolunteer.aos_Status__c = 'Active';
                     }
                     update locationVolunteers;
                 }

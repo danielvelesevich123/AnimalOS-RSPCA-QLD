@@ -7,8 +7,8 @@ global class TDTM_JobContactSetSendEmail extends animalos.TDTM.Handler implement
 
     private void setSendEmailByJobContactId(List<SObject> records) {
         for (animalos__Job_Contact__c jobContact : (List<animalos__Job_Contact__c>) records) {
-            SEND_EMAIL_BY_JOB_CONTACT_ID.put(jobContact.Id, jobContact.Notify_Inspector__c);
-            jobContact.Notify_Inspector__c = false;
+            SEND_EMAIL_BY_JOB_CONTACT_ID.put(jobContact.Id, jobContact.aos_Notify_Inspector__c);
+            jobContact.aos_Notify_Inspector__c = false;
         }
     }
 }

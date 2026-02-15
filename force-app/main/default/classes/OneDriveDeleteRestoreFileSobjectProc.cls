@@ -17,27 +17,27 @@ public without sharing class OneDriveDeleteRestoreFileSobjectProc extends vertic
                 'Folder_Name__c = :folderName'
         };
 
-        fflib_QueryFactory queryFactory = new fflib_QueryFactory(OneDrive_File__c.SObjectType)
+        fflib_QueryFactory queryFactory = new fflib_QueryFactory(aos_OneDrive_File__c.SObjectType)
                 .selectFields(new Set<String>{
                         'Id', 'Name'
                 })
                 .setCondition(String.join(conditions, ' AND '));
 
         System.debug(queryFactory.toSOQL());
-        OneDrive_File__c oneDriveFile = (OneDrive_File__c) vertic_Utils.arrays.firstOrException(Database.query(queryFactory.toSOQL()),
+        aos_OneDrive_File__c oneDriveFile = (aos_OneDrive_File__c) vertic_Utils.arrays.firstOrException(Database.query(queryFactory.toSOQL()),
                 'No OneDrive file with name: ' + fileName + ' for record: ' + recordId);
 
         if (action == 'completelyDelete') {
             delete oneDriveFile;
         }
         if (action == 'delete') {
-            oneDriveFile.Is_Deleted__c = true;
-            oneDriveFile.Is_Primary__c = false;
-            oneDriveFile.Is_Public__c = false;
+            oneDriveFile.aos_Is_Deleted__c = true;
+            oneDriveFile.aos_Is_Primary__c = false;
+            oneDriveFile.aos_Is_Public__c = false;
             update oneDriveFile;
         }
         if (action == 'restore') {
-            oneDriveFile.Is_Deleted__c = false;
+            oneDriveFile.aos_Is_Deleted__c = false;
             update oneDriveFile;
         }
 

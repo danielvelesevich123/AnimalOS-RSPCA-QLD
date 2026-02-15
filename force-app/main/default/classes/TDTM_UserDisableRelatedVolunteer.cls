@@ -22,18 +22,18 @@ global class TDTM_UserDisableRelatedVolunteer extends animalos.TDTM.Handler impl
             List<animalos__Log__c> logs = new List<animalos__Log__c>();
 
             Map<String, Object> locationVolunteersByContactIds = vertic_Utils.sObjects.getSObjectsListByAnyFieldMap([
-                    SELECT Id, Volunteer__c
-                    FROM Location_Volunteer__c
-                    WHERE Volunteer__c IN :contactIds
-            ], Location_Volunteer__c.Volunteer__c);
+                    SELECT Id, aos_Volunteer__c
+                    FROM aos_Location_Volunteer__c
+                    WHERE aos_Volunteer__c IN :contactIds
+            ], aos_Location_Volunteer__c.aos_Volunteer__c);
 
-            List<Location_Volunteer__c> locationVolunteersForUpdate = new List<Location_Volunteer__c>();
+            List<aos_Location_Volunteer__c> locationVolunteersForUpdate = new List<aos_Location_Volunteer__c>();
 
             for (User userVar : users) {
-                List<Location_Volunteer__c> locationVolunteers = (List<Location_Volunteer__c>) locationVolunteersByContactIds.get(userVar.ContactId);
+                List<aos_Location_Volunteer__c> locationVolunteers = (List<aos_Location_Volunteer__c>) locationVolunteersByContactIds.get(userVar.ContactId);
 
                 if (locationVolunteers != null && !locationVolunteers.isEmpty()) {
-                    for (Location_Volunteer__c locationVolunteer : locationVolunteers) {
+                    for (aos_Location_Volunteer__c locationVolunteer : locationVolunteers) {
                         logs.add(
                                 new animalos.Logging()
                                         .setProcess('TDTM_UserDisableRelatedVolunteer.DisableLocationVolunteerProc')
@@ -54,13 +54,13 @@ global class TDTM_UserDisableRelatedVolunteer extends animalos.TDTM.Handler impl
 
             String recordId = this.request.getString('recordId');
 
-            Location_Volunteer__c locationVolunteer = (Location_Volunteer__c) vertic_Utils.arrays.firstOrException([
-                    SELECT Id, Status__c
-                    FROM Location_Volunteer__c
+            aos_Location_Volunteer__c locationVolunteer = (aos_Location_Volunteer__c) vertic_Utils.arrays.firstOrException([
+                    SELECT Id, aos_Status__c
+                    FROM aos_Location_Volunteer__c
                     WHERE Id = :recordId
             ], 'No Location Volunteer with Id: ' + recordId);
 
-            locationVolunteer.Status__c = 'Inactive';
+            locationVolunteer.aos_Status__c = 'Inactive';
 
             update locationVolunteer;
 

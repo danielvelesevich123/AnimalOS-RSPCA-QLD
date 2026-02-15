@@ -9,13 +9,13 @@ public without sharing class OneDriveFilesGetPrimaryDataProc extends vertic_Abst
         SObjectType sObjectTypeName = recordId.getSobjectType();
         String sObjectTypeNameString = recordId.getSobjectType() == animalos__Animal__c.SObjectType ? 'animalos_Animal__c' : OneDriveCreateFileSObjectProc.getLookupFieldName(sObjectTypeName);
 
-        String oneDriveFilesQuery = 'SELECT Id, Is_Primary__c, Profile_Image__c, Name FROM OneDrive_File__c WHERE '
-                + sobjectTypeNameString.remove('__c') + '__c = \'' + recordId + '\'' + ' AND Folder_Name__c = \'' + folderName + '\'';
+        String oneDriveFilesQuery = 'SELECT Id, aos_Is_Primary__c, aos_Profile_Image__c, Name FROM aos_OneDrive_File__c WHERE '
+                + sobjectTypeNameString.remove('__c') + '__c = \'' + recordId + '\'' + ' AND aos_Folder_Name__c = \'' + folderName + '\'';
 
-        List<OneDrive_File__c> oneDriveFiles = Database.query(oneDriveFilesQuery);
+        List<aos_OneDrive_File__c> oneDriveFiles = Database.query(oneDriveFilesQuery);
 
-        Map<String, OneDrive_File__c> oneDriveFilesMap = new Map<String, OneDrive_File__c>();
-        for (OneDrive_File__c oneDriveFileVar : oneDriveFiles) {
+        Map<String, aos_OneDrive_File__c> oneDriveFilesMap = new Map<String, aos_OneDrive_File__c>();
+        for (aos_OneDrive_File__c oneDriveFileVar : oneDriveFiles) {
             oneDriveFilesMap.put(oneDriveFileVar.Name, oneDriveFileVar);
         }
 
@@ -23,8 +23,8 @@ public without sharing class OneDriveFilesGetPrimaryDataProc extends vertic_Abst
         for (Object fileObject : filesObjects) {
             Map<String, Object> file = (Map<String, Object>) fileObject;
             if (oneDriveFilesMap.get((String) file.get('name')) != null) {
-                file.put('isPrimary', oneDriveFilesMap.get((String) file.get('name')).Is_Primary__c);
-                file.put('isProfilePhoto', oneDriveFilesMap.get((String) file.get('name')).Profile_Image__c);
+                file.put('isPrimary', oneDriveFilesMap.get((String) file.get('name')).aos_Is_Primary__c);
+                file.put('isProfilePhoto', oneDriveFilesMap.get((String) file.get('name')).aos_Profile_Image__c);
             }
             filesList.add(file);
         }

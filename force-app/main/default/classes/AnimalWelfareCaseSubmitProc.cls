@@ -90,7 +90,7 @@ public without sharing class AnimalWelfareCaseSubmitProc extends vertic_Abstract
                 }
             }
 
-            uow.registerRelationship(jobVar, animalos__Job__c.Case__c, caseVar);
+            uow.registerRelationship(jobVar, animalos__Job__c.aos_Case__c, caseVar);
             uow.registerRelationship(jobVar, animalos__Job__c.animalos__Location_Of_Interest__c, locationOfInterestVar);
             jobVar.animalos__Address__Street__s = locationOfInterestVar.animalos__Address__Street__s;
             jobVar.animalos__Address__City__s = locationOfInterestVar.animalos__Address__City__s;
@@ -132,7 +132,7 @@ public without sharing class AnimalWelfareCaseSubmitProc extends vertic_Abstract
             }
 
             uow.registerUpsert(animalReports);
-            uow.registerRelationship(animalReports, animalos__Animal_Report__c.Case__c, caseVar);
+            uow.registerRelationship(animalReports, animalos__Animal_Report__c.aos_Case__c, caseVar);
             //Save & Create Job action
             if (jobVar != null) {
                 uow.registerRelationship(animalReports, animalos__Animal_Report__c.animalos__Job__c, jobVar);
@@ -163,7 +163,7 @@ public without sharing class AnimalWelfareCaseSubmitProc extends vertic_Abstract
                 uow.registerUpsert(contactVar);
                 uow.registerUpsert(jobContactVar);
                 uow.registerRelationship(jobContactVar, animalos__Job_Contact__c.animalos__Contact__c, contactVar);
-                uow.registerRelationship(jobContactVar, animalos__Job_Contact__c.Case__c, caseVar);
+                uow.registerRelationship(jobContactVar, animalos__Job_Contact__c.aos_Case__c, caseVar);
 
                 if (String.isNotBlank(organizationId)) {
                     if (contactsByAccountIds.containsKey(organizationId)) {

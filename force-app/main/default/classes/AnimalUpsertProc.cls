@@ -14,7 +14,6 @@ public inherited sharing class AnimalUpsertProc extends vertic_AbstractProcessor
         Animal__c.Distinguishing_Features__c => 'DistinguishingFeatures',
         Animal__c.Available_For_Adoption_Date__c => 'AvailableForAdoptionDateUtc',
         Animal__c.Animal_Type__c => 'Type.Name',
-        Animal__c.Animal_Type__c => 'Type.Name',
         Animal__c.Status__c => 'Status.Name',
         Animal__c.Status_Date__c => 'Status.DateUtc',
         Animal__c.Size__c => 'Size',
@@ -59,7 +58,6 @@ public inherited sharing class AnimalUpsertProc extends vertic_AbstractProcessor
 
         String animalJSON = this.request.getString('animalJSON');
 
-
         System.debug(animalJSON);
 
         vertic_DTO dto = new vertic_DTO(animalJSON);
@@ -85,17 +83,17 @@ public inherited sharing class AnimalUpsertProc extends vertic_AbstractProcessor
 
         upsert animalVar;
 
-        insert new Vertic_Async_Process__c(
-            Processor__c = '' + AnimalUpsertProc.class,
-            Payload__c = JSON.serializePretty(new Map<String, Object>{
+        insert new aos_Async_Process__c(
+                aos_Processor__c = '' + AnimalUpsertProc.class,
+                aos_Payload__c = JSON.serializePretty(new Map<String, Object>{
                 'animalJSON' => animalJSON,
                 'animalDTO' => dto.getMap()
             }),
-            Details__c = JSON.serializePretty(animalVar),
-            Autorun__c = false,
-            Status__c = 'Completed',
-            Description__c = 'Animal Webhook',
-            Group_Key__c = animalVar.Id
+                aos_Details__c = JSON.serializePretty(animalVar),
+                aos_Autorun__c = false,
+                aos_Status__c = 'Completed',
+                aos_Description__c = 'Animal Webhook',
+                aos_Group_Key__c = animalVar.Id
         );
 
         this.response.put('animal', animalVar);
@@ -148,7 +146,6 @@ public inherited sharing class AnimalUpsertProc extends vertic_AbstractProcessor
         }
 
         setSubStatuses(animalVar, dto.getList('SubStatuses'), dto.getString('SubStatus.Name'));
-//        setLostFoundStreet(animalVar, dto);
     }
 
     private static Animal_Breed__c findOrCreateAnimalBreed(String animalBreedName, String animalBreedId) {

@@ -36,7 +36,7 @@ global without sharing class ContactShelterBuddy_TDTM extends npsp.TDTM_Runnable
         npsp.TDTM_Runnable.dmlWrapper dmlWrapper = new npsp.TDTM_Runnable.DmlWrapper();
 
         Map<Id, SObject> oldMap = oldlist == null ? null : new Map<Id, SObject>(oldlist);
-        List<Vertic_Async_Process__c> vaps = new List<Vertic_Async_Process__c>();
+        List<aos_Async_Process__c> vaps = new List<aos_Async_Process__c>();
 
         if (ShelterBuddySyncPersonProc.IS_SYNC_ENABLED != true) {
             return dmlWrapper;
@@ -46,13 +46,13 @@ global without sharing class ContactShelterBuddy_TDTM extends npsp.TDTM_Runnable
         List<Contact> contacts = (List<Contact>) newlist;
         Set<String> contactIds = vertic_Utils.sObjects.getStringFieldValues(contacts, Contact.Id);
 
-        List<Vertic_Async_Process__c> existingVaps = [
-            SELECT Id, Group_Key__c
-            FROM Vertic_Async_Process__c
-            WHERE Processor__c = :('' + ShelterBuddySyncPersonProc.class) AND Status__c = 'Pending' AND Autorun__c = TRUE
-            AND Group_Key__c IN :contactIds
+        List<aos_Async_Process__c> existingVaps = [
+            SELECT Id, aos_Group_Key__c
+            FROM aos_Async_Process__c
+            WHERE aos_Processor__c = :('' + ShelterBuddySyncPersonProc.class) AND aos_Status__c = 'Pending' AND aos_Autorun__c = TRUE
+            AND aos_Group_Key__c IN :contactIds
         ];
-        Map<String, SObject> existingVapsMap = vertic_Utils.sObjects.getSObjectsByAnyFieldMap(existingVaps, Vertic_Async_Process__c.Group_Key__c);
+        Map<String, SObject> existingVapsMap = vertic_Utils.sObjects.getSObjectsByAnyFieldMap(existingVaps, aos_Async_Process__c.aos_Group_Key__c);
 
         for (Contact contactVar : contacts) {
 
@@ -86,15 +86,15 @@ global without sharing class ContactShelterBuddy_TDTM extends npsp.TDTM_Runnable
         return dmlWrapper;
     }
 
-    private Vertic_Async_Process__c syncShelterBuddyPersons(Contact contactVar) {
-        return new Vertic_Async_Process__c(
-            Processor__c = '' + ShelterBuddySyncPersonProc.class,
-            Payload__c = JSON.serialize(new Map<String, String>{
+    private aos_Async_Process__c syncShelterBuddyPersons(Contact contactVar) {
+        return new aos_Async_Process__c(
+                aos_Processor__c = '' + ShelterBuddySyncPersonProc.class,
+                aos_Payload__c = JSON.serialize(new Map<String, String>{
                 'recordId' => contactVar.Id
             }),
-            Autorun__c = true,
-            Description__c = 'Sync ShelterBuddy Person',
-            Group_Key__c = contactVar.Id
+                aos_Autorun__c = true,
+                aos_Description__c = 'Sync ShelterBuddy Person',
+                aos_Group_Key__c = contactVar.Id
         );
     }
 

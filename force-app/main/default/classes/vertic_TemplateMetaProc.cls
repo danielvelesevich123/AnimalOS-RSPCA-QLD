@@ -47,7 +47,7 @@ public abstract class vertic_TemplateMetaProc extends vertic_MetadataProcessor {
                     if (sectionVar.type == vertic_Structs.TemplateType.HTML) {
                         panel.childComponents.add(new Component.Apex.OutputText(
                             escape = false,
-                            value = vertic_Utils.templates.compose(sectionVar.value, dto)
+                            value = vertic_Utils.templates.compose(sectionVar.value, dto, true)
                         ));
                     } else if (sectionVar.type == vertic_Structs.TemplateType.COMPONENT) {
                         ApexPages.Component cmp = this.getComponentInstance(sectionVar.value, dto);

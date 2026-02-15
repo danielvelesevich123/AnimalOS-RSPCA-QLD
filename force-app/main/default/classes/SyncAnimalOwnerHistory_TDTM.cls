@@ -3,19 +3,19 @@ global without sharing class SyncAnimalOwnerHistory_TDTM extends npsp.TDTM_Runna
 
         Map<Id, SObject> oldMap = oldlist == null ? null : new Map<Id, SObject>(oldlist);
 
-        List<Vertic_Async_Process__c> vaps = new List<Vertic_Async_Process__c>();
+        List<aos_Async_Process__c> vaps = new List<aos_Async_Process__c>();
 
         List<Animal__c> animals = (List<Animal__c>) newlist;
         Set<String> animalIds = vertic_Utils.sObjects.getStringFieldValues(animals, Animal__c.Id);
 
-        List<Vertic_Async_Process__c> existingVaps = [
-                SELECT Id, Group_Key__c
-                FROM Vertic_Async_Process__c
-                WHERE Processor__c = :('' + ShelterBuddySyncPersonProc.class) AND Status__c = 'Pending' AND Autorun__c = TRUE
-                AND Group_Key__c IN :animalIds
+        List<aos_Async_Process__c> existingVaps = [
+                SELECT Id, aos_Group_Key__c
+                FROM aos_Async_Process__c
+                WHERE aos_Processor__c = :('' + ShelterBuddySyncPersonProc.class) AND aos_Status__c = 'Pending' AND aos_Autorun__c = TRUE
+                AND aos_Group_Key__c IN :animalIds
         ];
 
-        Map<String, SObject> existingVapsMap = vertic_Utils.sObjects.getSObjectsByAnyFieldMap(existingVaps, Vertic_Async_Process__c.Group_Key__c);
+        Map<String, SObject> existingVapsMap = vertic_Utils.sObjects.getSObjectsByAnyFieldMap(existingVaps, aos_Async_Process__c.aos_Group_Key__c);
 
         for (Animal__c animalVar : (List<Animal__c>) newlist) {
 
@@ -31,14 +31,14 @@ global without sharing class SyncAnimalOwnerHistory_TDTM extends npsp.TDTM_Runna
                 continue;
             }
 
-            vaps.add(new Vertic_Async_Process__c(
-                Processor__c = '' + SyncAnimalOwnerHistoryProc.class,
-                Payload__c = JSON.serialize(new Map<String, String>{
+            vaps.add(new aos_Async_Process__c(
+                    aos_Processor__c = '' + SyncAnimalOwnerHistoryProc.class,
+                    aos_Payload__c = JSON.serialize(new Map<String, String>{
                     'recordId' => animalVar.Id
                 }),
-                Autorun__c = true,
-                Description__c = 'Sync Animal Owner History',
-                Group_Key__c = animalVar.Id
+                    aos_Autorun__c = true,
+                    aos_Description__c = 'Sync Animal Owner History',
+                    aos_Group_Key__c = animalVar.Id
             ));
         }
 

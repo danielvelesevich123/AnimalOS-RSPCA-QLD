@@ -15,7 +15,7 @@ private class animalos_AlertDomainTest {
                 animalos__Date_of_Birth__c = Date.today(),
                 animalos__Stage__c = 'Pre-Intake',
                 animalos__Status__c = 'Information',
-                Is_New__c = false,
+                aos_Is_New__c = false,
                 animalos__Primary_Breed__c = animalBreed.Id
         );
         insert animal;
@@ -27,10 +27,10 @@ private class animalos_AlertDomainTest {
         insert alert;
 
         System.assertEquals(animal.Id, [
-                SELECT Id, Animal__c
+                SELECT Id, aos_Animal__c
                 FROM animalos__Alert__c
                 WHERE Id = :alert.Id
-        ].Animal__c);
+        ].aos_Animal__c);
 
     }
 }

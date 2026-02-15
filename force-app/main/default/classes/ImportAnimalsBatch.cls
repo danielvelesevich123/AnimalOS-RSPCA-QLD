@@ -73,15 +73,15 @@ public class ImportAnimalsBatch implements Database.Batchable<Integer>, Database
         try {
             new ImportAnimalsBatchProc().process(requestMap);
         } catch (Exception e) {
-            insert new Vertic_Async_Process__c(
-                Processor__c = '' + ImportAnimalsBatchProc.class,
-                Payload__c = JSON.serialize(requestMap),
-                Description__c = 'Load Animals',
-                Priority__c = 1,
-                Group_Key__c = '' + BC.getJobId(),
-                Autorun__c = false,
-                Status__c = 'Failed',
-                Details__c = e.getMessage()
+            insert new aos_Async_Process__c(
+                    aos_Processor__c = '' + ImportAnimalsBatchProc.class,
+                    aos_Payload__c = JSON.serialize(requestMap),
+                    aos_Description__c = 'Load Animals',
+                    aos_Priority__c = 1,
+                    aos_Group_Key__c = '' + BC.getJobId(),
+                    aos_Autorun__c = false,
+                    aos_Status__c = 'Failed',
+                    aos_Details__c = e.getMessage()
             );
         }
     }

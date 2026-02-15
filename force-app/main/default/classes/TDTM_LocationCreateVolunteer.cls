@@ -25,29 +25,29 @@ global class TDTM_LocationCreateVolunteer extends animalos.TDTM.Handler implemen
         }
 
         if (!locationsToBeProceeded.isEmpty()) {
-            List<Location_Volunteer__c> locationVolunteersToUpsert = new List<Location_Volunteer__c>();
-            List<Location_Volunteer__c> locationVolunteersToDelete = new List<Location_Volunteer__c>();
+            List<aos_Location_Volunteer__c> locationVolunteersToUpsert = new List<aos_Location_Volunteer__c>();
+            List<aos_Location_Volunteer__c> locationVolunteersToDelete = new List<aos_Location_Volunteer__c>();
             Map<String, SObject> existingLocationVolunteersByLocationIds = vertic_Utils.sObjects.getSObjectsByAnyFieldMap([
-                    SELECT Id, Location__c
-                    FROM Location_Volunteer__c
-                    WHERE Location__c IN :locationsToBeProceeded
-            ], Location_Volunteer__c.Location__c);
+                    SELECT Id, aos_Location__c
+                    FROM aos_Location_Volunteer__c
+                    WHERE aos_Location__c IN :locationsToBeProceeded
+            ], aos_Location_Volunteer__c.aos_Location__c);
 
             for (animalos__Location__c fosterLocation : locationsToBeProceeded) {
                 if (Trigger.isInsert) {
-                    locationVolunteersToUpsert.add(new Location_Volunteer__c(
-                            Volunteer__c = fosterLocation.animalos__Contact__c,
-                            Location__c = fosterLocation.Id
+                    locationVolunteersToUpsert.add(new aos_Location_Volunteer__c(
+                            aos_Volunteer__c = fosterLocation.animalos__Contact__c,
+                            aos_Location__c = fosterLocation.Id
                     ));
                 }
 
                 if (Trigger.isUpdate) {
                     if (String.isNotBlank(fosterLocation.animalos__Contact__c)) {
                         //upsert Location Volunteer if Contact value is updated from other value or from null.
-                        locationVolunteersToUpsert.add(new Location_Volunteer__c(
+                        locationVolunteersToUpsert.add(new aos_Location_Volunteer__c(
                                 Id = existingLocationVolunteersByLocationIds.get(fosterLocation.Id)?.Id,
-                                Volunteer__c = fosterLocation.animalos__Contact__c,
-                                Location__c = fosterLocation.Id
+                                aos_Volunteer__c = fosterLocation.animalos__Contact__c,
+                                aos_Location__c = fosterLocation.Id
                         ));
                     }
 
@@ -55,7 +55,7 @@ global class TDTM_LocationCreateVolunteer extends animalos.TDTM.Handler implemen
                     if (String.isBlank(fosterLocation.animalos__Contact__c) &&
                             String.isNotBlank(existingLocations.get(fosterLocation.Id).animalos__Contact__c) &&
                             existingLocationVolunteersByLocationIds.get(fosterLocation.Id) != null) {
-                        locationVolunteersToDelete.add(new Location_Volunteer__c(
+                        locationVolunteersToDelete.add(new aos_Location_Volunteer__c(
                                 Id = existingLocationVolunteersByLocationIds.get(fosterLocation.Id).Id
                         ));
                     }

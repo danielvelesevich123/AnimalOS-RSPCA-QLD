@@ -23,32 +23,32 @@ public with sharing class ShelterBuddyGetPersonsProc extends vertic_AbstractProc
         vertic_DTO responseDTO = new vertic_DTO(personListResponse.getBody());
         List<vertic_DTO> dataDTOs = responseDTO.getListAsDTONonNull('Data');
 
-        List<Vertic_Async_Process__c> vaps = new List<Vertic_Async_Process__c>();
+        List<aos_Async_Process__c> vaps = new List<aos_Async_Process__c>();
 
         System.debug('dataDTOs.size(): '+ dataDTOs.size());
 
         for (vertic_DTO dataDTO : dataDTOs) {
-            vaps.add(new Vertic_Async_Process__c(
-                Processor__c = '' + PersonUpsertProc.class,
-                Payload__c = JSON.serializePretty(new Map<String, Object>{
+            vaps.add(new aos_Async_Process__c(
+                    aos_Processor__c = '' + PersonUpsertProc.class,
+                    aos_Payload__c = JSON.serializePretty(new Map<String, Object>{
                     'personJSON' => JSON.serialize(dataDTO.getMap())
                 }),
-                Group_Key__c = dataDTO.getString('Id'),
-                Description__c = 'Load Person',
-                Priority__c = 1
+                    aos_Group_Key__c = dataDTO.getString('Id'),
+                    aos_Description__c = 'Load Person',
+                    aos_Priority__c = 1
             ));
         }
 
         if (responseDTO.get('Paging.Next') != null) {
-            vaps.add(0, new Vertic_Async_Process__c(
-                Processor__c = '' + ShelterBuddyGetPersonsProc.class,
-                Payload__c = JSON.serializePretty(new Map<String, Object>{
+            vaps.add(0, new aos_Async_Process__c(
+                    aos_Processor__c = '' + ShelterBuddyGetPersonsProc.class,
+                    aos_Payload__c = JSON.serializePretty(new Map<String, Object>{
                     'page' => ++page,
                     'pageSize' => pageSize
                 }),
-                Description__c = 'Load Persons',
-                Priority__c = 10,
-                Autorun__c = false // TODO: comment out to sync all.
+                    aos_Description__c = 'Load Persons',
+                    aos_Priority__c = 10,
+                    aos_Autorun__c = false // TODO: comment out to sync all.
             ));
         }
 
@@ -60,14 +60,14 @@ public with sharing class ShelterBuddyGetPersonsProc extends vertic_AbstractProc
     }
 
     public static void startLoad(Integer pageSize) {
-        insert new Vertic_Async_Process__c(
-            Processor__c = '' + ShelterBuddyGetPersonsProc.class,
-            Payload__c = JSON.serializePretty(new Map<String, Object>{
+        insert new aos_Async_Process__c(
+                aos_Processor__c = '' + ShelterBuddyGetPersonsProc.class,
+                aos_Payload__c = JSON.serializePretty(new Map<String, Object>{
                 'page' => 1,
                 'pageSize' => pageSize
             }),
-            Description__c = 'Load Persons',
-            Priority__c = 10
+                aos_Description__c = 'Load Persons',
+                aos_Priority__c = 10
         );
     }
 

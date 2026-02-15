@@ -19,7 +19,7 @@ public without sharing class AdoptionScreenMetaProc extends vertic_MetadataProce
                         SELECT Id
                         FROM animalos__Location__c
                         WHERE
-                                Shelter_ID__c = :unitId
+                                aos_Shelter_ID__c = :unitId
                                 AND RecordType.DeveloperName = 'Unit'
                         LIMIT 1
                 ], 'There is no unit with provided Id'
@@ -32,7 +32,7 @@ public without sharing class AdoptionScreenMetaProc extends vertic_MetadataProce
                 FROM animalos__Movement__c
                 WHERE
                         animalos__Current__c = TRUE
-                        AND animalos__Location__r.Shelter_ID__c = :unitId
+                        AND animalos__Location__r.aos_Shelter_ID__c = :unitId
                         AND animalos__Location__r.RecordType.DeveloperName = 'Unit'
         ];
 
@@ -51,7 +51,7 @@ public without sharing class AdoptionScreenMetaProc extends vertic_MetadataProce
                         animalos__Gender__c,
                         animalos__Adoption_Profile__c,
                         animalos__Current_Unit__r.Name,
-                        Age_for_Adoption_Website__c
+                        animalos__Age_for_Adoption_Website__c
                 FROM animalos__Animal__c
                 WHERE Id IN :animalIds
         ];

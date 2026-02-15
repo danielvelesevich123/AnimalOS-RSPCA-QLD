@@ -19,7 +19,7 @@ public without sharing class AlertDomain extends fflib_SObjectDomain implements 
         Set<Id> animalIds = new Set<Id>();
 
         for (animalos__Alert__c alertVar : alerts) {
-            if ('animalos__Animal__c'.equalsIgnoreCase(alertVar.animalos__Target_Object__c) && String.isNotBlank('animalos__Target_Record_Id__c')) {
+            if ('animalos__Animal__c'.equalsIgnoreCase(alertVar.animalos__Target_Object__c) && String.isNotBlank(alertVar.animalos__Target_Record_Id__c)) {
                 animalIds.add(alertVar.animalos__Target_Record_Id__c);
             }
         }
@@ -35,15 +35,15 @@ public without sharing class AlertDomain extends fflib_SObjectDomain implements 
             locationIds.addAll(vertic_Utils.sObjects.getIdFieldValues(animalsByIds.values(), animalos__Animal__c.animalos__Current_Site__c));
             locationIds.addAll(vertic_Utils.sObjects.getIdFieldValues(animalsByIds.values(), animalos__Animal__c.animalos__Current_Unit__c));
 
-            List<Location_Volunteer__c> existingLocationVolunteers = [
-                    SELECT Id, Volunteer__c, Location__c
-                    FROM Location_Volunteer__c
-                    WHERE Location__c IN :locationIds
+            List<aos_Location_Volunteer__c> existingLocationVolunteers = [
+                    SELECT Id, aos_Volunteer__c, aos_Location__c
+                    FROM aos_Location_Volunteer__c
+                    WHERE aos_Location__c IN :locationIds
             ];
 
             if (!existingLocationVolunteers.isEmpty()) {
-                Map<String, List<SObject>> existingLocationVolunteersByLocations = vertic_Utils.sObjects.getSObjectsListByAnyFieldMap(existingLocationVolunteers, Location_Volunteer__c.Location__c);
-                Set<Id> contactIds = vertic_Utils.sObjects.getIdFieldValues(existingLocationVolunteers, Location_Volunteer__c.Volunteer__c);
+                Map<String, List<SObject>> existingLocationVolunteersByLocations = vertic_Utils.sObjects.getSObjectsListByAnyFieldMap(existingLocationVolunteers, aos_Location_Volunteer__c.aos_Location__c);
+                Set<Id> contactIds = vertic_Utils.sObjects.getIdFieldValues(existingLocationVolunteers, aos_Location_Volunteer__c.aos_Volunteer__c);
 
                 Map<String, SObject> usersByContactIds = vertic_Utils.sObjects.getSObjectsByAnyFieldMap([
                         SELECT Id, ContactId
@@ -57,20 +57,20 @@ public without sharing class AlertDomain extends fflib_SObjectDomain implements 
                     Boolean isInsert = Trigger.isInsert;
                     animalos__Animal__c relatedAnimal = animalsByIds.get(alertVar.animalos__Target_Record_Id__c);
                     if(isInsert && relatedAnimal != null) {
-                        List<Location_Volunteer__c> relatedLocationVolunteers = new List<Location_Volunteer__c>();
+                        List<aos_Location_Volunteer__c> relatedLocationVolunteers = new List<aos_Location_Volunteer__c>();
 
                         if(existingLocationVolunteersByLocations.containsKey(relatedAnimal.animalos__Current_Site__c)) {
-                            relatedLocationVolunteers.addAll((List<Location_Volunteer__c>)existingLocationVolunteersByLocations.get(relatedAnimal.animalos__Current_Site__c));
+                            relatedLocationVolunteers.addAll((List<aos_Location_Volunteer__c>)existingLocationVolunteersByLocations.get(relatedAnimal.animalos__Current_Site__c));
                         }
                         if(existingLocationVolunteersByLocations.containsKey(relatedAnimal.animalos__Current_Unit__c)) {
-                            relatedLocationVolunteers.addAll((List<Location_Volunteer__c>)existingLocationVolunteersByLocations.get(relatedAnimal.animalos__Current_Unit__c));
+                            relatedLocationVolunteers.addAll((List<aos_Location_Volunteer__c>)existingLocationVolunteersByLocations.get(relatedAnimal.animalos__Current_Unit__c));
                         }
 
                         if(!relatedLocationVolunteers.isEmpty()) {
-                            for(Location_Volunteer__c relatedLocationVolunteer : relatedLocationVolunteers) {
+                            for(aos_Location_Volunteer__c relatedLocationVolunteer : relatedLocationVolunteers) {
                                 shareRecordsToBeCreated.add(new animalos__Alert__Share(
                                         ParentId = alertVar.Id,
-                                        UserOrGroupId = (usersByContactIds.get(relatedLocationVolunteer.Volunteer__c))?.Id,
+                                        UserOrGroupId = (usersByContactIds.get(relatedLocationVolunteer.aos_Volunteer__c))?.Id,
                                         RowCause = 'Manual',
                                         AccessLevel = 'Edit'
                                 ));

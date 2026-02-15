@@ -21,16 +21,16 @@ public without sharing class EzidebitGetPaymentsScheduledBatch extends vertic_Ab
             this.initData();
             this.syncPayments();
         } catch (Exception e) {
-            insert new Vertic_Async_Process__c(
-                    Processor__c = '' + EzidebitGetPaymentsScheduledBatch.class,
-                    Payload__c = JSON.serializePretty(this.request.getMap()),
-                    Description__c = 'Sync failed. Review details.',
-                    Details__c = e.getMessage(),
-                    Priority__c = 0,
-                    Autorun__c = false,
-                    Status__c = 'Failed',
-                    Recurring_Donation__c = this.request.getString('recordId'),
-                    Group_Key__c = this.request.getString('recordId')
+            insert new aos_Async_Process__c(
+                    aos_Processor__c = '' + EzidebitGetPaymentsScheduledBatch.class,
+                    aos_Payload__c = JSON.serializePretty(this.request.getMap()),
+                    aos_Description__c = 'Sync failed. Review details.',
+                    aos_Details__c = e.getMessage(),
+                    aos_Priority__c = 0,
+                    aos_Autorun__c = false,
+                    aos_Status__c = 'Failed',
+                    aos_Recurring_Donation__c = this.request.getString('recordId'),
+                    aos_Group_Key__c = this.request.getString('recordId')
             );
         }
 

@@ -4,7 +4,7 @@ public class ManageTrapsQAMetaProc extends vertic_MetadataProcessor {
         this.request = request == null ? new vertic_MetadataProcessor.MetadataRequest() : (vertic_MetadataProcessor.MetadataRequest) request;
 
         this.request.fields = new Set<SObjectField>{
-                animalos__Resource__c.Status__c
+                animalos__Resource__c.aos_Status__c
         };
 
         super.process(this.request);
@@ -26,7 +26,7 @@ public class ManageTrapsQAMetaProc extends vertic_MetadataProcessor {
         List<animalos__Resource__c> resources = [
                 SELECT Id, Name
                 FROM animalos__Resource__c
-                WHERE animalos__Type__c = 'Trap' AND Status__c = 'Available'
+                WHERE animalos__Type__c = 'Trap' AND aos_Status__c = 'Available'
         ];
 
         this.response.put('locationOfInterestId', job.animalos__Location_Of_Interest__c);

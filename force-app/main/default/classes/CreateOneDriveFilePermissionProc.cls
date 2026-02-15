@@ -24,10 +24,10 @@ public without sharing class CreateOneDriveFilePermissionProc extends vertic_Abs
     private void doSubmit() {
         String oneDriveFileId = this.request.getString('id');
         String userId = UserInfo.getUserId();
-        OneDrive_File__c oneDriveFile = (OneDrive_File__c) vertic_Utils.arrays.firstOrNull([
+        aos_OneDrive_File__c oneDriveFile = (aos_OneDrive_File__c) vertic_Utils.arrays.firstOrNull([
                 SELECT Id
-                FROM OneDrive_File__c
-                WHERE File_ID__c = :oneDriveFileId
+                FROM aos_OneDrive_File__c
+                WHERE aos_File_ID__c = :oneDriveFileId
         ]);
 
 
@@ -44,10 +44,10 @@ public without sharing class CreateOneDriveFilePermissionProc extends vertic_Abs
             }
         }
 
-        One_Drive_File_Permission__c oneDriveFilePermission = new One_Drive_File_Permission__c(
+        aos_One_Drive_File_Permission__c oneDriveFilePermission = new aos_One_Drive_File_Permission__c(
                 OwnerId = userId,
-                One_Drive_File_Id__c = oneDriveFileId,
-                Available_Profiles_Text__c = availableProfiles
+                aos_One_Drive_File_Id__c = oneDriveFileId,
+                aos_Available_Profiles_Text__c = availableProfiles
         );
 
         insert oneDriveFilePermission;

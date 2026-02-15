@@ -66,7 +66,7 @@
                 <stringValue>Retrying</stringValue>
             </value>
         </filters>
-        <object>npsp_plus__Vertic_Async_Process__c</object>
+        <object>npsp_plus__aos_Async_Process__c</object>
         <recordTriggerType>Create</recordTriggerType>
         <triggerType>RecordBeforeSave</triggerType>
     </start>

@@ -1,13 +1,13 @@
 public class RetrieveAnimalsGetProc extends vertic_AbstractProcessor implements vertic_Structs.IRollbackable {
 
     final Set<String> animalFields = new Set<String>{
-            'Adaptability__c',
+            'aos_Adaptability__c',
             'animalos__Adoption_Profile__c',
-            'Adopter_Experience__c',
-            'Adoption_EOI_Required__c',
+            'aos_Adopter_Experience__c',
+            'aos_Adoption_EOI_Required__c',
             'animalos__Adoption_Fee__c',
-            'Age_Restriction__c',
-            'Age_for_Adoption_Website__c',
+            'aos_Age_Restriction__c',
+            'animalos__Age_for_Adoption_Website__c',
             'animalos__Primary_Breed__r.Id',
             'animalos__Primary_Breed__r.Name',
             'animalos__Class__c',
@@ -17,20 +17,20 @@ public class RetrieveAnimalsGetProc extends vertic_AbstractProcessor implements 
             'animalos__Current_Site__r.Name',
             'animalos__Current_Unit__c',
             'animalos__Current_Unit__r.Name',
-            'Dog_Sociability__c',
-            'Gallery_Updated_Date__c',
-            'Home_Requirements__c',
-            'Indoors_Outdoors_Preference__c',
+            'aos_Dog_Sociability__c',
+            'aos_Gallery_Updated_Date__c',
+            'aos_Home_Requirements__c',
+            'aos_Indoors_Outdoors_Preference__c',
             'LastModifiedDate',
-            'Lifestyle__c',
+            'aos_Lifestyle__c',
             'animalos__Microchip_Number__c',
             'Name',
-            'Other_Animals__c',
+            'aos_Other_Animals__c',
             'animalos__Primary_Colour__c',
             'animalos__Secondary_Breed__r.Id',
             'animalos__Secondary_Breed__r.Name',
             'animalos__Secondary_Colour__c',
-            'Special_Needs_Animal__c',
+            'aos_Special_Needs_Animal__c',
             'animalos__Status_Changed_Date__c',
             'animalos__Animal_Name__c',
             'animalos__Status__c',
@@ -39,31 +39,31 @@ public class RetrieveAnimalsGetProc extends vertic_AbstractProcessor implements 
             'animalos__Neutered_Spayed__c',
             'animalos__Size__c',
             'animalos__Type__c',
-            'Senior_Pet__c',
-            'Longterm_Resident__c',
+            'aos_Senior_Pet__c',
+            'aos_Longterm_Resident__c',
             'animalos__Days_at_Site__c',
             'animalos__Days_in_Status__c',
-            'Fencing_Requirements__c',
-            'General_Requirements__c',
-            'Activity_level_playfulness__c',
-            'Cat_Home_Requirements__c',
-            'About_Me_Adoptapet__c'
+            'aos_Fencing_Requirements__c',
+            'aos_General_Requirements__c',
+            'aos_Activity_level_playfulness__c',
+            'aos_Cat_Home_Requirements__c',
+            'aos_About_Me_Adoptapet__c'
     };
 
     final Set<String> oneDriveFileFields = new Set<String>{
             'Id',
             'Name',
-            'Is_Primary__c',
-            'Is_Deleted__c',
-            'Folder_Name__c',
-            'File_Link__c',
-            'File_ID__c',
-            'Web_URL__c'
+            'aos_Is_Primary__c',
+            'aos_Is_Deleted__c',
+            'aos_Folder_Name__c',
+            'aos_File_Link__c',
+            'aos_File_ID__c',
+            'aos_Web_URL__c'
     };
 
     final Set<String> supportRequestFields = new Set<String>{
             'Id',
-            'Request_Status__c'
+            'aos_Request_Status__c'
     };
 
     public override vertic_Response process(vertic_Request request) {
@@ -147,17 +147,17 @@ public class RetrieveAnimalsGetProc extends vertic_AbstractProcessor implements 
         oneDriveFilesCondition.add('Folder_Name__c LIKE \'%PHOTO%\'');
         oneDriveFilesCondition.add('Is_Deleted__c = FALSE');
 
-        queryFactory.subselectQuery(OneDrive_File__c.SObjectType)
+        queryFactory.subselectQuery(aos_OneDrive_File__c.SObjectType)
                 .selectFields(this.oneDriveFileFields).setCondition(String.join(oneDriveFilesCondition, ' AND '));
 
         List<String> supportRequestConditions = new List<String>{
                 'RecordType.DeveloperName = \'Foster_Care_Request\''
         };
 
-        queryFactory.subselectQuery(Support_Request__c.SObjectType)
+        queryFactory.subselectQuery(aos_Support_Request__c.SObjectType)
                 .selectFields(this.supportRequestFields)
                 .setCondition(String.join(supportRequestConditions, ' AND '))
-                .setOrdering(Support_Request__c.CreatedDate, fflib_QueryFactory.SortOrder.DESCENDING, true)
+                .setOrdering(aos_Support_Request__c.CreatedDate, fflib_QueryFactory.SortOrder.DESCENDING, true)
                 .setLimit(1);
 
         List<animalos__Animal__c> animals = Database.query(queryFactory.toSOQL());

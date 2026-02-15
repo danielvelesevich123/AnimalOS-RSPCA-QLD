@@ -37,20 +37,20 @@ public inherited sharing class PersonUpsertProc extends vertic_AbstractProcessor
         ShelterBuddySyncPersonProc.IS_SYNC_ENABLED = false; // Turn off Person Sync in the Contact TDTM.
         upsert personVar;
 
-        insert new Vertic_Async_Process__c(
-                Processor__c = '' + PersonUpsertProc.class,
-                Payload__c = JSON.serializePretty(new Map<String, Object>{
+        insert new aos_Async_Process__c(
+                aos_Processor__c = '' + PersonUpsertProc.class,
+                aos_Payload__c = JSON.serializePretty(new Map<String, Object>{
                         'personJSON' => personJSON,
                         'personDTO' => dto.getMap()
                 }),
-                Details__c = JSON.serializePretty(personVar),
-                Autorun__c = false,
-                Status__c = 'Completed',
-                Description__c = 'Person Webhook',
-                Group_Key__c = personVar.Id
+                aos_Details__c = JSON.serializePretty(personVar),
+                aos_Autorun__c = false,
+                aos_Status__c = 'Completed',
+                aos_Description__c = 'Person Webhook',
+                aos_Group_Key__c = personVar.Id
         );
 
-//        insert new Vertic_Async_Process__c(
+//        insert new aos_Async_Process__c(
 //            Processor__c = '' + ShelterBuddyDispatchPersonProc.class,
 //            Payload__c = JSON.serialize(new Map<String, String>{
 //                'recordId' => personVar.Id

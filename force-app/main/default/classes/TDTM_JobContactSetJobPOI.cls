@@ -16,7 +16,7 @@ global class TDTM_JobContactSetJobPOI extends animalos.TDTM.Handler implements a
             if ('Person Of Interest'.equalsIgnoreCase(jobContact.animalos__Contact_Type__c)) {
                 jobsByIds.put(jobContact.animalos__Job__c, new animalos__Job__c(
                         Id = jobContact.animalos__Job__c,
-                        Person_of_Interest__c = jobContact.animalos__Contact__c
+                        aos_Person_of_Interest__c = jobContact.animalos__Contact__c
                 ));
             }
         }

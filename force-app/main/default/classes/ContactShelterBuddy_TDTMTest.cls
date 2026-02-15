@@ -41,6 +41,6 @@ public without sharing class ContactShelterBuddy_TDTMTest {
         insert contactList;
         Test.stopTest();
 
-        System.assertEquals(contactList.size(), [SELECT COUNT() FROM Vertic_Async_Process__c WHERE Processor__c = 'ShelterBuddySyncPersonProc' AND Status__c = 'Pending']);
+        System.assertEquals(contactList.size(), [SELECT COUNT() FROM aos_Async_Process__c WHERE aos_Processor__c = 'ShelterBuddySyncPersonProc' AND aos_Status__c = 'Pending']);
     }
 }

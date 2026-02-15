@@ -40,7 +40,7 @@ public without sharing class SendEmailAsyncProcessInvocable {
 //                .setSaveAsActivity(request.saveAsActivity)
 //                .setSubject(request.subject);
 
-//        Vertic_Async_Process__c asyncProc = emailAsyncProcessVar.toAsyncProcess();
+//        aos_Async_Process__c asyncProc = emailAsyncProcessVar.toAsyncProcess();
 //
 //        asyncProc.Group_Key__c = request.recordId;
 //

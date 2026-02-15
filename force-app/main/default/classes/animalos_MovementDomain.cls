@@ -33,7 +33,7 @@ public without sharing class animalos_MovementDomain extends fflib_SObjectDomain
         Set<Id> locationIds = vertic_Utils.sObjects.getIdFieldValues(records, animalos__Movement__c.animalos__Location__c);
 
         Map<String, animalos__Location__c> locationsById = new Map<String, animalos__Location__c>([
-            SELECT Id, Name, Sync_All_Animals__c
+            SELECT Id, Name, aos_Sync_All_Animals__c
             FROM animalos__Location__c
             WHERE Id IN :locationIds
                 AND RecordType.DeveloperName != 'Foster'

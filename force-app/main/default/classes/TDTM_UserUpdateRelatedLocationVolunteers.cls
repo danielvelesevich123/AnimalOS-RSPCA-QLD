@@ -14,14 +14,14 @@ global without sharing class TDTM_UserUpdateRelatedLocationVolunteers extends an
 
         if (!contactIds.isEmpty()) {
             Map<String, SObject> usersByContactIds = vertic_Utils.sObjects.getSObjectsByAnyFieldMap(records, Schema.User.ContactId);
-            List<Location_Volunteer__c> locationVolunteers = [
-                    SELECT Id, Volunteer__c, User__c
-                    FROM Location_Volunteer__c
-                    WHERE Volunteer__c IN :contactIds
+            List<aos_Location_Volunteer__c> locationVolunteers = [
+                    SELECT Id, aos_Volunteer__c, aos_User__c
+                    FROM aos_Location_Volunteer__c
+                    WHERE aos_Volunteer__c IN :contactIds
             ];
 
-            for (Location_Volunteer__c locationVolunteer : locationVolunteers) {
-                locationVolunteer.User__c = (Id) usersByContactIds.get(locationVolunteer.Volunteer__c)?.get('Id');
+            for (aos_Location_Volunteer__c locationVolunteer : locationVolunteers) {
+                locationVolunteer.aos_User__c = (Id) usersByContactIds.get(locationVolunteer.aos_Volunteer__c)?.get('Id');
             }
 
             update locationVolunteers;

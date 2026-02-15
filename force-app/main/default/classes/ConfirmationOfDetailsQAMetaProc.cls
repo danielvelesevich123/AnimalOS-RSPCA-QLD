@@ -40,7 +40,7 @@ public class ConfirmationOfDetailsQAMetaProc extends vertic_MetadataProcessor {
                 SELECT Id, animalos__Microchip_Number__c, animalos__Animal_Name__c,
                         animalos__Gender__c, animalos__Primary_Breed__r.Name,
                         animalos__Type__c, animalos__Primary_Colour__c,
-                        animalos__Date_of_Birth__c, Microchip_Implant_Date__c
+                        animalos__Date_of_Birth__c, aos_Microchip_Implant_Date__c
                 FROM animalos__Animal__c
                 WHERE Id IN (
                         SELECT animalos__Animal__c

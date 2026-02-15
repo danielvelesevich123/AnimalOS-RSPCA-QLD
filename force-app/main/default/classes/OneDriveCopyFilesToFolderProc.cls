@@ -16,7 +16,7 @@ public class OneDriveCopyFilesToFolderProc extends vertic_AbstractProcessor {
         'Id'
     };
 
-    private List<OneDrive_File__c> files;
+    private List<aos_OneDrive_File__c> files;
     private Boolean copyAllFiles = false;
     private Id sourceRecordId;
     private String sourceLookupFieldName;
@@ -28,7 +28,7 @@ public class OneDriveCopyFilesToFolderProc extends vertic_AbstractProcessor {
     private String sourceFolderType;
 
     private void doSubmit() {
-        this.files = this.request.getMapper().mapToListSObjects('files', OneDrive_File__c.SObjectType);
+        this.files = this.request.getMapper().mapToListSObjects('files', aos_OneDrive_File__c.SObjectType);
         this.copyAllFiles = this.request.getBoolean('copyAllFiles') == null ? false : this.request.getBoolean('copyAllFiles');
         this.sourceRecordId = this.request.getRequiredString('fromRecordId');
         this.sourceLookupFieldName = this.request.getString('fromLookupFieldName');
@@ -38,8 +38,8 @@ public class OneDriveCopyFilesToFolderProc extends vertic_AbstractProcessor {
         this.targetFolderType = this.request.getString('targetFolderType');
         this.sourceFolderType = this.request.getString('sourceFolderType');
 
-        for (OnedriveSetting__mdt onedriveSetting : OnedriveSetting__mdt.getAll().values()) {
-            this.driveNames.put(onedriveSetting.RecordApiName__c, onedriveSetting.DriveName__c);
+        for (aos_OnedriveSetting__mdt onedriveSetting : aos_OnedriveSetting__mdt.getAll().values()) {
+            this.driveNames.put(onedriveSetting.aos_RecordApiName__c, onedriveSetting.aos_DriveName__c);
         }
 
         fflib_QueryFactory fromQueryFactory = new fflib_QueryFactory(sourceRecordId.getSobjectType());
@@ -73,18 +73,18 @@ public class OneDriveCopyFilesToFolderProc extends vertic_AbstractProcessor {
         }
 
         if (this.copyAllFiles) {
-            List<OneDrive_File__c> fromRecordOneDriveFiles;
+            List<aos_OneDrive_File__c> fromRecordOneDriveFiles;
             if (String.isNotBlank(this.targetLookupFieldName) && String.isNotBlank(this.sourceLookupFieldName)) {
                 this.oneDriveFilesQueryFields.addAll(new List<String>{
                         sourceLookupFieldName, targetLookupFieldName
                 });
-                fflib_QueryFactory fromRecordFilesQuery = new fflib_QueryFactory(OneDrive_File__c.SObjectType);
+                fflib_QueryFactory fromRecordFilesQuery = new fflib_QueryFactory(aos_OneDrive_File__c.SObjectType);
                 fromRecordFilesQuery.selectFields(this.oneDriveFilesQueryFields);
                 fromRecordFilesQuery.setCondition(this.sourceLookupFieldName + ' = :sourceRecordId');
                 fromRecordOneDriveFiles = Database.query(fromRecordFilesQuery.toSOQL());
             }
-            List<Object> fromRecordFolderFiles = OneDriveUtils.getItems(fromDriveId, String.valueOf(fromRecord.get('One_Drive_Folder_Name__c')));
-            List<OneDrive_File__c> copiedOneDriveFiles = new List<OneDrive_File__c>();
+            List<Object> fromRecordFolderFiles = OneDriveUtils.getItems(fromDriveId, String.valueOf(fromRecord.get('aos_One_Drive_Folder_Name__c')));
+            List<aos_OneDrive_File__c> copiedOneDriveFiles = new List<aos_OneDrive_File__c>();
 
 
             if (fromRecordFolderFiles != null) {
@@ -95,15 +95,15 @@ public class OneDriveCopyFilesToFolderProc extends vertic_AbstractProcessor {
                 }
 
                 if (String.isNotBlank(this.targetLookupFieldName) && String.isNotBlank(this.sourceLookupFieldName)) {
-                    for (OneDrive_File__c oneDriveFile : fromRecordOneDriveFiles) {
-                        OneDrive_File__c oneDriveFileCopy = oneDriveFile.clone();
+                    for (aos_OneDrive_File__c oneDriveFile : fromRecordOneDriveFiles) {
+                        aos_OneDrive_File__c oneDriveFileCopy = oneDriveFile.clone();
                         oneDriveFileCopy.put(this.sourceLookupFieldName, null);
                         oneDriveFileCopy.put(this.targetLookupFieldName, targetRecordId);
 
                         List<String> nameParts = oneDriveFile.Name.split('\\.');
                         oneDriveFileCopy.Name = oneDriveFile.Name.replace('.' + nameParts[nameParts.size() - 1], ' (Copy).' + nameParts[nameParts.size() - 1]);
-                        oneDriveFileCopy.Is_Public__c = 'Adoption Photos'.equalsIgnoreCase(this.targetFolderType);
-                        oneDriveFile.Folder_Name__c = folderName;
+                        oneDriveFileCopy.aos_Is_Public__c = 'Adoption Photos'.equalsIgnoreCase(this.targetFolderType);
+                        oneDriveFile.aos_Folder_Name__c = folderName;
                     }
 
                     insert copiedOneDriveFiles;
@@ -111,12 +111,12 @@ public class OneDriveCopyFilesToFolderProc extends vertic_AbstractProcessor {
             }
         } else {
             if (!files.isEmpty()) {
-                OneDrive_File__c oneDriveFileCopy = new OneDrive_File__c();
-                List<OneDrive_File__c> copiedOneDriveFiles = new List<OneDrive_File__c>();
+                aos_OneDrive_File__c oneDriveFileCopy = new aos_OneDrive_File__c();
+                List<aos_OneDrive_File__c> copiedOneDriveFiles = new List<aos_OneDrive_File__c>();
 
-                for (OneDrive_File__c oneDriveFile : files) {
+                for (aos_OneDrive_File__c oneDriveFile : files) {
                     if (String.isNotBlank(this.fileOperation) && 'copy'.equals(this.fileOperation)) {
-                        OneDriveUtils.copyFile(fromDriveId, oneDriveFile.File_ID__c, toDriveId, toFolderId, oneDriveFile.Name);
+                        OneDriveUtils.copyFile(fromDriveId, oneDriveFile.aos_File_ID__c, toDriveId, toFolderId, oneDriveFile.Name);
 
                         oneDriveFileCopy = oneDriveFile.clone();
 
@@ -127,12 +127,12 @@ public class OneDriveCopyFilesToFolderProc extends vertic_AbstractProcessor {
 
                         List<String> nameParts = oneDriveFile.Name.split('\\.');
                         oneDriveFileCopy.Name = oneDriveFile.Name.replace('.' + nameParts[nameParts.size() - 1], ' (Copy).' + nameParts[nameParts.size() - 1]);
-                        oneDriveFileCopy.Is_Public__c = 'Adoption Photos'.equalsIgnoreCase(this.targetFolderType);
-                        oneDriveFileCopy.Folder_Name__c = folderName;
+                        oneDriveFileCopy.aos_Is_Public__c = 'Adoption Photos'.equalsIgnoreCase(this.targetFolderType);
+                        oneDriveFileCopy.aos_Folder_Name__c = folderName;
 
                         copiedOneDriveFiles.add(oneDriveFileCopy);
                     } else if (String.isNotBlank(this.fileOperation) && 'move'.equals(this.fileOperation) && this.targetLookupFieldName.equals(this.sourceLookupFieldName)) {
-                        OneDriveUtils.moveFileToFolder(toDriveId, oneDriveFile.File_ID__c, toFolderId, oneDriveFile.Name);
+                        OneDriveUtils.moveFileToFolder(toDriveId, oneDriveFile.aos_File_ID__c, toFolderId, oneDriveFile.Name);
                         if (String.isNotBlank(this.sourceLookupFieldName)) {
                             oneDriveFile.put(this.sourceLookupFieldName, null);
                         }
@@ -141,20 +141,20 @@ public class OneDriveCopyFilesToFolderProc extends vertic_AbstractProcessor {
                             oneDriveFile.put(targetLookupFieldName, targetRecordId);
                         }
 
-                        oneDriveFile.Folder_Name__c = folderName;
+                        oneDriveFile.aos_Folder_Name__c = folderName;
                     }
                 }
 
                 if (String.isNotBlank(this.fileOperation) && 'copy'.equals(this.fileOperation) && !copiedOneDriveFiles.isEmpty()) {
                     List<Object> fromRecordFolderFiles = OneDriveUtils.getItems(toDriveId, folderName);
 
-                    for (OneDrive_File__c oneDriveFileVar : copiedOneDriveFiles) {
+                    for (aos_OneDrive_File__c oneDriveFileVar : copiedOneDriveFiles) {
                         for (Object fileMap : fromRecordFolderFiles) {
                             String fileId = String.valueOf(((Map<String, Object>) fileMap).get('id'));
                             String fileName = String.valueOf(((Map<String, Object>) fileMap).get('name'));
 
                             if (fileName.contains(oneDriveFileVar.Name)) {
-                                oneDriveFileVar.File_ID__c = fileId;
+                                oneDriveFileVar.aos_File_ID__c = fileId;
                             }
                         }
                     }

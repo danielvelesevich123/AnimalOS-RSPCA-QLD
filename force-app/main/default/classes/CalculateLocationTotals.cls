@@ -15,47 +15,47 @@ public without sharing class CalculateLocationTotals extends vertic_LookupRollup
             animalos__Location__c locationVar = (animalos__Location__c) sObj;
             animalos__Location__c locationClone = locationVar.clone();
 
-            locationVar.Foster_Animal_Count_Total__c = 0;
-            locationVar.Foster_Animal_Count_Last_5_Years__c = 0;
-            locationVar.Foster_Animal_Count_Last_Month__c = 0;
-            locationVar.Foster_Animal_Count_Last_Year__c = 0;
-            locationVar.Foster_Animal_Count_This_Year__c = 0;
-            locationVar.Foster_Animal_Count_This_Month__c = 0;
-            locationVar.Foster_Animal_Special_Needs_Count__c = 0;
-            locationVar.Foster_Days_Total__c = 0;
-            locationVar.Foster_Days_Last_5_Years__c = 0;
-            locationVar.Foster_Days_Last_Year__c = 0;
-            locationVar.Foster_Days_Last_Month__c = 0;
-            locationVar.Foster_Days_This_Year__c = 0;
-            locationVar.Foster_Days_This_Month__c = 0;
-            locationVar.Foster_Days_Special_Needs__c = 0;
+            locationVar.aos_Foster_Animal_Count_Total__c = 0;
+            locationVar.aos_Foster_Animal_Count_Last_5_Years__c = 0;
+            locationVar.aos_Foster_Animal_Count_Last_Month__c = 0;
+            locationVar.aos_Foster_Animal_Count_Last_Year__c = 0;
+            locationVar.aos_Foster_Animal_Count_This_Year__c = 0;
+            locationVar.aos_Foster_Animal_Count_This_Month__c = 0;
+            locationVar.aos_Foster_Animal_Special_Needs_Count__c = 0;
+            locationVar.aos_Foster_Days_Total__c = 0;
+            locationVar.aos_Foster_Days_Last_5_Years__c = 0;
+            locationVar.aos_Foster_Days_Last_Year__c = 0;
+            locationVar.aos_Foster_Days_Last_Month__c = 0;
+            locationVar.aos_Foster_Days_This_Year__c = 0;
+            locationVar.aos_Foster_Days_This_Month__c = 0;
+            locationVar.aos_Foster_Days_Special_Needs__c = 0;
 
             if (movementsByLocationId.get(locationVar.Id) != null) {
 
                 List<animalos__Movement__c> locationMovements = (List<animalos__Movement__c>) movementsByLocationId.get(locationVar.Id);
 
-                locationVar.Foster_Animal_Count_Total__c = locationMovements.size();
+                locationVar.aos_Foster_Animal_Count_Total__c = locationMovements.size();
 
                 for (animalos__Movement__c movementVar : locationMovements) {
-                    locationVar.Foster_Days_Total__c += movementVar.animalos__Total_Time_Days__c;
+                    locationVar.aos_Foster_Days_Total__c += movementVar.animalos__Total_Time_Days__c;
                     if (movementVar.animalos__Start_Date_Time__c >= Date.today().addYears(-5) || movementVar.animalos__End_Date_Time__c >= Date.today().addYears(-5)) {
-                        locationVar.Foster_Animal_Count_Last_5_Years__c++;
-                        locationVar.Foster_Days_Last_5_Years__c += movementVar.animalos__Total_Time_Days__c;
+                        locationVar.aos_Foster_Animal_Count_Last_5_Years__c++;
+                        locationVar.aos_Foster_Days_Last_5_Years__c += movementVar.animalos__Total_Time_Days__c;
                     }
 
                     if (movementVar.animalos__Start_Date_Time__c?.year() == Date.today().year() - 1 || movementVar.animalos__End_Date_Time__c?.year() == Date.today().year() - 1) {
-                        locationVar.Foster_Animal_Count_Last_Year__c++;
-                        locationVar.Foster_Days_Last_Year__c += movementVar.animalos__Total_Time_Days__c;
+                        locationVar.aos_Foster_Animal_Count_Last_Year__c++;
+                        locationVar.aos_Foster_Days_Last_Year__c += movementVar.animalos__Total_Time_Days__c;
                     }
 
                     if ((movementVar.animalos__Start_Date_Time__c?.year() == Date.today().year())
                             || movementVar.animalos__End_Date_Time__c?.year() == Date.today().year()) {
-                        locationVar.Foster_Animal_Count_This_Year__c++;
-                        locationVar.Foster_Days_This_Year__c += movementVar.animalos__Total_Time_Days__c;
+                        locationVar.aos_Foster_Animal_Count_This_Year__c++;
+                        locationVar.aos_Foster_Days_This_Year__c += movementVar.animalos__Total_Time_Days__c;
                         if (movementVar.animalos__Start_Date_Time__c?.month() == Date.today().month()
                                 || movementVar.animalos__End_Date_Time__c?.month() == Date.today().month()) {
-                            locationVar.Foster_Animal_Count_This_Month__c++;
-                            locationVar.Foster_Days_This_Month__c += movementVar.animalos__Total_Time_Days__c;
+                            locationVar.aos_Foster_Animal_Count_This_Month__c++;
+                            locationVar.aos_Foster_Days_This_Month__c += movementVar.animalos__Total_Time_Days__c;
                         }
                     }
 
@@ -67,14 +67,14 @@ public without sharing class CalculateLocationTotals extends vertic_LookupRollup
                             && movementVar.animalos__Start_Date_Time__c?.month() == Date.today().addMonths(-1).month())
                             || (movementVar.animalos__End_Date_Time__c?.year() == Date.today().year() - 1
                             && movementVar.animalos__End_Date_Time__c?.month() == Date.today().addMonths(-1).month())) {
-                        locationVar.Foster_Animal_Count_Last_Month__c++;
-                        locationVar.Foster_Days_Last_Month__c += movementVar.animalos__Total_Time_Days__c;
+                        locationVar.aos_Foster_Animal_Count_Last_Month__c++;
+                        locationVar.aos_Foster_Days_Last_Month__c += movementVar.animalos__Total_Time_Days__c;
                     }
                 }
             }
             if (vertic_Utils.sObjects.isSomeFieldChanged(locationVar, locationClone, new List<String>{
-                    'Foster_Animal_Count_Total__c', 'Foster_Animal_Count_Last_5_Years__c', 'Foster_Animal_Count_Last_Month__c', 'Foster_Animal_Count_Last_Year__c',
-                    'Foster_Animal_Count_This_Year__c', 'Foster_Animal_Count_This_Month__c', 'Foster_Animal_Special_Needs_Count__c'
+                    'aos_Foster_Animal_Count_Total__c', 'aos_Foster_Animal_Count_Last_5_Years__c', 'aos_Foster_Animal_Count_Last_Month__c', 'aos_Foster_Animal_Count_Last_Year__c',
+                    'aos_Foster_Animal_Count_This_Year__c', 'aos_Foster_Animal_Count_This_Month__c', 'aos_Foster_Animal_Special_Needs_Count__c'
             })) {
                 locationsForUpdate.add(locationVar);
             }
@@ -85,9 +85,9 @@ public without sharing class CalculateLocationTotals extends vertic_LookupRollup
 
     public override Database.QueryLocator getLocator() {
         return Database.getQueryLocator(
-                'SELECT Id, Foster_Animal_Count_Total__c, Foster_Animal_Count_Last_5_Years__c, Foster_Animal_Count_Last_Month__c, Foster_Animal_Count_Last_Year__c, Foster_Animal_Count_This_Year__c, ' +
-                        'Foster_Animal_Count_This_Month__c, Foster_Animal_Special_Needs_Count__c, Foster_Days_Total__c, Foster_Days_Last_5_Years__c, Foster_Days_Last_Year__c, Foster_Days_Last_Month__c, Foster_Days_This_Year__c, ' +
-                        'Foster_Days_This_Month__c, Foster_Days_Special_Needs__c ' +
+                'SELECT Id, aos_Foster_Animal_Count_Total__c, aos_Foster_Animal_Count_Last_5_Years__c, aos_Foster_Animal_Count_Last_Month__c, aos_Foster_Animal_Count_Last_Year__c, aos_Foster_Animal_Count_This_Year__c, ' +
+                        'aos_Foster_Animal_Count_This_Month__c, aos_Foster_Animal_Special_Needs_Count__c, aos_Foster_Days_Total__c, aos_Foster_Days_Last_5_Years__c, aos_Foster_Days_Last_Year__c, aos_Foster_Days_Last_Month__c, aos_Foster_Days_This_Year__c, ' +
+                        'aos_Foster_Days_This_Month__c, aos_Foster_Days_Special_Needs__c ' +
                         'FROM animalos__Location__c WHERE RecordType.DeveloperName = \'Foster\''
         );
     }

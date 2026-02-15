@@ -22,23 +22,23 @@ public without sharing class OneDriveSetProfileImage extends vertic_AbstractProc
         String fileId = this.request.getString('fileId');
 
         SObjectType sObjectTypeName = recordId.getSobjectType();
-        String sObjectTypeNameString = recordId.getSobjectType() == animalos__Animal__c.SObjectType ? 'animalos_Animal__c' : OneDriveCreateFileSObjectProc.getLookupFieldName(sObjectTypeName);
+        String sObjectTypeNameString = recordId.getSobjectType() == animalos__Animal__c.SObjectType ? 'aos_Animal__c' : OneDriveCreateFileSObjectProc.getLookupFieldName(sObjectTypeName);
 
-        String oneDriveFilesQuery = 'SELECT Id, Is_Primary__c, Profile_Image__c, File_Link__c, Name, File_ID__c FROM OneDrive_File__c WHERE ' +
+        String oneDriveFilesQuery = 'SELECT Id, Is_Primary__c, Profile_Image__c, File_Link__c, Name, aos_File_ID__c FROM aos_OneDrive_File__c WHERE ' +
                 sObjectTypeNameString.remove('__c') + '__c = ' + '\'' + recordId + '\'';
 
-        List<OneDrive_File__c> oneDriveFiles = Database.query(oneDriveFilesQuery);
-        List<OneDrive_File__c> oneDriveFilesForUpdate = new List<OneDrive_File__c>();
+        List<aos_OneDrive_File__c> oneDriveFiles = Database.query(oneDriveFilesQuery);
+        List<aos_OneDrive_File__c> oneDriveFilesForUpdate = new List<aos_OneDrive_File__c>();
 
 
-        for (OneDrive_File__c oneDriveFile : oneDriveFiles) {
-            OneDrive_File__c oneDriveFileClone = oneDriveFile.clone();
+        for (aos_OneDrive_File__c oneDriveFile : oneDriveFiles) {
+            aos_OneDrive_File__c oneDriveFileClone = oneDriveFile.clone();
 
-            if (oneDriveFile.File_ID__c == fileId) {
-                oneDriveFile.Profile_Image__c = !oneDriveFile.Profile_Image__c == true;
+            if (oneDriveFile.aos_File_ID__c == fileId) {
+                oneDriveFile.aos_Profile_Image__c = !oneDriveFile.aos_Profile_Image__c == true;
                 this.response.put('primaryFile', oneDriveFile);
             } else {
-                oneDriveFile.Profile_Image__c = false;
+                oneDriveFile.aos_Profile_Image__c = false;
             }
 
             if (vertic_Utils.sObjects.isSomeFieldChanged(oneDriveFile, oneDriveFileClone, new List<String>{

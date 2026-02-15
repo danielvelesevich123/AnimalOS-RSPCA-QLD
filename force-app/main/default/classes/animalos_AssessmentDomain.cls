@@ -56,7 +56,7 @@ public without sharing class animalos_AssessmentDomain extends fflib_SObjectDoma
 
     private vertic_UnitOfWork uow = new vertic_UnitOfWork(new List<SObjectType>{
             animalos__Assessment__c.SObjectType,
-            Assessment_Score__c.SObjectType,
+            aos_Assessment_Score__c.SObjectType,
             animalos__Animal_Action__c.SObjectType
     });
 
@@ -105,10 +105,10 @@ public without sharing class animalos_AssessmentDomain extends fflib_SObjectDoma
         ], animalos__Setting__c.Name);
 
         Map<String, Object> assessmentScoresByAssessmentId = vertic_Utils.sObjects.getSObjectsListByAnyFieldMap([
-                SELECT Id, animalos_Assessment__c, Score_Category__c
-                FROM Assessment_Score__c
-                WHERE animalos_Assessment__c IN :records
-        ], Assessment_Score__c.animalos_Assessment__c);
+                SELECT Id, aos_Assessment__c, aos_Score_Category__c
+                FROM aos_Assessment_Score__c
+                WHERE aos_Assessment__c IN :records
+        ], aos_Assessment_Score__c.aos_Assessment__c);
 
         Map<String, SObjectField> sObjectFieldMap = animalos__Assessment__c.SObjectType.getDescribe().fields.getMap();
 
@@ -131,16 +131,16 @@ public without sharing class animalos_AssessmentDomain extends fflib_SObjectDoma
                     assessment = assessment.clone(true, true);
                 }
 
-                List<Assessment_Score__c> assessmentScores = (List<Assessment_Score__c>) assessmentScoresByAssessmentId.get(assessment.Id);
-                Map<String, Assessment_Score__c> assessmentScoreByAssessmentIdAndScoreCategory = new Map<String, Assessment_Score__c>();
+                List<aos_Assessment_Score__c> assessmentScores = (List<aos_Assessment_Score__c>) assessmentScoresByAssessmentId.get(assessment.Id);
+                Map<String, aos_Assessment_Score__c> assessmentScoreByAssessmentIdAndScoreCategory = new Map<String, aos_Assessment_Score__c>();
 
                 if (assessmentScores != null) {
-                    for (Assessment_Score__c assessmentScore : assessmentScores) {
-                        assessmentScoreByAssessmentIdAndScoreCategory.put(assessmentScore.animalos_Assessment__c + '' + assessmentScore.Score_Category__c, assessmentScore);
+                    for (aos_Assessment_Score__c assessmentScore : assessmentScores) {
+                        assessmentScoreByAssessmentIdAndScoreCategory.put(assessmentScore.aos_Assessment__c + '' + assessmentScore.aos_Score_Category__c, assessmentScore);
                     }
                 }
 
-                assessment.Flags__c = '';
+                assessment.aos_Flags__c = '';
 
                 Decimal totalScore = 0;
 
@@ -172,7 +172,7 @@ public without sharing class animalos_AssessmentDomain extends fflib_SObjectDoma
                     }
 
                     if (!flags.isEmpty()) {
-                        assessment.Flags__c = assessment.Flags__c + String.join(new List<String> (flags), ';') + ';';
+                        assessment.aos_Flags__c = assessment.aos_Flags__c + String.join(new List<String> (flags), ';') + ';';
                     }
 
                     assessment.put(scoreField, score);
@@ -180,16 +180,16 @@ public without sharing class animalos_AssessmentDomain extends fflib_SObjectDoma
                     DescribeFieldResult fieldDescribe = sObjectFieldMap.get(assessmentField).getDescribe();
                     String categoryName = fieldDescribe.getLabel();
 
-                    Assessment_Score__c assessmentScore = assessmentScoreByAssessmentIdAndScoreCategory.get(assessment.Id + '' + categoryName) ?? new Assessment_Score__c();
-                    assessmentScore.Score__c = score;
+                    aos_Assessment_Score__c assessmentScore = assessmentScoreByAssessmentIdAndScoreCategory.get(assessment.Id + '' + categoryName) ?? new aos_Assessment_Score__c();
+                    assessmentScore.aos_Score__c = score;
                     totalScore += score;
 
                     if (assessmentScore.Id == null) {
                         assessmentScore.Name = categoryName;
-                        assessmentScore.Score_Category__c = categoryName;
+                        assessmentScore.aos_Score_Category__c = categoryName;
                     }
                     this.uow.registerUpsert(assessmentScore);
-                    this.uow.registerRelationship(assessmentScore, Assessment_Score__c.animalos_Assessment__c, assessment);
+                    this.uow.registerRelationship(assessmentScore, aos_Assessment_Score__c.aos_Assessment__c, assessment);
                 }
 
                 assessment.animalos__Total_Score__c = totalScore;
@@ -255,7 +255,7 @@ public without sharing class animalos_AssessmentDomain extends fflib_SObjectDoma
         for (animalos__Assessment__c assessment : (List<animalos__Assessment__c>) records) {
             animalos__Animal__c animal = (animalos__Animal__c) animalsById.get(assessment.animalos__Animal__c);
 
-            assessment.Site__c = animal?.animalos__Current_Site__c;
+            assessment.aos_Site__c = animal?.animalos__Current_Site__c;
         }
     }
 
@@ -267,7 +267,7 @@ public without sharing class animalos_AssessmentDomain extends fflib_SObjectDoma
         );
 
         Map<Id, sObject> animalsByIds = new Map<Id, SObject>([
-                SELECT Id, Most_Recent_Behaviour_Observation__c, Most_Recent_Behaviour_Observation__r.animalos__Assessment_Date_Time__c
+                SELECT Id, aos_Most_Recent_Behaviour_Observation__c, aos_Most_Recent_Behaviour_Observation__r.animalos__Assessment_Date_Time__c
                 FROM animalos__Animal__c
                 WHERE Id IN :animalIds
         ]);
@@ -277,10 +277,10 @@ public without sharing class animalos_AssessmentDomain extends fflib_SObjectDoma
                 animalos__Animal__c animal = (animalos__Animal__c) animalsByIds.get(assessment.animalos__Animal__c);
 
                 if (animal != null) {
-                    animal.Most_Recent_Behaviour_Observation__c = animal.Most_Recent_Behaviour_Observation__c == null ?
+                    animal.aos_Most_Recent_Behaviour_Observation__c = animal.aos_Most_Recent_Behaviour_Observation__c == null ?
                             assessment.Id :
-                            animal.Most_Recent_Behaviour_Observation__r.animalos__Assessment_Date_Time__c > assessment.animalos__Assessment_Date_Time__c ?
-                                    animal.Most_Recent_Behaviour_Observation__c :
+                            animal.aos_Most_Recent_Behaviour_Observation__r.animalos__Assessment_Date_Time__c > assessment.animalos__Assessment_Date_Time__c ?
+                                    animal.aos_Most_Recent_Behaviour_Observation__c :
                                     assessment.Id;
 
                     animalsByIds.put(animal.Id, animal);
@@ -309,7 +309,7 @@ public without sharing class animalos_AssessmentDomain extends fflib_SObjectDoma
         Map<String, Object> lastBehaviourAssessmentByAnimal = new Map<String, Object>();
 
         for (animalos__Assessment__c assessment : [
-                SELECT Id, Flags__c, animalos__Animal__c, RecordType.DeveloperName
+                SELECT Id, aos_Flags__c, animalos__Animal__c, RecordType.DeveloperName
                 FROM animalos__Assessment__c
                 WHERE animalos__Animal__c IN :animalIds AND animalos__Assessment_Date_Time__c != NULL AND
                 RecordType.DeveloperName IN ('Behaviour_Observation', 'Behaviour_Observation_Feline', 'Behaviour_Assessment')
@@ -365,8 +365,8 @@ public without sharing class animalos_AssessmentDomain extends fflib_SObjectDoma
 
         String flagCondition = 'GREEN';
 
-        if (assessment?.Flags__c != null) {
-            List<String> flagValues = assessment.Flags__c.split(';');
+        if (assessment?.aos_Flags__c != null) {
+            List<String> flagValues = assessment.aos_Flags__c.split(';');
 
             for (String flagValue : flagValues) {
                 if (redFlagPicklistValues.contains(flagValue)) {

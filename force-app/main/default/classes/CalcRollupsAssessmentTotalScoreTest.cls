@@ -18,7 +18,7 @@ private class CalcRollupsAssessmentTotalScoreTest {
                 animalos__Date_of_Birth__c = Date.today(),
                 animalos__Stage__c = 'Pre-Intake',
                 animalos__Status__c = 'Information',
-                Is_New__c = false,
+                aos_Is_New__c = false,
                 animalos__Primary_Breed__c = breed.Id
         );
         insert animal;
@@ -31,18 +31,18 @@ private class CalcRollupsAssessmentTotalScoreTest {
         insert assessment;
 
         // Create related Assessment Score records that the rollup will sum
-        List<Assessment_Score__c> scores = new List<Assessment_Score__c>{
-                new Assessment_Score__c(
-                        animalos_Assessment__c = assessment.Id,
-                        Score__c = 3,
+        List<aos_Assessment_Score__c> scores = new List<aos_Assessment_Score__c>{
+                new aos_Assessment_Score__c(
+                        aos_Assessment__c = assessment.Id,
+                        aos_Score__c = 3,
                         Name = 'Cat 1',
-                        Score_Category__c = 'Cat 1'
+                        aos_Score_Category__c = 'Cat 1'
                 ),
-                new Assessment_Score__c(
-                        animalos_Assessment__c = assessment.Id,
-                        Score__c = 7,
+                new aos_Assessment_Score__c(
+                        aos_Assessment__c = assessment.Id,
+                        aos_Score__c = 7,
                         Name = 'Cat 2',
-                        Score_Category__c = 'Cat 2'
+                        aos_Score_Category__c = 'Cat 2'
                 )
         };
         insert scores;
@@ -73,7 +73,7 @@ private class CalcRollupsAssessmentTotalScoreTest {
                 animalos__Date_of_Birth__c = Date.today(),
                 animalos__Stage__c = 'Pre-Intake',
                 animalos__Status__c = 'Information',
-                Is_New__c = false,
+                aos_Is_New__c = false,
                 animalos__Primary_Breed__c = breed.Id
         );
         insert animal;

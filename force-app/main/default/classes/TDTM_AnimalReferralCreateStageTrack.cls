@@ -7,12 +7,12 @@ global inherited sharing class TDTM_AnimalReferralCreateStageTrack extends anima
     private void updateParentStageTrackingRecord(List<SObject> records) {
         Set<Id> referralIds = vertic_Utils.sObjects.getIdFieldValues(records, animalos__Animal_Referral__c.animalos__Referral__c);
 
-        List<Referral_Stage_Tracking__c> lastReferralStageTrackingRecords = [
+        List<aos_Referral_Stage_Tracking__c> lastReferralStageTrackingRecords = [
                 SELECT Id
-                FROM Referral_Stage_Tracking__c
-                WHERE Referral__c IN :referralIds
-                AND Parent_Referral_Stage_Tracking__c = NULL
-                AND End_Date_Time__c = NULL
+                FROM aos_Referral_Stage_Tracking__c
+                WHERE aos_Referral__c IN :referralIds
+                AND aos_Parent_Referral_Stage_Tracking__c = NULL
+                AND aos_End_Date_Time__c = NULL
         ];
 
         if (!lastReferralStageTrackingRecords.isEmpty()) {

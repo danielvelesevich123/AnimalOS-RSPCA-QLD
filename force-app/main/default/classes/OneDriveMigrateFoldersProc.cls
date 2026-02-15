@@ -40,22 +40,22 @@ public without sharing class OneDriveMigrateFoldersProc extends vertic_AbstractP
     }
 
     private void getOverrides(){
-        for (OnedriveSetting__mdt onedriveSetting : [SELECT DeveloperName, RecordApiName__c, DriveName__c FROM OnedriveSetting__mdt]){
-            this.overrides.put(onedriveSetting.RecordApiName__c, onedriveSetting.DriveName__c);
+        for (aos_OnedriveSetting__mdt onedriveSetting : [SELECT DeveloperName, aos_RecordApiName__c, aos_DriveName__c FROM aos_OnedriveSetting__mdt]){
+            this.overrides.put(onedriveSetting.aos_RecordApiName__c, onedriveSetting.aos_DriveName__c);
         }
     }
 
-    public static Vertic_Async_Process__c enqueueVAP(String oldOneDriveFolderName, String newOneDriveFolderName, String recordApiName){
-        Vertic_Async_Process__c verticAsyncProcessVar = new Vertic_Async_Process__c();
+    public static aos_Async_Process__c enqueueVAP(String oldOneDriveFolderName, String newOneDriveFolderName, String recordApiName){
+        aos_Async_Process__c verticAsyncProcessVar = new aos_Async_Process__c();
         Map<String, Object> requestMap = new Map<String, Object>{
                 'oldOneDriveFolderName' => oldOneDriveFolderName,
                 'newOneDriveFolderName' => newOneDriveFolderName,
                 'recordApiName' => recordApiName
         };
-        verticAsyncProcessVar.Processor__c = 'OneDriveMigrateFoldersProc';
-        verticAsyncProcessVar.Payload__c = JSON.serialize(requestMap);
-        verticAsyncProcessVar.Description__c = 'Start Migrate One Drive Folders';
-        verticAsyncProcessVar.Group_Key__c = newOneDriveFolderName;
+        verticAsyncProcessVar.aos_Processor__c = 'OneDriveMigrateFoldersProc';
+        verticAsyncProcessVar.aos_Payload__c = JSON.serialize(requestMap);
+        verticAsyncProcessVar.aos_Description__c = 'Start Migrate One Drive Folders';
+        verticAsyncProcessVar.aos_Group_Key__c = newOneDriveFolderName;
 
         return verticAsyncProcessVar;
     }

@@ -31,7 +31,7 @@ public with sharing class IndemnityWaiverDocumentQAMetaProc extends vertic_Metad
 
         animalos__Animal__c animal = (animalos__Animal__c) vertic_Utils.arrays.firstOrException([
             SELECT Id, Name, animalos__Animal_Name__c,
-                Tag_Number__c, animalos__Primary_Breed__r.Name, animalos__Microchip_Number__c, (
+                    aos_Tag_Number__c, animalos__Primary_Breed__r.Name, animalos__Microchip_Number__c, (
                 SELECT Id, animalos__Animal_Indemnity_Waiver_Content__c, animalos__Indemnity_Waiver__r.Name
                 FROM animalos__Animal_Indemnity_Waivers__r
                 ORDER BY CreatedDate ASC

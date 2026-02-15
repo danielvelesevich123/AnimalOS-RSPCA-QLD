@@ -34,7 +34,7 @@ public without sharing class CheckOneDriveFilesOnPermissionProc extends vertic_A
 
         User currentUser = [SELECT Id, Profile.Name, Profile.UserLicense.Name FROM User WHERE Id = :UserInfo.getUserId()].get(0);
 
-        fflib_QueryFactory queryFactory = new fflib_QueryFactory(OneDrive_File__c.SObjectType)
+        fflib_QueryFactory queryFactory = new fflib_QueryFactory(aos_OneDrive_File__c.SObjectType)
                 .selectFields(new Set<String>{
                         'Id',
                         'Name',
@@ -47,24 +47,24 @@ public without sharing class CheckOneDriveFilesOnPermissionProc extends vertic_A
 
         Map<String, sObject> oneDriveFilesByFileId = vertic_Utils.sObjects.getSObjectsByAnyFieldMap(
                 Database.query(queryFactory.toSOQL()),
-                OneDrive_File__c.File_ID__c
+                aos_OneDrive_File__c.aos_File_ID__c
         );
 
         Map<String, SObject> oneDriveFilePermissionMap = vertic_Utils.sObjects.getSObjectsByAnyFieldMap([
-                SELECT Id, OwnerId, One_Drive_File_Id__c, Available_Profiles_Text__c
-                FROM One_Drive_File_Permission__c
-                WHERE One_Drive_File_Id__c IN :filesId
-        ], One_Drive_File_Permission__c.One_Drive_File_Id__c);
+                SELECT Id, OwnerId, aos_One_Drive_File_Id__c, aos_Available_Profiles_Text__c
+                FROM aos_One_Drive_File_Permission__c
+                WHERE aos_One_Drive_File_Id__c IN :filesId
+        ], aos_One_Drive_File_Permission__c.aos_One_Drive_File_Id__c);
 
         for (Map<String, Object> file : files) {
             String oneDriveFileId = String.valueOf(file.get('id'));
             String oneDriveFileName = String.valueOf(file.get('name')).remove(' (Copy)');
 
-            One_Drive_File_Permission__c oneDriveFilePermission = (One_Drive_File_Permission__c) oneDriveFilePermissionMap.get(oneDriveFileId);
-            OneDrive_File__c oneDriveFile = (OneDrive_File__c) oneDriveFilesByFileId.get(oneDriveFileId);
+            aos_One_Drive_File_Permission__c oneDriveFilePermission = (aos_One_Drive_File_Permission__c) oneDriveFilePermissionMap.get(oneDriveFileId);
+            aos_OneDrive_File__c oneDriveFile = (aos_OneDrive_File__c) oneDriveFilesByFileId.get(oneDriveFileId);
 
             if (oneDriveFile == null) {
-                for (OneDrive_File__c driveFile : (List<OneDrive_File__c>) oneDriveFilesByFileId.values()) {
+                for (aos_OneDrive_File__c driveFile : (List<aos_OneDrive_File__c>) oneDriveFilesByFileId.values()) {
                     if (oneDriveFileName?.containsIgnoreCase(driveFile.Name)) {
                         oneDriveFile = driveFile;
                         break;
@@ -76,7 +76,7 @@ public without sharing class CheckOneDriveFilesOnPermissionProc extends vertic_A
             Boolean isCommunityUser = currentUser.Profile.UserLicense.Name.containsIgnoreCase('Customer Community');
             Boolean isFileOwner = oneDriveFilePermission == null ? false : currentUser.Id == oneDriveFilePermission.OwnerId;
             Boolean userHasAccess = oneDriveFilePermission == null ? true :
-                    oneDriveFilePermission.Available_Profiles_Text__c == null ? true : oneDriveFilePermission.Available_Profiles_Text__c.contains(currentUser.Profile?.Name);
+                    oneDriveFilePermission.aos_Available_Profiles_Text__c == null ? true : oneDriveFilePermission.aos_Available_Profiles_Text__c.contains(currentUser.Profile?.Name);
 
 
             this.response.getMapper().mapAnyValue(oneDriveFileId, new Map<String, Object>{

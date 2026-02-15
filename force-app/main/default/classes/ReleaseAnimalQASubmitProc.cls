@@ -53,7 +53,7 @@ public without sharing class ReleaseAnimalQASubmitProc extends vertic_AbstractPr
         if (String.isNotBlank(jobId)) {
             referralVar.animalos__Job__c = jobId;
         }
-        referralVar.Animal__c = animalId;
+        referralVar.aos_Animal__c = animalId;
 
         referralVar.Name = String.format(
                 '{0} {1} Wildlife Release',
@@ -63,32 +63,32 @@ public without sharing class ReleaseAnimalQASubmitProc extends vertic_AbstractPr
                 }
         );
 
-        referralVar.Referral_Address__CountryCode__s = 'AU';
-        referralVar.Referral_Address__City__s = city;
-        referralVar.Referral_Address__Street__s = street;
-        referralVar.Referral_Address__PostalCode__s = postalCode;
-        referralVar.Referral_Address__Latitude__s = latitude;
-        referralVar.Referral_Address__Longitude__s = longitude;
+        referralVar.aos_Referral_Address__CountryCode__s = 'AU';
+        referralVar.aos_Referral_Address__City__s = city;
+        referralVar.aos_Referral_Address__Street__s = street;
+        referralVar.aos_Referral_Address__PostalCode__s = postalCode;
+        referralVar.aos_Referral_Address__Latitude__s = latitude;
+        referralVar.aos_Referral_Address__Longitude__s = longitude;
 
         switch on state {
             when 'Queensland' {
-                referralVar.Referral_Address__StateCode__s = 'QLD';
+                referralVar.aos_Referral_Address__StateCode__s = 'QLD';
             }
             when 'New South Wales' {
-                referralVar.Referral_Address__StateCode__s = 'NSW';
+                referralVar.aos_Referral_Address__StateCode__s = 'NSW';
             }
             when 'Victoria' {
-                referralVar.Referral_Address__StateCode__s = 'VIC';
+                referralVar.aos_Referral_Address__StateCode__s = 'VIC';
             }
             when 'South Australia' {
-                referralVar.Referral_Address__StateCode__s = 'SA';
+                referralVar.aos_Referral_Address__StateCode__s = 'SA';
             }
             when 'Western Australia' {
-                referralVar.Referral_Address__StateCode__s = 'WA';
+                referralVar.aos_Referral_Address__StateCode__s = 'WA';
             }
         }
 
-        animalVar.Animal_Released_By__c = userId;
+        animalVar.aos_Animal_Released_By__c = userId;
         animalVar.animalos__Stage__c = 'Out';
         animalVar.animalos__Status__c = 'Returned to Habitat';
 

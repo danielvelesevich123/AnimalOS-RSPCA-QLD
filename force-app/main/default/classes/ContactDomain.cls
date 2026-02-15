@@ -42,7 +42,7 @@ public without sharing class ContactDomain extends fflib_SObjectDomain implement
         }
 
         if (oneDriveFolders.size() > 0) {
-            List<Vertic_Async_Process__c> asyncProcesses = new List<Vertic_Async_Process__c>();
+            List<aos_Async_Process__c> asyncProcesses = new List<aos_Async_Process__c>();
 
             for (String oneDriveFolder : oneDriveFolders) {
                 asyncProcesses.add(OneDriveMigrateFoldersProc.enqueueVAP(oneDriveFolder, newOneDriveFolderName, 'Contact'));
@@ -61,15 +61,15 @@ public without sharing class ContactDomain extends fflib_SObjectDomain implement
         Set<String> cityValues = vertic_Utils.sObjects.getStringFieldValues(contacts, 'MailingCity');
         Set<String> postcodeValues = vertic_Utils.sObjects.getStringFieldValues(contacts, 'MailingPostalCode');
 
-        List<Postcode__c> postcodes = [
-                SELECT Id, LGA__c, Postcode__c, Suburb__c
-                FROM Postcode__c
-                WHERE Suburb__c IN :cityValues
-                AND Postcode__c IN :postcodeValues
-                AND LGA__c != NULL
-                AND Suburb__c != NULL
-                AND Postcode__c != NULL
-                AND LGA__r.Old__c = FALSE
+        List<aos_Postcode__c> postcodes = [
+                SELECT Id, aos_LGA__c, aos_Postcode__c, aos_Suburb__c
+                FROM aos_Postcode__c
+                WHERE aos_Suburb__c IN :cityValues
+                AND aos_Postcode__c IN :postcodeValues
+                AND aos_LGA__c != NULL
+                AND aos_Suburb__c != NULL
+                AND aos_Postcode__c != NULL
+                AND aos_LGA__r.aos_Old__c = FALSE
         ];
 
         for (Contact contact : contacts) {
@@ -82,9 +82,9 @@ public without sharing class ContactDomain extends fflib_SObjectDomain implement
                     });
 
             if(isInsert || isUpdate) {
-                for (Postcode__c postcode : postcodes) {
-                    if (contact.MailingCity == postcode.Suburb__c && contact.MailingPostalCode == postcode.Postcode__c) {
-                        contact.LGA__c = postcode.LGA__c;
+                for (aos_Postcode__c postcode : postcodes) {
+                    if (contact.MailingCity == postcode.aos_Suburb__c && contact.MailingPostalCode == postcode.aos_Postcode__c) {
+                        contact.LGA__c = postcode.aos_LGA__c;
                     }
                 }
             }

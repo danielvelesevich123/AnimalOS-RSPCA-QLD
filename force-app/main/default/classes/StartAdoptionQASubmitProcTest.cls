@@ -27,7 +27,7 @@ private class StartAdoptionQASubmitProcTest {
                 animalos__Age_Group__c = 'Young Adult 6 mths - 1 yr',
                 animalos__Stage__c = 'Under Care',
                 animalos__Status__c = 'Hold Isolation',
-                Is_New__c = false,
+                aos_Is_New__c = false,
                 animalos__Primary_Breed__c = animalBreed.Id
         );
         insert animalVar;

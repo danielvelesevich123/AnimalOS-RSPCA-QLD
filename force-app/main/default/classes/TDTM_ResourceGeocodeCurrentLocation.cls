@@ -11,14 +11,14 @@ global class TDTM_ResourceGeocodeCurrentLocation extends animalos.TDTM.Handler i
         List<animalos__Log__c> logs = new List<animalos__Log__c>();
 
         for (animalos__Resource__c resourceVar : (List<animalos__Resource__c>) records) {
-            Boolean isCreatedWithPopulatedAddress = Trigger.isInsert && String.isNotBlank(resourceVar.Current_Location__Street__s);
+            Boolean isCreatedWithPopulatedAddress = Trigger.isInsert && String.isNotBlank(resourceVar.aos_Current_Location__Street__s);
             Boolean isAddressUpdated = Trigger.isUpdate && existingRecords != null && existingRecords.containsKey(resourceVar.Id) && vertic_Utils.sObjects.isSomeFieldChanged(
                     resourceVar, existingRecords.get(resourceVar.Id), new List<SObjectField>{
-                            animalos__Resource__c.Current_Location__City__s,
-                            animalos__Resource__c.Current_Location__CountryCode__s,
-                            animalos__Resource__c.Current_Location__PostalCode__s,
-                            animalos__Resource__c.Current_Location__StateCode__s,
-                            animalos__Resource__c.Current_Location__Street__s
+                            animalos__Resource__c.aos_Current_Location__City__s,
+                            animalos__Resource__c.aos_Current_Location__CountryCode__s,
+                            animalos__Resource__c.aos_Current_Location__PostalCode__s,
+                            animalos__Resource__c.aos_Current_Location__StateCode__s,
+                            animalos__Resource__c.aos_Current_Location__Street__s
                     });
 
             if ((isCreatedWithPopulatedAddress || isAddressUpdated)) {

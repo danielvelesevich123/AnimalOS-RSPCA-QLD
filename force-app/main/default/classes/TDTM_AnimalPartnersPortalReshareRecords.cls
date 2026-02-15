@@ -58,10 +58,10 @@ global class TDTM_AnimalPartnersPortalReshareRecords extends animalos.TDTM.Handl
 
         if (!locationIdsToBeProceeded.isEmpty()) {
             Set<Id> userIds = vertic_Utils.sObjects.getIdFieldValues([
-                    SELECT Id,User__c
-                    FROM Location_Volunteer__c
-                    WHERE Location__c IN :locationIdsToBeProceeded
-            ], Location_Volunteer__c.User__c);
+                    SELECT Id,aos_User__c
+                    FROM aos_Location_Volunteer__c
+                    WHERE aos_Location__c IN :locationIdsToBeProceeded
+            ], aos_Location_Volunteer__c.aos_User__c);
 
             if(!userIds.isEmpty()) {
                 PartnersPortalReshareRecordsProc.submitVAPsByUserIds(userIds);

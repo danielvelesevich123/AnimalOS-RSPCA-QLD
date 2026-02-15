@@ -23,7 +23,7 @@ public with sharing class CancelSubscriptionProc extends vertic_AbstractProcesso
 //    };
 //
 //    for (Id subscriptionId : subscriptionIds){
-//        insert new Vertic_Async_Process__c(
+//        insert new aos_Async_Process__c(
 //                Processor__c = '' + CancelSubscriptionProc.class,
 //                Payload__c = JSON.serializePretty(new Map<String, Object>{
 //                        'subscriptionId' => subscriptionId

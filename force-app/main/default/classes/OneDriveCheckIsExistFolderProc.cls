@@ -25,7 +25,7 @@ public without sharing class OneDriveCheckIsExistFolderProc extends vertic_Abstr
         this.request.put('isExistFolderId', OneDriveUtils.checkIsExistFolder(this.request.getString('driveId'), this.request.getString('newOneDriveFolderName')));
 
         if(this.request.getString('isExistFolderId') != null){
-            List<Vertic_Async_Process__c> asyncProcesses = new List<Vertic_Async_Process__c>();
+            List<aos_Async_Process__c> asyncProcesses = new List<aos_Async_Process__c>();
 
             for (Object fileObj : this.request.getList('Files')){
 
@@ -47,12 +47,12 @@ public without sharing class OneDriveCheckIsExistFolderProc extends vertic_Abstr
     }
 
     public static void enqueueVAP(vertic_Request request){
-        Vertic_Async_Process__c verticAsyncProcessVar = new Vertic_Async_Process__c();
+        aos_Async_Process__c verticAsyncProcessVar = new aos_Async_Process__c();
 
-        verticAsyncProcessVar.Processor__c = 'OneDriveCheckIsExistFolderProc';
-        verticAsyncProcessVar.Payload__c = JSON.serialize(request.getMap());
-        verticAsyncProcessVar.Description__c = 'Check Is Exist Folder';
-        verticAsyncProcessVar.Group_Key__c = request.getString('newOneDriveFolderName');
+        verticAsyncProcessVar.aos_Processor__c = 'OneDriveCheckIsExistFolderProc';
+        verticAsyncProcessVar.aos_Payload__c = JSON.serialize(request.getMap());
+        verticAsyncProcessVar.aos_Description__c = 'Check Is Exist Folder';
+        verticAsyncProcessVar.aos_Group_Key__c = request.getString('newOneDriveFolderName');
 
         insert verticAsyncProcessVar;
     }

@@ -66,10 +66,10 @@ public without sharing class PartnersPortalReshareRecordsProc extends vertic_Abs
         ], animalos__Animal__Share.ParentId);
 
 
-        List<Location_Volunteer__c> locationVolunteers = [
-                SELECT Id, Location__c, Location__r.RecordType.DeveloperName, Location__r.animalos__Parent_Block__c, Location__r.animalos__Parent_Block__r.animalos__Parent_Block__c
-                FROM Location_Volunteer__c
-                WHERE User__c = :userId
+        List<aos_Location_Volunteer__c> locationVolunteers = [
+                SELECT Id, aos_Location__c, aos_Location__r.RecordType.DeveloperName, aos_Location__r.animalos__Parent_Block__c, aos_Location__r.animalos__Parent_Block__r.animalos__Parent_Block__c
+                FROM aos_Location_Volunteer__c
+                WHERE aos_User__c = :userId
         ];
 
 
@@ -87,17 +87,17 @@ public without sharing class PartnersPortalReshareRecordsProc extends vertic_Abs
         List<animalos__Location__c> fosters = new List<animalos__Location__c>();
         List<animalos__Location__c> offsites = new List<animalos__Location__c>();
 
-        for (Location_Volunteer__c locationVolunteer : locationVolunteers) {
-            if (locationVolunteer.Location__r.RecordType.DeveloperName == 'Site') {
-                sites.add(locationVolunteer.Location__r);
-            } else if (locationVolunteer.Location__r.RecordType.DeveloperName == 'Block') {
-                blocks.add(locationVolunteer.Location__r);
-            } else if (locationVolunteer.Location__r.RecordType.DeveloperName == 'Unit') {
-                units.add(locationVolunteer.Location__r);
-            } else if (locationVolunteer.Location__r.RecordType.DeveloperName == 'Foster') {
-                fosters.add(locationVolunteer.Location__r);
-            } else if (locationVolunteer.Location__r.RecordType.DeveloperName == 'Offsite') {
-                offsites.add(locationVolunteer.Location__r);
+        for (aos_Location_Volunteer__c locationVolunteer : locationVolunteers) {
+            if (locationVolunteer.aos_Location__r.RecordType.DeveloperName == 'Site') {
+                sites.add(locationVolunteer.aos_Location__r);
+            } else if (locationVolunteer.aos_Location__r.RecordType.DeveloperName == 'Block') {
+                blocks.add(locationVolunteer.aos_Location__r);
+            } else if (locationVolunteer.aos_Location__r.RecordType.DeveloperName == 'Unit') {
+                units.add(locationVolunteer.aos_Location__r);
+            } else if (locationVolunteer.aos_Location__r.RecordType.DeveloperName == 'Foster') {
+                fosters.add(locationVolunteer.aos_Location__r);
+            } else if (locationVolunteer.aos_Location__r.RecordType.DeveloperName == 'Offsite') {
+                offsites.add(locationVolunteer.aos_Location__r);
             }
         }
 
@@ -176,7 +176,8 @@ public without sharing class PartnersPortalReshareRecordsProc extends vertic_Abs
                     SELECT Id
                     FROM animalos__Location__c
                     WHERE animalos__Parent_Block__c IN :sites
-                    AND (RecordType.DeveloperName = 'Block' OR RecordType.DeveloperName = 'Foster')
+                    AND (RecordType.DeveloperName = 'Block'
+                    OR RecordType.DeveloperName = 'Foster')
             ];
 
             if (!childBlocks.isEmpty()) {
@@ -326,26 +327,26 @@ public without sharing class PartnersPortalReshareRecordsProc extends vertic_Abs
 
     public static void submitVAPsByUserIds(Set<Id> userIds) {
         if (userIds != null && !userIds.isEmpty()) {
-            List<Vertic_Async_Process__c> vaps = new List<Vertic_Async_Process__c>();
+            List<aos_Async_Process__c> vaps = new List<aos_Async_Process__c>();
             Map<String, SObject> existingVapsByGroupKey = vertic_Utils.sObjects.getSObjectsByAnyFieldMap([
-                    SELECT Id, Group_Key__c
-                    FROM Vertic_Async_Process__c
-                    WHERE Processor__c = :'' + PartnersPortalReshareRecordsProc.class
-                    AND Group_Key__c IN :userIds
-                    AND Status__c = 'Pending'
-            ], Vertic_Async_Process__c.Group_Key__c);
+                    SELECT Id, aos_Group_Key__c
+                    FROM aos_Async_Process__c
+                    WHERE aos_Processor__c = :'' + PartnersPortalReshareRecordsProc.class
+                    AND aos_Group_Key__c IN :userIds
+                    AND aos_Status__c = 'Pending'
+            ], aos_Async_Process__c.aos_Group_Key__c);
 
             for (Id userId : userIds) {
                 if (userId != null && !existingVapsByGroupKey.containsKey(userId)) {
-                    vaps.add(new Vertic_Async_Process__c(
-                            Processor__c = '' + PartnersPortalReshareRecordsProc.class,
-                            Payload__c = JSON.serialize(new Map<String, Object>{
+                    vaps.add(new aos_Async_Process__c(
+                            aos_Processor__c = '' + PartnersPortalReshareRecordsProc.class,
+                            aos_Payload__c = JSON.serialize(new Map<String, Object>{
                                     'userId' => userId
                             }),
-                            Description__c = 'Recreate Partner Portal Share Records',
-                            Group_Key__c = userId,
-                            Autorun__c = true,
-                            Status__c = 'Pending'
+                            aos_Description__c = 'Recreate Partner Portal Share Records',
+                            aos_Group_Key__c = userId,
+                            aos_Autorun__c = true,
+                            aos_Status__c = 'Pending'
                     ));
                 }
             }

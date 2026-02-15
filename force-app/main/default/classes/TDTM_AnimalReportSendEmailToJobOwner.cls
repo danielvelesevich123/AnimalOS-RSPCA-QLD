@@ -64,13 +64,13 @@ global class TDTM_AnimalReportSendEmailToJobOwner extends animalos.TDTM.Handler 
                 }
 
                 if (emailTemplateVar != null) {
-                    Vertic_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(
+                    aos_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(
                             emailTemplateVar.DeveloperName,
                             userVar,
                             animalReportVar.Id
                     ).setOrgWideEmail('inspectors@rspcansw.org.au')
                             .toAsyncProcess();
-                    asyncProc.Group_Key__c = 'ANIMAL_REPORT-' + job.Id;
+                    asyncProc.aos_Group_Key__c = 'ANIMAL_REPORT-' + job.Id;
                     asyncProcess.add(asyncProc);
                 }
 

@@ -19,7 +19,7 @@ private class TDTM_JobContactSetJobPOITest {
         for (Integer i = 0; i < 3; i++) {
             testJobs.add(new animalos__Job__c(
                 Name = 'Test Job ' + i,
-                Person_of_Interest__c = null
+                    aos_Person_Of_Interest__c = null
             ));
         }
         insert testJobs;
@@ -65,15 +65,15 @@ private class TDTM_JobContactSetJobPOITest {
         
         // Assert that Person_of_Interest__c field was updated on jobs
         List<animalos__Job__c> updatedJobs = [
-            SELECT Id, Person_of_Interest__c 
+            SELECT Id, aos_Person_Of_Interest__c 
             FROM animalos__Job__c 
             WHERE Id IN :jobs
             ORDER BY Id
         ];
         
-        System.assertEquals(contacts[0].Id, updatedJobs[0].Person_of_Interest__c, 
+        System.assertEquals(contacts[0].Id, updatedJobs[0].aos_Person_Of_Interest__c, 
             'First job should have Person_of_Interest__c set to first contact');
-        System.assertEquals(contacts[1].Id, updatedJobs[1].Person_of_Interest__c, 
+        System.assertEquals(contacts[1].Id, updatedJobs[1].aos_Person_Of_Interest__c, 
             'Second job should have Person_of_Interest__c set to second contact');
     }
     
@@ -108,11 +108,11 @@ private class TDTM_JobContactSetJobPOITest {
         
         // Verify Person_of_Interest__c is not set initially
         List<animalos__Job__c> initialJobs = [
-            SELECT Id, Person_of_Interest__c 
+            SELECT Id, aos_Person_Of_Interest__c 
             FROM animalos__Job__c 
             WHERE Id = :jobs[0].Id
         ];
-        System.assertEquals(null, initialJobs[0].Person_of_Interest__c, 
+        System.assertEquals(null, initialJobs[0].aos_Person_Of_Interest__c, 
             'Person_of_Interest__c should be null initially');
         
         Test.startTest();
@@ -123,12 +123,12 @@ private class TDTM_JobContactSetJobPOITest {
         
         // Assert that Person_of_Interest__c field was updated
         List<animalos__Job__c> updatedJobs = [
-            SELECT Id, Person_of_Interest__c 
+            SELECT Id, aos_Person_Of_Interest__c 
             FROM animalos__Job__c 
             WHERE Id = :jobs[0].Id
         ];
         
-        System.assertEquals(contacts[0].Id, updatedJobs[0].Person_of_Interest__c, 
+        System.assertEquals(contacts[0].Id, updatedJobs[0].aos_Person_Of_Interest__c, 
             'Job should have Person_of_Interest__c set after update to Person of Interest type');
     }
     
@@ -171,13 +171,13 @@ private class TDTM_JobContactSetJobPOITest {
         
         // Assert that Person_of_Interest__c field was NOT updated
         List<animalos__Job__c> updatedJobs = [
-            SELECT Id, Person_of_Interest__c 
+            SELECT Id, aos_Person_Of_Interest__c 
             FROM animalos__Job__c 
             WHERE Id IN :jobs
         ];
         
         for (animalos__Job__c job : updatedJobs) {
-            System.assertEquals(null, job.Person_of_Interest__c, 
+            System.assertEquals(null, job.aos_Person_Of_Interest__c, 
                 'Person_of_Interest__c should remain null for non-Person of Interest contact types');
         }
     }
@@ -213,11 +213,11 @@ private class TDTM_JobContactSetJobPOITest {
         
         // Verify Person_of_Interest__c is set initially
         List<animalos__Job__c> initialJobs = [
-            SELECT Id, Person_of_Interest__c 
+            SELECT Id, aos_Person_Of_Interest__c 
             FROM animalos__Job__c 
             WHERE Id = :jobs[0].Id
         ];
-        System.assertEquals(contacts[0].Id, initialJobs[0].Person_of_Interest__c, 
+        System.assertEquals(contacts[0].Id, initialJobs[0].aos_Person_Of_Interest__c, 
             'Person_of_Interest__c should be set initially');
         
         Test.startTest();
@@ -228,12 +228,12 @@ private class TDTM_JobContactSetJobPOITest {
         
         // Assert that Person_of_Interest__c field remains unchanged
         List<animalos__Job__c> updatedJobs = [
-            SELECT Id, Person_of_Interest__c 
+            SELECT Id, aos_Person_Of_Interest__c 
             FROM animalos__Job__c 
             WHERE Id = :jobs[0].Id
         ];
         
-        System.assertEquals(contacts[0].Id, updatedJobs[0].Person_of_Interest__c, 
+        System.assertEquals(contacts[0].Id, updatedJobs[0].aos_Person_Of_Interest__c, 
             'Person_of_Interest__c should remain unchanged when updating to non-POI type');
     }
     
@@ -281,17 +281,17 @@ private class TDTM_JobContactSetJobPOITest {
         
         // Assert results
         List<animalos__Job__c> updatedJobs = [
-            SELECT Id, Person_of_Interest__c 
+            SELECT Id, aos_Person_Of_Interest__c 
             FROM animalos__Job__c 
             WHERE Id IN :jobs
             ORDER BY Id
         ];
         
-        System.assertEquals(contacts[0].Id, updatedJobs[0].Person_of_Interest__c, 
+        System.assertEquals(contacts[0].Id, updatedJobs[0].aos_Person_Of_Interest__c, 
             'First job should have Person_of_Interest__c set');
-        System.assertEquals(null, updatedJobs[1].Person_of_Interest__c, 
+        System.assertEquals(null, updatedJobs[1].aos_Person_Of_Interest__c, 
             'Second job should NOT have Person_of_Interest__c set');
-        System.assertEquals(contacts[2].Id, updatedJobs[2].Person_of_Interest__c, 
+        System.assertEquals(contacts[2].Id, updatedJobs[2].aos_Person_Of_Interest__c, 
             'Third job should have Person_of_Interest__c set (case insensitive)');
     }
     
@@ -332,12 +332,12 @@ private class TDTM_JobContactSetJobPOITest {
         
         // Assert that Person_of_Interest__c field was updated
         List<animalos__Job__c> updatedJobs = [
-            SELECT Id, Person_of_Interest__c 
+            SELECT Id, aos_Person_Of_Interest__c 
             FROM animalos__Job__c 
             WHERE Id = :jobs[0].Id
         ];
         
-        System.assertEquals(contacts[0].Id, updatedJobs[0].Person_of_Interest__c, 
+        System.assertEquals(contacts[0].Id, updatedJobs[0].aos_Person_Of_Interest__c, 
             'Person_of_Interest__c should be set when handler is called directly');
     }
 }

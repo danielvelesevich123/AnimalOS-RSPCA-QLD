@@ -86,7 +86,7 @@ public without sharing class StartAdoptionQASubmitProc extends vertic_AbstractPr
                 ));
 
         if (isAlternateContactFilled == true) {
-            referralVar.Alternate_Contact__c = alternateContactVar.Id;
+            referralVar.aos_Alternate_Contact__c = alternateContactVar.Id;
         }
 
         insert referralVar;

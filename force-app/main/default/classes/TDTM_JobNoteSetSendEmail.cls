@@ -7,8 +7,8 @@ global class TDTM_JobNoteSetSendEmail extends animalos.TDTM.Handler implements a
 
     private void setSendEmailByJobNoteId(List<SObject> records) {
         for (animalos__Job_Note__c jobNote : (List<animalos__Job_Note__c>) records) {
-            SEND_EMAIL_BY_JOB_NOTE_ID.put(jobNote.Id, jobNote.Notify_Inspector__c);
-            jobNote.Notify_Inspector__c = false;
+            SEND_EMAIL_BY_JOB_NOTE_ID.put(jobNote.Id, jobNote.aos_Notify_Inspector__c);
+            jobNote.aos_Notify_Inspector__c = false;
         }
     }
 }

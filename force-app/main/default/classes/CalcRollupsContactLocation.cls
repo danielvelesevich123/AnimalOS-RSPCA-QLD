@@ -20,11 +20,11 @@ global class CalcRollupsContactLocation extends animalos.vertic_SequentialSchedu
     global override void process(List<SObject> records) {
 
         Map<String, Object> locationsByContact = vertic_Utils.sObjects.getSObjectsListByAnyFieldMap([
-                SELECT Id, Foster_Animal_Count_Total__c, Foster_Animal_Count_Last_5_Years__c, animalos__Contact__c,
-                        Foster_Animal_Count_Last_Month__c, Foster_Animal_Count_Last_Year__c, Foster_Animal_Count_This_Year__c,
-                        Foster_Animal_Count_This_Month__c, Foster_Animal_Special_Needs_Count__c, Foster_Days_Total__c,
-                        Foster_Days_Last_5_Years__c, Foster_Days_Last_Year__c, Foster_Days_Last_Month__c,
-                        Foster_Days_This_Year__c, Foster_Days_This_Month__c, Foster_Days_Special_Needs__c
+                SELECT Id, aos_Foster_Animal_Count_Total__c, aos_Foster_Animal_Count_Last_5_Years__c, animalos__Contact__c,
+                        aos_Foster_Animal_Count_Last_Month__c, aos_Foster_Animal_Count_Last_Year__c, aos_Foster_Animal_Count_This_Year__c,
+                        aos_Foster_Animal_Count_This_Month__c, aos_Foster_Animal_Special_Needs_Count__c, aos_Foster_Days_Total__c,
+                        aos_Foster_Days_Last_5_Years__c, aos_Foster_Days_Last_Year__c, aos_Foster_Days_Last_Month__c,
+                        aos_Foster_Days_This_Year__c, aos_Foster_Days_This_Month__c, aos_Foster_Days_Special_Needs__c
                 FROM animalos__Location__c
                 WHERE RecordType.DeveloperName = 'Foster' AND animalos__Contact__c IN :records
         ], animalos__Location__c.animalos__Contact__c);
@@ -70,21 +70,21 @@ global class CalcRollupsContactLocation extends animalos.vertic_SequentialSchedu
 
         if (locations != null) {
             for (animalos__Location__c location : (List<animalos__Location__c>) locations) {
-                contactForUpdate.Foster_Animal_Count_Total__c += vertic_Utils.objects.defaultIfNull(location.Foster_Animal_Count_Total__c, 0);
-                contactForUpdate.Foster_Animal_Count_Last_5_Years__c += vertic_Utils.objects.defaultIfNull(location.Foster_Animal_Count_Last_5_Years__c, 0);
-                contactForUpdate.Foster_Animal_Count_Last_Month__c += vertic_Utils.objects.defaultIfNull(location.Foster_Animal_Count_Last_Month__c, 0);
-                contactForUpdate.Foster_Animal_Count_Last_Year__c += vertic_Utils.objects.defaultIfNull(location.Foster_Animal_Count_Last_Year__c, 0);
-                contactForUpdate.Foster_Animal_Count_This_Month__c += vertic_Utils.objects.defaultIfNull(location.Foster_Animal_Count_This_Month__c, 0);
-                contactForUpdate.Foster_Animal_Count_This_Year__c += vertic_Utils.objects.defaultIfNull(location.Foster_Animal_Count_This_Year__c, 0);
-                contactForUpdate.Foster_Animal_Special_Needs_Count__c += vertic_Utils.objects.defaultIfNull(location.Foster_Animal_Special_Needs_Count__c, 0);
+                contactForUpdate.Foster_Animal_Count_Total__c += vertic_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_Total__c, 0);
+                contactForUpdate.Foster_Animal_Count_Last_5_Years__c += vertic_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_Last_5_Years__c, 0);
+                contactForUpdate.Foster_Animal_Count_Last_Month__c += vertic_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_Last_Month__c, 0);
+                contactForUpdate.Foster_Animal_Count_Last_Year__c += vertic_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_Last_Year__c, 0);
+                contactForUpdate.Foster_Animal_Count_This_Month__c += vertic_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_This_Month__c, 0);
+                contactForUpdate.Foster_Animal_Count_This_Year__c += vertic_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_This_Year__c, 0);
+                contactForUpdate.Foster_Animal_Special_Needs_Count__c += vertic_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Special_Needs_Count__c, 0);
 
-                contactForUpdate.Foster_Days_Total__c += vertic_Utils.objects.defaultIfNull(location.Foster_Days_Total__c, 0);
-                contactForUpdate.Foster_Days_Last_5_Years__c += vertic_Utils.objects.defaultIfNull(location.Foster_Days_Last_5_Years__c, 0);
-                contactForUpdate.Foster_Days_Last_Year__c += vertic_Utils.objects.defaultIfNull(location.Foster_Days_Last_Year__c, 0);
-                contactForUpdate.Foster_Days_Last_Month__c += vertic_Utils.objects.defaultIfNull(location.Foster_Days_Last_Month__c, 0);
-                contactForUpdate.Foster_Days_This_Year__c += vertic_Utils.objects.defaultIfNull(location.Foster_Days_This_Year__c, 0);
-                contactForUpdate.Foster_Days_This_Month__c += vertic_Utils.objects.defaultIfNull(location.Foster_Days_This_Month__c, 0);
-                contactForUpdate.Foster_Days_Special_Needs__c += vertic_Utils.objects.defaultIfNull(location.Foster_Days_Special_Needs__c, 0);
+                contactForUpdate.Foster_Days_Total__c += vertic_Utils.objects.defaultIfNull(location.aos_Foster_Days_Total__c, 0);
+                contactForUpdate.Foster_Days_Last_5_Years__c += vertic_Utils.objects.defaultIfNull(location.aos_Foster_Days_Last_5_Years__c, 0);
+                contactForUpdate.Foster_Days_Last_Year__c += vertic_Utils.objects.defaultIfNull(location.aos_Foster_Days_Last_Year__c, 0);
+                contactForUpdate.Foster_Days_Last_Month__c += vertic_Utils.objects.defaultIfNull(location.aos_Foster_Days_Last_Month__c, 0);
+                contactForUpdate.Foster_Days_This_Year__c += vertic_Utils.objects.defaultIfNull(location.aos_Foster_Days_This_Year__c, 0);
+                contactForUpdate.Foster_Days_This_Month__c += vertic_Utils.objects.defaultIfNull(location.aos_Foster_Days_This_Month__c, 0);
+                contactForUpdate.Foster_Days_Special_Needs__c += vertic_Utils.objects.defaultIfNull(location.aos_Foster_Days_Special_Needs__c, 0);
             }
         }
     }

@@ -2,11 +2,11 @@ public class RetrieveDeletedAnimalFilesGetProc extends vertic_AbstractProcessor 
 
     private Set<String> oneDriveFileFields = new Set<String>{
             'Name',
-            'Folder_Name__c',
-            'Is_Primary__c',
-            'File_ID__c',
-            'Is_Deleted__c',
-            'Is_Public__c',
+            'aos_Folder_Name__c',
+            'aos_Is_Primary__c',
+            'aos_File_ID__c',
+            'aos_Is_Deleted__c',
+            'aos_Is_Public__c',
             'LastModifiedDate'
     };
 
@@ -29,7 +29,7 @@ public class RetrieveDeletedAnimalFilesGetProc extends vertic_AbstractProcessor 
         }
         String lastRecordId = this.request.params.get('LastRecordId');
 
-        fflib_QueryFactory queryFactory = new fflib_QueryFactory(OneDrive_File__c.SObjectType)
+        fflib_QueryFactory queryFactory = new fflib_QueryFactory(aos_OneDrive_File__c.SObjectType)
                 .selectFields(this.oneDriveFileFields);
 
         List<String> conditions = new List<String>();
@@ -53,13 +53,13 @@ public class RetrieveDeletedAnimalFilesGetProc extends vertic_AbstractProcessor 
         }
 
         queryFactory.setCondition(String.join(conditions, ' AND '))
-                .setOrdering(OneDrive_File__c.Id, fflib_QueryFactory.SortOrder.ASCENDING);
+                .setOrdering(aos_OneDrive_File__c.Id, fflib_QueryFactory.SortOrder.ASCENDING);
 
         if (queryLimit != null) {
             queryFactory.setLimit(queryLimit);
         }
 
-        List<OneDrive_File__c> oneDriveFiles = Database.query(queryFactory.toSOQL());
+        List<aos_OneDrive_File__c> oneDriveFiles = Database.query(queryFactory.toSOQL());
 
         Integer recordsLeft = (Integer) Database.countQuery(('SELECT COUNT() FROM OneDrive_File__c WHERE ' + String.join(conditions, ' AND '))) - (queryLimit == null ? 0 : queryLimit);
         Integer totalNumberOfRecords = (Integer) Database.countQuery(('SELECT COUNT() FROM OneDrive_File__c WHERE ' + String.join(totalConditions, ' AND ')));

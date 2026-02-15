@@ -44,7 +44,7 @@ public without sharing class JobFinalisationNotificationQASubmitProc extends ver
                         SELECT
                                 Id,
                                 Name,
-                                Old_Job_Number__c
+                                aos_Old_Job_Number__c
                         FROM animalos__Job__c
                         WHERE Id = :jobId
                 ]

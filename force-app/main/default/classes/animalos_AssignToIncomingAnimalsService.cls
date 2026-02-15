@@ -35,7 +35,7 @@ public class animalos_AssignToIncomingAnimalsService {
             SELECT Id, animalos__Animal_Type__c
             FROM animalos__Action_Plan__c
             WHERE animalos__Animal_Type__c INCLUDES (:animalTypesMultiSelectStr)
-                AND Assign_To_Incoming_Animals__c = TRUE
+                AND aos_Assign_To_Incoming_Animals__c = TRUE
                 AND animalos__Status__c = 'Active'
         ]);
 

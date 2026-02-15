@@ -32,8 +32,8 @@ public without sharing class OneDriveMoveFileToFolder extends vertic_AbstractPro
 
     }
 
-    public static Vertic_Async_Process__c enqueueVAP(String driveId, String fileId, String newFolderId, String fileName, String newFolderName ){
-        Vertic_Async_Process__c verticAsyncProcessVar = new Vertic_Async_Process__c();
+    public static aos_Async_Process__c enqueueVAP(String driveId, String fileId, String newFolderId, String fileName, String newFolderName ){
+        aos_Async_Process__c verticAsyncProcessVar = new aos_Async_Process__c();
 
         Map<String, Object> request = new Map<String, Object>{
                 'driveId' => driveId,
@@ -42,10 +42,10 @@ public without sharing class OneDriveMoveFileToFolder extends vertic_AbstractPro
                 'fileName' => fileName
         };
 
-        verticAsyncProcessVar.Processor__c = 'OneDriveMoveFileToFolder';
-        verticAsyncProcessVar.Payload__c = JSON.serialize(request);
-        verticAsyncProcessVar.Description__c = 'Get OneDrive Folder Files';
-        verticAsyncProcessVar.Group_Key__c = newFolderName;
+        verticAsyncProcessVar.aos_Processor__c = 'OneDriveMoveFileToFolder';
+        verticAsyncProcessVar.aos_Payload__c = JSON.serialize(request);
+        verticAsyncProcessVar.aos_Description__c = 'Get OneDrive Folder Files';
+        verticAsyncProcessVar.aos_Group_Key__c = newFolderName;
 
         return verticAsyncProcessVar;
     }

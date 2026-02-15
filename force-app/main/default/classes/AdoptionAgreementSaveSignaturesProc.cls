@@ -79,11 +79,11 @@ public without sharing class AdoptionAgreementSaveSignaturesProc extends vertic_
         ]);
 
         if (isAdoptionAgreementSignature) {
-            referralVar.Additional_Signature_URL__c = signatureDistribution.ContentDownloadUrl;
-            referralVar.Additional_Signing_Date__c = Date.today();
+            referralVar.aos_Additional_Signature_URL__c = signatureDistribution.ContentDownloadUrl;
+            referralVar.aos_Additional_Signing_Date__c = Date.today();
         } else {
-            referralVar.Signature_URL__c = signatureDistribution.ContentDownloadUrl;
-            referralVar.Signing_Date__c = Date.today();
+            referralVar.aos_Signature_URL__c = signatureDistribution.ContentDownloadUrl;
+            referralVar.aos_Signing_Date__c = Date.today();
         }
     }
 }

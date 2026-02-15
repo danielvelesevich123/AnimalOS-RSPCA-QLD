@@ -11,7 +11,7 @@ global class TDTM_AnimalReportGenerateAnimalSummary extends animalos.TDTM.Handle
     private void generateAnimalSummaryReport(List<SObject> records) {
         Set<Id> caseIds = vertic_Utils.sObjects.getIdFieldValues(
                 records,
-                animalos__Animal_Report__c.Case__c
+                animalos__Animal_Report__c.aos_Case__c
         );
 
         if (!caseIds.isEmpty()) {
@@ -31,7 +31,7 @@ global class TDTM_AnimalReportGenerateAnimalSummary extends animalos.TDTM.Handle
 
             Map<String, Object> animalReportsByCaseId = vertic_Utils.sObjects.getSObjectsListByAnyFieldMap(
                     Database.query(factory.toSOQL()),
-                    animalos__Animal_Report__c.Case__c
+                    animalos__Animal_Report__c.aos_Case__c
             );
 
             for (Case caseVar : cases) {

@@ -4,11 +4,11 @@ public class BehaviourEvaluationSmallAnimalsMetaProc extends vertic_MetadataProc
         this.request = request == null ? new vertic_MetadataProcessor.MetadataRequest() : (vertic_MetadataProcessor.MetadataRequest) request;
 
         this.request.fields = new Set<SObjectField>{
-                animalos__Assessment__c.Social_Response_SAE__c,
-                animalos__Assessment__c.Handling_SAE__c,
-                animalos__Assessment__c.Exploration_SAE__c,
-                animalos__Assessment__c.Body_Language_SAE__c,
-                animalos__Assessment__c.Location__c
+                animalos__Assessment__c.aos_Social_Response_SAE__c,
+                animalos__Assessment__c.aos_Handling_SAE__c,
+                animalos__Assessment__c.aos_Exploration_SAE__c,
+                animalos__Assessment__c.aos_Body_Language_SAE__c,
+                animalos__Assessment__c.aos_Location__c
         };
 
         super.process(this.request);
@@ -29,14 +29,14 @@ public class BehaviourEvaluationSmallAnimalsMetaProc extends vertic_MetadataProc
 
         Map<String, List<vertic_Structs.SelectOption>> behavioursExhibitedDependentOptions = vertic_Utils.picklists.getDependentOptions(
                 animalos__Assessment__c.SObjectType,
-                animalos__Assessment__c.Animal_Type__c,
-                animalos__Assessment__c.Behaviours_Exhibited_SAE__c
+                animalos__Assessment__c.aos_Animal_Type__c,
+                animalos__Assessment__c.aos_Behaviours_Exhibited_SAE__c
         );
 
         Map<String, List<vertic_Structs.SelectOption>> householdRecommendationsDependentOptions = vertic_Utils.picklists.getDependentOptions(
                 animalos__Assessment__c.SObjectType,
-                animalos__Assessment__c.Animal_Type__c,
-                animalos__Assessment__c.Household_Recommendations_SAE__c
+                animalos__Assessment__c.aos_Animal_Type__c,
+                animalos__Assessment__c.aos_Household_Recommendations_SAE__c
         );
 
 
@@ -48,7 +48,7 @@ public class BehaviourEvaluationSmallAnimalsMetaProc extends vertic_MetadataProc
 
         animalos__Assessment__c assessment = new animalos__Assessment__c(
                 animalos__Animal__c = animal.Id,
-                Animal_Type__c = animal.animalos__Type__c,
+                aos_Animal_Type__c = animal.animalos__Type__c,
                 animalos__Assessment_Date_Time__c = Datetime.now(),
                 RecordTypeId = vertic_Utils.sObjects.recordTypeIdByAPIName(animalos__Assessment__c.SObjectType, 'Behaviour_Evaluation_Small_Animal')
         );

@@ -31,32 +31,32 @@ public with sharing class ShelterBuddyGetAnimalsProc extends vertic_AbstractProc
         vertic_DTO responseDTO = new vertic_DTO(animalListResponse.getBody());
         List<vertic_DTO> dataDTOs = responseDTO.getListAsDTONonNull('Data');
 
-        List<Vertic_Async_Process__c> vaps = new List<Vertic_Async_Process__c>();
+        List<aos_Async_Process__c> vaps = new List<aos_Async_Process__c>();
 
         for (vertic_DTO dataDTO : dataDTOs) {
-            vaps.add(new Vertic_Async_Process__c(
-                Processor__c = '' + AnimalUpsertProc.class,
-                Payload__c = JSON.serializePretty(new Map<String, Object>{
+            vaps.add(new aos_Async_Process__c(
+                aos_Processor__c = '' + AnimalUpsertProc.class,
+                    aos_Payload__c = JSON.serializePretty(new Map<String, Object>{
                     'animalJSON' => JSON.serializePretty(dataDTO.getMap())
                 }),
-                Group_Key__c = dataDTO.getString('Id'),
-                Description__c = 'Load Animal',
-                Priority__c = 1,
-                Run_After__c = Datetime.now().addMinutes(20),
-                Is_Queueable__c = true
+                    aos_Group_Key__c = dataDTO.getString('Id'),
+                    aos_Description__c = 'Load Animal',
+                    aos_Priority__c = 1,
+                    aos_Run_After__c = Datetime.now().addMinutes(20),
+                    aos_Is_Queueable__c = true
             ));
         }
 
         if (responseDTO.get('Paging.Next') != null && page < 3) {
-            vaps.add(0, new Vertic_Async_Process__c(
-                Processor__c = '' + ShelterBuddyGetAnimalsProc.class,
-                Payload__c = JSON.serializePretty(new Map<String, Object>{
+            vaps.add(0, new aos_Async_Process__c(
+                    aos_Processor__c = '' + ShelterBuddyGetAnimalsProc.class,
+                    aos_Payload__c = JSON.serializePretty(new Map<String, Object>{
                     'page' => ++page,
                     'pageSize' => pageSize
                 }),
-                Description__c = 'Load Animals',
-                Priority__c = 10,
-                Autorun__c = true // TODO: comment out to sync all.
+                    aos_Description__c = 'Load Animals',
+                    aos_Priority__c = 10,
+                    aos_Autorun__c = true // TODO: comment out to sync all.
             ));
         }
 
@@ -66,14 +66,14 @@ public with sharing class ShelterBuddyGetAnimalsProc extends vertic_AbstractProc
     }
 
     public static void startLoad(Integer pageSize) {
-        insert new Vertic_Async_Process__c(
-            Processor__c = '' + ShelterBuddyGetAnimalsProc.class,
-            Payload__c = JSON.serializePretty(new Map<String, Object>{
+        insert new aos_Async_Process__c(
+                aos_Processor__c = '' + ShelterBuddyGetAnimalsProc.class,
+                aos_Payload__c = JSON.serializePretty(new Map<String, Object>{
                 'page' => 1,
                 'pageSize' => pageSize
             }),
-            Description__c = 'Load Animals',
-            Priority__c = 10
+                aos_Description__c = 'Load Animals',
+                aos_Priority__c = 10
         );
     }
 

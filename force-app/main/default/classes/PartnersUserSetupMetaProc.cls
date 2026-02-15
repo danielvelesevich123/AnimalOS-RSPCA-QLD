@@ -52,11 +52,11 @@ public class PartnersUserSetupMetaProc extends vertic_MetadataProcessor {
             profileOptions.add(new vertic_Structs.SelectOption(profile.Id, profile.Name));
         }
 
-        List<Location_Volunteer__c> locationVolunteers = [
-                SELECT Id, Location__c, Location__r.Name, Location__r.RecordType.DeveloperName, Location__r.animalos__Full_Location_Name__c,
-                        Location__r.animalos__Parent_Block__c, Location__r.animalos__Parent_Block__r.Name, Status__c
-                FROM Location_Volunteer__c
-                WHERE Volunteer__c = :contactVar.Id
+        List<aos_Location_Volunteer__c> locationVolunteers = [
+                SELECT Id, aos_Location__c, aos_Location__r.Name, aos_Location__r.RecordType.DeveloperName, aos_Location__r.animalos__Full_Location_Name__c,
+                        aos_Location__r.animalos__Parent_Block__c, aos_Location__r.animalos__Parent_Block__r.Name, aos_Status__c
+                FROM aos_Location_Volunteer__c
+                WHERE aos_Volunteer__c = :contactVar.Id
         ];
 
         this.response.put('doesCommunityExist', String.isNotBlank(networkId));

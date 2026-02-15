@@ -29,17 +29,17 @@ public class PartnersUserSetupAddLVProc extends vertic_AbstractProcessor impleme
         ]))?.Id;
         upsert location;
 
-        Location_Volunteer__c locationVolunteer = (Location_Volunteer__c) vertic_Utils.arrays.firstOrNull([
+        aos_Location_Volunteer__c locationVolunteer = (aos_Location_Volunteer__c) vertic_Utils.arrays.firstOrNull([
                 SELECT Id
-                FROM Location_Volunteer__c
-                WHERE Location__c = :location.Id AND Volunteer__c = :contactVar.Id
+                FROM aos_Location_Volunteer__c
+                WHERE aos_Location__c = :location.Id AND aos_Volunteer__c = :contactVar.Id
         ]);
 
         if (locationVolunteer == null) {
-            locationVolunteer = new Location_Volunteer__c(
-                    Location__c = location.Id,
-                    Volunteer__c = contactVar.Id,
-                    Status__c = 'Active'
+            locationVolunteer = new aos_Location_Volunteer__c(
+                    aos_Location__c = location.Id,
+                    aos_Volunteer__c = contactVar.Id,
+                    aos_Status__c = 'Active'
             );
             insert locationVolunteer;
         }

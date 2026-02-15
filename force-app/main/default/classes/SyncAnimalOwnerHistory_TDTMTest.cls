@@ -25,6 +25,6 @@ public without sharing class SyncAnimalOwnerHistory_TDTMTest {
         insert animalList;
         Test.stopTest();
 
-        System.assertEquals(animalList.size(), [SELECT COUNT() FROM Vertic_Async_Process__c WHERE Processor__c = 'SyncAnimalOwnerHistoryProc' AND Status__c = 'Pending']);
+        System.assertEquals(animalList.size(), [SELECT COUNT() FROM aos_Async_Process__c WHERE aos_Processor__c = 'SyncAnimalOwnerHistoryProc' AND aos_Status__c = 'Pending']);
     }
 }

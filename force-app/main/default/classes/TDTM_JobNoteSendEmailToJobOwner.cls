@@ -73,7 +73,7 @@ global class TDTM_JobNoteSendEmailToJobOwner extends animalos.TDTM.Handler imple
                             }
                     };
 
-                    Vertic_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(
+                    aos_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(
                             emailTemplateVar.DeveloperName,
                             userVar,
                             jobNote.Id
@@ -83,7 +83,7 @@ global class TDTM_JobNoteSendEmailToJobOwner extends animalos.TDTM.Handler imple
                             .setContentAttachments(contentAttachments)
                             .toAsyncProcess();
 
-                    asyncProc.Group_Key__c = 'JOB_NOTE-' + job.Id;
+                    asyncProc.aos_Group_Key__c = 'JOB_NOTE-' + job.Id;
                     asyncProcess.add(asyncProc);
                 }
 

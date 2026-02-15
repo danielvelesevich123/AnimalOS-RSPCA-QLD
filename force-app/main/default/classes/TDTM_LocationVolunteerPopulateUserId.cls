@@ -9,15 +9,15 @@ global class TDTM_LocationVolunteerPopulateUserId extends animalos.TDTM.Handler 
 
     public void populateUserId(List<SObject> records, Map<Id, SObject> existingRecordsMap) {
         Set<Id> contactIds = new Set<Id>();
-        for (Location_Volunteer__c locationVolunteer : (List<Location_Volunteer__c>) records) {
+        for (aos_Location_Volunteer__c locationVolunteer : (List<aos_Location_Volunteer__c>) records) {
             Boolean isInsert = Trigger.isInsert;
             Boolean isUpdate = Trigger.isUpdate && existingRecordsMap != null &&
                     existingRecordsMap.containsKey(locationVolunteer.Id) &&
                     vertic_Utils.sObjects.isSomeFieldChanged(locationVolunteer, existingRecordsMap.get(locationVolunteer.Id), new List<SObjectField>{
-                            Location_Volunteer__c.Volunteer__c
+                            aos_Location_Volunteer__c.aos_Volunteer__c
                     });
-            if ((isInsert || isUpdate) && String.isNotBlank(locationVolunteer.Volunteer__c)) {
-                contactIds.add(locationVolunteer.Volunteer__c);
+            if ((isInsert || isUpdate) && String.isNotBlank(locationVolunteer.aos_Volunteer__c)) {
+                contactIds.add(locationVolunteer.aos_Volunteer__c);
             }
         }
 
@@ -30,9 +30,9 @@ global class TDTM_LocationVolunteerPopulateUserId extends animalos.TDTM.Handler 
                     AND IsActive = TRUE
             ], User.ContactId);
 
-            for (Location_Volunteer__c locationVolunteer : (List<Location_Volunteer__c>) records) {
-                if (usersByContactIds.containsKey(locationVolunteer.Volunteer__c)) {
-                    locationVolunteer.User__c = (Id) usersByContactIds.get(locationVolunteer.Volunteer__c)?.get('Id');
+            for (aos_Location_Volunteer__c locationVolunteer : (List<aos_Location_Volunteer__c>) records) {
+                if (usersByContactIds.containsKey(locationVolunteer.aos_Volunteer__c)) {
+                    locationVolunteer.aos_User__c = (Id) usersByContactIds.get(locationVolunteer.aos_Volunteer__c)?.get('Id');
                 }
             }
         }

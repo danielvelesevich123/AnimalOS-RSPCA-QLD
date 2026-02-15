@@ -14,12 +14,12 @@ global class TDTM_CaseUpdateRelatedJobs extends animalos.TDTM.Handler implements
         List<animalos__Job__c> jobsToUpdate = new List<animalos__Job__c>();
 
         Map<String, SObject> jobsByCaseIds = vertic_Utils.sObjects.getSObjectsByAnyFieldMap([
-                SELECT Id, Name, Case__c, animalos__Subject__c, animalos__Description__c, animalos__Animal_Report_Summary__c, animalos__Priority__c, OwnerId, Sync_with_Case_Priority__c
+                SELECT Id, Name, aos_Case__c, animalos__Subject__c, animalos__Description__c, animalos__Animal_Report_Summary__c, animalos__Priority__c, OwnerId, aos_Sync_with_Case_Priority__c
                 FROM animalos__Job__c
-                WHERE Case__c IN :records
-                AND Case__r.RecordTypeId = :crueltyRecordTypeId
+                WHERE aos_Case__c IN :records
+                AND aos_Case__r.RecordTypeId = :crueltyRecordTypeId
                 ORDER BY CreatedDate ASC
-        ], animalos__Job__c.Case__c);
+        ], animalos__Job__c.aos_Case__c);
 
         Set<Id> ownerIds = vertic_Utils.sObjects.getIdFieldValues(jobsByCaseIds.values(), animalos__Job__c.OwnerId);
 
@@ -57,7 +57,7 @@ global class TDTM_CaseUpdateRelatedJobs extends animalos.TDTM.Handler implements
 //                    jobVar.Status__c = caseVar.Status;
                     jobVar.animalos__Description__c = caseVar.Description;
                     jobVar.animalos__Animal_Report_Summary__c = caseVar.Animal_Report_Summary__c;
-                    if (jobVar.Sync_with_Case_Priority__c) {
+                    if (jobVar.aos_Sync_with_Case_Priority__c) {
                         jobVar.animalos__Priority__c = caseVar.Priority;
                     }
                     if (!System.Test.isRunningTest() && (jobVar.OwnerId != UserInfo.getUserId())) {
@@ -109,7 +109,7 @@ global class TDTM_CaseUpdateRelatedJobs extends animalos.TDTM.Handler implements
                     }
 
                     if (userVar != null && jobUpdateEmailTemplate != null) {
-                        Vertic_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(
+                        aos_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(
                                 jobUpdateEmailTemplate.DeveloperName,
                                 userVar,
                                 jobVar.Id

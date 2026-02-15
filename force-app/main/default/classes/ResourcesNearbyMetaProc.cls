@@ -11,16 +11,16 @@ public class ResourcesNearbyMetaProc extends vertic_MetadataProcessor implements
             'Contact__r.Phone',
             'Contact__r.Email',
             'Contact__r.MobilePhone',
-            'Current_Location__c',
-            'Current_Location__Latitude__s',
-            'Current_Location__Longitude__s',
-            'Current_Location__Street__s',
-            'Current_Location__City__s',
-            'Current_Location__StateCode__s',
-            'Current_Location__PostalCode__s',
-            'Current_Location__CountryCode__s',
+            'aos_Current_Location__c',
+            'aos_Current_Location__Latitude__s',
+            'aos_Current_Location__Longitude__s',
+            'aos_Current_Location__Street__s',
+            'aos_Current_Location__City__s',
+            'aos_Current_Location__StateCode__s',
+            'aos_Current_Location__PostalCode__s',
+            'aos_Current_Location__CountryCode__s',
             'Name',
-            'Full_Current_Location__c'
+            'aos_Full_Current_Location__c'
     };
 
     public override vertic_Response process(vertic_Request request) {
@@ -116,7 +116,7 @@ public class ResourcesNearbyMetaProc extends vertic_MetadataProcessor implements
         for (vertic_DTO resourceDTO : resourcesDTO.getDTOs('resources')) {
             resourceDTO.put('distance', ((Decimal) Location.getDistance(
                     Location.newInstance(jobVar.animalos__Address__Latitude__s, jobVar.animalos__Address__Longitude__s),
-                    Location.newInstance(resourceDTO.getDecimal('Current_Location__Latitude__s'), resourceDTO.getDecimal('Current_Location__Longitude__s')),
+                    Location.newInstance(resourceDTO.getDecimal('aos_Current_Location__Latitude__s'), resourceDTO.getDecimal('aos_Current_Location__Longitude__s')),
                     'km'
             )).setScale(2) + 'km');
         }

@@ -42,7 +42,7 @@
         <p class="slds-p-horizontal_small">
             <aura:if isTrue="{!v.soqlLimit > 0}">
                 <c:vertic_SOQLDatatable aura:id="dataTable"
-                                        sObjectType="Vertic_Async_Process__c"
+                                        sObjectType="aos_Async_Process__c"
                                         fields="{!v.fields}"
                                         condition="{#v.condition}"
                                         countRecords="{!v.count}"

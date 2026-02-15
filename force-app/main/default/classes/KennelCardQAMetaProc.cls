@@ -66,25 +66,25 @@ public with sharing class KennelCardQAMetaProc extends vertic_MetadataProcessor 
 //                ORDER BY CreatedDate DESC
 //        ]);
 
-        OneDrive_File__c oneDriveFile = (OneDrive_File__c) vertic_Utils.arrays.firstOrNull([
-                SELECT Id, File_ID__c
-                FROM OneDrive_File__c
-                WHERE animalos_Animal__c = :animal.Id
-                AND Profile_Image__c = TRUE
+        aos_OneDrive_File__c oneDriveFile = (aos_OneDrive_File__c) vertic_Utils.arrays.firstOrNull([
+                SELECT Id, aos_File_ID__c
+                FROM aos_OneDrive_File__c
+                WHERE aos_Animal__c = :animal.Id
+                AND aos_Profile_Image__c = TRUE
         ]);
 
         String publicFileLink;
 
-        if (oneDriveFile != null && String.isNotBlank(oneDriveFile.File_ID__c)) {
+        if (oneDriveFile != null && String.isNotBlank(oneDriveFile.aos_File_ID__c)) {
             Map<String, String> drivesMap = OneDriveUtils.getDrives();
 
             String adoptionDriveId = drivesMap.get('Adoption');
             String animalDriveId = drivesMap.get('Animal');
 
-            publicFileLink = OneDriveUtils.getFileThumbnail(animalDriveId, oneDriveFile.File_ID__c);
+            publicFileLink = OneDriveUtils.getFileThumbnail(animalDriveId, oneDriveFile.aos_File_ID__c);
 
             if (String.isBlank(publicFileLink)) {
-                publicFileLink = OneDriveUtils.getFileThumbnail(adoptionDriveId, oneDriveFile.File_ID__c);
+                publicFileLink = OneDriveUtils.getFileThumbnail(adoptionDriveId, oneDriveFile.aos_File_ID__c);
             }
         }
         vertic_DTO dto = new vertic_DTO();

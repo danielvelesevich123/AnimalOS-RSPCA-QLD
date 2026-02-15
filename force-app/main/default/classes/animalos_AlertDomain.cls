@@ -24,7 +24,7 @@ public without sharing class animalos_AlertDomain extends fflib_SObjectDomain im
         for (animalos__Alert__c alert : (List<animalos__Alert__c>) records) {
 
             if (String.isNotBlank(alert.animalos__Target_Record_Id__c) && 'animalos__Animal__c'.equalsIgnoreCase(alert.animalos__Target_Object__c)) {
-                alert.Animal__c = alert.animalos__Target_Record_Id__c;
+                alert.aos_Animal__c = alert.animalos__Target_Record_Id__c;
             }
         }
     }

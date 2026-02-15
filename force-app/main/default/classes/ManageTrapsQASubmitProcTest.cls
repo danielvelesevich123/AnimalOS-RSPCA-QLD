@@ -26,12 +26,12 @@ private class ManageTrapsQASubmitProcTest {
         animalos__Resource__c resource1 = new animalos__Resource__c(
             Name = 'Test Trap 1',
             animalos__Type__c = 'Trap',
-            Status__c = 'Available'
+                aos_Status__c = 'Available'
         );
         animalos__Resource__c resource2 = new animalos__Resource__c(
             Name = 'Test Trap 2',
             animalos__Type__c = 'Trap',
-            Status__c = 'Available'
+                aos_Status__c = 'Available'
         );
         insert new List<animalos__Resource__c>{resource1, resource2};
 
@@ -96,7 +96,7 @@ private class ManageTrapsQASubmitProcTest {
 
         // Verify Assigned Resources were created
         List<animalos__Assigned_Resource__c> assignedResources = [
-            SELECT Id, animalos__Job_Activity__c, animalos__Resource__c, Trap_Status__c
+            SELECT Id, animalos__Job_Activity__c, animalos__Resource__c, aos_Trap_Status__c
             FROM animalos__Assigned_Resource__c
             WHERE animalos__Job_Activity__c = :jobActivityId
         ];
@@ -107,7 +107,7 @@ private class ManageTrapsQASubmitProcTest {
         for (animalos__Assigned_Resource__c assignedResource : assignedResources) {
             assignedResourceIds.add(assignedResource.animalos__Resource__c);
             System.assertEquals(jobActivityId, assignedResource.animalos__Job_Activity__c, 'Assigned resource should be linked to job activity');
-            System.assertEquals('In Use', assignedResource.Trap_Status__c, 'Trap status should be In Use');
+            System.assertEquals('In Use', assignedResource.aos_Trap_Status__c, 'Trap status should be In Use');
         }
         
         System.assert(assignedResourceIds.contains(resource1.Id), 'Resource 1 should be assigned');
@@ -115,13 +115,13 @@ private class ManageTrapsQASubmitProcTest {
 
         // Verify resources were updated
         List<animalos__Resource__c> updatedResources = [
-            SELECT Id, Status__c
+            SELECT Id, aos_Status__c
             FROM animalos__Resource__c
             WHERE Id IN :new Set<Id>{resource1.Id, resource2.Id}
         ];
 
         for (animalos__Resource__c resource : updatedResources) {
-            System.assertEquals('In Use', resource.Status__c, 'Resource status should be updated to In Use');
+            System.assertEquals('In Use', resource.aos_Status__c, 'Resource status should be updated to In Use');
         }
     }
 

@@ -38,8 +38,8 @@ public class SendDeletedOneDriveFileIdProc extends vertic_AbstractProcessor impl
 
     }
 
-    public Vertic_Async_Process__c postProcess(Vertic_Async_Process__c asyncProcess) {
-        asyncProcess.Details__c = JSON.serializePretty(this.response.getString('response'));
+    public aos_Async_Process__c postProcess(aos_Async_Process__c asyncProcess) {
+        asyncProcess.aos_Details__c = JSON.serializePretty(this.response.getString('response'));
         return asyncProcess;
     }
 }

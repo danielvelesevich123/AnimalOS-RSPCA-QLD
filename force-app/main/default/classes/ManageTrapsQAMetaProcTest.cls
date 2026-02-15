@@ -23,22 +23,22 @@ private class ManageTrapsQAMetaProcTest {
         animalos__Resource__c resource1 = new animalos__Resource__c(
             Name = 'Test Trap 1',
             animalos__Type__c = 'Trap',
-            Status__c = 'Available'
+                aos_Status__c = 'Available'
         );
         animalos__Resource__c resource2 = new animalos__Resource__c(
             Name = 'Test Trap 2',
             animalos__Type__c = 'Trap',
-            Status__c = 'Available'
+                aos_Status__c = 'Available'
         );
         animalos__Resource__c resource3 = new animalos__Resource__c(
             Name = 'Test Non-Trap Resource',
             animalos__Type__c = 'Equipment',
-            Status__c = 'Available'
+                aos_Status__c = 'Available'
         );
         animalos__Resource__c resource4 = new animalos__Resource__c(
             Name = 'Test Unavailable Trap',
             animalos__Type__c = 'Trap',
-            Status__c = 'In Use'
+                aos_Status__c = 'In Use'
         );
         insert new List<animalos__Resource__c>{resource1, resource2, resource3, resource4};
 
@@ -96,7 +96,7 @@ private class ManageTrapsQAMetaProcTest {
         animalos__Resource__c resource1 = new animalos__Resource__c(
             Name = 'Test Trap 1',
             animalos__Type__c = 'Trap',
-            Status__c = 'Available'
+                aos_Status__c = 'Available'
         );
         insert resource1;
 
@@ -139,12 +139,12 @@ private class ManageTrapsQAMetaProcTest {
         animalos__Resource__c resource1 = new animalos__Resource__c(
             Name = 'Test Equipment',
             animalos__Type__c = 'Equipment',
-            Status__c = 'Available'
+                aos_Status__c = 'Available'
         );
         animalos__Resource__c resource2 = new animalos__Resource__c(
             Name = 'Test Unavailable Trap',
             animalos__Type__c = 'Trap',
-            Status__c = 'In Use'
+                aos_Status__c = 'In Use'
         );
         insert new List<animalos__Resource__c>{resource1, resource2};
 

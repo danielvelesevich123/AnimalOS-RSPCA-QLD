@@ -18,7 +18,7 @@ global class TDTM_JobSetSyncWithCasePriority extends animalos.TDTM.Handler imple
             );
 
             if (isUpdated && isUpdatedFromUi && String.isNotBlank(jobVar.animalos__Priority__c)) {
-                jobVar.Sync_with_Case_Priority__c = false;
+                jobVar.aos_Sync_with_Case_Priority__c = false;
             }
         }
     }

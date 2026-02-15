@@ -116,14 +116,14 @@ private class PartnersPortalTest {
         animalos__Location__c siteLocation = new animalos__Location__c(
                 RecordTypeId = siteRecordType,
                 Name = 'Test Site',
-                Online_Adoptions__c = true
+                aos_Online_Adoptions__c = true
         );
         insert siteLocation;
 
         animalos__Location__c siteLocation2 = new animalos__Location__c(
                 RecordTypeId = siteRecordType,
                 Name = 'Test Site 2',
-                Online_Adoptions__c = true
+                aos_Online_Adoptions__c = true
         );
         insert siteLocation2;
 
@@ -139,12 +139,12 @@ private class PartnersPortalTest {
         fosterLocation.animalos__Contact__c = contactVar2.Id;
         update fosterLocation;
 
-        System.assert([SELECT Id FROM Location_Volunteer__c WHERE Volunteer__c = :contactVar2.Id AND Location__c = :fosterLocation.Id].isEmpty() != true);
-        System.assert([SELECT Id FROM Location_Volunteer__c WHERE Volunteer__c = :contactVar.Id AND Location__c = :fosterLocation.Id].isEmpty() == true);
+        System.assert([SELECT Id FROM aos_Location_Volunteer__c WHERE aos_Volunteer__c = :contactVar2.Id AND aos_Location__c = :fosterLocation.Id].isEmpty() != true);
+        System.assert([SELECT Id FROM aos_Location_Volunteer__c WHERE aos_Volunteer__c = :contactVar.Id AND aos_Location__c = :fosterLocation.Id].isEmpty() == true);
 
-        List<Location_Volunteer__c> allLocationVolunteers = [
-                SELECT Id, User__r.Name, Location__r.RecordType.DeveloperName, Location__r.Name, Volunteer__r.Name, User__c
-                FROM Location_Volunteer__c
+        List<aos_Location_Volunteer__c> allLocationVolunteers = [
+                SELECT Id, aos_User__r.Name, aos_Location__r.RecordType.DeveloperName, aos_Location__r.Name, aos_Volunteer__r.Name, aos_User__c
+                FROM aos_Location_Volunteer__c
         ];
 
         animalos__Breed__c animalBreed = new animalos__Breed__c(
@@ -159,7 +159,7 @@ private class PartnersPortalTest {
                 animalos__Incoming_Date__c = Datetime.now(),
                 animalos__Class__c = 'Domestic',
                 animalos__Type__c = 'Dog',
-                Is_New__c = false,
+                aos_Is_New__c = false,
                 animalos__Shelter_ID__c = '123123123ee',
                 animalos__Current_Site__c = siteLocation.Id,
                 animalos__Age_Group__c = 'Young Adult 6 mths - 1 yr',
@@ -172,7 +172,7 @@ private class PartnersPortalTest {
                 animalos__Incoming_Date__c = Datetime.now(),
                 animalos__Class__c = 'Domestic',
                 animalos__Type__c = 'Dog',
-                Is_New__c = false,
+                aos_Is_New__c = false,
                 animalos__Current_Site__c = siteLocation2.Id,
                 animalos__Age_Group__c = 'Young Adult 6 mths - 1 yr',
                 animalos__Primary_Breed__c = animalBreed.Id,
@@ -181,28 +181,28 @@ private class PartnersPortalTest {
         insert animal2;
 
         //Test TDTM_LocationVolunteerReshareRecords
-        Location_Volunteer__c locationVolunteerVar = new Location_Volunteer__c(
-                Location__c = siteLocation.Id,
-                Volunteer__c = contactVar.Id
+        aos_Location_Volunteer__c locationVolunteerVar = new aos_Location_Volunteer__c(
+                aos_Location__c = siteLocation.Id,
+                aos_Volunteer__c = contactVar.Id
         );
         insert locationVolunteerVar;
 
-        Location_Volunteer__c locationVolunteerVar2 = new Location_Volunteer__c(
-                Location__c = siteLocation2.Id,
-                Volunteer__c = contactVar2.Id
+        aos_Location_Volunteer__c locationVolunteerVar2 = new aos_Location_Volunteer__c(
+                aos_Location__c = siteLocation2.Id,
+                aos_Volunteer__c = contactVar2.Id
         );
         insert locationVolunteerVar2;
 
-        System.assert([SELECT COUNT() FROM Vertic_Async_Process__c] == 2);
+        System.assert([SELECT COUNT() FROM aos_Async_Process__c] == 2);
 
         //Test TDTM_LocationVolunteerPopulateUserId
         locationVolunteerVar = [
-                SELECT Id, Location__c, Volunteer__c, User__c
-                FROM Location_Volunteer__c
+                SELECT Id, aos_Location__c, aos_Volunteer__c, aos_User__c
+                FROM aos_Location_Volunteer__c
                 WHERE Id = :locationVolunteerVar.Id
         ];
 
-        System.assertEquals(userVar.Id, locationVolunteerVar.User__c);
+        System.assertEquals(userVar.Id, locationVolunteerVar.aos_User__c);
 
         //Test TDTM_AnimalPartnersPortalReshareRecords
         animalos__Location__c blockLocation = new animalos__Location__c(
@@ -228,18 +228,18 @@ private class PartnersPortalTest {
         );
         insert movementVar;
 
-        System.assert([SELECT COUNT() FROM Vertic_Async_Process__c] == 2);
+        System.assert([SELECT COUNT() FROM aos_Async_Process__c] == 2);
 
         //Test PartnersPortalReshareRecordsProc
-        Location_Volunteer__c locationVolunteerBlockVar = new Location_Volunteer__c(
-                Location__c = blockLocation.Id,
-                Volunteer__c = contactVar2.Id
+        aos_Location_Volunteer__c locationVolunteerBlockVar = new aos_Location_Volunteer__c(
+                aos_Location__c = blockLocation.Id,
+                aos_Volunteer__c = contactVar2.Id
         );
         insert locationVolunteerBlockVar;
 
-        Location_Volunteer__c locationVolunteerUnitVar = new Location_Volunteer__c(
-                Location__c = unitLocation.Id,
-                Volunteer__c = contactVar2.Id
+        aos_Location_Volunteer__c locationVolunteerUnitVar = new aos_Location_Volunteer__c(
+                aos_Location__c = unitLocation.Id,
+                aos_Volunteer__c = contactVar2.Id
         );
         insert locationVolunteerUnitVar;
 
@@ -249,19 +249,19 @@ private class PartnersPortalTest {
         );
         insert offsiteLocation;
 
-        Location_Volunteer__c locationVolunteerOffsiteVar = new Location_Volunteer__c(
-                Location__c = offsiteLocation.Id,
-                Volunteer__c = contactVar2.Id
+        aos_Location_Volunteer__c locationVolunteerOffsiteVar = new aos_Location_Volunteer__c(
+                aos_Location__c = offsiteLocation.Id,
+                aos_Volunteer__c = contactVar2.Id
         );
         insert locationVolunteerOffsiteVar;
 
         Test.startTest();
         Set<Id> vapIds = vertic_Utils.sObjects.getIdFieldValues([
                 SELECT Id
-                FROM Vertic_Async_Process__c
-                WHERE Group_Key__c = :userVar2.Id
+                FROM aos_Async_Process__c
+                WHERE aos_Group_Key__c = :userVar2.Id
                 LIMIT 1
-        ], Vertic_Async_Process__c.Id);
+        ], aos_Async_Process__c.Id);
         vertic_AsyncProcessBatch.run(new List<Id>(vapIds));
         Test.stopTest();
         //both animalVar and animalVar2 should be shared with userVar2
@@ -276,8 +276,8 @@ private class PartnersPortalTest {
 
             System.assertEquals(0, [
                     SELECT COUNT()
-                    FROM Location_Volunteer__c
-                    WHERE Status__c = 'Active' AND Volunteer__c = :userVar2.ContactId
+                    FROM aos_Location_Volunteer__c
+                    WHERE aos_Status__c = 'Active' AND aos_Volunteer__c = :userVar2.ContactId
             ]);
         }
 

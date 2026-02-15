@@ -38,16 +38,16 @@ public without sharing class OneDriveGetFolderProc extends vertic_AbstractProces
     }
 
     public static void enqueueVAP(String oldOneDriveFolderName, String newOneDriveFolderName, String driveId){
-        Vertic_Async_Process__c verticAsyncProcessVar = new Vertic_Async_Process__c();
+        aos_Async_Process__c verticAsyncProcessVar = new aos_Async_Process__c();
         Map<String, Object> requestMap = new Map<String, Object>{
                 'oldOneDriveFolderName' => oldOneDriveFolderName,
                 'newOneDriveFolderName' => newOneDriveFolderName,
                 'driveId' => driveId
         };
-        verticAsyncProcessVar.Processor__c = 'OneDriveGetFolderProc';
-        verticAsyncProcessVar.Payload__c = JSON.serialize(requestMap);
-        verticAsyncProcessVar.Description__c = 'Get OneDrive Folder Files';
-        verticAsyncProcessVar.Group_Key__c = newOneDriveFolderName;
+        verticAsyncProcessVar.aos_Processor__c = 'OneDriveGetFolderProc';
+        verticAsyncProcessVar.aos_Payload__c = JSON.serialize(requestMap);
+        verticAsyncProcessVar.aos_Description__c = 'Get OneDrive Folder Files';
+        verticAsyncProcessVar.aos_Group_Key__c = newOneDriveFolderName;
 
         insert verticAsyncProcessVar;
     }

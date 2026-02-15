@@ -7,12 +7,12 @@ public without sharing virtual class PetRescueAPI {
 
     private String getToken(String locationId) {
         Map<String, Object> petRescueSettingsByLocationId = vertic_Utils.sObjects.getSObjectsByAnyFieldMap(
-                PetRescue_Setting__mdt.getAll().values(),
-                PetRescue_Setting__mdt.Location_Id__c
+                aos_PetRescue_Setting__mdt.getAll().values(),
+                aos_PetRescue_Setting__mdt.aos_Location_Id__c
         );
-        PetRescue_Setting__mdt petRescueSetting = (PetRescue_Setting__mdt) petRescueSettingsByLocationId.get(locationId);
+        aos_PetRescue_Setting__mdt petRescueSetting = (aos_PetRescue_Setting__mdt) petRescueSettingsByLocationId.get(locationId);
 
-        if (petRescueSetting == null || String.isBlank(petRescueSetting.API_Key__c)) {
+        if (petRescueSetting == null || String.isBlank(petRescueSetting.aos_API_Key__c)) {
             animalos__Location__c location = (animalos__Location__c) vertic_Utils.arrays.firstOrException([
                     SELECT Id, Name
                     FROM animalos__Location__c
@@ -21,7 +21,7 @@ public without sharing virtual class PetRescueAPI {
             throw new vertic_Structs.MissingDataException('API Key for ' + location.Name + ' is not configured');
         }
 
-        return petRescueSetting.API_Key__c;
+        return petRescueSetting.aos_API_Key__c;
     }
 
     public virtual HttpResponse create(Map<String, Object> requestMap, String locationId) {

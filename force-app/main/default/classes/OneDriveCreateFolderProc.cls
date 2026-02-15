@@ -27,7 +27,7 @@ public without sharing class OneDriveCreateFolderProc extends vertic_AbstractPro
 
 //        System.debug('OneDriveCreateFolderProc FILES ==>> ' + this.request.get('Files'));
 
-        List<Vertic_Async_Process__c> asyncProcesses = new List<Vertic_Async_Process__c>();
+        List<aos_Async_Process__c> asyncProcesses = new List<aos_Async_Process__c>();
 
         for (Object fileObj : this.request.getList('Files')){
 
@@ -48,12 +48,12 @@ public without sharing class OneDriveCreateFolderProc extends vertic_AbstractPro
     }
 
     public static void enqueueVAP(vertic_Request request){
-        Vertic_Async_Process__c verticAsyncProcessVar = new Vertic_Async_Process__c();
+        aos_Async_Process__c verticAsyncProcessVar = new aos_Async_Process__c();
 
-        verticAsyncProcessVar.Processor__c = 'OneDriveCreateFolderProc';
-        verticAsyncProcessVar.Payload__c = JSON.serialize(request.getMap());
-        verticAsyncProcessVar.Description__c = 'Get OneDrive Folder Files';
-        verticAsyncProcessVar.Group_Key__c = request.getString('newOneDriveFolderName');
+        verticAsyncProcessVar.aos_Processor__c = 'OneDriveCreateFolderProc';
+        verticAsyncProcessVar.aos_Payload__c = JSON.serialize(request.getMap());
+        verticAsyncProcessVar.aos_Description__c = 'Get OneDrive Folder Files';
+        verticAsyncProcessVar.aos_Group_Key__c = request.getString('newOneDriveFolderName');
 
         insert verticAsyncProcessVar;
     }

@@ -34,45 +34,45 @@ public without sharing class OneDriveCreateFileSObjectProc extends vertic_Abstra
 
         String oneDriveRecordsQuery = 'SELECT Id, Name, Folder_Name__c, File_ID__c FROM OneDrive_File__c WHERE ' + sobjectTypeNameString.remove('__c') + '__c' + '= \'' + recordId + '\'';
 
-        List<OneDrive_File__c> oneDriveFileRecords = Database.query(oneDriveRecordsQuery);
+        List<aos_OneDrive_File__c> oneDriveFileRecords = Database.query(oneDriveRecordsQuery);
 
         Map<String, SObject> oneDriveFileByFileId = new Map<String, SObject>();
         if (!oneDriveFileRecords.isEmpty()) {
             oneDriveFileByFileId = vertic_Utils.sObjects.getSObjectsByAnyFieldMap(
                     oneDriveFileRecords,
-                    OneDrive_File__c.File_ID__c
+                    aos_OneDrive_File__c.aos_File_ID__c
             );
         }
-        List<OneDrive_File__c> newFiles = new List<OneDrive_File__c>();
-        List<OneDrive_File__c> oneDriveFiles = new List<OneDrive_File__c>();
+        List<aos_OneDrive_File__c> newFiles = new List<aos_OneDrive_File__c>();
+        List<aos_OneDrive_File__c> oneDriveFiles = new List<aos_OneDrive_File__c>();
 
         Integer uploadedFileIndex;
 
         for (Object driveFile : driveFiles) {
             Map<String, Object> file = (Map<String, Object>) driveFile;
             String fileId = (String) file.get('id');
-            OneDrive_File__c oneDriveFile = (OneDrive_File__c) oneDriveFileByFileId.get(fileId);
+            aos_OneDrive_File__c oneDriveFile = (aos_OneDrive_File__c) oneDriveFileByFileId.get(fileId);
             if (oneDriveFile == null) {
                 String name = (String) file.get('name');
                 if (name.containsIgnoreCase('deleted_') != true) {
                     uploadedFileIndex = driveFiles.indexOf(driveFile);
-                    oneDriveFile = new OneDrive_File__c();
+                    oneDriveFile = new aos_OneDrive_File__c();
                     oneDriveFile.put(sobjectTypeNameString.remove('__c') + '__c', recordId);
-                    oneDriveFile.Is_Deleted__c = false;
+                    oneDriveFile.aos_Is_Deleted__c = false;
                     oneDriveFile.Name = name.length() > 80 ? name.substring(0, 77) : name;
-                    oneDriveFile.File_Link__c = (String) file.get('@microsoft.graph.downloadUrl');
-                    oneDriveFile.Web_URL__c = (String) file.get('webUrl');
-                    oneDriveFile.File_ID__c = fileId;
-                    oneDriveFile.Folder_Name__c = (String.isNotBlank(folderName) ? folderName : record.get('One_Drive_Folder_Name__c')) + (String.isNotBlank(postfix) ? '-' + postfix : '');
+                    oneDriveFile.aos_File_Link__c = (String) file.get('@microsoft.graph.downloadUrl');
+                    oneDriveFile.aos_Web_URL__c = (String) file.get('webUrl');
+                    oneDriveFile.aos_File_ID__c = fileId;
+                    oneDriveFile.aos_Folder_Name__c = (String.isNotBlank(folderName) ? folderName : record.get('aos_One_Drive_Folder_Name__c')) + (String.isNotBlank(postfix) ? '-' + postfix : '');
                     if ('Adoption'.equals(driveName)) {
-                        oneDriveFile.Is_Public__c = true;
+                        oneDriveFile.aos_Is_Public__c = true;
                     }
                     oneDriveFiles.add(oneDriveFile);
                     newFiles.add(oneDriveFile);
                 }
             } else {
                 uploadedFileIndex = driveFiles.indexOf(driveFile);
-                oneDriveFile.Web_URL__c = (String) file.get('webUrl');
+                oneDriveFile.aos_Web_URL__c = (String) file.get('webUrl');
                 oneDriveFiles.add(oneDriveFile);
             }
         }
@@ -101,7 +101,7 @@ public without sharing class OneDriveCreateFileSObjectProc extends vertic_Abstra
             if (sobjectTypeNameString.split('__').size() == 1) {
                 sobjectTypeNameString = sobjectTypeNameString + '__c';
             }
-            Boolean isAccordingLookupExists = OneDrive_File__c.SObjectType.getDescribe().fields.getMap().keySet().contains(sobjectTypeNameString);
+            Boolean isAccordingLookupExists = aos_OneDrive_File__c.SObjectType.getDescribe().fields.getMap().keySet().contains(sobjectTypeNameString);
 
             if (isAccordingLookupExists) {
                 throw new vertic_Structs.CommonException('Error: OneDrive_File__c does not contain lookup to the current object');
@@ -110,7 +110,7 @@ public without sharing class OneDriveCreateFileSObjectProc extends vertic_Abstra
         }
     }
 
-    private void copyFiles(Id fromId, List<OneDrive_File__c> files) {
+    private void copyFiles(Id fromId, List<aos_OneDrive_File__c> files) {
         if (fromId.getSobjectType() == Case.SObjectType && !files.isEmpty()) {
             this.sendNotificationToCaseCreatedByUser(fromId);
             this.copyFilesToJob(fromId, files);
@@ -140,20 +140,20 @@ public without sharing class OneDriveCreateFileSObjectProc extends vertic_Abstra
                 return;
             }
 
-            Vertic_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(
+            aos_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(
                     fileAddedEmailNotification.DeveloperName,
                     caseVar.CreatedBy,
                     caseVar.Id
             )
                     .setOrgWideEmail('inspectors@rspcansw.org.au')
                     .toAsyncProcess();
-            asyncProc.Allowed_Attempts__c = 3;
+            asyncProc.aos_Allowed_Attempts__c = 3;
 
             this.asyncProcess.add(asyncProc);
         }
     }
 
-    private void copyFilesToJob(Id fromId, List<OneDrive_File__c> files) {
+    private void copyFilesToJob(Id fromId, List<aos_OneDrive_File__c> files) {
 //        animalos__Job__c job = (animalos__Job__c) vertic_Utils.arrays.firstOrNull([
 //                SELECT Id, OwnerId
 //                FROM animalos__Job__c
@@ -185,7 +185,7 @@ public without sharing class OneDriveCreateFileSObjectProc extends vertic_Abstra
 //        request.put('fromLookupFieldName', 'Case__c');
 //        request.put('toRecordId', job.Id);
 //        request.put('toLookupFieldName', 'animalos_Job__c');
-//        Vertic_Async_Process__c vap = vertic_AsyncProcess.create(OneDriveCopyFilesToFolderProc.class, request.getMap());
+//        aos_Async_Process__c vap = vertic_AsyncProcess.create(OneDriveCopyFilesToFolderProc.class, request.getMap());
 //        vap.Group_Key__c = 'COPY_FILE_FROM_CASE_TO_JOB-' + job.Id;
 //
 //        this.asyncProcess.add(vap);
@@ -198,7 +198,7 @@ public without sharing class OneDriveCreateFileSObjectProc extends vertic_Abstra
 //                            'jobId' => job.Id
 //                    }
 //            };
-//            Vertic_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(
+//            aos_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(
 //                    fileAddedEmailNotification.DeveloperName,
 //                    userVar,
 //                    job.Id

@@ -31,7 +31,7 @@ public without sharing class OneDriveFileDomain extends fflib_SObjectDomain impl
     private void updateAnimalGalleryUpdatedDate(List<sObject> records) {
         Set<Id> animalIds = vertic_Utils.sObjects.getIdFieldValues(
                 records,
-                OneDrive_File__c.animalos_Animal__c
+                aos_OneDrive_File__c.aos_Animal__c
         );
 
         List<animalos__Animal__c> animalsForUpdate = new List<animalos__Animal__c>();
@@ -41,7 +41,7 @@ public without sharing class OneDriveFileDomain extends fflib_SObjectDomain impl
                 FROM animalos__Animal__c
                 WHERE Id IN :animalIds
         ]) {
-            animal.Gallery_Updated_Date__c = Date.today();
+            animal.aos_Gallery_Updated_Date__c = Date.today();
 
             animalsForUpdate.add(animal);
         }
@@ -53,23 +53,23 @@ public without sharing class OneDriveFileDomain extends fflib_SObjectDomain impl
 
         Set<Id> animalIds = new Set<Id>();
 
-        for (OneDrive_File__c oneDriveFile : (List<OneDrive_File__c>) records) {
+        for (aos_OneDrive_File__c oneDriveFile : (List<aos_OneDrive_File__c>) records) {
             Boolean isCreated = Trigger.isInsert && existingRecords == null;
             Boolean isUpdated = Trigger.isUpdate && existingRecords != null && existingRecords.get(oneDriveFile.Id) != null &&
                     vertic_Utils.sObjects.isSomeFieldChanged(
                             oneDriveFile,
                             existingRecords.get(oneDriveFile.Id),
                             new List<sObjectField>{
-                                    OneDrive_File__c.Is_Public__c,
-                                    OneDrive_File__c.Is_Deleted__c,
-                                    OneDrive_File__c.Is_Primary__c
+                                    aos_OneDrive_File__c.aos_Is_Public__c,
+                                    aos_OneDrive_File__c.aos_Is_Deleted__c,
+                                    aos_OneDrive_File__c.aos_Is_Primary__c
                             }
                     );
 
-            if (((isCreated && (oneDriveFile.Is_Public__c || oneDriveFile.Is_Primary__c) && !oneDriveFile.Is_Deleted__c) || isUpdated)
-                    && oneDriveFile.animalos_Animal__c != null
-                    && String.isNotBlank(oneDriveFile.Folder_Name__c) && oneDriveFile.Folder_Name__c.containsIgnoreCase('photos')) {
-                animalIds.add(oneDriveFile.animalos_Animal__c);
+            if (((isCreated && (oneDriveFile.aos_Is_Public__c || oneDriveFile.aos_Is_Primary__c) && !oneDriveFile.aos_Is_Deleted__c) || isUpdated)
+                    && oneDriveFile.aos_Animal__c != null
+                    && String.isNotBlank(oneDriveFile.aos_Folder_Name__c) && oneDriveFile.aos_Folder_Name__c.containsIgnoreCase('photos')) {
+                animalIds.add(oneDriveFile.aos_Animal__c);
             }
         }
 
@@ -88,25 +88,25 @@ public without sharing class OneDriveFileDomain extends fflib_SObjectDomain impl
     private void sendDeletedOneDriveFileId(List<sObject> records, Map<Id, sObject> existingRecords) {
         vertic_AsyncProcess verticAsyncProcess = new vertic_AsyncProcess();
 
-        for (OneDrive_File__c oneDriveFile : (List<OneDrive_File__c>) records) {
+        for (aos_OneDrive_File__c oneDriveFile : (List<aos_OneDrive_File__c>) records) {
             Boolean isUpdated = existingRecords != null && existingRecords.get(oneDriveFile.Id) != null &&
                     vertic_Utils.sObjects.isSomeFieldChanged(
                             oneDriveFile,
                             existingRecords.get(oneDriveFile.Id),
                             new List<SObjectField>{
-                                    OneDrive_File__c.Is_Deleted__c,
-                                    OneDrive_File__c.Is_Public__c
+                                    aos_OneDrive_File__c.aos_Is_Deleted__c,
+                                    aos_OneDrive_File__c.aos_Is_Public__c
                             }
                     );
 
-            if (isUpdated && (oneDriveFile.Is_Deleted__c || !oneDriveFile.Is_Public__c)) {
-                Vertic_Async_Process__c vap = vertic_AsyncProcess.create(
+            if (isUpdated && (oneDriveFile.aos_Is_Deleted__c || !oneDriveFile.aos_Is_Public__c)) {
+                aos_Async_Process__c vap = vertic_AsyncProcess.create(
                         SendDeletedOneDriveFileIdProc.class,
                         new Map<String, Object>{
                                 'recordId' => oneDriveFile.Id
                         }
                 );
-                vap.Group_Key__c = oneDriveFile.Id;
+                vap.aos_Group_Key__c = oneDriveFile.Id;
 
                 verticAsyncProcess.add(vap);
             }

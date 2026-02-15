@@ -34,12 +34,12 @@ public without sharing class AdoptionAgreementSendEmailProc extends vertic_Abstr
                 }
         };
 
-        Vertic_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(adoptionAgreementTemplate.DeveloperName, relatedContact, referralId)
+        aos_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(adoptionAgreementTemplate.DeveloperName, relatedContact, referralId)
                 .setOrgWideEmail(vertic_Utils.strings.defaultIfBlank(vertic_SettingService.getValue('ADOPTION_AGREEMENT_ORG_WIDE_EMAIL'), 'developer@vertic.com.au'))
                 .setContentAttachments(contentAttachments)
                 .toAsyncProcess();
 
-        asyncProc.Group_Key__c = referralId;
+        asyncProc.aos_Group_Key__c = referralId;
 
         new vertic_AsyncProcess().add(asyncProc).enqueue();
     }

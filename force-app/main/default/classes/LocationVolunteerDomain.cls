@@ -1,6 +1,6 @@
 public without sharing class LocationVolunteerDomain extends fflib_SObjectDomain implements fflib_ISObjectDomain {
 
-    public LocationVolunteerDomain(List<Location_Volunteer__c> sObjectList) {
+    public LocationVolunteerDomain(List<aos_Location_Volunteer__c> sObjectList) {
         super(sObjectList);
         this.Configuration.disableTriggerCRUDSecurity();
     }
@@ -12,24 +12,24 @@ public without sharing class LocationVolunteerDomain extends fflib_SObjectDomain
     }
 
     public override void onAfterInsert() {
-        this.shareRecords(this.Records, new Map<Id, Location_Volunteer__c>());
+        this.shareRecords(this.Records, new Map<Id, aos_Location_Volunteer__c>());
     }
 
     public override void onAfterUpdate(Map<Id, SObject> existingRecords) {
-        this.shareRecords(this.Records, (Map<Id, Location_Volunteer__c>) existingRecords);
-        this.deleteShareRecords(this.Records, (Map<Id, Location_Volunteer__c>) existingRecords);
+        this.shareRecords(this.Records, (Map<Id, aos_Location_Volunteer__c>) existingRecords);
+        this.deleteShareRecords(this.Records, (Map<Id, aos_Location_Volunteer__c>) existingRecords);
     }
 
     public override void onBeforeDelete() {
-        this.deleteShareRecords(this.Records, new Map<Id, Location_Volunteer__c>());
+        this.deleteShareRecords(this.Records, new Map<Id, aos_Location_Volunteer__c>());
     }
 
-    private void shareRecords(List<Location_Volunteer__c> locationVolunteers, Map<Id, Location_Volunteer__c> existingLocationVolunteersByIds) {
+    private void shareRecords(List<aos_Location_Volunteer__c> locationVolunteers, Map<Id, aos_Location_Volunteer__c> existingLocationVolunteersByIds) {
         List<animalos__Animal__Share> animalShareRecords = new List<animalos__Animal__Share>();
         List<animalos__Location__Share> locationShareRecords = new List<animalos__Location__Share>();
         List<animalos__Alert__Share> alertShareRecords = new List<animalos__Alert__Share>();
-        Set<Id> locationIds = vertic_Utils.sObjects.getIdFieldValues(locationVolunteers, Location_Volunteer__c.Location__c);
-        Set<Id> contactIds = vertic_Utils.sObjects.getIdFieldValues(locationVolunteers, Location_Volunteer__c.Volunteer__c);
+        Set<Id> locationIds = vertic_Utils.sObjects.getIdFieldValues(locationVolunteers,aos_Location_Volunteer__c.aos_Location__c);
+        Set<Id> contactIds = vertic_Utils.sObjects.getIdFieldValues(locationVolunteers, aos_Location_Volunteer__c.aos_Volunteer__c);
 
         Map<String, SObject> usersByContactIds = vertic_Utils.sObjects.getSObjectsByAnyFieldMap([
                 SELECT Id, ContactId
@@ -88,24 +88,24 @@ public without sharing class LocationVolunteerDomain extends fflib_SObjectDomain
             }
         }
 
-        for (Location_Volunteer__c locationVolunteerVar : locationVolunteers) {
+        for (aos_Location_Volunteer__c locationVolunteerVar : locationVolunteers) {
             Boolean isUpdate = Trigger.isUpdate && existingLocationVolunteersByIds != null && existingLocationVolunteersByIds.get(locationVolunteerVar.Id) != null
-                    && locationVolunteerVar.Location__c != null && vertic_Utils.sObjects.isSomeFieldChanged(locationVolunteerVar, existingLocationVolunteersByIds.get(locationVolunteerVar.Id),
+                    && locationVolunteerVar.aos_Location__c != null && vertic_Utils.sObjects.isSomeFieldChanged(locationVolunteerVar, existingLocationVolunteersByIds.get(locationVolunteerVar.Id),
                     new List<SObjectField>{
-                            Location_Volunteer__c.Location__c
+                            aos_Location_Volunteer__c.aos_Location__c
                     });
 
-            Boolean isInsert = Trigger.isInsert && locationVolunteerVar.Location__c != null;
+            Boolean isInsert = Trigger.isInsert && locationVolunteerVar.aos_Location__c != null;
 
             if (isUpdate || isInsert) {
-                List<animalos__Animal__c> relatedAnimalsBlock = (List<animalos__Animal__c>) animalsByBlockLocationIds.get(locationVolunteerVar.Location__c);
-                List<animalos__Animal__c> relatedAnimalsUnit = (List<animalos__Animal__c>) animalsByUnitLocationIds.get(locationVolunteerVar.Location__c);
-                List<animalos__Animal__c> relatedAnimalsSite = (List<animalos__Animal__c>) animalsBySiteLocationIds.get(locationVolunteerVar.Location__c);
-                User volunteerVar = (User) usersByContactIds.get(locationVolunteerVar.Volunteer__c);
+                List<animalos__Animal__c> relatedAnimalsBlock = (List<animalos__Animal__c>) animalsByBlockLocationIds.get(locationVolunteerVar.aos_Location__c);
+                List<animalos__Animal__c> relatedAnimalsUnit = (List<animalos__Animal__c>) animalsByUnitLocationIds.get(locationVolunteerVar.aos_Location__c);
+                List<animalos__Animal__c> relatedAnimalsSite = (List<animalos__Animal__c>) animalsBySiteLocationIds.get(locationVolunteerVar.aos_Location__c);
+                User volunteerVar = (User) usersByContactIds.get(locationVolunteerVar.aos_Volunteer__c);
 
                 if (volunteerVar != null) {
                     locationShareRecords.add(new animalos__Location__Share(
-                            ParentId = locationVolunteerVar.Location__c,
+                            ParentId = locationVolunteerVar.aos_Location__c,
                             UserOrGroupId = volunteerVar.Id,
                             RowCause = 'Manual',
                             AccessLevel = 'Edit'
@@ -199,15 +199,15 @@ public without sharing class LocationVolunteerDomain extends fflib_SObjectDomain
         }
     }
 
-    private void deleteShareRecords(List<Location_Volunteer__c> locationVolunteers, Map<Id, Location_Volunteer__c> existingLocationVolunteersByIds) {
+    private void deleteShareRecords(List<aos_Location_Volunteer__c> locationVolunteers, Map<Id, aos_Location_Volunteer__c> existingLocationVolunteersByIds) {
         List<animalos__Animal__Share> animalShareRecords = new List<animalos__Animal__Share>();
         List<animalos__Location__Share> locationShareRecords = new List<animalos__Location__Share>();
         List<animalos__Alert__Share> alertShareRecords = new List<animalos__Alert__Share>();
-        Set<Id> contactIds = vertic_Utils.sObjects.getIdFieldValues(locationVolunteers, Location_Volunteer__c.Volunteer__c);
+        Set<Id> contactIds = vertic_Utils.sObjects.getIdFieldValues(locationVolunteers, aos_Location_Volunteer__c.aos_Volunteer__c);
 
         Boolean isUpdate = Trigger.isUpdate && existingLocationVolunteersByIds != null && !existingLocationVolunteersByIds.isEmpty();
-        Set<Id> locationIds = isUpdate ? vertic_Utils.sObjects.getIdFieldValues(existingLocationVolunteersByIds.values(), Location_Volunteer__c.Location__c) :
-                vertic_Utils.sObjects.getIdFieldValues(locationVolunteers, Location_Volunteer__c.Location__c);
+        Set<Id> locationIds = isUpdate ? vertic_Utils.sObjects.getIdFieldValues(existingLocationVolunteersByIds.values(), aos_Location_Volunteer__c.aos_Location__c) :
+                vertic_Utils.sObjects.getIdFieldValues(locationVolunteers, aos_Location_Volunteer__c.aos_Location__c);
 
         Map<String, SObject> usersByContactIds = vertic_Utils.sObjects.getSObjectsByAnyFieldMap([
                 SELECT Id, ContactId
@@ -255,16 +255,16 @@ public without sharing class LocationVolunteerDomain extends fflib_SObjectDomain
                 AND Parent.animalos__Target_Record_Id__c IN :animalIds
         ], animalos__Alert__Share.UserOrGroupId);
 
-        for (Location_Volunteer__c locationVolunteerVar : locationVolunteers) {
-            User volunteerVar = (User) usersByContactIds.get(locationVolunteerVar.Volunteer__c);
+        for (aos_Location_Volunteer__c locationVolunteerVar : locationVolunteers) {
+            User volunteerVar = (User) usersByContactIds.get(locationVolunteerVar.aos_Volunteer__c);
             List<animalos__Animal__Share> relatedSharedAnimals = allSharedAnimalsByUserIds.get(volunteerVar?.Id);
             List<animalos__Location__Share> relatedSharedLocations = allSharedLocationsByUserIds.get(volunteerVar?.Id);
 
             if (relatedSharedAnimals != null && !relatedSharedAnimals.isEmpty()) {
                 for(animalos__Animal__Share animalShare : relatedSharedAnimals) {
-                    if(animalShare.Parent.animalos__Current_Site__c == locationVolunteerVar.Location__c
-                            || animalShare.Parent.animalos__Current_Unit__c == locationVolunteerVar.Location__c
-                            || animalShare.Parent.animalos__Current_Block__c == locationVolunteerVar.Location__c) {
+                    if(animalShare.Parent.animalos__Current_Site__c == locationVolunteerVar.aos_Location__c
+                            || animalShare.Parent.animalos__Current_Unit__c == locationVolunteerVar.aos_Location__c
+                            || animalShare.Parent.animalos__Current_Block__c == locationVolunteerVar.aos_Location__c) {
                         animalShareRecords.add(animalShare);
 
                         List<animalos__Alert__Share> relatedAlerts = (List<animalos__Alert__Share>) allSharedAlertsByUserIds.get(volunteerVar?.Id);

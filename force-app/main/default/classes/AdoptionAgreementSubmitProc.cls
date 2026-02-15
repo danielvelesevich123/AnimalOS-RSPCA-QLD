@@ -15,19 +15,19 @@ public without sharing class AdoptionAgreementSubmitProc extends vertic_Abstract
         Id referralId = (Id) referralVar.Id;
         vertic_AsyncProcess asyncProcess = new vertic_AsyncProcess();
 
-        Vertic_Async_Process__c saveSignaturesVap = vertic_AsyncProcess.create(
+        aos_Async_Process__c saveSignaturesVap = vertic_AsyncProcess.create(
                 AdoptionAgreementSaveSignaturesProc.class,
                 this.request.getMap()
         );
 
-        saveSignaturesVap.Group_Key__c = referralId;
+        saveSignaturesVap.aos_Group_Key__c = referralId;
         asyncProcess.add(saveSignaturesVap);
 
-        Vertic_Async_Process__c savePdfVap = vertic_AsyncProcess.create(
+        aos_Async_Process__c savePdfVap = vertic_AsyncProcess.create(
                 AdoptionAgreementSavePdfProc.class,
                 this.request.getMap()
         );
-        savePdfVap.Group_Key__c = referralId;
+        savePdfVap.aos_Group_Key__c = referralId;
         asyncProcess.add(savePdfVap);
 
         asyncProcess.enqueue();

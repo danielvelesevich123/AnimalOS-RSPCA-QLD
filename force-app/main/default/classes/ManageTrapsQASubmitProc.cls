@@ -39,7 +39,7 @@ public class ManageTrapsQASubmitProc extends vertic_AbstractProcessor implements
             animalos__Assigned_Resource__c assignedResource = new animalos__Assigned_Resource__c(
                     animalos__Job_Activity__c = jobActivity.Id,
                     animalos__Resource__c = resource.Id,
-                    Trap_Status__c = resource.Status__c
+                    aos_Trap_Status__c = resource.aos_Status__c
             );
             assignedResources.add(assignedResource);
         }

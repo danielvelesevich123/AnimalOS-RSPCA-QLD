@@ -65,7 +65,7 @@ public without sharing class UpdateDescriptionInStripeProc extends vertic_Abstra
 
         if (this.entityTypeVar == EntityType.PAYMENT_INTENT) {
             for (npe01__OppPayment__c payment : (List<npe01__OppPayment__c>)records) {
-                Vertic_Async_Process__c vap = createVap(
+                aos_Async_Process__c vap = createVap(
                     payment.npsp__Gateway_Payment_ID__c,
                     payment.npe01__Opportunity__r.Campaign__c,
                     payment.npe01__Opportunity__r.Name
@@ -74,7 +74,7 @@ public without sharing class UpdateDescriptionInStripeProc extends vertic_Abstra
             }
         } else if (this.entityTypeVar == EntityType.CHARGE) {
             for (Opportunity oppVar : (List<Opportunity>)records) {
-                Vertic_Async_Process__c vap = createVap(
+                aos_Async_Process__c vap = createVap(
                     oppVar.Gateway_ID__c,
                     oppVar.Campaign__c,
                     oppVar.Name
@@ -85,20 +85,20 @@ public without sharing class UpdateDescriptionInStripeProc extends vertic_Abstra
             throw new vertic_Structs.ProcessException('Invalid entity type');
         }
 
-        List<Vertic_Async_Process__c> vaps = vapProcessVar.enqueue();
+        List<aos_Async_Process__c> vaps = vapProcessVar.enqueue();
 
         this.vapIds.addAll(new Map<Id, SObject>(vaps).keySet());
     }
 
-    public Vertic_Async_Process__c createVap(String gatewayId, String campaign, String oppName) {
-        return new Vertic_Async_Process__c(
-            Processor__c = '' + UpdateDescriptionInStripeProc.class,
-            Payload__c = JSON.serialize(new Map<String, Object>{
+    public aos_Async_Process__c createVap(String gatewayId, String campaign, String oppName) {
+        return new aos_Async_Process__c(
+                aos_Processor__c = '' + UpdateDescriptionInStripeProc.class,
+                aos_Payload__c = JSON.serialize(new Map<String, Object>{
                 'gatewayPaymentId' => gatewayId,
                 'stripeDescription' => vertic_Utils.strings.joinNonBlank(new List<String>{campaign, oppName}, ' ')
             }),
-            Is_Queueable__c = true,
-            Autorun__c = false
+                aos_Is_Queueable__c = true,
+                aos_Autorun__c = false
         );
     }
 
@@ -129,7 +129,7 @@ public without sharing class UpdateDescriptionInStripeProc extends vertic_Abstra
 //        stripeDescription = payment.npe01__Opportunity__r.Campaign__c + ' ' + payment.npe01__Opportunity__r.Name;
 //    }
 //
-//    vapProcessVar.add(new Vertic_Async_Process__c(
+//    vapProcessVar.add(new aos_Async_Process__c(
 //        Processor__c = '' + UpdateDescriptionInStripeProc.class,
 //        Payload__c = JSON.serialize(new Map<String, Object>{
 //            'gatewayPaymentId' => payment.npsp__Gateway_Payment_ID__c,

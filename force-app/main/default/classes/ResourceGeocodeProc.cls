@@ -10,20 +10,20 @@ public inherited sharing class ResourceGeocodeProc extends vertic_AbstractProces
 
     private void doSubmit() {
         animalos__Resource__c resourceVar = (animalos__Resource__c) vertic_Utils.arrays.firstOrException([
-                SELECT Id, Current_Location__Longitude__s, Current_Location__Latitude__s, Current_Location__Street__s,
-                        Current_Location__PostalCode__s, Current_Location__City__s, Current_Location__CountryCode__s,
-                        Current_Location__StateCode__s, Full_Current_Location__c
+                SELECT Id, aos_Current_Location__Longitude__s, aos_Current_Location__Latitude__s, aos_Current_Location__Street__s,
+                        aos_Current_Location__PostalCode__s, aos_Current_Location__City__s, aos_Current_Location__CountryCode__s,
+                        aos_Current_Location__StateCode__s, aos_Full_Current_Location__c
                 FROM animalos__Resource__c
                 WHERE Id = :this.request.getRequiredString('recordId')
         ], 'There is no Resource with Id ' + this.request.getRequiredString('recordId'));
 
-        if (String.isNotBlank(resourceVar.Full_Current_Location__c)) {
-            Map<String, Object> fullAddressDetails = animalos.PolygonUtils.getFullAddressDetailsByAddress(resourceVar.Full_Current_Location__c);
+        if (String.isNotBlank(resourceVar.aos_Full_Current_Location__c)) {
+            Map<String, Object> fullAddressDetails = animalos.PolygonUtils.getFullAddressDetailsByAddress(resourceVar.aos_Full_Current_Location__c);
             vertic_DTO fullAddressDetailsDTO = new vertic_DTO(fullAddressDetails);
 
             if (fullAddressDetailsDTO.getBoolean('success') == true) {
-                resourceVar.Current_Location__Latitude__s = fullAddressDetailsDTO.getDecimal('data.position.lat');
-                resourceVar.Current_Location__Longitude__s = fullAddressDetailsDTO.getDecimal('data.position.lng');
+                resourceVar.aos_Current_Location__Latitude__s = fullAddressDetailsDTO.getDecimal('data.position.lat');
+                resourceVar.aos_Current_Location__Longitude__s = fullAddressDetailsDTO.getDecimal('data.position.lng');
             }
         }
 
