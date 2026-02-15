@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Interaction_with_Other_Animals_F__c</fullName>
+    <description>Foster Care Questionnaire</description>
+    <inlineHelpText>If you have any other pets (dogs or pocket pets) how do they respond?</inlineHelpText>
+    <label>Interaction with Other Animals</label>
+    <required>false</required>
+    <securityClassification>System</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Approaches</fullName>
+                <default>false</default>
+                <label>Approaches</label>
+            </value>
+            <value>
+                <fullName>Disinterested</fullName>
+                <default>false</default>
+                <label>Disinterested</label>
+            </value>
+            <value>
+                <fullName>Avoids or hides</fullName>
+                <default>false</default>
+                <label>Avoids or hides</label>
+            </value>
+            <value>
+                <fullName>Fixated</fullName>
+                <default>false</default>
+                <label>Fixated</label>
+            </value>
+            <value>
+                <fullName>Growls, spits, hisses or swipes</fullName>
+                <default>false</default>
+                <label>Growls, spits, hisses or swipes</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Home_Requirements__c</fullName>
+    <inlineHelpText>How much company would be best for this dog?</inlineHelpText>
+    <label>Home Requirements</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Someone home most/all of the time</fullName>
+                <default>false</default>
+                <label>Someone home most/all of the time</label>
+            </value>
+            <value>
+                <fullName>Someone working average work hours</fullName>
+                <default>false</default>
+                <label>Someone working average work hours</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

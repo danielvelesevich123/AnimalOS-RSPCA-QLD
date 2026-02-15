@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Primary_Breed_Formula__c</fullName>
+    <description>Used as formula to prevent users navigating to Breed obj in Foster Care Portal</description>
+    <externalId>false</externalId>
+    <formula>animalos__Primary_Breed__r.Name</formula>
+    <label>Primary Breed</label>
+    <required>false</required>
+    <securityClassification>System</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

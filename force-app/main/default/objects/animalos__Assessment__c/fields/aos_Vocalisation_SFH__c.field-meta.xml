@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Vocalisation_SFH__c</fullName>
+    <description>Vocalisation - straight from hand</description>
+    <inlineHelpText>Vocalisation - straight from hand</inlineHelpText>
+    <label>Vocalisation - SFH</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>LTS_Behaviour_Eval_Vocalisation</valueSetName>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

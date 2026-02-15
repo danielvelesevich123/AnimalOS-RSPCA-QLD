@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Trial_End_Date_Time__c</fullName>
+    <complianceGroup>Not Categorized</complianceGroup>
+    <description>If this is a trial adoption, then set this to the end date when the trial period is due to end.</description>
+    <inlineHelpText>If this is a trial adoption, then set this to the end date when the trial period is due to end.</inlineHelpText>
+    <label>Trial End Date Time</label>
+    <required>false</required>
+    <securityClassification>Internal</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>DateTime</type>
+</CustomField>

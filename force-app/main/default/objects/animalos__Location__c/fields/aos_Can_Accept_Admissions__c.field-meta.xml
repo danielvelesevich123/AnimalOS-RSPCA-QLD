@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Can_Accept_Admissions__c</fullName>
+    <complianceGroup>Not Categorized</complianceGroup>
+    <defaultValue>false</defaultValue>
+    <description>This is used in the flow Humane Officer Surrender.</description>
+    <inlineHelpText>This is relevant for Sites only - This field checked means the Site has an Admissions Block</inlineHelpText>
+    <label>Can Accept Admissions</label>
+    <securityClassification>Internal</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

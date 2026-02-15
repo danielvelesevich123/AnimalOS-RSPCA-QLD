@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Grooming_Experience__c</fullName>
+    <description>Foster Care Questionnaire</description>
+    <inlineHelpText>Have you groomed your foster pet? How did it respond?</inlineHelpText>
+    <label>Grooming Experience</label>
+    <required>false</required>
+    <securityClassification>System</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Relaxed and tolerant</fullName>
+                <default>false</default>
+                <label>Relaxed and tolerant</label>
+            </value>
+            <value>
+                <fullName>Avoided and frightened</fullName>
+                <default>false</default>
+                <label>Avoided and frightened</label>
+            </value>
+            <value>
+                <fullName>Became very still or frozen, or rolled over</fullName>
+                <default>false</default>
+                <label>Became very still or frozen, or rolled over</label>
+            </value>
+            <value>
+                <fullName>Overstimulated and grabbed at brush, grooming equipment or person</fullName>
+                <default>false</default>
+                <label>Overstimulated and grabbed at brush, grooming equipment or person</label>
+            </value>
+            <value>
+                <fullName>Growled, snapped or body very tense</fullName>
+                <default>false</default>
+                <label>Growled, snapped or body very tense</label>
+            </value>
+            <value>
+                <fullName>Became very still or frozen</fullName>
+                <default>false</default>
+                <label>Became very still or frozen</label>
+            </value>
+            <value>
+                <fullName>Growled or hissed</fullName>
+                <default>false</default>
+                <label>Growled or hissed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

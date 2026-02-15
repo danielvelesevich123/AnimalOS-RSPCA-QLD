@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Is_the_Animal_Ready_to_go__c</fullName>
+    <label>Is the Animal Ready to go Immediately</label>
+    <required>false</required>
+    <securityClassification>System</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes</fullName>
+                <default>false</default>
+                <label>Yes</label>
+            </value>
+            <value>
+                <fullName>No - See Comments</fullName>
+                <default>false</default>
+                <label>No - See Comments</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

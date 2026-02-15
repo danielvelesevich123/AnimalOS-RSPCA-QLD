@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Score_Category__c</fullName>
+    <label>Score Category</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Behaviour in kennel or yard</fullName>
+                <default>false</default>
+                <label>Behaviour in kennel or yard</label>
+            </value>
+            <value>
+                <fullName>Eating</fullName>
+                <default>false</default>
+                <label>Eating</label>
+            </value>
+            <value>
+                <fullName>Kennel Overnight</fullName>
+                <default>false</default>
+                <label>Kennel Overnight</label>
+            </value>
+            <value>
+                <fullName>Leaving kennel</fullName>
+                <default>false</default>
+                <label>Leaving kennel</label>
+            </value>
+            <value>
+                <fullName>Meeting a person out of the kennel</fullName>
+                <default>false</default>
+                <label>Meeting a person out of the kennel</label>
+            </value>
+            <value>
+                <fullName>Placing lead/harness on</fullName>
+                <default>false</default>
+                <label>Placing lead/harness on</label>
+            </value>
+            <value>
+                <fullName>Response to interacting with person</fullName>
+                <default>false</default>
+                <label>Response to interacting with person</label>
+            </value>
+            <value>
+                <fullName>Resting during day</fullName>
+                <default>false</default>
+                <label>Resting during day</label>
+            </value>
+            <value>
+                <fullName>Seeing another dog out of kennel</fullName>
+                <default>false</default>
+                <label>Seeing another dog out of kennel</label>
+            </value>
+            <value>
+                <fullName>Walking on lead</fullName>
+                <default>false</default>
+                <label>Walking on lead</label>
+            </value>
+            <value>
+                <fullName>When first given a toy</fullName>
+                <default>false</default>
+                <label>When first given a toy</label>
+            </value>
+            <value>
+                <fullName>When person at front of kennel</fullName>
+                <default>false</default>
+                <label>When person at front of kennel</label>
+            </value>
+            <value>
+                <fullName>When person entering kennel or yard</fullName>
+                <default>false</default>
+                <label>When person entering kennel or yard</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

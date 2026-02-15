@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Tethered_confined_duration__c</fullName>
+    <inlineHelpText>How long do you believe the animal/s has been tethered or confined</inlineHelpText>
+    <label>Tethered/confined duration</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Less than 24hrs</fullName>
+                <default>false</default>
+                <label>Less than 24hrs</label>
+            </value>
+            <value>
+                <fullName>24-48hrs</fullName>
+                <default>false</default>
+                <label>24-48hrs</label>
+            </value>
+            <value>
+                <fullName>72hrs</fullName>
+                <default>false</default>
+                <label>72hrs</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

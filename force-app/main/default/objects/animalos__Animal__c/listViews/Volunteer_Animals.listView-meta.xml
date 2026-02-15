@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Volunteer_Animals</fullName>
+    <columns>NAME</columns>
+    <columns>animalos__Animal_Name__c</columns>
+    <columns>animalos__Type__c</columns>
+    <columns>aos_Primary_Breed_Formula__c</columns>
+    <columns>animalos__Current_Site__c</columns>
+    <columns>animalos__Row_Unit__c</columns>
+    <columns>animalos__Status__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>animalos__Stage__c</field>
+        <operation>notEqual</operation>
+        <value>Out,Pre-Intake</value>
+    </filters>
+    <filters>
+        <field>animalos__Status__c</field>
+        <operation>notContain</operation>
+        <value>Protective Custody/Hold,Protective Custody/Hold - Deceased,Protective Custody/Hold - DOA,Protective Custody/Hold - Euthanised,Protective Custody/Transferred Ownership,Protective Custody - Awaiting Foster</value>
+    </filters>
+    <filters>
+        <field>animalos__Status__c</field>
+        <operation>notEqual</operation>
+        <value>Protective Custody - Hold Quarantine,Protective Custody - In Foster,Returned Protective Custody Animal,Emergency Boarding,Emergency Boarding - In Foster,Emergency Boarding Returned to Owner,DOA Stray - Awaiting Final Disposition</value>
+    </filters>
+    <filters>
+        <field>aos_Current_Unit_Record_Type__c</field>
+        <operation>notEqual</operation>
+        <value>Foster</value>
+    </filters>
+    <label>Volunteer Animals</label>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+        <group>Volunteer_External_Users</group>
+    </sharedTo>
+</ListView>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Calculated_Age__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IF(
+  NOT(ISBLANK(animalos__Deceased_Date__c)),
+  IF(
+    NOT(ISBLANK(animalos__Date_of_Birth__c)),
+    TEXT(FLOOR((DATEVALUE(animalos__Deceased_Date__c) - animalos__Date_of_Birth__c) / 365.25)) &amp; &apos; Years &apos; &amp;
+    TEXT(FLOOR(MOD((DATEVALUE(animalos__Deceased_Date__c) - animalos__Date_of_Birth__c), 365.25) / 30.44)) &amp; &apos; Months &apos; &amp;
+    TEXT(FLOOR(MOD(MOD((DATEVALUE(animalos__Deceased_Date__c) - animalos__Date_of_Birth__c), 365.25), 30.44))) &amp; &apos; Days&apos;,
+    NULL
+  ),
+  IF(
+    NOT(ISBLANK(animalos__Date_of_Birth__c)),
+    TEXT(FLOOR((TODAY() - animalos__Date_of_Birth__c) / 365.25)) &amp; &apos; Years &apos; &amp;
+    TEXT(FLOOR(MOD((TODAY() - animalos__Date_of_Birth__c), 365.25) / 30.44)) &amp; &apos; Months &apos; &amp;
+    TEXT(FLOOR(MOD(MOD((TODAY() - animalos__Date_of_Birth__c), 365.25), 30.44))) &amp; &apos; Days&apos;,
+    NULL
+  )
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Calculated Age</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

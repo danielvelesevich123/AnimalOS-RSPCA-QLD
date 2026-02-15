@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebLink xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Download_BE_Summary</fullName>
+    <availability>online</availability>
+    <displayType>button</displayType>
+    <encodingKey>UTF-8</encodingKey>
+    <hasMenubar>false</hasMenubar>
+    <hasScrollbars>true</hasScrollbars>
+    <hasToolbar>false</hasToolbar>
+    <height>600</height>
+    <isResizable>true</isResizable>
+    <linkType>url</linkType>
+    <masterLabel>Download BE Summary</masterLabel>
+    <openType>newWindow</openType>
+    <position>none</position>
+    <protected>false</protected>
+    <showsLocation>false</showsLocation>
+    <showsStatus>false</showsStatus>
+    <url>/apex/APXTConga4__Conga_Composer?SolMgr=1
+&amp;serverUrl={!API.Partner_Server_URL_520}
+&amp;Id={!animalos__Animal__c.Id}
+
+&amp;QueryId=[BESummary]0Q_022EAS154032
+
+&amp;TemplateId=0T_027EAS146828
+
+&amp;DS7=3
+&amp;DefaultPDF=1
+&amp;OFN=RSPCA+BE+Summary+-+{!animalos__Animal__c.aos_Tag_Number__c}+-+{!animalos__Animal__c.animalos__Animal_Name__c}</url>
+</WebLink>

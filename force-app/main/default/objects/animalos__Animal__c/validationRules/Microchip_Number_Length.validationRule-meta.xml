@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Microchip_Number_Length</fullName>
+    <active>false</active>
+    <errorConditionFormula>IF(aos_Is_New__c, IF(NOT(ISBLANK(animalos__Microchip_Number__c)), 
+NOT(AND(OR(LEN(animalos__Microchip_Number__c) = 10, LEN(animalos__Microchip_Number__c) = 15), ISNUMBER(animalos__Microchip_Number__c))),
+false
+), false)</errorConditionFormula>
+    <errorDisplayField>animalos__Microchip_Number__c</errorDisplayField>
+    <errorMessage>The microchip number you entered is invalid. Please re-enter your animal’s microchip number. Note that all microchip numbers are between 10 to 15 digits long.</errorMessage>
+</ValidationRule>

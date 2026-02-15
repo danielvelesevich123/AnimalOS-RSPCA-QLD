@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Interaction_with_Strangers_Visitors__c</fullName>
+    <description>Foster Care Questionnaire</description>
+    <inlineHelpText>How is your foster pet with strangers/visitors?</inlineHelpText>
+    <label>Interaction with Strangers/Visitors</label>
+    <required>false</required>
+    <securityClassification>Internal</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Friendly and confident</fullName>
+                <default>false</default>
+                <label>Friendly and confident</label>
+            </value>
+            <value>
+                <fullName>Sociable but appeasing</fullName>
+                <default>false</default>
+                <label>Sociable but appeasing</label>
+            </value>
+            <value>
+                <fullName>Avoids interaction and touch</fullName>
+                <default>false</default>
+                <label>Avoids interaction and touch</label>
+            </value>
+            <value>
+                <fullName>Boisterous and overstimulated</fullName>
+                <default>false</default>
+                <label>Boisterous and overstimulated</label>
+            </value>
+            <value>
+                <fullName>Reactive and can bark and growl</fullName>
+                <default>false</default>
+                <label>Reactive and can bark and growl</label>
+            </value>
+            <value>
+                <fullName>Nervous, timid and fearful</fullName>
+                <default>false</default>
+                <label>Nervous, timid and fearful</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Royal_Canin_s_Healthy_Pets_Club_Opt__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This will be written back to the contact record of the adopter.</description>
+    <inlineHelpText>This field will be populated from the Adoption Agreement should the adopter Opt In and be updated onto the Contact as per Third Party Marketing Opt Out.</inlineHelpText>
+    <label>Royal Canin’s Healthy Pets Club Opt In?</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

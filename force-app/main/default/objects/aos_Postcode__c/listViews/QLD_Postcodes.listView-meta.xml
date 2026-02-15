@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>QLD_Postcodes</fullName>
+    <columns>NAME</columns>
+    <columns>aos_LGA__c</columns>
+    <columns>aos_Suburb__c</columns>
+    <columns>aos_Locality__c</columns>
+    <columns>aos_Postcode__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>aos_State__c</field>
+        <operation>equals</operation>
+        <value>QLD</value>
+    </filters>
+    <label>QLD Postcodes</label>
+</ListView>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Eating__c</fullName>
+    <label>Eating</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Eats normal pace</fullName>
+                <default>false</default>
+                <label>Eats normal pace</label>
+            </value>
+            <value>
+                <fullName>Eats/chews enrichment</fullName>
+                <default>false</default>
+                <label>Eats/chews enrichment</label>
+            </value>
+            <value>
+                <fullName>Eats in presence of person</fullName>
+                <default>false</default>
+                <label>Eats in presence of person</label>
+            </value>
+            <value>
+                <fullName>Not eating unless food provided nearby</fullName>
+                <default>false</default>
+                <label>Not eating unless food provided nearby</label>
+            </value>
+            <value>
+                <fullName>Eats frantically or snatches</fullName>
+                <default>false</default>
+                <label>Eats frantically or snatches</label>
+            </value>
+            <value>
+                <fullName>Not eating at all</fullName>
+                <default>false</default>
+                <label>Not eating at all</label>
+            </value>
+            <value>
+                <fullName>Freezing when eating when approached</fullName>
+                <default>false</default>
+                <label>Freezing when eating when approached</label>
+            </value>
+            <value>
+                <fullName>Growls/ bears teeth/snaps approached</fullName>
+                <default>false</default>
+                <label>Growls/ bears teeth/snaps approached</label>
+            </value>
+            <value>
+                <fullName>Ate all food</fullName>
+                <default>false</default>
+                <label>Ate all food</label>
+            </value>
+            <value>
+                <fullName>Ate some food</fullName>
+                <default>false</default>
+                <label>Ate some food</label>
+            </value>
+            <value>
+                <fullName>Ate only wet food</fullName>
+                <default>false</default>
+                <label>Ate only wet food</label>
+            </value>
+            <value>
+                <fullName>Did not eat</fullName>
+                <default>false</default>
+                <label>Did not eat</label>
+            </value>
+            <value>
+                <fullName>Drank water</fullName>
+                <default>false</default>
+                <label>Drank water</label>
+            </value>
+            <value>
+                <fullName>Eats frantically</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Eats frantically</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Related_Animal_Note__c</fullName>
+    <complianceGroup>Not Categorized</complianceGroup>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Related Animal Note</label>
+    <referenceTo>animalos__Animal_Note__c</referenceTo>
+    <relationshipLabel>Animal Notes</relationshipLabel>
+    <relationshipName>Animal_Notes</relationshipName>
+    <required>false</required>
+    <securityClassification>Internal</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

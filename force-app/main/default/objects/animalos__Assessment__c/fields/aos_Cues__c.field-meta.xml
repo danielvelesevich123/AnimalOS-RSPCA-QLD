@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Cues__c</fullName>
+    <label>Cues</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sit</fullName>
+                <default>false</default>
+                <label>Sit</label>
+            </value>
+            <value>
+                <fullName>Hand Target</fullName>
+                <default>false</default>
+                <label>Hand Target</label>
+            </value>
+            <value>
+                <fullName>Follow a Lure</fullName>
+                <default>false</default>
+                <label>Follow a Lure</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Consent Cue</fullName>
+                <default>false</default>
+                <label>Consent Cue</label>
+            </value>
+            <value>
+                <fullName>Wait</fullName>
+                <default>false</default>
+                <label>Wait</label>
+            </value>
+            <value>
+                <fullName>Drop</fullName>
+                <default>false</default>
+                <label>Drop</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

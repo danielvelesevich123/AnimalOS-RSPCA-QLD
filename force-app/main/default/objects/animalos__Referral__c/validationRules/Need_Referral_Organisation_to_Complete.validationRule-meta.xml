@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Need_Referral_Organisation_to_Complete</fullName>
+    <active>false</active>
+    <description>Specific Outbound Types require a Referral Organisation listed for Completion</description>
+    <errorConditionFormula>AND (
+ISPICKVAL(animalos__Stage__c ,&apos;Completed&apos;),
+OR(
+ISPICKVAL(animalos__Outbound_Type__c, &apos;Transfer Out to Council&apos;),
+ISPICKVAL(animalos__Outbound_Type__c, &apos;Transfer Out - To Rescue&apos;)
+),
+OR(
+ISBLANK(animalos__Scheduled_Date_Time__c),
+ISBLANK(animalos__Referral_Organisation__c)
+)
+)</errorConditionFormula>
+    <errorMessage>You must set a Referral Organisation and Schedule Date to Complete this referral.</errorMessage>
+</ValidationRule>

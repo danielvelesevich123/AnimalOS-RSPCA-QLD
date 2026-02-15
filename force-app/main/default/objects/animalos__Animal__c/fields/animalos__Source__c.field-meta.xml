@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Source__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Source</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Bequest In Site</fullName>
+                <default>false</default>
+                <label>Bequest In Site</label>
+            </value>
+            <value>
+                <fullName>Council / Site</fullName>
+                <default>false</default>
+                <label>Council / Site</label>
+            </value>
+            <value>
+                <fullName>Cruelty Case Offspring</fullName>
+                <default>false</default>
+                <label>Cruelty Case Offspring</label>
+            </value>
+            <value>
+                <fullName>Emergency Boarding</fullName>
+                <default>false</default>
+                <label>Emergency Boarding</label>
+            </value>
+            <value>
+                <fullName>Euthanasia Request</fullName>
+                <default>false</default>
+                <label>Euthanasia Request</label>
+            </value>
+            <value>
+                <fullName>Foster Offspring</fullName>
+                <default>false</default>
+                <label>Foster Offspring</label>
+            </value>
+            <value>
+                <fullName>Humane Officer - Euthanasia Request</fullName>
+                <default>false</default>
+                <label>Humane Officer - Euthanasia Request</label>
+            </value>
+            <value>
+                <fullName>Humane Officer Seized</fullName>
+                <default>false</default>
+                <label>Humane Officer Seized</label>
+            </value>
+            <value>
+                <fullName>Humane Officer Surrendered</fullName>
+                <default>false</default>
+                <label>Humane Officer Surrendered</label>
+            </value>
+            <value>
+                <fullName>Owner Surrender</fullName>
+                <default>false</default>
+                <label>Owner Surrender</label>
+            </value>
+            <value>
+                <fullName>Returns</fullName>
+                <default>false</default>
+                <label>Returns</label>
+            </value>
+            <value>
+                <fullName>Site Offspring</fullName>
+                <default>false</default>
+                <label>Site Offspring</label>
+            </value>
+            <value>
+                <fullName>Stray</fullName>
+                <default>false</default>
+                <label>Stray</label>
+            </value>
+            <value>
+                <fullName>Transfer In</fullName>
+                <default>false</default>
+                <label>Transfer In</label>
+            </value>
+            <value>
+                <fullName>Wildlife</fullName>
+                <default>false</default>
+                <label>Wildlife</label>
+            </value>
+            <value>
+                <fullName>DOA - Humane Officer Seized</fullName>
+                <default>false</default>
+                <label>DOA - Humane Officer Seized</label>
+            </value>
+            <value>
+                <fullName>DOA - Humane Officer Surrendered</fullName>
+                <default>false</default>
+                <label>DOA - Humane Officer Surrendered</label>
+            </value>
+            <value>
+                <fullName>DOA - Owner Surrendered</fullName>
+                <default>false</default>
+                <label>DOA - Owner Surrendered</label>
+            </value>
+            <value>
+                <fullName>DOA - Wildlife</fullName>
+                <default>false</default>
+                <label>DOA - Wildlife</label>
+            </value>
+            <value>
+                <fullName>DOA - Stray</fullName>
+                <default>false</default>
+                <label>DOA - Stray</label>
+            </value>
+            <value>
+                <fullName>Police</fullName>
+                <default>false</default>
+                <label>Police</label>
+            </value>
+            <value>
+                <fullName>Owner Relinquishment</fullName>
+                <default>false</default>
+                <label>Owner Relinquishment</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

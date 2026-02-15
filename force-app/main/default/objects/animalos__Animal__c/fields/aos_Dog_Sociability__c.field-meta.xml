@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Dog_Sociability__c</fullName>
+    <label>Dog Sociability</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Appears dog social</fullName>
+                <default>false</default>
+                <label>Appears dog social</label>
+            </value>
+            <value>
+                <fullName>Can be selective (e.g. no off leash dogs parks)</fullName>
+                <default>false</default>
+                <label>Can be selective (e.g. no off leash dogs parks)</label>
+            </value>
+            <value>
+                <fullName>Single dog household</fullName>
+                <default>false</default>
+                <label>Single dog household</label>
+            </value>
+            <value>
+                <fullName>Must be only dog</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Must be only dog</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

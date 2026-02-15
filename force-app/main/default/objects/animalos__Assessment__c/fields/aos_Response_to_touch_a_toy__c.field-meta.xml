@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Response_to_touch_a_toy__c</fullName>
+    <inlineHelpText>Response to touch with a wand toy/cat scratcher</inlineHelpText>
+    <label>Response to touch with a toy/scratcher</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Approaches/Leans into wand/ Touches/ Rubs</fullName>
+                <default>false</default>
+                <label>Approaches/Leans into wand/ Touches/ Rubs</label>
+            </value>
+            <value>
+                <fullName>Relaxed body/Kneading/Sniffs</fullName>
+                <default>false</default>
+                <label>Relaxed body/Kneading/Sniffs</label>
+            </value>
+            <value>
+                <fullName>Yawns/Grooms/ Shakes/Flicking tail</fullName>
+                <default>false</default>
+                <label>Yawns/Grooms/ Shakes/Flicking tail</label>
+            </value>
+            <value>
+                <fullName>Stands and walks around cage</fullName>
+                <default>false</default>
+                <label>Stands and walks around cage</label>
+            </value>
+            <value>
+                <fullName>Avoids or freezes</fullName>
+                <default>false</default>
+                <label>Avoids or freezes</label>
+            </value>
+            <value>
+                <fullName>Hisses/swipes/nips/bites</fullName>
+                <default>false</default>
+                <label>Hisses/swipes/nips/bites</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

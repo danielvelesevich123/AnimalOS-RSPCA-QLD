@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Play__c</fullName>
+    <label>Play</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sits for toy</fullName>
+                <default>false</default>
+                <label>Sits for toy</label>
+            </value>
+            <value>
+                <fullName>Play bowing, wags tail</fullName>
+                <default>false</default>
+                <label>Play bowing, wags tail</label>
+            </value>
+            <value>
+                <fullName>Barks/excitement</fullName>
+                <default>false</default>
+                <label>Barks/excitement</label>
+            </value>
+            <value>
+                <fullName>Mouthing/Grabbing/Bounce off</fullName>
+                <default>false</default>
+                <label>Mouthing/Grabbing/Bounce off</label>
+            </value>
+            <value>
+                <fullName>Hard mouthing/nips / humping</fullName>
+                <default>false</default>
+                <label>Hard mouthing/nips / humping</label>
+            </value>
+            <value>
+                <fullName>Tense/yawns/panting/Tail tuck</fullName>
+                <default>false</default>
+                <label>Tense/yawns/panting/Tail tuck</label>
+            </value>
+            <value>
+                <fullName>Freezes/stare/barks</fullName>
+                <default>false</default>
+                <label>Freezes/stare/barks</label>
+            </value>
+            <value>
+                <fullName>Avoids or hides</fullName>
+                <default>false</default>
+                <label>Avoids or hides</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

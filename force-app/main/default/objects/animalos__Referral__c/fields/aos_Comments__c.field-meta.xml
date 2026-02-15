@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Comments__c</fullName>
+    <complianceGroup>Not Categorized</complianceGroup>
+    <inlineHelpText>Comments field for contact details of council staff member</inlineHelpText>
+    <label>Comments</label>
+    <required>false</required>
+    <securityClassification>Public</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>TextArea</type>
+</CustomField>

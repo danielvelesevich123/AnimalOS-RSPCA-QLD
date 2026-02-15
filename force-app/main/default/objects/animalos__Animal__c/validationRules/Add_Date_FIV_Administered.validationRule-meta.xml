@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Add_Date_FIV_Administered</fullName>
+    <active>false</active>
+    <description>For a Cat or Kitten - If an FIV / FeLV test has been done, the Date the test was Administered must be added.</description>
+    <errorConditionFormula>AND(
+OR(
+ISPICKVAL(animalos__Type__c, &quot;Cat&quot;),
+ISPICKVAL(animalos__Type__c, &quot;Kitten&quot;) 
+),
+NOT(ISBLANK(TEXT(aos_FIV_FeLV_Test_Outcome__c))),
+ISBLANK(aos_FIV_Date_Administered__c),
+aos_Is_New__c
+)</errorConditionFormula>
+    <errorDisplayField>aos_FIV_Date_Administered__c</errorDisplayField>
+    <errorMessage>If an FIV/FeLV test has been done, the date the test was administered must be added.</errorMessage>
+</ValidationRule>

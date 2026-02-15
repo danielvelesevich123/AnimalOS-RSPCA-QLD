@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Scheduled_Movement_Reason__c</fullName>
+    <label>Scheduled Movement Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Adult to put on Weight</fullName>
+                <default>false</default>
+                <label>Adult to put on Weight</label>
+            </value>
+            <value>
+                <fullName>Available for Adoption in Foster</fullName>
+                <default>false</default>
+                <label>Available for Adoption in Foster</label>
+            </value>
+            <value>
+                <fullName>Behavioural</fullName>
+                <default>false</default>
+                <label>Behavioural</label>
+            </value>
+            <value>
+                <fullName>Declining in Adoption Pens</fullName>
+                <default>false</default>
+                <label>Declining in Adoption Pens</label>
+            </value>
+            <value>
+                <fullName>Doggie Day Out</fullName>
+                <default>false</default>
+                <label>Doggie Day Out</label>
+            </value>
+            <value>
+                <fullName>Kittens - Neonate</fullName>
+                <default>false</default>
+                <label>Kittens - Neonate</label>
+            </value>
+            <value>
+                <fullName>Non-Infectious Medical treatment / recovery</fullName>
+                <default>false</default>
+                <label>Non-Infectious Medical treatment / recovery</label>
+            </value>
+            <value>
+                <fullName>Parvo Recovery</fullName>
+                <default>false</default>
+                <label>Parvo Recovery</label>
+            </value>
+            <value>
+                <fullName>Parvo Treatment/Recovery</fullName>
+                <default>false</default>
+                <label>Parvo Treatment/Recovery</label>
+            </value>
+            <value>
+                <fullName>Permanent Bequest Animal</fullName>
+                <default>false</default>
+                <label>Permanent Bequest Animal</label>
+            </value>
+            <value>
+                <fullName>Pillow Paws</fullName>
+                <default>false</default>
+                <label>Pillow Paws</label>
+            </value>
+            <value>
+                <fullName>Pregnant</fullName>
+                <default>false</default>
+                <label>Pregnant</label>
+            </value>
+            <value>
+                <fullName>Pregnant or Feeding Litter</fullName>
+                <default>false</default>
+                <label>Pregnant or Feeding Litter</label>
+            </value>
+            <value>
+                <fullName>Programs Foster</fullName>
+                <default>false</default>
+                <label>Programs Foster</label>
+            </value>
+            <value>
+                <fullName>Protective Custody</fullName>
+                <default>false</default>
+                <label>Protective Custody</label>
+            </value>
+            <value>
+                <fullName>Protective Custody Cruelty Recovery</fullName>
+                <default>false</default>
+                <label>Protective Custody Cruelty Recovery</label>
+            </value>
+            <value>
+                <fullName>Ringworm Treatment</fullName>
+                <default>false</default>
+                <label>Ringworm Treatment</label>
+            </value>
+            <value>
+                <fullName>Sick Animal</fullName>
+                <default>false</default>
+                <label>Sick Animal</label>
+            </value>
+            <value>
+                <fullName>Skin Condition</fullName>
+                <default>false</default>
+                <label>Skin Condition</label>
+            </value>
+            <value>
+                <fullName>Surgery Recovery</fullName>
+                <default>false</default>
+                <label>Surgery Recovery</label>
+            </value>
+            <value>
+                <fullName>Timid / Socialisation</fullName>
+                <default>false</default>
+                <label>Timid / Socialisation</label>
+            </value>
+            <value>
+                <fullName>Too young for adoption</fullName>
+                <default>false</default>
+                <label>Too young for adoption</label>
+            </value>
+            <value>
+                <fullName>Trial adoption</fullName>
+                <default>false</default>
+                <label>Trial adoption</label>
+            </value>
+            <value>
+                <fullName>Upper Respiratory Illness</fullName>
+                <default>false</default>
+                <label>Upper Respiratory Illness</label>
+            </value>
+            <value>
+                <fullName>URI</fullName>
+                <default>false</default>
+                <label>URI</label>
+            </value>
+            <value>
+                <fullName>Vacc Quarantine</fullName>
+                <default>false</default>
+                <label>Vacc Quarantine</label>
+            </value>
+            <value>
+                <fullName>Weight Gain</fullName>
+                <default>false</default>
+                <label>Weight Gain</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

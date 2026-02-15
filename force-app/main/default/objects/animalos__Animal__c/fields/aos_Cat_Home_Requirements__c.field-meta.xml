@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Cat_Home_Requirements__c</fullName>
+    <label>Cat Home Requirements</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Peaceful and quiet home environment</fullName>
+                <default>false</default>
+                <label>Peaceful and quiet home environment</label>
+            </value>
+            <value>
+                <fullName>Must have secure outdoor acces</fullName>
+                <default>false</default>
+                <label>Must have secure outdoor acces</label>
+            </value>
+            <value>
+                <fullName>Not suited for apartment living</fullName>
+                <default>false</default>
+                <label>Not suited for apartment living</label>
+            </value>
+            <value>
+                <fullName>Must have secure outdoor access</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Must have secure outdoor access</label>
+            </value>
+            <value>
+                <fullName>No apartments</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>No apartments</label>
+            </value>
+            <value>
+                <fullName>Quiet calm household</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Quiet calm household</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

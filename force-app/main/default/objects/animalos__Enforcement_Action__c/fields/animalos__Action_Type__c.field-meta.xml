@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Action_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Action Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Education</fullName>
+                <default>false</default>
+                <label>Education</label>
+            </value>
+            <value>
+                <fullName>Verbal warning/direction</fullName>
+                <default>false</default>
+                <label>Verbal warning/direction</label>
+            </value>
+            <value>
+                <fullName>Section 24N written direction</fullName>
+                <default>false</default>
+                <label>Section 24N written direction</label>
+            </value>
+            <value>
+                <fullName>Formal Caution</fullName>
+                <default>false</default>
+                <label>Formal Caution</label>
+            </value>
+            <value>
+                <fullName>Penalty Infringement Notice (PIN)</fullName>
+                <default>false</default>
+                <label>Penalty Infringement Notice (PIN)</label>
+            </value>
+            <value>
+                <fullName>Prosecution</fullName>
+                <default>false</default>
+                <label>Prosecution</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

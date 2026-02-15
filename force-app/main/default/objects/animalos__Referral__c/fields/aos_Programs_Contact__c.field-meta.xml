@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Programs_Contact__c</fullName>
+    <complianceGroup>Not Categorized</complianceGroup>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Programs Contact</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Programs Referrals</relationshipLabel>
+    <relationshipName>Referrals</relationshipName>
+    <required>false</required>
+    <securityClassification>Internal</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

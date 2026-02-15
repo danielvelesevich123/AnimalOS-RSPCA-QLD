@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_This_request_for_animal_s_requiring__c</fullName>
+    <complianceGroup>Not Categorized</complianceGroup>
+    <label>This request for animal/s requiring</label>
+    <required>false</required>
+    <securityClassification>Internal</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Available for adoption from foster care</fullName>
+                <default>false</default>
+                <label>Available for adoption from foster care</label>
+            </value>
+            <value>
+                <fullName>Behavioural foster care</fullName>
+                <default>false</default>
+                <label>Behavioural foster care</label>
+            </value>
+            <value>
+                <fullName>Community Programs</fullName>
+                <default>false</default>
+                <label>Community Programs</label>
+            </value>
+            <value>
+                <fullName>General Foster care</fullName>
+                <default>false</default>
+                <label>General Foster care</label>
+            </value>
+            <value>
+                <fullName>Inspectorate Foster care</fullName>
+                <default>false</default>
+                <label>Inspectorate Foster care</label>
+            </value>
+            <value>
+                <fullName>Medical Foster Care e.g. recovering/pending surgery</fullName>
+                <default>false</default>
+                <label>Medical Foster Care e.g. recovering/pending surgery</label>
+            </value>
+            <value>
+                <fullName>Neonates with mums</fullName>
+                <default>false</default>
+                <label>Neonates with mums</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Generic_Status_Tracking__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <deprecated>false</deprecated>
+    <label>Generic Status Tracking</label>
+    <referenceTo>animalos__Status_Tracking__c</referenceTo>
+    <relationshipLabel>Monthly Status Tracking Records</relationshipLabel>
+    <relationshipName>Monthly_Status_Tracking_Records</relationshipName>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

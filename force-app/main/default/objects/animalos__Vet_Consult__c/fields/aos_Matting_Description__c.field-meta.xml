@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Matting_Description__c</fullName>
+    <label>Matting Description</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Hair coat a single mat that prevents normal movement and interferes with vision</fullName>
+                <default>false</default>
+                <label>Hair coat a single mat that prevents normal movement and interferes with vision</label>
+            </value>
+            <value>
+                <fullName>Substantial matting of Hair coat</fullName>
+                <default>false</default>
+                <label>Substantial matting of Hair coat</label>
+            </value>
+            <value>
+                <fullName>Large sections of hair matted together</fullName>
+                <default>false</default>
+                <label>Large sections of hair matted together</label>
+            </value>
+            <value>
+                <fullName>Numerous mats, but animal can still be groomed without a total clip down</fullName>
+                <default>false</default>
+                <label>Numerous mats, but animal can still be groomed without a total clip down</label>
+            </value>
+            <value>
+                <fullName>Hair Coat is dirty and /or has a few mats</fullName>
+                <default>false</default>
+                <label>Hair Coat is dirty and /or has a few mats</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

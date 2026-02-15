@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Movement_Reason__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Movement Reason</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Adopter Available At Another Site</fullName>
+                <default>false</default>
+                <label>Adopter Available At Another Site</label>
+            </value>
+            <value>
+                <fullName>Capacity Constraints At Originating Site</fullName>
+                <default>false</default>
+                <label>Capacity Constraints At Originating Site</label>
+            </value>
+            <value>
+                <fullName>Carer unavailable</fullName>
+                <default>false</default>
+                <label>Carer unavailable</label>
+            </value>
+            <value>
+                <fullName>Minimal Adoption Interest At Existing Site</fullName>
+                <default>false</default>
+                <label>Minimal Adoption Interest At Existing Site</label>
+            </value>
+            <value>
+                <fullName>New incoming Animal</fullName>
+                <default>false</default>
+                <label>New incoming Animal</label>
+            </value>
+            <value>
+                <fullName>Not Coping At Facility</fullName>
+                <default>false</default>
+                <label>Not Coping At Facility</label>
+            </value>
+            <value>
+                <fullName>Owner To Collect At Another Site</fullName>
+                <default>false</default>
+                <label>Owner To Collect At Another Site</label>
+            </value>
+            <value>
+                <fullName>Rehabilitation</fullName>
+                <default>false</default>
+                <label>Rehabilitation</label>
+            </value>
+            <value>
+                <fullName>Rescue Collection</fullName>
+                <default>false</default>
+                <label>Rescue Collection</label>
+            </value>
+            <value>
+                <fullName>Returning for adoption</fullName>
+                <default>false</default>
+                <label>Returning for adoption</label>
+            </value>
+            <value>
+                <fullName>Returning for desex</fullName>
+                <default>false</default>
+                <label>Returning for desex</label>
+            </value>
+            <value>
+                <fullName>Returning to owner</fullName>
+                <default>false</default>
+                <label>Returning to owner</label>
+            </value>
+            <value>
+                <fullName>Security Reasons</fullName>
+                <default>false</default>
+                <label>Security Reasons</label>
+            </value>
+            <value>
+                <fullName>Sick return</fullName>
+                <default>false</default>
+                <label>Sick return</label>
+            </value>
+            <value>
+                <fullName>Sleep-over foster</fullName>
+                <default>false</default>
+                <label>Sleep-over foster</label>
+            </value>
+            <value>
+                <fullName>Transfer From Petbarn Due To Behaviour</fullName>
+                <default>false</default>
+                <label>Transfer From Petbarn Due To Behaviour</label>
+            </value>
+            <value>
+                <fullName>Transfer From Petbarn Due To Medical</fullName>
+                <default>false</default>
+                <label>Transfer From Petbarn Due To Medical</label>
+            </value>
+            <value>
+                <fullName>Transfer To Petbarn Store</fullName>
+                <default>false</default>
+                <label>Transfer To Petbarn Store</label>
+            </value>
+            <value>
+                <fullName>Transfer To Tuggerah</fullName>
+                <default>false</default>
+                <label>Transfer To Tuggerah</label>
+            </value>
+            <value>
+                <fullName>Unsuitable placement</fullName>
+                <default>false</default>
+                <label>Unsuitable placement</label>
+            </value>
+            <value>
+                <fullName>Vet Treatment Required At Vet Hospital Site</fullName>
+                <default>false</default>
+                <label>Vet Treatment Required At Vet Hospital Site</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

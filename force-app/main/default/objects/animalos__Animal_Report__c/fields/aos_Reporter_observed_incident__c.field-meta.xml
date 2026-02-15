@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Reporter_observed_incident__c</fullName>
+    <inlineHelpText>Did you personally observe the incident?</inlineHelpText>
+    <label>Reporter observed incident</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Yes_No_Unknown</valueSetName>
+    </valueSet>
+</CustomField>

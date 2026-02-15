@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Behaviour_Observation_Count__c</fullName>
+    <label>Behaviour Observation Count</label>
+    <summaryFilterItems>
+        <field>animalos__Assessment__c.RecordTypeId</field>
+        <operation>equals</operation>
+        <value>Behaviour Observation - Canine, Behaviour Observation - Feline</value>
+    </summaryFilterItems>
+    <summaryForeignKey>animalos__Assessment__c.animalos__Animal__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Inspectorate</fullName>
+    <booleanFilter>1 OR 2</booleanFilter>
+    <columns>NAME</columns>
+    <columns>animalos__Payload__c</columns>
+    <columns>animalos__Process__c</columns>
+    <columns>animalos__Type__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>animalos__Process__c</field>
+        <operation>contains</operation>
+        <value>SyncInspectorate</value>
+    </filters>
+    <filters>
+        <field>animalos__Process__c</field>
+        <operation>equals</operation>
+        <value>PopulateJobAreaScheduledBatch</value>
+    </filters>
+    <label>Inspectorate</label>
+</ListView>

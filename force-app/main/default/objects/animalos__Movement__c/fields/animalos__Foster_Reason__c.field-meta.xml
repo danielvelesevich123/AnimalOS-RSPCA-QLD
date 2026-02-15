@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Foster_Reason__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Foster Reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Adult to put on Weight</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Adult to put on Weight</label>
+            </value>
+            <value>
+                <fullName>Available for Adoption</fullName>
+                <default>false</default>
+                <label>Available for Adoption</label>
+            </value>
+            <value>
+                <fullName>Available for Adoption in Foster</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Available for Adoption in Foster</label>
+            </value>
+            <value>
+                <fullName>Awaiting Rescue</fullName>
+                <default>false</default>
+                <label>Awaiting Rescue</label>
+            </value>
+            <value>
+                <fullName>Behavioural</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Behavioural</label>
+            </value>
+            <value>
+                <fullName>Declining in Adoption Pens</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Declining in Adoption Pens</label>
+            </value>
+            <value>
+                <fullName>Doggie Day Out</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Doggie Day Out</label>
+            </value>
+            <value>
+                <fullName>FIV Positive</fullName>
+                <default>false</default>
+                <label>FIV Positive</label>
+            </value>
+            <value>
+                <fullName>Gastrointestinal</fullName>
+                <default>false</default>
+                <label>Gastrointestinal</label>
+            </value>
+            <value>
+                <fullName>Heartworm Recovery</fullName>
+                <default>false</default>
+                <label>Heartworm Recovery</label>
+            </value>
+            <value>
+                <fullName>Kittens - Neonate</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Kittens - Neonate</label>
+            </value>
+            <value>
+                <fullName>Mum and Bubs</fullName>
+                <default>false</default>
+                <label>Mum and Bubs</label>
+            </value>
+            <value>
+                <fullName>Neonate (0-3 weeks)</fullName>
+                <default>false</default>
+                <label>Neonate (0-3 weeks)</label>
+            </value>
+            <value>
+                <fullName>Non-Infectious Medical treatment / recovery</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Non-Infectious Medical treatment / recovery</label>
+            </value>
+            <value>
+                <fullName>Orthopaedic</fullName>
+                <default>false</default>
+                <label>Orthopaedic</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Parvo Recovery</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Parvo Recovery</label>
+            </value>
+            <value>
+                <fullName>Parvo Treatment/Recovery</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Parvo Treatment/Recovery</label>
+            </value>
+            <value>
+                <fullName>Permanent Bequest Animal</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Permanent Bequest Animal</label>
+            </value>
+            <value>
+                <fullName>Pets in Crisis Program</fullName>
+                <default>false</default>
+                <label>Pets in Crisis Program</label>
+            </value>
+            <value>
+                <fullName>Pillow Paws</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pillow Paws</label>
+            </value>
+            <value>
+                <fullName>Pregnant</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pregnant</label>
+            </value>
+            <value>
+                <fullName>Pregnant</fullName>
+                <default>false</default>
+                <label>Pregnant</label>
+            </value>
+            <value>
+                <fullName>Pregnant or Feeding Litter</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Pregnant or Feeding Litter</label>
+            </value>
+            <value>
+                <fullName>Programs Foster</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Programs Foster</label>
+            </value>
+            <value>
+                <fullName>Protective Custody</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Protective Custody</label>
+            </value>
+            <value>
+                <fullName>Protective Custody Cruelty Recovery</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Protective Custody Cruelty Recovery</label>
+            </value>
+            <value>
+                <fullName>Protective Custody Hold</fullName>
+                <default>false</default>
+                <label>Protective Custody Hold</label>
+            </value>
+            <value>
+                <fullName>Recovery from Kennel Cough</fullName>
+                <default>false</default>
+                <label>Recovery from Kennel Cough</label>
+            </value>
+            <value>
+                <fullName>Recovery Tick Paralysis</fullName>
+                <default>false</default>
+                <label>Recovery Tick Paralysis</label>
+            </value>
+            <value>
+                <fullName>Ringworm Treatment</fullName>
+                <default>false</default>
+                <label>Ringworm Treatment</label>
+            </value>
+            <value>
+                <fullName>Sick Animal</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Sick Animal</label>
+            </value>
+            <value>
+                <fullName>Skin Condition</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Skin Condition</label>
+            </value>
+            <value>
+                <fullName>Skin Disease</fullName>
+                <default>false</default>
+                <label>Skin Disease</label>
+            </value>
+            <value>
+                <fullName>Sleepover Foster</fullName>
+                <default>false</default>
+                <label>Sleepover Foster</label>
+            </value>
+            <value>
+                <fullName>Socialisation (6-12 weeks)</fullName>
+                <default>false</default>
+                <label>Socialisation (6-12 weeks)</label>
+            </value>
+            <value>
+                <fullName>Surgery Recovery</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Surgery Recovery</label>
+            </value>
+            <value>
+                <fullName>Timid / Socialisation</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Timid / Socialisation</label>
+            </value>
+            <value>
+                <fullName>Too young for adoption</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Too young for adoption</label>
+            </value>
+            <value>
+                <fullName>Transitional  (3-6 weeks)</fullName>
+                <default>false</default>
+                <label>Transitional  (3-6 weeks)</label>
+            </value>
+            <value>
+                <fullName>Trial adoption</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Trial adoption</label>
+            </value>
+            <value>
+                <fullName>Trial Adoption</fullName>
+                <default>false</default>
+                <label>Trial Adoption</label>
+            </value>
+            <value>
+                <fullName>Under Behaviour Modification</fullName>
+                <default>false</default>
+                <label>Under Behaviour Modification</label>
+            </value>
+            <value>
+                <fullName>Under Vet Care - Other</fullName>
+                <default>false</default>
+                <label>Under Vet Care - Other</label>
+            </value>
+            <value>
+                <fullName>Upper Respiratory Illness</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Upper Respiratory Illness</label>
+            </value>
+            <value>
+                <fullName>Upper Respiratory Illness</fullName>
+                <default>false</default>
+                <label>Upper Respiratory Illness</label>
+            </value>
+            <value>
+                <fullName>URI</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>URI</label>
+            </value>
+            <value>
+                <fullName>Vacc Quarantine</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Vacc Quarantine</label>
+            </value>
+            <value>
+                <fullName>Weight Gain</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Weight Gain</label>
+            </value>
+            <value>
+                <fullName>Weight Management Plan</fullName>
+                <default>false</default>
+                <label>Weight Management Plan</label>
+            </value>
+            <value>
+                <fullName>Wound Recovery</fullName>
+                <default>false</default>
+                <label>Wound Recovery</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

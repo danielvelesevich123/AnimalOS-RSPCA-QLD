@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Name_of_Vets_Reviewed_Case__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Names of vets who have reviewed this case</inlineHelpText>
+    <label>Name of Vets Reviewed Case</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

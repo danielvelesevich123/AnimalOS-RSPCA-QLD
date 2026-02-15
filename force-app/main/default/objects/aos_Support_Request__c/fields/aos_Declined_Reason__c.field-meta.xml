@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Declined_Reason__c</fullName>
+    <label>Declined Reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Capacity - Space</fullName>
+                <default>false</default>
+                <label>Capacity - Space</label>
+            </value>
+            <value>
+                <fullName>Medical</fullName>
+                <default>false</default>
+                <label>Medical</label>
+            </value>
+            <value>
+                <fullName>Welfare/ Multiple behaviour concerns</fullName>
+                <default>false</default>
+                <label>Welfare/ Multiple behaviour concerns</label>
+            </value>
+            <value>
+                <fullName>Capacity – Rehab specific</fullName>
+                <default>false</default>
+                <label>Capacity – Rehab specific</label>
+            </value>
+            <value>
+                <fullName>Shelter Rescinded</fullName>
+                <default>false</default>
+                <label>Shelter Rescinded</label>
+            </value>
+            <value>
+                <fullName>Treatments due or overdue</fullName>
+                <default>false</default>
+                <label>Treatments due or overdue</label>
+            </value>
+            <value>
+                <fullName>More information for placement required</fullName>
+                <default>false</default>
+                <label>More information for placement required</label>
+            </value>
+            <value>
+                <fullName>Insufficient medical information</fullName>
+                <default>false</default>
+                <label>Insufficient medical information</label>
+            </value>
+            <value>
+                <fullName>Insufficient behavioural information</fullName>
+                <default>false</default>
+                <label>Insufficient behavioural information</label>
+            </value>
+            <value>
+                <fullName>Foster program capacity reached</fullName>
+                <default>false</default>
+                <label>Foster program capacity reached</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

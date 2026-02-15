@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Rescue_Type__c</fullName>
+    <label>Rescue Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Assistance Request - Animal Owner</fullName>
+                <default>false</default>
+                <label>Assistance Request - Animal Owner</label>
+            </value>
+            <value>
+                <fullName>Assistance Request - HEA Bequest</fullName>
+                <default>false</default>
+                <label>Assistance Request - HEA Bequest</label>
+            </value>
+            <value>
+                <fullName>Assistance Request - Inspectorate</fullName>
+                <default>false</default>
+                <label>Assistance Request - Inspectorate</label>
+            </value>
+            <value>
+                <fullName>Assistance Request - Provide Emergency Relief</fullName>
+                <default>false</default>
+                <label>Assistance Request - Provide Emergency Relief</label>
+            </value>
+            <value>
+                <fullName>Assistance Request - Shelter</fullName>
+                <default>false</default>
+                <label>Assistance Request - Shelter</label>
+            </value>
+            <value>
+                <fullName>Dog/cat Attack</fullName>
+                <default>false</default>
+                <label>Dog/cat Attack</label>
+            </value>
+            <value>
+                <fullName>Emergency - Fire Event</fullName>
+                <default>false</default>
+                <label>Emergency - Fire Event</label>
+            </value>
+            <value>
+                <fullName>Emergency - Flood Event</fullName>
+                <default>false</default>
+                <label>Emergency - Flood Event</label>
+            </value>
+            <value>
+                <fullName>Emergency - Heat Related</fullName>
+                <default>false</default>
+                <label>Emergency - Heat Related</label>
+            </value>
+            <value>
+                <fullName>Emergency - Oiled Wildlife</fullName>
+                <default>false</default>
+                <label>Emergency - Oiled Wildlife</label>
+            </value>
+            <value>
+                <fullName>Entanglement - Fishing Line</fullName>
+                <default>false</default>
+                <label>Entanglement - Fishing Line</label>
+            </value>
+            <value>
+                <fullName>Entanglement - Other</fullName>
+                <default>false</default>
+                <label>Entanglement - Other</label>
+            </value>
+            <value>
+                <fullName>Hit By Car</fullName>
+                <default>false</default>
+                <label>Hit By Car</label>
+            </value>
+            <value>
+                <fullName>Injured</fullName>
+                <default>false</default>
+                <label>Injured</label>
+            </value>
+            <value>
+                <fullName>Orphaned Juvenile</fullName>
+                <default>false</default>
+                <label>Orphaned Juvenile</label>
+            </value>
+            <value>
+                <fullName>Pouch Check</fullName>
+                <default>false</default>
+                <label>Pouch Check</label>
+            </value>
+            <value>
+                <fullName>Rescue - at Height</fullName>
+                <default>false</default>
+                <label>Rescue - at Height</label>
+            </value>
+            <value>
+                <fullName>Rescue - Livestock</fullName>
+                <default>false</default>
+                <label>Rescue - Livestock</label>
+            </value>
+            <value>
+                <fullName>Rescue - Roof Cavity</fullName>
+                <default>false</default>
+                <label>Rescue - Roof Cavity</label>
+            </value>
+            <value>
+                <fullName>Rescue - Special Request</fullName>
+                <default>false</default>
+                <label>Rescue - Special Request</label>
+            </value>
+            <value>
+                <fullName>Sick/ Illness</fullName>
+                <default>false</default>
+                <label>Sick/ Illness</label>
+            </value>
+            <value>
+                <fullName>Transport - Non animal</fullName>
+                <default>false</default>
+                <label>Transport - Non animal</label>
+            </value>
+            <value>
+                <fullName>Trapped - Bird in Building</fullName>
+                <default>false</default>
+                <label>Trapped - Bird in Building</label>
+            </value>
+            <value>
+                <fullName>Trapped - Drain Rescue</fullName>
+                <default>false</default>
+                <label>Trapped - Drain Rescue</label>
+            </value>
+            <value>
+                <fullName>Trapped - in Water</fullName>
+                <default>false</default>
+                <label>Trapped - in Water</label>
+            </value>
+            <value>
+                <fullName>Trapped - Other</fullName>
+                <default>false</default>
+                <label>Trapped - Other</label>
+            </value>
+            <value>
+                <fullName>Trapped - Stuck in Tree</fullName>
+                <default>false</default>
+                <label>Trapped - Stuck in Tree</label>
+            </value>
+            <value>
+                <fullName>Vet Pick Up</fullName>
+                <default>false</default>
+                <label>Vet Pick Up</label>
+            </value>
+            <value>
+                <fullName>Wildlife - Displaced/ Sighting</fullName>
+                <default>false</default>
+                <label>Wildlife - Displaced/ Sighting</label>
+            </value>
+            <value>
+                <fullName>Wildlife - Release</fullName>
+                <default>false</default>
+                <label>Wildlife - Release</label>
+            </value>
+            <value>
+                <fullName>Wildlife - Reunite</fullName>
+                <default>false</default>
+                <label>Wildlife - Reunite</label>
+            </value>
+            <value>
+                <fullName>Wildlife - Transport</fullName>
+                <default>false</default>
+                <label>Wildlife - Transport</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

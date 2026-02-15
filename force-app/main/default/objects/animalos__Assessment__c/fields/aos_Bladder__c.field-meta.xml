@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Bladder__c</fullName>
+    <label>Bladder</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Norm</fullName>
+                <default>false</default>
+                <label>Norm</label>
+            </value>
+            <value>
+                <fullName>Mildly thickened</fullName>
+                <default>false</default>
+                <label>Mildly thickened</label>
+            </value>
+            <value>
+                <fullName>Moderately thickened</fullName>
+                <default>false</default>
+                <label>Moderately thickened</label>
+            </value>
+            <value>
+                <fullName>Severely thickened</fullName>
+                <default>false</default>
+                <label>Severely thickened</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

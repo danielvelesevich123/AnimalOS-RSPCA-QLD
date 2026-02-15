@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Behavioural_Score</fullName>
+    <active>true</active>
+    <label>Behavioural Score</label>
+    <picklistValues>
+        <picklist>aos_Behavioural_Score_Applied_At__c</picklist>
+        <values>
+            <fullName>Behavioural Evaluation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>History%2FIntake</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Care</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vet Exam</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Behavioural_Score__c</picklist>
+        <values>
+            <fullName>B1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>B5</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Medical_Score_Applied_At__c</picklist>
+        <values>
+            <fullName>Behavioural Evaluation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>History%2FIntake</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Care</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vet Exam</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Medical_Score__c</picklist>
+        <values>
+            <fullName>M1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>M2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>M3</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>M4</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>M5</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Score_Category__c</picklist>
+        <values>
+            <fullName>Behaviour in kennel or yard</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Eating</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Kennel Overnight</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Leaving kennel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Meeting a person out of the kennel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Placing lead%2Fharness on</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Response to interacting with person</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Resting during day</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Seeing another dog out of kennel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Walking on lead</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>When first given a toy</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>When person at front of kennel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>When person entering kennel or yard</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

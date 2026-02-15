@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Consult_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Consult Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Black Tag Exam</fullName>
+                <default>false</default>
+                <label>Black Tag Exam</label>
+            </value>
+            <value>
+                <fullName>Cat/Kitten Castration</fullName>
+                <default>false</default>
+                <label>Cat/Kitten Castration</label>
+            </value>
+            <value>
+                <fullName>Cat Flank Spey</fullName>
+                <default>false</default>
+                <label>Cat Flank Spey</label>
+            </value>
+            <value>
+                <fullName>Cattle</fullName>
+                <default>false</default>
+                <label>Cattle</label>
+            </value>
+            <value>
+                <fullName>Community Outreach Initial Consult</fullName>
+                <default>false</default>
+                <label>Community Outreach Initial Consult</label>
+            </value>
+            <value>
+                <fullName>Dog/Puppy Castration</fullName>
+                <default>false</default>
+                <label>Dog/Puppy Castration</label>
+            </value>
+            <value>
+                <fullName>Euthanasia - Critical Distress Consultation</fullName>
+                <default>false</default>
+                <label>Euthanasia - Critical Distress Consultation</label>
+            </value>
+            <value>
+                <fullName>Euthanasia - General</fullName>
+                <default>false</default>
+                <label>Euthanasia - General</label>
+            </value>
+            <value>
+                <fullName>Euthanasia - Owner requested/Council requested</fullName>
+                <default>false</default>
+                <label>Euthanasia - Owner requested/Council requested</label>
+            </value>
+            <value>
+                <fullName>Euthanasia - Standard protocol exit point</fullName>
+                <default>false</default>
+                <label>Euthanasia - Standard protocol exit point</label>
+            </value>
+            <value>
+                <fullName>Fungassay Result: POSITIVE / NEGATIVE</fullName>
+                <default>false</default>
+                <label>Fungassay Result: POSITIVE / NEGATIVE</label>
+            </value>
+            <value>
+                <fullName>General</fullName>
+                <default>false</default>
+                <label>General</label>
+            </value>
+            <value>
+                <fullName>Hair Matting</fullName>
+                <default>false</default>
+                <label>Hair Matting</label>
+            </value>
+            <value>
+                <fullName>Intake</fullName>
+                <default>false</default>
+                <label>Intake</label>
+            </value>
+            <value>
+                <fullName>Intake Check - Domestic Bird</fullName>
+                <default>false</default>
+                <label>Intake Check - Domestic Bird</label>
+            </value>
+            <value>
+                <fullName>Intake Check - Domestic Poultry</fullName>
+                <default>false</default>
+                <label>Intake Check - Domestic Poultry</label>
+            </value>
+            <value>
+                <fullName>Intake Check - Domestic Reptile</fullName>
+                <default>false</default>
+                <label>Intake Check - Domestic Reptile</label>
+            </value>
+            <value>
+                <fullName>Intake Check - Koala</fullName>
+                <default>false</default>
+                <label>Intake Check - Koala</label>
+            </value>
+            <value>
+                <fullName>Koala Examination</fullName>
+                <default>false</default>
+                <label>Koala Examination</label>
+            </value>
+            <value>
+                <fullName>Pathology</fullName>
+                <default>false</default>
+                <label>Pathology</label>
+            </value>
+            <value>
+                <fullName>Pig Clinical Exam</fullName>
+                <default>false</default>
+                <label>Pig Clinical Exam</label>
+            </value>
+            <value>
+                <fullName>Pocket Pet Intake</fullName>
+                <default>false</default>
+                <label>Pocket Pet Intake</label>
+            </value>
+            <value>
+                <fullName>Rabbit Intake</fullName>
+                <default>false</default>
+                <label>Rabbit Intake</label>
+            </value>
+            <value>
+                <fullName>Recheck</fullName>
+                <default>false</default>
+                <label>Recheck</label>
+            </value>
+            <value>
+                <fullName>Recheck Wildlife - Amphibian</fullName>
+                <default>false</default>
+                <label>Recheck Wildlife - Amphibian</label>
+            </value>
+            <value>
+                <fullName>Recheck Wildlife - Bird</fullName>
+                <default>false</default>
+                <label>Recheck Wildlife - Bird</label>
+            </value>
+            <value>
+                <fullName>Recheck Wildlife - Mammal</fullName>
+                <default>false</default>
+                <label>Recheck Wildlife - Mammal</label>
+            </value>
+            <value>
+                <fullName>Recheck Wildlife - Reptile</fullName>
+                <default>false</default>
+                <label>Recheck Wildlife - Reptile</label>
+            </value>
+            <value>
+                <fullName>Routine Cat and Kitten SPEY/ Pregnant cat spey</fullName>
+                <default>false</default>
+                <label>Routine Cat and Kitten SPEY/ Pregnant cat spey</label>
+            </value>
+            <value>
+                <fullName>Sheep/Goat/Alpaca</fullName>
+                <default>false</default>
+                <label>Sheep/Goat/Alpaca</label>
+            </value>
+            <value>
+                <fullName>Surgical</fullName>
+                <default>false</default>
+                <label>Surgical</label>
+            </value>
+            <value>
+                <fullName>Wildlife Examination</fullName>
+                <default>false</default>
+                <label>Wildlife Examination</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

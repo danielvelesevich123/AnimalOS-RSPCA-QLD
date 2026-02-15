@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Foster_Animals</fullName>
+    <columns>NAME</columns>
+    <columns>animalos__Animal_Name__c</columns>
+    <columns>animalos__Type__c</columns>
+    <columns>aos_Primary_Breed_Formula__c</columns>
+    <columns>animalos__Gender__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>aos_Current_Unit_Record_Type__c</field>
+        <operation>equals</operation>
+        <value>Foster</value>
+    </filters>
+    <label>Foster Animals</label>
+    <sharedTo>
+        <group>Foster_Carer_External_Users</group>
+    </sharedTo>
+</ListView>

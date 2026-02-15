@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Need_Close_Date_to_Complete</fullName>
+    <active>false</active>
+    <description>Outbound Type - Returned to Habitat must have a Close Date for Completion</description>
+    <errorConditionFormula>AND(
+NOT(ISNEW()),
+RecordType.DeveloperName = &apos;Outbound_Referral&apos;,
+ISCHANGED(animalos__Stage__c),
+ISPICKVAL(animalos__Stage__c ,&apos;Completed&apos;),
+ISPICKVAL(animalos__Outbound_Type__c, &apos;Returned to Habitat&apos;),
+ISBLANK(animalos__Scheduled_Date_Time__c)
+)</errorConditionFormula>
+    <errorMessage>You must set a Schedule Date to Complete this referral.</errorMessage>
+</ValidationRule>

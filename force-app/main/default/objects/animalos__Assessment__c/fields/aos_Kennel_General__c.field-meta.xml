@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Kennel_General__c</fullName>
+    <label>Kennel General</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Rests and or watches</fullName>
+                <default>false</default>
+                <label>Rests and or watches</label>
+            </value>
+            <value>
+                <fullName>Explores and or engages with enrichment</fullName>
+                <default>false</default>
+                <label>Explores and or engages with enrichment</label>
+            </value>
+            <value>
+                <fullName>Whines and or cries</fullName>
+                <default>false</default>
+                <label>Whines and or cries</label>
+            </value>
+            <value>
+                <fullName>Always alert or constant barking</fullName>
+                <default>false</default>
+                <label>Always alert or constant barking</label>
+            </value>
+            <value>
+                <fullName>Pacing, yawning or panting</fullName>
+                <default>false</default>
+                <label>Pacing, yawning or panting</label>
+            </value>
+            <value>
+                <fullName>Searches for or scratches at exits</fullName>
+                <default>false</default>
+                <label>Searches for or scratches at exits</label>
+            </value>
+            <value>
+                <fullName>Wall bouncing</fullName>
+                <default>false</default>
+                <label>Wall bouncing</label>
+            </value>
+            <value>
+                <fullName>Hides</fullName>
+                <default>false</default>
+                <label>Hides</label>
+            </value>
+            <value>
+                <fullName>Trembling</fullName>
+                <default>false</default>
+                <label>Trembling</label>
+            </value>
+            <value>
+                <fullName>Spins, circles, wire licking or biting</fullName>
+                <default>false</default>
+                <label>Spins, circles, wire licking or biting</label>
+            </value>
+            <value>
+                <fullName>Escape</fullName>
+                <default>false</default>
+                <label>Escape</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

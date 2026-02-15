@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Behavioural_Score_Applied_At_Required</fullName>
+    <active>false</active>
+    <description>If Behaviour Score is changed or updated, then Behavioural Score Applied At is required.</description>
+    <errorConditionFormula>ISPICKVAL(aos_Behavioural_Score_Applied_At__c, &quot;&quot;) &amp;&amp; NOT(ISPICKVAL(aos_Behavioural_Score__c, &quot;&quot;))</errorConditionFormula>
+    <errorDisplayField>aos_Behavioural_Score_Applied_At__c</errorDisplayField>
+    <errorMessage>Please select Behavioural Score Applies At</errorMessage>
+</ValidationRule>

@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Available_Profiles__c</fullName>
+    <label>Available Profiles</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Analytics Cloud Integration User</fullName>
+                <default>false</default>
+                <label>Analytics Cloud Integration User</label>
+            </value>
+            <value>
+                <fullName>Analytics Cloud Security User</fullName>
+                <default>false</default>
+                <label>Analytics Cloud Security User</label>
+            </value>
+            <value>
+                <fullName>Animal Attendant - BARC</fullName>
+                <default>false</default>
+                <label>Animal Attendant - BARC</label>
+            </value>
+            <value>
+                <fullName>Animal Attendant - BARC_OLD</fullName>
+                <default>false</default>
+                <label>Animal Attendant - BARC_OLD</label>
+            </value>
+            <value>
+                <fullName>Animal Attendant - Blue Mountains</fullName>
+                <default>false</default>
+                <label>Animal Attendant - Blue Mountains</label>
+            </value>
+            <value>
+                <fullName>Animal Attendant - Broken Hill</fullName>
+                <default>false</default>
+                <label>Animal Attendant - Broken Hill</label>
+            </value>
+            <value>
+                <fullName>Animal Attendant - Central West</fullName>
+                <default>false</default>
+                <label>Animal Attendant - Central West</label>
+            </value>
+            <value>
+                <fullName>Animal Attendant - Coffs Harbour</fullName>
+                <default>false</default>
+                <label>Animal Attendant - Coffs Harbour</label>
+            </value>
+            <value>
+                <fullName>Animal Attendant - Hunter</fullName>
+                <default>false</default>
+                <label>Animal Attendant - Hunter</label>
+            </value>
+            <value>
+                <fullName>Animal Attendant - Illawarra</fullName>
+                <default>false</default>
+                <label>Animal Attendant - Illawarra</label>
+            </value>
+            <value>
+                <fullName>Animal Attendant - Sydney</fullName>
+                <default>false</default>
+                <label>Animal Attendant - Sydney</label>
+            </value>
+            <value>
+                <fullName>Animal Attendant - Tuggerah</fullName>
+                <default>false</default>
+                <label>Animal Attendant - Tuggerah</label>
+            </value>
+            <value>
+                <fullName>API Integration</fullName>
+                <default>false</default>
+                <label>API Integration</label>
+            </value>
+            <value>
+                <fullName>API Integration - Animalis Only</fullName>
+                <default>false</default>
+                <label>API Integration - Animalis Only</label>
+            </value>
+            <value>
+                <fullName>Assistance Hub Portal Profile</fullName>
+                <default>false</default>
+                <label>Assistance Hub Portal Profile</label>
+            </value>
+            <value>
+                <fullName>Branches User</fullName>
+                <default>false</default>
+                <label>Branches User</label>
+            </value>
+            <value>
+                <fullName>Case Management User</fullName>
+                <default>false</default>
+                <label>Case Management User</label>
+            </value>
+            <value>
+                <fullName>Case Management User 2</fullName>
+                <default>false</default>
+                <label>Case Management User 2</label>
+            </value>
+            <value>
+                <fullName>CaseOneDrive Profile</fullName>
+                <default>false</default>
+                <label>CaseOneDrive Profile</label>
+            </value>
+            <value>
+                <fullName>Chatter External User</fullName>
+                <default>false</default>
+                <label>Chatter External User</label>
+            </value>
+            <value>
+                <fullName>Chatter Free User</fullName>
+                <default>false</default>
+                <label>Chatter Free User</label>
+            </value>
+            <value>
+                <fullName>Chatter Moderator User</fullName>
+                <default>false</default>
+                <label>Chatter Moderator User</label>
+            </value>
+            <value>
+                <fullName>Contact Centre</fullName>
+                <default>false</default>
+                <label>Contact Centre</label>
+            </value>
+            <value>
+                <fullName>Contact Centre + Philanthropy</fullName>
+                <default>false</default>
+                <label>Contact Centre + Philanthropy</label>
+            </value>
+            <value>
+                <fullName>Contact Centre Managers</fullName>
+                <default>false</default>
+                <label>Contact Centre Managers</label>
+            </value>
+            <value>
+                <fullName>Contact Centre v2</fullName>
+                <default>false</default>
+                <label>Contact Centre v2</label>
+            </value>
+            <value>
+                <fullName>Contract Manager</fullName>
+                <default>false</default>
+                <label>Contract Manager</label>
+            </value>
+            <value>
+                <fullName>Customer Community Login User</fullName>
+                <default>false</default>
+                <label>Customer Community Login User</label>
+            </value>
+            <value>
+                <fullName>Customer Community User</fullName>
+                <default>false</default>
+                <label>Customer Community User</label>
+            </value>
+            <value>
+                <fullName>Donate Profile</fullName>
+                <default>false</default>
+                <label>Donate Profile</label>
+            </value>
+            <value>
+                <fullName>Education User</fullName>
+                <default>false</default>
+                <label>Education User</label>
+            </value>
+            <value>
+                <fullName>Executive Management</fullName>
+                <default>false</default>
+                <label>Executive Management</label>
+            </value>
+            <value>
+                <fullName>Finance User</fullName>
+                <default>false</default>
+                <label>Finance User</label>
+            </value>
+            <value>
+                <fullName>Fundraising and Development</fullName>
+                <default>false</default>
+                <label>Fundraising and Development</label>
+            </value>
+            <value>
+                <fullName>Fundraising Manager</fullName>
+                <default>false</default>
+                <label>Fundraising Manager</label>
+            </value>
+            <value>
+                <fullName>Fundraising User</fullName>
+                <default>false</default>
+                <label>Fundraising User</label>
+            </value>
+            <value>
+                <fullName>Fundraising Volunteer</fullName>
+                <default>false</default>
+                <label>Fundraising Volunteer</label>
+            </value>
+            <value>
+                <fullName>Guest License User</fullName>
+                <default>false</default>
+                <label>Guest License User</label>
+            </value>
+            <value>
+                <fullName>Identity User</fullName>
+                <default>false</default>
+                <label>Identity User</label>
+            </value>
+            <value>
+                <fullName>Inspectorate Team</fullName>
+                <default>false</default>
+                <label>Inspectorate Team</label>
+            </value>
+            <value>
+                <fullName>Marketing User</fullName>
+                <default>false</default>
+                <label>Marketing User</label>
+            </value>
+            <value>
+                <fullName>Media Manager</fullName>
+                <default>false</default>
+                <label>Media Manager</label>
+            </value>
+            <value>
+                <fullName>Media User</fullName>
+                <default>false</default>
+                <label>Media User</label>
+            </value>
+            <value>
+                <fullName>Membership &amp; Volunteer Manager</fullName>
+                <default>false</default>
+                <label>Membership &amp; Volunteer Manager</label>
+            </value>
+            <value>
+                <fullName>Membership Manager</fullName>
+                <default>false</default>
+                <label>Membership Manager</label>
+            </value>
+            <value>
+                <fullName>Membership User</fullName>
+                <default>false</default>
+                <label>Membership User</label>
+            </value>
+            <value>
+                <fullName>Minimum Access - Salesforce</fullName>
+                <default>false</default>
+                <label>Minimum Access - Salesforce</label>
+            </value>
+            <value>
+                <fullName>My RSPCA NSW Profile</fullName>
+                <default>false</default>
+                <label>My RSPCA NSW Profile</label>
+            </value>
+            <value>
+                <fullName>Outreach User</fullName>
+                <default>false</default>
+                <label>Outreach User</label>
+            </value>
+            <value>
+                <fullName>Philanthropic User</fullName>
+                <default>false</default>
+                <label>Philanthropic User</label>
+            </value>
+            <value>
+                <fullName>Philanthropy Manager</fullName>
+                <default>false</default>
+                <label>Philanthropy Manager</label>
+            </value>
+            <value>
+                <fullName>Philanthropy User</fullName>
+                <default>false</default>
+                <label>Philanthropy User</label>
+            </value>
+            <value>
+                <fullName>Philanthropy Volunteer</fullName>
+                <default>false</default>
+                <label>Philanthropy Volunteer</label>
+            </value>
+            <value>
+                <fullName>Program Management Standard User</fullName>
+                <default>false</default>
+                <label>Program Management Standard User</label>
+            </value>
+            <value>
+                <fullName>Read Only</fullName>
+                <default>false</default>
+                <label>Read Only</label>
+            </value>
+            <value>
+                <fullName>Read Only1</fullName>
+                <default>false</default>
+                <label>Read Only1</label>
+            </value>
+            <value>
+                <fullName>RSPCA Admissions</fullName>
+                <default>false</default>
+                <label>RSPCA Admissions</label>
+            </value>
+            <value>
+                <fullName>RSPCA ATO</fullName>
+                <default>false</default>
+                <label>RSPCA ATO</label>
+            </value>
+            <value>
+                <fullName>RSPCA ATO SFS</fullName>
+                <default>false</default>
+                <label>RSPCA ATO SFS</label>
+            </value>
+            <value>
+                <fullName>RSPCA Behaviour &amp; Evaluation</fullName>
+                <default>false</default>
+                <label>RSPCA Behaviour &amp; Evaluation</label>
+            </value>
+            <value>
+                <fullName>RSPCA Branches</fullName>
+                <default>false</default>
+                <label>RSPCA Branches</label>
+            </value>
+            <value>
+                <fullName>RSPCA Branch Vollies</fullName>
+                <default>false</default>
+                <label>RSPCA Branch Vollies</label>
+            </value>
+            <value>
+                <fullName>RSPCA Clinic Hunter</fullName>
+                <default>false</default>
+                <label>RSPCA Clinic Hunter</label>
+            </value>
+            <value>
+                <fullName>RSPCA Clinic Sydney</fullName>
+                <default>false</default>
+                <label>RSPCA Clinic Sydney</label>
+            </value>
+            <value>
+                <fullName>RSPCA CSO</fullName>
+                <default>false</default>
+                <label>RSPCA CSO</label>
+            </value>
+            <value>
+                <fullName>RSPCA Foster &amp; Behaviour</fullName>
+                <default>false</default>
+                <label>RSPCA Foster &amp; Behaviour</label>
+            </value>
+            <value>
+                <fullName>RSPCA Foster Care</fullName>
+                <default>false</default>
+                <label>RSPCA Foster Care</label>
+            </value>
+            <value>
+                <fullName>RSPCA GM</fullName>
+                <default>false</default>
+                <label>RSPCA GM</label>
+            </value>
+            <value>
+                <fullName>RSPCA Inspector</fullName>
+                <default>false</default>
+                <label>RSPCA Inspector</label>
+            </value>
+            <value>
+                <fullName>RSPCA Inspectorate</fullName>
+                <default>false</default>
+                <label>RSPCA Inspectorate</label>
+            </value>
+            <value>
+                <fullName>RSPCA Inspectorate - Not In Use</fullName>
+                <default>false</default>
+                <label>RSPCA Inspectorate - Not In Use</label>
+            </value>
+            <value>
+                <fullName>RSPCA Inspector Manager</fullName>
+                <default>false</default>
+                <label>RSPCA Inspector Manager</label>
+            </value>
+            <value>
+                <fullName>RSPCA Internal Engagement</fullName>
+                <default>false</default>
+                <label>RSPCA Internal Engagement</label>
+            </value>
+            <value>
+                <fullName>RSPCA Petbarn Coordinator</fullName>
+                <default>false</default>
+                <label>RSPCA Petbarn Coordinator</label>
+            </value>
+            <value>
+                <fullName>RSPCA Petbarn User</fullName>
+                <default>false</default>
+                <label>RSPCA Petbarn User</label>
+            </value>
+            <value>
+                <fullName>RSPCA Platform User</fullName>
+                <default>false</default>
+                <label>RSPCA Platform User</label>
+            </value>
+            <value>
+                <fullName>RSPCA Shelter Manager</fullName>
+                <default>false</default>
+                <label>RSPCA Shelter Manager</label>
+            </value>
+            <value>
+                <fullName>RSPCA Shelter Manager plus Jobs</fullName>
+                <default>false</default>
+                <label>RSPCA Shelter Manager plus Jobs</label>
+            </value>
+            <value>
+                <fullName>RSPCA Shelter Operations</fullName>
+                <default>false</default>
+                <label>RSPCA Shelter Operations</label>
+            </value>
+            <value>
+                <fullName>RSPCA Student</fullName>
+                <default>false</default>
+                <label>RSPCA Student</label>
+            </value>
+            <value>
+                <fullName>RSPCA Student Volunteers</fullName>
+                <default>false</default>
+                <label>RSPCA Student Volunteers</label>
+            </value>
+            <value>
+                <fullName>RSPCA Volunteer Manager</fullName>
+                <default>false</default>
+                <label>RSPCA Volunteer Manager</label>
+            </value>
+            <value>
+                <fullName>RSPCA Volunteer User Basic</fullName>
+                <default>false</default>
+                <label>RSPCA Volunteer User Basic</label>
+            </value>
+            <value>
+                <fullName>Salesforce API Only System Integrations</fullName>
+                <default>false</default>
+                <label>Salesforce API Only System Integrations</label>
+            </value>
+            <value>
+                <fullName>SalesforceIQ Integration User</fullName>
+                <default>false</default>
+                <label>SalesforceIQ Integration User</label>
+            </value>
+            <value>
+                <fullName>Sales Insights Integration User</fullName>
+                <default>false</default>
+                <label>Sales Insights Integration User</label>
+            </value>
+            <value>
+                <fullName>Solution Manager</fullName>
+                <default>false</default>
+                <label>Solution Manager</label>
+            </value>
+            <value>
+                <fullName>Standard Guest</fullName>
+                <default>false</default>
+                <label>Standard Guest</label>
+            </value>
+            <value>
+                <fullName>Standard Platform User</fullName>
+                <default>false</default>
+                <label>Standard Platform User</label>
+            </value>
+            <value>
+                <fullName>Standard User</fullName>
+                <default>false</default>
+                <label>Standard User</label>
+            </value>
+            <value>
+                <fullName>Surrender Portal Profile</fullName>
+                <default>false</default>
+                <label>Surrender Portal Profile</label>
+            </value>
+            <value>
+                <fullName>System Administrator</fullName>
+                <default>false</default>
+                <label>System Administrator</label>
+            </value>
+            <value>
+                <fullName>TAS Fundraising User</fullName>
+                <default>false</default>
+                <label>TAS Fundraising User</label>
+            </value>
+            <value>
+                <fullName>Testing Profile</fullName>
+                <default>false</default>
+                <label>Testing Profile</label>
+            </value>
+            <value>
+                <fullName>Testing Profile 1</fullName>
+                <default>false</default>
+                <label>Testing Profile 1</label>
+            </value>
+            <value>
+                <fullName>Testing Profile 2</fullName>
+                <default>false</default>
+                <label>Testing Profile 2</label>
+            </value>
+            <value>
+                <fullName>Testing Profile 3</fullName>
+                <default>false</default>
+                <label>Testing Profile 3</label>
+            </value>
+            <value>
+                <fullName>Webhook Profile</fullName>
+                <default>false</default>
+                <label>Webhook Profile</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

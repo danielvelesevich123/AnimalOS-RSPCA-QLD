@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_AdoptAPet_Location_Ranking__c</fullName>
+    <complianceGroup>Not Categorized</complianceGroup>
+    <description>This fild allows us to determin the order of the picklist on adopt a pet/ nsw adopt a location sits.</description>
+    <externalId>false</externalId>
+    <label>AdoptAPet Location Ranking</label>
+    <precision>2</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <securityClassification>Internal</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>true</unique>
+</CustomField>

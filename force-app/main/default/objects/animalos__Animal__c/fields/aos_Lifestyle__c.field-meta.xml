@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Lifestyle__c</fullName>
+    <inlineHelpText>How much exercise or time and input does this dog need (for puppies think about the breed and exercise requirements during growth)?</inlineHelpText>
+    <label>Lifestyle</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>High (high energy working breeds, adolescent/energetic dogs)</fullName>
+                <default>false</default>
+                <label>High (high energy working breeds, adolescent/energetic dogs)</label>
+            </value>
+            <value>
+                <fullName>Moderate</fullName>
+                <default>false</default>
+                <label>Average</label>
+            </value>
+            <value>
+                <fullName>Mild (e.g. seniors)</fullName>
+                <default>false</default>
+                <label>Relaxed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

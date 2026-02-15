@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Amount_Written_Off__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Amount Written Off</label>
+    <summarizedField>animalos__Payment__c.animalos__Amount__c</summarizedField>
+    <summaryFilterItems>
+        <field>animalos__Payment__c.animalos__Payment_Status__c</field>
+        <operation>equals</operation>
+        <value>Written Off</value>
+    </summaryFilterItems>
+    <summaryForeignKey>animalos__Payment__c.animalos__Invoice__c</summaryForeignKey>
+    <summaryOperation>sum</summaryOperation>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

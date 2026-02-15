@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Dog_Introductions__c</fullName>
+    <inlineHelpText>Level of sociability or manageability with unfamiliar dogs. One dog is sufficient if response is green. If orange and there is no concerning history gather information on social walks.</inlineHelpText>
+    <label>Dog Introductions</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Appropriate: approach soft/fluid, pro-social, polite, can disengage, may be excitable but regulates</fullName>
+                <default>false</default>
+                <label>Appropriate: approach soft/fluid, pro-social, polite, can disengage, may be excitable but regulates</label>
+            </value>
+            <value>
+                <fullName>Disinterested: calm/relaxed, content sharing space, does not seek active engagement, not avoidant</fullName>
+                <default>false</default>
+                <label>Disinterested: calm/relaxed, content sharing space, does not seek active engagement, not avoidant</label>
+            </value>
+            <value>
+                <fullName>Avoids: actively avoids</fullName>
+                <default>false</default>
+                <label>Avoids: actively avoids</label>
+            </value>
+            <value>
+                <fullName>Focused/fixated: ambiguous social cues, may be overbearing/rude on introduction, tense, inappropriate but does not escalate</fullName>
+                <default>false</default>
+                <label>Focused/fixated: ambiguous social cues, may be overbearing/rude on introduction, tense, inappropriate but does not escalate</label>
+            </value>
+            <value>
+                <fullName>Frustrated/conflicted: may vocalise/intimidate other dog, show inappropriate behaviours, remains controllable</fullName>
+                <default>false</default>
+                <label>Frustrated/conflicted: may vocalise/intimidate other dog, show inappropriate behaviours, remains controllable</label>
+            </value>
+            <value>
+                <fullName>High arousal with repulsion: vocalises at any distance, hard to manage, introduction escalates quickly</fullName>
+                <default>false</default>
+                <label>High arousal with repulsion: vocalises at any distance, hard to manage, introduction escalates quickly</label>
+            </value>
+            <value>
+                <fullName>Lunge/bite/injury caused</fullName>
+                <default>false</default>
+                <label>Lunge/bite/injury caused</label>
+            </value>
+            <value>
+                <fullName>Not completed</fullName>
+                <default>false</default>
+                <label>Not completed</label>
+            </value>
+            <value>
+                <fullName>Calm friendly</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Calm friendly</label>
+            </value>
+            <value>
+                <fullName>Playful</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Playful</label>
+            </value>
+            <value>
+                <fullName>Reactive aggressive</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Reactive aggressive</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

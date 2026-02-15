@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Entry_Power__c</fullName>
+    <label>Entry Power</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Abandonment S122(1)(h)</fullName>
+                <default>false</default>
+                <label>Abandonment S122(1)(h)</label>
+            </value>
+            <value>
+                <fullName>Animal Just Injured / Untreated</fullName>
+                <default>false</default>
+                <label>Animal Just Injured / Untreated</label>
+            </value>
+            <value>
+                <fullName>Check Compliance with AWD</fullName>
+                <default>false</default>
+                <label>Check Compliance with AWD</label>
+            </value>
+            <value>
+                <fullName>Consent</fullName>
+                <default>false</default>
+                <label>Consent</label>
+            </value>
+            <value>
+                <fullName>Delay Result in Concealment / Death</fullName>
+                <default>false</default>
+                <label>Delay Result in Concealment / Death</label>
+            </value>
+            <value>
+                <fullName>Imminent Risk Death / Injury</fullName>
+                <default>false</default>
+                <label>Imminent Risk Death / Injury</label>
+            </value>
+            <value>
+                <fullName>No Entry Made</fullName>
+                <default>false</default>
+                <label>No Entry Made</label>
+            </value>
+            <value>
+                <fullName>Public Place</fullName>
+                <default>false</default>
+                <label>Public Place</label>
+            </value>
+            <value>
+                <fullName>S122 (2) To Contact Occupier</fullName>
+                <default>false</default>
+                <label>S122 (2) To Contact Occupier</label>
+            </value>
+            <value>
+                <fullName>S123 To Provide Relief</fullName>
+                <default>false</default>
+                <label>S123 To Provide Relief</label>
+            </value>
+            <value>
+                <fullName>s148(2) for seized animals</fullName>
+                <default>false</default>
+                <label>s148(2) for seized animals</label>
+            </value>
+            <value>
+                <fullName>Vehicle - Consent</fullName>
+                <default>false</default>
+                <label>Vehicle - Consent</label>
+            </value>
+            <value>
+                <fullName>Vehicle - No Consent</fullName>
+                <default>false</default>
+                <label>Vehicle - No Consent</label>
+            </value>
+            <value>
+                <fullName>Warrant to Enter</fullName>
+                <default>false</default>
+                <label>Warrant to Enter</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

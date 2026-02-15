@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Isolation__c</fullName>
+    <inlineHelpText>The dog&apos;s response to isolation for two minutes, as evidence by increasingly negative emotional arousal, fear, anxiety, grief, panic and/or frustration.</inlineHelpText>
+    <label>Isolation</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Rests/explores: low intensity exploration of room (sniffs, rests, eats/chews)</fullName>
+                <default>false</default>
+                <label>Rests/explores: low intensity exploration of room (sniffs, rests, eats/chews)</label>
+            </value>
+            <value>
+                <fullName>Low concern: exhibits minor frustration/distress on separation but recovers</fullName>
+                <default>false</default>
+                <label>Low concern: exhibits minor frustration/distress on separation but recovers</label>
+            </value>
+            <value>
+                <fullName>Mild concern: exhibits moderate signs of distress, may pant, pace, some vocalisation, but recovers and explores/rests after 1min</fullName>
+                <default>false</default>
+                <label>Mild concern: exhibits moderate signs of distress, may pant, pace, some vocalisation, but recovers and explores/rests after 1min</label>
+            </value>
+            <value>
+                <fullName>Moderate concern: intermittent panting, pacing, vocalisation throughout the time</fullName>
+                <default>false</default>
+                <label>Moderate concern: intermittent panting, pacing, vocalisation throughout the time</label>
+            </value>
+            <value>
+                <fullName>High concern: heavy panting, escape attempts, high intensity vocalisation, no recovery</fullName>
+                <default>false</default>
+                <label>High concern: heavy panting, escape attempts, high intensity vocalisation, no recovery</label>
+            </value>
+            <value>
+                <fullName>Severe concern: panic, anticipation before isolation, persistent signs of negative emotional state</fullName>
+                <default>false</default>
+                <label>Severe concern: panic, anticipation before isolation, persistent signs of negative emotional state</label>
+            </value>
+            <value>
+                <fullName>Not completed</fullName>
+                <default>false</default>
+                <label>Not completed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

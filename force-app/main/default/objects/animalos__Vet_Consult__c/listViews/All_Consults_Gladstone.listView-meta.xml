@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Consults_Gladstone</fullName>
+    <columns>NAME</columns>
+    <columns>animalos__Animal__c</columns>
+    <columns>animalos__Scheduled_Start__c</columns>
+    <columns>animalos__Scheduled_End__c</columns>
+    <columns>animalos__Status__c</columns>
+    <columns>animalos__Description__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>animalos__Consult_Location__c</field>
+        <operation>equals</operation>
+        <value>Gladstone</value>
+    </filters>
+    <label>All Consults - Gladstone</label>
+</ListView>

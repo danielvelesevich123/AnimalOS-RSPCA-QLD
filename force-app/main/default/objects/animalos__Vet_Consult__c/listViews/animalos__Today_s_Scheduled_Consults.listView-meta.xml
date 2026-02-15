@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Today_s_Scheduled_Consults</fullName>
+    <columns>NAME</columns>
+    <columns>animalos__Animal__c</columns>
+    <columns>animalos__Scheduled_Start__c</columns>
+    <columns>animalos__Scheduled_End__c</columns>
+    <columns>animalos__Status__c</columns>
+    <columns>animalos__Description__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>animalos__Status__c</field>
+        <operation>equals</operation>
+        <value>Scheduled</value>
+    </filters>
+    <filters>
+        <field>animalos__Scheduled_Start__c</field>
+        <operation>equals</operation>
+        <value>TODAY</value>
+    </filters>
+    <label>Today&apos;s Scheduled Consults</label>
+</ListView>

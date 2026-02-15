@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Handling__c</fullName>
+    <label>Handling</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Can be picked up/carried/sits comfortably in arms</fullName>
+                <default>false</default>
+                <label>Can be picked up/carried/sits comfortably in arms</label>
+            </value>
+            <value>
+                <fullName>Can be picked up/carried with squirming</fullName>
+                <default>false</default>
+                <label>Can be picked up/carried with squirming</label>
+            </value>
+            <value>
+                <fullName>Allows you to pick up but is hissing/growling</fullName>
+                <default>false</default>
+                <label>Allows you to pick up but is hissing/growling</label>
+            </value>
+            <value>
+                <fullName>Cannot be picked up/carried</fullName>
+                <default>false</default>
+                <label>Cannot be picked up/carried</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

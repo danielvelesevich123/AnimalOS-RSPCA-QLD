@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Not_Available_for_Adoption</fullName>
+    <active>false</active>
+    <description>Prevents Wildlife and Exotic animals to be made Available for Adoption</description>
+    <errorConditionFormula>OR(AND (
+ISPICKVAL( animalos__Class__c , &quot;Wildlife&quot; ),
+ISPICKVAL( animalos__Stage__c , &quot;Adoption Ready&quot;)),
+
+AND (
+ISPICKVAL( animalos__Class__c , &quot;Exotic&quot; ),
+ISPICKVAL( animalos__Stage__c , &quot;Adoption Ready&quot;))
+)</errorConditionFormula>
+    <errorMessage>Wildlife and Exotic animals cannot be made &apos;Adoption Ready&quot;</errorMessage>
+</ValidationRule>

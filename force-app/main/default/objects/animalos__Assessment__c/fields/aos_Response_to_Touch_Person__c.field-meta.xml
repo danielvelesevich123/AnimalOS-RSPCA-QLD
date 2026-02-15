@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Response_to_Touch_Person__c</fullName>
+    <inlineHelpText>Response to touch/gentle restraint when taken from cage</inlineHelpText>
+    <label>Response to touch/gentle restraint</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Relaxed body</fullName>
+                <default>false</default>
+                <label>Relaxed body</label>
+            </value>
+            <value>
+                <fullName>Allows/Tense body</fullName>
+                <default>false</default>
+                <label>Allows/Tense body</label>
+            </value>
+            <value>
+                <fullName>Climbs handler</fullName>
+                <default>false</default>
+                <label>Climbs handler</label>
+            </value>
+            <value>
+                <fullName>Tries to jump out of hands/avoids hands</fullName>
+                <default>false</default>
+                <label>Tries to jump out of hands/avoids hands</label>
+            </value>
+            <value>
+                <fullName>Launches out of cage</fullName>
+                <default>false</default>
+                <label>Launches out of cage</label>
+            </value>
+            <value>
+                <fullName>Hisses/Swipes/Spit/Bite</fullName>
+                <default>false</default>
+                <label>Hisses/Swipes/Spit/Bite</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

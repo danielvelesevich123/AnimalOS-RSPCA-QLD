@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Blocks</fullName>
+    <columns>NAME</columns>
+    <columns>animalos__Parent_Block__c</columns>
+    <columns>animalos__Animal_Type__c</columns>
+    <columns>animalos__Capacity__c</columns>
+    <columns>animalos__Availability__c</columns>
+    <columns>animalos__Allocation__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>animalos__Location__c.animalos__Block</value>
+    </filters>
+    <filters>
+        <field>aos_Parent_Name__c</field>
+        <operation>equals</operation>
+        <value>Wacol Animal Care Campus</value>
+    </filters>
+    <label>All Blocks</label>
+</ListView>

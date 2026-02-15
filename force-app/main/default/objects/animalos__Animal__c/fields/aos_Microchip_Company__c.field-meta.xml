@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Microchip_Company__c</fullName>
+    <inlineHelpText>Choose which company an animal is currently registered to, if applicable.</inlineHelpText>
+    <label>Microchip Company</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>A.A.R</fullName>
+                <default>false</default>
+                <label>A.A.R</label>
+            </value>
+            <value>
+                <fullName>C.A.R</fullName>
+                <default>false</default>
+                <label>C.A.R</label>
+            </value>
+            <value>
+                <fullName>Global</fullName>
+                <default>false</default>
+                <label>Global</label>
+            </value>
+            <value>
+                <fullName>Homesafe ID</fullName>
+                <default>false</default>
+                <label>Homesafe ID</label>
+            </value>
+            <value>
+                <fullName>N.P.R.</fullName>
+                <default>false</default>
+                <label>N.P.R.</label>
+            </value>
+            <value>
+                <fullName>NSW</fullName>
+                <default>false</default>
+                <label>NSW</label>
+            </value>
+            <value>
+                <fullName>Petsafe</fullName>
+                <default>false</default>
+                <label>Petsafe</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

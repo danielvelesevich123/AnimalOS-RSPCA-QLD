@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Referral_Source__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IF(
+        NOT(ISBLANK(TEXT(animalos__Referral__r.animalos__Animal_Source__c))),
+        animalos__Referral_Source_Text__c,
+        IF(
+        OR(animalos__Referral__r.RecordType.DeveloperName == &apos;Outbound_Animal&apos;, animalos__Referral__r.RecordType.DeveloperName == &apos;Adoption&apos;),
+        animalos__Referral_Source_Text__c,
+        &apos;&apos;))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Referral Source</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

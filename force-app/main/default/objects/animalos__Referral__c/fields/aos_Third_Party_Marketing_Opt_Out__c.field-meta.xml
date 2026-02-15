@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Third_Party_Marketing_Opt_Out__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>This field will be written back from the checkbox on the Conga Sign document.</description>
+    <inlineHelpText>This field can either be ticked manually or will come from the Conga sign Adoption Agreement if the Adopter chooses to Opt Out. It will only be updated onto the Primary Contact page when the Adoption Status is set to Adopted OR Adopted Awaiting Pick Up. Any future changes to a customer&apos;s Opt In/Out preference must be made on the Primary Contact page.</inlineHelpText>
+    <label>Third Party Marketing Opt Out</label>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

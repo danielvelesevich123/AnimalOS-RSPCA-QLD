@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Enrichment_Type__c</fullName>
+    <label>Enrichment Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>(F) Puzzle feeder</fullName>
+                <default>false</default>
+                <label>(F) Puzzle feeder</label>
+            </value>
+            <value>
+                <fullName>(F) Slow feeder</fullName>
+                <default>false</default>
+                <label>(F) Slow feeder</label>
+            </value>
+            <value>
+                <fullName>(F) Stuffed Kong</fullName>
+                <default>false</default>
+                <label>(F) Stuffed Kong</label>
+            </value>
+            <value>
+                <fullName>(F) Licki mats</fullName>
+                <default>false</default>
+                <label>(F) Licki mats</label>
+            </value>
+            <value>
+                <fullName>(F) Towels or boxes with food</fullName>
+                <default>false</default>
+                <label>(F) Towels or boxes with food</label>
+            </value>
+            <value>
+                <fullName>(F) Food scattered/smeared in kennel</fullName>
+                <default>false</default>
+                <label>(F) Food scattered/smeared in kennel</label>
+            </value>
+            <value>
+                <fullName>(F) Long lasting chew</fullName>
+                <default>false</default>
+                <label>(F) Long lasting chew</label>
+            </value>
+            <value>
+                <fullName>(Sc) ‘walk’ in a box</fullName>
+                <default>false</default>
+                <label>(Sc) ‘walk’ in a box</label>
+            </value>
+            <value>
+                <fullName>(Sc) Cloth with familiar scent</fullName>
+                <default>false</default>
+                <label>(Sc) Cloth with familiar scent</label>
+            </value>
+            <value>
+                <fullName>(Sc) “new” Scent cloths</fullName>
+                <default>false</default>
+                <label>(Sc) “new” Scent cloths</label>
+            </value>
+            <value>
+                <fullName>(Sc) Snuffle mats</fullName>
+                <default>false</default>
+                <label>(Sc) Snuffle mats</label>
+            </value>
+            <value>
+                <fullName>(A) Through a dog’s ear.</fullName>
+                <default>false</default>
+                <label>(A) Through a dog’s ear.</label>
+            </value>
+            <value>
+                <fullName>(A) Audiobooks</fullName>
+                <default>false</default>
+                <label>(A) Audiobooks</label>
+            </value>
+            <value>
+                <fullName>(A) ‘Sounds sociable’</fullName>
+                <default>false</default>
+                <label>(A) ‘Sounds sociable’</label>
+            </value>
+            <value>
+                <fullName>(C) Free work session with 1-3 novel objects</fullName>
+                <default>false</default>
+                <label>(C) Free work session with 1-3 novel objects</label>
+            </value>
+            <value>
+                <fullName>(C) Searching for a toy or food</fullName>
+                <default>false</default>
+                <label>(C) Searching for a toy or food</label>
+            </value>
+            <value>
+                <fullName>(C) Office time</fullName>
+                <default>false</default>
+                <label>(C) Office time</label>
+            </value>
+            <value>
+                <fullName>(C) Training session</fullName>
+                <default>false</default>
+                <label>(C) Training session</label>
+            </value>
+            <value>
+                <fullName>(C) Time in kennel with dog</fullName>
+                <default>false</default>
+                <label>(C) Time in kennel with dog</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>10</visibleLines>
+</CustomField>

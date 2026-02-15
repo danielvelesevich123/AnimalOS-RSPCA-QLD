@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_If_you_have_other_pets_have_they_all__c</fullName>
+    <inlineHelpText>If you have other pets, have they all adjusted to each other?</inlineHelpText>
+    <label>If you have other pets, have they all</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes</fullName>
+                <default>false</default>
+                <label>Yes</label>
+            </value>
+            <value>
+                <fullName>No</fullName>
+                <default>false</default>
+                <label>No</label>
+            </value>
+            <value>
+                <fullName>Comments</fullName>
+                <default>false</default>
+                <label>Comments</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

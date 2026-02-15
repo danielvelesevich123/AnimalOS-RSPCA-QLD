@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Specific_Details_And_Needs_Of_Animal__c</fullName>
+    <inlineHelpText>Including existing medical conditions and behavioural concerns). Please provide as much information as possible</inlineHelpText>
+    <label>Specific Details And Needs Of Animal</label>
+    <length>32768</length>
+    <securityClassification>System</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>
