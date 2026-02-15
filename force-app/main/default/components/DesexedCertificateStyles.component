@@ -1,0 +1,77 @@
+<apex:component id="DesexedCertificateStyles" layout="none">
+
+    <apex:variable value="{! 'DesexedCertificateStyles' }" var="cmpName"/>
+    <apex:variable value="{! cmpName + 'Template' }" var="defaultTemplateName"/>
+    <apex:variable value="{! 'c-' + cmpName }" var="defaultClassName"/>
+
+    <style>
+
+        .{!defaultClassName} {
+
+        }
+
+        /* @page {
+            margin: 0.5cm;
+        } */
+
+        html * {
+            font-family: "Roboto", sans-serif !important;
+        }
+
+        .main-content {
+            margin-left: 5rem;
+            margin-right: 5rem;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .page-break {
+            page-break-after: always;
+        }
+
+        td, th {
+            border: 1px solid black;
+            text-align: left;
+            font-size: 16px;
+            font-weight: normal;
+            padding-left: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        h2, h3 {
+            font-weight: normal;
+        }
+
+        a {
+            font-weight: normal;
+            font-size: 16px;
+        }
+
+        .alignCenter {
+            text-align: center;
+            background-color: #D3D3D3;
+            font-size: 16px;
+        }
+
+        .inform-collection {
+            text-align: center;
+            color: #0093D0;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .header-table {
+            border: none;
+            padding-left: 0;
+        }
+
+    </style>
+
+</apex:component>

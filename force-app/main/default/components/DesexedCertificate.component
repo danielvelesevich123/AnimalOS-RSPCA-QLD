@@ -1,0 +1,173 @@
+<apex:component id="DesexedCertificate">
+
+    <apex:attribute name="dto" description="Data Transfer Object" type="Map"/>
+
+    <apex:variable value="{! 'DesexedCertificate' }" var="cmpName"/>
+    <apex:variable value="{! cmpName + 'Template' }" var="defaultTemplateName"/>
+    <apex:variable value="{! 'c-' + cmpName }" var="defaultClassName"/>
+
+    <div class="main-content">
+        <div class="inform-collection">
+            DESEXED CERTIFICATE
+        </div>
+
+        <table style="margin-bottom: 20px; margin-top:10px;">
+            <tr>
+                <td class="header-table" width="30%">
+                    <apex:image id="RspcaLogo2" value="{!$Resource.RspcaLogo}" width="220" alt="RSPCA QLD"/>
+                </td>
+                <td class="header-table" width="35%">
+                </td>
+                <td class="header-table" style="text-align: right" width="35%">
+                    <apex:outputPanel rendered="{! NOT(ISBLANK(dto['animal'].animalos__Current_Site__c)) }">
+                        <b>{!dto['animal'].animalos__Current_Site__r.Street_Address__c}</b>
+                        <br/>
+
+                        <b>{!dto['animal'].animalos__Current_Site__r.Suburb__c}
+                            {!dto['animal'].animalos__Current_Site__r.State__c}
+                            {!dto['animal'].animalos__Current_Site__r.Postcode__c}
+                        </b>
+                        <br/>
+
+                        <b>{!dto['animal'].animalos__Current_Site__r.Site_Phone__c}</b>
+                    </apex:outputPanel>
+                </td>
+            </tr>
+        </table>
+
+        <table style="table-layout: fixed;">
+            <tr>
+                <th style="vertical-align: top; padding-top: 10px; padding-bottom: 10px;">
+                    <b>Owner's Details:</b>
+                    <!-- <br/>
+
+                    {!dto['referral']['animalos__Contact__r']['Name']}
+                    <br/>
+
+                    {!dto['referral']['animalos__Contact__r']['MailingStreet']}
+                    <br/>
+
+                    {!dto['referral']['animalos__Contact__r']['MailingCity']} {!dto['referral']['animalos__Contact__r']['MailingState']} {!dto['referral']['animalos__Contact__r']['MailingPostalCode']}
+                    <br/> -->
+                    <br/>
+
+
+                    <apex:outputPanel rendered="{! NOT(ISBLANK(dto['animal'].animalos__Current_Site__c)) }">
+                        <b>Clinic Name:</b>
+                        <br/>{!dto['animal'].animalos__Current_Site__r.Name}
+                    </apex:outputPanel>
+                </th>
+                <th style="vertical-align: top; padding-top: 10px; padding-bottom: 10px;">
+                    <b>Animals Details:</b>
+                    <br/>
+
+                    <b>Animal ID:</b> {!dto['animal'].Name}
+                    <br/>
+
+                    <b>Name:</b> {!dto['animal'].animalos__Animal_Name__c}
+                    <br/>
+
+                    <b>Type:</b> {!dto['animal'].animalos__Type__c}
+                    <br/>
+
+                    <b>Breed:</b>
+
+                    <apex:outputPanel rendered="{! NOT(ISBLANK(dto['animal'].animalos__Primary_Breed__c)) }">
+                        {!dto['animal'].animalos__Primary_Breed__r.Name}
+                    </apex:outputPanel>
+
+                    <apex:outputPanel rendered="{! NOT(ISBLANK(dto['animal'].animalos__Secondary_Breed__c)) }">
+                        {!dto['animal'].animalos__Secondary_Breed__r.Name}
+                    </apex:outputPanel>
+
+                    <b>Mixed:</b>
+
+                    <apex:outputPanel rendered="{! NOT(dto['animal'].Crossbreed__c) }">
+                        No
+                    </apex:outputPanel>
+
+                    <apex:outputPanel rendered="{! dto['animal'].Crossbreed__c }">
+                        Yes
+                    </apex:outputPanel>
+                    <br/>
+
+                    <b>Color:</b> {!dto['animal'].animalos__Primary_Colour__c} {!dto['animal'].animalos__Secondary_Colour__c}
+                    <br/>
+
+                    <b>Gender:</b> {!dto['animal'].animalos__Gender__c}
+                    <br/>
+
+                    <b>Age:</b> {!dto['animal'].animalos__Calculated_Age__c}
+                    <br/>
+
+                    <b>VIP Tag:</b> {!dto['animal'].animalos__Shelter_ID__c}
+                    <br/>
+
+                    <b>Primary Microchip #:</b> {!dto['animal'].animalos__Microchip_Number__c}
+                    <br/>
+
+                    <b>Weight:</b> {!dto['animal'].animalos__Current_Weight__c}
+                </th>
+            </tr>
+            <tr>
+                <th style="text-align: center; padding-top: 10px; padding-bottom: 10px;" colspan="2">
+                    <b><u>Desex Conditions:</u></b>
+                    <br/>
+                    <br/>
+                    Your animal has been desexed by RSPCA Qld; their ear tattoo indicates desexed
+                    status. Please retain certificate for proof of desexing.
+                    <br/>
+                    <br/>
+                    In the first 24-48 hours after surgery, it is normal for your animal to be quiet and it
+                    may not be very hungry on the night after the procedure. Stitches, if present, should
+                    be removed 10 days after surgery. Until stitches are removed, please ensure
+                    the following care is provided:
+                    <br/>
+                    <ul>
+                        <li>
+                            Restrict the animal sufficiently to ensure they do not overexert themselves.
+                            Walk dogs on a lead; this is particularly important for female dogs
+                        </li>
+                        <li>
+                            Check the wound regularly (at least once a day). If it is overly red or swollen,
+                            hot, weeping, painful, or a suture had been pulled out, contact RSPCA.
+                        </li>
+                        <li>
+                            Ensure the animal is not licking the wound. Licking interferes with healing
+                            and needs to be prevented by using Elizabethan collar.
+                        </li>
+                        <li>
+                            Do not bath the animal or let stitches to get wet.
+                        </li>
+                    </ul>
+                </th>
+            </tr>
+            <tr>
+                <th colspan="2" style="text-align: center; padding-top: 10px; padding-bottom: 10px;">
+                    This is to certify that on
+                    <br/>
+                    {!dto['animal'].animalos__Neutered_Spayed_Date_Time__c}
+                    <br/>
+                    
+                    the animal described hereon has been desexed
+                    <br/>
+                    <br/>
+
+                    <b>By:</b>
+
+                    <apex:outputPanel rendered="{! NOT(ISBLANK(dto['animal'].Neutered_Spayed_By__c)) }">
+                        {!dto['animal'].Neutered_Spayed_By__r.Name}
+                    </apex:outputPanel>
+                    <br/>
+                    <br/>
+
+                    SIGNATURE HERE
+                    <br/>
+                    <br/>
+
+                    On behalf of RSPCA Qld
+                </th>
+            </tr>
+        </table>
+    </div>
+</apex:component>

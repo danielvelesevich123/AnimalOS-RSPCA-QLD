@@ -1,0 +1,281 @@
+<!-- Partners User Setup -->
+<template>
+    <div class="slds-card slds-card_boundary">
+        <lightning-card icon-name="standard:contact">
+            <div slot="title">
+                <lightning-formatted-text value={title}></lightning-formatted-text>
+            </div>
+
+            <div class="slds-is-relative">
+                <c-vertic-spinner is-busy={isBusy}></c-vertic-spinner>
+
+                <template lwc:if={isPOI}>
+                    <div class="slds-p-horizontal_small">
+                        <c-scoped-notification-lwc theme="error" icon-name="utility:error" icon-variant="inverse" class-name="slds-m-vertical_none">
+                            This Contact is flagged as a Person of Interest and cannot be set up as a Partner User.
+                        </c-scoped-notification-lwc>
+                    </div>
+                </template>
+                <template lwc:elseif={userDoesNotExist}>
+                    <div class="slds-grid slds-wrap slds-gutters_x-small slds-p-horizontal_medium slds-p-bottom_small" lwc:ref="userForm">
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input label="First Name"
+                                             value={user.FirstName}
+                                             disabled={isBusy}
+                                             onchange={handleFieldChange}
+                                             data-map="user"
+                                             data-path="FirstName"
+                            ></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input label="Last Name"
+                                             value={user.LastName}
+                                             disabled={isBusy}
+                                             onchange={handleFieldChange}
+                                             data-map="user"
+                                             data-path="LastName"
+                                             required
+                            ></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input label="Email"
+                                             value={user.Email}
+                                             disabled={isBusy}
+                                             onchange={handleFieldChange}
+                                             data-map="user"
+                                             data-path="Email"
+                                             required
+                            ></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2">
+                            <lightning-input label="Username"
+                                             value={user.Username}
+                                             disabled={isBusy}
+                                             onchange={handleFieldChange}
+                                             data-map="user"
+                                             data-path="Username"
+                                             required
+                            ></lightning-input>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1">
+                            <lightning-combobox label="Profile"
+                                                options={selectOptions.profileOptions}
+                                                value={user.ProfileId}
+                                                disabled={isBusy}
+                                                onchange={handleFieldChange}
+                                                data-map="user"
+                                                data-path="ProfileId"
+                                                required
+                            ></lightning-combobox>
+                        </div>
+                    </div>
+                </template>
+
+                <template lwc:if={userExists}>
+                    <div class="slds-box slds-theme_default slds-m-around_small">
+                        <div class="slds-grid slds-wrap slds-gutters_x-small slds-p-horizontal_small">
+                            <div class="slds-col slds-p-bottom_small slds-size_1-of-2">
+                                <label class="slds-form-element__label slds-m-bottom_x-small">User Name</label>
+                                <div class="slds-form-element__control textarea-container fix-slds-form-element__static fix-slds-textarea slds-border_bottom">
+                                    <lightning-formatted-text class="read-only-padding" value={user.Name}></lightning-formatted-text>
+                                </div>
+                            </div>
+
+                            <div class="slds-col slds-p-bottom_small slds-size_1-of-2">
+                                <label class="slds-form-element__label slds-m-bottom_x-small">Username</label>
+                                <div class="slds-form-element__control textarea-container fix-slds-form-element__static fix-slds-textarea slds-border_bottom">
+                                    <lightning-formatted-text class="read-only-padding" value={user.Username}></lightning-formatted-text>
+                                </div>
+                            </div>
+
+                            <div class="slds-col slds-p-bottom_small slds-size_1-of-2">
+                                <label class="slds-form-element__label slds-m-bottom_x-small">Profile</label>
+                                <div class="slds-form-element__control textarea-container fix-slds-form-element__static fix-slds-textarea slds-border_bottom">
+                                    <lightning-formatted-text class="read-only-padding" value={user.Profile.Name}></lightning-formatted-text>
+                                </div>
+                            </div>
+
+                            <div class="slds-col slds-p-bottom_small slds-size_1-of-2">
+                                <label class="slds-form-element__label slds-m-bottom_x-small">User Status</label>
+                                <div class="slds-form-element__control textarea-container fix-slds-form-element__static fix-slds-textarea">
+                                    <lightning-badge label="Active" class="slds-theme_success" lwc:if={user.IsActive}></lightning-badge>
+                                    <lightning-badge label="Inactive" class="slds-theme_error" lwc:else></lightning-badge>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <template lwc:if={showLocationVolunteerForm}>
+                    <div class="slds-card slds-card_boundary slds-m-horizontal_small">
+                        <lightning-card>
+                            <div slot="title">
+                                <lightning-formatted-text value="Add Location Volunteer"></lightning-formatted-text>
+                            </div>
+
+                            <lightning-button-group slot="actions">
+                                <lightning-button label="Add Location Volunteer"
+                                                  onclick={handleAddLocationVolunteerClick}
+                                                  disabled={isBusy}
+                                                  lwc:if={showAddLocationVolunteerButton}
+                                ></lightning-button>
+                            </lightning-button-group>
+
+                            <div lwc:ref="locationVolunteerForm">
+                                <template lwc:if={isFosterProfile}>
+                                    <div class="slds-grid slds-wrap slds-gutters_x-small slds-p-horizontal_medium slds-p-bottom_small">
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <c-vertic-lookup label="Select Foster Location"
+                                                             object="animalos__Location__c"
+                                                             search-field="Name"
+                                                             search-mode="SOQL"
+                                                             additional-fields="animalos__Full_Location_Name__c,RecordType.Name"
+                                                             placeholder="Select a location"
+                                                             icon-tag="home"
+                                                             filter={fosterFilter}
+                                                             disabled={isBusy}
+                                                             required
+                                                             value={fosterLocation.animalos__Parent_Block__c}
+                                                             data-map="fosterLocation"
+                                                             data-path="animalos__Parent_Block__c"
+                                                             onchange={handleFieldChange}
+                                            ></c-vertic-lookup>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-2">
+                                            <lightning-input label="Foster Capacity"
+                                                             type="number"
+                                                             min="1"
+                                                             max="50"
+                                                             step="1"
+                                                             value={fosterLocation.animalos__Capacity__c}
+                                                             onchange={handleFieldChange}
+                                                             data-map="fosterLocation"
+                                                             data-path="animalos__Capacity__c"
+                                            ></lightning-input>
+                                        </div>
+                                    </div>
+                                </template>
+
+                                <template lwc:if={isPartnersProfile}>
+                                    <div class="slds-grid slds-wrap slds-gutters_x-small slds-p-horizontal_medium slds-p-bottom_small slds-grid_vertical-align-start">
+                                        <div class="slds-col">
+                                            <c-vertic-lookup label="Select Offsite Location"
+                                                             object="animalos__Location__c"
+                                                             search-field="Name"
+                                                             search-mode="SOQL"
+                                                             additional-fields="animalos__Full_Location_Name__c,RecordType.Name"
+                                                             placeholder="Select a location"
+                                                             icon-tag="home"
+                                                             filter={offsiteLocationFilter}
+                                                             disabled={isBusy}
+                                                             required
+                                                             value={locationVolunteer.Location__c}
+                                                             data-map="locationVolunteer"
+                                                             data-path="Location__c"
+                                                             onchange={handleFieldChange}
+                                            ></c-vertic-lookup>
+                                        </div>
+                                    </div>
+                                </template>
+
+                                <template lwc:if={isVolunteerProfile}>
+                                    <div class="slds-grid slds-wrap slds-gutters_x-small slds-p-horizontal_medium slds-p-bottom_small">
+                                        <div class="slds-col slds-size_1-of-3">
+                                            <c-vertic-lookup label="Select Site Location"
+                                                             object="animalos__Location__c"
+                                                             search-field="Name"
+                                                             search-mode="SOQL"
+                                                             additional-fields="animalos__Full_Location_Name__c,RecordType.Name"
+                                                             placeholder="Select a location"
+                                                             icon-tag="home"
+                                                             filter={siteLocationFilter}
+                                                             disabled={isBusy}
+                                                             required
+                                                             value={locationVolunteer.site}
+                                                             data-map="locationVolunteer"
+                                                             data-path="site"
+                                                             onchange={handleFieldChange}
+                                            ></c-vertic-lookup>
+                                        </div>
+
+                                        <div class="slds-col slds-size_1-of-3">
+                                            <c-vertic-lookup label="Select Block Location"
+                                                             object="animalos__Location__c"
+                                                             search-field="Name"
+                                                             search-mode="SOQL"
+                                                             additional-fields="animalos__Full_Location_Name__c,RecordType.Name"
+                                                             placeholder="Select a location"
+                                                             icon-tag="home"
+                                                             filter={blockLocationFilter}
+                                                             disabled={isBusy}
+                                                             value={locationVolunteer.block}
+                                                             data-map="locationVolunteer"
+                                                             data-path="block"
+                                                             onchange={handleFieldChange}
+                                            ></c-vertic-lookup>
+                                        </div>
+
+                                        <div class="slds-col slds-size_1-of-3">
+                                            <c-vertic-lookup label="Select Unit Location"
+                                                             object="animalos__Location__c"
+                                                             search-field="Name"
+                                                             search-mode="SOQL"
+                                                             additional-fields="animalos__Full_Location_Name__c,RecordType.Name"
+                                                             placeholder="Select a location"
+                                                             icon-tag="home"
+                                                             filter={unitLocationFilter}
+                                                             disabled={isBusy}
+                                                             value={locationVolunteer.unit}
+                                                             data-map="locationVolunteer"
+                                                             data-path="unit"
+                                                             onchange={handleFieldChange}
+                                            ></c-vertic-lookup>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+
+                        </lightning-card>
+                    </div>
+                </template>
+
+
+                <template lwc:if={showLocationVolunteers}>
+                    <lightning-card>
+                        <div slot="title">
+                            <lightning-formatted-text value="Location Sharing"></lightning-formatted-text>
+                        </div>
+
+                        <div class="slds-m-around_small">
+                            <template for:each={locationVolunteers} for:item="locationVolunteer" for:index="index">
+                                <c-partners-user-setup-location-volunteer-item location-volunteer={locationVolunteer}
+                                                                               is-busy={isBusy}
+                                                                               index={index}
+                                                                               is-user-active={user.IsActive}
+                                                                               onaction={handleLocationVolunteerAction}
+                                                                               key={locationVolunteer.Id}
+                                ></c-partners-user-setup-location-volunteer-item>
+
+                            </template>
+                        </div>
+                    </lightning-card>
+                </template>
+
+                <div slot="footer" class="slds-text-align_center slds-m-vertical_small">
+                    <lightning-button label={activateUserButtonLabel}
+                                      onclick={handleActivateUserClick}
+                                      disabled={isBusy}
+                                      lwc:if={showActiveButton}
+                    ></lightning-button>
+                    <lightning-button label={deactivateUserButtonLabel}
+                                      variant="destructive"
+                                      onclick={handleDeactivateUserClick}
+                                      disabled={isBusy}
+                                      lwc:if={showDeactivateButton}
+                    ></lightning-button>
+                </div>
+            </div>
+
+        </lightning-card>
+    </div>
+</template>

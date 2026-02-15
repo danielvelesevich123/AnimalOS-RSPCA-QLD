@@ -1,0 +1,21 @@
+<!-- Partners User Setup Location Volunteer Item -->
+<template>
+    <div class="slds-col slds-size_1-of-1 slds-grid slds-box slds-grid_vertical-align-center slds-m-vertical_small" key={locationVolunteer.Id}>
+        <div class="slds-col slds-grow-none">
+            <lightning-formatted-url label={locationName} value={locationURL}></lightning-formatted-url>
+        </div>
+        <div class="slds-col_bump-left ">
+            <lightning-button label="Deactivate Location Volunteer"
+                              variant="destructive"
+                              disabled={isBusy}
+                              onclick={handleDeactivateLocationVolunteerClick}
+                              lwc:if={isActive}
+            ></lightning-button>
+            <lightning-button label="Activate Location Volunteer"
+                              disabled={activateButtonDisabled}
+                              onclick={handleActivateLocationVolunteerClick}
+                              lwc:else
+            ></lightning-button>
+        </div>
+    </div>
+</template>
