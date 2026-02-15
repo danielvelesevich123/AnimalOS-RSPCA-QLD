@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>animalos__CURRENT_MOVEMENTS_COUNT</fullName>
-    <active>true</active>
-    <errorConditionFormula>ISNEW() &amp;&amp; animalos__Current__c = TRUE &amp;&amp; animalos__Animal__r.animalos__Current_Movements_Count__c = 1</errorConditionFormula>
-    <errorDisplayField>animalos__Current__c</errorDisplayField>
-    <errorMessage>Animal already has Current Movement</errorMessage>
-</ValidationRule>
