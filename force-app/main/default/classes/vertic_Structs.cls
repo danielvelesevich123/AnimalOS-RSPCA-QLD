@@ -168,7 +168,7 @@ public class vertic_Structs {
     }
 
     public interface IAsyncPostProcessing {
-        Vertic_Async_Process__c postProcess(Vertic_Async_Process__c asyncProcess);
+        aos_Async_Process__c postProcess(aos_Async_Process__c asyncProcess);
     }
 
     public interface IRollbackable {}

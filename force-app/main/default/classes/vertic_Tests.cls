@@ -1502,7 +1502,7 @@ public class vertic_Tests {
             Account acc = new Account(Name = 'Test');
             insert acc;
 
-            Vertic_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(
+            aos_Async_Process__c asyncProc = new vertic_SendEmailProc.EmailAsyncProcess(
                 testTemplate.DeveloperName,
                 UserInfo.getUserId(),
                 acc.Id
@@ -1522,7 +1522,7 @@ public class vertic_Tests {
     @isTest
     static void testVertic_SendEmailProcForMetaProc() {
 
-        Vertic_Async_Process__c asyncProc = vertic_SendEmailProc.newAsyncProcess('vertic_Tests.Test',
+        aos_Async_Process__c asyncProc = vertic_SendEmailProc.newAsyncProcess('vertic_Tests.Test',
             new Map<String, Object>()).toAsyncProcess();
 
 

@@ -98,7 +98,7 @@ global without sharing class vertic_PhotoMetaProc extends vertic_AbstractProcess
 
         String oneDriveFileQuery = 'SELECT Id, File_Link__c, Name, File_ID__c FROM OneDrive_File__c WHERE ' + sobjectTypeNameString.remove('__c') + '__c = \'' + this.recordId + '\' AND ' + searchBy + ' = true AND Is_Deleted__c = FALSE';
 
-        OneDrive_File__c oneDriveFile = (OneDrive_File__c) vertic_Utils.arrays.firstOrNull(Database.query(oneDriveFileQuery));
+        aos_OneDrive_File__c oneDriveFile = (aos_OneDrive_File__c) vertic_Utils.arrays.firstOrNull(Database.query(oneDriveFileQuery));
 
         Map<String, String> drivesMap = OneDriveUtils.getDrives();
         if (drivesMap.get(this.driveName) == null) {
@@ -115,10 +115,10 @@ global without sharing class vertic_PhotoMetaProc extends vertic_AbstractProcess
                 this.response.put('oneDriveFileId', oneDriveFile.Id);
                 for (Object item : items) {
                     Map<String, Object> itemMap = (Map<String, Object>) item;
-                    if (oneDriveFile.File_ID__c == (String) itemMap.get('id')) {
+                    if (oneDriveFile.aos_File_ID__c == (String) itemMap.get('id')) {
                         String publicLink = OneDriveUtils.getFileThumbnail(drivesMap.get(this.driveName), (String) itemMap.get('id'));
                         this.response.put('fileName', itemMap.get('name'));
-                        this.response.put('oneDriveId', oneDriveFile.File_ID__c);
+                        this.response.put('oneDriveId', oneDriveFile.aos_File_ID__c);
                         this.response.put('photoUrl', publicLink);
                         break;
                     }
@@ -143,14 +143,14 @@ global without sharing class vertic_PhotoMetaProc extends vertic_AbstractProcess
         } else {
             if (oneDriveFile != null) {
                 this.response.put('oneDriveFileId', oneDriveFile.Id);
-                String publicLink = OneDriveUtils.getFileThumbnail(drivesMap.get(this.driveName), (String) oneDriveFile.File_ID__c);
+                String publicLink = OneDriveUtils.getFileThumbnail(drivesMap.get(this.driveName), (String) oneDriveFile.aos_File_ID__c);
                 if (String.isNotBlank(publicLink)) {
                     this.response.put('photoUrl', publicLink);
                 } else {
                     this.response.put('photoUrl', null);
                 }
                 this.response.put('fileName', oneDriveFile.Name);
-                this.response.put('oneDriveId', oneDriveFile.File_ID__c);
+                this.response.put('oneDriveId', oneDriveFile.aos_File_ID__c);
             } else {
                 this.response.put('photoUrl', null);
             }

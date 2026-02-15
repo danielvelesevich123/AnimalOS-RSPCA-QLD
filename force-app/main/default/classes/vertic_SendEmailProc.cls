@@ -23,9 +23,9 @@ public virtual class vertic_SendEmailProc extends vertic_AbstractProcessor imple
         return this.process(emailAsyncProcessRequest.payloadMap);
     }
 
-    public Vertic_Async_Process__c postProcess(Vertic_Async_Process__c asyncProcess) {
+    public aos_Async_Process__c postProcess(aos_Async_Process__c asyncProcess) {
         if (this.isEmailsTurnedOn != true) {
-            asyncProcess.Status__c = 'Skipped';
+            asyncProcess.aos_Status__c = 'Skipped';
         }
         return asyncProcess;
     }
@@ -357,14 +357,14 @@ public virtual class vertic_SendEmailProc extends vertic_AbstractProcessor imple
             return this;
         }
 
-        public Vertic_Async_Process__c toAsyncProcess(){
+        public aos_Async_Process__c toAsyncProcess(){
             return toAsyncProcess(vertic_SendEmailProc.class);
         }
 
-        public Vertic_Async_Process__c toAsyncProcess(Type processorType){
-            return new Vertic_Async_Process__c(
-                Processor__c = '' + processorType,
-                Payload__c = JSON.serialize(this.payloadMap)
+        public aos_Async_Process__c toAsyncProcess(Type processorType){
+            return new aos_Async_Process__c(
+                    aos_Processor__c = '' + processorType,
+                    aos_Payload__c = JSON.serialize(this.payloadMap)
             );
         }
     }

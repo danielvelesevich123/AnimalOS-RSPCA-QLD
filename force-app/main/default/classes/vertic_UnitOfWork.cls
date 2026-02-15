@@ -207,7 +207,7 @@ public class vertic_UnitOfWork extends fflib_SObjectUnitOfWork {
             this.autoEnqueue = autoEnqueue;
         }
 
-        public Vertic_Async_Process__c register(Vertic_Async_Process__c verticAsyncProcessVar, Map<String, SObject> mapping) {
+        public aos_Async_Process__c register(aos_Async_Process__c verticAsyncProcessVar, Map<String, SObject> mapping) {
             this.asyncProcessRelationships.add(new AsyncProcessRelationship(
                 verticAsyncProcessVar,
                 mapping
@@ -215,8 +215,8 @@ public class vertic_UnitOfWork extends fflib_SObjectUnitOfWork {
             return verticAsyncProcessVar;
         }
 
-        public Vertic_Async_Process__c register(Type processor, SObject sObjectVar) {
-            Vertic_Async_Process__c verticAsyncProcessVar = vertic_AsyncProcess.create(
+        public aos_Async_Process__c register(Type processor, SObject sObjectVar) {
+            aos_Async_Process__c verticAsyncProcessVar = vertic_AsyncProcess.create(
                 processor,
                 new Map<String, Object>{
                 }
@@ -242,21 +242,21 @@ public class vertic_UnitOfWork extends fflib_SObjectUnitOfWork {
     }
 
     private class AsyncProcessRelationship {
-        private Vertic_Async_Process__c asyncProcessVar;
+        private aos_Async_Process__c asyncProcessVar;
         private Map<String, SObject> mapping;
 
-        private AsyncProcessRelationship(Vertic_Async_Process__c asyncProcessVar, Map<String, SObject> mapping) {
+        private AsyncProcessRelationship(aos_Async_Process__c asyncProcessVar, Map<String, SObject> mapping) {
             this.asyncProcessVar = asyncProcessVar;
             this.mapping = mapping;
         }
 
-        private Vertic_Async_Process__c resolve() {
-            String payloadStr = vertic_Utils.objects.defaultIfNull(asyncProcessVar.Payload__c, '');
+        private aos_Async_Process__c resolve() {
+            String payloadStr = vertic_Utils.objects.defaultIfNull(asyncProcessVar.aos_Payload__c, '');
             Map<String, Object> payloadMap = (Map<String, Object>) JSON.deserializeUntyped(payloadStr);
             for (String key : this.mapping.keySet()) {
                 payloadMap.put(key, this.mapping.get(key).Id);
             }
-            asyncProcessVar.Payload__c = JSON.serialize(payloadMap);
+            asyncProcessVar.aos_Payload__c = JSON.serialize(payloadMap);
             return this.asyncProcessVar;
         }
     }

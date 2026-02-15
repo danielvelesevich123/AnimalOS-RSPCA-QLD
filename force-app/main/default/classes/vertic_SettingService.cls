@@ -16,8 +16,8 @@ public class vertic_SettingService {
 //    }
 
     public static String getValue(String name, String defaultValue) {
-        Setting__c o = Setting__c.getValues(name);
-        return o == null ? defaultValue : o.Value__c;
+        aos_Setting__c o = aos_Setting__c.getValues(name);
+        return o == null ? defaultValue : o.aos_Value__c;
     }
 
     public static String getValue(String name) {
@@ -25,8 +25,8 @@ public class vertic_SettingService {
     }
 
     public static Decimal getNumberValue(String name, Decimal defaultValue) {
-        Setting__c o = Setting__c.getValues(name);
-        return o == null ? defaultValue : o.Number__c;
+        aos_Setting__c o = aos_Setting__c.getValues(name);
+        return o == null ? defaultValue : o.aos_Number__c;
     }
 
     public static Decimal getNumberValue(String name) {
@@ -46,20 +46,20 @@ public class vertic_SettingService {
         }
         queryFactory.setCondition('DeveloperName = :name');
         return (SObject) vertic_Utils.arrays.firstOrException(
-            Database.query(queryFactory.toSOQL()),
-            'Custom Metadata Type with name \'' + name + '\' not found.'
+                Database.query(queryFactory.toSOQL()),
+                'Custom Metadata Type with name \'' + name + '\' not found.'
         );
     }
 
     public static void setValues(Map<String, String> settingsMap) {
-        List<Setting__c> settings = new List<Setting__c>();
+        List<aos_Setting__c> settings = new List<aos_Setting__c>();
 
-        for(String key : settingsMap.keySet()){
-            Setting__c setting = Setting__c.getValues(key);
-            settings.add(new Setting__c(
-                Id = setting == null ? null : setting.Id,
-                Name = key,
-                Value__c = settingsMap.get(key)
+        for (String key : settingsMap.keySet()) {
+            aos_Setting__c setting = aos_Setting__c.getValues(key);
+            settings.add(new aos_Setting__c(
+                    Id = setting == null ? null : setting.Id,
+                    Name = key,
+                    aos_Value__c = settingsMap.get(key)
             ));
         }
 
@@ -80,14 +80,16 @@ public class vertic_SettingService {
 
     public static Id setMetadataType(SObjectType customMetadataType, String name, String label, Map<String, Object> fieldValues) {
         return setMetadataType(
-            customMetadataType,
-            new List<String>{name},
-            new Map<String, String>{
-                name => label
-            },
-            new Map<String, Object>{
-                name => fieldValues
-            }
+                customMetadataType,
+                new List<String>{
+                        name
+                },
+                new Map<String, String>{
+                        name => label
+                },
+                new Map<String, Object>{
+                        name => fieldValues
+                }
         );
     }
 
@@ -97,17 +99,17 @@ public class vertic_SettingService {
         return doDeployment(mdContainer);
     }
 
-    private static void setDeployContainer(Metadata.DeployContainer mdContainer,SObjectType customMetadataType, List<String> names, Map<String, String> labelsByName, Map<String, Object> fieldValuesByName) {
+    private static void setDeployContainer(Metadata.DeployContainer mdContainer, SObjectType customMetadataType, List<String> names, Map<String, String> labelsByName, Map<String, Object> fieldValuesByName) {
 
         for (String name : names) {
             // Set up custom metadata to be created in the subscriber org.
             Metadata.CustomMetadata customMetadata = new Metadata.CustomMetadata();
             customMetadata.fullName = String.format(
-                '{0}.{1}',
-                new List<String>{
-                    ('' + customMetadataType).removeEndIgnoreCase('__mdt'),
-                    name
-                }
+                    '{0}.{1}',
+                    new List<String>{
+                            ('' + customMetadataType).removeEndIgnoreCase('__mdt'),
+                            name
+                    }
             );
             if (labelsByName != null) {
                 customMetadata.label = labelsByName.get(name);
@@ -169,11 +171,11 @@ public class vertic_SettingService {
 
         private Map<String, String> settingsMap;
 
-        public SetValuesAsyncProcessor(Map<String, String> settingsMap){
+        public SetValuesAsyncProcessor(Map<String, String> settingsMap) {
             this.settingsMap = settingsMap;
         }
 
-        public void execute(QueueableContext context){
+        public void execute(QueueableContext context) {
             vertic_SettingService.setValues(this.settingsMap);
         }
     }
@@ -185,25 +187,27 @@ public class vertic_SettingService {
         private Map<String, String> labelsByName;
         private Map<String, Object> fieldValuesByName;
 
-        public SetMetadataTypesAsyncProcessor(SObjectType sObjType, String name, String label, Map<String, Object> fieldValuesByName){
+        public SetMetadataTypesAsyncProcessor(SObjectType sObjType, String name, String label, Map<String, Object> fieldValuesByName) {
             this.sObjType = sObjType;
-            this.names = new List<String> {name};
-            this.labelsByName = new Map<String, String> {
-                name => label
+            this.names = new List<String>{
+                    name
             };
-            this.fieldValuesByName = new Map<String, Object> {
-                name => fieldValuesByName
+            this.labelsByName = new Map<String, String>{
+                    name => label
+            };
+            this.fieldValuesByName = new Map<String, Object>{
+                    name => fieldValuesByName
             };
         }
 
-        public SetMetadataTypesAsyncProcessor(SObjectType sObjType, List<String> names, Map<String, String> labelsByName, Map<String, Object> fieldValuesByName){
+        public SetMetadataTypesAsyncProcessor(SObjectType sObjType, List<String> names, Map<String, String> labelsByName, Map<String, Object> fieldValuesByName) {
             this.sObjType = sObjType;
             this.names = names;
             this.labelsByName = labelsByName;
             this.fieldValuesByName = fieldValuesByName;
         }
 
-        public void execute(QueueableContext context){
+        public void execute(QueueableContext context) {
             vertic_SettingService.setMetadataType(this.sObjType, names, labelsByName, fieldValuesByName);
         }
     }

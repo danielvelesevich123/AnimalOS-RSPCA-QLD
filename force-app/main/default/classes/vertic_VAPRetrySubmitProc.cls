@@ -25,12 +25,12 @@ public without sharing class vertic_VAPRetrySubmitProc extends vertic_AbstractPr
 
         String vapId = this.request.getRequiredString('id');
 
-        Vertic_Async_Process__c vapVar = (Vertic_Async_Process__c)vertic_Utils.arrays.firstOrException(
-            [SELECT Id, Status__c FROM Vertic_Async_Process__c WHERE Id = :vapId],
-            'No Vertic_Async_Process__c with Id: ' + vapId
+        aos_Async_Process__c vapVar = (aos_Async_Process__c)vertic_Utils.arrays.firstOrException(
+            [SELECT Id, aos_Status__c FROM aos_Async_Process__c WHERE Id = :vapId],
+            'No aos_Async_Process__c with Id: ' + vapId
         );
 
-        if('Completed'.equalsIgnoreCase(vapVar.Status__c)){
+        if('Completed'.equalsIgnoreCase(vapVar.aos_Status__c)){
             throw new vertic_Structs.ValidationException('The process already successfully processed!');
         }
 
@@ -38,9 +38,9 @@ public without sharing class vertic_VAPRetrySubmitProc extends vertic_AbstractPr
             'forceStatus' => true
         });
 
-        vapVar = (Vertic_Async_Process__c)vertic_Utils.arrays.firstOrException(
-        [SELECT Id, Details__c, Payload__c, Status__c FROM Vertic_Async_Process__c WHERE Id = :vapId],
-            'No Vertic_Async_Process__c with Id: ' + vapId
+        vapVar = (aos_Async_Process__c)vertic_Utils.arrays.firstOrException(
+        [SELECT Id, aos_Details__c, aos_Payload__c, aos_Status__c FROM aos_Async_Process__c WHERE Id = :vapId],
+            'No aos_Async_Process__c with Id: ' + vapId
         );
 
         this.response.getMapper().mapFromSObject('vap', vapVar);

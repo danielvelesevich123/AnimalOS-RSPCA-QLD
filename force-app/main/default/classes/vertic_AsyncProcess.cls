@@ -1,15 +1,15 @@
 public class vertic_AsyncProcess {
 
-    private List<Vertic_Async_Process__c> asyncProcesses = new List<Vertic_Async_Process__c>();
+    private List<aos_Async_Process__c> asyncProcesses = new List<aos_Async_Process__c>();
 
-    public List<Vertic_Async_Process__c> enqueue() {
+    public List<aos_Async_Process__c> enqueue() {
         insert this.asyncProcesses;
         return asyncProcesses;
     }
 
     public Id enqueueAndRun() {
-        for (Vertic_Async_Process__c verticAsyncProcess : asyncProcesses) {
-            verticAsyncProcess.Autorun__c = false;
+        for (aos_Async_Process__c verticAsyncProcess : asyncProcesses) {
+            verticAsyncProcess.aos_Autorun__c = false;
         }
         return run(this.enqueue());
     }
@@ -18,7 +18,7 @@ public class vertic_AsyncProcess {
         return this.asyncProcesses.isEmpty();
     }
 
-    public vertic_AsyncProcess add(Vertic_Async_Process__c asyncProcessVar) {
+    public vertic_AsyncProcess add(aos_Async_Process__c asyncProcessVar) {
         this.asyncProcesses.add(asyncProcessVar);
         return this;
     }
@@ -44,9 +44,9 @@ public class vertic_AsyncProcess {
     }
 
 
-    public static Id run(List<Vertic_Async_Process__c> asyncProcesses) {
+    public static Id run(List<aos_Async_Process__c> asyncProcesses) {
         List<Id> ids = new List<Id>();
-        for (Vertic_Async_Process__c verticAsyncProcess : asyncProcesses) {
+        for (aos_Async_Process__c verticAsyncProcess : asyncProcesses) {
             vertic_Utils.objects.throwIfNull(verticAsyncProcess.Id, 'Async Process should be created before the run');
             ids.add(verticAsyncProcess.Id);
         }
@@ -54,23 +54,23 @@ public class vertic_AsyncProcess {
     }
 
 
-    public static Vertic_Async_Process__c create(String processor, Map<String, Object> payload, Datetime runAfter) {
-        return new Vertic_Async_Process__c(
-                Processor__c = processor,
-                Payload__c = JSON.serialize(payload),
-                Run_After__c = runAfter
+    public static aos_Async_Process__c create(String processor, Map<String, Object> payload, Datetime runAfter) {
+        return new aos_Async_Process__c(
+                aos_Processor__c = processor,
+                aos_Payload__c = JSON.serialize(payload),
+                aos_Run_After__c = runAfter
         );
     }
 
-    public static Vertic_Async_Process__c create(Type processorType, Map<String, Object> payload, Datetime runAfter) {
+    public static aos_Async_Process__c create(Type processorType, Map<String, Object> payload, Datetime runAfter) {
         return create('' + processorType, payload, runAfter);
     }
 
-    public static Vertic_Async_Process__c create(Type processorType, Map<String, Object> payload) {
+    public static aos_Async_Process__c create(Type processorType, Map<String, Object> payload) {
         return create(processorType, payload, (Datetime) null);
     }
 
-    public static Vertic_Async_Process__c create(Type processorType, Map<String, Object> payload, Integer daysAfter, Time atTime) {
+    public static aos_Async_Process__c create(Type processorType, Map<String, Object> payload, Integer daysAfter, Time atTime) {
         Datetime runAfter = Datetime.newInstance(Date.today().addDays(daysAfter), atTime);
         if (daysAfter == 0 && runAfter < Datetime.now()) {
             runAfter = runAfter.addDays(1);
@@ -79,7 +79,7 @@ public class vertic_AsyncProcess {
         return create(processorType, payload, runAfter);
     }
 
-    public static Vertic_Async_Process__c create(Type processorType, Map<String, Object> payload, Time atTime) {
+    public static aos_Async_Process__c create(Type processorType, Map<String, Object> payload, Time atTime) {
         return create(processorType, payload, 0, atTime);
     }
 
@@ -91,31 +91,31 @@ public class vertic_AsyncProcess {
 
         try {
 
-            List<Vertic_Async_Process__c> asyncProcesses = [
-                    SELECT Id, Status__c, Processor__c, Payload__c, Details__c, Is_Queueable__c, Attempts__c, Allowed_Attempts__c
-                    FROM Vertic_Async_Process__c
+            List<aos_Async_Process__c> asyncProcesses = [
+                    SELECT Id, aos_Status__c, aos_Processor__c, aos_Payload__c, aos_Details__c, aos_Is_Queueable__c, aos_Attempts__c, aos_Allowed_Attempts__c
+                    FROM aos_Async_Process__c
                     WHERE Id IN :verticAsyncProcessIds
                     FOR UPDATE
             ];
 
-            List<Vertic_Async_Process__c> asyncProcessesToUpdate = new List<Vertic_Async_Process__c>();
+            List<aos_Async_Process__c> asyncProcessesToUpdate = new List<aos_Async_Process__c>();
 
             vertic_DTO optionsDTO = new vertic_DTO(options == null ? new Map<String, Object>() : options);
 
-            for (Vertic_Async_Process__c asyncProcessVar : asyncProcesses) {
+            for (aos_Async_Process__c asyncProcessVar : asyncProcesses) {
 
                 Boolean isProcessed = new Set<String>{
                         'Pending', 'Retrying', 'Queued'
-                }.contains(asyncProcessVar.Status__c) == false;
+                }.contains(asyncProcessVar.aos_Status__c) == false;
                 Boolean forceStatus = optionsDTO.getBoolean('forceStatus');
 
                 if (isProcessed && forceStatus != true) {
                     continue;
                 }
 
-                if (asyncProcessVar.Is_Queueable__c && !System.isQueueable() && !Test.isRunningTest()) {
+                if (asyncProcessVar.aos_Is_Queueable__c && !System.isQueueable() && !Test.isRunningTest()) {
                     System.enqueueJob(new QueueableProc(asyncProcessVar.Id));
-                    asyncProcessVar.Status__c = 'Queued';
+                    asyncProcessVar.aos_Status__c = 'Queued';
                     asyncProcessesToUpdate.add(asyncProcessVar);
                     continue;
                 }
@@ -124,20 +124,20 @@ public class vertic_AsyncProcess {
                 Savepoint savepointVar;
                 try {
 
-                    vertic_AbstractProcessor processorVar = vertic_ProcessorFactory.getInstance(asyncProcessVar.Processor__c);
+                    vertic_AbstractProcessor processorVar = vertic_ProcessorFactory.getInstance(asyncProcessVar.aos_Processor__c);
                     if (processorVar instanceof vertic_Structs.IRollbackable) {
                         savepointVar = Database.setSavepoint();
                     }
 
-                    vertic_Request requestVar = processorVar.getRequestInstance(asyncProcessVar.Payload__c);
+                    vertic_Request requestVar = processorVar.getRequestInstance(asyncProcessVar.aos_Payload__c);
                     vertic_Response responseVar = processorVar.process(requestVar);
 
-                    asyncProcessVar.Details__c = JSON.serialize(responseVar.getMap());
+                    asyncProcessVar.aos_Details__c = JSON.serialize(responseVar.getMap());
 
                     if (responseVar.isValid == true) {
-                        asyncProcessVar.Status__c = 'Completed';
+                        asyncProcessVar.aos_Status__c = 'Completed';
                     } else {
-                        asyncProcessVar.Status__c = 'Failed';
+                        asyncProcessVar.aos_Status__c = 'Failed';
 
                         if (!requestVar.has('logger') || requestVar.getBoolean('logger') == true) {
                         }
@@ -153,47 +153,47 @@ public class vertic_AsyncProcess {
                         Database.rollback(savepointVar);
                     }
 
-                    asyncProcessVar.Status__c = 'Failed';
-                    asyncProcessVar.Details__c = ex.getMessage() + ' ' + ex.getStackTraceString();
+                    asyncProcessVar.aos_Status__c = 'Failed';
+                    asyncProcessVar.aos_Details__c = ex.getMessage() + ' ' + ex.getStackTraceString();
 
                     isValidationException = ex instanceof vertic_Structs.ValidationException;
 
                 } finally {
 
-                    asyncProcessVar.Attempts__c = vertic_Utils.objects.defaultIfNull(asyncProcessVar.Attempts__c, 0) + 1;
+                    asyncProcessVar.aos_Attempts__c = vertic_Utils.objects.defaultIfNull(asyncProcessVar.aos_Attempts__c, 0) + 1;
 
-                    Boolean isFailed = 'Failed'.equalsIgnoreCase(asyncProcessVar.Status__c);
+                    Boolean isFailed = 'Failed'.equalsIgnoreCase(asyncProcessVar.aos_Status__c);
                     Boolean canBeRetried = isFailed &&
                             isValidationException != true &&
-                            asyncProcessVar.Allowed_Attempts__c != null &&
-                            asyncProcessVar.Allowed_Attempts__c > asyncProcessVar.Attempts__c;
+                            asyncProcessVar.aos_Allowed_Attempts__c != null &&
+                            asyncProcessVar.aos_Allowed_Attempts__c > asyncProcessVar.aos_Attempts__c;
 
                     if (canBeRetried) {
-                        asyncProcessVar.Status__c = 'Retrying';
+                        asyncProcessVar.aos_Status__c = 'Retrying';
 
-                        vertic_Request requestVar = new vertic_Request(asyncProcessVar.Payload__c);
+                        vertic_Request requestVar = new vertic_Request(asyncProcessVar.aos_Payload__c);
 
                         if (!requestVar.has('logger') || requestVar.getBoolean('logger') == true) {
                         }
 
-                        Boolean isManyAttempts = asyncProcessVar.Attempts__c > 2 && asyncProcessVar.Allowed_Attempts__c > asyncProcessVar.Attempts__c;
+                        Boolean isManyAttempts = asyncProcessVar.aos_Attempts__c > 2 && asyncProcessVar.aos_Allowed_Attempts__c > asyncProcessVar.aos_Attempts__c;
 
-                        Boolean isConcurrentRecordUpdateError = asyncProcessVar.Details__c != null &&
-                                (asyncProcessVar.Details__c.contains('UNABLE_TO_LOCK_ROW') || asyncProcessVar.Details__c.contains('Record Currently Unavailable'));
+                        Boolean isConcurrentRecordUpdateError = asyncProcessVar.aos_Details__c != null &&
+                                (asyncProcessVar.aos_Details__c.contains('UNABLE_TO_LOCK_ROW') || asyncProcessVar.aos_Details__c.contains('Record Currently Unavailable'));
 
                         Boolean isDisableQueueable = isManyAttempts &&
                                 isConcurrentRecordUpdateError &&
-                                asyncProcessVar.Is_Queueable__c;
+                                asyncProcessVar.aos_Is_Queueable__c;
 
                         Boolean isSetRunAfter = isManyAttempts &&
                                 isConcurrentRecordUpdateError &&
-                                asyncProcessVar.Run_After__c == null;
+                                asyncProcessVar.aos_Run_After__c == null;
 
 
                         if (isDisableQueueable) {
-                            asyncProcessVar.Is_Queueable__c = false;
+                            asyncProcessVar.aos_Is_Queueable__c = false;
                         } else if (isSetRunAfter) {
-                            asyncProcessVar.Run_After__c = Datetime.now().addMinutes((Math.random() * 15).intValue());
+                            asyncProcessVar.aos_Run_After__c = Datetime.now().addMinutes((Math.random() * 15).intValue());
                         }
                     }
 

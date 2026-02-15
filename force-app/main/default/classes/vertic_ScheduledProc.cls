@@ -20,17 +20,17 @@ global abstract class vertic_ScheduledProc extends vertic_AbstractProcessor impl
 
     global void execute(SchedulableContext SC) {
 
-        Vertic_Async_Process__c scheduledProcVar = vertic_AsyncProcess.create(
+        aos_Async_Process__c scheduledProcVar = vertic_AsyncProcess.create(
             this.getScheduledProcType(),
             this.getScheduledParams()
         );
 
-        scheduledProcVar.Is_Queueable__c = this.isQueueable();
+        scheduledProcVar.aos_Is_Queueable__c = this.isQueueable();
 
         vertic_AsyncProcess verticAsyncProcess = new vertic_AsyncProcess();
         verticAsyncProcess.add(scheduledProcVar);
 
-        if(scheduledProcVar.Is_Queueable__c == true){
+        if(scheduledProcVar.aos_Is_Queueable__c == true){
             verticAsyncProcess.enqueueAndRun();
         } else {
             verticAsyncProcess.enqueue();

@@ -4,8 +4,8 @@ public class vertic_AsyncProcessBatch implements Database.Batchable<sObject>, Da
     *                                             VARIABLES
     * ==============================================================================================================
     */
-    private final static String RE_RUNNER_JOB_NAME = 'Vertic Async Processes ReRunner';
-    private final static String ASYNC_JOB_NAME = 'Vertic Async Processes';
+    private final static String RE_RUNNER_JOB_NAME = 'AOS Async Processes ReRunner';
+    private final static String ASYNC_JOB_NAME = 'AOS Async Processes';
     private static String CRON_EXP = '0 55 23 * * ? *'; // Every Day at 11 : 55pm
     private Boolean isManualRun = false;
     private List<Id> processIds;
@@ -40,7 +40,7 @@ public class vertic_AsyncProcessBatch implements Database.Batchable<sObject>, Da
     public static Id run(Integer delayInMinutes){
         return System.scheduleBatch(
             new vertic_AsyncProcessBatch(),
-            Test.isRunningTest() ? 'Vertic Async Processes' + Datetime.now().getTime() : 'Vertic Async Processes',
+            Test.isRunningTest() ? 'AOS Async Processes' + Datetime.now().getTime() : 'AOS Async Processes',
             delayInMinutes,
             1
         );
@@ -68,7 +68,7 @@ public class vertic_AsyncProcessBatch implements Database.Batchable<sObject>, Da
    */
 
     public Database.QueryLocator start(Database.BatchableContext param1) {
-        fflib_QueryFactory queryFactory = new fflib_QueryFactory(Vertic_Async_Process__c.SObjectType);
+        fflib_QueryFactory queryFactory = new fflib_QueryFactory(aos_Async_Process__c.SObjectType);
 
         List<String> conditions = new List<String>();
 
@@ -78,18 +78,18 @@ public class vertic_AsyncProcessBatch implements Database.Batchable<sObject>, Da
             conditions.add('Id IN :processIds');
         } else {
             conditions.addAll(new List<String>{
-                'Status__c IN :processStatuses',
-                'Autorun__c = true',
-                '(Run_After__c = NULL OR Run_After__c < :now)'
+                'aos_Status__c IN :processStatuses',
+                'aos_Autorun__c = true',
+                '(aos_Run_After__c = NULL OR aos_Run_After__c < :now)'
             });
-            queryFactory.addOrdering(Vertic_Async_Process__c.Priority__c, fflib_QueryFactory.SortOrder.ASCENDING, true);
-            queryFactory.addOrdering(Vertic_Async_Process__c.Attempts__c, fflib_QueryFactory.SortOrder.ASCENDING, false);
+            queryFactory.addOrdering(aos_Async_Process__c.aos_Priority__c, fflib_QueryFactory.SortOrder.ASCENDING, true);
+            queryFactory.addOrdering(aos_Async_Process__c.aos_Attempts__c, fflib_QueryFactory.SortOrder.ASCENDING, false);
 
             queryFactory.setLimit(50000);
         }
 
         queryFactory.setCondition(String.join(conditions, ' AND '));
-        queryFactory.addOrdering(Vertic_Async_Process__c.CreatedDate, fflib_QueryFactory.SortOrder.ASCENDING);
+        queryFactory.addOrdering(aos_Async_Process__c.CreatedDate, fflib_QueryFactory.SortOrder.ASCENDING);
 
         return Database.getQueryLocator(queryFactory.toSOQL());
     }
@@ -101,13 +101,13 @@ public class vertic_AsyncProcessBatch implements Database.Batchable<sObject>, Da
 
     public void finish(Database.BatchableContext param1) {
 
-        Database.delete([SELECT Id FROM Vertic_Async_Process__c WHERE Remove__c = true ORDER BY LastModifiedDate ASC LIMIT 1000], false);
+        Database.delete([SELECT Id FROM aos_Async_Process__c WHERE aos_Remove__c = true ORDER BY LastModifiedDate ASC LIMIT 1000], false);
 
         if (this.isManualRun != true && !Test.isRunningTest()) {
             Boolean isAnyPendingJob = [
                 SELECT COUNT()
-                FROM Vertic_Async_Process__c
-                WHERE Status__c IN :processStatuses AND (Run_After__c = null OR Run_After__c < :Datetime.now()) AND Autorun__c  = true
+                FROM aos_Async_Process__c
+                WHERE aos_Status__c IN :processStatuses AND (aos_Run_After__c = null OR aos_Run_After__c < :Datetime.now()) AND aos_Autorun__c  = true
                 LIMIT 1
             ] > 0;
             if(isAnyPendingJob){
