@@ -50,7 +50,7 @@ public class PartnersUserSetupActivateUserProc extends vertic_AbstractProcessor 
                     userVar.IsActive = true;
                     update userVar;
 
-                    System.enqueueJob(new AOS_ProcessLogQueueable(new List<animalos__Log__c>{
+                    System.enqueueJob(new aos_ProcessLogQueueable(new List<animalos__Log__c>{
                             new animalos.Logging()
                                     .setProcess('PartnersUserSetupActivateUserProc')
                                     .addPayload(

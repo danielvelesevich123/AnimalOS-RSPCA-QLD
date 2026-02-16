@@ -81,7 +81,7 @@
                 cmp.utils
                     .executePromise(
                         cmp,
-                        'WildlifeAnimalIntakeAnimalsSubmitProc',
+                        'aos_WildlifeAnimalIntakeChildsSubmitProc',
                         {
                             animal: animal,
                             referral: referral
@@ -117,7 +117,7 @@
         return cmp.utils
             .executePromise(
                 cmp,
-                'WildlifeAnimalIntakeSubmitProc',
+                'aos_WildlifeAnimalIntakeSubmitProc',
                 cmp.get('v.meta.dto')
             );
     }

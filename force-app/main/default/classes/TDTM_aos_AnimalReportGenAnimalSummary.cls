@@ -36,7 +36,7 @@ global class TDTM_aos_AnimalReportGenAnimalSummary extends animalos.TDTM.Handler
 
             for (Case caseVar : cases) {
                 List<animalos__Animal_Report__c> animalReports = (List<animalos__Animal_Report__c>) animalReportsByCaseId.get(caseVar.Id);
-                vertic_Response generateAnimalReportSummaryResponse = new AOSGenerateAnimalReportSummaryProc(animalReports).process(
+                vertic_Response generateAnimalReportSummaryResponse = new aos_GenerateAnimalReportSummaryProc(animalReports).process(
                         new Map<String, Object>()
                 );
 

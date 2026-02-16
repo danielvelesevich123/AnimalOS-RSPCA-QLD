@@ -6,7 +6,7 @@
            standardController="animalos__Job__c"
            recordSetVar="job"
            language="en_AU"
-           extensions="AOS_DownloadJobCtrl"
+           extensions="aos_DownloadJobCtrl"
 >
     <script>
         window.addEventListener('load', (event) => {

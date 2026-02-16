@@ -9,7 +9,7 @@
         cmp.utils
             .executePromise(
                 cmp,
-                'WildlifeAnimalIntakeMetaProc',
+                'aos_WildlifeAnimalIntakeMetaProc',
                 {
                     referral: referral,
                     animal: animal

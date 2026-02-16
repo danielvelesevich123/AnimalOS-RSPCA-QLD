@@ -1,5 +1,5 @@
 <apex:page id="AdoptionAgreement"
-           controller="AdoptionAgreementCtrl"
+           controller="aos_AdoptionAgreementCtrl"
            renderAs="pdf"
            applyBodyTag="false"
            applyHtmlTag="false"

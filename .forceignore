@@ -19,5 +19,5 @@ package.xml
 **/eslint.config.mjs
 
 **/graphql.config.yml
-aura
-lwc
+#aura
+#lwc

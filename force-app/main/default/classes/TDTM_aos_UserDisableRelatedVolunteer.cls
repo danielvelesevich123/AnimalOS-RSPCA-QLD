@@ -44,7 +44,7 @@ global class TDTM_aos_UserDisableRelatedVolunteer extends animalos.TDTM.Handler 
                 }
             }
 
-            System.enqueueJob(new AOS_ProcessLogQueueable(logs));
+            System.enqueueJob(new aos_ProcessLogQueueable(logs));
         }
     }
 
