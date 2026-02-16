@@ -1,0 +1,62 @@
+minimum_cumulusci_version: '3.71.0'
+project:
+    name: AnimalOS-QLD
+    package:
+        name: AnimalOS-QLD
+        api_version: '65.0'
+
+    git:
+        repo_url: https://github.com/danielvelesevich123/AnimalOS-QLD
+        default_branch: 'main'
+        prefix_feature: feature/
+    test:
+        name_match: '%Test'
+    source_format: sfdx
+    dependencies:
+      - github: https://github.com/VerticAU/AnimalOS
+      - github: https://github.com/VerticAU/AnimalOS-Core
+
+tasks:
+    robot:
+        options:
+            suites: robot/AnimalOS-QLD/tests
+            options:
+                outputdir: robot/AnimalOS-QLD/results
+
+    robot_testdoc:
+        options:
+            path: robot/AnimalOS-QLD/tests
+            output: robot/AnimalOS-QLD/doc/animalOS_QLD_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 75
+
+    enable_debug_mode:
+        description: Enable Debug Mode for Admin
+        class_path: cumulusci.tasks.apex.anon.AnonymousApexTask
+        group: projectName
+        options:
+            apex: "update new User(Id = [SELECT Id FROM User WHERE Profile.Name = 'System Administrator' LIMIT 1][0].Id, UserPreferencesUserDebugModePref = true, UserPreferencesApexPagesDeveloperMode = true);"
+
+flows:
+    release_2gp_beta:
+        steps:
+            4:
+                task: None
+    ci_beta:
+        steps:
+            2:
+                task: None
+
+    dev_org:
+        steps:
+            4:
+                task: enable_debug_mode
+
+orgs:
+    scratch:
+        dev:
+            config_file: orgs/dev.json
+            days: 30
+            namespaced: False

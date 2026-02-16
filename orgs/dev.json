@@ -1,0 +1,55 @@
+{
+  "orgName": "AnimalOS-QLD - Dev Org",
+  "adminEmail": "developer+animalos.qld.dev@vertic.com.au",
+  "language": "en_US",
+  "edition": "Developer",
+  "features": [
+    "WorkThanksPref",
+    "Communities",
+    "ContactsToMultipleAccounts"
+  ],
+  "settings": {
+    "languageSettings": {
+      "enableTranslationWorkbench": true
+    },
+    "accountSettings": {
+      "enableRelateContactToMultipleAccounts": true
+    },
+    "EmailTemplateSettings": {
+      "enableTemplateEnhancedFolderPref": true
+    },
+    "communitiesSettings": {
+      "enableNetworksEnabled": true
+    },
+    "workDotComSettings": {
+      "enableWorkThanksPref": true,
+      "enableProfileSkills": true
+    },
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
+    },
+    "chatterSettings": {
+      "enableChatter": true
+    },
+    "enhancedNotesSettings": {
+      "enableEnhancedNotes": true,
+      "enableTasksOnEnhancedNotes": true
+    },
+    "userManagementSettings": {
+      "enableNewProfileUI": true
+    },
+    "securitySettings": {
+      "enableAdminLoginAsAnyUser": true,
+      "sessionSettings": {
+        "forceRelogin": false,
+        "lockerServiceNext": false
+      }
+    },
+    "customAddressFieldSettings": {
+      "enableCustomAddressField": true
+    }
+  }
+}
