@@ -37,9 +37,9 @@ global class CalcRollupsAssessmentTotalScore extends animalos.vertic_SequentialS
         }
 
         if (assessmentsForUpdate.size() > 0) {
-            fflib_SObjectDomain.getTriggerEvent(animalos_AssessmentDomain.class).disableAll();
+            animalos.TDTM.getTriggerSObjectTypeEvent(animalos__Assessment__c.SObjectType).disableAll();
             update assessmentsForUpdate;
-            fflib_SObjectDomain.getTriggerEvent(animalos_AssessmentDomain.class).enableAll();
+            animalos.TDTM.getTriggerSObjectTypeEvent(animalos__Assessment__c.SObjectType).enableAll();
         }
     }
 }

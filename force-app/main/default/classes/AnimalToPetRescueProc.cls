@@ -19,7 +19,6 @@ public without sharing class AnimalToPetRescueProc extends vertic_AbstractProces
         this.initRecord();
         this.sync();
 
-        fflib_SObjectDomain.getTriggerEvent(animalos_AnimalDomain.class).disableAll();
         animalos.TDTM.getTriggerSObjectTypeEvent(animalos__Animal__c.SObjectType).disableAll();
         this.uow.commitWork();
 

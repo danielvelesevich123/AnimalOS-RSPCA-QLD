@@ -4,32 +4,32 @@ private class PartnersPortalTest {
         animalos.TDTM.setupTestHandlers(new List<animalos__Setting__c>{
                 new animalos__Setting__c(
                         RecordTypeId = vertic_Utils.sObjects.recordTypeIdByAPIName(animalos__Setting__c.SObjectType, 'Trigger_Handler'),
-                        Name = 'TDTM_LocationVolunteerPopulateUserId',
-                        animalos__Processor__c = 'TDTM_LocationVolunteerPopulateUserId',
+                        Name = 'TDTM_aos_LocationVolunteerPopulateUserId',
+                        animalos__Processor__c = 'TDTM_aos_LocationVolunteerPopulateUserId',
                         animalos__Is_Active__c = true,
                         animalos__Order__c = 1,
                         animalos__SObject_Type__c = 'Location_Volunteer__c'
                 ),
                 new animalos__Setting__c(
                         RecordTypeId = vertic_Utils.sObjects.recordTypeIdByAPIName(animalos__Setting__c.SObjectType, 'Trigger_Handler'),
-                        Name = 'TDTM_LocationVolunteerReshareRecords',
-                        animalos__Processor__c = 'TDTM_LocationVolunteerReshareRecords',
+                        Name = 'TDTM_aos_LocationVolunteerReshareRecords',
+                        animalos__Processor__c = 'TDTM_aos_LocationVolunteerReshareRecords',
                         animalos__Is_Active__c = true,
                         animalos__Order__c = 2,
                         animalos__SObject_Type__c = 'Location_Volunteer__c'
                 ),
                 new animalos__Setting__c(
                         RecordTypeId = vertic_Utils.sObjects.recordTypeIdByAPIName(animalos__Setting__c.SObjectType, 'Trigger_Handler'),
-                        Name = 'TDTM_LocationCreateVolunteer',
-                        animalos__Processor__c = 'TDTM_LocationCreateVolunteer',
+                        Name = 'TDTM_aos_LocationCreateVolunteer',
+                        animalos__Processor__c = 'TDTM_aos_LocationCreateVolunteer',
                         animalos__Is_Active__c = true,
                         animalos__Order__c = 1,
                         animalos__SObject_Type__c = 'animalos__Location__c'
                 ),
                 new animalos__Setting__c(
                         RecordTypeId = vertic_Utils.sObjects.recordTypeIdByAPIName(animalos__Setting__c.SObjectType, 'Trigger_Handler'),
-                        Name = 'TDTM_AnimalPartnersPortalReshareRecords',
-                        animalos__Processor__c = 'TDTM_AnimalPartnersPortalReshareRecords',
+                        Name = 'TDTM_aos_AnimalPartnersPortalReshare',
+                        animalos__Processor__c = 'TDTM_aos_AnimalPartnersPortalReshare',
                         animalos__Is_Active__c = true,
                         animalos__Order__c = 1,
                         animalos__SObject_Type__c = 'animalos__Animal__c'
@@ -44,16 +44,16 @@ private class PartnersPortalTest {
                 ),
                 new animalos__Setting__c(
                         RecordTypeId = vertic_Utils.sObjects.recordTypeIdByAPIName(animalos__Setting__c.SObjectType, 'Trigger_Handler'),
-                        Name = 'TDTM_UserUpdateRelatedLocationVolunteers',
-                        animalos__Processor__c = 'TDTM_UserUpdateRelatedLocationVolunteers',
+                        Name = 'TDTM_aos_UserUpdateRelatedLocationVol',
+                        animalos__Processor__c = 'TDTM_aos_UserUpdateRelatedLocationVol',
                         animalos__Is_Active__c = true,
                         animalos__Order__c = 1,
                         animalos__SObject_Type__c = 'User'
                 ),
                 new animalos__Setting__c(
                         RecordTypeId = vertic_Utils.sObjects.recordTypeIdByAPIName(animalos__Setting__c.SObjectType, 'Trigger_Handler'),
-                        Name = 'TDTM_UserDisableRelatedVolunteer',
-                        animalos__Processor__c = 'TDTM_UserDisableRelatedVolunteer',
+                        Name = 'TDTM_aos_UserDisableRelatedVolunteer',
+                        animalos__Processor__c = 'TDTM_aos_UserDisableRelatedVolunteer',
                         animalos__Is_Active__c = true,
                         animalos__Order__c = 2,
                         animalos__SObject_Type__c = 'User'
@@ -127,7 +127,7 @@ private class PartnersPortalTest {
         );
         insert siteLocation2;
 
-        //test TDTM_LocationCreateVolunteer
+        //test TDTM_aos_LocationCreateVolunteer
         animalos__Location__c fosterLocation = new animalos__Location__c(
                 RecordTypeId = fosterRecordType,
                 Name = 'Test Foster',
@@ -180,7 +180,7 @@ private class PartnersPortalTest {
         );
         insert animal2;
 
-        //Test TDTM_LocationVolunteerReshareRecords
+        //Test TDTM_aos_LocationVolunteerReshareRecords
         aos_Location_Volunteer__c locationVolunteerVar = new aos_Location_Volunteer__c(
                 aos_Location__c = siteLocation.Id,
                 aos_Volunteer__c = contactVar.Id
@@ -195,7 +195,7 @@ private class PartnersPortalTest {
 
         System.assert([SELECT COUNT() FROM aos_Async_Process__c] == 2);
 
-        //Test TDTM_LocationVolunteerPopulateUserId
+        //Test TDTM_aos_LocationVolunteerPopulateUserId
         locationVolunteerVar = [
                 SELECT Id, aos_Location__c, aos_Volunteer__c, aos_User__c
                 FROM aos_Location_Volunteer__c
@@ -204,7 +204,7 @@ private class PartnersPortalTest {
 
         System.assertEquals(userVar.Id, locationVolunteerVar.aos_User__c);
 
-        //Test TDTM_AnimalPartnersPortalReshareRecords
+        //Test TDTM_aos_AnimalPartnersPortalReshare
         animalos__Location__c blockLocation = new animalos__Location__c(
                 RecordTypeId = vertic_Utils.sObjects.recordTypeIdByAPIName(animalos__Location__c.SObjectType, 'Block'),
                 Name = 'Test Block',

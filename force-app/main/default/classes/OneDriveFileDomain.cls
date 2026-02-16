@@ -80,7 +80,7 @@ public without sharing class OneDriveFileDomain extends fflib_SObjectDomain impl
                 animals.add(new animalos__Animal__c(Id = animalId));
             }
 
-            animalos_AnimalDomain.uploadToPetRescueIgnoringUpdateConditions = true;
+            TDTM_aos_AnimalPostToPetRescue.uploadToPetRescueIgnoringUpdateConditions = true;
             update animals;
         }
     }

@@ -59,7 +59,6 @@ global class CalcRollupsAnimalReferral extends animalos.vertic_SequentialSchedul
             animal.aos_Number_of_Outbound_Referrals__c = numberOfOutboundReferrals;
         }
 
-        fflib_SObjectDomain.getTriggerEvent(animalos_AnimalDomain.class).disableAll();
         animalos.TDTM.getTriggerSObjectTypeEvent(animalos__Animal__c.SObjectType).disableAll();
         update records;
     }
