@@ -1,7 +1,6 @@
 import { LightningElement, api, wire, track } from 'lwc';
 import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import getVetConsultsWithMedicines from '@salesforce/apex/VetConsultationHistoryController.getVetConsultsWithMedicines';
 import ANIMAL_NAME_FIELD from '@salesforce/schema/animalos__Animal__c.Name';
 import VET_CONSULT_ANIMAL_FIELD from '@salesforce/schema/animalos__Vet_Consult__c.animalos__Animal__c';
 import VET_CONSULT_NAME_FIELD from '@salesforce/schema/animalos__Vet_Consult__c.Name';
@@ -82,7 +81,7 @@ export default class VetConsultationHistory extends LightningElement {
         
         try {
             this.loading = true;
-            const consults = await getVetConsultsWithMedicines({ animalId: this.animalId });
+            // const consults = await getVetConsultsWithMedicines({ animalId: this.animalId });
             
             // Map the data to our display format with accordion state
             this.vetConsults = consults.map((consult, index) => {
