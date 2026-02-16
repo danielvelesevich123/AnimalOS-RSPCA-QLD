@@ -1,1 +1,87 @@
-public class aos_JobFinalisationNotifQASubmitProc {}
+public without sharing class aos_JobFinalisationNotifQASubmitProc extends aos_AbstractProcessor{
+    public override aos_Response process(aos_Request request) {
+        this.request = request;
+
+        this.sendJobFinalisationNotification();
+
+        return this.response;
+    }
+
+    private void sendJobFinalisationNotification(){
+        String contactId = this.request.getString('contactId');
+        String emailTemplateDeveloperName = this.request.getString('emailTemplateDeveloperName');
+        String jobId = this.request.getString('jobId');
+
+        System.debug(contactId);
+
+        System.debug(emailTemplateDeveloperName);
+
+        System.debug(jobId);
+
+        Contact contactVar = (Contact)aos_Utils.arrays.firstOrNull(
+                [
+                        SELECT
+                                Id,
+                                Name,
+                                Email
+                        FROM Contact
+                        WHERE Id = :contactId
+                ]
+        );
+
+        EmailTemplate emailTemplateVar = (EmailTemplate)aos_Utils.arrays.firstOrNull(
+                [
+                        SELECT
+                                Id,
+                                DeveloperName
+                        FROM EmailTemplate
+                        WHERE DeveloperName = :emailTemplateDeveloperName
+                ]
+        );
+
+        animalos__Job__c jobVar = (animalos__Job__c)aos_Utils.arrays.firstOrNull(
+                [
+                        SELECT
+                                Id,
+                                Name,
+                                aos_Old_Job_Number__c
+                        FROM animalos__Job__c
+                        WHERE Id = :jobId
+                ]
+        );
+
+        OrgWideEmailAddress orgWideEmailAddressVar = (OrgWideEmailAddress)aos_Utils.arrays.firstOrNull(
+                [
+                        SELECT
+                                Id,
+                                DisplayName,
+                                Address
+                        FROM OrgWideEmailAddress
+                        WHERE DisplayName = 'Supporter Care'
+                ]
+        );
+
+        if(
+                contactVar != null
+                        && emailTemplateVar != null
+                        && jobVar != null
+                        && orgWideEmailAddressVar != null
+                        && String.isNotBlank(contactVar.Email)
+        ) {
+            List<Messaging.SingleEmailMessage> emailMessages = new List<Messaging.SingleEmailMessage>();
+
+            Messaging.SingleEmailMessage emailMessage = new Messaging.SingleEmailMessage();
+            emailMessage.setTargetObjectId(contactVar.Id);
+            emailMessage.setOrgWideEmailAddressId(orgWideEmailAddressVar.Id);
+            emailMessage.setTemplateId(emailTemplateVar.Id);
+            emailMessage.setWhatId(jobVar.Id);
+            emailMessage.setSaveAsActivity(true);
+
+            emailMessages.add(emailMessage);
+
+            if(emailMessages.size() > 0){
+                Messaging.sendEmail(emailMessages);
+            }
+        }
+    }
+}

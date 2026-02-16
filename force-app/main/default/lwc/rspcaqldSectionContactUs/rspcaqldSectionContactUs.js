@@ -1,7 +1,5 @@
 import {LightningElement, api, track, wire} from 'lwc';
-import doSubmit from '@salesforce/apex/rspcaqldCtaFormCtrl.doSubmit';
 import {NavigationMixin} from "lightning/navigation";
-import getPortalSetting from '@salesforce/apex/rspcaqldUtils.getPortalSetting';
 import * as constants from 'c/constants';
 
 export default class RspcaqldSectionContactUs extends NavigationMixin(LightningElement) {
@@ -39,17 +37,6 @@ export default class RspcaqldSectionContactUs extends NavigationMixin(LightningE
         marketingOptin: false,
         privacyPolicy: false,
     };
-
-    @wire(getPortalSetting, {customMetadataName: '$customMetadata'}) wiredPortalSetting ({ error, data }) {
-        if (data) {
-            this.portalSetting = data;
-            this.cs.marketingOptin = this.portalSetting.Subscribe_to_Newsletter_Default_Value__c;
-            this.cs.privacyPolicy = this.portalSetting.Privacy_Statement_Default_Value__c;
-            this.isPrivacyPolicy = this.portalSetting.Privacy_Statement_Required__c;
-            this.isNewsletterRequired = this.portalSetting.Subscribe_to_Newsletter_Required__c;
-        }
-        if (error) {}
-    }
 
     get mainClass() {
         return 'page-contact-us' + (this.customClass ? ' action-header-navigation-block ' + this.customClass : '');

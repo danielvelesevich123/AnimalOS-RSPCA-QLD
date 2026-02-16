@@ -62,7 +62,7 @@ static void testSubmitProc() {
     SettingsService.init();
     Test.startTest();
 
-    vertic_Response response = new SubmitProc().process(new Map<String, Object>{
+    aos_Response response = new SubmitProc().process(new Map<String, Object>{
         'param1' => 'value1',
         'param2' => 'value2'
     });
@@ -81,7 +81,7 @@ static void testMetaProc() {
     SettingsService.init();
     Test.startTest();
 
-    vertic_Response response = new MetaProc().process(new Map<String, Object>{
+    aos_Response response = new MetaProc().process(new Map<String, Object>{
         'recordId' => testRecord.Id
     });
     

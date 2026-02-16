@@ -1,4 +1,3 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
 import {api, wire, LightningElement} from 'lwc';
 import * as constants from 'c/constants';
 import {MessageContext, publish} from "lightning/messageService";
@@ -21,27 +20,22 @@ export default class RspcaqldSectionCampaignHeader extends LightningElement {
     @api buttonLink;
     @api buttonIcon;
     @api displayProgressBar = 'Yes';
-    @wire(getImage, {contentKey: '$buttonIcon'}) buttonIconURL;
+    buttonIconURL = { data: [] };
     @api imageUrl;
     @api imageKey;
-    @wire(getImage, {contentKey: '$imageKey'}) imageContentURL;
+    imageContentURL = { data: [] };
     @api logoKey;
-    @wire(getImage, {contentKey: '$logoKey'}) logoContentURL;
+    logoContentURL = { data: [] };
     @api pawPrintLabel;
     @api campaignGoalHeader;
-    @wire(getRecord, { recordId: "$recordId", fields: CAMPAIGN_FIELDS}) campaign;
-
-    @wire(MessageContext)
-    messageContext;
-
+    campaign = { data: [] };
+    messageContext = { data: [] };
     @wire(CurrentPageReference)
     pageReference({state}) {
         if (state && state.id) this.recordId = state.id;
     }
 
-    @wire(MessageContext)
-    messageContext;
-
+    messageContext = { data: [] };
     get isLogo() {
         return this.logoContentURL.data ? true : false;
     }

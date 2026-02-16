@@ -1,12 +1,11 @@
-import getReports from '@salesforce/apex/ManagedContentService.getReportsByContentType';
-import {api, LightningElement, wire} from 'lwc';
+import {api, LightningElement} from 'lwc';
 
 export default class RspcaqldSectionReportsGrid extends LightningElement {
     @api customClass;
     @api header = 'Browse our index of annual reports here';
     currentPage = 1;
     pageCount = 1;
-    @wire(getReports) reports;
+    reports = { data: [] };
 
     get mainClass() {
         return 'page-our-impact background-20 ' + (this.customClass ? ' action-header-navigation-block ' + this.customClass : '');

@@ -1,13 +1,8 @@
-import getImages from '@salesforce/apex/ManagedContentService.getImagesByContentKeys';
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
-import getStripePublishableKey from '@salesforce/apex/rspcaqldUtils.getStripePublishableKey';
 import PORTAL_RESOURCE from '@salesforce/resourceUrl/PortalResource';
-import execute from '@salesforce/apex/vertic_CommonCtrl.execute';
 import {track, api, wire, LightningElement} from 'lwc';
 import {NavigationMixin} from "lightning/navigation";
 import * as constants from "c/constants";
 import {getRecord} from "lightning/uiRecordApi";
-import getPortalSetting from '@salesforce/apex/rspcaqldUtils.getPortalSetting';
 import {
     bankcardBlue,
     bankDark,
@@ -34,7 +29,7 @@ export default class RspcaqldDonationForm extends NavigationMixin(LightningEleme
     isNewsletterRequired = false;
 
     @api campaignId;
-    @wire(getRecord, { recordId: "$campaignId", fields: CAMPAIGN_FIELDS}) campaign;
+    campaign = { data: [] };
     @api donationFrequencyPrompt;
     @api donationAmountPrompt;
     @api detailsHeaderPrompt;
@@ -54,7 +49,7 @@ export default class RspcaqldDonationForm extends NavigationMixin(LightningEleme
     @api thankYouPageURL = 'ty-donation';
 
     @api donationFrequency;
-    @wire(getImages, {contentKeys: '$donationImageKeys'}) donationImages;
+    donationImages = { data: [] };
     @api donationOnceString;
     @api donationMonthlyString;
     donationOnce = [];
@@ -64,18 +59,17 @@ export default class RspcaqldDonationForm extends NavigationMixin(LightningEleme
     @api donationButtonColor;
     @api donationButtonFontColor;
     @api donationButtonIcon;
-    @wire(getImage, {contentKey: '$donationButtonIcon'}) donationButtonIconURL;
+    donationButtonIconURL = { data: [] };
     @api paymentButtonText = 'Payment options';
     @api paymentButtonColor;
     @api paymentButtonFontColor;
     @api paymentButtonIcon;
-    @wire(getImage, {contentKey: '$paymentButtonIcon'}) paymentButtonIconURL;
+    paymentButtonIconURL = { data: [] };
     @api confirmButtonText = 'Confirm and Submit';
     @api confirmButtonColor;
     @api confirmButtonFontColor;
     @api confirmButtonIcon;
-    @wire(getImage, {contentKey: '$confirmButtonIcon'}) confirmButtonIconURL;
-
+    confirmButtonIconURL = { data: [] };
     isPrepopulatedValueSelected = false;
     isAddressSelected = false;
     isAgree = false;
@@ -99,7 +93,7 @@ export default class RspcaqldDonationForm extends NavigationMixin(LightningEleme
     shelterDark = constants.shelterDark;
     bankDark = constants.bankDark;
 
-    @wire(getStripePublishableKey) stripePublishableKey;
+    stripePublishableKey = { data: [] };
     stripeLogoUrl = constants.stripeLogoUrl;
     stripeClient;
     intents = {};
@@ -132,19 +126,6 @@ export default class RspcaqldDonationForm extends NavigationMixin(LightningEleme
         postalCode: null,
         country: null
     };
-
-    @wire(getPortalSetting, {customMetadataName: '$customMetadata'}) wiredPortalSetting ({ error, data }) {
-        if (data) {
-            this.portalSetting = data;
-            this.isAgree = this.portalSetting.Privacy_Statement_Default_Value__c;
-            this.isKeepUpdated = this.portalSetting.Subscribe_to_Newsletter_Default_Value__c;
-            this.isPrivacyPolicy = this.portalSetting.Privacy_Statement_Required__c;
-            this.isNewsletterRequired = this.portalSetting.Subscribe_to_Newsletter_Required__c;
-            this.termsConditionsText = !this.termsConditionsText ? this.portalSetting.Privacy_Statement_Text__c : this.termsConditionsText;
-            this.newsletterSubscriptionText = !this.newsletterSubscriptionText ? this.portalSetting.Subscribe_to_Newsletter_Text__c : this.newsletterSubscriptionText;
-        }
-        if (error) {}
-    }
 
     get containerClass() {return 'donation-form-container ' + this.selectedStep;}
 

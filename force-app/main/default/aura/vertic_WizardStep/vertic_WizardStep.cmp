@@ -70,7 +70,7 @@
     <aura:registerEvent name="onStepChange" type="c:vertic_ComponentEvent"/>
     <aura:registerEvent name="onStepCancel" type="c:vertic_ComponentEvent"/>
 
-    <c:vertic_Utils context="{!this}"/>
+    <c:aos_Utils context="{!this}"/>
 
     <aura:dependency type="COMPONENT" resource="c:vertic_Wizard"/>
 

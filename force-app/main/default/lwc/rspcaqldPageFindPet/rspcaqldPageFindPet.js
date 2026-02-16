@@ -1,5 +1,3 @@
-import getPortalActiveAnimals from '@salesforce/apex/rspcaqldAnimalService.getPortalActiveAnimals';
-import getPortalCustomSetting from '@salesforce/apex/rspcaqldUtils.getPortalCustomSetting';
 import {LightningElement, wire, track, api} from 'lwc';
 import {MessageContext, publish} from 'lightning/messageService';
 import {CurrentPageReference} from "lightning/navigation";
@@ -43,9 +41,7 @@ export default class RspcaqldPageFindPet extends LightningElement {
         }
     }
 
-    @wire(MessageContext)
-    messageContext;
-
+    messageContext = { data: [] };
     get headerIcons() {
         if (this.iconsString) {
             let icons = JSON.parse(this.iconsString);

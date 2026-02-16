@@ -1,11 +1,6 @@
-import getAnimalById from '@salesforce/apex/rspcaqldAnimalService.getAnimalById';
-import getPicklistValues from '@salesforce/apex/rspcaqldUtils.getPicklistValues';
-import doSubmit from '@salesforce/apex/rspcaqldPageAdoptProcessCtrl.doSubmit';
 import {LightningElement, track, wire, api} from 'lwc';
 import * as constants from 'c/constants';
 import {CurrentPageReference, NavigationMixin} from "lightning/navigation";
-import deleteDocument from '@salesforce/apex/rspcaqldUtils.deleteDocument';
-
 export default class RspcaqldPageAdoptProcess extends NavigationMixin(LightningElement) {
     @api thankYouPageURL = 'ty-adopt';
     stepNumber = 1;
@@ -41,19 +36,18 @@ export default class RspcaqldPageAdoptProcess extends NavigationMixin(LightningE
     picklistRequiredFields = ['adoptionlocation', 'adoptiontypemulti', 'identificationtype', 'adoptiontimeframe','adoptionreason','adoptionalonehours', 'adoptionresidentialstatus', 'adoptionhaschildren', 'adoptionhaspets'];
     inputRequiredFields = ['petnumber', 'petname', 'firstname', 'lastname', 'secondcontactname', 'adoptionhomelifestyle', 'adoptioncompanionimportance', 'adoptionsuggestionsoptions', 'adoptionresidencetype', 'adoptionanimalhousing', 'adoptionvisitingpets', 'adoptionprevioussurrender'];
 
-    @wire(getPicklistValues, {fieldName: 'Adoption__c.Preferred_Animal_Location__c'}) animalLocations;
-    @wire(getPicklistValues, {fieldName: 'Adoption__c.Preferred_Animal_Type__c'}) animalTypes;
-    @wire(getPicklistValues, {fieldName: 'Adoption__c.ID_Type__c'}) identificationTypes;
-    @wire(getPicklistValues, {fieldName: 'Adoption__c.Adoption_Timeframe__c'}) adoptionTimeframes;
-    @wire(getPicklistValues, {fieldName: 'Adoption__c.Adoption_Reason__c'}) adoptionReasons;
-    @wire(getPicklistValues, {fieldName: 'Adoption__c.Alone_Hours__c'}) aloneHours;
-    @wire(getPicklistValues, {fieldName: 'Adoption__c.Open_to_Suggestions__c'}) openSuggestionsOptions;
-    @wire(getPicklistValues, {fieldName: 'Adoption__c.Residential_Status__c'}) residentialStatusOptions;
-    @wire(getPicklistValues, {fieldName: 'Adoption__c.Has_Visiting_Pets__c'}) hasVisitingPetsOptions;
-    @wire(getPicklistValues, {fieldName: 'Adoption__c.Has_Previously_Surrended__c'}) hasPreviouslySurrendedOptions;
-    @wire(getPicklistValues, {fieldName: 'Adoption__c.Has_Children__c'}) hasChildrenOptions;
-    @wire(getPicklistValues, {fieldName: 'Adoption__c.Has_Other_Pets__c'}) hasPetsOptions;
-
+    animalLocations = { data: [] };
+    animalTypes = { data: [] };
+    identificationTypes = { data: [] };
+    adoptionTimeframes = { data: [] };
+    adoptionReasons = { data: [] };
+    aloneHours = { data: [] };
+    openSuggestionsOptions = { data: [] };
+    residentialStatusOptions = { data: [] };
+    hasVisitingPetsOptions = { data: [] };
+    hasPreviouslySurrendedOptions = { data: [] };
+    hasChildrenOptions = { data: [] };
+    hasPetsOptions = { data: [] };
     pet = {};
     @track adoption = {
         animalId: null,
@@ -123,19 +117,6 @@ export default class RspcaqldPageAdoptProcess extends NavigationMixin(LightningE
             this.recordId = state.id;
         } else {
             this.isEOI = true;
-        }
-    }
-
-    @wire(getAnimalById, {recordId: '$recordId'})
-    wiredAnimal({ error, data }) {
-        if (data) {
-            this.pet = data.record;
-            if (this.pet.Id == null) this.isEOI = true;
-            this.adoption.animalId = this.pet.Id;
-            this.adoption.animalType = this.pet.Animal_Type__c;
-            this.adoption.shelterbuddyID = this.pet.Shelterbuddy_ID__c;
-            this.adoption.animalName = this.pet.Animal_Name__c;
-            this.adoption.animalLocation = this.pet.Location__c;
         }
     }
 

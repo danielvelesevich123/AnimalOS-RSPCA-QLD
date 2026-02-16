@@ -1,10 +1,9 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
-import {api, wire, LightningElement} from 'lwc';
+import {api, LightningElement} from 'lwc';
 
 
 export default class RspcaqldCardsService extends LightningElement {
     @api iconName;
-    @wire(getImage, {contentKey: '$iconName'}) iconURL;
+    iconURL = { data: null };
     @api header;
     @api description;
     @api linkUrl;

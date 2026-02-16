@@ -33,7 +33,7 @@
     <aura:registerEvent name="onAfterDatatableLoad" type="c:vertic_ComponentEvent"/>
     <aura:registerEvent name="onRowSelection" type="c:vertic_ComponentEvent"/>
 
-    <c:vertic_Utils context="{!this}"/>
+    <c:aos_Utils context="{!this}"/>
     <div class="slds-is-relative">
         <aura:if isTrue="{! v.showSpinner }">
             <lightning:spinner variant="brand" size="medium" alternativeText="Loading"/>

@@ -4,7 +4,7 @@
            sideBar="false"
            applyBodyTag="false"
            applyHtmlTag="false"
-           controller="vertic_ContentCtrl"
+           controller="aos_ContentCtrl"
            language="en_AU"
            contentType="{!contentType}"
            renderAs="{!renderAs}"

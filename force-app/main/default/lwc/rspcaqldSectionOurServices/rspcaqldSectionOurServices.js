@@ -1,4 +1,3 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
 import {api, LightningElement, wire} from 'lwc';
 
 export default class RspcaqldSectionOurServices extends LightningElement {
@@ -28,19 +27,6 @@ export default class RspcaqldSectionOurServices extends LightningElement {
     @api cardFourHeaderLinkLabel;
     @api cardFourHeaderLinkUrl;
     @api cardFourLinksString;
-
-    @wire(getImage, {contentKey: '$cardOneImageKey'}) cardOneImageContentURL({data}) {
-        this.cardOneImage = data;
-    };
-    @wire(getImage, {contentKey: '$cardTwoImageKey'}) cardTwoImageContentURL({data}) {
-        this.cardTwoImage = data;
-    };
-    @wire(getImage, {contentKey: '$cardThreeImageKey'}) cardThreeImageContentURL({data}) {
-        this.cardThreeImage = data;
-    };
-    @wire(getImage, {contentKey: '$cardFourImageKey'}) cardFourImageContentURL({data}) {
-        this.cardFourImage = data;
-    };
 
     get mainClass() {
         return 'page-home-services medium-width' + (this.customClass ? ' action-header-navigation-block ' + this.customClass : '');

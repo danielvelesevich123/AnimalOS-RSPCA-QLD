@@ -1,4 +1,4 @@
-<aura:component description="vertic_CSVUtils" controller="vertic_CommonCtrl">
+<aura:component description="vertic_CSVUtils" controller="aos_CommonCtrl">
 
     <!-- Attribute Overrides -->
     <!-- <aura:set attribute="processor" value="vertic_GetPageReferenceContentProc"/> -->
@@ -14,7 +14,7 @@
     <!-- Handlers -->
     <!-- <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/> -->
 
-    <c:vertic_Utils context="{!this}"/>
+    <c:aos_Utils context="{!this}"/>
 
     <!-- Methods -->
 

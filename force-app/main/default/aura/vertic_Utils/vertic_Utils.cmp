@@ -1,4 +1,4 @@
-<aura:component description="vertic_Utils" extensible="true">
+<aura:component description="aos_Utils" extensible="true">
     <aura:attribute name="context" type="Object" required="true"/>
 
     <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>

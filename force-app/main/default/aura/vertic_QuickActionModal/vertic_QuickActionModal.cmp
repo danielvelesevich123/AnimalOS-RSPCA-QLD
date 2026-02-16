@@ -47,7 +47,7 @@
 
     <aura:handler event="force:closeQuickAction" action="{!c.handleCloseQuickAction}"/>
 
-    <c:vertic_Utils context="{!this}"/>
+    <c:aos_Utils context="{!this}"/>
 
     <aura:if isTrue="{!v.overrideModalWidth == true}">
         <style>

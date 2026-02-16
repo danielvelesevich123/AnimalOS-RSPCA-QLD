@@ -43,7 +43,7 @@
         return new Promise(function (resolve, reject) {
             var siteName = payload.cmp.get('v.siteName');
 
-            payload.helper.execute(payload.cmp, 'vertic_HttpRequestProc',
+            payload.helper.execute(payload.cmp, 'aos_HttpRequestProc',
                 {
                     endpoint: 'callout:OneDrive/sites/rspcaqld.sharepoint.com:/sites/' + siteName + ':/drives',
                     headers: {
@@ -131,7 +131,7 @@
     checkIsExistFolder: function (payload) {
         return new Promise(function (resolve, reject) {
 
-            payload.helper.execute(payload.cmp, 'vertic_HttpRequestProc',
+            payload.helper.execute(payload.cmp, 'aos_HttpRequestProc',
                 {
                     endpoint: 'callout:OneDrive/drives/' + payload.drive + '/root/children/' + encodeURIComponent(payload.folder) + '/children',
                     headers: {
@@ -170,7 +170,7 @@
                     })
                 };
 
-                payload.helper.utils(payload.cmp).execute(payload.cmp, 'vertic_HttpRequestProc', request,
+                payload.helper.utils(payload.cmp).execute(payload.cmp, 'aos_HttpRequestProc', request,
 
                     function (response) {
                         var resp = JSON.parse(response.dto.response);
@@ -210,7 +210,7 @@
                     }
                 })
             };
-            payload.helper.utils(payload.cmp).execute(payload.cmp, 'vertic_HttpRequestProc', request,
+            payload.helper.utils(payload.cmp).execute(payload.cmp, 'aos_HttpRequestProc', request,
 
                 function (response) {
 
@@ -311,7 +311,7 @@
 
                     payload.helper.utils(payload.cmp).execute(
                         payload.cmp,
-                        'vertic_HttpRequestProc',
+                        'aos_HttpRequestProc',
                         request,
                         function (response) {
                             resolve(response);
@@ -328,7 +328,7 @@
         return new Promise(function (resolve, reject) {
 
             var items = [];
-            payload.helper.execute(payload.cmp, 'vertic_HttpRequestProc',
+            payload.helper.execute(payload.cmp, 'aos_HttpRequestProc',
                 {
                     endpoint: 'callout:OneDrive/drives/' + payload.drive + '/root:/' + encodeURIComponent(payload.folder) + ':/children?$expand=thumbnails',
                     headers: {
@@ -388,7 +388,7 @@
                 "name": payload.name
             });
 
-            payload.helper.execute(payload.cmp, 'vertic_HttpRequestProc',
+            payload.helper.execute(payload.cmp, 'aos_HttpRequestProc',
                 {
                     method: methodsMap.get(optons.get('method')),
                     endpoint: 'callout:OneDrive/drives/' + encodeURIComponent(payload.drive) + '/items/' + encodeURIComponent(payload.file),
@@ -411,7 +411,7 @@
 
     getLinkFileView: function (payload) {
         return new Promise(function (resolve, reject) {
-            payload.helper.execute(payload.cmp, 'vertic_HttpRequestProc',
+            payload.helper.execute(payload.cmp, 'aos_HttpRequestProc',
                 {
                     method: 'POST',
                     endpoint: 'callout:OneDrive/drives/' + payload.drive + '/items/' + encodeURIComponent(payload.file) + '/preview',
@@ -460,7 +460,7 @@
                 })
             }
 
-            payload.helper.execute(payload.cmp, 'vertic_HttpRequestProc',
+            payload.helper.execute(payload.cmp, 'aos_HttpRequestProc',
                 {
                     method: methodsMap.get(optons.get('method')),
                     endpoint: 'callout:OneDrive/drives/' + encodeURIComponent(payload.drive) + '/items/' + encodeURIComponent(payload.file),

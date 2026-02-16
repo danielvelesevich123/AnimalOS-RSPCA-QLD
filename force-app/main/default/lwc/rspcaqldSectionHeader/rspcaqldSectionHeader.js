@@ -1,4 +1,3 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
 import {api, wire, LightningElement} from 'lwc';
 import * as constants from 'c/constants';
 import headerAction from '@salesforce/messageChannel/HeaderAction__c';
@@ -33,14 +32,12 @@ export default class RspcaqldSectionHeader extends LightningElement {
 
     @api imageUrl;
     @api imageKey;
-    @wire(getImage, {contentKey: '$imageKey'}) imageContentURL;
+    imageContentURL = { data: [] };
     @api pawPrintLabel;
 
     @api isThankYouHeader = false;
 
-    @wire(MessageContext)
-    messageContext;
-
+    messageContext = { data: [] };
     closeDark = constants.closeDark;
 
     get thankYouName() {

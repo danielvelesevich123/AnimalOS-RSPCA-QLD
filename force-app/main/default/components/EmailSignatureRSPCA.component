@@ -27,7 +27,7 @@
 
                 <div style="line-height: normal; padding-top: 15px; padding-bottom: 15px; vertical-align: top;">
                     <span style="font-size: 0px;">
-                        <c:vertic_DocumentImage documentUniqueName="RSPCA_Logo"
+                        <c:aos_DocumentImage documentUniqueName="RSPCA_Logo"
                             cssStyles="width: 232px; height: 67px; max-width: 232px; max-height: 67px; min-width: 232px; min-height: 67px;"
                         />
                     </span>
@@ -55,7 +55,7 @@
                         <tr>
                             <td align="left" style="line-height: normal; text-align: center; border: 1px solid #00000000 !important;">
                                 <span style="font-size: 0px;">
-                                    <c:vertic_DocumentImage documentUniqueName="Signature_Animal"
+                                    <c:aos_DocumentImage documentUniqueName="Signature_Animal"
                                         cssStyles="width: 40px; height: 26px; max-width: 40px; max-height: 26px; min-width: 40px; min-height: 26px;"
                                     />
                                 </span>
@@ -77,7 +77,7 @@
                         <a href="https://www.facebook.com/rspcaqld"
                             style="text-decoration: none;">
 
-                            <c:vertic_DocumentImage documentUniqueName="Signature_Facebook"
+                            <c:aos_DocumentImage documentUniqueName="Signature_Facebook"
                                 cssStyles="width: 33px; height: 33px; max-width: 33px; max-height: 33px; min-width: 33px; min-height: 33px;"
                             />
                         </a>
@@ -87,7 +87,7 @@
                         <a href="https://www.instagram.com/rspcaqld"
                             style="text-decoration: none;">
 
-                            <c:vertic_DocumentImage documentUniqueName="Signature_Instagram"
+                            <c:aos_DocumentImage documentUniqueName="Signature_Instagram"
                                 cssStyles="width: 33px; height: 33px; max-width: 33px; max-height: 33px; min-width: 33px; min-height: 33px;"
                             />
                         </a>
@@ -97,7 +97,7 @@
                         <a href="https://www.tiktok.com/@rspcaqld"
                             style="text-decoration: none;">
 
-                            <c:vertic_DocumentImage documentUniqueName="Signature_Tiktok"
+                            <c:aos_DocumentImage documentUniqueName="Signature_Tiktok"
                                 cssStyles="width: 33px; height: 33px; max-width: 33px; max-height: 33px; min-width: 33px; min-height: 33px;"
                             />
                         </a>
@@ -107,7 +107,7 @@
                         <a href="https://www.linkedin.com/company/rspcaqld"
                             style="text-decoration: none;">
 
-                            <c:vertic_DocumentImage documentUniqueName="Signature_Linkedin"
+                            <c:aos_DocumentImage documentUniqueName="Signature_Linkedin"
                                 cssStyles="width: 33px; height: 33px; max-width: 33px; max-height: 33px; min-width: 33px; min-height: 33px;"
                             />
                         </a>
@@ -120,7 +120,7 @@
                             target="_blank"
                             style="text-decoration: none;">
 
-                            <c:vertic_DocumentImage documentUniqueName="Signature_Footer_Image"
+                            <c:aos_DocumentImage documentUniqueName="Signature_Footer_Image"
                                 alt="Volunteer and make a difference with RSPCA Qld."
                                 cssStyles="width: 650px; height: 150px; max-width: 650px; max-height: 150px; min-width: 650px; min-height: 150px;"
                             />

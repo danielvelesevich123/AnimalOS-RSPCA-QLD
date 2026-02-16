@@ -1,4 +1,4 @@
-<aura:component description="vertic_Base" extensible="true" controller="vertic_CommonCtrl" implements="force:hasRecordId">
+<aura:component description="vertic_Base" extensible="true" controller="aos_CommonCtrl" implements="force:hasRecordId">
 
     <aura:attribute name="processor" type="String"/>
 
@@ -16,7 +16,7 @@
         </div>
     </aura:attribute>
 
-    <c:vertic_Utils context="{!this}"/>
+    <c:aos_Utils context="{!this}"/>
 
     <aura:method name="doInit" action="{!c.handleDoInit}">
         <aura:attribute name="payload" type="Map"/>

@@ -1,5 +1,5 @@
 <aura:component description="StartAdoptionQA"
-                controller="vertic_CommonCtrl"
+                controller="aos_CommonCtrl"
                 implements="force:lightningQuickActionWithoutHeader,force:appHostable,force:hasRecordId,force:hasSObjectName"
                 access="global">
 
@@ -9,7 +9,7 @@
 
     <lightning:notificationsLibrary aura:id="notifLib"/>
     <lightning:navigation aura:id="navService"/>
-    <c:vertic_Utils context="{!this}"/>
+    <c:aos_Utils context="{!this}"/>
 
     <c:vertic_QuickActionModal aura:id="modal"
                                heightPX="500"

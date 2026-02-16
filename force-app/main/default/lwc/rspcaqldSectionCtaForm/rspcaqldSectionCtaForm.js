@@ -1,8 +1,4 @@
 import {LightningElement, track, wire, api} from 'lwc';
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
-import getPicklistValues from '@salesforce/apex/rspcaqldUtils.getPicklistValues';
-import doSubmit from '@salesforce/apex/rspcaqldCtaFormCtrl.doSubmit';
-import getPortalSetting from '@salesforce/apex/rspcaqldUtils.getPortalSetting';
 import {NavigationMixin} from "lightning/navigation";
 import * as constants from 'c/constants';
 
@@ -10,12 +6,12 @@ export default class RspcaqldSectionCtaForm extends NavigationMixin(LightningEle
     @api customClass;
     @api formType = 'Partner';
     @api icon;
-    @wire(getImage, {contentKey: '$icon'}) iconURL;
+    iconURL = { data: [] };
     @api header = 'Call to action title here';
     @api description = 'If the form required is a large multi step for the cta should link to it’s separate page. For example adopt a pet, report cruelty and report injured wildlife have their own forms.';
-    @wire(getPicklistValues, {fieldName: 'Case.Partnership_Enquiry_Type__c'}) partnershipTypes;
-    @wire(getPicklistValues, {fieldName: 'Case.Education_Enquiry_Type__c'}) educationTypes;
-    @wire(getPicklistValues, {fieldName: 'Case.Preferred_Contact_Method__c'}) preferredContactMethodTypes;
+    partnershipTypes = { data: [] };
+    educationTypes = { data: [] };
+    preferredContactMethodTypes = { data: [] };
     @api preferredLocations = [
         {label: 'Brisbane, Wacol Shelter', value: 'Brisbane, Wacol Shelter'},
         {label: 'Bundaberg Shelter', value: 'Bundaberg Shelter'},
@@ -83,17 +79,6 @@ export default class RspcaqldSectionCtaForm extends NavigationMixin(LightningEle
         marketingOptin: false,
         privacyPolicy: false
     };
-
-    @wire(getPortalSetting, {customMetadataName: '$customMetadata'}) wiredPortalSetting ({ error, data }) {
-        if (data) {
-            this.portalSetting = data;
-            this.cs.marketingOptin = this.portalSetting.Subscribe_to_Newsletter_Default_Value__c;
-            this.cs.privacyPolicy = this.portalSetting.Privacy_Statement_Default_Value__c;
-            this.isPrivacyPolicy = this.portalSetting.Privacy_Statement_Required__c;
-            this.isNewsletterRequired = this.portalSetting.Subscribe_to_Newsletter_Required__c;
-        }
-        if (error) {}
-    }
 
     get containerClass() {
         return 'cta-form-container' + (this.hideWedgeShape ? '' : ' wedge-shape');

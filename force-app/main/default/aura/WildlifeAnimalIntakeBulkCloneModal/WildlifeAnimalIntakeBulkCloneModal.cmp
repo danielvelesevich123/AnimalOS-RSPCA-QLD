@@ -1,8 +1,8 @@
-<aura:component description="WildlifeAnimalIntakeBulkCloneModal" controller="vertic_CommonCtrl" extends="c:vertic_Modal">
+<aura:component description="WildlifeAnimalIntakeBulkCloneModal" controller="aos_CommonCtrl" extends="c:vertic_Modal">
 
     <aura:attribute name="numberOfAnimals" type="Integer" default="1"/>
 
-    <c:vertic_Utils context="{!this}"/>
+    <c:aos_Utils context="{!this}"/>
 
     <aura:set attribute="footer">
         <lightning:button label="Cancel"

@@ -1,5 +1,4 @@
 import {LightningElement, wire} from 'lwc';
-import getEvent from '@salesforce/apex/rspcaqldCampaignService.getCampaignById';
 import PAGE_FILES from "@salesforce/contentAssetUrl/PortalImageszip";
 import {MessageContext, publish} from "lightning/messageService";
 import breadcrumbs from '@salesforce/messageChannel/Breadcrumbs__c';
@@ -25,18 +24,7 @@ export default class RspcaqldPageEvent extends LightningElement {
         }
     }
 
-    @wire(getEvent, {recordId: '$recordId'})
-    wiredEvent({ error, data }) {
-        if (data) {
-            this.event = data;
-            publish(this.messageContext, breadcrumbs,
-                {parents: [{label: 'Events', url: '../../../../events'}], current: this.event.record.Name});
-        }
-    }
-
-    @wire(MessageContext)
-    messageContext;
-
+    messageContext = { data: [] };
     get facebookShareLink() {
         return 'https://www.facebook.com/sharer/sharer.php?u=' + window.location.href;
     }

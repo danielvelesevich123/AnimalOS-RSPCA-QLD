@@ -1,5 +1,5 @@
 <aura:component description="WildlifeAnimalIntakeAnimals"
-                controller="vertic_CommonCtrl"
+                controller="aos_CommonCtrl"
                 implements="lightning:availableForFlowScreens"
                 access="global">
 
@@ -9,7 +9,7 @@
     <aura:attribute name="referralId" type="String"/>
     <aura:attribute name="isTableView" type="Boolean" default="{!false}"/>
 
-    <c:vertic_Utils context="{!this}"/>
+    <c:aos_Utils context="{!this}"/>
 
     <lightning:notificationsLibrary aura:id="notifyLib"/>
     <c:vertic_ModalService aura:id="modalService"/>

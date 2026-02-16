@@ -1,4 +1,4 @@
-<aura:component description="vertic_AsyncProcesses" extends="c:vertic_Base" implements="flexipage:availableForAllPageTypes,force:hasSObjectName">
+<aura:component description="aos_AsyncProcesses" extends="c:vertic_Base" implements="flexipage:availableForAllPageTypes,force:hasSObjectName">
 
     <!-- ATTRIBUTES -->
     <aura:attribute name="groupKey" type="String"/>

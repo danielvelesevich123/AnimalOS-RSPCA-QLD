@@ -1,6 +1,3 @@
-import getLocationAccounts from '@salesforce/apex/rspcaqldAccountService.getLocationAccounts';
-import getPicklistValues from '@salesforce/apex/rspcaqldUtils.getPicklistValues';
-import getPortalCustomSetting from '@salesforce/apex/rspcaqldUtils.getPortalCustomSetting';
 import {LightningElement, wire, track, api} from 'lwc';
 import {CurrentPageReference} from "lightning/navigation";
 import * as constants from 'c/constants';
@@ -39,8 +36,7 @@ export default class RspcaqldPageCommonMisconceptions extends LightningElement {
         }
     }
 
-    @wire(getPicklistValues, {fieldName: 'Account.Services_Offered__c'}) serviceOptions;
-
+    serviceOptions = { data: [] };
     orderOptions = [
         { label: 'distance', value: 'distance' },
         { label: 'name', value: 'name' }

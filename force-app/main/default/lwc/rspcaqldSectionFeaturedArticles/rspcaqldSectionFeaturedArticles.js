@@ -1,4 +1,3 @@
-import getManagedContent from '@salesforce/apex/ManagedContentService.getContentByKeysAndTypes';
 import {LightningElement, wire, api} from 'lwc';
 
 export default class RspcaqldSectionFeaturedArticles extends LightningElement {

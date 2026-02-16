@@ -1,4 +1,3 @@
-import getPartners from '@salesforce/apex/ManagedContentService.getPartnersByContentKeys';
 import {api, LightningElement, wire} from 'lwc';
 
 export default class RspcaqldSectionPartners extends LightningElement {
@@ -8,7 +7,7 @@ export default class RspcaqldSectionPartners extends LightningElement {
     @api linkLabel;
     @api linkUrl;
     @api partnerKeys;
-    @wire(getPartners, {contentKeysString: '$partnerKeys'}) partners;
+    partners = { data: [] };
     @api isTitle = false;
     @api isCategory = false;
     @api isWhiteCards = false;

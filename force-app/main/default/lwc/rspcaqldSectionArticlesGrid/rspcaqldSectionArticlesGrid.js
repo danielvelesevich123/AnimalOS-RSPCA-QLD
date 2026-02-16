@@ -1,4 +1,3 @@
-import getManagedContent from '@salesforce/apex/ManagedContentService.getManagedContentByContentType';
 import {LightningElement, api, wire} from 'lwc';
 import {CurrentPageReference} from "lightning/navigation";
 import * as constants from 'c/constants';

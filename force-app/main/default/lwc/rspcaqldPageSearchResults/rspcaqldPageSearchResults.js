@@ -1,13 +1,3 @@
-import initLocationResults from '@salesforce/apex/rspcaqldPageSearchResultsCtrl.initLocationResults';
-import initEventResults from '@salesforce/apex/rspcaqldPageSearchResultsCtrl.initEventResults';
-import initAnimalResults from '@salesforce/apex/rspcaqldPageSearchResultsCtrl.initAnimalResults';
-import initCampaignResults from '@salesforce/apex/rspcaqldPageSearchResultsCtrl.initCampaignResults';
-import initPositionResults from '@salesforce/apex/rspcaqldPageSearchResultsCtrl.initPositionResults';
-import initPartnerResults from '@salesforce/apex/rspcaqldPageSearchResultsCtrl.initPartnerResults';
-import initReportResults from '@salesforce/apex/rspcaqldPageSearchResultsCtrl.initReportResults';
-import initDirectorResults from '@salesforce/apex/rspcaqldPageSearchResultsCtrl.initDirectorResults';
-import initPageResults from '@salesforce/apex/rspcaqldPageSearchResultsCtrl.initPageResults';
-import initContentResults from '@salesforce/apex/rspcaqldPageSearchResultsCtrl.initContentResults';
 import {LightningElement, wire} from 'lwc';
 import {MessageContext, publish} from "lightning/messageService";
 import {CurrentPageReference} from "lightning/navigation";
@@ -30,9 +20,7 @@ export default class RspcaqldPagePrivacyPolicy extends LightningElement {
         { label: 'name', value: 'name' }
     ];
 
-    @wire(MessageContext)
-    messageContext;
-
+    messageContext = { data: [] };
     @wire(CurrentPageReference)
     getValue({state}) {
         if (state && state.val) {

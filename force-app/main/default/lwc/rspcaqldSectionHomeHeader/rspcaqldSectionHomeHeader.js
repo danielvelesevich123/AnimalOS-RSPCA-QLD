@@ -1,4 +1,3 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
 import {api, LightningElement, wire} from 'lwc';
 import {NavigationMixin} from "lightning/navigation";
 import * as constants from 'c/constants';
@@ -6,7 +5,7 @@ import * as constants from 'c/constants';
 export default class RspcaqldSectionHomeHeader extends NavigationMixin(LightningElement) {
     @api imageUrl;
     @api imageKey;
-    @wire(getImage, {contentKey: '$imageKey'}) imageContentURL;
+    imageContentURL = { data: [] };
     @api header;
     @api adoptPetUrl = 'adopt';
     @api donateToRSPCAUrl = 'donate';

@@ -1,4 +1,3 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
 import {api, LightningElement, wire} from 'lwc';
 import * as constants from 'c/constants';
 
@@ -10,18 +9,18 @@ export default class RspcaqldSectionGetInvolved extends LightningElement {
 
     @api imageOne;
     imageOneKey;
-    @wire(getImage, {contentKey: '$imageOneKey'}) imageOneContentURL;
+    imageOneContentURL = { data: [] };
     @api sectionOneHeader = 'Volunteer your time';
     @api sectionOneLinkOneIcon;
-    @wire(getImage, {contentKey: '$sectionOneLinkOneIcon'}) sectionOneLinkOneIconURL;
+    sectionOneLinkOneIconURL = { data: [] };
     @api sectionOneLinkOneLabel = 'Volunteer';
     @api sectionOneLinkOneUrl = 'Volunteer';
     @api sectionOneLinkTwoIcon;
-    @wire(getImage, {contentKey: '$sectionOneLinkTwoIcon'}) sectionOneLinkTwoIconURL;
+    sectionOneLinkTwoIconURL = { data: [] };
     @api sectionOneLinkTwoLabel = 'Foster an animal';
     @api sectionOneLinkTwoUrl;
     @api sectionOneLinkThreeIcon;
-    @wire(getImage, {contentKey: '$sectionOneLinkThreeIcon'}) sectionOneLinkThreeIconURL;
+    sectionOneLinkThreeIconURL = { data: [] };
     @api sectionOneLinkThreeLabel = 'Attend an event';
     @api sectionOneLinkThreeUrl;
     @api sectionOneLinkFourLabel = 'View all ways to get involved';
@@ -29,18 +28,18 @@ export default class RspcaqldSectionGetInvolved extends LightningElement {
 
     @api imageTwo;
     imageTwoKey;
-    @wire(getImage, {contentKey: '$imageTwoKey'}) imageTwoContentURL;
+    imageTwoContentURL = { data: [] };
     @api sectionTwoHeader = 'Make a donation';
     @api sectionTwoLinkOneIcon;
-    @wire(getImage, {contentKey: '$sectionTwoLinkOneIcon'}) sectionTwoLinkOneIconURL;
+    sectionTwoLinkOneIconURL = { data: [] };
     @api sectionTwoLinkOneLabel = 'Make a one-off donation';
     @api sectionTwoLinkOneUrl;
     @api sectionTwoLinkTwoIcon;
-    @wire(getImage, {contentKey: '$sectionTwoLinkTwoIcon'}) sectionTwoLinkTwoIconURL;
+    sectionTwoLinkTwoIconURL = { data: [] };
     @api sectionTwoLinkTwoLabel = 'Leave a gift in your will';
     @api sectionTwoLinkTwoUrl;
     @api sectionTwoLinkThreeIcon;
-    @wire(getImage, {contentKey: '$sectionTwoLinkThreeIcon'}) sectionTwoLinkThreeIconURL;
+    sectionTwoLinkThreeIconURL = { data: [] };
     @api sectionTwoLinkThreeLabel = 'Fundraising event';
     @api sectionTwoLinkThreeUrl;
     @api sectionTwoLinkFourLabel = 'See where your donation goes';

@@ -1,5 +1,4 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
-import {api, LightningElement, wire} from 'lwc';
+import {api, LightningElement} from 'lwc';
 
 export default class RspcaqldSectionStats extends LightningElement {
     @api customClass;
@@ -13,28 +12,24 @@ export default class RspcaqldSectionStats extends LightningElement {
     @api description;
     @api imageOne;
     imageOneKey;
-    @wire(getImage, {contentKey: '$imageOneKey'}) imageOneContentURL;
     @api headerOne;
     @api headerOneSize;
     @api headerOneMobileSize;
     @api descOne;
     @api imageTwo;
     imageTwoKey;
-    @wire(getImage, {contentKey: '$imageTwoKey'}) imageTwoContentURL;
     @api headerTwo;
     @api headerTwoSize;
     @api headerTwoMobileSize;
     @api descTwo;
     @api imageThree;
     imageThreeKey;
-    @wire(getImage, {contentKey: '$imageThreeKey'}) imageThreeContentURL;
     @api headerThree;
     @api headerThreeSize;
     @api headerThreeMobileSize;
     @api descThree;
     @api imageFour;
     imageFourKey;
-    @wire(getImage, {contentKey: '$imageFourKey'}) imageFourContentURL;
     @api headerFour;
     @api headerFourSize;
     @api headerFourMobileSize;
@@ -69,10 +64,10 @@ export default class RspcaqldSectionStats extends LightningElement {
             if (this.imageThree && !this.imageThree.includes('http')) this.imageThreeKey = this.imageThree;
             if (this.imageFour && !this.imageFour.includes('http')) this.imageFourKey = this.imageFour;
             let cards = [
-                {value: this.headerOne, headerSize: this.headerOneSize, headerMobileSize: this.headerOneMobileSize, label: this.descOne, imageUrl: this.imageOneKey ? this.imageOneContentURL.data : this.imageOne},
-                {value: this.headerTwo, headerSize: this.headerTwoSize, headerMobileSize: this.headerTwoMobileSize, label: this.descTwo, imageUrl: this.imageTwoKey ? this.imageTwoContentURL.data : this.imageTwo},
-                {value: this.headerThree, headerSize: this.headerThreeSize, headerMobileSize: this.headerThreeMobileSize, label: this.descThree, imageUrl: this.imageThreeKey ? this.imageThreeContentURL.data : this.imageThree},
-                {value: this.headerFour, headerSize: this.headerFourSize, headerMobileSize: this.headerFourMobileSize, label: this.descFour, imageUrl: this.imageFourKey ? this.imageFourContentURL.data : this.imageFour}
+                {value: this.headerOne, headerSize: this.headerOneSize, headerMobileSize: this.headerOneMobileSize, label: this.descOne, imageUrl: this.imageOne},
+                {value: this.headerTwo, headerSize: this.headerTwoSize, headerMobileSize: this.headerTwoMobileSize, label: this.descTwo, imageUrl: this.imageTwo},
+                {value: this.headerThree, headerSize: this.headerThreeSize, headerMobileSize: this.headerThreeMobileSize, label: this.descThree, imageUrl: this.imageThree},
+                {value: this.headerFour, headerSize: this.headerFourSize, headerMobileSize: this.headerFourMobileSize, label: this.descFour, imageUrl: this.imageFour}
             ];
             return cards;
         }

@@ -3,8 +3,6 @@ import {
     wire,
     LightningElement
 } from 'lwc';
-import getPortalCustomSetting from '@salesforce/apex/rspcaqldUtils.getPortalCustomSetting';
-import getHttp from '@salesforce/apex/rspcaqldUtils.getHttp';
 import * as constants from 'c/constants';
 
 export default class RspcaqldGoogleSearch extends LightningElement {

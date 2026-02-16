@@ -8,7 +8,7 @@
             var recordName = encodeURIComponent(cmp.get('v.recordId'));
             helper.utils(cmp).execute(
                 cmp,
-                'vertic_HttpRequestProc',
+                'aos_HttpRequestProc',
                 {
                     endpoint: 'callout:OneDrive/drives/' + driveId  + '/root:/' + recordName  + ':/children',
 
@@ -65,7 +65,7 @@
         return new Promise(function (resolve, reject) {
             payload.helper.utils(payload.cmp).execute(
                 payload.cmp,
-                'vertic_HttpRequestProc',
+                'aos_HttpRequestProc',
                 {
                     method: 'PUT',
                     endpoint: 'callout:OneDrive/drives/' + payload.driveId + '/items/' + encodeURIComponent(payload.deleteId) ,
@@ -95,7 +95,7 @@
         return new Promise(function (resolve, reject) {
             payload.helper.utils(payload.cmp).execute(
                 payload.cmp,
-                'vertic_HttpRequestProc',
+                'aos_HttpRequestProc',
                 {
                     method: 'DELETE',
                     endpoint: 'callout:OneDrive/drives/' + encodeURIComponent( payload.driveId ) + '/items/' + encodeURIComponent(payload.deleteId),

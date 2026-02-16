@@ -1,1 +1,13 @@
-public class aos_OneDriveCheckIsExistFolderProcTest {}
+@IsTest
+private class aos_OneDriveCheckIsExistFolderProcTest {
+    @IsTest
+    static void testBehavior() {
+//        aos_Response response = new OneDriveCheckIsExistFolderProc().process(
+//            new Map<String, Object> {
+//                'driveId' => '11111',
+//                'newOneDriveFolderName' => 'Test folder'
+//            }
+//        );
+//        System.assertEquals(response.isValid, true);
+    }
+}

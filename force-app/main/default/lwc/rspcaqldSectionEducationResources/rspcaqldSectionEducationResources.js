@@ -1,4 +1,3 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
 import {api, LightningElement, wire} from 'lwc';
 
 export default class RspcaqldSectionEducationResources extends LightningElement {
@@ -8,17 +7,17 @@ export default class RspcaqldSectionEducationResources extends LightningElement 
     @api headerLinkUrl = 'resources';
     @api cardOneImage;
     cardOneImageKey;
-    @wire(getImage, {contentKey: '$cardOneImageKey'}) cardOneImageContentURL;
+    cardOneImageContentURL = { data: [] };
     @api cardOneLabel;
     @api cardOneLink;
     @api cardTwoImage;
     cardTwoImageKey;
-    @wire(getImage, {contentKey: '$cardTwoImageKey'}) cardTwoImageContentURL;
+    cardTwoImageContentURL = { data: [] };
     @api cardTwoLabel;
     @api cardTwoLink;
     @api cardThreeImage;
     cardThreeImageKey;
-    @wire(getImage, {contentKey: '$cardThreeImageKey'}) cardThreeImageContentURL;
+    cardThreeImageContentURL = { data: [] };
     @api cardThreeLabel;
     @api cardThreeLink;
 

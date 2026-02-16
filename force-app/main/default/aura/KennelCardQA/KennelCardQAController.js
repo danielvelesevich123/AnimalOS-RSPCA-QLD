@@ -5,6 +5,6 @@
     },
     handleDownloadPDFClick: function (cmp, event, helper) {
         let fileName = cmp.get('v.record.Name') + ' Animal Profile Portfolio.pdf';
-        window.open('/apex/vertic_Content?proc=KennelCardQA&fileName=' + fileName + '&renderAs=pdf&id=' + cmp.get('v.recordId'), '_blank')
+        window.open('/apex/aos_Content?proc=KennelCardQA&fileName=' + fileName + '&renderAs=pdf&id=' + cmp.get('v.recordId'), '_blank')
     }
 });

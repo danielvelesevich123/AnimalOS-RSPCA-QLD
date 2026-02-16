@@ -3,7 +3,7 @@
            standardStylesheets="false"
            applyBodyTag="false"
            applyHtmlTag="false"
-           controller="vertic_ContentCtrl"
+           controller="aos_ContentCtrl"
            language="en_AU"
            renderAs="{!renderAsForBody}"
            action="{!onInit}">

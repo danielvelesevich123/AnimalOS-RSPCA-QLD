@@ -1,13 +1,12 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
-import {api, LightningElement, wire} from 'lwc';
+import {api, LightningElement} from 'lwc';
 import * as constants from 'c/constants';
 
 export default class RspcaqldImageGenerator extends LightningElement {
     @api className;
     @api imageUrl;
     imageKey;
-    @wire(getImage, {contentKey: '$imageKey'}) imageContentURL;
-    @wire(getImage, {contentKey: '$iconKey'}) iconImageContentURL;
+    imageContentURL = { data: null };
+    iconImageContentURL = { data: null };
     @api iconKey;
     @api iconImageUrl;
     @api isVideoOpen = false;
@@ -16,25 +15,11 @@ export default class RspcaqldImageGenerator extends LightningElement {
     closeWhite = constants.closeWhite;
 
     get image() {
-        if (this.imageUrl) {
-            if (!this.imageUrl.includes('http') && !this.imageUrl.includes('jpeg') && !this.imageUrl.includes('jpg') && !this.imageUrl.includes('png')) {
-                this.imageKey = this.imageUrl;
-                return this.imageContentURL.data;
-            } else {
-                return this.imageUrl;
-            }
-        }
-        return null;
+        return this.imageUrl || null;
     }
 
     get iconImage() {
-        if (this.iconImageUrl) {
-            return this.iconImageUrl;
-        } else if (this.iconKey) {
-            return this.iconImageContentURL.data;
-        } else {
-            return null;
-        }
+        return this.iconImageUrl || null;
     }
 
     get isIconKey() {

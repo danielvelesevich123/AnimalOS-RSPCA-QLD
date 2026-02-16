@@ -2,21 +2,21 @@
 
                 implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName">
 
-    <aura:attribute type="Map" access="private" name="badgesVM"/>
+<!--    <aura:attribute type="Map" access="private" name="badgesVM"/>-->
 
-    <lightning:notificationsLibrary aura:id="notifLib"/>
+<!--    <lightning:notificationsLibrary aura:id="notifLib"/>-->
 
-    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
-    <aura:handler event="force:refreshView" action="{!c.handleInit}"/>
+<!--    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>-->
+<!--    <aura:handler event="force:refreshView" action="{!c.handleInit}"/>-->
 
-    <c:Utils context="{!this}"/>
+<!--    <c:Utils context="{!this}"/>-->
 
-    <div>
-        <c:Badges badges="{!v.badgesVM.badges}">
-            <aura:set attribute="dynamicBadges">
-                <c:DynamicBadges recordId="{!v.recordId}" sObjectName="{!v.sObjectName}"/>
-            </aura:set>
-        </c:Badges>
-    </div>
+<!--    <div>-->
+<!--        <c:Badges badges="{!v.badgesVM.badges}">-->
+<!--            <aura:set attribute="dynamicBadges">-->
+<!--                <c:DynamicBadges recordId="{!v.recordId}" sObjectName="{!v.sObjectName}"/>-->
+<!--            </aura:set>-->
+<!--        </c:Badges>-->
+<!--    </div>-->
 
 </aura:component>

@@ -4,8 +4,6 @@
            applyBodyTag="false"
            applyHtmlTag="false"
            language="en_AU"
-           controller="vertic_MetadataCtrl"
-           action="{!onInit}"
            title="Donate"
 >
     <html lang="en-AU">
@@ -23,11 +21,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
     </head>
     <body class="slds-scope" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <c:vertic_App dependency="'ngSanitize', 'ngMask'" exclude="jQuery, bootstrap.css">
-        <donate vm="{!response.JSON}"></donate>
-    </c:vertic_App>
+<!--    <c:vertic_App dependency="'ngSanitize', 'ngMask'" exclude="jQuery, bootstrap.css">-->
+<!--        <donate vm="{!response.JSON}"></donate>-->
+<!--    </c:vertic_App>-->
 
-    <c:Donate />
+<!--    <c:Donate />-->
     </body>
     </html>
 

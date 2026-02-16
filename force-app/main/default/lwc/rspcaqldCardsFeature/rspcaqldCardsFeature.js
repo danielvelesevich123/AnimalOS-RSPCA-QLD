@@ -1,11 +1,10 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
-import {api, wire, LightningElement} from 'lwc';
+import {api, LightningElement} from 'lwc';
 import {NavigationMixin} from "lightning/navigation";
 
 
 export default class RspcaqldCardsFeature extends NavigationMixin(LightningElement) {
     @api iconName;
-    @wire(getImage, {contentKey: '$iconName'}) iconURL;
+    iconURL = { data: null };
     @api header;
     @api description;
     @api withBackground = false;

@@ -1,7 +1,5 @@
-import getReport from '@salesforce/apex/ManagedContentService.getReportByContentKey';
 import {LightningElement, wire} from 'lwc';
-import {MessageContext, publish} from 'lightning/messageService';
-import breadcrumbs from '@salesforce/messageChannel/Breadcrumbs__c';
+import {MessageContext} from 'lightning/messageService';
 import {CurrentPageReference} from "lightning/navigation";
 import * as constants from 'c/constants';
 
@@ -18,17 +16,10 @@ export default class RspcaqldPageOurImpactSingle extends LightningElement {
     getContentKey(currentPageReference) {
         if (currentPageReference) {
             this.contentKey = currentPageReference.attributes?.contentKey;
+            this.report = [];
         }
     }
 
-    @wire(getReport, {contentKey: '$contentKey'})
-    wiredReport({ error, data }) {
-        if (data) {
-            this.report = data;
-            publish(this.messageContext, breadcrumbs,
-                {parents: [{label: 'About us', url: '/about-us'}, {label: 'Our Impact', url: '/about-us/our-impact'}], current: this.report ? this.report.title : ''});
-        }
-    };
 
     get facebookShareLink() {
         return 'https://www.facebook.com/sharer/sharer.php?u=' + window.location.href;

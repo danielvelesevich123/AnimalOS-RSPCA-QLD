@@ -1,5 +1,3 @@
-import getManagedContent from '@salesforce/apex/ManagedContentService.getManagedContentByContentKey';
-import getLastKeys from '@salesforce/apex/ManagedContentService.getLastKeysByType';
 import {LightningElement, wire, api} from 'lwc';
 import {CurrentPageReference, NavigationMixin} from 'lightning/navigation';
 import PAGE_FILES from "@salesforce/contentAssetUrl/PortalImageszip";
@@ -57,6 +55,9 @@ export default class RspcaqldPageArticle extends NavigationMixin(LightningElemen
         if (currentPageReference) {
             if (currentPageReference.attributes?.contentKey) {
                 this.contentKey = currentPageReference.attributes?.contentKey;
+                this.article = {};
+                this.author = {};
+                this.isActive = true;
             } else {
                 let urlAlias = currentPageReference?.attributes.urlAlias;
                 if (urlAlias && urlAlias != ':urlAlias') {
@@ -65,44 +66,6 @@ export default class RspcaqldPageArticle extends NavigationMixin(LightningElemen
             }
         }
     }
-
-    @wire(getManagedContent, {contentKey: '$contentKey'})
-    wiredArticle({ error, data }) {
-        if (data) {
-            this.article = data.content;
-            this.author = data.author;
-
-            if (!this.article || !this.article.title) {
-                this[NavigationMixin.Navigate]({
-                    type: 'standard__webPage',
-                    attributes: {
-                        url: '/error'
-                    },
-                });
-            } else {
-                this.isActive = true;
-            }
-
-            publish(this.messageContext, breadcrumbs,
-                {parents: [{label: this.article.typeLabel == 'News' ? 'About Us' : 'Resources', url: this.article.typeLabel == 'News' ? 'about-us' : '/resources'}, {label: (this.article.typeLabel + (this.article.typeLabel == 'News' ? '' : ' Blog')), url: ('/' + (this.article.type == 'portal_news' ? 'about-us/news' : 'resources/' + this.article.type.replaceAll('_', '-')))}], current: this.article.title});
-
-            getLastKeys({contentType: this.article.type, contentKey: this.article.key})
-                .then(result => {
-                    this.relatedArticles = result;
-                })
-                .catch(error => {
-                    console.log(error);
-                })
-        }
-        if (error) {
-            this[NavigationMixin.Navigate]({
-                type: 'standard__webPage',
-                attributes: {
-                    url: '/error'
-                },
-            });
-        }
-    };
 
     @wire(MessageContext)
     messageContext;

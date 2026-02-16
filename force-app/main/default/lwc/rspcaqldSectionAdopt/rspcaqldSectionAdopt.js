@@ -1,4 +1,3 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
 import {api, LightningElement, wire} from 'lwc';
 
 export default class RspcaqldSectionAdopt extends LightningElement {
@@ -9,8 +8,7 @@ export default class RspcaqldSectionAdopt extends LightningElement {
     @api imageUrl;
     @api imageKey;
     @api disableBorderCurvatures = false;
-    @wire(getImage, {contentKey: '$imageKey'}) imageContentURL;
-
+    imageContentURL = { data: [] };
     get mainClass() {
         return 'page-pet-adopt' + (this.customClass ? ' action-header-navigation-block ' + this.customClass : '') + (this.disableBorderCurvatures ? ' disable-border-curvatures' : '');
     }

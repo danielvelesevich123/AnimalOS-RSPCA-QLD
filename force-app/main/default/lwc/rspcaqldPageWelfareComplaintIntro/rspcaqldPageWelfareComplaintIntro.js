@@ -1,7 +1,5 @@
 import {api, LightningElement, wire} from 'lwc';
 import * as constants from 'c/constants';
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
-
 export default class RspcaqldPageWelfareComplaintIntro extends LightningElement {
     @api header;
     @api headerHeight;
@@ -13,7 +11,7 @@ export default class RspcaqldPageWelfareComplaintIntro extends LightningElement 
     @api imageKey;
     @api imageHeight;
     @api pawPrintLabel;
-    @wire(getImage, {contentKey: '$imageKey'}) imageContentURL;
+    imageContentURL = { data: [] };
     arrowRightWhite = constants.arrowRightWhite;
 
     get isHeader() {return this.header ? true : false;}

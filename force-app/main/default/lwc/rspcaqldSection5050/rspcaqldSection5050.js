@@ -1,4 +1,3 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
 import {api, LightningElement, wire} from 'lwc';
 import headerAction from '@salesforce/messageChannel/HeaderAction__c';
 import {MessageContext, publish} from "lightning/messageService";
@@ -13,7 +12,7 @@ export default class RspcaqldSection5050 extends LightningElement {
     @api imageClass;
     @api imageUrl;
     @api imageKey;
-    @wire(getImage, {contentKey: '$imageKey'}) imageContentURL;
+    imageContentURL = { data: [] };
     @api videoUrl;
     @api subHeader;
     @api header;
@@ -28,9 +27,7 @@ export default class RspcaqldSection5050 extends LightningElement {
     @api customClass;
     arrowRightWhite = constants.arrowRightWhite;
 
-    @wire(MessageContext)
-    messageContext;
-
+    messageContext = { data: [] };
     get mainClass() {
         return 'section-5050' + (this.customClass ? ' action-header-navigation-block ' + this.customClass : '');
     }

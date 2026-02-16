@@ -1,4 +1,3 @@
-import getArticles from '@salesforce/apex/ManagedContentService.getContentByMixedKeys';
 import {api, LightningElement, wire} from 'lwc';
 
 export default class RspcaqldSectionFeaturedArticlesScroll extends LightningElement {
@@ -8,8 +7,7 @@ export default class RspcaqldSectionFeaturedArticlesScroll extends LightningElem
     @api cmsKeys = '';
     @api locationIds = [];
     @api eventIds = [];
-    @wire(getArticles, {keysString: '$contentKeys'}) articles;
-
+    articles = { data: [] };
     get mainClass() {
         return 'page-home-articles medium-width' + (this.customClass ? ' action-header-navigation-block ' + this.customClass : '');
     }

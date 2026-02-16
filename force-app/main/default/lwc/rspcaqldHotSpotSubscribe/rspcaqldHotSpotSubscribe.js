@@ -1,7 +1,5 @@
-import doSubscribe from '@salesforce/apex/rspcaqldSubscribe.doSubscribe';
-import {api, LightningElement, wire} from 'lwc';
+import {api, LightningElement} from 'lwc';
 import {NavigationMixin} from "lightning/navigation";
-import getPortalSetting from '@salesforce/apex/rspcaqldUtils.getPortalSetting';
 import * as constants from 'c/constants';
 
 export default class RspcaqldSectionSubscribe extends NavigationMixin(LightningElement) {
@@ -15,17 +13,6 @@ export default class RspcaqldSectionSubscribe extends NavigationMixin(LightningE
     @api thankYouMessage;
     isSubmitting = false;
     isSubmitted = false;
-
-    @wire(getPortalSetting, {customMetadataName: '$customMetadata'}) wiredPortalSetting ({ error, data }) {
-        if (data) {
-            this.portalSetting = data;
-            if (!this.header) this.header = this.portalSetting.Hotspot_Email_Subscribe_Header_Text__c;
-            if (!this.tcAndPP) this.tcAndPP = this.portalSetting.Hotspot_Email_Subscribe_T_C_and_PP__c;
-            if (!this.subscribeButton) this.subscribeButton = this.portalSetting.Hotspot_Email_Subscribe_Button_Text__c;
-            if (!this.thankYouMessage) this.thankYouMessage = this.portalSetting.Hotspot_Email_Subscribe_Thank_You__c;
-        }
-        if (error) {}
-    }
 
     get submittedClass() {
         return 'subscribe-submit' + (this.isSubmitted ? ' active' : '');
@@ -55,17 +42,9 @@ export default class RspcaqldSectionSubscribe extends NavigationMixin(LightningE
         let emailValid = this.validateEmail();
 
         if (this.firstName && this.lastName && this.email && emailValid) {
-            this.isSubmitting = true;
-            doSubscribe({ firstName: this.firstName, lastName: this.lastName, email: this.email})
-                .then(result => {
-                    this.isSubmitting = false;
-                    this.isSubmitted = true;
-                    setTimeout(() => this.refresh(), 3000);
-                })
-                .catch(error => {
-                    this.isSubmitting = false;
-                    console.log(error);
-                })
+            this.isSubmitting = false;
+            this.isSubmitted = true;
+            setTimeout(() => this.refresh(), 3000);
         }
     }
 

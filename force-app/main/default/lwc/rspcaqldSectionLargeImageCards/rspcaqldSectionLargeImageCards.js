@@ -1,4 +1,3 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
 import {api, LightningElement, wire} from 'lwc';
 
 export default class RspcaqldSectionLargeImageCards extends LightningElement {
@@ -6,14 +5,14 @@ export default class RspcaqldSectionLargeImageCards extends LightningElement {
     @api cardPosition = 'Vertical';
     @api imageOne;
     imageOneKey;
-    @wire(getImage, {contentKey: '$imageOneKey'}) imageOneContentURL;
+    imageOneContentURL = { data: [] };
     @api headerOne;
     @api descOne;
     @api linkLabelOne;
     @api linkUrlOne;
     @api imageTwo;
     imageTwoKey;
-    @wire(getImage, {contentKey: '$imageTwoKey'}) imageTwoContentURL;
+    imageTwoContentURL = { data: [] };
     @api headerTwo;
     @api descTwo;
     @api linkLabelTwo;

@@ -1,4 +1,4 @@
-import executeApex from '@salesforce/apex/vertic_CommonCtrl.execute';
+import executeApex from '@salesforce/apex/aos_CommonCtrl.execute';
 import {ShowToastEvent} from 'lightning/platformShowToastEvent';
 import FORM_FACTOR from "@salesforce/client/formFactor";
 

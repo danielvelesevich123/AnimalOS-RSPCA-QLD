@@ -1,4 +1,4 @@
-<aura:component description="WildlifeAnimalIntakeQANewAnimalModal" controller="vertic_CommonCtrl" extends="c:vertic_Modal">
+<aura:component description="WildlifeAnimalIntakeQANewAnimalModal" controller="aos_CommonCtrl" extends="c:vertic_Modal">
 
     <aura:attribute name="selectOptions" type="Map" access="public" default="{}"/>
     <aura:attribute name="dependentOptions" type="Map" access="public" default="{}"/>
@@ -35,7 +35,7 @@
         />
     </aura:set>
 
-    <c:vertic_Utils context="{!this}"/>
+    <c:aos_Utils context="{!this}"/>
     <c:vertic_ModalService aura:id="modalService"/>
 
     <aura:handler name="change" value="{!v.existingAnimalId}" action="{!c.handleExistingAnimalIdChange}"/>

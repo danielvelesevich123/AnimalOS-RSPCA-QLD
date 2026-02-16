@@ -1,6 +1,4 @@
 import {LightningElement, wire} from 'lwc';
-import getPicklistValues from '@salesforce/apex/rspcaqldUtils.getPicklistValues';
-import getEvents from '@salesforce/apex/rspcaqldCampaignService.getPortalActiveCampaigns';
 import * as constants from 'c/constants';
 
 export default class RspcaqldSectionEvents extends LightningElement {
@@ -16,9 +14,8 @@ export default class RspcaqldSectionEvents extends LightningElement {
 
     closeDark = constants.closeDark;
 
-    @wire(getPicklistValues, {fieldName: 'Campaign.Event_Category__c'}) eventCategoryOptions;
-    @wire(getEvents) events;
-
+    eventCategoryOptions = { data: [] };
+    events = { data: [] };
     orderOptions = [
         { label: 'date', value: 'date' },
         { label: 'name', value: 'name' }

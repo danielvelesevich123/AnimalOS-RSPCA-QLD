@@ -1,4 +1,3 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
 import {api, LightningElement, wire} from 'lwc';
 import * as constants from 'c/constants';
 
@@ -11,9 +10,9 @@ export default class RspcaqldSectionDonate extends LightningElement {
     @api header;
     @api description;
     @api icon;
-    @wire(getImage, {contentKey: '$icon'}) iconURL;
+    iconURL = { data: [] };
     @api pawPrintLabel;
-    @wire(getImage, {contentKey: '$imageKey'}) imageContentURL;
+    imageContentURL = { data: [] };
     @api underHeaderText;
     @api underHeaderInformationString;
 

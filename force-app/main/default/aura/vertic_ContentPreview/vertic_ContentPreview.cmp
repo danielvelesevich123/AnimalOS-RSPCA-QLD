@@ -28,6 +28,6 @@
     <aura:method name="getContent" action="{!c.handleGetContent}"></aura:method>
     <aura:method name="getHtmlContent" action="{!c.handleGetHtmlContent}"></aura:method>
 
-    <iframe src="{!'/apex/vertic_content?' + v.paramsString}" style="border: 0" width="{!v.iFrameWidth}" height="{!v.iFrameHeight}"/>
+    <iframe src="{!'/apex/aos_content?' + v.paramsString}" style="border: 0" width="{!v.iFrameWidth}" height="{!v.iFrameHeight}"/>
 
 </aura:component>

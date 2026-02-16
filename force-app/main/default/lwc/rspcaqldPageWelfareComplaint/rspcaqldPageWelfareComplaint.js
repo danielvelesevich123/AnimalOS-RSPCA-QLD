@@ -1,10 +1,6 @@
 import {api, LightningElement, track, wire} from 'lwc';
 import * as constants from 'c/constants';
-import getPicklistValues from '@salesforce/apex/rspcaqldUtils.getPicklistValues';
 import {NavigationMixin} from "lightning/navigation";
-import doSubmit from '@salesforce/apex/rspcaqldPageWelfareComplaintCtrl.doSubmit';
-import deleteDocument from '@salesforce/apex/rspcaqldUtils.deleteDocument';
-
 export default class RspcaqldPageWelfareComplaint extends NavigationMixin(LightningElement) {
     @api header;
     @api headerHeight;
@@ -40,10 +36,9 @@ export default class RspcaqldPageWelfareComplaint extends NavigationMixin(Lightn
     picklistRequiredFields = ['poiagedeclaration', 'locationstate'];
     inputRequiredFields = ['firstname','lastname','locationstreet','locationcity','directions','observations','animaldescription','animalsnumber'];
 
-    @wire(getPicklistValues, {fieldName: 'Welfare_Report__c.POI_Age_Declaration__c'}) poiAgeDeclarations;
-    @wire(getPicklistValues, {fieldName: 'Welfare_Report__c.Relationship_to_POI__c'}) personInterestOptions;
-    @wire(getPicklistValues, {fieldName: 'Welfare_Report__c.POI_State__c'}) locationStates;
-
+    poiAgeDeclarations = { data: [] };
+    personInterestOptions = { data: [] };
+    locationStates = { data: [] };
     @track contact = {
         title: '',
         firstName: '',

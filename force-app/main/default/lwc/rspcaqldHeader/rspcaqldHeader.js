@@ -1,4 +1,3 @@
-import getArticles from '@salesforce/apex/ManagedContentService.getManagedContentByContentKeys';
 import {api, wire, LightningElement} from 'lwc';
 import * as constants from 'c/constants';
 import {
@@ -22,7 +21,7 @@ export default class RspcaqldHeader extends NavigationMixin(LightningElement) {
     @api adoptLocationUrl;
     @api adoptArticlesHeader;
     @api adoptArticlesKeys;
-    @wire(getArticles, {contentKeysString: '$adoptArticlesKeys'}) adoptArticles;
+    adoptArticles = { data: [] };
     @api getInvolvedHeader;
     @api getInvolvedDescription;
     @api getInvolvedHeaderLinkLabel;
@@ -31,7 +30,7 @@ export default class RspcaqldHeader extends NavigationMixin(LightningElement) {
     @api getInvolvedRightColumnLinksString;
     @api getInvolvedArticlesHeader;
     @api getInvolvedArticlesKeys;
-    @wire(getArticles, {contentKeysString: '$getInvolvedArticlesKeys'}) getInvolvedArticles;
+    getInvolvedArticles = { data: [] };
     @api servicesHeader;
     @api servicesDescription;
     @api servicesHeaderLinkLabel;
@@ -40,7 +39,7 @@ export default class RspcaqldHeader extends NavigationMixin(LightningElement) {
     @api servicesRightColumnLinksString;
     @api servicesArticlesHeader;
     @api servicesArticlesKeys;
-    @wire(getArticles, {contentKeysString: '$servicesArticlesKeys'}) servicesArticles;
+    servicesArticles = { data: [] };
     @api resourcesHeader;
     @api resourcesDescription;
     @api resourcesHeaderLinkLabel;
@@ -49,7 +48,7 @@ export default class RspcaqldHeader extends NavigationMixin(LightningElement) {
     @api resourcesRightColumnLinksString;
     @api resourcesArticlesHeader;
     @api resourcesArticlesKeys;
-    @wire(getArticles, {contentKeysString: '$resourcesArticlesKeys'}) resourcesArticles;
+    resourcesArticles = { data: [] };
     @api aboutHeader;
     @api aboutDescription;
     @api aboutHeaderLinkLabel;
@@ -63,8 +62,7 @@ export default class RspcaqldHeader extends NavigationMixin(LightningElement) {
     @api searchQuickLinksString;
     @api notificationMessage;
     @api alertMessage;
-    @wire(getArticles, {contentKeysString: '$aboutArticlesKeys'}) aboutArticles;
-
+    aboutArticles = { data: [] };
     @api urgentReportCardIcon;
     @api urgentReportCardHeader;
     @api urgentReportCardDescription;
@@ -104,9 +102,7 @@ export default class RspcaqldHeader extends NavigationMixin(LightningElement) {
     closeWhite = constants.closeWhite;
     arrowRightBlue = constants.arrowRightBlue;
 
-    @wire(MessageContext)
-    messageContext;
-
+    messageContext = { data: [] };
     @wire(CurrentPageReference)
     wiredCurrentPageReference(currentPageReference) {
         this.parents = null;

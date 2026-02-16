@@ -1,5 +1,3 @@
-import getPosition from '@salesforce/apex/ManagedContentService.getPositionByContentKey';
-import getPositions from '@salesforce/apex/ManagedContentService.getPositionsByContentType';
 import {LightningElement, wire} from 'lwc';
 import {MessageContext, publish} from 'lightning/messageService';
 import breadcrumbs from '@salesforce/messageChannel/Breadcrumbs__c';
@@ -12,9 +10,7 @@ export default class RspcaqldPageOurImpactSingle extends LightningElement {
 
     arrowRightWhite = constants.arrowRightWhite;
 
-    @wire(MessageContext)
-    messageContext;
-
+    messageContext = { data: [] };
     @wire(CurrentPageReference)
     getContentKey(currentPageReference) {
         if (currentPageReference) {
@@ -22,17 +18,7 @@ export default class RspcaqldPageOurImpactSingle extends LightningElement {
         }
     }
 
-    @wire(getPosition, {contentKey: '$contentKey'})
-    wiredPosition({ error, data }) {
-        if (data) {
-            this.position = data;
-            publish(this.messageContext, breadcrumbs,
-                {parents: [{label: 'About us', url: '/about-us'}, {label: 'Careers', url: '/about-us/careers'}], current: this.position ? this.position.title : ''});
-        }
-    };
-
-    @wire(getPositions) allPositions;
-
+    allPositions = { data: [] };
     get postedLine() {
         return 'Posted' + (this.position.formatPublishedDate ? ' on ' + this.position.formatPublishedDate : '')
                         + (this.position.category ? ' in ' + this.position.category : '')

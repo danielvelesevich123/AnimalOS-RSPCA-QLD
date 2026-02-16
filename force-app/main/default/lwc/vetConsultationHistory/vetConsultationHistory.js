@@ -16,64 +16,64 @@ export default class VetConsultationHistory extends LightningElement {
     @track loading = true;
     @track allExpanded = false;
 
-    // First, determine what type of record this is by checking the object API name
-    @wire(getRecord, { 
-        recordId: '$recordId', 
-        fields: [ANIMAL_NAME_FIELD] // Start with Animal fields only
-    })
-    wiredInitialRecord({ error, data }) {
-        if (data) {
-            if (data.apiName === 'animalos__Animal__c') {
-                // This is an Animal record
-                this.recordType = 'Animal';
-                this.animalId = this.recordId;
-                this.animalName = getFieldValue(data, ANIMAL_NAME_FIELD);
-                this.currentVetConsultId = '';
-                this.loadVetConsults();
-            }
-            // If it's not an Animal, we'll handle it in the Vet Consult wire
-        } else if (error) {
-            // Might be a Vet Consult record, try the other wire
-            this.error = null; // Clear error for now
-        }
-    }
+    // // First, determine what type of record this is by checking the object API name
+    // @wire(getRecord, {
+    //     recordId: '$recordId',
+    //     fields: [ANIMAL_NAME_FIELD] // Start with Animal fields only
+    // })
+    // wiredInitialRecord({ error, data }) {
+    //     if (data) {
+    //         if (data.apiName === 'animalos__Animal__c') {
+    //             // This is an Animal record
+    //             this.recordType = 'Animal';
+    //             this.animalId = this.recordId;
+    //             this.animalName = getFieldValue(data, ANIMAL_NAME_FIELD);
+    //             this.currentVetConsultId = '';
+    //             this.loadVetConsults();
+    //         }
+    //         // If it's not an Animal, we'll handle it in the Vet Consult wire
+    //     } else if (error) {
+    //         // Might be a Vet Consult record, try the other wire
+    //         this.error = null; // Clear error for now
+    //     }
+    // }
 
     // Wire for Vet Consult records (only runs if not already identified as Animal)
-    @wire(getRecord, { 
-        recordId: '$recordId', 
-        fields: [VET_CONSULT_ANIMAL_FIELD, VET_CONSULT_NAME_FIELD]
-    })
-    wiredVetConsultRecord({ error, data }) {
-        if (data && this.recordType === 'unknown') {
-            if (data.apiName === 'animalos__Vet_Consult__c') {
-                // This is a Vet Consult record
-                this.recordType = 'VetConsult';
-                this.animalId = getFieldValue(data, VET_CONSULT_ANIMAL_FIELD);
-                this.currentVetConsultId = this.recordId;
-                this.animalName = 'Loading...'; // Will be set by animal wire
-                // Don't load vet consults yet, wait for animal name
-            }
-        } else if (error && this.recordType === 'unknown') {
-            this.error = 'Error loading record data: ' + JSON.stringify(error);
-            this.loading = false;
-        }
-    }
-
-    // Wire to get animal name when we have an animal ID from vet consult
-    @wire(getRecord, { 
-        recordId: '$animalId', 
-        fields: [ANIMAL_NAME_FIELD]
-    })
-    wiredAnimal({ error, data }) {
-        if (data && this.recordType === 'VetConsult') {
-            this.animalName = getFieldValue(data, ANIMAL_NAME_FIELD);
-            this.loadVetConsults(); // Now load the vet consults
-        } else if (error && this.recordType === 'VetConsult') {
-            console.error('Error getting animal name:', error);
-            this.animalName = 'Unknown Animal';
-            this.loadVetConsults(); // Try to load anyway
-        }
-    }
+    // @wire(getRecord, {
+    //     recordId: '$recordId',
+    //     fields: [VET_CONSULT_ANIMAL_FIELD, VET_CONSULT_NAME_FIELD]
+    // })
+    // wiredVetConsultRecord({ error, data }) {
+    //     if (data && this.recordType === 'unknown') {
+    //         if (data.apiName === 'animalos__Vet_Consult__c') {
+    //             // This is a Vet Consult record
+    //             this.recordType = 'VetConsult';
+    //             this.animalId = getFieldValue(data, VET_CONSULT_ANIMAL_FIELD);
+    //             this.currentVetConsultId = this.recordId;
+    //             this.animalName = 'Loading...'; // Will be set by animal wire
+    //             // Don't load vet consults yet, wait for animal name
+    //         }
+    //     } else if (error && this.recordType === 'unknown') {
+    //         this.error = 'Error loading record data: ' + JSON.stringify(error);
+    //         this.loading = false;
+    //     }
+    // }
+    //
+    // // Wire to get animal name when we have an animal ID from vet consult
+    // @wire(getRecord, {
+    //     recordId: '$animalId',
+    //     fields: [ANIMAL_NAME_FIELD]
+    // })
+    // wiredAnimal({ error, data }) {
+    //     if (data && this.recordType === 'VetConsult') {
+    //         this.animalName = getFieldValue(data, ANIMAL_NAME_FIELD);
+    //         this.loadVetConsults(); // Now load the vet consults
+    //     } else if (error && this.recordType === 'VetConsult') {
+    //         console.error('Error getting animal name:', error);
+    //         this.animalName = 'Unknown Animal';
+    //         this.loadVetConsults(); // Try to load anyway
+    //     }
+    // }
 
     // Load vet consultation records for this animal
     async loadVetConsults() {

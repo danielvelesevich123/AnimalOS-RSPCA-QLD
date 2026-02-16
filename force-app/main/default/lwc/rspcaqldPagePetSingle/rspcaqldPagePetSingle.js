@@ -1,8 +1,6 @@
-import getAnimalById from '@salesforce/apex/rspcaqldAnimalService.getAnimalById';
 import {api, LightningElement, wire} from 'lwc';
 import PORTAL_RESOURCE from '@salesforce/resourceUrl/PortalResource';
-import {MessageContext, publish} from 'lightning/messageService';
-import breadcrumbs from '@salesforce/messageChannel/Breadcrumbs__c';
+import {MessageContext} from 'lightning/messageService';
 import * as constants from 'c/constants';
 import {CurrentPageReference, NavigationMixin} from "lightning/navigation";
 import ToastContainer from 'lightning/toastContainer';
@@ -48,27 +46,6 @@ export default class RspcaqldPagePetSingle extends NavigationMixin(LightningElem
 
     @wire(CurrentPageReference)
     pageReference({state}) {if (state && state.id) this.recordId = state.id;}
-    @wire(getAnimalById, {recordId: '$recordId'})
-    wiredAnimal({ error, data }) {
-        if (data) {
-            this.animal = data.record;
-            this.otherAnimals = data.otherAnimals;
-            this.privateImages = data.imagesUrls;
-            this.isSupplyID = data.isSupplyID;
-            this.initFaqs();
-
-            for (let i = 0; i < this.privateImages.length; i++) {
-                if (this.privateImages[i] === this.animal.Web_Hero_Image_URL__c) {
-                    this.selectedHeaderIndex = i;
-                    this.selectedHeaderImage = this.privateImages[i];
-                }
-            }
-
-            publish(this.messageContext, breadcrumbs,
-                {parents: [{label: 'Find a Pet', url: '/find-a-pet'}],
-                    current: this.animal.Animal_Name__c});
-        }
-    };
 
     recordId;
     animal = {};
@@ -178,8 +155,7 @@ export default class RspcaqldPagePetSingle extends NavigationMixin(LightningElem
 
     get multipleAnimalCategory() {return this.animal && this.animal.Animal_Category__c ? (this.animal.Animal_Category__c == 'Farmyard' ? 'farm animals' : this.animal.Animal_Category__c.toLowerCase() + 's') : ''};
 
-    @wire(MessageContext)
-    messageContext;
+    messageContext = { data: [] };
     connectedCallback() {
         const toastContainer = ToastContainer.instance();
         toastContainer.maxToasts = 1;

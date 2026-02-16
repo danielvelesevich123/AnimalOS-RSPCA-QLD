@@ -1,5 +1,5 @@
 <aura:component description="WildlifeAnimalIntakeFlowStep"
-                controller="vertic_CommonCtrl"
+                controller="aos_CommonCtrl"
                 implements="lightning:availableForFlowScreens"
                 access="global">
 
@@ -13,7 +13,7 @@
 
     <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
 
-    <c:vertic_Utils context="{!this}"/>
+    <c:aos_Utils context="{!this}"/>
     <lightning:notificationsLibrary aura:id="notifyLib"/>
 
     <aura:if isTrue="{!equals(v.currentStep, 'animals')}">

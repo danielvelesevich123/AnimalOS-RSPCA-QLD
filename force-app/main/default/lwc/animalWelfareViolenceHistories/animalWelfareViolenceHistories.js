@@ -17,7 +17,7 @@ export default class AnimalWelfareViolenceHistories extends LightningElement {
     refresh() {
         this.isBusy = true;
         this.contactId = this.jobContact?.animalos__Contact__r?.Id;
-        return execute('AnimalWelfareFindExistingRecords', {jobContact: this.jobContact, job: this.job})
+        return execute('aos_AnimalWelfareFindExistingRecords', {jobContact: this.jobContact, job: this.job})
             .then(response => {
                 this.locationId = response.dto.locationId;
                 this.jobLocationId = response.dto.jobLocationId;

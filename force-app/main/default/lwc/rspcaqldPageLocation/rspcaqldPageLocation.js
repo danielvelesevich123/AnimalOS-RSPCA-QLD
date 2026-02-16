@@ -1,5 +1,3 @@
-import getLocationAccount from '@salesforce/apex/rspcaqldAccountService.getLocationAccount';
-import getLocationAnimals from '@salesforce/apex/rspcaqldAnimalService.getLocationAnimals';
 import {api, LightningElement, wire} from 'lwc';
 import breadcrumbs from '@salesforce/messageChannel/Breadcrumbs__c';
 import {MessageContext, publish} from 'lightning/messageService';
@@ -35,27 +33,7 @@ export default class RspcaqldPageLocation extends LightningElement {
     @wire(CurrentPageReference)
     pageReference({state}) {if (state && state.id) this.recordId = state.id;}
 
-    @wire(getLocationAnimals, {recordId: '$recordId'}) otherDogs;
-
-    @wire(getLocationAccount, {recordId: '$recordId'})
-    wiredLocation({ error, data }) {
-        if (data) {
-            this.location = data;
-            this.privateImages = data.imagesUrls;
-
-            for (let i = 0; i < this.privateImages.length; i++) {
-                if (this.privateImages[i] === this.location.record.Location_Image__c) {
-                    this.selectedHeaderIndex = i;
-                    this.selectedHeaderImage = this.privateImages[i];
-                }
-            }
-
-            publish(this.messageContext, breadcrumbs,
-                {parents: [{label: 'RSPCA Locations', url: '/locations'}], current: this.location.record.Name});
-        }
-        if (error) {console.log(error);}
-    };
-
+    otherDogs = { data: [] };
     get images() {
         let _images = [];
         if (this.privateImages) {
@@ -78,9 +56,7 @@ export default class RspcaqldPageLocation extends LightningElement {
     get emailLink() {return this.location && this.location.record ? 'mailto:' + this.location.record.Email__c : '#';}
     get phoneLink() {return this.location && this.location.record ? 'tel:' + this.location.record.Phone : '#';}
 
-    @wire(MessageContext)
-    messageContext;
-
+    messageContext = { data: [] };
     connectedCallback() {}
 
     renderedCallback() {

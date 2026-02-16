@@ -1,4 +1,4 @@
-<aura:component description="BehaviourEvaluationSmallAnimalsQA" controller="vertic_CommonCtrl" implements="force:hasRecordId,force:lightningQuickActionWithoutHeader">
+<aura:component description="BehaviourEvaluationSmallAnimalsQA" controller="aos_CommonCtrl" implements="force:hasRecordId,force:lightningQuickActionWithoutHeader">
 
     <aura:attribute name="isBusy" type="Boolean" default="{!false}"/>
     <aura:attribute name="meta" type="Map" default="{}"/>
@@ -7,7 +7,7 @@
 
     <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
 
-    <c:vertic_Utils context="{!this}"/>
+    <c:aos_Utils context="{!this}"/>
     <lightning:notificationsLibrary aura:id="notifyLib"/>
 
     <c:vertic_QuickActionModal aura:id="modal"

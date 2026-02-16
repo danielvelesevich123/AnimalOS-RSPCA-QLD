@@ -1,7 +1,4 @@
-import getArticles from '@salesforce/apex/ManagedContentService.getContentByKeysAndTypes';
-import getDirectors from '@salesforce/apex/ManagedContentService.getAuthorByContentKeys';
-import getEvents from '@salesforce/apex/rspcaqldCampaignService.getPortalCampaignsByIdsString';
-import {api, LightningElement, wire} from 'lwc';
+import {api, LightningElement} from 'lwc';
 import * as constants from 'c/constants';
 import {publish} from "lightning/messageService";
 import {arrowRightDark} from "c/constants";
@@ -22,10 +19,10 @@ export default class RspcaqldSectionRelatedArticles extends LightningElement {
     @api contentString;
     @api contentTypeLink;
     @api contentTypes = '';
-    @wire(getArticles, {keysString: '$articlesString', contentTypesString: '$contentTypes'}) articles;
-    @wire(getDirectors, {contentKeysString: '$directorsString'}) wireDirectors;
+    articles = { data: [] };
+    wireDirectors = { data: [] };
     @api cards;
-    @wire(getEvents, {idsString: '$eventsString'}) events;
+    events = { data: [] };
     @api isShape = false;
     @api isWhite = false;
     @api isArray = false;

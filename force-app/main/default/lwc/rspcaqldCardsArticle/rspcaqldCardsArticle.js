@@ -1,5 +1,4 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
-import {api, LightningElement, wire} from 'lwc';
+import {api, LightningElement} from 'lwc';
 import * as constants from 'c/constants';
 
 export default class RspcaqldCardsArticle extends LightningElement {
@@ -13,11 +12,6 @@ export default class RspcaqldCardsArticle extends LightningElement {
     @api header;
     @api description;
     @api link;
-
-    @wire(getImage, {recordId: '$imageId'})
-    wiredImage({ error, data }) {
-        if (data) this.imageUrl = data;
-    };
 
     get mainClass() {
         return 'cards-article' + (this.isLarge ? ' large' : '');

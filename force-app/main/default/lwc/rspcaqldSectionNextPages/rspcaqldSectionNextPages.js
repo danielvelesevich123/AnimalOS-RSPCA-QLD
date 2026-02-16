@@ -1,4 +1,3 @@
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
 import {api, LightningElement, wire} from 'lwc';
 
 export default class RspcaqldSectionNextPages extends LightningElement {
@@ -13,8 +12,7 @@ export default class RspcaqldSectionNextPages extends LightningElement {
     @api backgroundColor;
     @api imageUrl;
     @api imageKey;
-    @wire(getImage, {contentKey: '$imageKey'}) imageContentURL;
-
+    imageContentURL = { data: [] };
     get mainClass() {
         return 'section-next-pages' + (this.customClass ? ' action-header-navigation-block ' + this.customClass : '') +
             (this.disableTopMargin ? ' disable-margin' : '');

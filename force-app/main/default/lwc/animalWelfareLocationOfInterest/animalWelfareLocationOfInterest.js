@@ -54,7 +54,7 @@ export default class AnimalWelfareLocationOfInterest extends LightningElement {
 
         this.isSearch = true;
         this.searchMessage = 'Searching by ' + this.searchBy + '...';
-        await execute('AnimalWelfareLOISearchProc', {
+        await execute('aos_AnimalWelfareLOISearchProc', {
             searchBy: this.searchBy,
             locationOfInterest: this.locationOfInterest
         })

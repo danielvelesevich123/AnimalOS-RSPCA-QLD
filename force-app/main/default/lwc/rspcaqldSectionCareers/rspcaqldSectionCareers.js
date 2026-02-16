@@ -1,4 +1,3 @@
-import getPositions from '@salesforce/apex/ManagedContentService.getPositionsByContentType';
 import {LightningElement, wire} from 'lwc';
 import {CurrentPageReference} from "lightning/navigation";
 import * as constants from 'c/constants';
@@ -24,12 +23,6 @@ export default class RspcaqldSectionCareers extends LightningElement {
 
 
     positions = [];
-    @wire(getPositions) wiredPositions({ error, data }) {
-        if (data) {
-            this.positions = data;
-            this.isLoaded = true;
-        }
-    };
 
     @wire(CurrentPageReference)
     pageReference({state}) {

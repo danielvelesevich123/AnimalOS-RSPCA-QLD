@@ -1,4 +1,4 @@
-<apex:component id="vertic_DocumentImage" controller="vertic_DocumentImageCtrl" layout="none">
+<apex:component id="vertic_DocumentImage" controller="aos_DocumentImageCtrl" layout="none">
 
     <apex:attribute name="documentUniqueName"
                     required="{!true}"

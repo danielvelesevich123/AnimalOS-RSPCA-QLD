@@ -1,8 +1,7 @@
-import {LightningElement, wire, api} from 'lwc';
-import getImage from '@salesforce/apex/ManagedContentService.getImageByContentKey';
+import {LightningElement, api} from 'lwc';
 
 export default class RspcaqldCmsImage extends LightningElement {
     @api className;
     @api imageKey;
-    @wire(getImage, {contentKey: '$imageKey'}) url;
+    url = { data: null };
 }

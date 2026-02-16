@@ -1,6 +1,4 @@
 import {LightningElement} from 'lwc';
-import getContent from '@salesforce/apex/rspcaqldUtils.getContentData';
-
 export default class RspcaqldFileUpload extends LightningElement {
     get acceptedFormats() {
         return ['.jpeg', '.jpg', '.png'];

@@ -192,7 +192,7 @@ export default class VerticPhoto extends BaseElement {
                         let date = year + '' + (month < 10 ? '0' + month : month) + '' + day;
 
                         this.execute(
-                            'vertic_HttpRequestProc',
+                            'aos_HttpRequestProc',
                             {
                                 method: 'PUT',
                                 endpoint: 'callout:OneDrive/drives/' + encodeURIComponent(this.meta.dto.driveId) + '/items/' + encodeURIComponent(this.meta.dto.oneDriveId),
