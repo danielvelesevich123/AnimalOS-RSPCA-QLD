@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Job_Safety_Classification__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Job Safety Classification</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Routine</fullName>
+                <default>false</default>
+                <label>Routine</label>
+            </value>
+            <value>
+                <fullName>Moderate Concern</fullName>
+                <default>false</default>
+                <label>Moderate Concern</label>
+            </value>
+            <value>
+                <fullName>High Vigilance</fullName>
+                <default>false</default>
+                <label>High Vigilance</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

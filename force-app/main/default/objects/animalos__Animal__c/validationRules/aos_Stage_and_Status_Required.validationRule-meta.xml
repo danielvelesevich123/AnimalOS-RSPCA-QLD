@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Stage_and_Status_Required</fullName>
+    <active>false</active>
+    <description>If Stage is not blank then Status cannot be blank</description>
+    <errorConditionFormula>AND(
+aos_Is_New__c,
+OR(
+ISBLANK( TEXT( animalos__Stage__c ) ) ,
+ISBLANK( TEXT( animalos__Status__c ) )))</errorConditionFormula>
+    <errorDisplayField>animalos__Status__c</errorDisplayField>
+    <errorMessage>Status cannot be blank</errorMessage>
+</ValidationRule>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Animal_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Animal Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Bird</fullName>
+                <default>false</default>
+                <label>Bird</label>
+            </value>
+            <value>
+                <fullName>Canine</fullName>
+                <default>false</default>
+                <label>Canine</label>
+            </value>
+            <value>
+                <fullName>Feline</fullName>
+                <default>false</default>
+                <label>Feline</label>
+            </value>
+            <value>
+                <fullName>Koala</fullName>
+                <default>false</default>
+                <label>Koala</label>
+            </value>
+            <value>
+                <fullName>Livestock</fullName>
+                <default>false</default>
+                <label>Livestock</label>
+            </value>
+            <value>
+                <fullName>Mammal</fullName>
+                <default>false</default>
+                <label>Mammal</label>
+            </value>
+            <value>
+                <fullName>Reptile</fullName>
+                <default>false</default>
+                <label>Reptile</label>
+            </value>
+            <value>
+                <fullName>Small Animal</fullName>
+                <default>false</default>
+                <label>Small Animal</label>
+            </value>
+            <value>
+                <fullName>Wildlife</fullName>
+                <default>false</default>
+                <label>Wildlife</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

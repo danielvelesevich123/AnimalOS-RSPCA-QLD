@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Animal_Name_Format</fullName>
+    <active>false</active>
+    <description>Only allow letters and numbers in Animal Name for new records</description>
+    <errorConditionFormula>OR(
+AND(
+ISNEW(),
+NOT(REGEX(animalos__Animal_Name__c, &quot;^[a-zA-Z0-9 ]*$&quot;))
+),
+AND(
+NOT(ISNEW()),
+ISCHANGED(animalos__Animal_Name__c),
+NOT(REGEX(animalos__Animal_Name__c, &quot;^[a-zA-Z0-9 ]*$&quot;))
+)
+)</errorConditionFormula>
+    <errorMessage>Animal Name can only contain letters and numbers, no special characters</errorMessage>
+</ValidationRule>

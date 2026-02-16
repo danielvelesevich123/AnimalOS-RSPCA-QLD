@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_How_has_this_animal_been_managed_in__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>What rehab has been attempted, what’s the current management plan and routine, animal’s preferences</inlineHelpText>
+    <label>How has this animal been managed in care</label>
+    <length>255</length>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

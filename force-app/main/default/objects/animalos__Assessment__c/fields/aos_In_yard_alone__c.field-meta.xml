@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_In_yard_alone__c</fullName>
+    <label>In yard alone</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Rests/watches with relaxed body</fullName>
+                <default>false</default>
+                <label>Rests/watches with relaxed body</label>
+            </value>
+            <value>
+                <fullName>Explores/engages with enrichment</fullName>
+                <default>false</default>
+                <label>Explores/engages with enrichment</label>
+            </value>
+            <value>
+                <fullName>Whines/cries</fullName>
+                <default>false</default>
+                <label>Whines/cries</label>
+            </value>
+            <value>
+                <fullName>Always alert/vocalising</fullName>
+                <default>false</default>
+                <label>Always alert/vocalising</label>
+            </value>
+            <value>
+                <fullName>Pacing/panting</fullName>
+                <default>false</default>
+                <label>Pacing/panting</label>
+            </value>
+            <value>
+                <fullName>Searches for exits/scratches or digs at perimeter/jumps at fence</fullName>
+                <default>false</default>
+                <label>Searches for exits/scratches or digs at perimeter/jumps at fence</label>
+            </value>
+            <value>
+                <fullName>Hides/avoids</fullName>
+                <default>false</default>
+                <label>Hides/avoids</label>
+            </value>
+            <value>
+                <fullName>Wire biting, circling, running fence line</fullName>
+                <default>false</default>
+                <label>Wire biting, circling, running fence line</label>
+            </value>
+            <value>
+                <fullName>Escape</fullName>
+                <default>false</default>
+                <label>Escape</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

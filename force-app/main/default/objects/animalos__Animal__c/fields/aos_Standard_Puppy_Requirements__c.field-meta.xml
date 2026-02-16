@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Standard_Puppy_Requirements__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>Check this box for Animals that don’t have specific requirements.</inlineHelpText>
+    <label>Standard Puppy Requirements</label>
+    <securityClassification>System</securityClassification>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

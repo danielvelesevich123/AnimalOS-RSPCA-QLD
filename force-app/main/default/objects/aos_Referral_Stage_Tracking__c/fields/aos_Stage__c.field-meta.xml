@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Stage__c</fullName>
+    <label>Stage</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Not Started</fullName>
+                <default>false</default>
+                <label>Not Started</label>
+            </value>
+            <value>
+                <fullName>Pending</fullName>
+                <default>false</default>
+                <label>Pending</label>
+            </value>
+            <value>
+                <fullName>New</fullName>
+                <default>false</default>
+                <label>New</label>
+            </value>
+            <value>
+                <fullName>In Progress</fullName>
+                <default>false</default>
+                <label>In Progress</label>
+            </value>
+            <value>
+                <fullName>Initial Review</fullName>
+                <default>false</default>
+                <label>Initial Review</label>
+            </value>
+            <value>
+                <fullName>Reserved</fullName>
+                <default>false</default>
+                <label>Reserved</label>
+            </value>
+            <value>
+                <fullName>Home Inspection</fullName>
+                <default>false</default>
+                <label>Home Inspection</label>
+            </value>
+            <value>
+                <fullName>Veterinary Check</fullName>
+                <default>false</default>
+                <label>Veterinary Check</label>
+            </value>
+            <value>
+                <fullName>Declined</fullName>
+                <default>false</default>
+                <label>Declined</label>
+            </value>
+            <value>
+                <fullName>Trial Period</fullName>
+                <default>false</default>
+                <label>Trial Period</label>
+            </value>
+            <value>
+                <fullName>Trial Unsuccessful</fullName>
+                <default>false</default>
+                <label>Trial Unsuccessful</label>
+            </value>
+            <value>
+                <fullName>Adopted Awaiting Pickup</fullName>
+                <default>false</default>
+                <label>Adopted Awaiting Pickup</label>
+            </value>
+            <value>
+                <fullName>Adopted</fullName>
+                <default>false</default>
+                <label>Adopted</label>
+            </value>
+            <value>
+                <fullName>Awaiting Client Input</fullName>
+                <default>false</default>
+                <label>Awaiting Client Input</label>
+            </value>
+            <value>
+                <fullName>Scheduled</fullName>
+                <default>false</default>
+                <label>Scheduled</label>
+            </value>
+            <value>
+                <fullName>In Review</fullName>
+                <default>false</default>
+                <label>In Review</label>
+            </value>
+            <value>
+                <fullName>Completed</fullName>
+                <default>false</default>
+                <label>Completed</label>
+            </value>
+            <value>
+                <fullName>Not Approved</fullName>
+                <default>false</default>
+                <label>Not Approved</label>
+            </value>
+            <value>
+                <fullName>Approved</fullName>
+                <default>false</default>
+                <label>Approved</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

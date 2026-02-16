@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Additional_Rescue_Information__c</fullName>
+    <label>Additional Rescue Information</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Animal Flighted</fullName>
+                <default>false</default>
+                <label>Animal Flighted</label>
+            </value>
+            <value>
+                <fullName>Animal at Height</fullName>
+                <default>false</default>
+                <label>Animal at Height</label>
+            </value>
+            <value>
+                <fullName>Animal In Water</fullName>
+                <default>false</default>
+                <label>Animal In Water</label>
+            </value>
+            <value>
+                <fullName>Animal Near High Speed Road</fullName>
+                <default>false</default>
+                <label>Animal Near High Speed Road</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

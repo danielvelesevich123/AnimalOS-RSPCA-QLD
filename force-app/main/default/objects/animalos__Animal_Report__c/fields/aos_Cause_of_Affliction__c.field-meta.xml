@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Cause_of_Affliction__c</fullName>
+    <label>Cause of Affliction</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Abandoned/Orphaned</fullName>
+                <default>false</default>
+                <label>Abandoned/Orphaned</label>
+            </value>
+            <value>
+                <fullName>Attacked by cat</fullName>
+                <default>false</default>
+                <label>Attacked by cat</label>
+            </value>
+            <value>
+                <fullName>Attacked by dog</fullName>
+                <default>false</default>
+                <label>Attacked by dog</label>
+            </value>
+            <value>
+                <fullName>Attacked by other</fullName>
+                <default>false</default>
+                <label>Attacked by other</label>
+            </value>
+            <value>
+                <fullName>Collision with other object</fullName>
+                <default>false</default>
+                <label>Collision with other object</label>
+            </value>
+            <value>
+                <fullName>Collision with vehicle</fullName>
+                <default>false</default>
+                <label>Collision with vehicle</label>
+            </value>
+            <value>
+                <fullName>Disease</fullName>
+                <default>false</default>
+                <label>Disease</label>
+            </value>
+            <value>
+                <fullName>Domestic/Captivity issue</fullName>
+                <default>false</default>
+                <label>Domestic/Captivity issue</label>
+            </value>
+            <value>
+                <fullName>Electrocution</fullName>
+                <default>false</default>
+                <label>Electrocution</label>
+            </value>
+            <value>
+                <fullName>Entangled/Trapped</fullName>
+                <default>false</default>
+                <label>Entangled/Trapped</label>
+            </value>
+            <value>
+                <fullName>Nuisance</fullName>
+                <default>false</default>
+                <label>Nuisance</label>
+            </value>
+            <value>
+                <fullName>Poisoned</fullName>
+                <default>false</default>
+                <label>Poisoned</label>
+            </value>
+            <value>
+                <fullName>Unsuitable environment</fullName>
+                <default>false</default>
+                <label>Unsuitable environment</label>
+            </value>
+            <value>
+                <fullName>Weather—Drought/heat</fullName>
+                <default>false</default>
+                <label>Weather—Drought/heat</label>
+            </value>
+            <value>
+                <fullName>Weather—Fire</fullName>
+                <default>false</default>
+                <label>Weather—Fire</label>
+            </value>
+            <value>
+                <fullName>Weather—Storm</fullName>
+                <default>false</default>
+                <label>Weather—Storm</label>
+            </value>
+            <value>
+                <fullName>Weather—Unspecified</fullName>
+                <default>false</default>
+                <label>Weather—Unspecified</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+                <label>Unknown</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

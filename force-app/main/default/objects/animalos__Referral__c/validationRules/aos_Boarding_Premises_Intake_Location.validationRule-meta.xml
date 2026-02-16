@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Boarding_Premises_Intake_Location</fullName>
+    <active>true</active>
+    <description>If “In Shelter” is selected, then and Incoming Location is required.</description>
+    <errorConditionFormula>AND(
+    ISNEW(),
+    ISPICKVAL(aos_Boarding_Premises__c, &quot;In Shelter&quot;),
+    ISBLANK(animalos__Entry_Site__c)
+)</errorConditionFormula>
+    <errorMessage>Please select an Intake Location</errorMessage>
+</ValidationRule>

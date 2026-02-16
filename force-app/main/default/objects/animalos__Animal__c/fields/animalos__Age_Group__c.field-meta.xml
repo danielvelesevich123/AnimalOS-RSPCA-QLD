@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Age_Group__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Age Group</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>animalos__Type__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Baby 0 - 8 wks</fullName>
+                <default>false</default>
+                <label>Baby 0 - 8 wks</label>
+            </value>
+            <value>
+                <fullName>Juvenile 8 wks - 6 mths</fullName>
+                <default>false</default>
+                <label>Juvenile 8 wks - 6 mths</label>
+            </value>
+            <value>
+                <fullName>Young Adult 6 mths - 1 yr</fullName>
+                <default>false</default>
+                <label>Young Adult 6 mths - 1 yr</label>
+            </value>
+            <value>
+                <fullName>Adult 1 yr - 8 yrs</fullName>
+                <default>false</default>
+                <label>Adult 1 yr - 8 yrs</label>
+            </value>
+            <value>
+                <fullName>Senior 8 yrs+</fullName>
+                <default>false</default>
+                <label>Senior 8 yrs+</label>
+            </value>
+            <value>
+                <fullName>Egg</fullName>
+                <default>false</default>
+                <label>Egg</label>
+            </value>
+            <value>
+                <fullName>Neonate</fullName>
+                <default>false</default>
+                <label>Neonate</label>
+            </value>
+            <value>
+                <fullName>Juvenile</fullName>
+                <default>false</default>
+                <label>Juvenile</label>
+            </value>
+            <value>
+                <fullName>Sub-Adult</fullName>
+                <default>false</default>
+                <label>Sub-Adult</label>
+            </value>
+            <value>
+                <fullName>Young Adult</fullName>
+                <default>false</default>
+                <label>Young Adult</label>
+            </value>
+            <value>
+                <fullName>Adult</fullName>
+                <default>false</default>
+                <label>Adult</label>
+            </value>
+            <value>
+                <fullName>Senior</fullName>
+                <default>false</default>
+                <label>Senior</label>
+            </value>
+            <value>
+                <fullName>Hatchling</fullName>
+                <default>false</default>
+                <label>Hatchling</label>
+            </value>
+            <value>
+                <fullName>Nestling</fullName>
+                <default>false</default>
+                <label>Nestling</label>
+            </value>
+            <value>
+                <fullName>Chick</fullName>
+                <default>false</default>
+                <label>Chick</label>
+            </value>
+            <value>
+                <fullName>Fledgling</fullName>
+                <default>false</default>
+                <label>Fledgling</label>
+            </value>
+            <value>
+                <fullName>Immature</fullName>
+                <default>false</default>
+                <label>Immature</label>
+            </value>
+            <value>
+                <fullName>Mature/adult</fullName>
+                <default>false</default>
+                <label>Mature/adult</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Small Pets</controllingFieldValue>
+            <controllingFieldValue>Unknown</controllingFieldValue>
+            <controllingFieldValue>Fish</controllingFieldValue>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <controllingFieldValue>Fowl</controllingFieldValue>
+            <controllingFieldValue>Gerbil</controllingFieldValue>
+            <controllingFieldValue>Goat</controllingFieldValue>
+            <controllingFieldValue>Guinea Pig</controllingFieldValue>
+            <controllingFieldValue>Hamster</controllingFieldValue>
+            <controllingFieldValue>Hedgehog</controllingFieldValue>
+            <controllingFieldValue>Horse</controllingFieldValue>
+            <controllingFieldValue>Insect / Arachnid</controllingFieldValue>
+            <controllingFieldValue>Kitten</controllingFieldValue>
+            <controllingFieldValue>Livestock</controllingFieldValue>
+            <controllingFieldValue>Arachnid</controllingFieldValue>
+            <controllingFieldValue>Cat</controllingFieldValue>
+            <controllingFieldValue>Cattle</controllingFieldValue>
+            <controllingFieldValue>Crab/Fish</controllingFieldValue>
+            <controllingFieldValue>Dog</controllingFieldValue>
+            <controllingFieldValue>Donkey</controllingFieldValue>
+            <controllingFieldValue>Farm</controllingFieldValue>
+            <controllingFieldValue>Ferret</controllingFieldValue>
+            <controllingFieldValue>Mouse</controllingFieldValue>
+            <controllingFieldValue>Pig</controllingFieldValue>
+            <controllingFieldValue>Pony</controllingFieldValue>
+            <controllingFieldValue>Poultry</controllingFieldValue>
+            <controllingFieldValue>Puppy</controllingFieldValue>
+            <controllingFieldValue>Rabbit</controllingFieldValue>
+            <controllingFieldValue>Rat</controllingFieldValue>
+            <controllingFieldValue>Rodent</controllingFieldValue>
+            <controllingFieldValue>Sheep</controllingFieldValue>
+            <valueName>Baby 0 - 8 wks</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Small Pets</controllingFieldValue>
+            <controllingFieldValue>Unknown</controllingFieldValue>
+            <controllingFieldValue>Fish</controllingFieldValue>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <controllingFieldValue>Fowl</controllingFieldValue>
+            <controllingFieldValue>Gerbil</controllingFieldValue>
+            <controllingFieldValue>Goat</controllingFieldValue>
+            <controllingFieldValue>Guinea Pig</controllingFieldValue>
+            <controllingFieldValue>Hamster</controllingFieldValue>
+            <controllingFieldValue>Hedgehog</controllingFieldValue>
+            <controllingFieldValue>Horse</controllingFieldValue>
+            <controllingFieldValue>Insect / Arachnid</controllingFieldValue>
+            <controllingFieldValue>Kitten</controllingFieldValue>
+            <controllingFieldValue>Livestock</controllingFieldValue>
+            <controllingFieldValue>Arachnid</controllingFieldValue>
+            <controllingFieldValue>Cat</controllingFieldValue>
+            <controllingFieldValue>Cattle</controllingFieldValue>
+            <controllingFieldValue>Crab/Fish</controllingFieldValue>
+            <controllingFieldValue>Dog</controllingFieldValue>
+            <controllingFieldValue>Donkey</controllingFieldValue>
+            <controllingFieldValue>Farm</controllingFieldValue>
+            <controllingFieldValue>Ferret</controllingFieldValue>
+            <controllingFieldValue>Mouse</controllingFieldValue>
+            <controllingFieldValue>Pig</controllingFieldValue>
+            <controllingFieldValue>Pony</controllingFieldValue>
+            <controllingFieldValue>Poultry</controllingFieldValue>
+            <controllingFieldValue>Puppy</controllingFieldValue>
+            <controllingFieldValue>Rabbit</controllingFieldValue>
+            <controllingFieldValue>Rat</controllingFieldValue>
+            <controllingFieldValue>Rodent</controllingFieldValue>
+            <controllingFieldValue>Sheep</controllingFieldValue>
+            <valueName>Juvenile 8 wks - 6 mths</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Small Pets</controllingFieldValue>
+            <controllingFieldValue>Unknown</controllingFieldValue>
+            <controllingFieldValue>Fish</controllingFieldValue>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <controllingFieldValue>Fowl</controllingFieldValue>
+            <controllingFieldValue>Gerbil</controllingFieldValue>
+            <controllingFieldValue>Goat</controllingFieldValue>
+            <controllingFieldValue>Guinea Pig</controllingFieldValue>
+            <controllingFieldValue>Hamster</controllingFieldValue>
+            <controllingFieldValue>Hedgehog</controllingFieldValue>
+            <controllingFieldValue>Horse</controllingFieldValue>
+            <controllingFieldValue>Insect / Arachnid</controllingFieldValue>
+            <controllingFieldValue>Kitten</controllingFieldValue>
+            <controllingFieldValue>Livestock</controllingFieldValue>
+            <controllingFieldValue>Arachnid</controllingFieldValue>
+            <controllingFieldValue>Cat</controllingFieldValue>
+            <controllingFieldValue>Cattle</controllingFieldValue>
+            <controllingFieldValue>Crab/Fish</controllingFieldValue>
+            <controllingFieldValue>Dog</controllingFieldValue>
+            <controllingFieldValue>Donkey</controllingFieldValue>
+            <controllingFieldValue>Farm</controllingFieldValue>
+            <controllingFieldValue>Ferret</controllingFieldValue>
+            <controllingFieldValue>Mouse</controllingFieldValue>
+            <controllingFieldValue>Pig</controllingFieldValue>
+            <controllingFieldValue>Pony</controllingFieldValue>
+            <controllingFieldValue>Poultry</controllingFieldValue>
+            <controllingFieldValue>Puppy</controllingFieldValue>
+            <controllingFieldValue>Rabbit</controllingFieldValue>
+            <controllingFieldValue>Rat</controllingFieldValue>
+            <controllingFieldValue>Rodent</controllingFieldValue>
+            <controllingFieldValue>Sheep</controllingFieldValue>
+            <valueName>Young Adult 6 mths - 1 yr</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Small Pets</controllingFieldValue>
+            <controllingFieldValue>Unknown</controllingFieldValue>
+            <controllingFieldValue>Fish</controllingFieldValue>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <controllingFieldValue>Fowl</controllingFieldValue>
+            <controllingFieldValue>Gerbil</controllingFieldValue>
+            <controllingFieldValue>Goat</controllingFieldValue>
+            <controllingFieldValue>Guinea Pig</controllingFieldValue>
+            <controllingFieldValue>Hamster</controllingFieldValue>
+            <controllingFieldValue>Hedgehog</controllingFieldValue>
+            <controllingFieldValue>Horse</controllingFieldValue>
+            <controllingFieldValue>Insect / Arachnid</controllingFieldValue>
+            <controllingFieldValue>Kitten</controllingFieldValue>
+            <controllingFieldValue>Livestock</controllingFieldValue>
+            <controllingFieldValue>Arachnid</controllingFieldValue>
+            <controllingFieldValue>Cat</controllingFieldValue>
+            <controllingFieldValue>Cattle</controllingFieldValue>
+            <controllingFieldValue>Crab/Fish</controllingFieldValue>
+            <controllingFieldValue>Dog</controllingFieldValue>
+            <controllingFieldValue>Donkey</controllingFieldValue>
+            <controllingFieldValue>Farm</controllingFieldValue>
+            <controllingFieldValue>Ferret</controllingFieldValue>
+            <controllingFieldValue>Mouse</controllingFieldValue>
+            <controllingFieldValue>Pig</controllingFieldValue>
+            <controllingFieldValue>Pony</controllingFieldValue>
+            <controllingFieldValue>Poultry</controllingFieldValue>
+            <controllingFieldValue>Puppy</controllingFieldValue>
+            <controllingFieldValue>Rabbit</controllingFieldValue>
+            <controllingFieldValue>Rat</controllingFieldValue>
+            <controllingFieldValue>Rodent</controllingFieldValue>
+            <controllingFieldValue>Sheep</controllingFieldValue>
+            <valueName>Adult 1 yr - 8 yrs</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Small Pets</controllingFieldValue>
+            <controllingFieldValue>Unknown</controllingFieldValue>
+            <controllingFieldValue>Fish</controllingFieldValue>
+            <controllingFieldValue>Other</controllingFieldValue>
+            <controllingFieldValue>Fowl</controllingFieldValue>
+            <controllingFieldValue>Gerbil</controllingFieldValue>
+            <controllingFieldValue>Goat</controllingFieldValue>
+            <controllingFieldValue>Guinea Pig</controllingFieldValue>
+            <controllingFieldValue>Hamster</controllingFieldValue>
+            <controllingFieldValue>Hedgehog</controllingFieldValue>
+            <controllingFieldValue>Horse</controllingFieldValue>
+            <controllingFieldValue>Insect / Arachnid</controllingFieldValue>
+            <controllingFieldValue>Kitten</controllingFieldValue>
+            <controllingFieldValue>Livestock</controllingFieldValue>
+            <controllingFieldValue>Arachnid</controllingFieldValue>
+            <controllingFieldValue>Cat</controllingFieldValue>
+            <controllingFieldValue>Cattle</controllingFieldValue>
+            <controllingFieldValue>Crab/Fish</controllingFieldValue>
+            <controllingFieldValue>Dog</controllingFieldValue>
+            <controllingFieldValue>Donkey</controllingFieldValue>
+            <controllingFieldValue>Farm</controllingFieldValue>
+            <controllingFieldValue>Ferret</controllingFieldValue>
+            <controllingFieldValue>Mouse</controllingFieldValue>
+            <controllingFieldValue>Pig</controllingFieldValue>
+            <controllingFieldValue>Pony</controllingFieldValue>
+            <controllingFieldValue>Poultry</controllingFieldValue>
+            <controllingFieldValue>Puppy</controllingFieldValue>
+            <controllingFieldValue>Rabbit</controllingFieldValue>
+            <controllingFieldValue>Rat</controllingFieldValue>
+            <controllingFieldValue>Rodent</controllingFieldValue>
+            <controllingFieldValue>Sheep</controllingFieldValue>
+            <valueName>Senior 8 yrs+</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wildlife</controllingFieldValue>
+            <controllingFieldValue>Zoo</controllingFieldValue>
+            <controllingFieldValue>Chicken</controllingFieldValue>
+            <controllingFieldValue>Duck</controllingFieldValue>
+            <controllingFieldValue>Goose</controllingFieldValue>
+            <controllingFieldValue>Bird</controllingFieldValue>
+            <controllingFieldValue>Monotremes</controllingFieldValue>
+            <controllingFieldValue>Native Amphibians</controllingFieldValue>
+            <controllingFieldValue>Native Birds</controllingFieldValue>
+            <controllingFieldValue>Native Marsupial</controllingFieldValue>
+            <controllingFieldValue>Native Monotreme</controllingFieldValue>
+            <controllingFieldValue>Native Reptiles</controllingFieldValue>
+            <controllingFieldValue>Non Native Amphibians</controllingFieldValue>
+            <controllingFieldValue>Non Native Birds</controllingFieldValue>
+            <controllingFieldValue>Non Native Reptiles</controllingFieldValue>
+            <controllingFieldValue>Reptile</controllingFieldValue>
+            <valueName>Egg</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wildlife</controllingFieldValue>
+            <controllingFieldValue>Zoo</controllingFieldValue>
+            <controllingFieldValue>Mammal</controllingFieldValue>
+            <controllingFieldValue>Marsupial</controllingFieldValue>
+            <controllingFieldValue>Monotremes</controllingFieldValue>
+            <controllingFieldValue>Native Amphibians</controllingFieldValue>
+            <controllingFieldValue>Native Mammal</controllingFieldValue>
+            <controllingFieldValue>Native Marsupial</controllingFieldValue>
+            <controllingFieldValue>Native Monotreme</controllingFieldValue>
+            <controllingFieldValue>Native Reptiles</controllingFieldValue>
+            <controllingFieldValue>Non Native Amphibians</controllingFieldValue>
+            <controllingFieldValue>Non Native Mammals</controllingFieldValue>
+            <controllingFieldValue>Non Native Reptiles</controllingFieldValue>
+            <controllingFieldValue>Placental Mammals</controllingFieldValue>
+            <controllingFieldValue>Reptile</controllingFieldValue>
+            <valueName>Neonate</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wildlife</controllingFieldValue>
+            <controllingFieldValue>Zoo</controllingFieldValue>
+            <controllingFieldValue>Mammal</controllingFieldValue>
+            <controllingFieldValue>Marsupial</controllingFieldValue>
+            <controllingFieldValue>Monotremes</controllingFieldValue>
+            <controllingFieldValue>Native Amphibians</controllingFieldValue>
+            <controllingFieldValue>Native Mammal</controllingFieldValue>
+            <controllingFieldValue>Native Marsupial</controllingFieldValue>
+            <controllingFieldValue>Native Monotreme</controllingFieldValue>
+            <controllingFieldValue>Native Reptiles</controllingFieldValue>
+            <controllingFieldValue>Non Native Amphibians</controllingFieldValue>
+            <controllingFieldValue>Non Native Mammals</controllingFieldValue>
+            <controllingFieldValue>Non Native Reptiles</controllingFieldValue>
+            <controllingFieldValue>Placental Mammals</controllingFieldValue>
+            <controllingFieldValue>Reptile</controllingFieldValue>
+            <valueName>Juvenile</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wildlife</controllingFieldValue>
+            <controllingFieldValue>Zoo</controllingFieldValue>
+            <controllingFieldValue>Mammal</controllingFieldValue>
+            <controllingFieldValue>Marsupial</controllingFieldValue>
+            <controllingFieldValue>Monotremes</controllingFieldValue>
+            <controllingFieldValue>Native Amphibians</controllingFieldValue>
+            <controllingFieldValue>Native Mammal</controllingFieldValue>
+            <controllingFieldValue>Native Marsupial</controllingFieldValue>
+            <controllingFieldValue>Native Monotreme</controllingFieldValue>
+            <controllingFieldValue>Native Reptiles</controllingFieldValue>
+            <controllingFieldValue>Non Native Amphibians</controllingFieldValue>
+            <controllingFieldValue>Non Native Mammals</controllingFieldValue>
+            <controllingFieldValue>Non Native Reptiles</controllingFieldValue>
+            <controllingFieldValue>Placental Mammals</controllingFieldValue>
+            <controllingFieldValue>Reptile</controllingFieldValue>
+            <valueName>Sub-Adult</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wildlife</controllingFieldValue>
+            <controllingFieldValue>Zoo</controllingFieldValue>
+            <controllingFieldValue>Mammal</controllingFieldValue>
+            <controllingFieldValue>Marsupial</controllingFieldValue>
+            <controllingFieldValue>Monotremes</controllingFieldValue>
+            <controllingFieldValue>Native Amphibians</controllingFieldValue>
+            <controllingFieldValue>Native Mammal</controllingFieldValue>
+            <controllingFieldValue>Native Marsupial</controllingFieldValue>
+            <controllingFieldValue>Native Monotreme</controllingFieldValue>
+            <controllingFieldValue>Native Reptiles</controllingFieldValue>
+            <controllingFieldValue>Non Native Amphibians</controllingFieldValue>
+            <controllingFieldValue>Non Native Mammals</controllingFieldValue>
+            <controllingFieldValue>Non Native Reptiles</controllingFieldValue>
+            <controllingFieldValue>Placental Mammals</controllingFieldValue>
+            <controllingFieldValue>Reptile</controllingFieldValue>
+            <valueName>Young Adult</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wildlife</controllingFieldValue>
+            <controllingFieldValue>Zoo</controllingFieldValue>
+            <controllingFieldValue>Mammal</controllingFieldValue>
+            <controllingFieldValue>Marsupial</controllingFieldValue>
+            <controllingFieldValue>Monotremes</controllingFieldValue>
+            <controllingFieldValue>Native Amphibians</controllingFieldValue>
+            <controllingFieldValue>Native Mammal</controllingFieldValue>
+            <controllingFieldValue>Native Marsupial</controllingFieldValue>
+            <controllingFieldValue>Native Monotreme</controllingFieldValue>
+            <controllingFieldValue>Native Reptiles</controllingFieldValue>
+            <controllingFieldValue>Non Native Amphibians</controllingFieldValue>
+            <controllingFieldValue>Non Native Mammals</controllingFieldValue>
+            <controllingFieldValue>Non Native Reptiles</controllingFieldValue>
+            <controllingFieldValue>Placental Mammals</controllingFieldValue>
+            <controllingFieldValue>Reptile</controllingFieldValue>
+            <valueName>Adult</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Wildlife</controllingFieldValue>
+            <controllingFieldValue>Zoo</controllingFieldValue>
+            <controllingFieldValue>Mammal</controllingFieldValue>
+            <controllingFieldValue>Marsupial</controllingFieldValue>
+            <controllingFieldValue>Monotremes</controllingFieldValue>
+            <controllingFieldValue>Native Amphibians</controllingFieldValue>
+            <controllingFieldValue>Native Mammal</controllingFieldValue>
+            <controllingFieldValue>Native Marsupial</controllingFieldValue>
+            <controllingFieldValue>Native Monotreme</controllingFieldValue>
+            <controllingFieldValue>Native Reptiles</controllingFieldValue>
+            <controllingFieldValue>Non Native Amphibians</controllingFieldValue>
+            <controllingFieldValue>Non Native Mammals</controllingFieldValue>
+            <controllingFieldValue>Non Native Reptiles</controllingFieldValue>
+            <controllingFieldValue>Placental Mammals</controllingFieldValue>
+            <controllingFieldValue>Reptile</controllingFieldValue>
+            <valueName>Senior</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chicken</controllingFieldValue>
+            <controllingFieldValue>Duck</controllingFieldValue>
+            <controllingFieldValue>Goose</controllingFieldValue>
+            <controllingFieldValue>Bird</controllingFieldValue>
+            <controllingFieldValue>Native Birds</controllingFieldValue>
+            <controllingFieldValue>Non Native Birds</controllingFieldValue>
+            <valueName>Hatchling</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chicken</controllingFieldValue>
+            <controllingFieldValue>Duck</controllingFieldValue>
+            <controllingFieldValue>Goose</controllingFieldValue>
+            <controllingFieldValue>Bird</controllingFieldValue>
+            <controllingFieldValue>Native Birds</controllingFieldValue>
+            <controllingFieldValue>Non Native Birds</controllingFieldValue>
+            <valueName>Nestling</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chicken</controllingFieldValue>
+            <controllingFieldValue>Duck</controllingFieldValue>
+            <controllingFieldValue>Goose</controllingFieldValue>
+            <controllingFieldValue>Bird</controllingFieldValue>
+            <controllingFieldValue>Native Birds</controllingFieldValue>
+            <controllingFieldValue>Non Native Birds</controllingFieldValue>
+            <valueName>Chick</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chicken</controllingFieldValue>
+            <controllingFieldValue>Duck</controllingFieldValue>
+            <controllingFieldValue>Goose</controllingFieldValue>
+            <controllingFieldValue>Bird</controllingFieldValue>
+            <controllingFieldValue>Native Birds</controllingFieldValue>
+            <controllingFieldValue>Non Native Birds</controllingFieldValue>
+            <valueName>Fledgling</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chicken</controllingFieldValue>
+            <controllingFieldValue>Duck</controllingFieldValue>
+            <controllingFieldValue>Goose</controllingFieldValue>
+            <controllingFieldValue>Bird</controllingFieldValue>
+            <controllingFieldValue>Native Birds</controllingFieldValue>
+            <controllingFieldValue>Non Native Birds</controllingFieldValue>
+            <valueName>Immature</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Chicken</controllingFieldValue>
+            <controllingFieldValue>Duck</controllingFieldValue>
+            <controllingFieldValue>Goose</controllingFieldValue>
+            <controllingFieldValue>Bird</controllingFieldValue>
+            <controllingFieldValue>Native Birds</controllingFieldValue>
+            <controllingFieldValue>Non Native Birds</controllingFieldValue>
+            <valueName>Mature/adult</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

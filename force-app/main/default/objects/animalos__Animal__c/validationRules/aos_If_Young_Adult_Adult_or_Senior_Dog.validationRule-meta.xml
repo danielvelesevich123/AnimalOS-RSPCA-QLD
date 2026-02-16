@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_If_Young_Adult_Adult_or_Senior_Dog</fullName>
+    <active>false</active>
+    <errorConditionFormula>AND(
+  ISNEW(),
+  OR(
+    ISPICKVAL(animalos__Type__c, &quot;Dog&quot;),
+    ISPICKVAL(animalos__Type__c, &quot;Cat&quot;)
+  ),
+  NOT(
+    OR(
+      ISPICKVAL(animalos__Age_Group__c, &quot;Young Adult 6 mths - 1 yr&quot;),
+      ISPICKVAL(animalos__Age_Group__c, &quot;Adult 1 yr - 8 yrs&quot;),
+     ISPICKVAL(animalos__Age_Group__c, &quot;Senior 8 yrs+&quot;)
+    )
+  )
+)</errorConditionFormula>
+    <errorMessage>Age Group must be Young Adult, Adult or Senior if Type is Dog or Cat.</errorMessage>
+</ValidationRule>

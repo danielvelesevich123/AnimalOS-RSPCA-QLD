@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Play_With_Toys__c</fullName>
+    <inlineHelpText>Assess the response to toys including tennis balls, squeaky toy, plush toy, tug or rope toy. Note preference and whether they will drop or exchange for other toys or food. Note resource guarding or excitability.</inlineHelpText>
+    <label>Play With Toys</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Playful:	engages, has self-control, may exchange, or offer toy</fullName>
+                <default>false</default>
+                <label>Playful:	engages, has self-control, may exchange, or offer toy</label>
+            </value>
+            <value>
+                <fullName>No interest</fullName>
+                <default>false</default>
+                <label>No interest</label>
+            </value>
+            <value>
+                <fullName>Avoidant/hoards: reluctant to approach or takes toys and retreats</fullName>
+                <default>false</default>
+                <label>Avoidant/hoards: reluctant to approach or takes toys and retreats</label>
+            </value>
+            <value>
+                <fullName>Vocal: excitable, vocal, positive valence</fullName>
+                <default>false</default>
+                <label>Vocal: excitable, vocal, positive valence</label>
+            </value>
+            <value>
+                <fullName>Over stimulated	: high arousal, may fixate, jump up, snatch toys, unable to distract</fullName>
+                <default>false</default>
+                <label>Over stimulated	: high arousal, may fixate, jump up, snatch toys, unable to distract</label>
+            </value>
+            <value>
+                <fullName>Confrontational: may take once and then show escalating frustration towards handler</fullName>
+                <default>false</default>
+                <label>Confrontational: may take once and then show escalating frustration towards handler</label>
+            </value>
+            <value>
+                <fullName>Not completed</fullName>
+                <default>false</default>
+                <label>Not completed</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

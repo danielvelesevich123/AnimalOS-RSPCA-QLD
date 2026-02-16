@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Job_Outcome_Euthanasia_in_Field</fullName>
+    <active>false</active>
+    <description>When Job Outcome = &apos;Euthanasia in Field&apos;, Vet and Medicine Used must be completed.</description>
+    <errorConditionFormula>AND(
+    ISPICKVAL(animalos__Job_Outcome__c, &quot;Euthanasia in Field&quot;),
+    OR(
+        ISBLANK(aos_Vet__c),
+        ISBLANK(aos_Medicine_Used__c)
+    )
+)</errorConditionFormula>
+    <errorMessage>When Job Outcome = &apos;Euthanasia in Field&apos;, Vet and Medicine Used must be completed.</errorMessage>
+</ValidationRule>

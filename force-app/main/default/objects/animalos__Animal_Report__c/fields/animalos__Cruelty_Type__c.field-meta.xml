@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Cruelty_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Cruelty Type</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>true</sorted>
+            <value>
+                <fullName>Abandoned</fullName>
+                <default>false</default>
+                <label>Abandoned</label>
+            </value>
+            <value>
+                <fullName>AH Owner Medical Assist</fullName>
+                <default>false</default>
+                <label>AH Owner Medical Assist</label>
+            </value>
+            <value>
+                <fullName>Animal fighting/Prohibited event</fullName>
+                <default>false</default>
+                <label>Animal fighting/Prohibited event</label>
+            </value>
+            <value>
+                <fullName>Animal in hot vehicle</fullName>
+                <default>false</default>
+                <label>Animal in hot vehicle</label>
+            </value>
+            <value>
+                <fullName>Baiting</fullName>
+                <default>false</default>
+                <label>Baiting</label>
+            </value>
+            <value>
+                <fullName>Cause Captive Animal To Be Injured/killed By Dog</fullName>
+                <default>false</default>
+                <label>Cause Captive Animal To Be Injured/killed By Dog</label>
+            </value>
+            <value>
+                <fullName>Cruelty</fullName>
+                <default>false</default>
+                <label>Cruelty</label>
+            </value>
+            <value>
+                <fullName>Emergency Relief</fullName>
+                <default>false</default>
+                <label>Emergency Relief</label>
+            </value>
+            <value>
+                <fullName>Heat Distress</fullName>
+                <default>false</default>
+                <label>Heat Distress</label>
+            </value>
+            <value>
+                <fullName>Inappropriate Breeding</fullName>
+                <default>false</default>
+                <label>Inappropriate Breeding</label>
+            </value>
+            <value>
+                <fullName>Inappropriate transport</fullName>
+                <default>false</default>
+                <label>Inappropriate transport</label>
+            </value>
+            <value>
+                <fullName>Inspec ref Community Officer</fullName>
+                <default>false</default>
+                <label>Inspec ref Community Officer</label>
+            </value>
+            <value>
+                <fullName>Insufficient Food</fullName>
+                <default>false</default>
+                <label>Insufficient Food</label>
+            </value>
+            <value>
+                <fullName>Insufficient Water</fullName>
+                <default>false</default>
+                <label>Insufficient Water</label>
+            </value>
+            <value>
+                <fullName>Keep or Use Animal for Blooding</fullName>
+                <default>false</default>
+                <label>Keep or Use Animal for Blooding</label>
+            </value>
+            <value>
+                <fullName>Kill or injure</fullName>
+                <default>false</default>
+                <label>Kill or injure</label>
+            </value>
+            <value>
+                <fullName>Living Conditions</fullName>
+                <default>false</default>
+                <label>Living Conditions</label>
+            </value>
+            <value>
+                <fullName>No exercise | Confined | Tethered</fullName>
+                <default>false</default>
+                <label>No exercise | Confined | Tethered</label>
+            </value>
+            <value>
+                <fullName>No treatment</fullName>
+                <default>false</default>
+                <label>No treatment</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Pet shop</fullName>
+                <default>false</default>
+                <label>Pet shop</label>
+            </value>
+            <value>
+                <fullName>POI Under 18</fullName>
+                <default>false</default>
+                <label>POI Under 18</label>
+            </value>
+            <value>
+                <fullName>Poor Condition</fullName>
+                <default>false</default>
+                <label>Poor Condition</label>
+            </value>
+            <value>
+                <fullName>Prohibited devices &amp; items</fullName>
+                <default>false</default>
+                <label>Prohibited devices &amp; items</label>
+            </value>
+            <value>
+                <fullName>Prohibited Surgical procedures</fullName>
+                <default>false</default>
+                <label>Prohibited Surgical procedures</label>
+            </value>
+            <value>
+                <fullName>Prohibition Order Breached</fullName>
+                <default>false</default>
+                <label>Prohibition Order Breached</label>
+            </value>
+            <value>
+                <fullName>Unrestrained Dog</fullName>
+                <default>false</default>
+                <label>Unrestrained Dog</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>5</visibleLines>
+</CustomField>

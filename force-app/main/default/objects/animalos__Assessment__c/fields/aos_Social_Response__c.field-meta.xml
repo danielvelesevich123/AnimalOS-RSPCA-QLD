@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Social_Response__c</fullName>
+    <label>Social Response</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Initiates Pats/rubs</fullName>
+                <default>false</default>
+                <label>Initiates Pats/rubs</label>
+            </value>
+            <value>
+                <fullName>Responds well to pats/rubs</fullName>
+                <default>false</default>
+                <label>Responds well to pats/rubs</label>
+            </value>
+            <value>
+                <fullName>Will accepts pats/ rubs but does not enjoy</fullName>
+                <default>false</default>
+                <label>Will accepts pats/ rubs but does not enjoy</label>
+            </value>
+            <value>
+                <fullName>Does not allow pats/rubs</fullName>
+                <default>false</default>
+                <label>Does not allow pats/rubs</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Endangered_Status__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Endangered Status</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Critically Endangered</fullName>
+                <default>false</default>
+                <label>Critically Endangered</label>
+            </value>
+            <value>
+                <fullName>Data Deficient</fullName>
+                <default>false</default>
+                <label>Data Deficient</label>
+            </value>
+            <value>
+                <fullName>Endangered</fullName>
+                <default>false</default>
+                <label>Endangered</label>
+            </value>
+            <value>
+                <fullName>Extinct</fullName>
+                <default>false</default>
+                <label>Extinct</label>
+            </value>
+            <value>
+                <fullName>Extinct In The Wild</fullName>
+                <default>false</default>
+                <label>Extinct In The Wild</label>
+            </value>
+            <value>
+                <fullName>Least Concern</fullName>
+                <default>false</default>
+                <label>Least Concern</label>
+            </value>
+            <value>
+                <fullName>Lower Risk: Conservation Dependent</fullName>
+                <default>false</default>
+                <label>Lower Risk: Conservation Dependent</label>
+            </value>
+            <value>
+                <fullName>Near Threatened</fullName>
+                <default>false</default>
+                <label>Near Threatened</label>
+            </value>
+            <value>
+                <fullName>Not Applicable</fullName>
+                <default>false</default>
+                <label>Not Applicable</label>
+            </value>
+            <value>
+                <fullName>Regionally Extinct</fullName>
+                <default>false</default>
+                <label>Regionally Extinct</label>
+            </value>
+            <value>
+                <fullName>Vulnerable</fullName>
+                <default>false</default>
+                <label>Vulnerable</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

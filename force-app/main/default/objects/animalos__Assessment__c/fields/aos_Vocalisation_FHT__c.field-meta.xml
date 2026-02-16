@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Vocalisation_FHT__c</fullName>
+    <description>Vocalisation - fake hand touch</description>
+    <inlineHelpText>Vocalisation - fake hand touch</inlineHelpText>
+    <label>Vocalisation - FHT</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>LTS_Behaviour_Eval_Vocalisation</valueSetName>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

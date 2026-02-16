@@ -1,0 +1,825 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Inspection</fullName>
+    <active>true</active>
+    <label>Inspection</label>
+    <picklistValues>
+        <picklist>animalos__Job_Classification__c</picklist>
+        <values>
+            <fullName>High Vigilance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Moderate Concern</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Routine</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>animalos__Services_Provided__c</picklist>
+        <values>
+            <fullName>Bedding or Shelter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Flea Treatment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Food</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescue Group Options</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Veterinary and%2For Desexing Options</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Worming Treatment</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>animalos__Status__c</picklist>
+        <values>
+            <fullName>Accepted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Attended</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Completed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Progress</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Monitoring Ended</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New Update</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ongoing Monitoring</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Scheduled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Search Active</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Search Complete</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>animalos__Type_of_Work__c</picklist>
+        <values>
+            <fullName>Attended Property</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Brief Prep</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Call%2FSMS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Digital Information Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email%2FLetter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inspection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Recheck</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sent Advisory Letter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sent Warning Letter</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Activity_Location__c</picklist>
+        <values>
+            <fullName>Callers House</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Callers Workplace</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other %28Please specify in job notes%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Space</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Alleged_Offences__c</picklist>
+        <values>
+            <fullName>S 33 Transporting Dogs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>S28 Restriction on supplying a de barked dog</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>S29 Other Restrictions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>S30%2C 31 and 32 Other Offences relating to dogs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>S34 and 35- Use and Possession of prohibted trap or spur unlawful</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>S36- A person must not%2C with the intention of injuring or killing an animals%2C administer to%2C or feed the animal a substance the person knows if harmful or poisonous to the animal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>S37 Unlawfully allowing an animal to injure or kill another animal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Section 15 %283%29 Regulation May Require compliance with code of practice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Section 161- Failure to Comply with an Animal Welfare Direction</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Section 17%282%29- Breach of Cuty of Care Prohibited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Section 18 %281%29 Animal Cruelty Prohibited</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Section 187 - Contravention of prohibition order unlawful</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Section 19 %281%29 Unreasonable abandonment or release</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Section 19%282%29 release animal from person in charge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Section 21 %281%29 Participation in a probited event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Section 22%282%29 Presence at prohibited event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Section 23 %281%29 Regulated Procedures for dogs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Section 24 %281%29 Docking dogs tail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Section 25 %281%29  Debarking Operations</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Section 26 %281%29 Removal of cats claw</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Section 27 %28docking tail of cattle or horse%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Section 37A- Possession or use of prohibited devices</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Caller_Frequents_Area__c</picklist>
+        <values>
+            <fullName>Doesn%27t Frequent Area</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Everyday</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Once Per Week</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Several Times Per Week</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Checked_No_Harm_Risk_to_Myself_or__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Checked_Working_Area_for_Hazards__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Elements_of_Offence_s__c</picklist>
+        <values>
+            <fullName>Abandon or release</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Accommodation of living conditions</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Breach</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Compulsory Code Requirement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cruel %28describe the act of cruelty%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Display normal patterns of behaviour</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Duty of Care- appropriate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EOO 1</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EOO 2</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Food and Water</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>From custody</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Handling%2Fconfinement%2Ftransport is appropriate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In charge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Must Comply</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Must not</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Of person in charge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Person</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prohibited event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reasonable excuse</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Release</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Requirement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Time%2C Date%2C Place</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Treatment of disease or injury</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Without reasonable excuse%2For release is authorised by law</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Entry_Power__c</picklist>
+        <values>
+            <fullName>Abandonment S122%281%29%28h%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal Just Injured %2F Untreated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Check Compliance with AWD</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Consent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Delay Result in Concealment %2F Death</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Imminent Risk Death %2F Injury</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Entry Made</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public Place</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>S122 %282%29 To Contact Occupier</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>S123 To Provide Relief</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vehicle - Consent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vehicle - No Consent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warrant to Enter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>s148%282%29 for seized animals</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Future_Action_Required__c</picklist>
+        <values>
+            <fullName>Attendance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Reply</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Office Task</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ref to other Org</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Hazards_Controlled_in_Risk_Register__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Indicative_Timeframe_for_Action__c</picklist>
+        <values>
+            <fullName>Critical - As soon as possible and within 24 hours</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Major - Within 72 hours</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Minor - When in the area</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Secondary - Within 7 days</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_MOP_Ability_to_Help__c</picklist>
+        <values>
+            <fullName>Can Help</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unable to Help</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Other_Capture_Methods__c</picklist>
+        <values>
+            <fullName>Crate Trap</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>D-Net</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hand Capture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hand Net Technique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loop Snare%2F Hand Snare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net Launcher</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other %28Please specify in Job Notes%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Outcome__c</picklist>
+        <values>
+            <fullName>ACPA Powers Used</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Advice%2Feducation provided with attendance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Advice%2Feducation provided without attendance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal Surrendered</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animals Seized Under ACPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DOA %E2%80%93 Body left in field</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DOA %E2%80%93 Left in Field</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DOA %E2%80%93 Return to Shelter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DOA Domestic %E2%80%93 Returned to Owner in Field</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Euthanasia in Field</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Job Share with another Agency</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Provided Relief</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Record Only %28Reasoning Required%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ref to Other Jurisdiction %E2%80%93 No Welfare Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ref to Other Jurisdiction %E2%80%93 Welfare Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to External Wildlife Carer%2F Rescuer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to RSPCA Wildlife Responder</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescue Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescue No Longer Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescued and Released</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescued and Returned to Owner %E2%80%93 Domestic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescued and Returned to Shelter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescued and Taken to Contract Vet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescued and Taken to External Vet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescued and Taken to Wildlife Carer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescued and Transported to External Care Facility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transport Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unable to Capture Animal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unable to Locate Animal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vexatious Report</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wildlife Released</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wildlife Reunited</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Preferred_Capture_Method__c</picklist>
+        <values>
+            <fullName>Crate Trap</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>D-Net</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hand Capture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hand Net Technique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loop Snare%2F Hand Snare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net Launcher</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other %28Please specify in Job Notes%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Prestart_Checks_Completed__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Required_Equipment_to_Complete_Task__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Resources__c</picklist>
+        <values>
+            <fullName>Assisting Inspector</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dog trailer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Horse float</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>PPE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Raid kit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Specialised Animal Handling Equipment</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Risks__c</picklist>
+        <values>
+            <fullName>Animal Bite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>High Impact %28large number of animals%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Psychological safety</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Remote location</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Verbal or phsyical aggression</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Weapons on property</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zoonotic disease</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Skills_Required_to_Complete_Task__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Spoke_to_Caller__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Understand_Requirements_to_Complete__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

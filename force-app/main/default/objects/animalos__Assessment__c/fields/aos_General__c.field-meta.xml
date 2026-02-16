@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_General__c</fullName>
+    <label>General</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Sleeping Observed</fullName>
+                <default>false</default>
+                <label>Sleeping Observed</label>
+            </value>
+            <value>
+                <fullName>Scratching/Grooming</fullName>
+                <default>false</default>
+                <label>Scratching/Grooming</label>
+            </value>
+            <value>
+                <fullName>Not seen grooming</fullName>
+                <default>false</default>
+                <label>Not seen grooming</label>
+            </value>
+            <value>
+                <fullName>Cage furniture or bedding displaced or evidence of destruction</fullName>
+                <default>false</default>
+                <label>Cage furniture or bedding displaced or evidence of destruction</label>
+            </value>
+            <value>
+                <fullName>Hiding</fullName>
+                <default>false</default>
+                <label>Hiding</label>
+            </value>
+            <value>
+                <fullName>Grooming excessively</fullName>
+                <default>false</default>
+                <label>Grooming excessively</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>6</visibleLines>
+</CustomField>

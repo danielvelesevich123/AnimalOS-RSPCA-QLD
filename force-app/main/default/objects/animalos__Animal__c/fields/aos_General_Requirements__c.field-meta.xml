@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_General_Requirements__c</fullName>
+    <label>General Requirements</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Has breed knowledge/experience</fullName>
+                <default>false</default>
+                <label>Breed savvy home</label>
+            </value>
+            <value>
+                <fullName>Must go home with another dog</fullName>
+                <default>false</default>
+                <label>Canine companion needed</label>
+            </value>
+            <value>
+                <fullName>Has owned a cat before</fullName>
+                <default>false</default>
+                <label>Familiar with cat behaviour and needs</label>
+            </value>
+            <value>
+                <fullName>Must be only pet</fullName>
+                <default>false</default>
+                <label>Must be only pet</label>
+            </value>
+            <value>
+                <fullName>No dogs</fullName>
+                <default>false</default>
+                <label>Not suitable for a home with dogs</label>
+            </value>
+            <value>
+                <fullName>No pocket pets or birds</fullName>
+                <default>false</default>
+                <label>Not suitable for a home with pocket pets or birds</label>
+            </value>
+            <value>
+                <fullName>Quiet/Calm Household</fullName>
+                <default>false</default>
+                <label>Peaceful or quiet home environment</label>
+            </value>
+            <value>
+                <fullName>Must go home as bonded pair</fullName>
+                <default>false</default>
+                <label>Rehomed with bonded companion</label>
+            </value>
+            <value>
+                <fullName>STV - see relevant waiver</fullName>
+                <default>false</default>
+                <label>Veterinary consult prior to adoption</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

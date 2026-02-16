@@ -1,0 +1,1282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Wildlife_Hub</fullName>
+    <active>true</active>
+    <label>Wildlife Hub</label>
+    <picklistValues>
+        <picklist>animalos__Codes__c</picklist>
+        <values>
+            <fullName>Vet Pick Up</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wildlife - Release</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wildlife - Reunite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wildlife - Transport</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>animalos__Job_Categorisation__c</picklist>
+        <values>
+            <fullName>Abandonment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Breeder or Pet Shop Inspection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ill-treatment %28direct physical abuse%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insufficient Food and Water</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insufficient Shelter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Tied continuously or locked in a small pen%2Fcage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vet treatment</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>animalos__Job_Outcome__c</picklist>
+        <values>
+            <fullName>ACPA Powers Used</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AWD %E2%80%93 Compliance obtained</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AWD %E2%80%93 No compliance obtained</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Advice%2Feducation provided with attendance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Advice%2Feducation provided without attendance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Advisory letter issued</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ambulance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal Surrendered</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal Welfare League</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animals Seized</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animals Seized Under ACPA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animals Surrendered</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Attended %E2%80%93 advice provided</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Attended - Treatment obtained</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DOA %E2%80%93 Body left in field</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DOA %E2%80%93 Left in Field</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DOA %E2%80%93 Return to Shelter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DOA Domestic %E2%80%93 Returned to Owner in Field</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Duplicate job</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Emergency relief provided</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Euthanasia in Field</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Forfeiture application not approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Forfeiture approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Formal Caution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insufficient evidence to continue investigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insufficient evidence to open investigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insufficient powers to Obtain Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intel Only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Job Share with another Agency</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No ACPA offence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Attendance %E2%80%93 advice provided</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Further Action</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No attendance %E2%80%93 treatment provided</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No welfare issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Agency</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Penalty Infringement Notice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending FBOE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending forfeiture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Police</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prosecution commenced</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prosecution not proceeding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prosecution%2FCAN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Provided Relief</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Record Only %28Reasoning Required%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ref to Other Jurisdiction %E2%80%93 No Welfare Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ref to Other Jurisdiction %E2%80%93 Welfare Issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to Community Liaison Officer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to DPI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to External Wildlife Carer%2F Rescuer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to QPS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to QRIC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to RSPCA Wildlife Responder</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescue Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescue No Longer Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescued and Released</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescued and Returned to Owner %E2%80%93 Domestic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescued and Returned to Shelter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescued and Taken to Contract Vet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescued and Taken to External Vet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescued and Taken to Wildlife Carer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescued and Transported to External Care Facility</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transport Complete</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unable to Capture Animal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unable to Locate Animal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vexatious Report</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warning letter issued</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wildlife Released</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wildlife Reunited</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>animalos__Job_Safety_Classification__c</picklist>
+        <values>
+            <fullName>High Vigilance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Moderate Concern</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Routine</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>animalos__Knowledge_of_firearms_weapons__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>animalos__Priority__c</picklist>
+        <values>
+            <fullName>Critical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Major</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Minor</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>animalos__Proactive_Type__c</picklist>
+        <values>
+            <fullName>Agricultural Shows</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animals in Film and Theatrical Performances</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animals in Grooming Establishments</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animals used in Rodeo Events</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Boarding Establishments %E2%80%93 Dogs and Cats</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Breeding Facility - Dogs and Cats</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Commercial Production %E2%80%93 Chickens%2C Pigs%2C Livestock</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Community Days</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Companion Animal Pounds</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Companion Animal Transport Agencies</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Feedlots</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Horses in Riding Centres and Boarding Stables</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pet Shops</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Security Dogs</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Zoo</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>animalos__Status__c</picklist>
+        <values>
+            <fullName>Assigned</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Re-Assignment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cancelled</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Departed Job</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Equipment Set</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Finalised</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Follow Up Required</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Attendance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>New</fullName>
+            <default>true</default>
+        </values>
+        <values>
+            <fullName>Working on Job</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>animalos__Type__c</picklist>
+        <values>
+            <fullName>Animal Welfare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal Welfare - Intel</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal Welfare - Referred Externally</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Proactive Job</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Caller_Frequents_Area__c</picklist>
+        <values>
+            <fullName>Everyday</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Once Per Week</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>One Time</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Several Times Per Week</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Complexity__c</picklist>
+        <values>
+            <fullName>Advanced</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Basic</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Technical</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Future_Action_Required__c</picklist>
+        <values>
+            <fullName>Attendance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Reply</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Office Task</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Phone Call</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ref to other Org</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Job_Outcome_Multi__c</picklist>
+        <values>
+            <fullName>AWD %E2%80%93 Compliance obtained</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>AWD %E2%80%93 No compliance obtained</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Advisory letter issued</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Ambulance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal Welfare League</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animals Seized</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animals Surrendered</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Attended %E2%80%93 advice provided</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Attended - Treatment obtained</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Duplicate job</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Emergency relief provided</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Forfeiture application not approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Forfeiture approved</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Formal Caution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insufficient evidence to continue investigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insufficient evidence to open investigation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Insufficient powers to Obtain Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Intel Only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No ACPA offence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Attendance %E2%80%93 advice provided</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No Further Action</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No attendance %E2%80%93 treatment provided</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>No welfare issue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Agency</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Penalty Infringement Notice</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending FBOE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending forfeiture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Police</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prosecution commenced</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prosecution not proceeding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prosecution%2FCAN</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to Community Liaison Officer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to DPI</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to QPS</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Referred to QRIC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warning letter issued</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Job_Type__c</picklist>
+        <values>
+            <fullName>Animal Owner Requesting Assistance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal Stuck in Tree</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal Trapped</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal Trapped in Water</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bird In Building</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C2 Bat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>C3 Bat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Displaced Wildlife</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dog%2F Cat Attack</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Drain Rescue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fire Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fishing Line Entanglement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Flood Event</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>HEA Bequest Assistance Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Heat Related</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hit By Car</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Injured</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inspectorate Assistance Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Koala Requiring Rescue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Koala Sighting</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Livestock Rescue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Oiled Wildlife</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Orphaned Juvenile</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other Entanglement</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Owner Surrender</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Provide Emergency Relief</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rescue at Height</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Roof Cavity</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Shelter Assistance Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sick%2F Illness</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Special Rescue Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wildlife Release</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wildlife Reunite</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_MOP_Ability_to_Help__c</picklist>
+        <values>
+            <fullName>Can Help</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unable to Help</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Other_Capture_Methods__c</picklist>
+        <values>
+            <fullName>Crate Trap</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>D-Net</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hand Capture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hand Net Technique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loop Snare%2F Hand Snare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net Launcher</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other %28Please specify in Job Notes%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Outcome_Reason__c</picklist>
+        <values>
+            <fullName>Animal assessed and left in field</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal self-rescued</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Caller took to vet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other agency rescued</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Preferred_Capture_Method__c</picklist>
+        <values>
+            <fullName>Crate Trap</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>D-Net</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hand Capture</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hand Net Technique</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Loop Snare%2F Hand Snare</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Net Launcher</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other %28Please specify in Job Notes%29</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Previous_History_with_NSW_Police__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Reported_Animal_Type__c</picklist>
+        <values>
+            <fullName>Cat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Dog</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Livestock</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Other</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Source__c</picklist>
+        <values>
+            <fullName>Ambulance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal Refuge</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal Welfare League</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Community Support Volunteer Organisation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Crime Stoppers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cruelty Complaint</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cyclone Yasi</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Email</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fax</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Fire Brigade</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>GC%2EC%2EC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>General Dispatch Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Logan City Council</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Mail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Message Bank</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>NULL</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Public</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>QWRC</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qld Govt%2C Dept%2E Housing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qld Govt%2C Dept%2E Natural Recources%2C Mines %26 Water</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qld Govt%2C Dept%2E Primary Industries %26 Fisheries</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qld Govt%2C Local Government</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qld Govt%2C Other</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qld Govt%2C Qld Health</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qld Govt%2C Qld Parks %26 Wildlife%2Fepa</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qld Govt%2C Qld Police Service</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Qld Govt%2E Dept%2E Emergency Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Racing Qld</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Real Estate Agent</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Routine Inspection</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rspca Administration</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rspca Animal Training %26 Behaviour</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rspca Executive Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rspca Foster Care</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rspca Fundraising</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rspca Inspectorate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rspca Retail</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rspca Shelter%2C Dakabin</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rspca Shelter%2C Fairfield</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rspca Shelter%2C Regional</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rspca Veterinary Services</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rspca Volunteers</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rspca Wildlife Dept%2E</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Security officer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Social Media</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Spca%2Fother Animal Welfare Org</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Vet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Veterinarian</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Veterinary Surgery%2C External</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wildcare%2Fother Wildlife Org</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>pt macquarie city council</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Sub_Status__c</picklist>
+        <values>
+            <fullName>Attended %E2%80%93 CC left</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Attended %E2%80%93 enquires continuing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting AWD Compliance Check</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Further Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Notification Response</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Recheck</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Caller Contacted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Covering Inspector %E2%80%93 Awaiting Attendance</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Covering Inspector %E2%80%93 Preliminary Enquiries Made</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Covering Inspector - Assigned</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Notes outstanding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending FBOE</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending FBOE Application Decision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending Forfeiture Application</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending Forfeiture decision</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pending Prosecution</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Preliminary inquiries made</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Prosecution Commenced</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trap Set</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Supporting_Documentation_Warning__c</picklist>
+        <values>
+            <fullName>Graphic injuries such as death of an animal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Presence of children</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sexualised content</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Violence</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>aos_Violence_Warning__c</picklist>
+        <values>
+            <fullName>No</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unknown</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Yes</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

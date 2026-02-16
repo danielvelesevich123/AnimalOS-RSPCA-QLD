@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Condition_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Condition Type</label>
+    <required>false</required>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Behaviour condition</fullName>
+                <default>false</default>
+                <label>Behaviour condition</label>
+            </value>
+            <value>
+                <fullName>Disease</fullName>
+                <default>false</default>
+                <label>Disease</label>
+            </value>
+            <value>
+                <fullName>Illness</fullName>
+                <default>false</default>
+                <label>Illness</label>
+            </value>
+            <value>
+                <fullName>Injury</fullName>
+                <default>false</default>
+                <label>Injury</label>
+            </value>
+            <value>
+                <fullName>Welfare</fullName>
+                <default>false</default>
+                <label>Welfare</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

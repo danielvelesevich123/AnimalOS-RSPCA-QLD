@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_SupportPlanManager__c</fullName>
+    <complianceGroup>Not Categorized</complianceGroup>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Support Plan Manager</label>
+    <referenceTo>User</referenceTo>
+    <relationshipName>aos_Behaviour_Support_Plans1</relationshipName>
+    <required>false</required>
+    <securityClassification>Internal</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

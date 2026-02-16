@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Body_score__c</fullName>
+    <label>Body score</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Malnourished</fullName>
+                <default>false</default>
+                <label>Malnourished</label>
+            </value>
+            <value>
+                <fullName>Fit and healthy</fullName>
+                <default>false</default>
+                <label>Fit and healthy</label>
+            </value>
+            <value>
+                <fullName>Overweight</fullName>
+                <default>false</default>
+                <label>Overweight</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

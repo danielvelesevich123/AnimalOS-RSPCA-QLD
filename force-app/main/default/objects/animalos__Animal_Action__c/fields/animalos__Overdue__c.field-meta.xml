@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Overdue__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>IF( AND(ISPICKVAL( animalos__Action_Status__c , &apos;Scheduled&apos;),  DATEVALUE( animalos__Date_Time_of_Action__c ) &lt; TODAY() ) , IMAGE(LEFT($Api.Partner_Server_URL_620, FIND( &apos;/services&apos;, $Api.Partner_Server_URL_620)) + &quot;resource/animalos__Note_Flags/Warning.png&quot;, &apos;Warning&apos;, 25, 25), &apos;&apos;)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Overdue</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

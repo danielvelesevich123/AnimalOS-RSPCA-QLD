@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Category__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Category</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Adoption - Birds</fullName>
+                <default>false</default>
+                <label>Adoption - Birds</label>
+            </value>
+            <value>
+                <fullName>Adoption - Canines</fullName>
+                <default>false</default>
+                <label>Adoption - Canines</label>
+            </value>
+            <value>
+                <fullName>Adoption - Felines</fullName>
+                <default>false</default>
+                <label>Adoption - Felines</label>
+            </value>
+            <value>
+                <fullName>Adoption - Livestock</fullName>
+                <default>false</default>
+                <label>Adoption - Livestock</label>
+            </value>
+            <value>
+                <fullName>Adoption - Pocket Pets</fullName>
+                <default>false</default>
+                <label>Adoption - Pocket Pets</label>
+            </value>
+            <value>
+                <fullName>BMCC Fees</fullName>
+                <default>false</default>
+                <label>BMCC Fees</label>
+            </value>
+            <value>
+                <fullName>Boarding Fee</fullName>
+                <default>false</default>
+                <label>Boarding Fee</label>
+            </value>
+            <value>
+                <fullName>Body Disposal</fullName>
+                <default>false</default>
+                <label>Body Disposal</label>
+            </value>
+            <value>
+                <fullName>Elanco Products</fullName>
+                <default>false</default>
+                <label>Elanco Products</label>
+            </value>
+            <value>
+                <fullName>Emergency Boarding</fullName>
+                <default>false</default>
+                <label>Emergency Boarding</label>
+            </value>
+            <value>
+                <fullName>Merchandise</fullName>
+                <default>false</default>
+                <label>Merchandise</label>
+            </value>
+            <value>
+                <fullName>Microchipping</fullName>
+                <default>false</default>
+                <label>Microchipping</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Reclaim</fullName>
+                <default>false</default>
+                <label>Reclaim</label>
+            </value>
+            <value>
+                <fullName>Royal Canin Products</fullName>
+                <default>false</default>
+                <label>Royal Canin Products</label>
+            </value>
+            <value>
+                <fullName>SCC Fees</fullName>
+                <default>false</default>
+                <label>SCC Fees</label>
+            </value>
+            <value>
+                <fullName>Special Delivery</fullName>
+                <default>false</default>
+                <label>Special Delivery</label>
+            </value>
+            <value>
+                <fullName>Surrender - Bird/Pocket Pet</fullName>
+                <default>false</default>
+                <label>Surrender - Bird/Pocket Pet</label>
+            </value>
+            <value>
+                <fullName>Surrender - Canine/Feline</fullName>
+                <default>false</default>
+                <label>Surrender - Canine/Feline</label>
+            </value>
+            <value>
+                <fullName>Surrender - Livestock</fullName>
+                <default>false</default>
+                <label>Surrender - Livestock</label>
+            </value>
+            <value>
+                <fullName>Surrender Pickup - Canine/Feline</fullName>
+                <default>false</default>
+                <label>Surrender Pickup - Canine/Feline</label>
+            </value>
+            <value>
+                <fullName>Surrender Pickup - Other</fullName>
+                <default>false</default>
+                <label>Surrender Pickup - Other</label>
+            </value>
+            <value>
+                <fullName>WCC Fees</fullName>
+                <default>false</default>
+                <label>WCC Fees</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

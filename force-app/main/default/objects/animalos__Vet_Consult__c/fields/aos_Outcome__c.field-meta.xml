@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Outcome__c</fullName>
+    <label>Outcome</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Released without treatment</fullName>
+                <default>false</default>
+                <label>Released without treatment</label>
+            </value>
+            <value>
+                <fullName>Treated/In Care</fullName>
+                <default>false</default>
+                <label>Treated/In Care</label>
+            </value>
+            <value>
+                <fullName>Euthanasia</fullName>
+                <default>false</default>
+                <label>Euthanasia</label>
+            </value>
+            <value>
+                <fullName>Carer</fullName>
+                <default>false</default>
+                <label>Carer</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

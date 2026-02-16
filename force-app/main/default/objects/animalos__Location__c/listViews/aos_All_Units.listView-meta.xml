@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_All_Units</fullName>
+    <columns>NAME</columns>
+    <columns>animalos__Parent_Block__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>animalos__Location__c.animalos__Unit</value>
+    </filters>
+    <label>All Units</label>
+</ListView>

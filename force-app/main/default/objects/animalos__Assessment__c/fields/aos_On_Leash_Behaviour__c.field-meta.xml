@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_On_Leash_Behaviour__c</fullName>
+    <inlineHelpText>Walking in the shelter with unfamiliar person. Allow them to explore, sniff and toilet, observe behaviour towards any noise.</inlineHelpText>
+    <label>On Leash - Behaviour</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Relaxed/engaged: walks loose leash, checks in, explores, body language soft/loose</fullName>
+                <default>false</default>
+                <label>Relaxed/engaged: walks loose leash, checks in, explores, body language soft/loose</label>
+            </value>
+            <value>
+                <fullName>Excitable/distracted: alert, higher arousal, recovers, may pull lightly, jump/dart</fullName>
+                <default>false</default>
+                <label>Excitable/distracted: alert, higher arousal, recovers, may pull lightly, jump/dart</label>
+            </value>
+            <value>
+                <fullName>Anxious/fearful: high vigilance, low posture, erratic, may jump up, dart, freeze</fullName>
+                <default>false</default>
+                <label>Anxious/fearful: high vigilance, low posture, erratic, may jump up, dart, freeze</label>
+            </value>
+            <value>
+                <fullName>Overstimulated: high arousal/intensity, may bite lead/mouth, body barge, two person, difficult to control</fullName>
+                <default>false</default>
+                <label>Overstimulated: high arousal/intensity, may bite lead/mouth, body barge, two person, difficult to control</label>
+            </value>
+            <value>
+                <fullName>Frustrated/conflicted: motivation decrease distance, may be vocal (whines, high pitched barking),</fullName>
+                <default>false</default>
+                <label>Frustrated/conflicted: motivation decrease distance, may be vocal (whines, high pitched barking)</label>
+            </value>
+            <value>
+                <fullName>Repulsion/high intensity: motivation increase distance, may growl, lunge, bark, growl-bark or redirect</fullName>
+                <default>false</default>
+                <label>Repulsion/high intensity: motivation increase distance, may growl, lunge, bark, growl-bark or redirect</label>
+            </value>
+            <value>
+                <fullName>Not completed</fullName>
+                <default>false</default>
+                <label>Not completed</label>
+            </value>
+            <value>
+                <fullName>Reactive aggressive</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Reactive aggressive</label>
+            </value>
+            <value>
+                <fullName>Reactive non-aggressive</fullName>
+                <default>false</default>
+                <isActive>false</isActive>
+                <label>Reactive non-aggressive</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

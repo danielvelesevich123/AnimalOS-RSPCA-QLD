@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Referral_Organisation_OR_Contact_R</fullName>
+    <active>false</active>
+    <description>Checks if the Referral is Stray, and Source is Stray, Wildlife,
+DOA – Stray or DOA – Wildlife then the Referral Organisation OR Contact is required.</description>
+    <errorConditionFormula>AND(
+    ISNEW(),                                    
+    OR(
+        ISPICKVAL(animalos__Animal_Source__c, &quot;Stray&quot;),          
+        ISPICKVAL(animalos__Animal_Source__c, &quot;Wildlife&quot;),       
+        ISPICKVAL(animalos__Animal_Source__c, &quot;DOA - Stray&quot;),    
+        ISPICKVAL(animalos__Animal_Source__c, &quot;DOA - Wildlife&quot;)  
+    ),
+    NOT(
+        OR(
+            NOT(ISBLANK(animalos__Referral_Organisation__c)),    
+            NOT(ISBLANK(animalos__Contact__c))                   
+        )
+    )
+)</errorConditionFormula>
+    <errorMessage>Referral Organisation OR Contact is required.</errorMessage>
+</ValidationRule>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Job_Type__c</fullName>
+    <label>Job Type</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Animal Owner Requesting Assistance</fullName>
+                <default>false</default>
+                <label>Animal Owner Requesting Assistance</label>
+            </value>
+            <value>
+                <fullName>Animal Stuck in Tree</fullName>
+                <default>false</default>
+                <label>Animal Stuck in Tree</label>
+            </value>
+            <value>
+                <fullName>Animal Trapped in Water</fullName>
+                <default>false</default>
+                <label>Animal Trapped in Water</label>
+            </value>
+            <value>
+                <fullName>Animal Trapped</fullName>
+                <default>false</default>
+                <label>Animal Trapped</label>
+            </value>
+            <value>
+                <fullName>Bird In Building</fullName>
+                <default>false</default>
+                <label>Bird In Building</label>
+            </value>
+            <value>
+                <fullName>C2 Bat</fullName>
+                <default>false</default>
+                <label>C2 Bat</label>
+            </value>
+            <value>
+                <fullName>C3 Bat</fullName>
+                <default>false</default>
+                <label>C3 Bat</label>
+            </value>
+            <value>
+                <fullName>Displaced Wildlife</fullName>
+                <default>false</default>
+                <label>Displaced Wildlife</label>
+            </value>
+            <value>
+                <fullName>Dog/ Cat Attack</fullName>
+                <default>false</default>
+                <label>Dog/ Cat Attack</label>
+            </value>
+            <value>
+                <fullName>Drain Rescue</fullName>
+                <default>false</default>
+                <label>Drain Rescue</label>
+            </value>
+            <value>
+                <fullName>Fire Event</fullName>
+                <default>false</default>
+                <label>Fire Event</label>
+            </value>
+            <value>
+                <fullName>Fishing Line Entanglement</fullName>
+                <default>false</default>
+                <label>Fishing Line Entanglement</label>
+            </value>
+            <value>
+                <fullName>Flood Event</fullName>
+                <default>false</default>
+                <label>Flood Event</label>
+            </value>
+            <value>
+                <fullName>HEA Bequest Assistance Request</fullName>
+                <default>false</default>
+                <label>HEA Bequest Assistance Request</label>
+            </value>
+            <value>
+                <fullName>Heat Related</fullName>
+                <default>false</default>
+                <label>Heat Related</label>
+            </value>
+            <value>
+                <fullName>Hit By Car</fullName>
+                <default>false</default>
+                <label>Hit By Car</label>
+            </value>
+            <value>
+                <fullName>Injured</fullName>
+                <default>false</default>
+                <label>Injured</label>
+            </value>
+            <value>
+                <fullName>Inspectorate Assistance Request</fullName>
+                <default>false</default>
+                <label>Inspectorate Assistance Request</label>
+            </value>
+            <value>
+                <fullName>Koala Requiring Rescue</fullName>
+                <default>false</default>
+                <label>Koala Requiring Rescue</label>
+            </value>
+            <value>
+                <fullName>Koala Sighting</fullName>
+                <default>false</default>
+                <label>Koala Sighting</label>
+            </value>
+            <value>
+                <fullName>Livestock Rescue</fullName>
+                <default>false</default>
+                <label>Livestock Rescue</label>
+            </value>
+            <value>
+                <fullName>Oiled Wildlife</fullName>
+                <default>false</default>
+                <label>Oiled Wildlife</label>
+            </value>
+            <value>
+                <fullName>Orphaned Juvenile</fullName>
+                <default>false</default>
+                <label>Orphaned Juvenile</label>
+            </value>
+            <value>
+                <fullName>Other Entanglement</fullName>
+                <default>false</default>
+                <label>Other Entanglement</label>
+            </value>
+            <value>
+                <fullName>Owner Surrender</fullName>
+                <default>false</default>
+                <label>Owner Surrender</label>
+            </value>
+            <value>
+                <fullName>Provide Emergency Relief</fullName>
+                <default>false</default>
+                <label>Provide Emergency Relief</label>
+            </value>
+            <value>
+                <fullName>Rescue at Height</fullName>
+                <default>false</default>
+                <label>Rescue at Height</label>
+            </value>
+            <value>
+                <fullName>Roof Cavity</fullName>
+                <default>false</default>
+                <label>Roof Cavity</label>
+            </value>
+            <value>
+                <fullName>Shelter Assistance Request</fullName>
+                <default>false</default>
+                <label>Shelter Assistance Request</label>
+            </value>
+            <value>
+                <fullName>Sick/ Illness</fullName>
+                <default>false</default>
+                <label>Sick/ Illness</label>
+            </value>
+            <value>
+                <fullName>Special Rescue Request</fullName>
+                <default>false</default>
+                <label>Special Rescue Request</label>
+            </value>
+            <value>
+                <fullName>Wildlife Release</fullName>
+                <default>false</default>
+                <label>Wildlife Release</label>
+            </value>
+            <value>
+                <fullName>Wildlife Reunite</fullName>
+                <default>false</default>
+                <label>Wildlife Reunite</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

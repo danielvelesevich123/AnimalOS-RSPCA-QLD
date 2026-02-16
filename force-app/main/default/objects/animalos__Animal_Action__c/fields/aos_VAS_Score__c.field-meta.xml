@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_VAS_Score__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Considering your observations, choose a rating for the dog from 1 to 5 ONLY that best reflects the types of behaviours observed</inlineHelpText>
+    <label>VAS Score</label>
+    <precision>1</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

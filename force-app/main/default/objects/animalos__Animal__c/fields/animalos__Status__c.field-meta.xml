@@ -1,0 +1,1139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Status__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Status</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>animalos__Stage__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Adopted</fullName>
+                <default>false</default>
+                <label>Adopted</label>
+            </value>
+            <value>
+                <fullName>Adopted – Awaiting Pickup</fullName>
+                <default>false</default>
+                <label>Adopted – Awaiting Pickup</label>
+            </value>
+            <value>
+                <fullName>Adopted - Awaiting Spay/Neuter</fullName>
+                <default>false</default>
+                <label>Adopted - Awaiting Spay/Neuter</label>
+            </value>
+            <value>
+                <fullName>Adopted – Offsite</fullName>
+                <default>false</default>
+                <label>Adopted – Offsite</label>
+            </value>
+            <value>
+                <fullName>Adoption Pending/Hold on Property Check</fullName>
+                <default>false</default>
+                <label>Adoption Pending/Hold on Property Check</label>
+            </value>
+            <value>
+                <fullName>Available For Adoption</fullName>
+                <default>false</default>
+                <label>Available For Adoption</label>
+            </value>
+            <value>
+                <fullName>Available For Adoption – Awaiting Spay/Neuter</fullName>
+                <default>false</default>
+                <label>Available For Adoption – Awaiting Spay/Neuter</label>
+            </value>
+            <value>
+                <fullName>Available For Adoption – In Foster</fullName>
+                <default>false</default>
+                <label>Available For Adoption – In Foster</label>
+            </value>
+            <value>
+                <fullName>Available For Adoption – No Web Presence</fullName>
+                <default>false</default>
+                <label>Available For Adoption – No Web Presence</label>
+            </value>
+            <value>
+                <fullName>Available For Adoption – Offsite</fullName>
+                <default>false</default>
+                <label>Available For Adoption – Offsite</label>
+            </value>
+            <value>
+                <fullName>Available For Adoption – Waiting Space</fullName>
+                <default>false</default>
+                <label>Available For Adoption – Waiting Space</label>
+            </value>
+            <value>
+                <fullName>Awaiting Behavioural Assessment</fullName>
+                <default>false</default>
+                <label>Awaiting Behavioural Assessment</label>
+            </value>
+            <value>
+                <fullName>Awaiting Behaviour Completion</fullName>
+                <default>false</default>
+                <label>Awaiting Behaviour Completion</label>
+            </value>
+            <value>
+                <fullName>Awaiting Behaviour Evaluation</fullName>
+                <default>false</default>
+                <label>Awaiting Behaviour Evaluation</label>
+            </value>
+            <value>
+                <fullName>Awaiting Behaviour Retest</fullName>
+                <default>false</default>
+                <label>Awaiting Behaviour Retest</label>
+            </value>
+            <value>
+                <fullName>Awaiting Desex</fullName>
+                <default>false</default>
+                <label>Awaiting Desex</label>
+            </value>
+            <value>
+                <fullName>Awaiting Euthanasia</fullName>
+                <default>false</default>
+                <label>Awaiting Euthanasia</label>
+            </value>
+            <value>
+                <fullName>Awaiting Foster</fullName>
+                <default>false</default>
+                <label>Awaiting Foster</label>
+            </value>
+            <value>
+                <fullName>Awaiting Rescue</fullName>
+                <default>false</default>
+                <label>Awaiting Rescue</label>
+            </value>
+            <value>
+                <fullName>Awaiting Spay/Neuter – In Foster</fullName>
+                <default>false</default>
+                <label>Awaiting Spay/Neuter – In Foster</label>
+            </value>
+            <value>
+                <fullName>Awaiting Surgery – Not Spay/Neuter</fullName>
+                <default>false</default>
+                <label>Awaiting Surgery – Not Spay/Neuter</label>
+            </value>
+            <value>
+                <fullName>Awaiting Transfer</fullName>
+                <default>false</default>
+                <label>Awaiting Transfer</label>
+            </value>
+            <value>
+                <fullName>Awaiting Triage</fullName>
+                <default>false</default>
+                <label>Awaiting Triage</label>
+            </value>
+            <value>
+                <fullName>Awaiting Triage Completion</fullName>
+                <default>false</default>
+                <label>Awaiting Triage Completion</label>
+            </value>
+            <value>
+                <fullName>Awaiting Vet Exam/Health Check</fullName>
+                <default>false</default>
+                <label>Awaiting Vet Exam/Health Check</label>
+            </value>
+            <value>
+                <fullName>Bequest Animal Offsite</fullName>
+                <default>false</default>
+                <label>Bequest Animal Offsite</label>
+            </value>
+            <value>
+                <fullName>Bequest Animal Off Site</fullName>
+                <default>false</default>
+                <label>Bequest Animal Off Site</label>
+            </value>
+            <value>
+                <fullName>Bequest Animal Onsite</fullName>
+                <default>false</default>
+                <label>Bequest Animal Onsite</label>
+            </value>
+            <value>
+                <fullName>Bequest Animal On Site</fullName>
+                <default>false</default>
+                <label>Bequest Animal On Site</label>
+            </value>
+            <value>
+                <fullName>Court Hold</fullName>
+                <default>false</default>
+                <label>Court Hold</label>
+            </value>
+            <value>
+                <fullName>Deceased</fullName>
+                <default>false</default>
+                <label>Deceased</label>
+            </value>
+            <value>
+                <fullName>Deceased - Awaiting Final Disposition</fullName>
+                <default>false</default>
+                <label>Deceased - Awaiting Final Disposition</label>
+            </value>
+            <value>
+                <fullName>Disposition Under Final Review</fullName>
+                <default>false</default>
+                <label>Disposition Under Final Review</label>
+            </value>
+            <value>
+                <fullName>DOA</fullName>
+                <default>false</default>
+                <label>DOA</label>
+            </value>
+            <value>
+                <fullName>DOA Stray - Awaiting Final Disposition</fullName>
+                <default>false</default>
+                <label>DOA Stray - Awaiting Final Disposition</label>
+            </value>
+            <value>
+                <fullName>Emergency Boarding</fullName>
+                <default>false</default>
+                <label>Emergency Boarding</label>
+            </value>
+            <value>
+                <fullName>Emergency Boarding - In Foster</fullName>
+                <default>false</default>
+                <label>Emergency Boarding - In Foster</label>
+            </value>
+            <value>
+                <fullName>Emergency Boarding Returned to Owner</fullName>
+                <default>false</default>
+                <label>Emergency Boarding Returned to Owner</label>
+            </value>
+            <value>
+                <fullName>Escaped</fullName>
+                <default>false</default>
+                <label>Escaped</label>
+            </value>
+            <value>
+                <fullName>Euthanasia in Field</fullName>
+                <default>false</default>
+                <label>Euthanasia in Field</label>
+            </value>
+            <value>
+                <fullName>Euthanised</fullName>
+                <default>false</default>
+                <label>Euthanised</label>
+            </value>
+            <value>
+                <fullName>Euthanised by Offsite Vet</fullName>
+                <default>false</default>
+                <label>Euthanised by Offsite Vet</label>
+            </value>
+            <value>
+                <fullName>Euthanised During Stray Hold Period</fullName>
+                <default>false</default>
+                <label>Euthanised During Stray Hold Period</label>
+            </value>
+            <value>
+                <fullName>Euthanised During Stray Time</fullName>
+                <default>false</default>
+                <label>Euthanised During Stray Time</label>
+            </value>
+            <value>
+                <fullName>Euthanised on Arrival</fullName>
+                <default>false</default>
+                <label>Euthanised on Arrival</label>
+            </value>
+            <value>
+                <fullName>Hold Isolation</fullName>
+                <default>false</default>
+                <label>Hold Isolation</label>
+            </value>
+            <value>
+                <fullName>Hold Medical/Surgery Recovery</fullName>
+                <default>false</default>
+                <label>Hold Medical/Surgery Recovery</label>
+            </value>
+            <value>
+                <fullName>Hold Quarantine</fullName>
+                <default>false</default>
+                <label>Hold Quarantine</label>
+            </value>
+            <value>
+                <fullName>Hold Quarantine - Medical</fullName>
+                <default>false</default>
+                <label>Hold Quarantine - Medical</label>
+            </value>
+            <value>
+                <fullName>Hold Quarantine - Vaccination</fullName>
+                <default>false</default>
+                <label>Hold Quarantine - Vaccination</label>
+            </value>
+            <value>
+                <fullName>Hospitalised</fullName>
+                <default>false</default>
+                <label>Hospitalised</label>
+            </value>
+            <value>
+                <fullName>Hospitalised - Offsite</fullName>
+                <default>false</default>
+                <label>Hospitalised - Offsite</label>
+            </value>
+            <value>
+                <fullName>Hospitalised - Onsite</fullName>
+                <default>false</default>
+                <label>Hospitalised - Onsite</label>
+            </value>
+            <value>
+                <fullName>ID Trace</fullName>
+                <default>false</default>
+                <label>ID Trace</label>
+            </value>
+            <value>
+                <fullName>In Care</fullName>
+                <default>false</default>
+                <label>In Care</label>
+            </value>
+            <value>
+                <fullName>Information</fullName>
+                <default>false</default>
+                <label>Information</label>
+            </value>
+            <value>
+                <fullName>In Foster</fullName>
+                <default>false</default>
+                <label>In Foster</label>
+            </value>
+            <value>
+                <fullName>In Foster - Awaiting Spay Neuter</fullName>
+                <default>false</default>
+                <label>In Foster - Awaiting Spay Neuter</label>
+            </value>
+            <value>
+                <fullName>Internal Transfer In</fullName>
+                <default>false</default>
+                <label>Internal Transfer In</label>
+            </value>
+            <value>
+                <fullName>Internal Transfer Out</fullName>
+                <default>false</default>
+                <label>Internal Transfer Out</label>
+            </value>
+            <value>
+                <fullName>Interred</fullName>
+                <default>false</default>
+                <label>Interred</label>
+            </value>
+            <value>
+                <fullName>Matched</fullName>
+                <default>false</default>
+                <label>Matched</label>
+            </value>
+            <value>
+                <fullName>Matched Adoption</fullName>
+                <default>false</default>
+                <label>Matched Adoption</label>
+            </value>
+            <value>
+                <fullName>Owner Relinquishment</fullName>
+                <default>false</default>
+                <label>Owner Relinquishment</label>
+            </value>
+            <value>
+                <fullName>Post-Operative Death</fullName>
+                <default>false</default>
+                <label>Post-Operative Death</label>
+            </value>
+            <value>
+                <fullName>Private Animal No Longer Lost</fullName>
+                <default>false</default>
+                <label>Private Animal No Longer Lost</label>
+            </value>
+            <value>
+                <fullName>Private Animal Reported Lost</fullName>
+                <default>false</default>
+                <label>Private Animal Reported Lost</label>
+            </value>
+            <value>
+                <fullName>Protective Custody/Hold</fullName>
+                <default>false</default>
+                <label>Protective Custody/Hold</label>
+            </value>
+            <value>
+                <fullName>Protective Custody/Hold - DOA</fullName>
+                <default>false</default>
+                <label>Protective Custody/Hold - DOA</label>
+            </value>
+            <value>
+                <fullName>Protective Custody/Hold - Euthanised</fullName>
+                <default>false</default>
+                <label>Protective Custody/Hold - Euthanised</label>
+            </value>
+            <value>
+                <fullName>Protective Custody – Awaiting Foster</fullName>
+                <default>false</default>
+                <label>Protective Custody – Awaiting Foster</label>
+            </value>
+            <value>
+                <fullName>Protective Custody - Hold Quarantine</fullName>
+                <default>false</default>
+                <label>Protective Custody - Hold Quarantine</label>
+            </value>
+            <value>
+                <fullName>Protective Custody In Foster</fullName>
+                <default>false</default>
+                <label>Protective Custody In Foster</label>
+            </value>
+            <value>
+                <fullName>Protective Custody - In Foster</fullName>
+                <default>false</default>
+                <label>Protective Custody - In Foster</label>
+            </value>
+            <value>
+                <fullName>Reclaimed</fullName>
+                <default>false</default>
+                <label>Reclaimed</label>
+            </value>
+            <value>
+                <fullName>Redemption (Offsite)</fullName>
+                <default>false</default>
+                <label>Redemption (Offsite)</label>
+            </value>
+            <value>
+                <fullName>Released/Awaiting Return to Owner</fullName>
+                <default>false</default>
+                <label>Released/Awaiting Return to Owner</label>
+            </value>
+            <value>
+                <fullName>Released/Forfeited to Site</fullName>
+                <default>false</default>
+                <label>Released/Forfeited to Site</label>
+            </value>
+            <value>
+                <fullName>Returned Protective Custody Animal</fullName>
+                <default>false</default>
+                <label>Returned Protective Custody Animal</label>
+            </value>
+            <value>
+                <fullName>Returned Surrender</fullName>
+                <default>false</default>
+                <label>Returned Surrender</label>
+            </value>
+            <value>
+                <fullName>Returned to Habitat</fullName>
+                <default>false</default>
+                <label>Returned to Habitat</label>
+            </value>
+            <value>
+                <fullName>Sanctuary/Life Resident</fullName>
+                <default>false</default>
+                <label>Sanctuary/Life Resident</label>
+            </value>
+            <value>
+                <fullName>Stolen</fullName>
+                <default>false</default>
+                <label>Stolen</label>
+            </value>
+            <value>
+                <fullName>Stray Hold</fullName>
+                <default>false</default>
+                <label>Stray Hold</label>
+            </value>
+            <value>
+                <fullName>Stray Hold – Awaiting Transfer</fullName>
+                <default>false</default>
+                <label>Stray Hold – Awaiting Transfer</label>
+            </value>
+            <value>
+                <fullName>Stray Hold - In Foster</fullName>
+                <default>false</default>
+                <label>Stray Hold - In Foster</label>
+            </value>
+            <value>
+                <fullName>Stray Hold - In Vet Care</fullName>
+                <default>false</default>
+                <label>Stray Hold - In Vet Care</label>
+            </value>
+            <value>
+                <fullName>Stray Hold- In Vet Care</fullName>
+                <default>false</default>
+                <label>Stray Hold- In Vet Care</label>
+            </value>
+            <value>
+                <fullName>Transfer Out</fullName>
+                <default>false</default>
+                <label>Transfer Out</label>
+            </value>
+            <value>
+                <fullName>Transfer Out to Council</fullName>
+                <default>false</default>
+                <label>Transfer Out to Council</label>
+            </value>
+            <value>
+                <fullName>Transfer Out - To Rescue</fullName>
+                <default>false</default>
+                <label>Transfer Out - To Rescue</label>
+            </value>
+            <value>
+                <fullName>Trial Adoption</fullName>
+                <default>false</default>
+                <label>Trial Adoption</label>
+            </value>
+            <value>
+                <fullName>In Foster - UBM</fullName>
+                <default>false</default>
+                <label>In Foster - UBM</label>
+            </value>
+            <value>
+                <fullName>Unassisted Death</fullName>
+                <default>false</default>
+                <label>Unassisted Death</label>
+            </value>
+            <value>
+                <fullName>Unassisted Death In Foster</fullName>
+                <default>false</default>
+                <label>Unassisted Death In Foster</label>
+            </value>
+            <value>
+                <fullName>Unassisted Death - In Foster</fullName>
+                <default>false</default>
+                <label>Unassisted Death - In Foster</label>
+            </value>
+            <value>
+                <fullName>Under Behaviour Modification</fullName>
+                <default>false</default>
+                <label>Under Behaviour Modification</label>
+            </value>
+            <value>
+                <fullName>Unresolved File</fullName>
+                <default>false</default>
+                <label>Unresolved File</label>
+            </value>
+            <value>
+                <fullName>Wildlife Released</fullName>
+                <default>false</default>
+                <label>Wildlife Released</label>
+            </value>
+            <value>
+                <fullName>Protective Custody/Hold - Deceased</fullName>
+                <default>false</default>
+                <label>Protective Custody/Hold - Deceased</label>
+            </value>
+            <value>
+                <fullName>Available for Adoption - Awaiting Spay/Neuter</fullName>
+                <default>false</default>
+                <label>Available for Adoption - Awaiting Spay/Neuter</label>
+            </value>
+            <value>
+                <fullName>Available for Adoption - In Foster</fullName>
+                <default>false</default>
+                <label>Available for Adoption - In Foster</label>
+            </value>
+            <value>
+                <fullName>Available For Adoption - No Web Presence</fullName>
+                <default>false</default>
+                <label>Available For Adoption - No Web Presence</label>
+            </value>
+            <value>
+                <fullName>Available for Adoption - Offsite</fullName>
+                <default>false</default>
+                <label>Available for Adoption - Offsite</label>
+            </value>
+            <value>
+                <fullName>Available for Adoption - Waiting Space</fullName>
+                <default>false</default>
+                <label>Available for Adoption - Waiting Space</label>
+            </value>
+            <value>
+                <fullName>Awaiting Vet Exam / Health Check</fullName>
+                <default>false</default>
+                <label>Awaiting Vet Exam / Health Check</label>
+            </value>
+            <value>
+                <fullName>Awaiting Surgery - Not Spay/Neuter</fullName>
+                <default>false</default>
+                <label>Awaiting Surgery - Not Spay/Neuter</label>
+            </value>
+            <value>
+                <fullName>Protective Custody - Awaiting Foster</fullName>
+                <default>false</default>
+                <label>Protective Custody - Awaiting Foster</label>
+            </value>
+            <value>
+                <fullName>Adopted - Awaiting Pickup</fullName>
+                <default>false</default>
+                <label>Adopted - Awaiting Pickup</label>
+            </value>
+            <value>
+                <fullName>Adopted - Awaiting Spay / Neuter</fullName>
+                <default>false</default>
+                <label>Adopted - Awaiting Spay / Neuter</label>
+            </value>
+            <value>
+                <fullName>Adopted Offsite(Altered)</fullName>
+                <default>false</default>
+                <label>Adopted Offsite(Altered)</label>
+            </value>
+            <value>
+                <fullName>Adopted to Finder</fullName>
+                <default>false</default>
+                <label>Adopted to Finder</label>
+            </value>
+            <value>
+                <fullName>Adoption Pending / Hold On Property Check</fullName>
+                <default>false</default>
+                <label>Adoption Pending / Hold On Property Check</label>
+            </value>
+            <value>
+                <fullName>Awaiting Behavioral Assessment</fullName>
+                <default>false</default>
+                <label>Awaiting Behavioral Assessment</label>
+            </value>
+            <value>
+                <fullName>Awaiting Final Disposition</fullName>
+                <default>false</default>
+                <label>Awaiting Final Disposition</label>
+            </value>
+            <value>
+                <fullName>Awaiting Sort</fullName>
+                <default>false</default>
+                <label>Awaiting Sort</label>
+            </value>
+            <value>
+                <fullName>Awaiting Spay/Neuter</fullName>
+                <default>false</default>
+                <label>Awaiting Spay/Neuter</label>
+            </value>
+            <value>
+                <fullName>Bite Quarantine (Home)</fullName>
+                <default>false</default>
+                <label>Bite Quarantine (Home)</label>
+            </value>
+            <value>
+                <fullName>Boarding Client</fullName>
+                <default>false</default>
+                <label>Boarding Client</label>
+            </value>
+            <value>
+                <fullName>Cremated</fullName>
+                <default>false</default>
+                <label>Cremated</label>
+            </value>
+            <value>
+                <fullName>Cremation - Communal</fullName>
+                <default>false</default>
+                <label>Cremation - Communal</label>
+            </value>
+            <value>
+                <fullName>Cremation - Private</fullName>
+                <default>false</default>
+                <label>Cremation - Private</label>
+            </value>
+            <value>
+                <fullName>DOA - Final Disposition</fullName>
+                <default>false</default>
+                <label>DOA - Final Disposition</label>
+            </value>
+            <value>
+                <fullName>DOA - Released to Owner</fullName>
+                <default>false</default>
+                <label>DOA - Released to Owner</label>
+            </value>
+            <value>
+                <fullName>DOA Transfer</fullName>
+                <default>false</default>
+                <label>DOA Transfer</label>
+            </value>
+            <value>
+                <fullName>Due For Release</fullName>
+                <default>false</default>
+                <label>Due For Release</label>
+            </value>
+            <value>
+                <fullName>Emergency Evacuation - Released</fullName>
+                <default>false</default>
+                <label>Emergency Evacuation - Released</label>
+            </value>
+            <value>
+                <fullName>Entered Care</fullName>
+                <default>false</default>
+                <label>Entered Care</label>
+            </value>
+            <value>
+                <fullName>EOA - Euthanized on Arrival</fullName>
+                <default>false</default>
+                <label>EOA - Euthanized on Arrival</label>
+            </value>
+            <value>
+                <fullName>Euthanasia - RTO</fullName>
+                <default>false</default>
+                <label>Euthanasia - RTO</label>
+            </value>
+            <value>
+                <fullName>Euthanised During Stray Hold Time</fullName>
+                <default>false</default>
+                <label>Euthanised During Stray Hold Time</label>
+            </value>
+            <value>
+                <fullName>Euthanized by Offsite Vet</fullName>
+                <default>false</default>
+                <label>Euthanized by Offsite Vet</label>
+            </value>
+            <value>
+                <fullName>Found</fullName>
+                <default>false</default>
+                <label>Found</label>
+            </value>
+            <value>
+                <fullName>Hold</fullName>
+                <default>false</default>
+                <label>Hold</label>
+            </value>
+            <value>
+                <fullName>Hold Euthanasia</fullName>
+                <default>false</default>
+                <label>Hold Euthanasia</label>
+            </value>
+            <value>
+                <fullName>Hold For Possible Match</fullName>
+                <default>false</default>
+                <label>Hold For Possible Match</label>
+            </value>
+            <value>
+                <fullName>Hold In Foster</fullName>
+                <default>false</default>
+                <label>Hold In Foster</label>
+            </value>
+            <value>
+                <fullName>Hold Intervention</fullName>
+                <default>false</default>
+                <label>Hold Intervention</label>
+            </value>
+            <value>
+                <fullName>Lost</fullName>
+                <default>false</default>
+                <label>Lost</label>
+            </value>
+            <value>
+                <fullName>None</fullName>
+                <default>false</default>
+                <label>None</label>
+            </value>
+            <value>
+                <fullName>Police Hold</fullName>
+                <default>false</default>
+                <label>Police Hold</label>
+            </value>
+            <value>
+                <fullName>Possible Match</fullName>
+                <default>false</default>
+                <label>Possible Match</label>
+            </value>
+            <value>
+                <fullName>Privately Rehomed - New Owner Unknown</fullName>
+                <default>false</default>
+                <label>Privately Rehomed - New Owner Unknown</label>
+            </value>
+            <value>
+                <fullName>Rehabilitating</fullName>
+                <default>false</default>
+                <label>Rehabilitating</label>
+            </value>
+            <value>
+                <fullName>Released</fullName>
+                <default>false</default>
+                <label>Released</label>
+            </value>
+            <value>
+                <fullName>Released by Agency</fullName>
+                <default>false</default>
+                <label>Released by Agency</label>
+            </value>
+            <value>
+                <fullName>Released To Agency</fullName>
+                <default>false</default>
+                <label>Released To Agency</label>
+            </value>
+            <value>
+                <fullName>Released to Owner at Vet</fullName>
+                <default>false</default>
+                <label>Released to Owner at Vet</label>
+            </value>
+            <value>
+                <fullName>Released To Rescue</fullName>
+                <default>false</default>
+                <label>Released To Rescue</label>
+            </value>
+            <value>
+                <fullName>Released to Wildlife Rehabilitator</fullName>
+                <default>false</default>
+                <label>Released to Wildlife Rehabilitator</label>
+            </value>
+            <value>
+                <fullName>Returned Home</fullName>
+                <default>false</default>
+                <label>Returned Home</label>
+            </value>
+            <value>
+                <fullName>Returned To Owner</fullName>
+                <default>false</default>
+                <label>Returned To Owner</label>
+            </value>
+            <value>
+                <fullName>Special</fullName>
+                <default>false</default>
+                <label>Special</label>
+            </value>
+            <value>
+                <fullName>Temp Lost File</fullName>
+                <default>false</default>
+                <label>Temp Lost File</label>
+            </value>
+            <value>
+                <fullName>Unassisted Death - In Transit</fullName>
+                <default>false</default>
+                <label>Unassisted Death - In Transit</label>
+            </value>
+            <value>
+                <fullName>Under Behavior Modification</fullName>
+                <default>false</default>
+                <label>Under Behavior Modification</label>
+            </value>
+            <value>
+                <fullName>Under Vet Care</fullName>
+                <default>false</default>
+                <label>Under Vet Care</label>
+            </value>
+            <value>
+                <fullName>Left in Field</fullName>
+                <default>false</default>
+                <label>Left in Field</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Pre-Intake</controllingFieldValue>
+            <valueName>Bequest Animal Offsite</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pre-Intake</controllingFieldValue>
+            <valueName>Information</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pre-Intake</controllingFieldValue>
+            <valueName>Matched</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pre-Intake</controllingFieldValue>
+            <valueName>Private Animal No Longer Lost</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pre-Intake</controllingFieldValue>
+            <valueName>Private Animal Reported Lost</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Pre-Intake</controllingFieldValue>
+            <valueName>Left in Field</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>Court Hold</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>DOA Stray - Awaiting Final Disposition</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>Emergency Boarding</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>Emergency Boarding - In Foster</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>Euthanised During Stray Hold Period</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>ID Trace</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>Protective Custody/Hold</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>Protective Custody/Hold - DOA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>Protective Custody/Hold - Euthanised</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>Protective Custody – Awaiting Foster</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>Protective Custody - Hold Quarantine</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>Protective Custody - In Foster</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>Stray Hold</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>Stray Hold – Awaiting Transfer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>Stray Hold - In Foster</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>On Hold</controllingFieldValue>
+            <valueName>Stray Hold - In Vet Care</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Awaiting Behaviour Evaluation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Awaiting Behaviour Retest</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Awaiting Desex</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Awaiting Euthanasia</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Awaiting Foster</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Awaiting Rescue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Awaiting Spay/Neuter – In Foster</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Awaiting Surgery – Not Spay/Neuter</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Awaiting Transfer</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Awaiting Triage</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Awaiting Triage Completion</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Awaiting Vet Exam/Health Check</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Deceased - Awaiting Final Disposition</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Owner Relinquishment</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Released/Awaiting Return to Owner</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Processing</controllingFieldValue>
+            <valueName>Released/Forfeited to Site</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Care</controllingFieldValue>
+            <valueName>Bequest Animal Onsite</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Care</controllingFieldValue>
+            <valueName>Disposition Under Final Review</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Care</controllingFieldValue>
+            <valueName>Hold Isolation</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Care</controllingFieldValue>
+            <valueName>Hold Medical/Surgery Recovery</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Care</controllingFieldValue>
+            <valueName>Hold Quarantine - Medical</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Care</controllingFieldValue>
+            <valueName>Hold Quarantine - Vaccination</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Care</controllingFieldValue>
+            <valueName>Hospitalised - Offsite</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Care</controllingFieldValue>
+            <valueName>Hospitalised - Onsite</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Care</controllingFieldValue>
+            <valueName>In Foster</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Care</controllingFieldValue>
+            <valueName>In Foster - Awaiting Spay Neuter</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Care</controllingFieldValue>
+            <valueName>Sanctuary/Life Resident</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Care</controllingFieldValue>
+            <valueName>In Foster - UBM</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Under Care</controllingFieldValue>
+            <valueName>Under Behaviour Modification</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adoption Ready</controllingFieldValue>
+            <valueName>Adopted – Awaiting Pickup</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adoption Ready</controllingFieldValue>
+            <valueName>Adopted - Awaiting Spay/Neuter</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adoption Ready</controllingFieldValue>
+            <valueName>Adoption Pending/Hold on Property Check</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adoption Ready</controllingFieldValue>
+            <valueName>Available For Adoption</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adoption Ready</controllingFieldValue>
+            <valueName>Available For Adoption – Awaiting Spay/Neuter</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adoption Ready</controllingFieldValue>
+            <valueName>Available For Adoption – In Foster</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adoption Ready</controllingFieldValue>
+            <valueName>Available For Adoption – No Web Presence</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adoption Ready</controllingFieldValue>
+            <valueName>Available For Adoption – Offsite</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adoption Ready</controllingFieldValue>
+            <valueName>Available For Adoption – Waiting Space</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Adoption Ready</controllingFieldValue>
+            <valueName>Trial Adoption</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Adopted</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Adopted – Offsite</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Deceased</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>DOA</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Emergency Boarding Returned to Owner</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Escaped</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Euthanasia in Field</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Euthanised</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Euthanised by Offsite Vet</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Euthanised on Arrival</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Interred</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Post-Operative Death</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Reclaimed</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Returned Protective Custody Animal</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Returned Surrender</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Returned to Habitat</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Stolen</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Transfer Out to Council</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Transfer Out - To Rescue</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Unassisted Death</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Unassisted Death - In Foster</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Out</controllingFieldValue>
+            <valueName>Unresolved File</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

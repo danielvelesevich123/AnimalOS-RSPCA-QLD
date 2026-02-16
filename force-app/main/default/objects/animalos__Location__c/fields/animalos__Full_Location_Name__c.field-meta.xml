@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Full_Location_Name__c</fullName>
+    <deprecated>false</deprecated>
+    <externalId>false</externalId>
+    <formula>CASE( RecordType.Name,
+    &apos;Block&apos;, IF(ISBLANK( animalos__Sitename__c), Name, animalos__Parent_Block__r.Name &amp; &apos; / &apos; &amp; Name),
+    &apos;Unit&apos;, IF(ISBLANK( animalos__Sitename__c), animalos__Parent_Block__r.Name &amp; &apos; / &apos; &amp; Name, animalos__Parent_Block__r.animalos__Parent_Block__r.Name &amp; &apos; / &apos; &amp; animalos__Parent_Block__r.Name &amp; &apos; / &apos; &amp; Name),
+    &apos;Site&apos;, Name, 
+    &apos;Foster&apos;, Name,
+    &apos;Offsite&apos;, Name, NULL)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Full Location Name</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Caller_Frequents_Area__c</fullName>
+    <label>Caller Frequents Area</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>One Time</fullName>
+                <default>false</default>
+                <label>One Time</label>
+            </value>
+            <value>
+                <fullName>Once Per Week</fullName>
+                <default>false</default>
+                <label>Once Per Week</label>
+            </value>
+            <value>
+                <fullName>Several Times Per Week</fullName>
+                <default>false</default>
+                <label>Several Times Per Week</label>
+            </value>
+            <value>
+                <fullName>Everyday</fullName>
+                <default>false</default>
+                <label>Everyday</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

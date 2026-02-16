@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Household_Activity_Level__c</fullName>
+    <description>Foster Care Questionnaire</description>
+    <inlineHelpText>Is your house a quiet or busy household?</inlineHelpText>
+    <label>Household Activity Level</label>
+    <required>false</required>
+    <securityClassification>Internal</securityClassification>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Quiet</fullName>
+                <default>false</default>
+                <label>Quiet</label>
+            </value>
+            <value>
+                <fullName>Busy</fullName>
+                <default>false</default>
+                <label>Busy</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

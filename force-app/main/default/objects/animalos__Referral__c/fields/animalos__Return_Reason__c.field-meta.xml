@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Return_Reason__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Return Reason</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Behaviour - Aggressive To Dogs</fullName>
+                <default>false</default>
+                <label>Behaviour - Aggressive To Dogs</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Aggressive To Other Animals</fullName>
+                <default>false</default>
+                <label>Behaviour - Aggressive To Other Animals</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Aggressive To People</fullName>
+                <default>false</default>
+                <label>Behaviour - Aggressive To People</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Animal Is Anxious</fullName>
+                <default>false</default>
+                <label>Behaviour - Animal Is Anxious</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Arousal/Too Active</fullName>
+                <default>false</default>
+                <label>Behaviour - Arousal/Too Active</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Destructive Behaviour</fullName>
+                <default>false</default>
+                <label>Behaviour - Destructive Behaviour</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Digging</fullName>
+                <default>false</default>
+                <label>Behaviour - Digging</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Escape Behaviour</fullName>
+                <default>false</default>
+                <label>Behaviour - Escape Behaviour</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Escapes</fullName>
+                <default>false</default>
+                <label>Behaviour - Escapes</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Fearful of Loud Noises</fullName>
+                <default>false</default>
+                <label>Behaviour - Fearful of Loud Noises</label>
+            </value>
+            <value>
+                <fullName>Behaviour - High Prey Drive</fullName>
+                <default>false</default>
+                <label>Behaviour - High Prey Drive</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Not Good with Kids</fullName>
+                <default>false</default>
+                <label>Behaviour - Not Good with Kids</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Not Good With Other Animals(not aggro)</fullName>
+                <default>false</default>
+                <label>Behaviour - Not Good With Other Animals(not aggro)</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Not housebroken/Not using litter box</fullName>
+                <default>false</default>
+                <label>Behaviour - Not housebroken/Not using litter box</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Obsessive Behaviour</fullName>
+                <default>false</default>
+                <label>Behaviour - Obsessive Behaviour</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Spraying</fullName>
+                <default>false</default>
+                <label>Behaviour - Spraying</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Timid/Fearful</fullName>
+                <default>false</default>
+                <label>Behaviour - Timid/Fearful</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Too Active</fullName>
+                <default>false</default>
+                <label>Behaviour - Too Active</label>
+            </value>
+            <value>
+                <fullName>Behaviour - Too Noisy</fullName>
+                <default>false</default>
+                <label>Behaviour - Too Noisy</label>
+            </value>
+            <value>
+                <fullName>CANCELLED ADOPTION - at time of adoption</fullName>
+                <default>false</default>
+                <label>CANCELLED ADOPTION - at time of adoption</label>
+            </value>
+            <value>
+                <fullName>Health of the animal - Allergies</fullName>
+                <default>false</default>
+                <label>Health of the animal - Allergies</label>
+            </value>
+            <value>
+                <fullName>Health of the animal - Blind</fullName>
+                <default>false</default>
+                <label>Health of the animal - Blind</label>
+            </value>
+            <value>
+                <fullName>Health of the animal - Cancer</fullName>
+                <default>false</default>
+                <label>Health of the animal - Cancer</label>
+            </value>
+            <value>
+                <fullName>Health of the animal - Cannot afford vet bill</fullName>
+                <default>false</default>
+                <label>Health of the animal - Cannot afford vet bill</label>
+            </value>
+            <value>
+                <fullName>Health of the animal - Deaf</fullName>
+                <default>false</default>
+                <label>Health of the animal - Deaf</label>
+            </value>
+            <value>
+                <fullName>Health of the animal - FELV/FIV Positive</fullName>
+                <default>false</default>
+                <label>Health of the animal - FELV/FIV Positive</label>
+            </value>
+            <value>
+                <fullName>Health of the animal - Hairloss</fullName>
+                <default>false</default>
+                <label>Health of the animal - Hairloss</label>
+            </value>
+            <value>
+                <fullName>Health of the animal - Kennel Cough</fullName>
+                <default>false</default>
+                <label>Health of the animal - Kennel Cough</label>
+            </value>
+            <value>
+                <fullName>Health of the animal - Parvo</fullName>
+                <default>false</default>
+                <label>Health of the animal - Parvo</label>
+            </value>
+            <value>
+                <fullName>Health of the animal - URI</fullName>
+                <default>false</default>
+                <label>Health of the animal - URI</label>
+            </value>
+            <value>
+                <fullName>Health of the animal - UTI</fullName>
+                <default>false</default>
+                <label>Health of the animal - UTI</label>
+            </value>
+            <value>
+                <fullName>Health of the animal - Will need ongoing vet care</fullName>
+                <default>false</default>
+                <label>Health of the animal - Will need ongoing vet care</label>
+            </value>
+            <value>
+                <fullName>Personal - Allergies to pet</fullName>
+                <default>false</default>
+                <label>Personal - Allergies to pet</label>
+            </value>
+            <value>
+                <fullName>Personal - Behaviour/Temperament of resident pet</fullName>
+                <default>false</default>
+                <label>Personal - Behaviour/Temperament of resident pet</label>
+            </value>
+            <value>
+                <fullName>Personal - Home Circumstances Changed</fullName>
+                <default>false</default>
+                <label>Personal - Home Circumstances Changed</label>
+            </value>
+            <value>
+                <fullName>Personal - Kids are not good with the animal</fullName>
+                <default>false</default>
+                <label>Personal - Kids are not good with the animal</label>
+            </value>
+            <value>
+                <fullName>Personal - Landlord Won&apos;t Allow</fullName>
+                <default>false</default>
+                <label>Personal - Landlord Won&apos;t Allow</label>
+            </value>
+            <value>
+                <fullName>Personal - Moving</fullName>
+                <default>false</default>
+                <label>Personal - Moving</label>
+            </value>
+            <value>
+                <fullName>Personal - Not all family/housemates approved</fullName>
+                <default>false</default>
+                <label>Personal - Not all family/housemates approved</label>
+            </value>
+            <value>
+                <fullName>Personal - Owner Is Too Ill</fullName>
+                <default>false</default>
+                <label>Personal - Owner Is Too Ill</label>
+            </value>
+            <value>
+                <fullName>Personal - Realised I have no time for animal</fullName>
+                <default>false</default>
+                <label>Personal - Realised I have no time for animal</label>
+            </value>
+            <value>
+                <fullName>Personal - Sheds To Much Hair</fullName>
+                <default>false</default>
+                <label>Personal - Sheds To Much Hair</label>
+            </value>
+            <value>
+                <fullName>Personal - Unwanted Gift</fullName>
+                <default>false</default>
+                <label>Personal - Unwanted Gift</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

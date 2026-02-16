@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Outcome_Reason__c</fullName>
+    <label>Outcome Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>animalos__Job_Outcome__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Animal self-rescued</fullName>
+                <default>false</default>
+                <label>Animal self-rescued</label>
+            </value>
+            <value>
+                <fullName>Caller took to vet</fullName>
+                <default>false</default>
+                <label>Caller took to vet</label>
+            </value>
+            <value>
+                <fullName>Other agency rescued</fullName>
+                <default>false</default>
+                <label>Other agency rescued</label>
+            </value>
+            <value>
+                <fullName>Animal assessed and left in field</fullName>
+                <default>false</default>
+                <label>Animal assessed and left in field</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Rescue No Longer Required</controllingFieldValue>
+            <valueName>Animal self-rescued</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rescue No Longer Required</controllingFieldValue>
+            <valueName>Caller took to vet</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rescue No Longer Required</controllingFieldValue>
+            <valueName>Other agency rescued</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Rescue No Longer Required</controllingFieldValue>
+            <valueName>Animal assessed and left in field</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

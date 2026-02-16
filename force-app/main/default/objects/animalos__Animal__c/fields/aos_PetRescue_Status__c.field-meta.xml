@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_PetRescue_Status__c</fullName>
+    <label>PetRescue Status</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>active</fullName>
+                <default>false</default>
+                <label>active</label>
+            </value>
+            <value>
+                <fullName>rehomed</fullName>
+                <default>false</default>
+                <label>rehomed</label>
+            </value>
+            <value>
+                <fullName>removed</fullName>
+                <default>false</default>
+                <label>removed</label>
+            </value>
+            <value>
+                <fullName>draft</fullName>
+                <default>false</default>
+                <label>draft</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

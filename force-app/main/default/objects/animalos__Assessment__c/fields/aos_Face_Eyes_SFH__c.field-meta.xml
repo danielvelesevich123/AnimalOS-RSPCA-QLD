@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Face_Eyes_SFH__c</fullName>
+    <description>Face/Eyes - straight from hand</description>
+    <inlineHelpText>Face/Eyes - straight from hand</inlineHelpText>
+    <label>Face/Eyes - SFH</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>LTS_Behaviour_Eval_Face_Eyes</valueSetName>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

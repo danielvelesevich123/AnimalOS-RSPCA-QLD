@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_All_Rescue_Resources</fullName>
+    <columns>NAME</columns>
+    <columns>animalos__Type__c</columns>
+    <columns>animalos__Active__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>animalos__Type__c</field>
+        <operation>equals</operation>
+        <value>Rescue</value>
+    </filters>
+    <label>All Rescue Resources</label>
+</ListView>

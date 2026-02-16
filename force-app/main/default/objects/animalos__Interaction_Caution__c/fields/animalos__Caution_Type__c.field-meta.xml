@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Caution_Type__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Caution Type</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Physical Violence</fullName>
+                <default>false</default>
+                <label>Physical Violence</label>
+            </value>
+            <value>
+                <fullName>Verbal Abuse</fullName>
+                <default>false</default>
+                <label>Verbal Abuse</label>
+            </value>
+            <value>
+                <fullName>Firearms/weapons</fullName>
+                <default>false</default>
+                <label>Firearms/weapons</label>
+            </value>
+            <value>
+                <fullName>Known to Police</fullName>
+                <default>false</default>
+                <label>Known to Police</label>
+            </value>
+            <value>
+                <fullName>Substance Abuse</fullName>
+                <default>false</default>
+                <label>Suspected Substance Abuse</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

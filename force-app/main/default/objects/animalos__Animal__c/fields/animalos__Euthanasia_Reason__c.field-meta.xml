@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Euthanasia_Reason__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Euthanasia Reason</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Behavioural - Aggression/Reactivity - Animals other species</fullName>
+                <default>false</default>
+                <label>Behavioural - Aggression/Reactivity - Animals other species</label>
+            </value>
+            <value>
+                <fullName>Behavioural - Aggression/Reactivity - Animals same species</fullName>
+                <default>false</default>
+                <label>Behavioural - Aggression/Reactivity - Animals same species</label>
+            </value>
+            <value>
+                <fullName>Behavioural - Aggression/Reactivity - Humans</fullName>
+                <default>false</default>
+                <label>Behavioural - Aggression/Reactivity - Humans</label>
+            </value>
+            <value>
+                <fullName>Behavioural - Compulsive, Obsessive (circling, tail chasing)</fullName>
+                <default>false</default>
+                <label>Behavioural - Compulsive, Obsessive (circling, tail chasing)</label>
+            </value>
+            <value>
+                <fullName>Behavioural - Deterioration in Site</fullName>
+                <default>false</default>
+                <label>Behavioural - Deterioration in Site</label>
+            </value>
+            <value>
+                <fullName>Behavioural - Escape Behaviour</fullName>
+                <default>false</default>
+                <label>Behavioural - Escape Behaviour</label>
+            </value>
+            <value>
+                <fullName>Behavioural - Feral/Unsocialised</fullName>
+                <default>false</default>
+                <label>Behavioural - Feral/Unsocialised</label>
+            </value>
+            <value>
+                <fullName>Behavioural - High Arousal/Safety Risk</fullName>
+                <default>false</default>
+                <label>Behavioural - High Arousal/Safety Risk</label>
+            </value>
+            <value>
+                <fullName>Behavioural - Inappropriate Toileting</fullName>
+                <default>false</default>
+                <label>Behavioural - Inappropriate Toileting</label>
+            </value>
+            <value>
+                <fullName>Behavioural - Nuisance Barking/Vocalisation</fullName>
+                <default>false</default>
+                <label>Behavioural - Nuisance Barking/Vocalisation</label>
+            </value>
+            <value>
+                <fullName>Behavioural - Resource Guarding</fullName>
+                <default>false</default>
+                <label>Behavioural - Resource Guarding</label>
+            </value>
+            <value>
+                <fullName>Behavioural - Separation Anxiety</fullName>
+                <default>false</default>
+                <label>Behavioural - Separation Anxiety</label>
+            </value>
+            <value>
+                <fullName>Behavioural - Stressed, Anxiety, Timidity, Fearful</fullName>
+                <default>false</default>
+                <label>Behavioural - Stressed, Anxiety, Timidity, Fearful</label>
+            </value>
+            <value>
+                <fullName>Council ER - Behavioural - Unsuitable for rehoming</fullName>
+                <default>false</default>
+                <label>Council ER - Behavioural - Unsuitable for rehoming</label>
+            </value>
+            <value>
+                <fullName>Council ER - Infectious</fullName>
+                <default>false</default>
+                <label>Council ER - Infectious</label>
+            </value>
+            <value>
+                <fullName>Council ER - Legal - Dangerous Dogs</fullName>
+                <default>false</default>
+                <label>Council ER - Legal - Dangerous Dogs</label>
+            </value>
+            <value>
+                <fullName>Council ER - Legal - Restricted Dogs</fullName>
+                <default>false</default>
+                <label>Council ER - Legal - Restricted Dogs</label>
+            </value>
+            <value>
+                <fullName>Council ER - Medical</fullName>
+                <default>false</default>
+                <label>Council ER - Medical</label>
+            </value>
+            <value>
+                <fullName>Council ER - Organisational - Infant Family</fullName>
+                <default>false</default>
+                <label>Council ER - Organisational - Infant Family</label>
+            </value>
+            <value>
+                <fullName>Council ER - Organisational - Infant Family (550g+) Healthy, Foster Care Unavailable</fullName>
+                <default>false</default>
+                <label>Council ER - Organisational - Infant Family (550g+) Healthy, Foster Care Unavailable</label>
+            </value>
+            <value>
+                <fullName>Council ER - Organisational - Infant Family (550g+) Healthy, unweaned/Foster Care Unavailable</fullName>
+                <default>false</default>
+                <label>Council ER - Organisational - Infant Family (550g+) Healthy, unweaned/Foster Care Unavailable</label>
+            </value>
+            <value>
+                <fullName>Council ER - Surrendered For Euthansia - Owner Request</fullName>
+                <default>false</default>
+                <label>Council ER - Surrendered For Euthansia - Owner Request</label>
+            </value>
+            <value>
+                <fullName>Council ER - Feral/Unsocialised</fullName>
+                <default>false</default>
+                <label>Council ER - Feral/Unsocialised</label>
+            </value>
+            <value>
+                <fullName>High risk of injury to other animals or people</fullName>
+                <default>false</default>
+                <label>High risk of injury to other animals or people</label>
+            </value>
+            <value>
+                <fullName>High risk of suffering</fullName>
+                <default>false</default>
+                <label>High risk of suffering</label>
+            </value>
+            <value>
+                <fullName>Infectious - Beak and Feather</fullName>
+                <default>false</default>
+                <label>Infectious - Beak and Feather</label>
+            </value>
+            <value>
+                <fullName>Infectious - Calici</fullName>
+                <default>false</default>
+                <label>Infectious - Calici</label>
+            </value>
+            <value>
+                <fullName>Infectious - Coccidia</fullName>
+                <default>false</default>
+                <label>Infectious - Coccidia</label>
+            </value>
+            <value>
+                <fullName>Infectious - Coronavirus</fullName>
+                <default>false</default>
+                <label>Infectious - Coronavirus</label>
+            </value>
+            <value>
+                <fullName>Infectious - Distemper</fullName>
+                <default>false</default>
+                <label>Infectious - Distemper</label>
+            </value>
+            <value>
+                <fullName>Infectious - Feline Enteritis</fullName>
+                <default>false</default>
+                <label>Infectious - Feline Enteritis</label>
+            </value>
+            <value>
+                <fullName>Infectious - FeLV</fullName>
+                <default>false</default>
+                <label>Infectious - FeLV</label>
+            </value>
+            <value>
+                <fullName>Infectious - FIP</fullName>
+                <default>false</default>
+                <label>Infectious - FIP</label>
+            </value>
+            <value>
+                <fullName>Infectious - FIV</fullName>
+                <default>false</default>
+                <label>Infectious - FIV</label>
+            </value>
+            <value>
+                <fullName>Infectious - Giadia</fullName>
+                <default>false</default>
+                <label>Infectious - Giadia</label>
+            </value>
+            <value>
+                <fullName>Infectious - Intestinal Worms</fullName>
+                <default>false</default>
+                <label>Infectious - Intestinal Worms</label>
+            </value>
+            <value>
+                <fullName>Infectious - Leptosporosis</fullName>
+                <default>false</default>
+                <label>Infectious - Leptosporosis</label>
+            </value>
+            <value>
+                <fullName>Infectious - Mites - Ear</fullName>
+                <default>false</default>
+                <label>Infectious - Mites - Ear</label>
+            </value>
+            <value>
+                <fullName>Infectious - Mites - Sarcoptes</fullName>
+                <default>false</default>
+                <label>Infectious - Mites - Sarcoptes</label>
+            </value>
+            <value>
+                <fullName>Infectious - Notifiable Disease</fullName>
+                <default>false</default>
+                <label>Infectious - Notifiable Disease</label>
+            </value>
+            <value>
+                <fullName>Infectious - Parvo</fullName>
+                <default>false</default>
+                <label>Infectious - Parvo</label>
+            </value>
+            <value>
+                <fullName>Infectious - Pasteurella</fullName>
+                <default>false</default>
+                <label>Infectious - Pasteurella</label>
+            </value>
+            <value>
+                <fullName>Infectious - Respiratory Infection</fullName>
+                <default>false</default>
+                <label>Infectious - Respiratory Infection</label>
+            </value>
+            <value>
+                <fullName>Infectious - Ringworm</fullName>
+                <default>false</default>
+                <label>Infectious - Ringworm</label>
+            </value>
+            <value>
+                <fullName>Infectious - Toxoplasmosis</fullName>
+                <default>false</default>
+                <label>Infectious - Toxoplasmosis</label>
+            </value>
+            <value>
+                <fullName>Legal - Council Ordered</fullName>
+                <default>false</default>
+                <label>Legal - Council Ordered</label>
+            </value>
+            <value>
+                <fullName>Legal - Feral Pest</fullName>
+                <default>false</default>
+                <label>Legal - Feral Pest</label>
+            </value>
+            <value>
+                <fullName>Legal - Restricted Breed or Dangerous Dog</fullName>
+                <default>false</default>
+                <label>Legal - Restricted Breed or Dangerous Dog</label>
+            </value>
+            <value>
+                <fullName>Medical - Body Condition/Weight</fullName>
+                <default>false</default>
+                <label>Medical - Body Condition/Weight</label>
+            </value>
+            <value>
+                <fullName>Medical - Cancer</fullName>
+                <default>false</default>
+                <label>Medical - Cancer</label>
+            </value>
+            <value>
+                <fullName>Medical - Cardiac/Cardiovascular Disease</fullName>
+                <default>false</default>
+                <label>Medical - Cardiac/Cardiovascular Disease</label>
+            </value>
+            <value>
+                <fullName>Medical - Dental</fullName>
+                <default>false</default>
+                <label>Medical - Dental</label>
+            </value>
+            <value>
+                <fullName>Medical - Ear Diseases</fullName>
+                <default>false</default>
+                <label>Medical - Ear Diseases</label>
+            </value>
+            <value>
+                <fullName>Medical - Endocrine - Diabetes, Cushing&apos;s, Hyperthyroidism</fullName>
+                <default>false</default>
+                <label>Medical - Endocrine - Diabetes, Cushing&apos;s, Hyperthyroidism</label>
+            </value>
+            <value>
+                <fullName>Medical - Exocrine - Pancreatitis</fullName>
+                <default>false</default>
+                <label>Medical - Exocrine - Pancreatitis</label>
+            </value>
+            <value>
+                <fullName>Medical - Eye Diseases</fullName>
+                <default>false</default>
+                <label>Medical - Eye Diseases</label>
+            </value>
+            <value>
+                <fullName>Medical - Gastro-Intestinal - Non Infectious</fullName>
+                <default>false</default>
+                <label>Medical - Gastro-Intestinal - Non Infectious</label>
+            </value>
+            <value>
+                <fullName>Medical - Genito-Urinary Tract</fullName>
+                <default>false</default>
+                <label>Medical - Genito-Urinary Tract</label>
+            </value>
+            <value>
+                <fullName>Medical - Humane Grounds/Vet Cert within Holding Period</fullName>
+                <default>false</default>
+                <label>Medical - Humane Grounds/Vet Cert within Holding Period</label>
+            </value>
+            <value>
+                <fullName>Medical - Immunological/Immue-mediated Disorders</fullName>
+                <default>false</default>
+                <label>Medical - Immunological/Immue-mediated Disorders</label>
+            </value>
+            <value>
+                <fullName>Medical - Incontinence</fullName>
+                <default>false</default>
+                <label>Medical - Incontinence</label>
+            </value>
+            <value>
+                <fullName>Medical - Kidey</fullName>
+                <default>false</default>
+                <label>Medical - Kidey</label>
+            </value>
+            <value>
+                <fullName>Medical - Liver Disease</fullName>
+                <default>false</default>
+                <label>Medical - Liver Disease</label>
+            </value>
+            <value>
+                <fullName>Medical - Multiple Systems Involved</fullName>
+                <default>false</default>
+                <label>Medical - Multiple Systems Involved</label>
+            </value>
+            <value>
+                <fullName>Medical - Muscolo Skeletal</fullName>
+                <default>false</default>
+                <label>Medical - Muscolo Skeletal</label>
+            </value>
+            <value>
+                <fullName>Medical - Neurological</fullName>
+                <default>false</default>
+                <label>Medical - Neurological</label>
+            </value>
+            <value>
+                <fullName>Medical - Physical Deformity</fullName>
+                <default>false</default>
+                <label>Medical - Physical Deformity</label>
+            </value>
+            <value>
+                <fullName>Medical - Respiratory - Non Infectious</fullName>
+                <default>false</default>
+                <label>Medical - Respiratory - Non Infectious</label>
+            </value>
+            <value>
+                <fullName>Medical - Skin Disease - Non Infectious</fullName>
+                <default>false</default>
+                <label>Medical - Skin Disease - Non Infectious</label>
+            </value>
+            <value>
+                <fullName>Organisational - (350g-500g) Healthy, Foster Care Unavailable</fullName>
+                <default>false</default>
+                <label>Organisational - (350g-500g) Healthy, Foster Care Unavailable</label>
+            </value>
+            <value>
+                <fullName>Organisational - (500g+) Healthy, Foster Care Unavailable</fullName>
+                <default>false</default>
+                <label>Organisational - (500g+) Healthy, Foster Care Unavailable</label>
+            </value>
+            <value>
+                <fullName>Organisational - (under 350g) Healthy, unweaned/Foster Care Unavailable</fullName>
+                <default>false</default>
+                <label>Organisational - (under 350g) Healthy, unweaned/Foster Care Unavailable</label>
+            </value>
+            <value>
+                <fullName>Organisational - Lack of Capacity to Care - Aged</fullName>
+                <default>false</default>
+                <label>Organisational - Lack of Capacity to Care - Aged</label>
+            </value>
+            <value>
+                <fullName>Organisational - Lack of Capacity to Care - Financial</fullName>
+                <default>false</default>
+                <label>Organisational - Lack of Capacity to Care - Financial</label>
+            </value>
+            <value>
+                <fullName>Organisational - Lack of Capacity to Care - Foster Care Unavailable</fullName>
+                <default>false</default>
+                <label>Organisational - Lack of Capacity to Care - Foster Care Unavailable</label>
+            </value>
+            <value>
+                <fullName>Organisational - Lack of Capacity to Care - No Room</fullName>
+                <default>false</default>
+                <label>Organisational - Lack of Capacity to Care - No Room</label>
+            </value>
+            <value>
+                <fullName>Organisational - Unviable/Unweaned</fullName>
+                <default>false</default>
+                <label>Organisational - Unviable/Unweaned</label>
+            </value>
+            <value>
+                <fullName>Organisational - Wildlife Unable to Relocate</fullName>
+                <default>false</default>
+                <label>Organisational - Wildlife Unable to Relocate</label>
+            </value>
+            <value>
+                <fullName>Surrender for Euthanasia - Behavioural</fullName>
+                <default>false</default>
+                <label>Surrender for Euthanasia - Behavioural</label>
+            </value>
+            <value>
+                <fullName>Surrender for Euthanasia - Infectious</fullName>
+                <default>false</default>
+                <label>Surrender for Euthanasia - Infectious</label>
+            </value>
+            <value>
+                <fullName>Surrender for Euthanasia - Legal</fullName>
+                <default>false</default>
+                <label>Surrender for Euthanasia - Legal</label>
+            </value>
+            <value>
+                <fullName>Surrender for Euthanasia - Medical</fullName>
+                <default>false</default>
+                <label>Surrender for Euthanasia - Medical</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

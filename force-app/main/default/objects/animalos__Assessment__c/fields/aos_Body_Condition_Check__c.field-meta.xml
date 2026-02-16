@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Body_Condition_Check__c</fullName>
+    <description>What is the body condition on intake?</description>
+    <inlineHelpText>What is the body condition on intake?</inlineHelpText>
+    <label>Body Condition Check</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Underweight</fullName>
+                <default>false</default>
+                <label>Underweight</label>
+            </value>
+            <value>
+                <fullName>Normal</fullName>
+                <default>false</default>
+                <label>Normal</label>
+            </value>
+            <value>
+                <fullName>Overweight</fullName>
+                <default>false</default>
+                <label>Overweight</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

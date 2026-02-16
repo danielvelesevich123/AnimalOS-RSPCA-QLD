@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_PM_or_Vet_History_Uploaded__c</fullName>
+    <defaultValue>false</defaultValue>
+    <inlineHelpText>I HAVE/WILL UPLOAD Post Mortem results, Vet History etc. to Animal Notes&gt; Files on the Animal Page</inlineHelpText>
+    <label>PM or Vet History Uploaded</label>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

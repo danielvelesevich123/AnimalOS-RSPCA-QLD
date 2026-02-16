@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Cause_of_Affliction__c</fullName>
+    <label>Cause of Affliction</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Abandoned/Orphaned</fullName>
+                <default>false</default>
+                <label>Abandoned/Orphaned</label>
+            </value>
+            <value>
+                <fullName>Attacked by cat</fullName>
+                <default>false</default>
+                <label>Attacked by cat</label>
+            </value>
+            <value>
+                <fullName>Attacked by dog</fullName>
+                <default>false</default>
+                <label>Attacked by dog</label>
+            </value>
+            <value>
+                <fullName>Attacked by Livestock</fullName>
+                <default>false</default>
+                <label>Attacked by Livestock</label>
+            </value>
+            <value>
+                <fullName>Attacked by other</fullName>
+                <default>false</default>
+                <label>Attacked by other</label>
+            </value>
+            <value>
+                <fullName>Barbed Wire</fullName>
+                <default>false</default>
+                <label>Barbed Wire</label>
+            </value>
+            <value>
+                <fullName>Beak And Feather</fullName>
+                <default>false</default>
+                <label>Beak And Feather</label>
+            </value>
+            <value>
+                <fullName>Bush Fire</fullName>
+                <default>false</default>
+                <label>Bush Fire</label>
+            </value>
+            <value>
+                <fullName>Chemicals</fullName>
+                <default>false</default>
+                <label>Chemicals</label>
+            </value>
+            <value>
+                <fullName>Cocus Palm</fullName>
+                <default>false</default>
+                <label>Cocus Palm</label>
+            </value>
+            <value>
+                <fullName>Collision with other object</fullName>
+                <default>false</default>
+                <label>Collision with other object</label>
+            </value>
+            <value>
+                <fullName>Collision with vehicle</fullName>
+                <default>false</default>
+                <label>Collision with vehicle</label>
+            </value>
+            <value>
+                <fullName>Disease</fullName>
+                <default>false</default>
+                <label>Disease</label>
+            </value>
+            <value>
+                <fullName>Domestic/Captivity issue</fullName>
+                <default>false</default>
+                <label>Domestic/Captivity issue</label>
+            </value>
+            <value>
+                <fullName>Electrocution</fullName>
+                <default>false</default>
+                <label>Electrocution</label>
+            </value>
+            <value>
+                <fullName>Entangled/Trapped</fullName>
+                <default>false</default>
+                <label>Entangled/Trapped</label>
+            </value>
+            <value>
+                <fullName>Entanglement</fullName>
+                <default>false</default>
+                <label>Entanglement</label>
+            </value>
+            <value>
+                <fullName>Entrapment</fullName>
+                <default>false</default>
+                <label>Entrapment</label>
+            </value>
+            <value>
+                <fullName>Fall</fullName>
+                <default>false</default>
+                <label>Fall</label>
+            </value>
+            <value>
+                <fullName>Feral</fullName>
+                <default>false</default>
+                <label>Feral</label>
+            </value>
+            <value>
+                <fullName>Gardening Equipment</fullName>
+                <default>false</default>
+                <label>Gardening Equipment</label>
+            </value>
+            <value>
+                <fullName>Gun Shot</fullName>
+                <default>false</default>
+                <label>Gun Shot</label>
+            </value>
+            <value>
+                <fullName>Hit By Car</fullName>
+                <default>false</default>
+                <label>Hit By Car</label>
+            </value>
+            <value>
+                <fullName>Human</fullName>
+                <default>false</default>
+                <label>Human</label>
+            </value>
+            <value>
+                <fullName>Imminent Risk</fullName>
+                <default>false</default>
+                <label>Imminent Risk</label>
+            </value>
+            <value>
+                <fullName>Ingestion Foreign Bodies</fullName>
+                <default>false</default>
+                <label>Ingestion Foreign Bodies</label>
+            </value>
+            <value>
+                <fullName>Lost</fullName>
+                <default>false</default>
+                <label>Lost</label>
+            </value>
+            <value>
+                <fullName>Natural Disaster</fullName>
+                <default>false</default>
+                <label>Natural Disaster</label>
+            </value>
+            <value>
+                <fullName>No Parents</fullName>
+                <default>false</default>
+                <label>No Parents</label>
+            </value>
+            <value>
+                <fullName>Nuisance</fullName>
+                <default>false</default>
+                <label>Nuisance</label>
+            </value>
+            <value>
+                <fullName>On Road</fullName>
+                <default>false</default>
+                <label>On Road</label>
+            </value>
+            <value>
+                <fullName>Orphaned</fullName>
+                <default>false</default>
+                <label>Orphaned</label>
+            </value>
+            <value>
+                <fullName>Other</fullName>
+                <default>false</default>
+                <label>Other</label>
+            </value>
+            <value>
+                <fullName>Poison</fullName>
+                <default>false</default>
+                <label>Poison</label>
+            </value>
+            <value>
+                <fullName>Poisoned</fullName>
+                <default>false</default>
+                <label>Poisoned</label>
+            </value>
+            <value>
+                <fullName>Pool</fullName>
+                <default>false</default>
+                <label>Pool</label>
+            </value>
+            <value>
+                <fullName>Predatory Bird</fullName>
+                <default>false</default>
+                <label>Predatory Bird</label>
+            </value>
+            <value>
+                <fullName>Predatory Reptile</fullName>
+                <default>false</default>
+                <label>Predatory Reptile</label>
+            </value>
+            <value>
+                <fullName>Sick &amp; Injured</fullName>
+                <default>false</default>
+                <label>Sick &amp; Injured</label>
+            </value>
+            <value>
+                <fullName>Tick Paralysis</fullName>
+                <default>false</default>
+                <label>Tick Paralysis</label>
+            </value>
+            <value>
+                <fullName>Train</fullName>
+                <default>false</default>
+                <label>Train</label>
+            </value>
+            <value>
+                <fullName>Tree Felling - Land Clearing</fullName>
+                <default>false</default>
+                <label>Tree Felling - Land Clearing</label>
+            </value>
+            <value>
+                <fullName>Under Threat - Displaced</fullName>
+                <default>false</default>
+                <label>Under Threat - Displaced</label>
+            </value>
+            <value>
+                <fullName>Under Threat - Dog In Yard</fullName>
+                <default>false</default>
+                <label>Under Threat - Dog In Yard</label>
+            </value>
+            <value>
+                <fullName>Under Threat - In Traffic</fullName>
+                <default>false</default>
+                <label>Under Threat - In Traffic</label>
+            </value>
+            <value>
+                <fullName>Unknown</fullName>
+                <default>false</default>
+                <label>Unknown</label>
+            </value>
+            <value>
+                <fullName>Unsuitable environment</fullName>
+                <default>false</default>
+                <label>Unsuitable environment</label>
+            </value>
+            <value>
+                <fullName>Unwanted</fullName>
+                <default>false</default>
+                <label>Unwanted</label>
+            </value>
+            <value>
+                <fullName>Weather—Drought/heat</fullName>
+                <default>false</default>
+                <label>Weather—Drought/heat</label>
+            </value>
+            <value>
+                <fullName>Weather—Fire</fullName>
+                <default>false</default>
+                <label>Weather—Fire</label>
+            </value>
+            <value>
+                <fullName>Weather—Storm</fullName>
+                <default>false</default>
+                <label>Weather—Storm</label>
+            </value>
+            <value>
+                <fullName>Weather—Unspecified</fullName>
+                <default>false</default>
+                <label>Weather—Unspecified</label>
+            </value>
+            <value>
+                <fullName>Window</fullName>
+                <default>false</default>
+                <label>Window</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Content_Field_Required</fullName>
+    <active>true</active>
+    <errorConditionFormula>ISBLANK(animalos__Content__c)</errorConditionFormula>
+    <errorDisplayField>animalos__Content__c</errorDisplayField>
+    <errorMessage>Content field is required</errorMessage>
+</ValidationRule>

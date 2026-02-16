@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Household_Recommendation__c</fullName>
+    <label>Household Recommendation</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Quiet household</fullName>
+                <default>false</default>
+                <label>Quiet household</label>
+            </value>
+            <value>
+                <fullName>Moderate household</fullName>
+                <default>false</default>
+                <label>Moderate household</label>
+            </value>
+            <value>
+                <fullName>Busy household</fullName>
+                <default>false</default>
+                <label>Busy household</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

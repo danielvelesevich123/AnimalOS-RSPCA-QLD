@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Inspectorate</fullName>
+    <columns>NAME</columns>
+    <columns>animalos__Is_Active__c</columns>
+    <columns>animalos__Order__c</columns>
+    <columns>animalos__Processor__c</columns>
+    <columns>animalos__Conditions__c</columns>
+    <columns>animalos__SObject_Type__c</columns>
+    <columns>animalos__Scope_Size__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>NAME</field>
+        <operation>contains</operation>
+        <value>Inspectorate</value>
+    </filters>
+    <label>Inspectorate</label>
+</ListView>

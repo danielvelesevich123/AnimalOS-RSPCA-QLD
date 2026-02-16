@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Awaiting_Assignment_Inspectorate_Job</fullName>
+    <filterScope>Queue</filterScope>
+    <label>Awaiting Assignment - Inspectorate</label>
+    <queue>Awaiting_Assignment_Inspectorate</queue>
+    <sharedTo>
+        <allInternalUsers></allInternalUsers>
+    </sharedTo>
+</ListView>

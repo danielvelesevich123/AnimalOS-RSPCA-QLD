@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Standard_Action_Plans</fullName>
+    <columns>NAME</columns>
+    <columns>animalos__Type__c</columns>
+    <columns>animalos__Status__c</columns>
+    <columns>aos_Assign_To_Incoming_Animals__c</columns>
+    <columns>animalos__Animal_Type__c</columns>
+    <columns>animalos__Frequency__c</columns>
+    <columns>animalos__Frequency_Interval__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>animalos__Specific_Animal__c</field>
+        <operation>equals</operation>
+        <value>0</value>
+    </filters>
+    <label>Standard Action Plans</label>
+</ListView>

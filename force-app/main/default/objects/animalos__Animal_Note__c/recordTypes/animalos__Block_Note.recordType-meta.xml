@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Block_Note</fullName>
+    <active>true</active>
+    <label>Block Note</label>
+    <picklistValues>
+        <picklist>animalos__Flag__c</picklist>
+        <values>
+            <fullName>Critical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Warning</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>animalos__Type__c</picklist>
+        <values>
+            <fullName>Animal Care</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Behaviour General</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Behaviour Post Adoption</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Behaviour Rehabilitation and Training</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Block%2FRow</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Foster Care</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Inspectorate</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Veterinary</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RecordType xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Generic</fullName>
+    <active>true</active>
+    <description>Created automatically each time the Animal Status on an Animal record changes.</description>
+    <label>Generic</label>
+    <picklistValues>
+        <picklist>animalos__Animal_Status__c</picklist>
+        <values>
+            <fullName>Adopted</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adopted %E2%80%93 Awaiting Pickup</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adopted %E2%80%93 Offsite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adopted - Awaiting Spay%2FNeuter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adopted Offsite%28Altered%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adopted to Finder</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Adoption Pending%2FHold on Property Check</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Animal Advisory Group %28BIG%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Available For Adoption %E2%80%93 Awaiting Spay%2FNeuter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Available For Adoption %E2%80%93 In Foster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Available For Adoption %E2%80%93 No Web Presence</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Available For Adoption %E2%80%93 Offsite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Available For Adoption %E2%80%93 Waiting Space</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Available for Adoption</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Behaviour Completion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Behaviour Evaluation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Behaviour Retest</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Behavioural Assessment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Desex</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Euthanasia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Final Disposition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Foster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Pickup</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Rescue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Sort</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Spay%2FNeuter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Spay%2FNeuter %E2%80%93 In Foster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Surgery %E2%80%93 Not Spay%2FNeuter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Transfer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Transfer%09Awaiting Transfer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Triage</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Triage Completion</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Vet Approval - In Foster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Awaiting Vet Exam%2FHealth Check</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bequest Animal Off Site</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bequest Animal Offsite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bequest Animal On Site</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bequest Animal Onsite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bite Quarantine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Bite Quarantine %28Home%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Boarding Client</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Boarding Only</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Court Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cremated</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cremation - Communal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Cremation - Private</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DOA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DOA - Final Disposition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DOA - Released to Owner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DOA Stray - Awaiting Final Disposition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>DOA Transfer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deceased</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Deceased - Awaiting Final Disposition</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Disposition Under Final Review</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Due For Release</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>EOA - Euthanized on Arrival</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Emergency Boarding</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Emergency Boarding - In Foster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Emergency Boarding Returned To Owner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Emergency Evacuation - Released</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Emergency Evacuation - Temporary</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Entered Care</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Escaped</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Euthanasia %2F Cremation Request</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Euthanasia - RTO</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Euthanasia In Field</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Euthanised</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Euthanised During Stray Hold Period</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Euthanised During Stray Time</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Euthanised by Offsite Vet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Euthanised on Arrival</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Found</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold Agency Transfer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold Euthanasia</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold Finder</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold For Possible Match</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold In Foster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold In Vet Care</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold Intervention</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold Isolation</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold Medical%2FSurgery Recovery</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold Quarantine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold Quarantine - Medical</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hold Quarantine - Vaccination</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hospitalised</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hospitalised - Offsite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Hospitalised - Onsite</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>ID Trace</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Care</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Foster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Foster - Awaiting Spay Neuter</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>In Foster - UBM</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Information</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Initial Assessment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internal Transfer In</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Internal Transfer Out</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Interred</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Left in Field</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Lost</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Matched</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Matched Adoption</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Medical Treatment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>None</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Owner Relinquishment</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pet D Tect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Platinum Pet D Tect</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Police Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Possible Match</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Post-Operative Death</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Private Animal No Longer Lost</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Private Animal Reported Lost</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Privately Rehomed - New Owner Unknown</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Protective Custody %E2%80%93 Awaiting Foster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Protective Custody - Awaiting Foster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Protective Custody - Hold Quarantine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Protective Custody - In Foster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Protective Custody In Foster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Protective Custody%2FHold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Protective Custody%2FHold - DOA</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Protective Custody%2FHold - Deceased</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Protective Custody%2FHold - Euthanised</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Protective Custody%2FTransferred Ownership</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Quarantine</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Reclaimed</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Redemption %28Offsite%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Rehabilitation %28ART%29</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Released</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Released To Agency</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Released To Rescue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Released by Agency</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Released to Owner at Vet</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Released to Wildlife Rehabilitator</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Released%2FAwaiting Return to Owner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Released%2FForfeited to Site</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Returned Home</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Returned Protective Custody Animal</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Returned Surrender</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Returned To Owner</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Returned to Habitat</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Sanctuary%2FLife Resident</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Special</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stolen</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stray Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stray Hold %E2%80%93 Awaiting Transfer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stray Hold - Awaiting Transfer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stray Hold - In Foster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stray Hold - In Vet Care</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Stray Hold- In Vet Care</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Temp Lost File</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transfer Out</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transfer Out - Awaiting Pickup</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transfer Out - To Rescue</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transfer Out - Wildlife Carer</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Transfer Out to Council</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Trial Adoption</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unassisted Death</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unassisted Death - In Foster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unassisted Death - In Transit</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unassisted Death In Foster</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Under Behaviour Modification</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Under Vet Care</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>University</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Unresolved File</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Wildlife Released</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
+        <picklist>animalos__Stage__c</picklist>
+        <values>
+            <fullName>Adoption Ready</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>On Hold</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Out</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Pre-Intake</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Processing</fullName>
+            <default>false</default>
+        </values>
+        <values>
+            <fullName>Under Care</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+</RecordType>

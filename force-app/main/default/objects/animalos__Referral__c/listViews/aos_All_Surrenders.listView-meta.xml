@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_All_Surrenders</fullName>
+    <columns>NAME</columns>
+    <columns>RECORDTYPE</columns>
+    <columns>animalos__Animal_Source__c</columns>
+    <columns>animalos__Scheduled_Date_Time__c</columns>
+    <columns>animalos__Stage__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>animalos__Referral__c.animalos__Inbound_Surrender</value>
+    </filters>
+    <label>All Surrenders</label>
+</ListView>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Behaviour_Flag_External__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(
+ISBLANK(animalos__Behaviour_Flag_Condition__c),
+IMAGE(&quot;../resource/animalos__indicatorIcons/default.png&quot;,&quot;DEFAULT&quot;, 30, -1),
+IF(
+animalos__Behaviour_Flag_Condition__c = &quot;GREEN&quot;,
+IMAGE(&quot;../resource/animalos__indicatorIcons/green.png&quot;,&quot;GREEN&quot;, 30, -1),
+IF(
+animalos__Behaviour_Flag_Condition__c = &quot;YELLOW&quot;,
+IMAGE(&quot;../resource/animalos__indicatorIcons/yellow.png&quot;,&quot;YELLOW&quot;, 30, -1),
+IF(
+animalos__Behaviour_Flag_Condition__c = &quot;RED&quot;,
+IMAGE(&quot;../resource/animalos__indicatorIcons/red.png&quot;,&quot;RED&quot;, 30, -1),
+&quot;&quot;
+)
+)
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Behaviour Flag External</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

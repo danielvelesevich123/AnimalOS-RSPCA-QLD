@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Add_Date_Due_Out</fullName>
+    <active>false</active>
+    <description>If the Animal Status is in any variation of Stray Hold or ID Trace then a Date Due Out is required for all records where Is_New__c is set true</description>
+    <errorConditionFormula>AND(
+OR(
+CONTAINS(TEXT(animalos__Status__c), &quot;Stray Hold&quot;),
+CONTAINS(TEXT(animalos__Status__c), &quot;ID Trace&quot;)
+),
+ISBLANK(aos_Date_Due_Out__c),
+aos_Is_New__c
+)</errorConditionFormula>
+    <errorDisplayField>aos_Date_Due_Out__c</errorDisplayField>
+    <errorMessage>If Animal Status is in Stray Hold ~ Or ID Trace then please add a Date Due Out.</errorMessage>
+</ValidationRule>

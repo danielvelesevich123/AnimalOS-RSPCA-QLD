@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>animalos__Stage__c</fullName>
+    <deprecated>false</deprecated>
+    <label>Stage</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackHistory>true</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <controllingField>animalos__Class__c</controllingField>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Pre-Intake</fullName>
+                <default>false</default>
+                <label>Pre-Intake</label>
+            </value>
+            <value>
+                <fullName>On Hold</fullName>
+                <default>false</default>
+                <label>On Hold</label>
+            </value>
+            <value>
+                <fullName>Processing</fullName>
+                <default>false</default>
+                <label>Processing</label>
+            </value>
+            <value>
+                <fullName>Under Care</fullName>
+                <default>false</default>
+                <label>Under Care</label>
+            </value>
+            <value>
+                <fullName>Adoption Ready</fullName>
+                <default>false</default>
+                <label>Adoption Ready</label>
+            </value>
+            <value>
+                <fullName>Out</fullName>
+                <default>false</default>
+                <label>Out</label>
+            </value>
+        </valueSetDefinition>
+        <valueSettings>
+            <controllingFieldValue>Domestic</controllingFieldValue>
+            <controllingFieldValue>Exotic</controllingFieldValue>
+            <controllingFieldValue>Livestock</controllingFieldValue>
+            <controllingFieldValue>Small Animal</controllingFieldValue>
+            <controllingFieldValue>Wildlife</controllingFieldValue>
+            <valueName>Pre-Intake</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Domestic</controllingFieldValue>
+            <controllingFieldValue>Exotic</controllingFieldValue>
+            <controllingFieldValue>Livestock</controllingFieldValue>
+            <controllingFieldValue>Small Animal</controllingFieldValue>
+            <controllingFieldValue>Wildlife</controllingFieldValue>
+            <valueName>On Hold</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Domestic</controllingFieldValue>
+            <controllingFieldValue>Exotic</controllingFieldValue>
+            <controllingFieldValue>Livestock</controllingFieldValue>
+            <controllingFieldValue>Small Animal</controllingFieldValue>
+            <controllingFieldValue>Wildlife</controllingFieldValue>
+            <valueName>Processing</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Domestic</controllingFieldValue>
+            <controllingFieldValue>Exotic</controllingFieldValue>
+            <controllingFieldValue>Livestock</controllingFieldValue>
+            <controllingFieldValue>Small Animal</controllingFieldValue>
+            <controllingFieldValue>Wildlife</controllingFieldValue>
+            <valueName>Under Care</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Domestic</controllingFieldValue>
+            <controllingFieldValue>Livestock</controllingFieldValue>
+            <controllingFieldValue>Small Animal</controllingFieldValue>
+            <valueName>Adoption Ready</valueName>
+        </valueSettings>
+        <valueSettings>
+            <controllingFieldValue>Domestic</controllingFieldValue>
+            <controllingFieldValue>Exotic</controllingFieldValue>
+            <controllingFieldValue>Livestock</controllingFieldValue>
+            <controllingFieldValue>Small Animal</controllingFieldValue>
+            <controllingFieldValue>Wildlife</controllingFieldValue>
+            <valueName>Out</valueName>
+        </valueSettings>
+    </valueSet>
+</CustomField>

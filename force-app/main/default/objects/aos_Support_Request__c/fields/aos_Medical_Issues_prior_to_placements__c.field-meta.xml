@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Medical_Issues_prior_to_placements__c</fullName>
+    <inlineHelpText>List any medical issues or medical procedures required prior to placement</inlineHelpText>
+    <label>Medical Issues prior to placements</label>
+    <length>32768</length>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

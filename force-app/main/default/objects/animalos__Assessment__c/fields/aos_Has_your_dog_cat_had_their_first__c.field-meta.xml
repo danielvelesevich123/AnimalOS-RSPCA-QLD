@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Has_your_dog_cat_had_their_first__c</fullName>
+    <inlineHelpText>Has your [dog] [cat] had their first vet visit</inlineHelpText>
+    <label>Has your [dog] [cat] had their first</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Yes</fullName>
+                <default>false</default>
+                <label>Yes</label>
+            </value>
+            <value>
+                <fullName>No</fullName>
+                <default>false</default>
+                <label>No</label>
+            </value>
+            <value>
+                <fullName>Comments</fullName>
+                <default>false</default>
+                <label>Comments</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
