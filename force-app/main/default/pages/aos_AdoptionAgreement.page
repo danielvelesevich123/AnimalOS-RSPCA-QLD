@@ -1,0 +1,1391 @@
+<apex:page id="AdoptionAgreement"
+           controller="aos_AdoptionAgreementCtrl"
+           renderAs="pdf"
+           applyBodyTag="false"
+           applyHtmlTag="false"
+           showHeader="false" sidebar="false" standardStylesheets="false"
+           action="{!initMetadata}">
+
+
+    <head>
+        <title>Adoption Agreement</title>
+        <c:aos_AdoptionAgreementStyles />
+    </head>
+
+    <apex:form >
+        <apex:pageBlock id="myBlock">
+
+            <div class="main-content">
+                <header>
+                    <table>
+                        <tr>
+                            <td class="header-table" width="33%">
+                                <apex:image id="RspcaLogo" value="{!$Resource.RspcaLogo}" width="220" alt="RSPCA QLD"/>
+                            </td>
+                            <td class="header-table" width="45%">
+                                <h2>
+                                    Animal Adoption Agreement
+                                </h2>
+                            </td>
+                            <td class="header-table" style="text-align: right" width="22%">
+                                RSPCA QLD
+                                <br/>(02) 6287 8100
+                                <br/>RON: R251000223
+                            </td>
+                        </tr>
+                    </table>
+                </header>
+
+                <br/>
+
+                <table>
+                    <tr>
+                        <th colspan="4" class="alignCenter">
+                            <b>
+                                OWNERS DETAILS
+                            </b>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Person Name:
+                        </th>
+                        <th colspan="3">
+                            {!dto['referral']['animalos__Contact__r']['Name']}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Person Address:
+                        </th>
+                        <th colspan="3">
+                            {!dto['referral']['Address__c']}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Home Phone:
+                        </th>
+                        <th>
+                            {!dto['referral']['Home_Phone__c']}
+                        </th>
+                        <th>
+                            Person ID:
+                        </th>
+                        <th>
+                            {!dto['referral']['Contact_Code__c']}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Work Phone:
+                        </th>
+                        <th>
+                            {!dto['referral']['Work_Phone__c']}
+                        </th>
+                        <th>
+                            Receipt #:
+                        </th>
+                        <th>
+                            ADOPT{!dto['referral']['Referral_ID__c']}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Mobile:
+                        </th>
+                        <th>
+                            {!dto['referral']['Mobile__c']}
+                        </th>
+                        <th>
+                            Receipt Date:
+                        </th>
+                        <th>
+                            {!dto['referral']['Signing_Date__c']}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th>
+                            Email:
+                        </th>
+                        <th>
+                            {!dto['referral']['Email__c']}
+                        </th>
+                        <th>
+                            Adopted Date:
+                        </th>
+                        <th>
+                            {!dto['referral']['animalos__Scheduled_Date_Time__c']}
+                        </th>
+                    </tr>
+                </table>
+
+                <br/>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="alignCenter" colspan="3">
+                            <b>
+                                ADOPTION AGREEMENT
+                            </b>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="3">
+                            <ol class="slds-list_ordered">
+                                <li>I, the purchaser of the animal detailed above, agree to accept the animal
+                                    with all faults and abnormalities that may be present at the time of
+                                    adoption or that may develop in the future. I accept full responsibility for
+                                    the animal’s care and the costs of that care, including veterinary
+                                    expenses, and exonerate RSPCA Qld from any further responsibility or
+                                    liability in respect to the animal.
+                                </li>
+                                <li>
+                                    I understand and accept the following adoption conditions:
+                                    <ol type="a">
+                                        <li>
+                                            I can return the animal to RSPCA QLD within thirty (30) days of
+                                            adoption if for any reason the animal is unsuited to the new home. I
+                                            will be offered an exchange animal or a refund on the adoption price
+                                            less a $100 administration and consumables fee.
+                                        </li>
+                                        <li>
+                                            RSPCA Qld will provide a health warranty (i.e., consultation and
+                                            treatment) for sickness or abnormalities that become evident within
+                                            14 days of adoption. The health warranty does not cover injury or
+                                            misfortune. If RSPCA determines, for whatever reason, that an
+                                            abnormality or illness will not be treated, I will be offered an exchange
+                                            animal or a full refund on the adoption price. I will accept RSPCA’s
+                                            decision about whether a condition will or will not be treated, and if I
+                                            disagree with that decision I reserve the right to keep the animal and
+                                            have it treated at my own expense.
+                                        </li>
+                                        <li>
+                                            The health warranty only applies to veterinary consultations
+                                            conducted or sanctioned by RSPCA Qld. If I choose to take the animal
+                                            to a private vet I will take full responsibility for all expenses incurred.
+                                        </li>
+                                        <li>A refund for the adoption fee can only be processed via the same
+                                            transaction method and card used to purchase the animal. For cash
+                                            payments, if a cash refund is not possible a direct bank transfer will be
+                                            made.
+                                        </li>
+                                        <li>
+                                            The animal I am adopting must not be used as a food item (human or
+                                            animal).
+                                        </li>
+                                        <li>
+                                            The animal I am adopting must never be used for breeding purposes.
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    I understand the following important points about the health of the
+                                    animal I am adopting:
+                                    <ol type="a">
+                                        <li>
+                                            It has been health checked by a veterinarian and has received routine
+                                            veterinary treatments and in some cases non-routine treatments to
+                                            remedy existing medical issues. Although the tests and treatments
+                                            help to ensure the animal is in good health, this can never be
+                                            guaranteed. I accept this uncertainty and indemnify RSPCA Qld from
+                                            any liability for health issues that were not noted.
+                                        </li>
+                                        <li>
+                                            Any existing health or behavioural issue that has been noted by
+                                            RSPCA experts will be disclosed in an indemnity. I take full
+                                            responsibility for ensuring I read, understand and accept the
+                                            conditions of all disclosed indemnities.
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    I undertake to register my animal with the relevant government authority
+                                    within 14 days of adoption, if required by law.
+                                </li>
+                                <li>
+                                    The animal I am adopting may have been implanted with an ID
+                                    microchip, which will be registered with CAR. If my adopted animal has a
+                                    microchip, I undertake to ensure my animal’s microchip contact details
+                                    are kept up to date with CAR (by going to <a href="https://car.com.au/pages/forms-hub#ownerforms">https://car.com.au/pages/forms-hub#ownerforms</a>
+                                    and using the Change of Address or Change of Ownership facilities).
+                                </li>
+                                <li>
+                                    RSPCA Queensland collects your personal information (that information
+                                    identifying you, directly or indirectly), to provide you with the information
+                                    about animal products and services, caring for your animal, events,
+                                    training and education, animal adoption, animal welfare issues and for
+                                    fundraising purposes unless you tell us that you don’t want it used for
+                                    direct marketing purposes (which you can do at any time in accordance
+                                    with our Privacy Policy). Detailed information about how we collect and
+                                    use information is contained in our Privacy Policy, which is available at <a href="https://www.rspcaqld.org.au">www.rspcaqld.org.au</a>
+                                    or by emailing <a href="mailto:privacyofficer@rspcaqld.org.au">privacyofficer@rspcaqld.org.au</a> or
+                                    phoning <a href="tel:07 3426 9999">07 3426 9999</a>. By signing this document, the purchaser agrees
+                                    to the conditions stated above.
+                                </li>
+                            </ol>
+                            <p>
+                                My signature below certifies my acceptance of all terms and conditions detailed above
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 25%;border-right: none">
+                            <p>
+                                Adopter Signature:
+                            </p>
+                        </td>
+                        <td style="width: 45%;border-left: none">
+                            <img src="{!dto['referral']['Additional_Signature_URL__c']}" alt="Signature" height="60" width="200"/>
+                        </td>
+                        <td>
+                            <p>
+                                Date:&nbsp;{!dto['referral']['Additional_Signing_Date__c']}
+                            </p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+                <br/>
+                <br/>
+
+                <br/>
+                <div class="inform-collection">
+                    PERSONAL INFORMATION COLLECTION NOTICE
+                </div>
+                <div>By completing this form, you have provided personal information to The Royal Society for the Prevention of Cruelty to Animals (QLD) Limited (RSPCA QLD).</div>
+                <br/>
+                <div>Further details about how we manage personal information is contained in our Privacy Policy at <a href="https://www.rspcaqld.org.au">https://www.rspcaqld.org.au</a></div>
+                <br/>
+                <div>I have read the Privacy Policy before providing my personal information and I agree to its terms.</div>
+                <br/>
+                <div>In accordance with the above, RSPCA QLD may use or share your personal information with third party suppliers engaged by us for marketing purposes.</div>
+                <br/>
+                <div>If you do not wish to have your personal information used in that way, please opt out here:
+                    <apex:outputPanel rendered="{!IF(dto['referral']['Third_Party_Marketing_Opt_Out__c'] == true, true, false)}">
+                        <img src="/img/checkbox_checked.gif"></img>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!IF(dto['referral']['Third_Party_Marketing_Opt_Out__c'] == false, true, false)}">
+                        <img src="/img/checkbox_unchecked.gif"></img>
+                    </apex:outputPanel>
+                </div>
+                <br/>
+                <div>I would like to receive promotions, pet advice and special offers from the Royal Canin’s Healthy Pets Club:
+                    <apex:outputPanel rendered="{!IF(dto['referral']['Royal_Canin_s_Healthy_Pets_Club_Opt_In__c'] == true, true, false)}">
+                        <img src="/img/checkbox_checked.gif"></img>
+                    </apex:outputPanel>
+                    <apex:outputPanel rendered="{!IF(dto['referral']['Royal_Canin_s_Healthy_Pets_Club_Opt_In__c'] == false, true, false)}">
+                        <img src="/img/checkbox_unchecked.gif"></img>
+                    </apex:outputPanel>
+                </div>
+                <br/>
+                <div class="page-break"></div>
+                <div class="inform-collection">
+                    ANIMAL DETAILS
+                </div>
+
+                <apex:repeat value="{!dto['animals']}" var="animal" id="animals">
+                    <table>
+                        <tr>
+                            <th colspan="4" class="alignCenter">
+                                <b>
+                                    ANIMAL DETAILS - {!animal['animalos__Animal_Name__c']}
+                                </b>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th colspan="2">
+                                Animal ID:
+                            </th>
+                            <th colspan="2">
+                                {!animal['Name']}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Type:
+                            </th>
+                            <th>
+                                {!animal['animalos__Type__c']}
+                            </th>
+                            <th>
+                                Gender:
+                            </th>
+                            <th>
+                                {!animal['animalos__Gender__c']}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Microchip Number:
+                            </th>
+                            <th>
+                                {!animal['animalos__Microchip_Number__c']}
+                            </th>
+                            <th>
+                                Microchip Source:
+                            </th>
+                            <th>
+                                {!animal['animalos__Microchip_Source__c']}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Microchip Implant Date:
+                            </th>
+                            <th>
+                                {!animal['Microchip_Implant_Date__c']}
+                            </th>
+                            <th>
+                                Microchip Company:
+                            </th>
+                            <th>
+                                {!animal['Microchip_Company__c']}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Primary Breed:
+                            </th>
+                            <th>
+                                <apex:outputPanel rendered="{!animal['animalos__Primary_Breed__c'] != ' '}">
+                                    {!animal['animalos__Primary_Breed__r']['Name']}
+                                </apex:outputPanel>
+                            </th>
+                            <th>
+                                Secondary Breed:
+                            </th>
+                            <th>
+                                <apex:outputPanel rendered="{!animal['animalos__Secondary_Breed__c'] != ' '}">
+                                    {!animal['animalos__Secondary_Breed__r']['Name']}
+                                </apex:outputPanel>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Neutered/Spayed:
+                            </th>
+                            <th>
+                                <apex:outputPanel rendered="{!animal['animalos__Neutered_Spayed__c'] != true}">
+                                    No
+                                </apex:outputPanel>
+                                <apex:outputPanel rendered="{!animal['animalos__Neutered_Spayed__c'] == true}">
+                                    Yes
+                                </apex:outputPanel>
+                            </th>
+                            <th>
+                                Neutered/Spayed Date:
+                            </th>
+                            <th>
+                                {!animal['animalos__Neutered_Spayed_Date_Time__c']}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Neutered/Spayed Source:
+                            </th>
+                            <th>
+                                {!animal['animalos__Neutered_Spayed_Source__c']}
+                            </th>
+                            <th>
+                                Shelter Tag:
+                            </th>
+                            <th>
+                                {!animal['Tag_Number__c']}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Color 1:
+                            </th>
+                            <th>
+                                {!animal['animalos__Primary_Colour__c']}
+                            </th>
+                            <th>
+                                Color 2:
+                            </th>
+                            <th>
+                                {!animal['animalos__Secondary_Colour__c']}
+                            </th>
+                        </tr>
+                    </table>
+                    <br/>
+                    <table>
+                        <tr>
+                            <th colspan="4" class="alignCenter">
+                                <b>
+                                    ANIMAL TEST OUTCOMES
+                                </b>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Outcome
+                            </th>
+                            <th>
+                                Date
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                Heartworm Test:
+                            </th>
+                            <th>
+                                {!animal['Heartworm_Test_Outcome__c']}
+                            </th>
+                            <th>
+                                {!animal['Last_Heartworm_Test_Date__c']}
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                FIV/FeLV Test:
+                            </th>
+                            <th>
+                                {!animal['FIV_FeLV_Test_Outcome__c']}
+                            </th>
+                            <th>
+                                {!animal['FIV_Date_Administered__c']}
+                            </th>
+                        </tr>
+                    </table>
+                    <br/>
+                </apex:repeat>
+                <br/>
+
+                <div class="page-break"></div>
+
+                <apex:repeat value="{!dto['animals']}" var="animal" id="animal">
+
+                <div class="inform-collection">
+                    DESEXED CERTIFICATE
+                </div>
+
+                <table style="margin-bottom: 20px; margin-top:10px;">
+                    <tr>
+                        <td class="header-table" width="30%">
+                            <apex:image id="RspcaLogo2" value="{!$Resource.RspcaLogo}" width="220" alt="RSPCA QLD"/>
+                        </td>
+                        <td class="header-table" width="35%">
+                        </td>
+                        <td class="header-table" style="text-align: right" width="35%">
+                            <apex:outputPanel rendered="{!animal['animalos__Current_Site__c'] != ' '}">
+                                <b>{!animal['animalos__Current_Site__r']['Street_Address__c']}</b>
+                                <br/>
+
+                                <b>{!animal['animalos__Current_Site__r']['Suburb__c']} {!animal['animalos__Current_Site__r']['State__c']} {!animal['animalos__Current_Site__r']['Postcode__c']}</b>
+                                <br/>
+
+                                <b>{!animal['animalos__Current_Site__r']['Site_Phone__c']}</b>
+                            </apex:outputPanel>
+                        </td>
+                    </tr>
+                </table>
+
+                <table style="table-layout: fixed;">
+                    <tr>
+                        <th style="vertical-align: top; padding-top: 10px; padding-bottom: 10px;">
+                            <b>Owner's Details:</b>
+                            <br/>
+
+                            {!dto['referral']['animalos__Contact__r']['Name']}
+                            <br/>
+
+                            {!dto['referral']['animalos__Contact__r']['MailingStreet']}
+                            <br/>
+
+                            {!dto['referral']['animalos__Contact__r']['MailingCity']} {!dto['referral']['animalos__Contact__r']['MailingState']} {!dto['referral']['animalos__Contact__r']['MailingPostalCode']}
+                            <br/>
+                            <br/>
+
+
+                            <apex:outputPanel rendered="{!animal['animalos__Current_Site__c'] != ' '}">
+                                <b>Clinic Name:</b>
+                                <br/>{!animal['animalos__Current_Site__r']['Name']}
+                            </apex:outputPanel>
+                        </th>
+                        <th style="vertical-align: top; padding-top: 10px; padding-bottom: 10px;">
+                            <b>Animals Details:</b>
+                            <br/>
+
+                            <b>Animal ID:</b> {!animal['Name']}
+                            <br/>
+
+                            <b>Name:</b> {!animal['animalos__Animal_Name__c']}
+                            <br/>
+
+                            <b>Type:</b> {!animal['animalos__Type__c']}
+                            <br/>
+
+                            <b>Breed:</b>
+
+                            <apex:outputPanel rendered="{!animal['animalos__Primary_Breed__c'] != ' '}">
+                                {!animal['animalos__Primary_Breed__r']['Name']}
+                            </apex:outputPanel>
+
+                            <apex:outputPanel rendered="{!animal['animalos__Secondary_Breed__c'] != ' '}">
+                                {!animal['animalos__Secondary_Breed__r']['Name']}
+                            </apex:outputPanel>
+
+                            <b>Mixed:</b>
+
+                            <apex:outputPanel rendered="{!animal['Crossbreed__c'] != true}">
+                                No
+                            </apex:outputPanel>
+
+                            <apex:outputPanel rendered="{!animal['Crossbreed__c'] == true}">
+                                Yes
+                            </apex:outputPanel>
+                            <br/>
+
+                            <b>Color:</b> {!animal['animalos__Primary_Colour__c']} {!animal['animalos__Secondary_Colour__c']}
+                            <br/>
+
+                            <b>Gender:</b> {!animal['animalos__Gender__c']}
+                            <br/>
+
+                            <b>Age:</b> {!animal['animalos__Calculated_Age__c']}
+                            <br/>
+
+                            <b>VIP Tag:</b> {!animal['animalos__Shelter_ID__c']}
+                            <br/>
+
+                            <b>Primary Microchip #:</b> {!animal['animalos__Microchip_Number__c']}
+                            <br/>
+
+                            <b>Weight:</b> {!animal['animalos__Current_Weight__c']}
+                        </th>
+                    </tr>
+                    <tr>
+                        <th style="text-align: center; padding-top: 10px; padding-bottom: 10px;" colspan="2">
+                            <b><u>Desex Conditions:</u></b>
+                            <br/>
+                            <br/>
+                            Your animal has been desexed by RSPCA Qld; their ear tattoo indicates desexed
+                            status. Please retain certificate for proof of desexing.
+                            <br/>
+                            <br/>
+                            In the first 24-48 hours after surgery, it is normal for your animal to be quiet and it
+                            may not be very hungry on the night after the procedure. Stitches, if present, should
+                            be removed 10 days after surgery. Until stitches are removed, please ensure
+                            the following care is provided:
+                            <br/>
+                            <ul>
+                                <li>
+                                    Restrict the animal sufficiently to ensure they do not overexert themselves.
+                                    Walk dogs on a lead; this is particularly important for female dogs
+                                </li>
+                                <li>
+                                    Check the wound regularly (at least once a day). If it is overly red or swollen,
+                                    hot, weeping, painful, or a suture had been pulled out, contact RSPCA.
+                                </li>
+                                <li>
+                                    Ensure the animal is not licking the wound. Licking interferes with healing
+                                    and needs to be prevented by using Elizabethan collar.
+                                </li>
+                                <li>
+                                    Do not bath the animal or let stitches to get wet.
+                                </li>
+                            </ul>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th colspan="2" style="text-align: center; padding-top: 10px; padding-bottom: 10px;">
+                            This is to certify that on
+                            <br/>
+                            {!animal['animalos__Neutered_Spayed_Date_Time__c']}
+                            <br/>
+                            
+                            the animal described hereon has been desexed
+                            <br/>
+                            <br/>
+
+                            <b>By:</b>
+
+                            <apex:outputPanel rendered="{!animal['Neutered_Spayed_By__c'] != ' '}">
+                                {!animal['Neutered_Spayed_By__r']['Name']}
+                            </apex:outputPanel>
+                            <br/>
+
+                            <apex:image id="desexSignature" value="{!$Resource.Desex_Signature}" height="100" alt="Signature"/>
+                            <br/>
+
+                            On behalf of RSPCA Qld
+                        </th>
+                    </tr>
+                </table>
+                </apex:repeat>
+
+                <div class="page-break"></div>
+
+                <apex:repeat value="{!dto['animals']}" var="animal" id="animalVar">
+                    <table style="margin-bottom: 20px; margin-top:10px;">
+                        <tr>
+                            <td class="header-table" width="30%">
+                                <apex:image id="RspcaLogo2" value="{!$Resource.RspcaLogo}" width="220" alt="RSPCA QLD"/>
+                            </td>
+                            <td class="header-table" width="35%">
+                            </td>
+                            <td class="header-table" style="text-align: right" width="35%">
+                                <apex:outputPanel rendered="{!animal['animalos__Current_Site__c'] != ' '}">
+                                    <b>{!animal['animalos__Current_Site__r']['Street_Address__c']}</b>
+                                    <br/>
+
+                                    <b>{!animal['animalos__Current_Site__r']['Suburb__c']} {!animal['animalos__Current_Site__r']['State__c']} {!animal['animalos__Current_Site__r']['Postcode__c']}</b>
+                                    <br/>
+
+                                    <b>{!animal['animalos__Current_Site__r']['Site_Phone__c']}</b>
+                                </apex:outputPanel>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="inform-collection" style="color: black;">
+                        VET TREATMENT HISTORY
+                    </div>
+
+                    <table style="border: none; border-collapse: collapse;">
+                        <tr>
+                            <th style="vertical-align: top; padding-top: 10px; width: 30%;" class="header-table">
+                                <h3><b><u>Owner's Details:</u></b></h3>
+
+                                <b>{!dto['referral']['animalos__Contact__r']['Name']}</b>
+                                <br/>
+
+                                <b>{!dto['referral']['animalos__Contact__r']['MailingStreet']}</b>
+                                <br/>
+
+                                <b>{!dto['referral']['animalos__Contact__r']['MailingCity']} {!dto['referral']['animalos__Contact__r']['MailingState']} {!dto['referral']['animalos__Contact__r']['MailingPostalCode']}</b>
+                                <br/>
+                                <br/>
+
+
+                                <b>{!dto['referral']['animalos__Contact__r']['MobilePhone']}</b>
+                            </th>
+                            <th style="vertical-align: top; padding-top: 10px; padding-bottom: 10px; width: 70%;" class="header-table">
+                                <h3><b><u>Animal Details:</u></b></h3>
+
+                                <b>Animal ID:</b> {!animal['Name']}
+                                <br/>
+
+                                <b>Name:</b> {!animal['animalos__Animal_Name__c']}
+                                <br/>
+
+                                <b>Type:</b> {!animal['animalos__Type__c']}
+                                <br/>
+
+                                <b>Breed:</b>
+
+                                <apex:outputPanel rendered="{!animal['animalos__Primary_Breed__c'] != ' '}">
+                                    {!animal['animalos__Primary_Breed__r']['Name']}
+                                </apex:outputPanel>
+
+                                <apex:outputPanel rendered="{!animal['animalos__Secondary_Breed__c'] != ' '}">
+                                    {!animal['animalos__Secondary_Breed__r']['Name']}
+                                </apex:outputPanel>
+                                <br/>
+
+                                <b>Mixed:</b>
+
+                                <apex:outputPanel rendered="{!animal['Crossbreed__c'] != true}">
+                                    No
+                                </apex:outputPanel>
+
+                                <apex:outputPanel rendered="{!animal['Crossbreed__c'] == true}">
+                                    Yes
+                                </apex:outputPanel>
+                                <br/>
+
+                                <b>Color:</b> {!animal['animalos__Primary_Colour__c']} {!animal['animalos__Secondary_Colour__c']}
+                                <br/>
+
+                                <b>Gender:</b> {!animal['animalos__Gender__c']}
+                                <br/>
+
+                                <b>Desexed:</b>
+                                <apex:outputPanel rendered="{!animal['animalos__Neutered_Spayed__c'] != true}">
+                                    No
+                                </apex:outputPanel>
+
+                                <apex:outputPanel rendered="{!animal['animalos__Neutered_Spayed__c'] == true}">
+                                    Yes
+                                </apex:outputPanel>
+                                <br/>
+
+                                <b>VIP Tag:</b> {!animal['animalos__Shelter_ID__c']}
+                                <br/>
+
+                                <b>Primary Microchip Brand:</b> {!animal['Microchip_Company__c']}
+                                <br/>
+
+                                <b>Primary Microchip #:</b> {!animal['animalos__Microchip_Number__c']}
+                                <br/>
+
+                                <b>Weight:</b> {!animal['animalos__Current_Weight__c']} kg
+                            </th>
+                        </tr>
+                    </table>
+
+                    <hr/>
+
+                    <br/>
+                    <br/>
+
+                    This is to confirm that our records show that the animal described above has been desexed and has had the following vaccinations and treatments.
+
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <apex:outputPanel rendered="{!animal['hasActions'] == true}">
+                        <table>
+                            <tr>
+                                <th class="header-table" style="width: 40%;"><b>Vet Treatment Type</b></th>
+                                <th class="header-table" style="width: 40%;"><b>Date Given</b></th>
+                                <th class="header-table" style="width: 20%;"><b>Type</b></th>
+                            </tr>
+
+                            <apex:repeat value="{!animal['animalos__Animal_Actions__r']}" var="actionVar" id="actions">
+                                <tr>
+                                    <th class="header-table" style="width: 40%;">
+                                        {!actionVar['animalos__Description__c']}
+                                    </th>
+                                    <th class="header-table" style="width: 40%;">
+                                        {!actionVar['animalos__Date_Time_Action__c']}
+                                    </th>
+                                    <th class="header-table" style="width: 20%;">
+                                    </th>
+                                </tr>
+                            </apex:repeat>
+                        </table>
+                    </apex:outputPanel>
+
+                    <br/>
+
+                    <hr/>
+                    <br/>
+
+                    <div style="text-align: center; font-weight: bold;">
+                        Please ensure your pet is revaccinated on the following DUE DATES at your local veterinary surgery.
+                    </div>
+
+                    <br/>
+                    <br/>
+
+<!--                    <apex:outputPanel rendered="{!animal['hasActions'] == true}">-->
+<!--                        <table>-->
+<!--                            <tr>-->
+<!--                                <th class="header-table" style="width: 10%;"></th>-->
+<!--                                <th class="header-table" style="width: 40%;"><b>Vet Treatment Type</b></th>-->
+<!--                                <th class="header-table" style="width: 30%;"><b>Due Date</b></th>-->
+<!--                                <th class="header-table" style="width: 20%;"><b>Type</b></th>-->
+<!--                            </tr>-->
+
+<!--                            <apex:repeat value="{!animal['animalos__Animal_Actions__r']}" var="futureAction" id="futureActions">-->
+<!--                                <tr>-->
+<!--                                    <th class="header-table" style="width: 10%; padding-bottom: 10px; padding-top: 10px;">-->
+<!--                                        <b>NUM</b>-->
+<!--                                    </th>-->
+<!--                                    <th class="header-table" style="width: 40%;">-->
+<!--                                        {!futureAction['animalos__Description__c']}-->
+<!--                                    </th>-->
+<!--                                    <th class="header-table" style="width: 30%;">-->
+<!--                                        {!futureAction['animalos__Date_Time_Action_Completed__c']}-->
+<!--                                    </th>-->
+<!--                                    <th class="header-table" style="width: 20%;">-->
+<!--                                    </th>-->
+<!--                                </tr>-->
+<!--                            </apex:repeat>-->
+<!--                        </table>-->
+<!--                    </apex:outputPanel>-->
+
+
+                </apex:repeat>
+
+
+                <div class="page-break"></div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="alignCenter" colspan="2">
+                            <b>
+                                INDEMNITY WAIVER CONTRACT
+                            </b>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td colspan="2">
+                            <p>
+                                I, {!dto['referral']['animalos__Contact__r']['Name']} am adopting the animal as described above. By signing below, I acknowledge that the RSPCA QLD has informed me of
+                                possible
+                                issues
+                                with
+                                the animal I am adopting. I agree to care for the animal for the rest of its life in a manner that is necessary. The RSPCA QLD will not be held responsible for
+                                financial assistance
+                                to
+                                care for the animal. I accept full responsibility for any ongoing or future treatment assistance warranted. I understand that I am adopting the animal "as is", and I
+                                understand the
+                                issues outlined below.
+                            </p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <apex:repeat value="{!dto['animals']}" var="animal" id="indemnityWaivers">
+                    <table>
+                        <tr>
+                            <th colspan="3" class="alignCenter">
+                                <b>
+                                    Indemnity Notes - {!animal['animalos__Animal_Name__c']} - {!animal['Name']}
+                                </b>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="width:25%;text-align:center;">
+                                Indemnity Waiver
+                            </th>
+                            <th style="width:75%;text-align:center;">
+                                Content
+                            </th>
+                        </tr>
+                    </table>
+                    <apex:repeat rendered="{!animal['hasWaivers']}" value="{!animal['animalos__Animal_Indemnity_Waivers__r']}" var="waiver" id="waivers">
+                        <table>
+                            <tr>
+                                <td width="25%">
+                                    {!waiver['Indemnity_Waiver_Title__c']}
+                                </td>
+                                <td width="75%">
+                                    <apex:outputText escape="false" value="{!waiver['animalos__Animal_Indemnity_Waiver_Content__c']}"></apex:outputText>
+                                </td>
+                            </tr>
+                        </table>
+                    </apex:repeat>
+                    <apex:outputPanel rendered="{!animal['hasWaivers'] == false}">
+                        <table>
+                            <tr>
+                                <td style="text-align: center;">
+                                    <p>
+                                        Animal has no Indemnity Waivers
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </apex:outputPanel>
+                </apex:repeat>
+                <table>
+                    <tr>
+                        <td style="border-right: none">
+                            <p>
+                                Adopter Signature:
+                            </p>
+                        </td>
+                        <td style="border-left: none">
+                            <img src="{!dto['referral']['Signature_URL__c']}" alt="Signature"></img>
+                        </td>
+                        <td>
+                            <p>
+                                Date:&nbsp;{!dto['referral']['Signing_Date__c']}
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <div class="page-break"></div>
+                <div class="inform-collection">
+                ANIMAL TREATMENTS HISTORY
+                </div>
+
+                <apex:repeat value="{!dto['animals']}" var="animal" id="animalActions">
+                    <apex:outputPanel rendered="{!animal['hasActions']}">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <th colspan="4" class="alignCenter">
+                                    <b>
+                                        {!animal['animalos__Animal_Name__c'] + ' Treatments History'}
+                                    </b>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td width="66%">
+                                        Description
+                                </td>
+                                <td width="34%">
+                                        Date
+                                </td>
+                            </tr>
+                            <apex:repeat value="{!animal['animalos__Animal_Actions__r']}" var="animalAction" id="animalActions">
+                                <tr>
+                                    <td>
+                                        {!animalAction['animalos__Description__c']}
+                                    </td>
+                                    <td>
+                                        {!animalAction['animalos__Date_Time_Action__c']}
+                                    </td>
+                                </tr>
+                            </apex:repeat>
+                            </tbody>
+                        </table>
+                    </apex:outputPanel>
+                    <br/>
+                    <br/>
+                </apex:repeat>
+
+                <div class="inform-collection">
+                   ANIMAL UPCOMING TREATMENTS
+                </div>
+
+                <apex:repeat value="{!dto['animals']}" var="animal" id="animalPlans">
+                    <apex:outputPanel rendered="{!animal['hasTreatments']}">
+                        <table>
+                            <tbody>
+                            <tr>
+                                <th colspan="4" class="alignCenter">
+                                    <b>
+                                        {! animal['animalos__Animal_Name__c'] + ' Upcoming Treatments '}
+                                    </b>
+                                </th>
+                            </tr>
+                            <tr>
+                                <td width="51%">
+                                    Plan Name
+                                </td>
+                                <td width="17%">
+                                    Interval
+                                </td>
+                                <td width="17%">
+                                    Frequency
+                                </td>
+                                <td width="17%">
+                                    Next Scheduled Date
+                                </td>
+                            </tr>
+                            <apex:repeat value="{!animal['animalos__Animal_Action_Plans__r']}" var="animalActionPlan" id="animalActionPlans">
+                                <tr>
+                                    <td>
+                                        {!animalActionPlan['animalos__Action_Plan__r']['Name']}
+                                    </td>
+                                    <td>
+                                        {!animalActionPlan['animalos__Action_Plan__r']['animalos__Frequency_Interval__c']}
+                                    </td>
+                                    <td>
+                                        {!animalActionPlan['animalos__Action_Plan__r']['animalos__Frequency__c']}
+                                    </td>
+                                    <td>
+                                        {!animalActionPlan['animalos__Next_Scheduled_Date__c']}
+                                    </td>
+                                </tr>
+                            </apex:repeat>
+                            </tbody>
+                        </table>
+                    </apex:outputPanel>
+                    <br/>
+                    <br/>
+                </apex:repeat>
+
+                    <apex:repeat rendered="{!dto['hasAnimalTypeInformation']}" value="{!dto['animalTypesInformation']}" var="animalTypeInformation" id="animalTypesInformation">
+                        <div>
+                            <b>{!animalTypeInformation['Label']}</b>
+                            <p><apex:outputField value="{!animalTypeInformation.Information__c}"/></p>
+                        </div>
+                    </apex:repeat>
+
+
+
+
+                <!--                <br/>-->
+
+                <!--                <apex:outputPanel rendered="{!dto['hasDogs']}">-->
+                <!--                    <div class="page-break"></div>-->
+                <!--                    <div class="inform-collection">-->
+                <!--                        ANIMAL EVALUATION SUMMARY-->
+                <!--                    </div>-->
+
+                <!--                    <apex:repeat value="{!dto['dogs']}" var="animal" id="animalsEvaluation">-->
+                <!--                        <table>-->
+                <!--                            <thead>-->
+                <!--                            <tr>-->
+                <!--                                <th colspan="4" class="alignCenter">-->
+                <!--                                    <p style="text-align: center;">-->
+                <!--                                        {!'Animal Evaluation - ' + animal['animalos__Animal_Name__c']}-->
+                <!--                                    </p>-->
+                <!--                                </th>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <th colspan="4" class="alignCenter">-->
+                <!--                                    <b>-->
+                <!--                                        Behaviour - People-->
+                <!--                                    </b>-->
+                <!--                                </th>-->
+                <!--                            </tr>-->
+                <!--                            </thead>-->
+                <!--                            <tbody>-->
+                <!--                            <tr>-->
+                <!--                                <td width="25%">-->
+                <!--                                    Unknown People on lead-->
+                <!--                                </td>-->
+                <!--                                <td width="25%">-->
+                <!--                                    {!animal['Unknown_People_on_lead__c']}-->
+                <!--                                </td>-->
+                <!--                                <td width="25%">-->
+                <!--                                    Veterinary handling-->
+                <!--                                </td>-->
+                <!--                                <td width="25%">-->
+                <!--                                    {!animal['Veterinary_handling__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td>-->
+                <!--                                    Unknown People offlead-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Unknown_People_offlead__c']}-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    Being alone (initially)-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Being_alone_initially__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td>-->
+                <!--                                    Visitors to the home-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Visitors_to_the_home__c']}-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    Being alone (once settled in)-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Being_alone_once_settled_in__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td>-->
+                <!--                                    Handling with unknown people-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Handling_with_unknown_people__c']}-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    Behaviour around food and other resource-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Behaviour_around_food_and_other_resource__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td>-->
+                <!--                                    Handling with known people-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Handling_with_known_people__c']}-->
+                <!--                                </td>-->
+                <!--                                <td></td>-->
+                <!--                                <td></td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td colspan="2">-->
+                <!--                                    Adoption - People Summary-->
+                <!--                                </td>-->
+                <!--                                <td colspan="2">-->
+                <!--                                    {!animal['Adoption_People_Summary__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            </tbody>-->
+                <!--                        </table>-->
+                <!--                        <table>-->
+                <!--                            <thead>-->
+                <!--                            <tr>-->
+                <!--                                <th colspan="4" class="alignCenter">-->
+                <!--                                    <b>-->
+                <!--                                        People Summary Recommendations-->
+                <!--                                    </b>-->
+                <!--                                </th>-->
+                <!--                            </tr>-->
+                <!--                            </thead>-->
+                <!--                            <tbody>-->
+                <!--                            <tr>-->
+                <!--                                <td width="25%">-->
+                <!--                                    Age Restriction-->
+                <!--                                </td>-->
+                <!--                                <td width="25%">-->
+                <!--                                    {!animal['Age_Restriction__c']}-->
+                <!--                                </td>-->
+                <!--                                <td width="25%">-->
+                <!--                                    Home requirements-->
+                <!--                                </td>-->
+                <!--                                <td width="25%">-->
+                <!--                                    {!animal['Home_Requirements__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td>-->
+                <!--                                    Separation/Isolation Behaviours-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Separation_Isolation_Behaviours__c']}-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            </tbody>-->
+                <!--                        </table>-->
+                <!--                        <table>-->
+                <!--                            <thead>-->
+                <!--                            <tr>-->
+                <!--                                <th colspan="4" class="alignCenter">-->
+                <!--                                    <b>-->
+                <!--                                        Behavior - Dogs-->
+                <!--                                    </b>-->
+                <!--                                </th>-->
+                <!--                            </tr>-->
+                <!--                            </thead>-->
+                <!--                            <tbody>-->
+                <!--                            <tr>-->
+                <!--                                <td width="25%">-->
+                <!--                                    Meeting an unknown dog on lead-->
+                <!--                                </td>-->
+                <!--                                <td width="25%">-->
+                <!--                                    {!animal['Meeting_an_unknown_dog_on_lead__c']}-->
+                <!--                                </td>-->
+                <!--                                <td width="25%">-->
+                <!--                                    Play interactions-->
+                <!--                                </td>-->
+                <!--                                <td width="25%">-->
+                <!--                                    {!animal['Play_interactions__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td>-->
+                <!--                                    Off lead with other dogs (i.e. dog parks)-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Off_lead_with_other_dogs_i_e_dog_parks__c']}-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    Behaviour around food and other resource-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Behaviour_around_food_and_other_resource__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td>-->
+                <!--                                    General interactions with dogs-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['General_interactions_with_dogs__c']}-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td colspan="2">-->
+                <!--                                    Adoption - Dogs Summary-->
+                <!--                                </td>-->
+                <!--                                <td colspan="2">-->
+                <!--                                    {!animal['Adoption_Dogs_Summary__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            </tbody>-->
+                <!--                        </table>-->
+                <!--                        <table>-->
+                <!--                            <thead>-->
+                <!--                            <tr>-->
+                <!--                                <th colspan="4" class="alignCenter">-->
+                <!--                                    <b>-->
+                <!--                                        Behavior Dogs - Recommendations-->
+                <!--                                    </b>-->
+                <!--                                </th>-->
+                <!--                            </tr>-->
+                <!--                            </thead>-->
+                <!--                            <tbody>-->
+                <!--                            <tr>-->
+                <!--                                <td width="25%">-->
+                <!--                                    Dog Sociability-->
+                <!--                                </td>-->
+                <!--                                <td width="75%">-->
+                <!--                                    {!animal['Dog_Sociability__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            </tbody>-->
+                <!--                        </table>-->
+                <!--                        <table>-->
+                <!--                            <thead>-->
+                <!--                            <tr>-->
+                <!--                                <th colspan="4" class="alignCenter">-->
+                <!--                                    <b>-->
+                <!--                                        Behavior - General-->
+                <!--                                    </b>-->
+                <!--                                </th>-->
+                <!--                            </tr>-->
+                <!--                            </thead>-->
+                <!--                            <tbody>-->
+                <!--                            <tr>-->
+                <!--                                <td width="25%">-->
+                <!--                                    Walking on leash-->
+                <!--                                </td>-->
+                <!--                                <td width="25%">-->
+                <!--                                    {!animal['Walking_on_leash__c']}-->
+                <!--                                </td>-->
+                <!--                                <td width="25%">-->
+                <!--                                    Travelling in the car-->
+                <!--                                </td>-->
+                <!--                                <td width="25%">-->
+                <!--                                    {!animal['Travelling_in_the_car__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td>-->
+                <!--                                    Food-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Food__c']}-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    Breed traits-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Breed_traits__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td>-->
+                <!--                                    Toys-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Toys__c']}-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    Predatory behaviour-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Predatory_behaviour__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <th>-->
+                <!--                                    Noise sensitivity-->
+                <!--                                </th>-->
+                <!--                                <th>-->
+                <!--                                    {!animal['Noise_sensitivity__c']}-->
+                <!--                                </th>-->
+                <!--                                <th>-->
+                <!--                                    House training-->
+                <!--                                </th>-->
+                <!--                                <th>-->
+                <!--                                    {!animal['House_Training__c']}-->
+                <!--                                </th>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <th colspan="2">-->
+                <!--                                    Adoption - General Summary-->
+                <!--                                </th>-->
+                <!--                                <th colspan="2">-->
+                <!--                                    {!animal['Adoption_General_Summary__c']}-->
+                <!--                                </th>-->
+                <!--                            </tr>-->
+                <!--                            </tbody>-->
+                <!--                        </table>-->
+                <!--                        <table>-->
+                <!--                            <thead>-->
+                <!--                            <tr>-->
+                <!--                                <th colspan="4" class="alignCenter">-->
+                <!--                                    <b>-->
+                <!--                                        Behavior - General Recommendations-->
+                <!--                                    </b>-->
+                <!--                                </th>-->
+                <!--                            </tr>-->
+                <!--                            </thead>-->
+                <!--                            <tbody>-->
+                <!--                            <tr>-->
+                <!--                                <td width="25%">-->
+                <!--                                    Indoors/Outdoors Preference-->
+                <!--                                </td>-->
+                <!--                                <td width="25%">-->
+                <!--                                    {!animal['Indoors_Outdoors_Preference__c']}-->
+                <!--                                </td>-->
+                <!--                                <td width="25%">-->
+                <!--                                    Adopter Experience-->
+                <!--                                </td>-->
+                <!--                                <td width="25%">-->
+                <!--                                    {!animal['Adopter_Experience__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td>-->
+                <!--                                    Fencing Requirements-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Fencing_Requirements__c']}-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    Adaptability-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Adaptability__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td>-->
+                <!--                                    Other Animals-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Other_Animals__c']}-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    Lifestyle-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Lifestyle__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td>-->
+                <!--                                    Adoption Level-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                    {!animal['Adoption_Level__c']}-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                </td>-->
+                <!--                                <td>-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            <tr>-->
+                <!--                                <td colspan="2">-->
+                <!--                                    General Requirements-->
+                <!--                                </td>-->
+                <!--                                <td colspan="2">-->
+                <!--                                    {!animal['General_Requirements__c']}-->
+                <!--                                </td>-->
+                <!--                            </tr>-->
+                <!--                            </tbody>-->
+                <!--                        </table>-->
+                <!--                        <br/>-->
+                <!--                        <apex:outputPanel rendered="{!if(animal['Id'] != dto['lastAnimal']['Id'], true, false)}">-->
+                <!--                            <div class="page-break"></div>-->
+                <!--                        </apex:outputPanel>-->
+                <!--                    </apex:repeat>-->
+                <!--                </apex:outputPanel>-->
+            </div>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

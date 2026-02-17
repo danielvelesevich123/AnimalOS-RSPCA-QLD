@@ -12,8 +12,6 @@ public class aos_VolunteerRescueReqReceiptMetaProc extends aos_MetadataProcessor
 
     private void init() {
 
-        // https://rspcaqld2--adev--c.sandbox.vf.force.com/apex/AOS_JobSummary?renderAs=pdf&jobId=a3FOg000000WBoLMAW&contactId=003Og00000HDZRIIA5&proc=VolunteerRescueRequestReceipt&fileName=Job+Summary
-
         this.response.dto.putAll(new Map<String, Object>{
                 'page-styles' => 'margin-top: 0.3in; margin-bottom: 0.3in',
                 'font-family' => '"Arial", sans-serif',
@@ -107,13 +105,13 @@ public class aos_VolunteerRescueReqReceiptMetaProc extends aos_MetadataProcessor
         components.add(this.setTemplate(dto));
 
         this.response.dto.put('components', components);
-        this.response.dto.put('head-component', new Component.VolunteerRescueRequestReceiptStyles());
+        this.response.dto.put('head-component', new Component.aos_VolunteerRescueRequestReceiptStyles());
 
         System.debug(this.response.dto);
     }
 
     private Object setTemplate(aos_DTO dto){
-        return new Component.VolunteerRescueRequestReceipt(
+        return new Component.aos_VolunteerRescueRequestReceipt(
                 dto = dto.getMap()
         );
     }

@@ -121,12 +121,12 @@ public with sharing class aos_JobSummaryQAMetaProc extends aos_MetadataProcessor
 
         dto.put('hasContact', hasContact);
 
-        components.add(new Component.AOS_JobSummary(
+        components.add(new Component.aos_JobSummary(
                 dto = dto.getMap()
         ));
 
         this.response.dto.put('components', components);
-        this.response.dto.put('head-component', new Component.AOS_JobSummaryStyles(
+        this.response.dto.put('head-component', new Component.aos_JobSummaryStyles(
             isEmail = isEmail
         ));
 

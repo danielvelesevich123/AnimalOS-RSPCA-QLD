@@ -24,7 +24,7 @@ public without sharing class aos_AdoptionAgreementSavePdfProc extends aos_Abstra
     }
 
     public void savePDF(String recordId) {
-        String urlVar = '/apex/AdoptionAgreement?recordId=' + recordId;
+        String urlVar = '/apex/aos_AdoptionAgreement?recordId=' + recordId;
         PageReference pg = new PageReference(urlVar);
 
         ContentVersion contentVersionVar = new ContentVersion();

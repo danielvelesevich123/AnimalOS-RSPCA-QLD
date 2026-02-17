@@ -1,0 +1,548 @@
+<apex:component id="AOS_JobSummary">
+
+    <apex:attribute name="dto" description="Data Transfer Object" type="Map"/>
+
+    <apex:variable value="{! 'AOS_JobSummary' }" var="cmpName"/>
+    <apex:variable value="{! cmpName + 'Template' }" var="defaultTemplateName"/>
+    <apex:variable value="{! 'c-' + cmpName }" var="defaultClassName"/>
+
+
+    <apex:outputPanel rendered="{!AND(dto['isEmail'] == true, dto['hasContact'] == true)}">
+        <div style="margin: 25px 0 25px 0;">
+            <p>Dear {! dto['contact'].Name},</p>
+            <br></br>
+            <p>Please find the <b>Cruelty Complaint Summary</b> detailed below.</p>
+        </div>
+    </apex:outputPanel>
+
+    <apex:repeat value="{!dto['jobs']}" var="job" id="jobRepeat">
+
+        <apex:outputPanel rendered="{!dto['isEmail'] != true}">
+            <div class="header-text">CRUELTY COMPLAINT SUMMARY</div>
+
+            <div class="header">
+                <apex:outputPanel rendered="{!dto['isEmail'] == false}">
+                    <img src="/resource/1660927663000/RspcaLogo"/>
+                </apex:outputPanel>
+
+                <!-- <apex:outputPanel rendered="{!dto['isEmail'] == true}">
+                    <c:vertic_DocumentImage
+                        documentUniqueName="RSPCA_Logo"
+                        cssStyles="width: 232px; height: 67px; max-width: 232px; max-height: 67px; min-width: 232px; min-height: 67px;"
+                    />
+                </apex:outputPanel> -->
+            </div>
+        </apex:outputPanel>
+
+        <table style="table-layout: fixed">
+            <tbody>
+            <tr>
+                <td colspan="4" style="vertical-align: top" class="section-header">
+                    <p>
+                        <b>JOB DETAILS</b>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Job Number
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {!  job['Name'] }
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        Date Received
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {! job['CreatedDate'] }
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Officer Assigned
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {!job['Owner']['Name']}
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        Officer Region
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {! IF(job['containsArea'],  job['animalos__Area__r']['Name'], '') }
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Cruelty Complaint Codes
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {! job['animalos__Codes__c']}
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        Priority
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {!job['animalos__Priority__c']}
+                    </p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <apex:outputPanel rendered="{! if (job['hasInformants'], true, false)}">
+            <table style="margin-top: 0px">
+                <tbody>
+                <tr>
+                    <td colspan="4" style="vertical-align: top" class="section-header">
+                        <p>
+                            <b>Informant Contacts</b>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top;width: 25%">
+                        <p>
+                            Name
+                        </p>
+                    </td>
+                    <td style="vertical-align: top;width:25%">
+                        <p>
+                            Type
+                        </p>
+                    </td>
+                    <td style="vertical-align: top;width: 25%">
+                        <p>
+                            Phone
+                        </p>
+                    </td>
+                    <td style="vertical-align: top;width: 25%;">
+                        <p>
+                            Email
+                        </p>
+                    </td>
+                </tr>
+                <apex:repeat value="{!job['informants']}" var="informant" id="informantsRepeat">
+                    <tr>
+                        <td style="vertical-align: top;width: 25%;">
+                            <p>
+                                {!informant['animalos__Contact__r']['Name']}
+                            </p>
+                        </td>
+                        <td style="vertical-align: top;width: 25%;">
+                            <p>
+                                {!informant['animalos__Contact_Type__c']}
+                            </p>
+                        </td>
+                        <td style="vertical-align: top;width: 25%;">
+                            <p>
+                                <apex:outputText value="{!informant['animalos__Contact__r']['Phone']}" escape="false"/>
+                            </p>
+                        </td>
+                        <td style="vertical-align: top;width: 25%;">
+                            <p>
+                                {!informant['animalos__Contact__r']['Email']}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="">
+                            <p>{!informant['animalos__Contact__r']['MailingStreet']}</p>
+                        </td>
+                    </tr>
+                </apex:repeat>
+                </tbody>
+            </table>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{! if (job['hasPOIs'], true, false)}">
+            <table style="margin-top: 0px">
+                <tbody>
+                <tr>
+                    <td colspan="4" style="vertical-align: top" class="section-header">
+                        <p>
+                            <b>Person of Interest Contacts</b>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top;width: 25%">
+                        <p>
+                            Name
+                        </p>
+                    </td>
+                    <td style="vertical-align: top;width:25%">
+                        <p>
+                            Type
+                        </p>
+                    </td>
+                    <td style="vertical-align: top;width: 25%">
+                        <p>
+                            Phone
+                        </p>
+                    </td>
+                    <td style="vertical-align: top;width: 25%;">
+                        <p>
+                            Email
+                        </p>
+                    </td>
+                </tr>
+                <apex:repeat value="{!job['POIs']}" var="POI" id="POIRepeat">
+                    <tr>
+                        <td style="vertical-align: top;width: 25%;">
+                            <p>
+                                {!POI['animalos__Contact__r']['Name']}
+                            </p>
+                        </td>
+                        <td style="vertical-align: top;width: 25%;">
+                            <p>
+                                {!POI['animalos__Contact_Type__c']}
+                            </p>
+                        </td>
+                        <td style="vertical-align: top;width: 25%;">
+                            <p>
+                                <apex:outputText value="{!POI['animalos__Contact__r']['Phone']}" escape="false"/>
+                            </p>
+                        </td>
+                        <td style="vertical-align: top;width: 25%;">
+                            <p>
+                                {!POI['animalos__Contact__r']['Email']}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="">
+                            <p>{!POI['animalos__Contact__r']['MailingStreet']}</p>
+                        </td>
+                    </tr>
+                </apex:repeat>
+                </tbody>
+            </table>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{! if (job['hasOtherJobContacts'], true, false)}">
+            <table style="margin-top: 0px">
+                <tbody>
+                <tr>
+                    <td colspan="4" style="vertical-align: top" class="section-header">
+                        <p>
+                            <b>Other Contacts</b>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top;width: 25%">
+                        <p>
+                            Name
+                        </p>
+                    </td>
+                    <td style="vertical-align: top;width:25%">
+                        <p>
+                            Type
+                        </p>
+                    </td>
+                    <td style="vertical-align: top;width: 25%">
+                        <p>
+                            Phone
+                        </p>
+                    </td>
+                    <td style="vertical-align: top;width: 25%;">
+                        <p>
+                            Email
+                        </p>
+                    </td>
+                </tr>
+                <apex:repeat value="{!job['otherJobContacts']}" var="otherJobContact" id="otherJobContactsRepeat">
+                    <tr>
+                        <td style="vertical-align: top;width: 25%;">
+                            <p>
+                                {!otherJobContact['animalos__Contact__r']['Name']}
+                            </p>
+                        </td>
+                        <td style="vertical-align: top;width: 25%;">
+                            <p>
+                                {!otherJobContact['animalos__Contact_Type__c']}
+                            </p>
+                        </td>
+                        <td style="vertical-align: top;width: 25%;">
+                            <p>
+                                <apex:outputText value="{!otherJobContact['animalos__Contact__r']['Phone']}" escape="false"/>
+                            </p>
+                        </td>
+                        <td style="vertical-align: top;width: 25%;">
+                            <p>
+                                {!otherJobContact['animalos__Contact__r']['Email']}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="">
+                            <p>{!otherJobContact['animalos__Contact__r']['MailingStreet']}</p>
+                        </td>
+                    </tr>
+                </apex:repeat>
+                </tbody>
+            </table>
+        </apex:outputPanel>
+
+        <table>
+            <tbody>
+            <tr>
+                <td colspan="4" style="vertical-align: top" class="section-header">
+                    <p>
+                        <b>LOCATION DETAILS</b>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Location
+                    </p>
+                </td>
+                <td colspan="3" style="vertical-align: top">
+                    <p>
+                        {! job['animalos__Full_Address__c']}
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Directions to Property
+                    </p>
+                </td>
+                <td colspan="3" style="vertical-align: top">
+                    <p>
+                        {! job['animalos__Property_Directions__c']}
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Location Notes
+                    </p>
+                </td>
+                <td colspan="3" style="vertical-align: top">
+                    <p>
+                        <!-- {! job['Location_Notes__c']} -->
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Location jobs
+                    </p>
+                </td>
+                <td style="vertical-align: top" colspan="3">
+                    <p>
+                        {!job['jobsAtSameAddress']}
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" style="vertical-align: top" class="section-header">
+                    <p>
+                        <b>CRUELTY COMPLAINT DETAILS</b>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        POI Description
+                    </p>
+                </td>
+                <td style="vertical-align: top" colspan="3">
+                    <p>
+                        <apex:outputtext style="white-space:pre-wrap;" value="{!job['POIDescription']}" escape="false"/>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Important Notes
+                    </p>
+                </td>
+                <td colspan="3" style="vertical-align: top">
+                    <p>
+                        <apex:outputtext style="white-space:pre-wrap;" value="{!job['animalos__Important_Notes__c']}" escape="true"/>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Description
+                    </p>
+                </td>
+                <td colspan="3" style="vertical-align: top">
+                    <p>
+                        <apex:outputtext style="white-space:pre-wrap;" value="{!job['animalos__Description__c']}" escape="true"/>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Job Outcome
+                    </p>
+                </td>
+                <td colspan="3" style="vertical-align: top">
+                    <p>
+                        <apex:variable value="{!job['animalos__Job_Outcome__c'] + IF(AND(NOT(ISBLANK(job['animalos__Job_Outcome__c'])), NOT(ISBLANK(job['Job_Outcome_Multi__c']))), ';', '') + job['Job_Outcome_Multi__c']}" var="jobOutcome"/>
+                        {!
+                            IF(
+                                LEFT(TRIM(jobOutcome), 1) = ';',
+                                RIGHT(TRIM(jobOutcome), LEN(TRIM(jobOutcome)) - 1),
+                                jobOutcome
+                            )
+                        }
+                    </p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <apex:outputPanel rendered="{! if (job['hasRelatedJobs'], true, false)}" layout="none">
+            <p style="margin-top: 15px;table-layout: fixed"><b>Jobs at Location</b></p>
+            <table style="margin-top: 0px;">
+                <tbody>
+                <tr>
+                    <td style="vertical-align: top;width: 20%;">
+                        <p>
+                            Job Number
+                        </p>
+                    </td>
+                    <td style="vertical-align: top;width: 20%;">
+                        <p>
+                            Date
+                        </p>
+                    </td>
+                    <td style="vertical-align: top;width: 20%;">
+                        <p>
+                            Officer
+                        </p>
+                    </td>
+                    <td style="vertical-align: top;width: 40%;">
+                        <p>
+                            Codes
+                        </p>
+                    </td>
+                </tr>
+                <apex:repeat value="{!job['relatedJobs']}" var="relatedJob" id="relatedJobsRepeat">
+                    <tr>
+                        <td style="vertical-align: top;width: 20%;">
+                            <p>
+                                {! relatedJob['jobNumber']}
+                            </p>
+                        </td>
+                        <td style="vertical-align: top;width: 20%;">
+                            <p>
+                                <apex:outputText value="{0,date,dd/MM/yyyy}">
+                                    <apex:param value="{! relatedJob['animalos__Start_Date__c']}"/>
+                                </apex:outputText>
+                            </p>
+                        </td>
+                        <td style="vertical-align: top;width: 20%;">
+                            <p>
+                                {! IF(relatedJob['assignedInspector'] == null, '', relatedJob['assignedInspector'])}
+                            </p>
+                        </td>
+                        <td style="vertical-align: top;width: 40%;">
+                            <p>
+                                {! relatedJob['animalos__Codes__c']}
+                            </p>
+                        </td>
+                    </tr>
+
+                </apex:repeat>
+                </tbody>
+            </table>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{! if ( job['hasNotes'], true, false)}">
+            <p style="margin-top: 15px;"><b>JOB NOTES</b></p>
+            <table style="margin-top: 0px">
+                <tbody>
+                <tr>
+                    <td style="vertical-align: top;width: 15%">
+                        <p>
+                            Date
+                        </p>
+                    </td>
+                    <td style="vertical-align: top;width: 85%;">
+                        <p>
+                            Content
+                        </p>
+                    </td>
+                </tr>
+                <apex:repeat value="{!job['jobNotes']}" var="jobNote" id="jobNotesRepeat">
+                    <tr>
+                        <td style="vertical-align: top;width: 15%">
+                            <p>
+                                <apex:outputText value="{0,date,dd/MM/yyyy}">
+                                    <apex:param value="{! jobNote['animalos__Interaction_Date_Time__c']}"/>
+                                </apex:outputText>
+                            </p>
+                        </td>
+                        <td style="width: 85%;word-wrap: break-word;">
+                            <apex:outputText value="{! jobNote['animalos__Content__c']}" escape="false"/>
+                        </td>
+                    </tr>
+                </apex:repeat>
+                </tbody>
+            </table>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{! if ( job['hasAnimalReportSummary'], true, false)}">
+            <table>
+                <tbody>
+                <tr>
+                    <td style="vertical-align: top" colspan="4">
+                        <p>
+                            Animal Report Summary
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="vertical-align: top" colspan="4" class="animal-report-summary">
+                        <p>
+                            <apex:outputText value="{! job['animalos__Animal_Report_Summary__c']}" escape="false"/>
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </apex:outputPanel>
+        <apex:outputPanel rendered="{! if(job['isLast'], false, true)}">
+            <div class="page-break"/>
+        </apex:outputPanel>
+    </apex:repeat>
+
+    <apex:outputPanel rendered="{!dto['isEmail'] == true}">
+<!--        <c:EmailSignatureRSPCA />-->
+    </apex:outputPanel>
+</apex:component>

@@ -7,7 +7,7 @@
         let jobIds = cmp.get('v.pageReference.state.c__jobIds');
 
         if (cmp.get('v.recordId')) {
-            window.open('/apex/AOS_JobSummary?proc=' + procName + '&fileName=' + fileName + '&renderAs=pdf' + '&jobId=' + cmp.get('v.recordId'), '_blank');
+            window.open('/apex/aos_JobSummary?proc=' + procName + '&fileName=' + fileName + '&renderAs=pdf' + '&jobId=' + cmp.get('v.recordId'), '_blank');
             window.setTimeout(
                 $A.getCallback(function () {
                     $A.get("e.force:closeQuickAction").fire();
@@ -16,7 +16,7 @@
         } else if (jobIds) {
             window.setTimeout(
                 $A.getCallback(function () {
-                    window.open('/apex/AOS_JobSummary?proc=' + procName + '&fileName=' + fileName + '&renderAs=pdf' + '&jobId=' + jobIds, '_blank');
+                    window.open('/apex/aso_JobSummary?proc=' + procName + '&fileName=' + fileName + '&renderAs=pdf' + '&jobId=' + jobIds, '_blank');
                 }), 1000
             );
 

@@ -256,7 +256,7 @@ export default class VetConsultationHistory extends LightningElement {
 
             // Build the Visualforce PDF URL with parameters
             const baseUrl = window.location.origin;
-            let pdfUrl = `${baseUrl}/apex/VetConsultationHistoryPDF?animalId=${encodeURIComponent(this.animalId)}`;
+            let pdfUrl = `${baseUrl}/apex/aos_VetConsultationHistoryPDF?animalId=${encodeURIComponent(this.animalId)}`;
             
             // Add current vet consult ID if available (for context highlighting)
             if (this.currentVetConsultId) {

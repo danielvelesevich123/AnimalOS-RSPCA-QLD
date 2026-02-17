@@ -53,7 +53,7 @@ public class aos_DesexedCertificateQAMetaProc  extends aos_MetadataProcessor {
 
             dto.put('animal', animal);
 
-            components.add(new Component.DesexedCertificate(
+            components.add(new Component.aos_DesexedCertificate(
                 dto = dto
             ));
 
@@ -73,6 +73,6 @@ public class aos_DesexedCertificateQAMetaProc  extends aos_MetadataProcessor {
         }
 
         this.response.dto.put('components', components);
-        this.response.dto.put('head-component', new Component.DesexedCertificateStyles());
+        this.response.dto.put('head-component', new Component.aos_DesexedCertificateStyles());
     }
 }

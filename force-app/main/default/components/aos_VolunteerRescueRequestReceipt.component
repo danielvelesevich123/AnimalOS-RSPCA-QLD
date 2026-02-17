@@ -1,0 +1,327 @@
+<apex:component id="VolunteerRescueRequestReceipt">
+
+    <apex:attribute name="dto" description="Data Transfer Object" type="Map"/>
+
+    <div class="page-content">
+
+        <!-- <div class="header-text">RESCUE REQUEST SUMMARY</div> -->
+
+        <!-- <div class="header">
+            <c:vertic_DocumentImage
+                documentUniqueName="RSPCA_Logo"
+                cssStyles="height: 45px; max-height: 45px; min-height: 45px;"
+            />
+        </div> -->
+
+        <div style="margin: 25px 0 25px 0;">
+            <p>Dear {! dto['contact'].Name},</p>
+            <br></br>
+            <p>Please find the <b>Rescue Request Summary</b> detailed below.</p>
+        </div>
+
+        <table style="table-layout: fixed">
+            <tbody>
+            <tr>
+                <td colspan="4" style="vertical-align: top" class="section-header">
+                    <p>
+                        <b>JOB DETAILS</b>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Job Number
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {!dto['job'].Name}
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        Priority
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {!dto['job'].animalos__Priority__c}
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Date Received
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        <apex:outputText value="{0, date, dd'/'MM'/'yyyy}">
+                                <apex:param value="{!dto['job'].CreatedDate}"/>
+                        </apex:outputText>
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        Area
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {! IF(NOT(ISBLANK(dto['job'].animalos__Area__r.animalos__Parent_Area__r.Name)), dto['job'].animalos__Area__r.animalos__Parent_Area__r.Name, '') }
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Council
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {! IF(NOT(ISBLANK(dto['job'].animalos__Area__r.Name)), dto['job'].animalos__Area__r.Name, '') }
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        Codes
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {!dto['jobCodesSplitted']}
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Request Created By
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {!dto['job'].CreatedBy.Name}
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        Source
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Potential Violence
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {!IF(OR(dto['job'].animalos__Reported_Physical_Violence__c == true, dto['job'].animalos__Observed_Physical_Violence__c == true), 'Yes', '')}
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        Verbally Abusive
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {!IF(OR(dto['job'].animalos__Reported_Verbal_Abuse__c == true, dto['job'].animalos__Observed_Verbal_Abuse__c == true), 'Yes', '')}
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="1" style="vertical-align: top">
+                    <p>
+                        Important Notes
+                    </p>
+                </td>
+                <td colspan="3" style="vertical-align: top">
+                    <p>
+                        {!dto['job'].animalos__Important_Notes__c}
+                    </p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <table style="table-layout: fixed">
+            <tbody>
+                <tr>
+                    <td colspan="4" style="vertical-align: top" class="section-header">
+                        <p>
+                            <b>JOB CONTACTS</b>
+                        </p>
+                    </td>
+                </tr>
+
+                <apex:variable var="jobContactIndex" value="{!0}"/>
+
+                <apex:repeat value="{!dto['jobContacts']}" var="jobContact">
+                    <tr style="{!IF(jobContactIndex > 0, '', 'display: none;')}">
+                        <td colspan="4" style="vertical-align: top" class="section-header"></td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top">
+                            <p>
+                                Person ID
+                            </p>
+                        </td>
+                        <td style="vertical-align: top">
+                            <p>
+                                {!jobContact.Name}
+                            </p>
+                        </td>
+                        <td style="vertical-align: top">
+                            <p>
+                                Name
+                            </p>
+                        </td>
+                        <td style="vertical-align: top">
+                            <p>
+                                {!jobContact.animalos__Contact__r.Name}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top">
+                            <p>
+                                Contact Type
+                            </p>
+                        </td>
+                        <td style="vertical-align: top">
+                            <p>
+                                {!jobContact.animalos__Contact_Type__c}
+                            </p>
+                        </td>
+                        <td style="vertical-align: top">
+                            <p>
+                                Address
+                            </p>
+                        </td>
+                        <td style="vertical-align: top">
+                            <p>
+                                {!jobContact.animalos__Contact__r.MailingStreet} {!jobContact.animalos__Contact__r.MailingCity} {!jobContact.animalos__Contact__r.MailingState} {!jobContact.animalos__Contact__r.MailingPostalCode}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top">
+                            <p>
+                                Phone
+                            </p>
+                        </td>
+                        <td style="vertical-align: top">
+                            <p>
+                                {!jobContact.animalos__Contact__r.Phone}
+                            </p>
+                        </td>
+                        <td style="vertical-align: top">
+                            <p>
+                                Email
+                            </p>
+                        </td>
+                        <td style="vertical-align: top">
+                            <p>
+                                {!jobContact.animalos__Contact__r.Email}
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="vertical-align: top">
+                            <p>
+                                Potential Violence
+                            </p>
+                        </td>
+                        <td style="vertical-align: top">
+                            <p>
+                                {!IF(OR(jobContact.animalos__Reported_Physical_Violence__c == true, jobContact.animalos__Observed_Physical_Violence__c == true), 'Yes', '')}
+                            </p>
+                        </td>
+                        <td style="vertical-align: top">
+                            <p>
+                                Verbally Abusive
+                            </p>
+                        </td>
+                        <td style="vertical-align: top">
+                            <p>
+                                {!IF(OR(jobContact.animalos__Reported_Verbal_Abuse__c == true, jobContact.animalos__Observed_Verbal_Abuse__c == true), 'Yes', '')}
+                            </p>
+                        </td>
+                    </tr>
+
+                    <apex:variable var="jobContactIndex" value="{!jobContactIndex + 1}" />
+                </apex:repeat>
+            </tbody>
+        </table>
+
+        <table style="table-layout: fixed">
+            <tbody>
+            <tr>
+                <td colspan="4" style="vertical-align: top" class="section-header">
+                    <p>
+                        <b>LOCATION</b>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Location Jobs Count
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {!dto['locationOfInterestJobCount']}
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        Potential Violence
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {!IF(OR(dto['locationOfInterest'].animalos__Reported_Physical_Violence__c == true, dto['locationOfInterest'].animalos__Observed_Physical_Violence__c == true), 'Yes', '')}
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td style="vertical-align: top">
+                    <p>
+                        Verbally Abusive
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        {!IF(OR(dto['locationOfInterest'].animalos__Reported_Verbal_Abuse__c == true, dto['locationOfInterest'].animalos__Observed_Verbal_Abuse__c == true), 'Yes', '')}
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        
+                    </p>
+                </td>
+                <td style="vertical-align: top">
+                    <p>
+                        
+                    </p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+<!--    <c:EmailSignatureRSPCA />-->
+
+</apex:component>

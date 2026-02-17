@@ -48,12 +48,12 @@ public with sharing class aos_IndemnityWaiverDocumentQAMetaProc extends aos_Meta
             .getMapper()
             .mapFromSObject('animal', animal, new aos_AutoMapper.BinderQueue(new AnimalBinder()));
 
-        components.add(new Component.IndemnityWaiverDocument(
+        components.add(new Component.aos_IndemnityWaiverDocument(
             dto = dto.getMap()
         ));
 
         this.response.dto.put('components', components);
-        this.response.dto.put('head-component', new Component.IndemnityWaiverDocumentStyles());
+        this.response.dto.put('head-component', new Component.aos_IndemnityWaiverDocumentStyles());
 
     }
 

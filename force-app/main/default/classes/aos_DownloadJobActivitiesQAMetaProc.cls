@@ -73,7 +73,7 @@ public class aos_DownloadJobActivitiesQAMetaProc extends aos_MetadataProcessor {
         dto.put('personsOfInterest', personsOfInterest);
         dto.put('numberOfPersonsOfInterest', personsOfInterest.size());
 
-        components.add(new Component.JobActivitiesSummary(
+        components.add(new Component.aos_JobActivitiesSummary(
                 dto = dto
         ));
 
@@ -84,6 +84,6 @@ public class aos_DownloadJobActivitiesQAMetaProc extends aos_MetadataProcessor {
         }
 
         this.response.dto.put('components', components);
-        this.response.dto.put('head-component', new Component.JobActivitiesSummaryStyles());
+        this.response.dto.put('head-component', new Component.aos_JobActivitiesSummaryStyles());
     }
 }

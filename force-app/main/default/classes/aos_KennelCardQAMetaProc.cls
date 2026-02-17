@@ -105,12 +105,12 @@ public with sharing class aos_KennelCardQAMetaProc extends aos_MetadataProcessor
                 .mapAnyValue('showQRCode', true);
         List<Object> components = new List<Object>();
 
-        components.add(new Component.KennelCard(
+        components.add(new Component.aos_KennelCard(
                 dto = dto.getMap()
         ));
 
         this.response.put('components', components);
-        this.response.put('head-component', new Component.KennelCardStyles(
+        this.response.put('head-component', new Component.aos_KennelCardStyles(
                 dto = dto.getMap()
         ));
     }
