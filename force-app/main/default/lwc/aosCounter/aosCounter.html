@@ -1,0 +1,24 @@
+<!-- AOS Counter -->
+<template>
+    <div data-id="container">
+        <lightning-button-icon class="slds-m-top_x-large slds-m-right_xx-small"
+                               icon-name="utility:ban" variant="bare"
+                               alternative-text="Decrease" title="Decrease"
+                               onclick={handleDecrease}></lightning-button-icon>
+        <lightning-input type="number"
+                         label={label}
+                         variant={variant}
+                         value={value}
+                         placeholder={placeholder}
+                         required={required}
+                         disabled={disabled}
+                         min={min}
+                         max={max}
+                         onchange={handleValueChange}
+                         ></lightning-input>
+        <lightning-button-icon class="slds-m-top_x-large slds-m-left_xx-small"
+                               icon-name="utility:new" variant="bare"
+                               alternative-text="Increase" title="Increase"
+                               onclick={handleIncrease}></lightning-button-icon>
+    </div>
+</template>

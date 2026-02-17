@@ -1,5 +1,5 @@
 import {api, track, LightningElement} from 'lwc';
-import {validate, execute, showToast} from 'c/verticUtils';
+import {validate, execute, showToast} from 'c/aosUtils';
 
 export default class JobContactsAddInteractionCautionForm extends LightningElement {
     @api jobContactId;

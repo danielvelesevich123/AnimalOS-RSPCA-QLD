@@ -18,7 +18,7 @@
 
         <aura:if isTrue="{!empty(v.meta)}">
             <div class="slds-is-relative">
-                <c:verticSpinner isBusy="{!v.isBusy}"></c:verticSpinner>
+                <c:aosSpinner is-busy="{!v.isBusy}"></c:aosSpinner>
                 <lightning:layout horizontalAlign="center" multipleRows="true">
                     <lightning:layoutItem padding="around-small">
                         <div style="text-align: center;">

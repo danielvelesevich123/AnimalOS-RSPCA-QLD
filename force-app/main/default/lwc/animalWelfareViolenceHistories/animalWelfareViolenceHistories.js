@@ -1,5 +1,5 @@
 import {api, LightningElement} from 'lwc';
-import {showToast, execute} from "c/verticUtils";
+import {showToast, execute} from "c/aosUtils";
 
 export default class AnimalWelfareViolenceHistories extends LightningElement {
     @api jobContact = {};

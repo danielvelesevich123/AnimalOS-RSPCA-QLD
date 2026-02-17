@@ -6,7 +6,7 @@
             </lightning-button-group>
             <div class="slds-m-horizontal_medium">
                 <div lwc:if={isBusy}>
-                    <c-stencil count="4" height="10"></c-stencil>
+                    <c-aos-stencil count="4" height="10"></c-aos-stencil>
                 </div>
                 <template lwc:elseif={showMap}>
                     <div class="slds-grid">
@@ -40,9 +40,9 @@
                     </div>
                 </template>
                 <template lwc:else>
-                    <c-scoped-notification-lwc icon-name="utility:warning">
+                    <c-aos-scoped-notification-lwc icon-name="utility:warning">
                         There are no traps in field.
-                    </c-scoped-notification-lwc>
+                    </c-aos-scoped-notification-lwc>
                 </template>
             </div>
         </lightning-card>

@@ -1,6 +1,6 @@
 import {api, track} from 'lwc';
 import LightningModal from 'lightning/modal';
-import {showToast, execute, handleFieldChange, validate} from "c/verticUtils";
+import {showToast, execute, handleFieldChange, validate} from "c/aosUtils";
 
 export default class ManageTrapsQAModal extends LightningModal {
     @api

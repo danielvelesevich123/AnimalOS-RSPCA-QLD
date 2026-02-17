@@ -1,6 +1,6 @@
 <!-- Adoption Agreement -->
 <template>
-    <c-toast lwc:ref="toast"></c-toast>
+    <c-aos-toast lwc:ref="toast"></c-aos-toast>
     <div class="slds-p-around_medium">
         <div class="main-content">
             <div class="slds-grid slds-wrap">
@@ -22,7 +22,7 @@
             </div>
 
             <div class="slds-is-relative">
-                <c-vertic-spinner is-busy={isBusy}></c-vertic-spinner>
+                <c-aos-spinner is-busy={isBusy}></c-aos-spinner>
                 <template lwc:if={showContent}>
                     <div class="slds-m-vertical_large">
                         <lightning-progress-indicator current-step={currentStep}>
@@ -214,12 +214,12 @@
                                     <c-adoption-agreement-animal-treatments animal={animal} key={animal.Id} type="Upcoming Treatments"></c-adoption-agreement-animal-treatments>
                                 </template>
                                 <div class="slds-p-horizontal_large">
-                                    <c-scoped-notification-lwc icon-name="utility:warning" for:each={meta.dto.animalTypesInformation} for:item="animalTypeInformation" key={animalTypeInformation.Id}>
+                                    <c-aos-scoped-notification-lwc icon-name="utility:warning" for:each={meta.dto.animalTypesInformation} for:item="animalTypeInformation" key={animalTypeInformation.Id}>
                                         <p><b>{animalTypeInformation.Label}</b></p>
                                         <p>
                                             <lightning-formatted-text value={animalTypeInformation.aos_Information__c}></lightning-formatted-text>
                                         </p>
-                                    </c-scoped-notification-lwc>
+                                    </c-aos-scoped-notification-lwc>
                                 </div>
                             </lightning-card>
                         </div>
@@ -403,9 +403,9 @@
                     </template>
 
                     <div class="slds-text-align_center slds-m-top_small slds-m-bottom_large" lwc:if={sendButtonEnabled}>
-                        <c-scoped-notification-lwc>
+                        <c-aos-scoped-notification-lwc>
                             <b>Clicking Send will email the adoption agreement to the specified adopter, allowing them to complete the agreement on their device.</b>
-                        </c-scoped-notification-lwc>
+                        </c-aos-scoped-notification-lwc>
                     </div>
 
                     <div class="slds-text-align_center slds-m-top_small slds-m-bottom_large">
@@ -418,14 +418,14 @@
                     </div>
                 </template>
                 <template lwc:elseif={isSubmitted}>
-                    <c-scoped-notification-lwc icon-name="utility:warning" class="slds-text-align_center">
+                    <c-aos-scoped-notification-lwc icon-name="utility:warning" class="slds-text-align_center">
                         Thank you for submitting this form! You will receive an email with PDF document in next 2-3 minutes.
-                    </c-scoped-notification-lwc>
+                    </c-aos-scoped-notification-lwc>
                 </template>
                 <template lwc:elseif={isSent}>
-                    <c-scoped-notification-lwc icon-name="utility:warning" class="slds-text-align_center">
+                    <c-aos-scoped-notification-lwc icon-name="utility:warning" class="slds-text-align_center">
                         {referralName} will receive an email with link to sign an Adoption Agreement in next 2-3 minutes.
-                    </c-scoped-notification-lwc>
+                    </c-aos-scoped-notification-lwc>
                 </template>
             </div>
         </div>

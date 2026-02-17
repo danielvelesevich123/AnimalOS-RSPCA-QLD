@@ -1,5 +1,5 @@
 import {LightningElement, api} from 'lwc';
-import {execute, showToast, validate, copy} from 'c/verticUtils';
+import {execute, showToast, validate, copy} from 'c/aosUtils';
 
 const delay = 500; // Delay in milliseconds for search
 export default class AnimalWelfareLocationOfInterest extends LightningElement {

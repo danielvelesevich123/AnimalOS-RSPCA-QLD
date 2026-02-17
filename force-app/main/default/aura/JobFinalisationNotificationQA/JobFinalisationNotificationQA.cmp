@@ -28,7 +28,7 @@
             </div>
             <div class="slds-col slds-has-flexi-truncate">
                 <div>
-                    <c:verticLookup
+                    <c:aosLookup
                             filter="{!'Id IN ' + v.availableIds}"
                             label="Contact"
                             object="Contact"
@@ -42,7 +42,7 @@
                             value="{!v.contactId}"
                             disabled="{!v.isBusy}"
                             showAllRecords="true"
-                    ></c:verticLookup>
+                    ></c:aosLookup>
                 </div>
             </div>
         </div>

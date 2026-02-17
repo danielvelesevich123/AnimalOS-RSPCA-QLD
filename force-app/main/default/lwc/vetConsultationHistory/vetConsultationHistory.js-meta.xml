@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>64.0</apiVersion>
+    <apiVersion>64</apiVersion>
+    <description>Vet Consultation History</description>
     <isExposed>true</isExposed>
+    <masterLabel>Vet Consultation History</masterLabel>
     <targets>
         <target>lightning__RecordPage</target>
         <target>lightning__AppPage</target>

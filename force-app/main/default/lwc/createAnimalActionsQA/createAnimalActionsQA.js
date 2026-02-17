@@ -2,7 +2,7 @@ import {api, LightningElement} from 'lwc';
 import CreateAnimalActionsQAModal from 'c/createAnimalActionsQAModal';
 import {CloseActionScreenEvent} from "lightning/actions";
 
-export default class CreateAnimalActionsQa extends LightningElement {
+export default class CreateAnimalActionsQA extends LightningElement {
     @api recordId;
 
     @api async invoke() {

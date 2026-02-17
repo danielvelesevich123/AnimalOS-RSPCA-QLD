@@ -45,7 +45,7 @@
                         </div>
 
                         <div>
-                            <c:verticGoogleAddress addressDisabled="{!v.isBusy}"
+                            <c:aosGoogleAddress address-disabled="{!v.isBusy}"
                                                    city="{!v.address.city}"
                                                    country="{!v.address.country}"
                                                    label="Address"
@@ -54,7 +54,7 @@
                                                    state="{!v.address.state}"
                                                    street="{!v.address.street}"
                                                    disabled="{!v.isBusy}"
-                            ></c:verticGoogleAddress>
+                            ></c:aosGoogleAddress>
 
                             <!--                        <lightning:inputAddress-->
                             <!--                                addressLabel="Address"-->
@@ -115,7 +115,7 @@
                 <aura:if isTrue="{!v.mode != ''}">
                     <div class="slds-col slds-size_1-of-2">
                         <div class="slds-m-bottom_small">
-                            <c:verticLookup
+                            <c:aosLookup
                                     label="Job"
                                     object="animalos__Job__c"
                                     placeholder="Please select Job..."
@@ -127,11 +127,11 @@
                                     value="{!v.jobId}"
                                     disabled="{!v.isBusy}"
                                     showAllRecords="true"
-                            ></c:verticLookup>
+                            ></c:aosLookup>
                         </div>
 
                         <div class="slds-m-bottom_small">
-                            <c:verticLookup
+                            <c:aosLookup
                                     label="Released By"
                                     object="User"
                                     placeholder="Please select User..."
@@ -144,7 +144,7 @@
                                     value="{!v.userId}"
                                     disabled="{!v.isBusy}"
                                     showAllRecords="true"
-                            ></c:verticLookup>
+                            ></c:aosLookup>
                         </div>
 
                         <div>

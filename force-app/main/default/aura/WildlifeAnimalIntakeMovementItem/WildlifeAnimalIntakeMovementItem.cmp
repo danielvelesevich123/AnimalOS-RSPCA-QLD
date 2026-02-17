@@ -22,7 +22,7 @@
             </div>
             <aura:if isTrue="{!not(v.isCopying)}">
                 <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_3-of-12">
-                    <c:verticLookup object="animalos__Location__c"
+                    <c:aosLookup object="animalos__Location__c"
                                     value="{!v.movement.site}"
                                     searchField="Name"
                                     label="Site"
@@ -36,7 +36,7 @@
                     />
                 </div>
                 <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_2-of-12">
-                    <c:verticLookup object="animalos__Location__c"
+                    <c:aosLookup object="animalos__Location__c"
                                     value="{!v.movement.block}"
                                     searchField="Name"
                                     label="Block"
@@ -50,7 +50,7 @@
                     />
                 </div>
                 <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_2-of-12">
-                    <c:verticLookup object="animalos__Location__c"
+                    <c:aosLookup object="animalos__Location__c"
                                     searchMode="SOQL"
                                     label="Unit"
                                     value="{!v.movement.animalos__Location__c}"

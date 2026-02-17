@@ -2,7 +2,7 @@
 <template>
     <lightning-modal-header label="Create Animal Actions"></lightning-modal-header>
     <lightning-modal-body class="slds-is-relative">
-        <c-vertic-spinner is-busy={isBusy}></c-vertic-spinner>
+        <c-aos-spinner is-busy={isBusy}></c-aos-spinner>
 
         <lightning-card>
             <lightning-button-group slot="actions">
@@ -55,7 +55,7 @@
                         ></lightning-input>
                     </td>
                     <td>
-                        <c-vertic-lookup label="Medicine"
+                        <c-aos-lookup label="Medicine"
                                          object="animalos__Medicine__c"
                                          search-field="Name"
                                          search-mode="SOQL"
@@ -65,7 +65,7 @@
                                          data-map="animalActions"
                                          data-index={index}
                                          data-path="[data-index].medicineId"
-                        ></c-vertic-lookup>
+                        ></c-aos-lookup>
                     </td>
                     <td>
                         <lightning-input label="Description"

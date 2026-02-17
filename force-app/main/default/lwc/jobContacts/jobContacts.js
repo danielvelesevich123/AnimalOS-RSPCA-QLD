@@ -1,5 +1,5 @@
 import {api, track, LightningElement} from 'lwc';
-import {execute, showToast, isMobile} from 'c/verticUtils';
+import {execute, showToast, isMobile} from 'c/aosUtils';
 import {RefreshEvent} from "lightning/refresh";
 
 export default class JobContacts extends LightningElement {

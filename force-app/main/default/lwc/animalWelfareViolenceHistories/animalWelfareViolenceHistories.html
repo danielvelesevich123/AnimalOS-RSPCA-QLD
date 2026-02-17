@@ -1,5 +1,5 @@
 <template>
-    <c-stencil lwc:if={isBusy} count="4" height="15"></c-stencil>
+    <c-aos-stencil lwc:if={isBusy} count="4" height="15"></c-aos-stencil>
     <template lwc:else>
         <c-job-contacts lwc:if={contactId} view="animalWelfareContact" record-id={contactId} card-title="Job Contact History" hide-add-violence-button></c-job-contacts>
         <div class="slds-m-vertical_medium" lwc:if={locationId}>

@@ -1,4 +1,4 @@
-import {showToast, execute, validate} from "c/verticUtils";
+import {showToast, execute, validate} from "c/aosUtils";
 import {LightningElement, track, wire} from "lwc";
 import {getPicklistValues, getObjectInfo} from "lightning/uiObjectInfoApi";
 import JOB_STATUS from "@salesforce/schema/animalos__Job__c.animalos__Status__c";

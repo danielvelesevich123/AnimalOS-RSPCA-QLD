@@ -7,13 +7,13 @@
             </div>
 
             <div class="slds-is-relative">
-                <c-vertic-spinner is-busy={isBusy}></c-vertic-spinner>
+                <c-aos-spinner is-busy={isBusy}></c-aos-spinner>
 
                 <template lwc:if={isPOI}>
                     <div class="slds-p-horizontal_small">
-                        <c-scoped-notification-lwc theme="error" icon-name="utility:error" icon-variant="inverse" class-name="slds-m-vertical_none">
+                        <c-aos-scoped-notification-lwc theme="error" icon-name="utility:error" icon-variant="inverse" class-name="slds-m-vertical_none">
                             This Contact is flagged as a Person of Interest and cannot be set up as a Partner User.
-                        </c-scoped-notification-lwc>
+                        </c-aos-scoped-notification-lwc>
                     </div>
                 </template>
                 <template lwc:elseif={userDoesNotExist}>
@@ -125,7 +125,7 @@
                                 <template lwc:if={isFosterProfile}>
                                     <div class="slds-grid slds-wrap slds-gutters_x-small slds-p-horizontal_medium slds-p-bottom_small">
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-lookup label="Select Foster Location"
+                                            <c-aos-lookup label="Select Foster Location"
                                                              object="animalos__Location__c"
                                                              search-field="Name"
                                                              search-mode="SOQL"
@@ -139,7 +139,7 @@
                                                              data-map="fosterLocation"
                                                              data-path="animalos__Parent_Block__c"
                                                              onchange={handleFieldChange}
-                                            ></c-vertic-lookup>
+                                            ></c-aos-lookup>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <lightning-input label="Foster Capacity"
@@ -159,7 +159,7 @@
                                 <template lwc:if={isPartnersProfile}>
                                     <div class="slds-grid slds-wrap slds-gutters_x-small slds-p-horizontal_medium slds-p-bottom_small slds-grid_vertical-align-start">
                                         <div class="slds-col">
-                                            <c-vertic-lookup label="Select Offsite Location"
+                                            <c-aos-lookup label="Select Offsite Location"
                                                              object="animalos__Location__c"
                                                              search-field="Name"
                                                              search-mode="SOQL"
@@ -173,7 +173,7 @@
                                                              data-map="locationVolunteer"
                                                              data-path="aos_Location__c"
                                                              onchange={handleFieldChange}
-                                            ></c-vertic-lookup>
+                                            ></c-aos-lookup>
                                         </div>
                                     </div>
                                 </template>
@@ -181,7 +181,7 @@
                                 <template lwc:if={isVolunteerProfile}>
                                     <div class="slds-grid slds-wrap slds-gutters_x-small slds-p-horizontal_medium slds-p-bottom_small">
                                         <div class="slds-col slds-size_1-of-3">
-                                            <c-vertic-lookup label="Select Site Location"
+                                            <c-aos-lookup label="Select Site Location"
                                                              object="animalos__Location__c"
                                                              search-field="Name"
                                                              search-mode="SOQL"
@@ -195,11 +195,11 @@
                                                              data-map="locationVolunteer"
                                                              data-path="site"
                                                              onchange={handleFieldChange}
-                                            ></c-vertic-lookup>
+                                            ></c-aos-lookup>
                                         </div>
 
                                         <div class="slds-col slds-size_1-of-3">
-                                            <c-vertic-lookup label="Select Block Location"
+                                            <c-aos-lookup label="Select Block Location"
                                                              object="animalos__Location__c"
                                                              search-field="Name"
                                                              search-mode="SOQL"
@@ -212,11 +212,11 @@
                                                              data-map="locationVolunteer"
                                                              data-path="block"
                                                              onchange={handleFieldChange}
-                                            ></c-vertic-lookup>
+                                            ></c-aos-lookup>
                                         </div>
 
                                         <div class="slds-col slds-size_1-of-3">
-                                            <c-vertic-lookup label="Select Unit Location"
+                                            <c-aos-lookup label="Select Unit Location"
                                                              object="animalos__Location__c"
                                                              search-field="Name"
                                                              search-mode="SOQL"
@@ -229,7 +229,7 @@
                                                              data-map="locationVolunteer"
                                                              data-path="unit"
                                                              onchange={handleFieldChange}
-                                            ></c-vertic-lookup>
+                                            ></c-aos-lookup>
                                         </div>
                                     </div>
                                 </template>

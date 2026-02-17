@@ -7,7 +7,7 @@
         <!-- <div class="header-text">RESCUE REQUEST SUMMARY</div> -->
 
         <!-- <div class="header">
-            <c:vertic_DocumentImage
+            <c:aos_DocumentImage
                 documentUniqueName="RSPCA_Logo"
                 cssStyles="height: 45px; max-height: 45px; min-height: 45px;"
             />

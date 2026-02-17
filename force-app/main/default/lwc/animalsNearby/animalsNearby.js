@@ -1,5 +1,5 @@
 import {api, LightningElement} from 'lwc';
-import {execute, showToast} from 'c/verticUtils';
+import {execute, showToast} from 'c/aosUtils';
 
 export default class AnimalsNearby extends LightningElement {
     @api recordId;

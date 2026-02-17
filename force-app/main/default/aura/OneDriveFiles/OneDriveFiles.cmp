@@ -41,7 +41,7 @@
                      restrictAccess="{!v.restrictAccess}"
                      onProgress="{!c.handleOnProgress}"
     />
-    <c:toast aura:id="toast"/>
+    <c:aosToast aura:id="toast"/>
 
     <aura:handler name="change" value="{!v.meta.dto.files}" action="{!c.handleRecordCheck}"/>
 

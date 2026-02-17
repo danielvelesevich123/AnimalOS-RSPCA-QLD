@@ -1,5 +1,5 @@
 import {api, track, LightningElement} from 'lwc';
-import {execute} from 'c/verticUtils';
+import {execute} from 'c/aosUtils';
 import logo from '@salesforce/resourceUrl/RspcaLogoPNG';
 
 export default class AdoptionAgreement extends LightningElement {

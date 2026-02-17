@@ -5,25 +5,25 @@
                 <lightning-button disabled={isBusy} icon-name="action:refresh" label="Refresh" onclick={handleRefreshClick}></lightning-button>
             </lightning-button-group>
             <div class="slds-m-horizontal_medium">
-                <c-vertic-select label="Distance"
+                <c-aos-select label="Distance"
                                  placeholder="Select an Option..."
                                  onchange={handleDistanceChange}
                                  options={distanceOptions}
                                  value={distance}
                                  disabled={isBusy}
-                ></c-vertic-select>
+                ></c-aos-select>
                 <template lwc:if={showContent}>
                     <template for:each={locationsNearby} for:index="index" for:item="locationNearby" lwc:if={showLocationsNearby}>
                         <c-location-nearby key={locationNearby.Id} location-nearby={locationNearby} view={view}></c-location-nearby>
                     </template>
                     <template lwc:else>
-                        <c-scoped-notification-lwc icon-name="utility:warning">
+                        <c-aos-scoped-notification-lwc icon-name="utility:warning">
                             There are no Jobs Nearby.
-                        </c-scoped-notification-lwc>
+                        </c-aos-scoped-notification-lwc>
                     </template>
                 </template>
                 <div lwc:else>
-                    <c-stencil count="4" height="10"></c-stencil>
+                    <c-aos-stencil count="4" height="10"></c-aos-stencil>
                 </div>
             </div>
         </lightning-card>

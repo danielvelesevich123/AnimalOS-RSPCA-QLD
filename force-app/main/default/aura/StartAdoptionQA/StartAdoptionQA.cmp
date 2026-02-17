@@ -68,7 +68,7 @@
                     />
                 </div>
                 <div class="slds-col slds-size_1-of-1 slds-m-top_medium">
-                    <c:verticGoogleAddress aura:id="contactAddress"
+                    <c:aosGoogleAddress aura:id="contactAddress"
                                            addressDisabled="{!v.isBusy}"
                                            city="{!v.contact.MailingCity}"
                                            country="{!v.contact.MailingCountry}"
@@ -79,7 +79,7 @@
                                            state="{!v.contact.MailingState}"
                                            street="{!v.contact.MailingStreet}"
                                            disabled="{!v.isBusy}"
-                    ></c:verticGoogleAddress>
+                    ></c:aosGoogleAddress>
                 </div>
             </div>
             <div class="slds-grid slds-wrap slds-gutters slds-p-horizontal_xxx-small slds-m-horizontal_xxx-small slds-p-bottom_small">
@@ -129,7 +129,7 @@
                     />
                 </div>
                 <div class="slds-col slds-size_1-of-1 slds-m-top_medium">
-                    <c:verticGoogleAddress aura:id="alternateContactAddress"
+                    <c:aosGoogleAddress aura:id="alternateContactAddress"
                                            addressDisabled="{!v.isBusy}"
                                            city="{!v.alternateContact.MailingCity}"
                                            country="{!v.alternateContact.MailingCountry}"
@@ -140,7 +140,7 @@
                                            street="{!v.alternateContact.MailingStreet}"
                                            required="{!true}"
                                            disabled="{!v.isBusy}"
-                    ></c:verticGoogleAddress>
+                    ></c:aosGoogleAddress>
                 </div>
             </div>
         </div>

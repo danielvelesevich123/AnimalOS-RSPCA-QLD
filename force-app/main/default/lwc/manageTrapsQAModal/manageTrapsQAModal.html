@@ -3,7 +3,7 @@
 
     <lightning-modal-header label="Manage Traps"></lightning-modal-header>
     <lightning-modal-body>
-        <c-vertic-spinner is-busy={isBusy}></c-vertic-spinner>
+        <c-aos-spinner is-busy={isBusy}></c-aos-spinner>
 
         <template lwc:if={isLocationOfInterestStep}>
             <div lwc:if={showLocationOfInterest}>
@@ -58,9 +58,9 @@
                     <template lwc:if={noResources}>
                         <tr>
                             <td colspan="3" class="slds-p-around_none">
-                                <c-scoped-notification-lwc icon-name="utility:warning" class-name="slds-text-align_center">
+                                <c-aos-scoped-notification-lwc icon-name="utility:warning" class-name="slds-text-align_center">
                                     No Available Resources.
-                                </c-scoped-notification-lwc>
+                                </c-aos-scoped-notification-lwc>
                             </td>
                         </tr>
                     </template>

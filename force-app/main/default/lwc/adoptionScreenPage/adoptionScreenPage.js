@@ -1,5 +1,5 @@
 import {api, LightningElement, track} from 'lwc';
-import {execute} from "c/verticBase";
+import {execute} from "c/aosUtils";
 
 export default class AdoptionScreenPage extends LightningElement {
     @api unitId;

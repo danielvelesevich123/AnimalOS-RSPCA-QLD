@@ -120,7 +120,7 @@
             />
         </aura:if>
         <aura:if isTrue="{!and(v.fieldType == 'REFERENCE', not(empty(v.sObject)))}">
-            <c:verticLookup aura:id="lookup"
+            <c:aosLookup aura:id="lookup"
                             label="{!v.fieldLabel}"
                             object="{!v.sObject}"
                             class="{!v.cssClass}"

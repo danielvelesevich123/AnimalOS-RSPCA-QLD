@@ -1,6 +1,6 @@
 import {api, LightningElement } from 'lwc';
 
-export default class AdoptionAgreementAnimal extends LightningElement {
+export default class AdoptionAgreementAnimalIndemnityWaivers extends LightningElement {
     @api animal;
 
     get animalHasIndemnityWaivers() {

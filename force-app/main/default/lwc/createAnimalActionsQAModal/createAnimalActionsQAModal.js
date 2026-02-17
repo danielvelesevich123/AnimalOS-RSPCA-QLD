@@ -1,6 +1,6 @@
 import {api, track} from 'lwc';
 import LightningModal from "lightning/modal";
-import {execute, showToast, handleFieldChange} from "c/verticUtils";
+import {execute, showToast, handleFieldChange} from "c/aosUtils";
 
 export default class CreateAnimalActionsQAModal extends LightningModal {
     @api

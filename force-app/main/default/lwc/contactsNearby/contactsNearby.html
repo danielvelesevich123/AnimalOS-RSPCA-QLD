@@ -5,21 +5,21 @@
                 <lightning-button disabled={searchDisabled} icon-name="action:refresh" label="Search" onclick={handleSearchClick}></lightning-button>
             </lightning-button-group>
             <div class="slds-m-horizontal_medium slds-is-relative">
-                <c-vertic-spinner is-busy={isSearch}></c-vertic-spinner>
-                <c-vertic-select label="Distance to Job"
+                <c-aos-spinner is-busy={isSearch}></c-aos-spinner>
+                <c-aos-select label="Distance to Job"
                                  placeholder="Select an Option..."
                                  onchange={handleDistanceChange}
                                  options={distanceOptions}
                                  value={distance}
                                  disabled={isBusy}
-                ></c-vertic-select>
+                ></c-aos-select>
                 <div class="slds-m-top_medium">
-                    <c-sobject-filters sobject-api-name="Contact" title="Additional Filters" lwc:ref="filters" is-busy={isSearch}></c-sobject-filters>
+                    <c-aos-sobject-filters sobject-api-name="Contact" title="Additional Filters" lwc:ref="filters" is-busy={isSearch}></c-aos-sobject-filters>
                 </div>
                 <div class="slds-card slds-card_boundary slds-m-top_medium">
                     <lightning-card icon-name="standard:search">
                         <div slot="title">
-                            <c-stencil count="1" height="10" width="100" lwc:if={isBusy}></c-stencil>
+                            <c-aos-stencil count="1" height="10" width="100" lwc:if={isBusy}></c-aos-stencil>
                             <span lwc:else>{searchCardTitle}</span>
                         </div>
                         <template lwc:if={showContent}>
@@ -54,14 +54,14 @@
                                 </div>
                             </template>
                             <template lwc:else>
-                                <c-scoped-notification-lwc icon-name="utility:warning">
+                                <c-aos-scoped-notification-lwc icon-name="utility:warning">
                                     There are no resources within {distanceLabel} and selected filters.
-                                </c-scoped-notification-lwc>
+                                </c-aos-scoped-notification-lwc>
                             </template>
                         </template>
                         <div lwc:else>
                             <div class="slds-m-horizontal_medium">
-                                <c-stencil count="4" height="10"></c-stencil>
+                                <c-aos-stencil count="4" height="10"></c-aos-stencil>
                             </div>
                         </div>
                     </lightning-card>

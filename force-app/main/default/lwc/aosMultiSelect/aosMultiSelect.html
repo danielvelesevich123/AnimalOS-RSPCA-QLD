@@ -1,0 +1,19 @@
+<!-- AOS Multi Select -->
+<template>
+    <div data-id="container">
+        <c-aos-select
+                disabled={disabled}
+                label={label}
+                onchange={handleFieldChange}
+                options={unselectedOptions}
+                placeholder={getPlaceholder}
+                pseudo-required={required}
+                label-hidden={labelHidden}
+        ></c-aos-select>
+        <div style="white-space: break-spaces; margin-top: 3pt;">
+            <template for:each={selectedValuesList} for:index="index" for:item="value">
+                <lightning-pill class="pill-badge" key={value} label={value} onremove={handleRemove}></lightning-pill>
+            </template>
+        </div>
+    </div>
+</template>

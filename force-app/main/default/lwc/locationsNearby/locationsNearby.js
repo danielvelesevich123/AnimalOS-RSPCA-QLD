@@ -1,5 +1,5 @@
 import {api, track, LightningElement} from 'lwc';
-import {execute, showToast} from 'c/verticUtils';
+import {execute, showToast} from 'c/aosUtils';
 
 export default class LocationsNearby extends LightningElement {
     @api recordId;

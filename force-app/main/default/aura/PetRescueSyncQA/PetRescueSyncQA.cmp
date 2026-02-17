@@ -48,7 +48,7 @@
                     />
                 </div>
                 <div class="slds-col slds-size_1-of-3">
-                    <c:verticLookup object="animalos__Location__c"
+                    <c:aosLookup object="animalos__Location__c"
                                     label="Location"
                                     searchField="Name"
                                     placeholder="Select a Location..."

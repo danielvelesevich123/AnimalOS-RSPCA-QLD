@@ -26,7 +26,7 @@
                 </apex:outputPanel>
 
                 <!-- <apex:outputPanel rendered="{!dto['isEmail'] == true}">
-                    <c:vertic_DocumentImage
+                    <c:aos_DocumentImage
                         documentUniqueName="RSPCA_Logo"
                         cssStyles="width: 232px; height: 67px; max-width: 232px; max-height: 67px; min-width: 232px; min-height: 67px;"
                     />

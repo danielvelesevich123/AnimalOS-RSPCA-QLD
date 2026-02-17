@@ -5,7 +5,7 @@
         </div>
 
         <div class="slds-m-horizontal_x-large">
-            <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
+            <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
             <div lwc:elseif={isSubmit}></div>
             <lightning-progress-indicator lwc:elseif={showProgressIndicator} current-step={currentStep}>
                 <lightning-progress-step key={step.name}
@@ -28,7 +28,7 @@
         </div>
 
         <div class="slds-is-relative slds-m-horizontal_medium">
-            <c-vertic-spinner is-busy={isSubmit}></c-vertic-spinner>
+            <c-aos-spinner is-busy={isSubmit}></c-aos-spinner>
             <div data-id="caseForm">
                 <div class="slds-card slds-card_boundary">
                     <lightning-card icon-name="standard:job_profile" lwc:if={showCaseForm}>
@@ -43,8 +43,8 @@
                         </div>
                         <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
                             <div class="slds-col slds-size_1-of-4">
-                                <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
-                                <c-vertic-lookup data-id="parentJobLookupField"
+                                <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
+                                <c-aos-lookup data-id="parentJobLookupField"
                                                  data-path="animalos__Parent_Job__c"
                                                  disabled={isSubmit}
                                                  icon-tag="case"
@@ -57,11 +57,11 @@
                                                  search-mode="SOQL"
                                                  value={job.animalos__Parent_Job__c}
                                                  lwc:else
-                                ></c-vertic-lookup>
+                                ></c-aos-lookup>
                             </div>
                             <div class="slds-col slds-size_1-of-4">
-                                <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
-                                <c-vertic-select data-path="RecordTypeId"
+                                <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
+                                <c-aos-select data-path="RecordTypeId"
                                                  lwc:else
                                                  required
                                                  disabled={isSubmit}
@@ -70,11 +70,11 @@
                                                  onchange={handleJobRecordTypeChange}
                                                  options={selectOptions.recordTypeOptions}
                                                  value={job.RecordTypeId}
-                                ></c-vertic-select>
+                                ></c-aos-select>
                             </div>
                             <div class="slds-col slds-size_1-of-4">
-                                <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
-                                <c-vertic-select data-path="animalos__Priority__c"
+                                <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
+                                <c-aos-select data-path="animalos__Priority__c"
                                                  lwc:else
                                                  required
                                                  disabled={isSubmit}
@@ -83,11 +83,11 @@
                                                  onchange={handleJobFieldChange}
                                                  options={jobPriorityOptions}
                                                  value={job.animalos__Priority__c}
-                                ></c-vertic-select>
+                                ></c-aos-select>
                             </div>
                             <div class="slds-col slds-size_1-of-4">
-                                <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
-                                <c-vertic-select data-path="animalos__Status__c"
+                                <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
+                                <c-aos-select data-path="animalos__Status__c"
                                                  disabled={isSubmit}
                                                  lwc:else
                                                  label="Status"
@@ -95,11 +95,11 @@
                                                  onchange={handleJobFieldChange}
                                                  options={jobStatusOptions}
                                                  value={job.animalos__Status__c}
-                                ></c-vertic-select>
+                                ></c-aos-select>
                             </div>
                             <div class="slds-col slds-size_2-of-8">
-                                <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
-                                <c-vertic-select data-path="Anonymous__c"
+                                <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
+                                <c-aos-select data-path="Anonymous__c"
                                                  disabled={isSubmit}
                                                  lwc:else
                                                  placeholder="Select an Option..."
@@ -107,11 +107,11 @@
                                                  onchange={handleJobFieldChange}
                                                  options={selectOptions.yesNoBoolOptions}
                                                  value={job.Anonymous__c}
-                                ></c-vertic-select>
+                                ></c-aos-select>
                             </div>
                             <div class="slds-col slds-size_2-of-8">
-                                <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
-                                <c-vertic-select data-path="Second_Hand__c"
+                                <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
+                                <c-aos-select data-path="Second_Hand__c"
                                                  disabled={isSubmit}
                                                  lwc:else
                                                  placeholder="Select an Option..."
@@ -119,11 +119,11 @@
                                                  onchange={handleJobFieldChange}
                                                  options={selectOptions.yesNoBoolOptions}
                                                  value={job.Second_Hand__c}
-                                ></c-vertic-select>
+                                ></c-aos-select>
                             </div>
                             <div class="slds-col slds-size_4-of-8">
-                                <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
-                                <c-vertic-multi-select data-path="animalos__Codes__c"
+                                <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
+                                <c-aos-multi-select data-path="animalos__Codes__c"
                                                        disabled={isSubmit}
                                                        label="Codes"
                                                        onchange={handleJobFieldChange}
@@ -132,10 +132,10 @@
                                                        value={job.animalos__Codes__c}
                                                        required
                                                        lwc:else
-                                ></c-vertic-multi-select>
+                                ></c-aos-multi-select>
                             </div>
                             <div class="slds-col slds-size_1-of-1">
-                                <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
+                                <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
                                 <lightning-textarea data-path="Description"
                                                     lwc:else
                                                     value={caseVar.Description}
@@ -147,7 +147,7 @@
                                 ></lightning-textarea>
                             </div>
                             <div class="slds-col slds-size_1-of-1">
-                                <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
+                                <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
                                 <lightning-textarea data-path="animalos__Property_Directions__c"
                                                     value={job.animalos__Property_Directions__c}
                                                     disabled={isSubmit}
@@ -196,8 +196,8 @@
 
                                 <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
                                     <div class="slds-col slds-size_1-of-1">
-                                        <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
-                                        <c-vertic-select data-path="animalos__Contact_Type__c"
+                                        <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
+                                        <c-aos-select data-path="animalos__Contact_Type__c"
                                                          lwc:else
                                                          label="Contact Type"
                                                          placeholder="Select an Option"
@@ -206,11 +206,11 @@
                                                          options={selectOptions.animalosContactTypeOptions}
                                                          value={jobContact.animalos__Contact_Type__c}
                                                          required
-                                        ></c-vertic-select>
+                                        ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-1">
-                                        <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
-                                        <c-vertic-select data-path="Verbally_or_Physically_Abusive__c"
+                                        <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
+                                        <c-aos-select data-path="Verbally_or_Physically_Abusive__c"
                                                          lwc:elseif={isPOI}
                                                          label="Could this person be verbally or physically abusive"
                                                          placeholder="Select an Option"
@@ -218,10 +218,10 @@
                                                          disabled={isJobContactSearching}
                                                          options={selectOptions.verballyOrPhysicallyAbusiveOptions}
                                                          value={jobContact.Verbally_or_Physically_Abusive__c}
-                                        ></c-vertic-select>
+                                        ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
-                                        <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
+                                        <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
                                         <lightning-input data-path="animalos__Contact__r.FirstName"
                                                          lwc:else
                                                          value={jobContact.animalos__Contact__r.FirstName}
@@ -231,7 +231,7 @@
                                         ></lightning-input>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
-                                        <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
+                                        <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
                                         <lightning-input data-path="animalos__Contact__r.LastName"
                                                          lwc:else
                                                          value={jobContact.animalos__Contact__r.LastName}
@@ -242,7 +242,7 @@
                                         ></lightning-input>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
-                                        <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
+                                        <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
                                         <lightning-input data-path="animalos__Contact__r.MobilePhone"
                                                          lwc:else
                                                          value={jobContact.animalos__Contact__r.MobilePhone}
@@ -257,7 +257,7 @@
                                         ></lightning-input>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
-                                        <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
+                                        <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
                                         <lightning-input data-path="animalos__Contact__r.Phone"
                                                          lwc:else
                                                          value={jobContact.animalos__Contact__r.Phone}
@@ -272,7 +272,7 @@
                                         ></lightning-input>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
-                                        <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
+                                        <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
                                         <lightning-input data-path="animalos__Contact__r.Email"
                                                          lwc:else
                                                          value={jobContact.animalos__Contact__r.Email}
@@ -282,8 +282,8 @@
                                         ></lightning-input>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
-                                        <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
-                                        <c-vertic-lookup data-path="OrganizationId"
+                                        <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
+                                        <c-aos-lookup data-path="OrganizationId"
                                                          lwc:else
                                                          filter="RecordType.Name = 'Organization'"
                                                          icon-tag="account"
@@ -295,11 +295,11 @@
                                                          search-field="Name"
                                                          search-mode="SOQL"
                                                          value={jobContact.OrganizationId}
-                                        ></c-vertic-lookup>
+                                        ></c-aos-lookup>
                                     </div>
                                     <template lwc:if={isPOI}>
                                         <div class="slds-col slds-size_1-of-1">
-                                            <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
+                                            <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
                                             <lightning-textarea data-path="animalos__Contact__r.POI_Description__c"
                                                                 lwc:else
                                                                 value={jobContact.animalos__Contact__r.POI_Description__c}
@@ -311,8 +311,8 @@
                                         </div>
                                     </template>
                                     <div class="slds-col slds-size_1-of-2">
-                                        <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
-                                        <c-vertic-select data-path="animalos__Contact__r.ID_Type__c"
+                                        <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
+                                        <c-aos-select data-path="animalos__Contact__r.ID_Type__c"
                                                          label="ID Type"
                                                          lwc:else
                                                          placeholder="Select an Option"
@@ -320,10 +320,10 @@
                                                          disabled={isJobContactSearching}
                                                          options={selectOptions.iDTypeOptions}
                                                          value={jobContact.animalos__Contact__r.ID_Type__c}
-                                        ></c-vertic-select>
+                                        ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
-                                        <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
+                                        <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
                                         <lightning-input data-path="animalos__Contact__r.ID_Number__c"
                                                          value={jobContact.animalos__Contact__r.ID_Number__c}
                                                          label="ID Number"
@@ -333,7 +333,7 @@
                                         ></lightning-input>
                                     </div>
                                     <div class="slds-col slds-size_1-of-1">
-                                        <c-stencil count="1" height="15" lwc:if={isBusy}></c-stencil>
+                                        <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
                                         <lightning-input data-path="animalos__Contact__r.Birthdate"
                                                          lwc:else
                                                          value={jobContact.animalos__Contact__r.Birthdate}
@@ -344,8 +344,8 @@
                                         ></lightning-input>
                                     </div>
                                     <div class="slds-col slds-size_1-of-1">
-                                        <c-stencil count="4" height="15" lwc:if={isBusy}></c-stencil>
-                                        <c-vertic-google-address city={jobContact.animalos__Contact__r.MailingCity}
+                                        <c-aos-stencil count="4" height="15" lwc:if={isBusy}></c-aos-stencil>
+                                        <c-aos-google-address city={jobContact.animalos__Contact__r.MailingCity}
                                                                  lwc:else
                                                                  country={jobContact.animalos__Contact__r.MailingCountry}
                                                                  disabled={isJobContactSearching}
@@ -357,7 +357,7 @@
                                                                  street-only={jobContact.animalos__Contact__r.MailingStreet}
                                                                  show-additional-fields
                                                                  hide-unit
-                                        ></c-vertic-google-address>
+                                        ></c-aos-google-address>
                                     </div>
                                 </div>
                             </lightning-card>
@@ -367,7 +367,7 @@
                         <div class="slds-card slds-card_boundary">
                             <lightning-card icon-name="standard:contact" title="Job Contacts" lwc:if={showJobContactForm}>
                                 <div class="slds-m-horizontal_medium">
-                                    <c-stencil count="4" height="15" lwc:if={isBusy}></c-stencil>
+                                    <c-aos-stencil count="4" height="15" lwc:if={isBusy}></c-aos-stencil>
                                     <template lwc:else>
                                         <template lwc:if={showContacts} for:each={jobContacts} for:item="jobContact" id="jobContactCards" for:index="index">
                                             <div class="slds-m-vertical_medium" key={jobContact.Id}>
@@ -376,9 +376,9 @@
                                             </div>
                                         </template>
                                         <template lwc:else>
-                                            <c-scoped-notification-lwc icon-name="utility:warning">
+                                            <c-aos-scoped-notification-lwc icon-name="utility:warning">
                                                 No Job Contacts
-                                            </c-scoped-notification-lwc>
+                                            </c-aos-scoped-notification-lwc>
                                         </template>
                                     </template>
                                 </div>
@@ -407,7 +407,7 @@
                                 ></lightning-button>
                                 <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
                                     <div class="slds-col slds-size_1-of-2">
-                                        <c-vertic-select data-path="Animal_Class__c"
+                                        <c-aos-select data-path="Animal_Class__c"
                                                          disabled={isBusy}
                                                          label="Animal Class"
                                                          placeholder="Select an Option"
@@ -415,10 +415,10 @@
                                                          options={selectOptions.animalClassOptions}
                                                          value={animalReport.Animal_Class__c}
                                                          required
-                                        ></c-vertic-select>
+                                        ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
-                                        <c-vertic-select data-path="animalos__Animal_Type__c"
+                                        <c-aos-select data-path="animalos__Animal_Type__c"
                                                          disabled={isBusy}
                                                          label="Animal Type"
                                                          placeholder="Select an Option"
@@ -426,10 +426,10 @@
                                                          options={selectOptions.animalosAnimalTypeOptions}
                                                          value={animalReport.animalos__Animal_Type__c}
                                                          required
-                                        ></c-vertic-select>
+                                        ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isInspectorateRecordType}>
-                                        <c-vertic-multi-select data-path="animalos__Cruelty_Type__c"
+                                        <c-aos-multi-select data-path="animalos__Cruelty_Type__c"
                                                                disabled={isBusy}
                                                                label="Cruelty Type"
                                                                onchange={handleAnimalReportFieldChange}
@@ -437,10 +437,10 @@
                                                                placeholder="Select Options"
                                                                value={animalReport.animalos__Cruelty_Type__c}
                                                                required
-                                        ></c-vertic-multi-select>
+                                        ></c-aos-multi-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isRescueRecordType}>
-                                        <c-vertic-multi-select data-path="Rescue_Type__c"
+                                        <c-aos-multi-select data-path="Rescue_Type__c"
                                                                disabled={isBusy}
                                                                label="Rescue Type"
                                                                onchange={handleAnimalReportFieldChange}
@@ -448,10 +448,10 @@
                                                                placeholder="Select Options"
                                                                value={animalReport.Rescue_Type__c}
                                                                required
-                                        ></c-vertic-multi-select>
+                                        ></c-aos-multi-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
-                                        <c-vertic-lookup data-id="animalBreedLookup"
+                                        <c-aos-lookup data-id="animalBreedLookup"
                                                          data-path="animalos__Breed__c"
                                                          disabled={isBusy}
                                                          label="Animal Breed"
@@ -461,7 +461,7 @@
                                                          search-mode="SOQL"
                                                          filter={animalBreedFilter}
                                                          value={animalReport.animalos__Breed__c}
-                                        ></c-vertic-lookup>
+                                        ></c-aos-lookup>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
                                         <lightning-input data-path="animalos__Number_of_Animals__c"
@@ -474,7 +474,7 @@
                                         ></lightning-input>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isRescueRecordType}>
-                                        <c-picklist-input data-path="Condition__c"
+                                        <c-aos-picklist-input data-path="Condition__c"
                                                           sobject-type="animalos__Animal_Report__c"
                                                           sobject-field="Condition__c"
                                                           disabled={isBusy}
@@ -482,10 +482,10 @@
                                                           onchange={handleAnimalReportFieldChange}
                                                           value={animalReport.Condition__c}
                                                           autocomplete
-                                        ></c-picklist-input>
+                                        ></c-aos-picklist-input>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isInspectorateRecordType}>
-                                        <c-vertic-select
+                                        <c-aos-select
                                                 data-path="animalos__Estimate__c"
                                                 disabled={isBusy}
                                                 label="Estimate"
@@ -494,10 +494,10 @@
                                                 placeholder="Select an Option"
                                                 value={animalReport.animalos__Estimate__c}
 
-                                        ></c-vertic-select>
+                                        ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
-                                        <c-vertic-select
+                                        <c-aos-select
                                                 data-path="animalos__Is_Contained__c"
                                                 disabled={isBusy}
                                                 label="Is Contained"
@@ -505,10 +505,10 @@
                                                 onchange={handleAnimalReportFieldChange}
                                                 options={selectOptions.animalosIsContainedOptions}
                                                 value={animalReport.animalos__Is_Contained__c}
-                                        ></c-vertic-select>
+                                        ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
-                                        <c-vertic-select
+                                        <c-aos-select
                                                 data-path="animalos__Is_Juvenile__c"
                                                 disabled={isBusy}
                                                 label="Is Juvenile"
@@ -517,10 +517,10 @@
                                                 options={selectOptions.animalosIsJuvenileOptions}
                                                 value={animalReport.animalos__Is_Juvenile__c}
 
-                                        ></c-vertic-select>
+                                        ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isDomestic}>
-                                        <c-vertic-select
+                                        <c-aos-select
                                                 data-path="Is_are_animal_s_likely_to_be_aggressive__c"
                                                 disabled={isBusy}
                                                 label="Is/are animal/s likely to be aggressive?"
@@ -529,10 +529,10 @@
                                                 options={selectOptions.isAreAnimalSLikelyToBeAggressiveOptions}
                                                 value={animalReport.Is_are_animal_s_likely_to_be_aggressive__c}
                                                 required
-                                        ></c-vertic-select>
+                                        ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isDomestic}>
-                                        <c-vertic-select
+                                        <c-aos-select
                                                 data-path="Is_the_animal_frightened__c"
                                                 disabled={isBusy}
                                                 label="Is the animal frightened?"
@@ -541,7 +541,7 @@
                                                 options={selectOptions.isTheAnimalFrightenedOptions}
                                                 value={animalReport.Is_the_animal_frightened__c}
 
-                                        ></c-vertic-select>
+                                        ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isDomestic}>
                                         <lightning-input data-path="Owners_last_seen__c"
@@ -553,7 +553,7 @@
                                         ></lightning-input>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isDomestic}>
-                                        <c-vertic-select
+                                        <c-aos-select
                                                 data-path="Is_Owner_Aware__c"
                                                 disabled={isBusy}
                                                 label="Is Owner Aware?"
@@ -562,7 +562,7 @@
                                                 options={selectOptions.isOwnerAwareOptions}
                                                 value={animalReport.Is_Owner_Aware__c}
 
-                                        ></c-vertic-select>
+                                        ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isAnimalAtHeight}>
                                         <lightning-textarea data-path="How_high_is_the_animal_metres__c"
@@ -573,7 +573,7 @@
                                         ></lightning-textarea>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isRescueRecordType}>
-                                        <c-vertic-multi-select data-path="Cause_of_Affliction__c"
+                                        <c-aos-multi-select data-path="Cause_of_Affliction__c"
                                                                disabled={isBusy}
                                                                label="Cause of Affliction"
                                                                onchange={handleAnimalReportFieldChange}
@@ -581,7 +581,7 @@
                                                                placeholder="Select Options"
                                                                value={animalReport.Cause_of_Affliction__c}
                                                                required
-                                        ></c-vertic-multi-select>
+                                        ></c-aos-multi-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-1" lwc:if={isOtherCauseOfAffliction}>
                                         <lightning-textarea data-path="Other_Cause_of_Affliction__c"
@@ -602,7 +602,7 @@
                                     </div>
                                     <template lwc:if={abandonedCrueltyType}>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Owners_vacated__c"
                                                     disabled={isBusy}
                                                     label="Owners vacated?"
@@ -610,7 +610,7 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.ownersVacatedOptions}
                                                     value={animalReport.Owners_vacated__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <lightning-input data-path="Owner_s_Location__c"
@@ -633,7 +633,7 @@
                                             ></lightning-input>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Any_visitors__c"
                                                     disabled={isBusy}
                                                     label="Any visitors"
@@ -641,7 +641,7 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.anyVisitorsOptions}
                                                     value={animalReport.Any_visitors__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <lightning-input data-path="Date_last_seen__c"
@@ -654,7 +654,7 @@
                                             ></lightning-input>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Body_score__c"
                                                     disabled={isBusy}
                                                     label="Body Score"
@@ -662,10 +662,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.bodyScoreOptions}
                                                     value={animalReport.Body_score__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Responsible_person_of_property__c"
                                                     disabled={isBusy}
                                                     label="Responsible person of property"
@@ -673,10 +673,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.responsiblePersonOfPropertyOptions}
                                                     value={animalReport.Responsible_person_of_property__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Animal_location__c"
                                                     disabled={isBusy}
                                                     label="Animal location"
@@ -684,7 +684,7 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.animalLocationOptions}
                                                     value={animalReport.Animal_location__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1" lwc:if={showAnimalLocationComments}>
                                             <lightning-input data-path="Animal_Location_comments__c"
@@ -711,7 +711,7 @@
                                     </template>
                                     <template lwc:if={illTreatmentCrueltyType}>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Reporter_observed_incident__c"
                                                     disabled={isBusy}
                                                     label="Reporter observed incident"
@@ -719,7 +719,7 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.reporterObservedIncidentOptions}
                                                     value={animalReport.Reporter_observed_incident__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <label>Date and time of incident</label>
@@ -734,7 +734,7 @@
                                             ></lightning-input>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Other_witness_s__c"
                                                     disabled={isBusy}
                                                     label="Other witness's"
@@ -742,10 +742,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.otherWitnessSOptions}
                                                     value={animalReport.Other_witness_s__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Offender_is_responsible_for_animal__c"
                                                     disabled={isBusy}
                                                     label="Offender is responsible for animal"
@@ -753,7 +753,7 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.offenderIsResponsibleForAnimalOptions}
                                                     value={animalReport.Offender_is_responsible_for_animal__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1">
                                             <lightning-textarea data-path="animalos__Incident_Details__c"
@@ -774,7 +774,7 @@
                                             ></lightning-textarea>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Witness_statement__c"
                                                     disabled={isBusy}
                                                     label="Witness statement"
@@ -782,10 +782,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.witnessStatementOptions}
                                                     value={animalReport.Witness_statement__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Past_incidents__c"
                                                     disabled={isBusy}
                                                     label="Past incidents"
@@ -793,10 +793,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.pastIncidentsOptions}
                                                     value={animalReport.Past_incidents__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Animal_is_injured__c"
                                                     disabled={isBusy}
                                                     label="Animal is injured"
@@ -804,7 +804,7 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.animalIsInjuredOptions}
                                                     value={animalReport.Animal_is_injured__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <lightning-input data-path="Duration_at_address__c"
@@ -838,7 +838,7 @@
                                     </template>
                                     <template lwc:if={veterinaryTreatmentCrueltyType}>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Urgent_attention_required__c"
                                                     disabled={isBusy}
                                                     label="Urgent attention required"
@@ -846,7 +846,7 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.urgentAttentionRequiredOptions}
                                                     value={animalReport.Urgent_attention_required__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <lightning-input data-path="First_noticed_animal_condition__c"
@@ -870,7 +870,7 @@
                                             ></lightning-input>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Energy_activity_behaviour__c"
                                                     disabled={isBusy}
                                                     label="Energy/activity/behaviour"
@@ -878,10 +878,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.energyActivityBehaviourOptions}
                                                     value={animalReport.Energy_activity_behaviour__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Has_history__c"
                                                     disabled={isBusy}
                                                     label="Has history"
@@ -889,7 +889,7 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.hasHistoryOptions}
                                                     value={animalReport.Has_history__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1" lwc:if={showOtherBehaviour}>
                                             <lightning-textarea data-path="Other_behaviour__c"
@@ -912,17 +912,17 @@
                                     </template>
                                     <template lwc:if={insufficientFoodAndWaterCrueltyType}>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-multi-select data-path="Are_any_of_the_following_visible__c"
+                                            <c-aos-multi-select data-path="Are_any_of_the_following_visible__c"
                                                                    disabled={isBusy}
                                                                    label="Are any of the following visible?"
                                                                    onchange={handleAnimalReportFieldChange}
                                                                    options={selectOptions.areAnyOfTheFollowingVisibleOptions}
                                                                    placeholder="Select Options"
                                                                    value={animalReport.Are_any_of_the_following_visible__c}
-                                            ></c-vertic-multi-select>
+                                            ></c-aos-multi-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Is_there_access_to_food_and_or_water__c"
                                                     disabled={isBusy}
                                                     label="Is there access to food and/or water"
@@ -930,10 +930,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.isThereAccessToFoodAndOrWaterOptions}
                                                     value={animalReport.Is_there_access_to_food_and_or_water__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Food_water_bowls_present__c"
                                                     disabled={isBusy}
                                                     label="Food/water bowls present"
@@ -941,7 +941,7 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.foodWaterBowlsPresentOptions}
                                                     value={animalReport.Food_water_bowls_present__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <lightning-input data-path="Last_provided_food_or_water__c"
@@ -955,7 +955,7 @@
                                         </div>
 
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Body_score__c"
                                                     disabled={isBusy}
                                                     label="Body Score"
@@ -963,12 +963,12 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.bodyScoreOptions}
                                                     value={animalReport.Body_score__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                     </template>
                                     <template lwc:if={shelterConditionsCrueltyType}>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Access_to_shelter__c"
                                                     disabled={isBusy}
                                                     label="Access To Shelter"
@@ -976,10 +976,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.accessToShelterOptions}
                                                     value={animalReport.Access_to_shelter__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Type_of_shelter__c"
                                                     disabled={isBusy}
                                                     label="Type of shelter"
@@ -987,7 +987,7 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.typeOfShelterOptions}
                                                     value={animalReport.Type_of_shelter__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1" lwc:if={showOtherTypeOfShelter}>
                                             <lightning-input data-path="Type_of_Shelter_Other__c"
@@ -1012,7 +1012,7 @@
                                     </template>
                                     <template lwc:if={tiedCrueltyType}>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Frequency__c"
                                                     disabled={isBusy}
                                                     label="Frequency"
@@ -1020,10 +1020,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.frequencyOptions}
                                                     value={animalReport.Frequency__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Animal_can_move_freely__c"
                                                     disabled={isBusy}
                                                     label="Animal can move freely"
@@ -1031,10 +1031,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.animalCanMoveFreelyOptions}
                                                     value={animalReport.Animal_can_move_freely__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Frequency_off_tether__c"
                                                     disabled={isBusy}
                                                     label="Frequency off tether"
@@ -1042,10 +1042,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.frequencyOffTetherOptions}
                                                     value={animalReport.Frequency_off_tether__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Size_of_confinement__c"
                                                     disabled={isBusy}
                                                     label="Size of confinement"
@@ -1053,10 +1053,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.sizeOfConfinementOptions}
                                                     value={animalReport.Size_of_confinement__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Tethered_duration__c"
                                                     disabled={isBusy}
                                                     label="Tethered duration"
@@ -1064,10 +1064,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.tetheredDurationOptions}
                                                     value={animalReport.Tethered_duration__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Reason_for_tether_confinement__c"
                                                     disabled={isBusy}
                                                     label="Reason for tether/confinement"
@@ -1075,10 +1075,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.reasonForTetherConfinementOptions}
                                                     value={animalReport.Reason_for_tether_confinement__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Animal_is_tangled__c"
                                                     disabled={isBusy}
                                                     label="Animal is tangled"
@@ -1086,16 +1086,16 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.animalIsTangledOptions}
                                                     value={animalReport.Animal_is_tangled__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-counter data-path="Number_of_Animals_Confined__c"
+                                            <c-aos-counter data-path="Number_of_Animals_Confined__c"
                                                               label="Animals confined"
                                                               onchange={handleAnimalReportFieldChange}
                                                               placeholder="Select a number"
                                                               value={animalReport.Number_of_Animals_Confined__c}
                                                               disabled={isBusy}
-                                            ></c-vertic-counter>
+                                            ></c-aos-counter>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1" lwc:if={otherTetherConfinementReason}>
                                             <lightning-input data-path="Other_tether_confinement_reason__c"
@@ -1109,7 +1109,7 @@
                                             ></lightning-input>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Signs_of_distress__c"
                                                     disabled={isBusy}
                                                     label="Signs of distress"
@@ -1117,10 +1117,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.signsOfDistressOptions}
                                                     value={animalReport.Signs_of_distress__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Pacing__c"
                                                     disabled={isBusy}
                                                     label="Pacing"
@@ -1128,10 +1128,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.pacingOptions}
                                                     value={animalReport.Pacing__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Self_mutilating__c"
                                                     disabled={isBusy}
                                                     label="Self mutilating"
@@ -1139,10 +1139,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.selfMutilatingOptions}
                                                     value={animalReport.Self_mutilating__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Tether_length__c"
                                                     disabled={isBusy}
                                                     label="Tether length"
@@ -1150,10 +1150,10 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.tetherLengthOptions}
                                                     value={animalReport.Tether_length__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-vertic-select
+                                            <c-aos-select
                                                     data-path="Tether_type__c"
                                                     disabled={isBusy}
                                                     label="Tether type"
@@ -1161,7 +1161,7 @@
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.tetherTypeOptions}
                                                     value={animalReport.Tether_type__c}
-                                            ></c-vertic-select>
+                                            ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2" lwc:if={showOtherTetherType}>
                                             <lightning-input data-path="Other_tether_type__c"
@@ -1189,9 +1189,9 @@
                                         </div>
                                     </template>
                                     <template lwc:else>
-                                        <c-scoped-notification-lwc icon-name="utility:warning">
+                                        <c-aos-scoped-notification-lwc icon-name="utility:warning">
                                             No Animal Reports
-                                        </c-scoped-notification-lwc>
+                                        </c-aos-scoped-notification-lwc>
                                     </template>
                                 </div>
                             </lightning-card>
@@ -1211,9 +1211,9 @@
                                         </div>
                                     </template>
                                     <template lwc:else>
-                                        <c-scoped-notification-lwc icon-name="utility:warning">
+                                        <c-aos-scoped-notification-lwc icon-name="utility:warning">
                                             No Job Contacts
-                                        </c-scoped-notification-lwc>
+                                        </c-aos-scoped-notification-lwc>
                                     </template>
                                 </div>
                             </lightning-card>
@@ -1229,9 +1229,9 @@
                                         </div>
                                     </template>
                                     <template lwc:else>
-                                        <c-scoped-notification-lwc icon-name="utility:warning">
+                                        <c-aos-scoped-notification-lwc icon-name="utility:warning">
                                             No Animal Reports
-                                        </c-scoped-notification-lwc>
+                                        </c-aos-scoped-notification-lwc>
                                     </template>
                                 </div>
                             </lightning-card>

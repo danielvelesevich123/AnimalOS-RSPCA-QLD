@@ -5,22 +5,22 @@
                 <lightning-button disabled={isBusy} icon-name="action:refresh" label="Refresh" onclick={handleRefreshClick}></lightning-button>
             </lightning-button-group>
             <div class="slds-m-horizontal_medium">
-                <c-vertic-select label="Distance"
+                <c-aos-select label="Distance"
                                  placeholder="Select an Option..."
                                  onchange={handleDistanceChange}
                                  options={distanceOptions}
                                  value={distance}
                                  disabled={isBusy}
-                ></c-vertic-select>
-                <c-stencil count="1" height="10" lwc:if={isBusy}></c-stencil>
-                <c-vertic-multi-select disabled={isBusy}
+                ></c-aos-select>
+                <c-aos-stencil count="1" height="10" lwc:if={isBusy}></c-aos-stencil>
+                <c-aos-multi-select disabled={isBusy}
                                        lwc:else
                                        label="Select Skills"
                                        onchange={handleSkillsChange}
                                        options={skillsOptions}
                                        placeholder="Select Skills..."
                                        value={selectedSkills}
-                ></c-vertic-multi-select>
+                ></c-aos-multi-select>
                 <template lwc:if={showContent}>
                     <template lwc:if={showResourcesTable}>
                         <div class="slds-card slds-card_boundary slds-m-top_small">
@@ -58,13 +58,13 @@
                         </div>
                     </template>
                     <template lwc:else>
-                        <c-scoped-notification-lwc icon-name="utility:warning">
+                        <c-aos-scoped-notification-lwc icon-name="utility:warning">
                             There are no contacts within {distanceLabel} and with selected skills.
-                        </c-scoped-notification-lwc>
+                        </c-aos-scoped-notification-lwc>
                     </template>
                 </template>
                 <div lwc:else>
-                    <c-stencil count="4" height="10"></c-stencil>
+                    <c-aos-stencil count="4" height="10"></c-aos-stencil>
                 </div>
             </div>
         </lightning-card>

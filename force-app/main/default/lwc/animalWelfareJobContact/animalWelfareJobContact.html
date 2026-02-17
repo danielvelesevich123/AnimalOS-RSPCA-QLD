@@ -20,7 +20,7 @@
             </lightning-button-group>
 
             <div class="slds-m-horizontal_x-small" lwc:if={showWarning}>
-                <c-scoped-notification-lwc theme="warning" icon-name="utility:warning">Please Add Caution to the POI.</c-scoped-notification-lwc>
+                <c-aos-scoped-notification-lwc theme="warning" icon-name="utility:warning">Please Add Caution to the POI.</c-aos-scoped-notification-lwc>
             </div>
 
             <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
@@ -29,7 +29,7 @@
                         <span class="slds-form-element__label">Name</span>
                         <div class="slds-form-element__control">
                             <div class="slds-form-element__static">
-                                <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                                <c-aos-stencil lwc:if={isBusy} count="1" height="15"></c-aos-stencil>
                                 <lightning-formatted-url lwc:elseif={contactHasId} value={contactUrl} label={contactName} target="_blank"></lightning-formatted-url>
                                 <lightning-formatted-text lwc:else value={contactName}></lightning-formatted-text>
                             </div>
@@ -41,7 +41,7 @@
                         <span class="slds-form-element__label">Mobile Phone</span>
                         <div class="slds-form-element__control">
                             <div class="slds-form-element__static">
-                                <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                                <c-aos-stencil lwc:if={isBusy} count="1" height="15"></c-aos-stencil>
                                 <lightning-formatted-phone lwc:else value={jobContact.animalos__Contact__r.MobilePhone}></lightning-formatted-phone>
                             </div>
                         </div>
@@ -52,7 +52,7 @@
                         <span class="slds-form-element__label">Phone</span>
                         <div class="slds-form-element__control">
                             <div class="slds-form-element__static">
-                                <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                                <c-aos-stencil lwc:if={isBusy} count="1" height="15"></c-aos-stencil>
                                 <lightning-formatted-phone lwc:else value={jobContact.animalos__Contact__r.Phone}></lightning-formatted-phone>
                             </div>
                         </div>
@@ -63,7 +63,7 @@
                         <span class="slds-form-element__label">Email</span>
                         <div class="slds-form-element__control">
                             <div class="slds-form-element__static">
-                                <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                                <c-aos-stencil lwc:if={isBusy} count="1" height="15"></c-aos-stencil>
                                 <lightning-formatted-email lwc:else value={jobContact.animalos__Contact__r.Email}></lightning-formatted-email>
                             </div>
                         </div>
@@ -74,7 +74,7 @@
                         <span class="slds-form-element__label">Birthdate</span>
                         <div class="slds-form-element__control">
                             <div class="slds-form-element__static">
-                                <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                                <c-aos-stencil lwc:if={isBusy} count="1" height="15"></c-aos-stencil>
                                 <lightning-formatted-date-time lwc:else value={jobContact.animalos__Contact__r.Birthdate}></lightning-formatted-date-time>
                             </div>
                         </div>
@@ -85,7 +85,7 @@
                         <span class="slds-form-element__label">ID Number</span>
                         <div class="slds-form-element__control">
                             <div class="slds-form-element__static">
-                                <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                                <c-aos-stencil lwc:if={isBusy} count="1" height="15"></c-aos-stencil>
                                 <lightning-formatted-text lwc:else value={jobContact.animalos__Contact__r.ID_Number__c}></lightning-formatted-text>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                         <span class="slds-form-element__label">Contact Address</span>
                         <div class="slds-form-element__control">
                             <div class="slds-form-element__static">
-                                <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                                <c-aos-stencil lwc:if={isBusy} count="1" height="15"></c-aos-stencil>
                                 <lightning-formatted-text lwc:else value={jobContactFullAddress}></lightning-formatted-text>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                     <div class="slds-form-element slds-form-element_readonly">
                         <span class="slds-form-element__label">Advisory</span>
                         <div class="slds-form-element__control">
-                            <c-stencil lwc:if={isBusy} count="1" height="15"></c-stencil>
+                            <c-aos-stencil lwc:if={isBusy} count="1" height="15"></c-aos-stencil>
                             <div lwc:else class="slds-form-element__static slds-grid">
                                 <div class="slds-col slds-size_1-of-8">
                                     <span class="flag-icon"><img width="32px" height="32px" src={violenceIcon} alt="Indicator"/>&nbsp;</span>

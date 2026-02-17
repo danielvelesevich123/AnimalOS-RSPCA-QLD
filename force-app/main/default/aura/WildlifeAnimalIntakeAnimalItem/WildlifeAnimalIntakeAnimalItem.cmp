@@ -82,7 +82,7 @@
                                    target="_blank">{!v.animal.animalos__Primary_Breed__r.Name}</a>
                             </div>
                             <aura:set attribute="else">
-                                <c:verticLookup required="{!true}"
+                                <c:aosLookup required="{!true}"
                                                 filter="{!'animalos__Type__c INCLUDES (\'' + v.animal.animalos__Type__c + '\')'}"
                                                 object="animalos__Breed__c"
                                                 showRecentRecords="{!true}"
@@ -262,7 +262,7 @@
                             </aura:if>
                         </div>
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4">
-                            <c:verticLookup required="{!true}"
+                            <c:aosLookup required="{!true}"
                                             filter="{!'animalos__Type__c INCLUDES (\'' + v.animal.animalos__Type__c + '\')'}"
                                             object="animalos__Breed__c"
                                             label="Primary Breed"

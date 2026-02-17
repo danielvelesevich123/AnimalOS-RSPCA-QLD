@@ -1,5 +1,5 @@
 import {api, LightningElement, track} from 'lwc';
-import {execute, showToast, handleFieldChange, validate} from "c/verticUtils";
+import {execute, showToast, handleFieldChange, validate} from "c/aosUtils";
 
 export default class PartnersUserSetup extends LightningElement {
 
@@ -180,7 +180,7 @@ export default class PartnersUserSetup extends LightningElement {
         this.isBusy = true;
         try {
             const response = await execute(
-                'vertic_DMLProc',
+                'aos_DMLProc',
                 {
                     sObjectType: 'aos_Location_Volunteer__c',
                     upsert: [locationVolunteer]
@@ -223,7 +223,7 @@ export default class PartnersUserSetup extends LightningElement {
                     location: this.fosterLocation
                 }
             } else {
-                processor = 'vertic_DMLProc';
+                processor = 'aos_DMLProc';
                 request = {
                     upsert: [this.locationVolunteer],
                     sObjectType: 'aos_Location_Volunteer__c'

@@ -1,0 +1,120 @@
+<!-- AOS Stepper -->
+<template>
+    <c-aos-base record-id={recordId}
+                   error-messages={errorMessages}
+                   is-busy={isBusy}
+                   oncancel={handleCancel}
+                   onclose={handleClose}
+                   onopen={handleOpen}
+                   modal={modal}
+                   modal-open={modalOpen}
+                   modal-header={modalHeader}
+                   modal-subtitle={modalSubtitle}
+                   modal-headless={modalHeadless}
+                   modal-footless={modalFootless}
+                   modal-style={modalStyle}
+                   modal-size={modalSize}
+                   modal-level={modalLevel}
+                   do-not-close-on-cancel={doNotCloseOnCancel}
+    >
+
+        <div class="slds-m-bottom_small" style="/*pointer-events: none;*/" slot="header" if:true={progressInHeader}>
+            <slot name="progress-steps">
+                <template if:false={hideProgressIndicator}>
+                    <div class="slds-grid">
+<!--                        <div class="slds-col slds-size_1-of-12">-->
+<!--                            <button class={leftButtonClass} if:false={leftButtonHidden} disabled={leftButtonDisabled} onclick={previous}>{leftButtonLabel}</button>-->
+<!--                        </div>-->
+                        <div class="slds-col slds-m-around_small">
+                            <lightning-progress-indicator current-step={currentStep} type={progressIndicatorType} variant="base">
+                                <lightning-progress-step key={step.name} label={step.label} value={step.name} for:each={stepsList_private} for:item="step" for:index="index" onclick={selectedStepChange}></lightning-progress-step>
+                            </lightning-progress-indicator>
+                        </div>
+                        <slot name="header-progress-buttons"></slot>
+<!--                        <div class="slds-col slds-size_1-of-12 slds-text-align_right">-->
+<!--                            <button class={rightButtonClass} if:false={rightButtonHidden} disabled={rightButtonDisabled} onclick={next} style="float: right;">{rightButtonLabel}</button>-->
+<!--                        </div>-->
+                    </div>
+                </template>
+            </slot>
+        </div>
+        <div class="slds-m-bottom_small" style="/*pointer-events: none;*/" slot="subtitle" if:true={progressAsSubtitle}>
+            <slot name="progress-steps">
+                <template if:false={hideProgressIndicator}>
+                    <lightning-progress-indicator current-step={currentStep} type={progressIndicatorType} variant="base">
+                        <lightning-progress-step key={step.name} label={step.label} value={step.name} for:each={stepsList_private} for:item="step" for:index="index"></lightning-progress-step>
+                    </lightning-progress-indicator>
+                </template>
+            </slot>
+        </div>
+
+        <template if:true={isProgressIndicatorVertical}>
+            <div class="slds-progress slds-progress_vertical slds-progress_success">
+                <ol class="slds-progress__list">
+                    <li class={step.class} key={step.name} for:each={stepsList_private} for:item="step" for:index="index">
+                        <template if:false={hideProgressIndicator}>
+                            <span class="slds-icon_container slds-icon-utility-success slds-progress__marker slds-progress__marker_icon slds-progress__marker_icon-success"
+                                  title={step.label} if:true={step.isCompleted}>
+                                <lightning-icon icon-name="utility:success" size="xx-small" title={step.label}></lightning-icon>
+                                <span class="slds-assistive-text">{step.label}</span>
+                            </span>
+                            <div class="slds-progress__marker" if:false={step.isCompleted}>
+                                <span class="slds-assistive-text">{step.label}</span>
+                            </div>
+                        </template>
+                        <div class="slds-progress__item_content slds-grid slds-grid_align-spread display-block">
+                            <span class="slds-m-bottom_small" if:false={hideStepLabel}>{step.label}</span>
+                            <div class={step.contentClass}>
+                                <hr class="slds-m-vertical_x-small" if:false={hideStepLabel}>
+                                <slot></slot>
+                                <hr class="slds-m-vertical_x-small">
+                                <div class="slds-grid slds-gutters slds-grid_align-center" slot="footer">
+                                    <div class="slds-col">
+                                        <button class={leftButtonClass} if:false={leftButtonHidden} disabled={leftButtonDisabled} onclick={previous}>{leftButtonLabel}</button>
+                                    </div>
+                                    <div class="slds-col">
+                                        <button class={rightButtonClass} if:false={rightButtonHidden} disabled={rightButtonDisabled} onclick={next}>{rightButtonLabel}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </template>
+
+        <template if:false={isProgressIndicatorVertical}>
+            <slot></slot>
+
+            <div class="slds-grid slds-gutters slds-grid_align-center" slot="footer" if:true={buttonsStickedTogether}>
+                <div class="slds-col">
+                    <button class={leftButtonClass} if:false={leftButtonHidden} disabled={leftButtonDisabled} onclick={previous}>{leftButtonLabel}</button>
+                </div>
+                <div class="slds-col">
+                    <button class={rightButtonClass} if:false={rightButtonHidden} disabled={rightButtonDisabled} onclick={next}>{rightButtonLabel}</button>
+                </div>
+            </div>
+            <div class="slds-grid slds-grid_vertical-align-center slds-wrap" slot="footer" if:false={buttonsStickedTogether}>
+                <div class="slds-col slds-size_1-of-12">
+                    <button class={leftButtonClass} if:false={leftButtonHidden} disabled={leftButtonDisabled} onclick={previous}>{leftButtonLabel}</button>
+                </div>
+                <div class="slds-col slds-size_10-of-12 slds-text-align_center slds-m-vertical_small">
+                    <slot name="progress-steps">
+                        <template if:false={hideProgressIndicator}>
+                            <template if:false={progressInHeader}>
+                                <lightning-progress-ring variant="base-autocomplete" value={progressValue} if:false={isDesktop}></lightning-progress-ring>
+                                <lightning-progress-indicator current-step={currentStep} type={progressIndicatorType} variant="base" if:true={isDesktop}>
+                                    <lightning-progress-step key={step.name} label={step.label} value={step.name} class={progressStepClass} for:each={stepsList_private} for:item="step" for:index="index" onclick={selectedStepChange}></lightning-progress-step>
+                                </lightning-progress-indicator>
+                            </template>
+                        </template>
+                    </slot>
+                </div>
+                <div class="slds-col slds-size_1-of-12 slds-text-align_right">
+                    <button class={rightButtonClass} if:false={rightButtonHidden} disabled={rightButtonDisabled} onclick={next} style="float: right;">{rightButtonLabel}</button>
+                </div>
+            </div>
+        </template>
+
+    </c-aos-base>
+</template>
