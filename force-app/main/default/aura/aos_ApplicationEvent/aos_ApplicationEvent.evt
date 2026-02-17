@@ -1,3 +1,0 @@
-<aura:event type="APPLICATION" description="vertic_ApplicationEvent">
-    <aura:attribute name="payload" type="Map"/>
-</aura:event>
