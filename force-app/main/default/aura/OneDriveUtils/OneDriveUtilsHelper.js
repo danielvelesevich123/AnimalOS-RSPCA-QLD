@@ -2,7 +2,7 @@
 
     getOverrides: function (payload) {
         return new Promise(function (resolve, reject) {
-            payload.helper.execute(payload.cmp, 'vertic_SOQLPRoc',
+            payload.helper.execute(payload.cmp, 'aos_SOQLProc',
                 {
                     SOQL: 'SELECT DeveloperName, RecordApiName__c, DriveName__c FROM OnedriveSetting__mdt'
                 }
@@ -344,7 +344,7 @@
 
                     payload.helper.execute(
                         payload.cmp,
-                        'CheckOneDriveFilesOnPermissionProc',
+                        'aos_CheckOneDriveFilesOnPermissionProc',
                         {
                             recordId: payload.recordId,
                             files: files

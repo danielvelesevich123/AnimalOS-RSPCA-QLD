@@ -1,4 +1,4 @@
-<aura:component description="JobFinalisationNotificationQA" extends="c:vertic_Base" implements="force:lightningQuickActionWithoutHeader,force:hasRecordId">
+<aura:component description="JobFinalisationNotificationQA" extends="c:aos_Base" implements="force:lightningQuickActionWithoutHeader,force:hasRecordId">
 
     <aura:attribute type="List" name="availableIds"/>
     <aura:attribute type="String" name="contactId"/>
@@ -6,7 +6,7 @@
 
     <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
 
-    <c:vertic_QuickActionModal aura:id="modal"
+    <c:aos_QuickActionModal aura:id="modal"
                                heightPX="300"
                                title="Job Finalisation Notification"
                                widthPercentage="50"
@@ -54,5 +54,5 @@
                               onclick="{!c.handleSubmitClick}">
             </lightning:button>
         </aura:set>
-    </c:vertic_QuickActionModal>
+    </c:aos_QuickActionModal>
 </aura:component>

@@ -193,7 +193,7 @@ public without sharing class aos_OneDriveCreateFileSObjectProc extends aos_Abstr
 //        if (fileAddedEmailNotification != null && userVar != null) {
 //            List<Map<String, Object>> contentAttachments = new List<Map<String, Object>>{
 //                    new Map<String, Object>{
-//                            'proc' => 'AOS_JobSummaryQA',
+//                            'proc' => 'aos_JobSummaryQA',
 //                            'fileName' => 'Job Summary.pdf',
 //                            'jobId' => job.Id
 //                    }

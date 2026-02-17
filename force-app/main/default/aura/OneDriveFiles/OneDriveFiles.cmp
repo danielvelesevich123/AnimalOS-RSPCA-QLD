@@ -1,4 +1,4 @@
-<aura:component description="OneDriveFiles" extends="c:vertic_Base"
+<aura:component description="OneDriveFiles" extends="c:aos_Base"
                 implements="force:appHostable,force:lightningQuickAction,force:hasRecordId,force:hasSObjectName,flexipage:availableForRecordHome,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes"
                 access="global">
 
@@ -54,7 +54,7 @@
 
     <lightning:quickActionAPI aura:id="quickActionAPI"/>
 
-    <c:vertic_ModalService aura:id="modalService"/>
+    <c:aos_ModalService aura:id="modalService"/>
 
     <lightning:notificationsLibrary aura:id="notificationLib"/>
     <aura:set attribute="hideContentOnBusy" value="{!false}"/>
@@ -116,7 +116,7 @@
                         </thead>
                         <tbody>
                         <aura:iteration var="file" items="{!v.meta.dto.files}">
-                            <c:IfContains value="{!file.name}" contains="DELETED_" not="true">
+                            <c:aos_IfContains value="{!file.name}" contains="DELETED_" not="true">
                                 <c:OneDriveFileItem file="{!file}"
                                                     isFullView="{! v.isFullView}"
                                                     isPrimaryFileSelectionEnabled="{!v.enablePrimaryFileSelection}"
@@ -129,7 +129,7 @@
                                                     onProfilePhotoClick="{!c.handleProfilePhotoClick}"
                                                     readOnly="{!v.readOnly}"
                                 />
-                            </c:IfContains>
+                            </c:aos_IfContains>
                         </aura:iteration>
                         </tbody>
                     </table>
@@ -178,7 +178,7 @@
                 <table class="slds-table slds-table_fixed-layout">
                     <tbody>
                     <aura:iteration var="file" items="{!v.meta.dto.files}">
-                        <c:IfContains value="{!file.name}" contains="DELETED_" not="true">
+                        <c:aos_IfContains value="{!file.name}" contains="DELETED_" not="true">
 
                             <c:OneDriveFileItem file="{!file}"
                                                 isFullView="{! v.isFullView}"
@@ -189,7 +189,7 @@
                                                 onDownload="{!c.HandleOneDriveDownloadAllFile}"
                                                 onSendEmail="{!c.HandleSendEmail}"
                                                 onFileView="{!c.HandleFileView}"/>
-                        </c:IfContains>
+                        </c:aos_IfContains>
                     </aura:iteration>
                     </tbody>
                 </table>

@@ -12,7 +12,7 @@
             cmp.utils
                 .executePromise(
                     cmp,
-                    'vertic_SOQLProc',
+                    'aos_SOQLProc',
                     {
                         'SOQL': 'SELECT Id FROM animalos__Animal__c WHERE animalos__Microchip_Number__c = \'' + cmp.get('v.animal.animalos__Microchip_Number__c') + '\' WITH USER_MODE'
                     }
@@ -22,7 +22,7 @@
 
                     if (existingAnimal && existingAnimal.Id) {
                         return cmp.find('modalService').show(
-                            'c:ConfirmModal',
+                            'c:aos_ConfirmModal',
                             {
                                 text: 'Animal with ' + cmp.get('v.animal.animalos__Microchip_Number__c') + ' Microchip Number already exists. Do you want to use and review this Animal?'
                             },

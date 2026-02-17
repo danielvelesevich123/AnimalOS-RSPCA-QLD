@@ -4,7 +4,7 @@
         cmp.utils
             .execute(
                 cmp,
-                'SendDeletedOneDriveFileIdProc',
+                'aos_SendDeletedOneDriveFileIdProc',
                 {
                     recordId: cmp.get('v.recordId'),
                 },

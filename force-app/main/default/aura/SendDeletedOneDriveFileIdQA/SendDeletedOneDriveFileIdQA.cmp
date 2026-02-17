@@ -7,7 +7,7 @@
 
     <c:aos_Utils context="{!this}"/>
 
-    <c:vertic_QuickActionModal aura:id="modal"
+    <c:aos_QuickActionModal aura:id="modal"
                                title="Send Deleted OneDrive File Id"
                                heightPX="450"
                                widthPercentage="70"
@@ -51,5 +51,5 @@
                 </aura:set>
             </aura:if>
         </aura:set>
-    </c:vertic_QuickActionModal>
+    </c:aos_QuickActionModal>
 </aura:component>

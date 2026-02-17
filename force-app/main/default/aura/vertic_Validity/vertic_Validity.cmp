@@ -1,3 +1,0 @@
-<aura:component description="vertic_Validity" extensible="true">
-    {!v.body}
-</aura:component>

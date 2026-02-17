@@ -1,4 +1,4 @@
-<aura:component description="OneDriveFileDeleteConfirmation"  extends="c:vertic_Modal">
+<aura:component description="OneDriveFileDeleteConfirmation"  extends="c:aos_Modal">
     <aura:attribute name="file" type="Map" />
     <aura:attribute name="fileName" type="String" />
     <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>

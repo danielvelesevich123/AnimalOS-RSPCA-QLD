@@ -6,7 +6,7 @@
     <aura:attribute name="selectOptions" type="Map" default="{}"/>
     <aura:attribute name="indexVar" type="Integer"/>
 
-    <aura:registerEvent name="onaction" type="c:vertic_ComponentEvent"/>
+    <aura:registerEvent name="onaction" type="c:aos_ComponentEvent"/>
 
     <lightning:card class="slds-card_boundary slds-m-horizontal_medium">
         <aura:set attribute="actions">
@@ -68,7 +68,7 @@
                 </div>
             </aura:if>
             <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_2-of-12">
-                <c:vertic_Select aura:id="siteMovementReasonPicklist"
+                <c:aos_Select aura:id="siteMovementReasonPicklist"
                                  label="Movement Reason"
                                  options="{!v.selectOptions.animalosMovementReasonOptions}"
                                  value="{!v.movement.animalos__Movement_Reason__c}"

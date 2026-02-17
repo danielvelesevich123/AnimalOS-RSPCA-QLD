@@ -10,7 +10,7 @@
     <aura:attribute name="isTableView" type="Boolean" default="{!false}"/>
 
     <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
-    <aura:registerEvent name="onaction" type="c:vertic_ComponentEvent"/>
+    <aura:registerEvent name="onaction" type="c:aos_ComponentEvent"/>
     <aura:method name="submit" action="{!c.doSubmit}" access="public"/>
 
 
@@ -37,7 +37,7 @@
             <td>
                 <div class="slds-truncate" title="Animal Class">
                     <aura:if isTrue="{!not(v.isBusy)}">
-                        <c:vertic_Select label="Animal Class"
+                        <c:aos_Select label="Animal Class"
                                          options="{!v.selectOptions.animalosClassOptions}"
                                          value="{!v.animal.animalos__Class__c}"
                                          class="label-hidden"
@@ -49,7 +49,7 @@
             <td>
                 <div class="slds-truncate" title="Gender">
                     <aura:if isTrue="{!not(v.isBusy)}">
-                        <c:vertic_Select label="Gender"
+                        <c:aos_Select label="Gender"
                                          options="{!v.selectOptions.animalosGenderOptions}"
                                          value="{!v.animal.animalos__Gender__c}"
                                          class="label-hidden"
@@ -61,7 +61,7 @@
             <td>
                 <div class="slds-truncate" title="Type">
                     <aura:if isTrue="{!not(v.isBusy)}">
-                        <c:vertic_Select label="Type"
+                        <c:aos_Select label="Type"
                                          dependentOptions="{!v.dependentOptions.animalosTypeOptions}"
                                          value="{!v.animal.animalos__Type__c}"
                                          isDepended="{!true}"
@@ -110,7 +110,7 @@
             <td>
                 <div class="slds-truncate" title="Stage">
                     <aura:if isTrue="{!not(v.isBusy)}">
-                        <c:vertic_Select label="Stage"
+                        <c:aos_Select label="Stage"
                                          options="{!v.selectOptions.animalosStageOptions}"
                                          value="{!v.animal.animalos__Stage__c}"
                                          required="{!true}"
@@ -123,7 +123,7 @@
             <td>
                 <div class="slds-truncate" title="Status">
                     <aura:if isTrue="{!not(v.isBusy)}">
-                        <c:vertic_Select label="Status"
+                        <c:aos_Select label="Status"
                                          dependentOptions="{!v.dependentOptions.animalosStatusOptions}"
                                          value="{!v.animal.animalos__Status__c}"
                                          isDepended="{!true}"
@@ -207,8 +207,8 @@
                     <div class="slds-grid slds-wrap slds-gutters">
                         <aura:if isTrue="{!not(empty(v.animal.errorMessage))}">
                             <div class="slds-col slds-size_1-of-1">
-                                <c:ScopedNotification content="{!v.animal.errorMessage}" iconName="utility:error" theme="error" iconVariant="inverse">
-                                </c:ScopedNotification>
+                                <c:aos_ScopedNotification content="{!v.animal.errorMessage}" iconName="utility:error" theme="error" iconVariant="inverse">
+                                </c:aos_ScopedNotification>
                             </div>
                         </aura:if>
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4 slds-truncate">
@@ -223,7 +223,7 @@
                         </div>
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4 slds-truncate">
                             <aura:if isTrue="{!not(v.isBusy)}">
-                                <c:vertic_Select label="Gender"
+                                <c:aos_Select label="Gender"
                                                  options="{!v.selectOptions.animalosGenderOptions}"
                                                  value="{!v.animal.animalos__Gender__c}"
                                                  disabled="{!v.isBusy}"
@@ -232,7 +232,7 @@
                         </div>
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4 slds-truncate">
                             <aura:if isTrue="{!not(v.isBusy)}">
-                                <c:vertic_Select label="Age Group"
+                                <c:aos_Select label="Age Group"
                                                  options="{!v.selectOptions.animalosAgeGroupOptions}"
                                                  value="{!v.animal.animalos__Age_Group__c}"
                                                  disabled="{!v.isBusy}"
@@ -242,7 +242,7 @@
                         </div>
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4 slds-truncate">
                             <aura:if isTrue="{!not(v.isBusy)}">
-                                <c:vertic_Select label="Animal Class"
+                                <c:aos_Select label="Animal Class"
                                                  options="{!v.selectOptions.animalosClassOptions}"
                                                  value="{!v.animal.animalos__Class__c}"
                                                  disabled="{!v.isBusy}"
@@ -251,7 +251,7 @@
                         </div>
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4 slds-truncate">
                             <aura:if isTrue="{!not(v.isBusy)}">
-                                <c:vertic_Select label="Type"
+                                <c:aos_Select label="Type"
                                                  dependentOptions="{!v.dependentOptions.animalosTypeOptions}"
                                                  value="{!v.animal.animalos__Type__c}"
                                                  isDepended="{!true}"
@@ -277,7 +277,7 @@
                         <aura:if isTrue="{!v.showStageAndStatus}">
                             <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5 slds-truncate">
                                 <aura:if isTrue="{!not(v.isBusy)}">
-                                    <c:vertic_Select label="Stage"
+                                    <c:aos_Select label="Stage"
                                                      options="{!v.selectOptions.animalosStageOptions}"
                                                      value="{!v.animal.animalos__Stage__c}"
                                                      required="{!true}"
@@ -287,7 +287,7 @@
                             </div>
                             <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5 slds-truncate">
                                 <aura:if isTrue="{!not(v.isBusy)}">
-                                    <c:vertic_Select label="Status"
+                                    <c:aos_Select label="Status"
                                                      dependentOptions="{!v.dependentOptions.animalosStatusOptions}"
                                                      value="{!v.animal.animalos__Status__c}"
                                                      isDepended="{!true}"

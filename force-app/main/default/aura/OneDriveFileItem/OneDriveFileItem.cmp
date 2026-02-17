@@ -6,14 +6,14 @@
     <aura:attribute name="isProfilePhotoSelectionEnabled" type="Boolean" access="global" default="{!true}"/>
     <aura:attribute name="readOnly" type="Boolean" access="global" default="{!false}"/>
 
-    <aura:registerEvent name="onDelete" type="c:vertic_ComponentEvent"/>
-    <aura:registerEvent name="onDownload" type="c:vertic_ComponentEvent"/>
-    <aura:registerEvent name="onSendEmail" type="c:vertic_ComponentEvent"/>
-    <aura:registerEvent name="onFileView" type="c:vertic_ComponentEvent"/>
-    <aura:registerEvent name="onPrimaryClick" type="c:vertic_ComponentEvent"/>
-    <aura:registerEvent name="onProfilePhotoClick" type="c:vertic_ComponentEvent"/>
+    <aura:registerEvent name="onDelete" type="c:aos_ComponentEvent"/>
+    <aura:registerEvent name="onDownload" type="c:aos_ComponentEvent"/>
+    <aura:registerEvent name="onSendEmail" type="c:aos_ComponentEvent"/>
+    <aura:registerEvent name="onFileView" type="c:aos_ComponentEvent"/>
+    <aura:registerEvent name="onPrimaryClick" type="c:aos_ComponentEvent"/>
+    <aura:registerEvent name="onProfilePhotoClick" type="c:aos_ComponentEvent"/>
 
-    <c:vertic_ModalService aura:id="modalService"/>
+    <c:aos_ModalService aura:id="modalService"/>
 
     <aura:if isTrue="{! v.isFullView}">
         <tr>

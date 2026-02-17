@@ -9,9 +9,6 @@
     <aura:attribute name="progressValue" type="Decimal" access="global" default="{!0}"/>
     <aura:attribute name="fileSize" type="Decimal" access="global"/>
 
-    <!-- Events -->
-    <!-- <aura:registerEvent name="onSuccess" type="c:vertic_ComponentEvent"/>-->
-
     <!-- Handlers -->
     <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
 

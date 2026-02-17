@@ -15,7 +15,7 @@
                 cmp.set('v.readOnly', true);
                 helper.execute(
                     cmp,
-                    'vertic_SOQLProc',
+                    'aos_SOQLProc',
                     {
                         'SOQL': 'SELECT Id, One_Drive_Folder_Name__c FROM ' + overriddenSObjectName + ' WHERE Id IN (SELECT ' + apiNameLookupField + ' FROM ' + sObjectName + ' WHERE Id = \'' + payload.recordId + '\')'
                     },
@@ -55,7 +55,7 @@
             }
             helper.utils(cmp).execute(
                 cmp,
-                'OneDriveCreateFileSObjectProc',
+                'aos_OneDriveCreateFileSObjectProc',
                 request,
                 (response) => {
                     cmp.find('toast')
@@ -81,7 +81,7 @@
 
             helper.utils(cmp).execute(
                 cmp,
-                'OneDriveDeleteRestoreFileSobjectProc',
+                'aos_OneDriveDeleteRestoreFileSobjectProc',
                 request,
                 (response) => {
                     cmp.find('notificationLib').showToast({
@@ -120,7 +120,7 @@
 
             helper.utils(cmp).execute(
                 cmp,
-                'OneDriveFilesGetPrimaryDataProc',
+                'aos_OneDriveFilesGetPrimaryDataProc',
                 request,
                 (response) => {
                     cmp.set('v.meta.dto.files', response.dto.files);
@@ -139,7 +139,7 @@
             for (var i = 0; i < files.length; i++) {
                 promises.push(helper.utils(cmp).execute(
                     cmp,
-                    'CreateOneDriveFilePermissionProc',
+                    'aos_CreateOneDriveFilePermissionProc',
                     {
                         id: files[i].id
                     },

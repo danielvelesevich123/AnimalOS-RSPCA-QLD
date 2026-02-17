@@ -4,7 +4,7 @@
         cmp.utils
             .execute(
                 cmp,
-                'BehaviourEvaluationSmallAnimalsMetaProc',
+                'aos_BehaviourEvaluationSmallAnimalsMetaProc',
                 {
                     recordId: cmp.get('v.recordId')
                 }
@@ -31,7 +31,7 @@
         cmp.utils
             .execute(
                 cmp,
-                'vertic_DMLProc',
+                'aos_DMLProc',
                 {
                     sObjectType: 'animalos__Assessment__c',
                     upsert: [cmp.get('v.meta.dto.assessment')]

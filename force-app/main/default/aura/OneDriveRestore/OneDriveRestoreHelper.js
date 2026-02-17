@@ -124,7 +124,7 @@
 
         helper.utils(cmp).execute(
             cmp,
-            'OneDriveDeleteRestoreFileSobjectProc',
+            'aos_OneDriveDeleteRestoreFileSobjectProc',
             request,
             (response) => {
                 let actionMessage = action === 'completelyDelete' ? ' was completely deleted' : ' was restored'

@@ -5,7 +5,7 @@
         cmp.utils
             .execute(
                 cmp,
-                'PetRescueSyncQAMetaProc',
+                'aos_PetRescueSyncQAMetaProc',
                 {
                     recordId: cmp.get('v.recordId')
                 },
@@ -37,7 +37,7 @@
         cmp.utils
             .execute(
                 cmp,
-                'PetRescueSyncQASubmitProc',
+                'aos_PetRescueSyncQASubmitProc',
                 {
                     recordId: cmp.get('v.recordId'),
                     locationId: cmp.get('v.meta.dto.locationId'),

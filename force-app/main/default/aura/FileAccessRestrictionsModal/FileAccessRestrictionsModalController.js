@@ -2,7 +2,7 @@
     handleInit: function (cmp, event, helper){
         helper.execute(
             cmp,
-            'FileAccessRestrictionsModalMetaProc',
+            'aos_FileAccessRestrictionsModalMetaProc',
             {
                 oneDriveFileID: cmp.get('v.OneDriveFileId')
             },
@@ -23,7 +23,7 @@
     },
 
     handleSaveClick: function (cmp, event, helper) {
-        helper.execute(cmp, 'vertic_DMLProc', {
+        helper.execute(cmp, 'aos_DMLProc', {
             sObjectType: 'One_Drive_File_Permission__c',
             upsert: [{
                 Id: cmp.get('v.meta.dto.oneDriveFilePermission.Id'),

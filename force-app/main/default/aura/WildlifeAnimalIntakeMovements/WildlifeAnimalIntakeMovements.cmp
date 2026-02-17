@@ -5,7 +5,7 @@
     <aura:attribute name="meta" type="Map" default="{}"/>
 
 
-    <c:Spinner isLoading="{!v.isBusy}">
+    <c:aos_Spinner isLoading="{!v.isBusy}">
         <aura:if isTrue="{!not(empty(v.meta.dto.movements))}">
             <div aura:id="movementItems">
                 <aura:iteration items="{!v.meta.dto.movements}" var="movement" indexVar="indexVar">
@@ -23,6 +23,6 @@
                 </aura:iteration>
             </div>
         </aura:if>
-    </c:Spinner>
+    </c:aos_Spinner>
 
 </aura:component>

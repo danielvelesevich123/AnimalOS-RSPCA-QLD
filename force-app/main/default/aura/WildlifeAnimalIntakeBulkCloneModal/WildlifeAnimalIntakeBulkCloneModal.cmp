@@ -1,4 +1,4 @@
-<aura:component description="WildlifeAnimalIntakeBulkCloneModal" controller="aos_CommonCtrl" extends="c:vertic_Modal">
+<aura:component description="WildlifeAnimalIntakeBulkCloneModal" controller="aos_CommonCtrl" extends="c:aos_Modal">
 
     <aura:attribute name="numberOfAnimals" type="Integer" default="1"/>
 

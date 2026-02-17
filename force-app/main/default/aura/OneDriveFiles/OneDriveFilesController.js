@@ -4,7 +4,7 @@
 
         cmp.set('v.isFilesLoad', true)
 
-        helper.execute(cmp, 'OneDriveFilesMetaProc', {})
+        helper.execute(cmp, 'aos_OneDriveFilesMetaProc', {})
             .then($A.getCallback((response) => {
                 cmp.set('v.hasEnhancedAccess', response.dto.hasEnhancedAccess);
                 return helper.initPayload(cmp, helper);
@@ -200,7 +200,7 @@
     handleRecordCheck: function (cmp, event, helper) {
         helper.execute(
             cmp,
-            'OneDriveRecordCheckProc',
+            'aos_OneDriveRecordCheckProc',
             {
                 recordId: cmp.get('v.recordId'),
                 numberOfFiles: cmp.get('v.meta.dto.files').filter(item => !(item.name.includes('DELETED_'))).length
@@ -213,7 +213,7 @@
         cmp.set('v.isFilesLoad', true);
         helper.execute(
             cmp,
-            'OneDriveSetPrimaryFile',
+            'aos_OneDriveSetPrimaryFile',
             {
                 recordId: cmp.get('v.recordId'),
                 fileId: file.id
@@ -236,7 +236,7 @@
         cmp.set('v.isFilesLoad', true);
         helper.execute(
             cmp,
-            'OneDriveSetProfilePhoto',
+            'aos_OneDriveSetProfilePhoto',
             {
                 recordId: cmp.get('v.recordId'),
                 fileId: file.id

@@ -12,7 +12,7 @@
     <c:aos_Utils context="{!this}"/>
 
     <lightning:notificationsLibrary aura:id="notifyLib"/>
-    <c:vertic_ModalService aura:id="modalService"/>
+    <c:aos_ModalService aura:id="modalService"/>
 
     <lightning:card title="Animals" iconName="utility:animal_and_nature" class="slds-card_boundary">
         <aura:set attribute="actions">
@@ -22,7 +22,7 @@
                               onclick="{!c.handleNewAnimalClick}"/>
         </aura:set>
         <aura:set attribute="body">
-            <c:Spinner isLoading="{!v.isBusy}">
+            <c:aos_Spinner isLoading="{!v.isBusy}">
                 <div class="slds-m-horizontal_medium" aura:id="animalsTable">
                     <aura:if isTrue="{!not(empty(v.meta.dto.animals))}">
                         <aura:if isTrue="{!v.isTableView}">
@@ -111,13 +111,13 @@
                             </aura:set>
                         </aura:if>
                         <aura:set attribute="else">
-                            <c:ScopedNotification class="slds-text-align_center">
+                            <c:aos_ScopedNotification class="slds-text-align_center">
                                 No items to display.
-                            </c:ScopedNotification>
+                            </c:aos_ScopedNotification>
                         </aura:set>
                     </aura:if>
                 </div>
-            </c:Spinner>
+            </c:aos_Spinner>
         </aura:set>
     </lightning:card>
 </aura:component>

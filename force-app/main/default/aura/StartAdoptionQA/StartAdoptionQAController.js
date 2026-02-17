@@ -78,7 +78,7 @@
         cmp.utils
             .execute(
                 cmp,
-                'StartAdoptionQASubmitProc',
+                'aos_StartAdoptionQASubmitProc',
                 {
                     contact: cmp.get('v.contact'),
                     alternateContact: cmp.get('v.alternateContact'),

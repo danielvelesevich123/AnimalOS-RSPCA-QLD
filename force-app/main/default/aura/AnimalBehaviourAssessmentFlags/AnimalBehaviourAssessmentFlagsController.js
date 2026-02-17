@@ -43,12 +43,12 @@
 
         helper.execute(
             cmp,
-            'vertic_SOQLProc',
+            'aos_SOQLProc',
             {
                 SOQL: 'SELECT Flags__c ' +
                     'FROM animalos__Assessment__c ' +
                     'WHERE animalos__Animal__c = \'' + cmp.get('v.recordId') + '\' AND animalos__Assessment_Date_Time__c != NULL AND ' +
-                    '(RecordType.DeveloperName = \'Behaviour_Evaluation_Canine\' OR RecordType.DeveloperName = \'Behaviour_Evaluation_Feline\') ' +
+                    '(RecordType.DeveloperName = \'aos_Behaviour_Evaluation_Canine\' OR RecordType.DeveloperName = \'aos_Behaviour_Evaluation_Feline\') ' +
                     'ORDER BY animalos__Assessment_Date_Time__c DESC ' +
                     'LIMIT 1'
             },
@@ -60,9 +60,9 @@
                 const record = response.dto.records[0];
 
                 if (record) {
-                    if (record.Flags__c != null) {
+                    if (record.aos_Flags__c != null) {
 
-                        let flagValues = record.Flags__c.split(';');
+                        let flagValues = record.aos_Flags__c.split(';');
 
                         for (const item of flagValues) {
                             if (redFlagPicklistValues.includes(item)) {

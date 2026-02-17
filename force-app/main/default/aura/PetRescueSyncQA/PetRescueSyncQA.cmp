@@ -10,7 +10,7 @@
     <c:aos_Utils context="{!this}"/>
     <lightning:notificationsLibrary aura:id="notifyLib"/>
 
-    <c:vertic_QuickActionModal aura:id="modal"
+    <c:aos_QuickActionModal aura:id="modal"
                                title="PetRescue Sync"
                                heightPX="240"
                                widthPercentage="60"
@@ -40,7 +40,7 @@
                     />
                 </div>
                 <div class="slds-col slds-size_1-of-3">
-                    <c:vertic_Select label="Status"
+                    <c:aos_Select label="Status"
                                      options="{!v.meta.selectOptions.statusOptions}"
                                      value="{!v.meta.dto.status}"
                                      disabled="{!v.isBusy}"
@@ -64,6 +64,6 @@
                 </div>
             </div>
         </aura:if>
-    </c:vertic_QuickActionModal>
+    </c:aos_QuickActionModal>
 
 </aura:component>

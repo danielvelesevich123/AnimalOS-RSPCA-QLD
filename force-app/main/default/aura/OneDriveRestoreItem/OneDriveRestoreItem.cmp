@@ -5,11 +5,11 @@
     <aura:attribute name="name" type="String" access="global" default="true"/>
     <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
 
-    <aura:registerEvent name="onDelete" type="c:vertic_ComponentEvent"/>
-    <aura:registerEvent name="onRemove" type="c:vertic_ComponentEvent"/>
-    <aura:registerEvent name="onRestore" type="c:vertic_ComponentEvent"/>
-    <aura:registerEvent name="onSendEmail" type="c:vertic_ComponentEvent"/>
-    <aura:registerEvent name="onFileView" type="c:vertic_ComponentEvent"/>
+    <aura:registerEvent name="onDelete" type="c:aos_ComponentEvent"/>
+    <aura:registerEvent name="onRemove" type="c:aos_ComponentEvent"/>
+    <aura:registerEvent name="onRestore" type="c:aos_ComponentEvent"/>
+    <aura:registerEvent name="onSendEmail" type="c:aos_ComponentEvent"/>
+    <aura:registerEvent name="onFileView" type="c:aos_ComponentEvent"/>
 
 
     <aura:if isTrue="{! v.isFullView}">

@@ -20,14 +20,14 @@ public without sharing class aos_SendEmailAsyncProcessInvocable {
         emailParametersMap.put('renderAs', 'html');
 
         // contentPreviewJSONParams
-        // '{\"cmp\": \"AOS_JobSummaryQA\", \"jobId\": \"'
+        // '{\"cmp\": \"aos_JobSummaryQA\", \"jobId\": \"'
         // + {!recordId.Id}
         // + '\", \"contactId\": \"'
         // + {!contactVar.Id}
         // + '\", \"renderAs\": \"pdf\", \"fileName\": \"Job Summary\"}'
 
         // emailParametersMap
-        // "vfComponent=AOS_JobSummaryQA;jobId=" &
+        // "vfComponent=aos_JobSummaryQA;jobId=" &
         // {!recordId.Id} &
         // ";contactId=" &
         // {!contactVar.Id}

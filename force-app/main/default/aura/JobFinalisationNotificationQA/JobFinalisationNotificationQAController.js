@@ -2,7 +2,7 @@
     handleInit : function (cmp, event, helper){
         helper.execute(
             cmp,
-            'JobFinalisationNotificationQAMetaProc',
+            'aos_JobFinalisationNotifQAMetaProc',
             {
                 recordId: cmp.get('v.recordId')
             },
@@ -33,7 +33,7 @@
 
         helper.execute(
             cmp,
-            'JobFinalisationNotificationQASubmitProc',
+            'aos_JobFinalisationNotifQASubmitProc',
             {
                 contactId: cmp.get('v.contactId'),
                 emailTemplateDeveloperName: cmp.get('v.emailTemplate'),

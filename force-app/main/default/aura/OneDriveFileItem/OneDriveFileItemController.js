@@ -2,7 +2,7 @@
 
     handleFileDelete: function (cmp, event, helper) {
         cmp.find('modalService').show(
-            'c:ConfirmModal',
+            'c:aos_ConfirmModal',
             {
                 text: 'Are you sure you want to delete this file?\nThis action cannot be undone. To continue with deletion, press confirm.'
             },

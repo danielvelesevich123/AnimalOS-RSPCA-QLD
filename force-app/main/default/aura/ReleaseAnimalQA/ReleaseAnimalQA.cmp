@@ -1,4 +1,4 @@
-<aura:component description="ReleaseAnimalQA" extends="c:vertic_Base"
+<aura:component description="ReleaseAnimalQA" extends="c:aos_Base"
                 implements="force:lightningQuickActionWithoutHeader,force:hasRecordId,force:appHostable"
                 access="global">
 
@@ -20,7 +20,7 @@
 
     <lightning:notificationsLibrary aura:id="notifLib"/>
 
-    <c:vertic_QuickActionModal aura:id="modal"
+    <c:aos_QuickActionModal aura:id="modal"
                                heightPX="450"
                                title="Release Animal"
                                widthPercentage="100"
@@ -29,7 +29,7 @@
 
         <div aura:id="form">
             <div class="slds-text-align_center slds-m-bottom_medium">
-                <c:vertic_ButtonGroupSelect options="{!v.modeOptions}"
+                <c:aos_ButtonGroupSelect options="{!v.modeOptions}"
                                             value="{!v.mode}"
                                             buttonClass="slds-size_1-of-3"
                                             class="slds-size_1-of-1 slds-show_inline-block"
@@ -162,5 +162,5 @@
                               onclick="{!c.handleSubmitClick}"
             />
         </aura:set>
-    </c:vertic_QuickActionModal>
+    </c:aos_QuickActionModal>
 </aura:component>

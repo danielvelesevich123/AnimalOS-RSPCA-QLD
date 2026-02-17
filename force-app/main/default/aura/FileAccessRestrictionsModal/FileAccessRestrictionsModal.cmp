@@ -1,7 +1,6 @@
-<aura:component description="FileAccessRestrictionsModal" extends="c:vertic_Modal">
+<aura:component description="FileAccessRestrictionsModal" extends="c:aos_Modal">
 
     <!-- Attribute Overrides -->
-<!--    <aura:set attribute="processor" value="FileAccessRestrictionsModalMetaProc"/>-->
     <aura:attribute name="OneDriveFileId" type="String"/>
 
     <aura:handler name="init" action="{!c.handleInit}" value="{!this}"/>

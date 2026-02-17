@@ -1,4 +1,4 @@
-<aura:component description="WildlifeAnimalIntakeQANewAnimalModal" controller="aos_CommonCtrl" extends="c:vertic_Modal">
+<aura:component description="WildlifeAnimalIntakeQANewAnimalModal" controller="aos_CommonCtrl" extends="c:aos_Modal">
 
     <aura:attribute name="selectOptions" type="Map" access="public" default="{}"/>
     <aura:attribute name="dependentOptions" type="Map" access="public" default="{}"/>
@@ -36,11 +36,11 @@
     </aura:set>
 
     <c:aos_Utils context="{!this}"/>
-    <c:vertic_ModalService aura:id="modalService"/>
+    <c:aos_ModalService aura:id="modalService"/>
 
     <aura:handler name="change" value="{!v.existingAnimalId}" action="{!c.handleExistingAnimalIdChange}"/>
 
-    <c:Spinner isLoading="{!v.isBusy}">
+    <c:aos_Spinner isLoading="{!v.isBusy}">
 
         <lightning:card class="slds-card_boundary slds-m-bottom_medium" title="Search Existing Animal By Animal ID or Microchip Number" iconName="utility:search">
             <div class="slds-grid slds-gutters_x-small slds-m-horizontal_x-small">
@@ -108,14 +108,14 @@
                         </div>
                     </aura:if>
                     <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
-                        <c:vertic_Select label="Gender"
+                        <c:aos_Select label="Gender"
                                          options="{!v.selectOptions.animalosGenderOptions}"
                                          value="{!v.animal.animalos__Gender__c}"
                                          disabled="{!v.isBusy}"
                         />
                     </div>
                     <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
-                        <c:vertic_Select label="Animal Class"
+                        <c:aos_Select label="Animal Class"
                                          required="{!true}"
                                          options="{!v.selectOptions.animalosClassOptions}"
                                          value="{!v.animal.animalos__Class__c}"
@@ -124,7 +124,7 @@
                     </div>
                     <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
                         <aura:if isTrue="{!not(v.isBusy)}">
-                            <c:vertic_Select label="Type"
+                            <c:aos_Select label="Type"
                                              dependentOptions="{!v.dependentOptions.animalosTypeOptions}"
                                              value="{!v.animal.animalos__Type__c}"
                                              isDepended="{!true}"
@@ -136,7 +136,7 @@
                     </div>
                     <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
                         <aura:if isTrue="{!not(v.isBusy)}">
-                            <c:vertic_Select label="Age Group"
+                            <c:aos_Select label="Age Group"
                                              dependentOptions="{!v.dependentOptions.animalosAgeGroupOptions}"
                                              isDepended="{!true}"
                                              value="{!v.animal.animalos__Age_Group__c}"
@@ -162,7 +162,7 @@
                     <aura:if isTrue="{!equals(v.recordTypeDevName, v.wildlifeRescueRT)}">
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
                             <aura:if isTrue="{!not(v.isBusy)}">
-                                <c:vertic_Select label="Primary Colour"
+                                <c:aos_Select label="Primary Colour"
                                                  options="{!v.selectOptions.animalosPrimaryColourOptions}"
                                                  value="{!v.animal.animalos__Primary_Colour__c}"
                                                  disabled="{!v.isBusy}"
@@ -171,7 +171,7 @@
                         </div>
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
                             <aura:if isTrue="{!not(v.isBusy)}">
-                                <c:vertic_Select label="Secondary Colour"
+                                <c:aos_Select label="Secondary Colour"
                                                  options="{!v.selectOptions.animalosSecondaryColourOptions}"
                                                  value="{!v.animal.animalos__Secondary_Colour__c}"
                                                  disabled="{!v.isBusy}"
@@ -182,7 +182,7 @@
                     <aura:if isTrue="{!v.isInboundRecordType}">
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
                             <aura:if isTrue="{!not(v.isBusy)}">
-                                <c:vertic_Select label="Stage"
+                                <c:aos_Select label="Stage"
                                                  options="{!v.selectOptions.animalosStageOptions}"
                                                  value="{!v.animal.animalos__Stage__c}"
                                                  required="{!true}"
@@ -192,7 +192,7 @@
                         </div>
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
                             <aura:if isTrue="{!not(v.isBusy)}">
-                                <c:vertic_Select label="Status"
+                                <c:aos_Select label="Status"
                                                  dependentOptions="{!v.dependentOptions.animalosStatusOptions}"
                                                  value="{!v.animal.animalos__Status__c}"
                                                  isDepended="{!true}"
@@ -217,7 +217,7 @@
                     <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
                         <aura:iteration items="{!v.additionalFields}" var="field" indexVar="indexVar">
                             <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
-                                <c:vertic_Input aura:id="input"
+                                <c:aos_Input aura:id="input"
                                                 fieldLabel="{!field.label}"
                                                 fieldName="{!field.name}"
                                                 fieldType="{!field.type}"
@@ -255,7 +255,7 @@
                     <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
                         <aura:iteration items="{!v.animalReferralFields}" var="field" indexVar="indexVar">
                             <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4">
-                                <c:vertic_Input aura:id="input"
+                                <c:aos_Input aura:id="input"
                                                 fieldLabel="{!field.label}"
                                                 fieldName="{!field.name}"
                                                 fieldType="{!field.type}"
@@ -289,6 +289,6 @@
                 </lightning:card>
             </aura:if>
         </div>
-    </c:Spinner>
+    </c:aos_Spinner>
 
 </aura:component>

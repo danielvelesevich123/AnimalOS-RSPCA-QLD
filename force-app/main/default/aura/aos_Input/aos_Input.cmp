@@ -1,0 +1,322 @@
+<aura:component description="AOS Input">
+
+    <!-- ATTRIBUTES -->
+    <aura:attribute name="record" type="Map"/>
+    <aura:attribute name="fieldName" type="String" required="true"/>
+    <aura:attribute name="fieldType" type="String" required="true"/>
+    <aura:attribute name="fieldLabel" type="String" required="true"/>
+    <aura:attribute name="required" type="Boolean" default="{!false}"/>
+    <aura:attribute name="labelHidden" type="Boolean" default="{!false}"/>
+    <aura:attribute name="valueVar" type="String"/>
+    <aura:attribute name="multiPickListValue" type="List" default="[]"/>
+    <aura:attribute name="helpText" type="String"/>
+    <aura:attribute name="cssClass" type="String" default="{!if(v.labelHidden, 'label-hidden', '')}"/>
+    <aura:attribute name="placeholder" type="String" default="" access="public"/>
+    <aura:attribute name="readonly" type="Boolean" default="{!false}"/>
+    <aura:attribute name="fractionalDigits" type="Integer" default="{!0}" access="private"/>
+    <aura:attribute name="indexVar" type="Integer"/>
+
+    <!-- EDITABLE ATTRIBUTES -->
+    <aura:attribute name="disabled" type="Boolean" default="{!false}"/>
+    <aura:attribute name="allowNewRecords" type="Boolean" default="{!false}"/>
+    <aura:attribute name="overrideNewEvent" type="Boolean" default="{!false}"/>
+    <aura:attribute name="wordBreak" type="Boolean" default="{!false}"/>
+    <aura:attribute name="sObject" type="String"/>
+    <aura:attribute name="searchField" type="String" default="Name"/>
+    <aura:attribute name="subtitleField" type="String"/>
+    <aura:attribute name="showSubtitleLabel" type="Boolean" default="{!false}"/>
+    <aura:attribute name="filter" type="String" default="{!''}"/>
+    <aura:attribute name="isClickable" type="Boolean" default="{!false}"/>
+    <aura:attribute name="showRecentRecords" type="Boolean" default="{!false}"/>
+    <aura:attribute name="decimalStep" type="String"/>
+    <aura:attribute name="iconName" type="String"/>
+    <aura:attribute name="options" type="List"/>
+    <aura:attribute name="isDepended" type="Boolean"/>
+    <aura:attribute name="dependsOn" type="String"/>
+    <aura:attribute name="controllingField" type="String"/>
+    <aura:attribute name="dependentOptions" type="Map" default="{}"/>
+    <aura:attribute name="pattern" type="String"/>
+    <aura:attribute name="formatPattern" type="String"/>
+    <aura:attribute name="formatGroups" type="String"/>
+    <aura:attribute name="messageWhenPatternMismatch" type="String"/>
+    <aura:attribute name="picklistType" type="String"/>
+    <!--    <aura:attribute name="postInit" type="Boolean" default="{!true}"/>-->
+
+    <!-- HANDLERS -->
+    <aura:handler name="init" value="{!this}" action="{!c.handleInit}"/>
+    <aura:handler name="change" value="{!v.valueVar}" action="{!c.handleValueChange}"/>
+
+    <!-- METHODS -->
+    <aura:method name="setValue" action="{!c.handleSetValue}" access="public"/>
+
+    <!-- EVENTS -->
+    <aura:registerEvent name="appEvent" type="c:aos_ApplicationEvent"/>
+    <aura:registerEvent name="onNewCreateClick" type="c:aos_ComponentEvent"/>
+
+    <!-- BODY -->
+    <aura:if isTrue="{!v.readonly == true}">
+        <div aura:id="value-output"
+             class="{!v.cssClass}"
+             style="{!v.wordBreak == true ? 'word-break: break-word; white-space: break-spaces;' : ''}">
+            <aura:if isTrue="{!v.fieldType == 'CUSTOM_COMPONENT'}">
+
+            </aura:if>
+            <aura:if isTrue="{!v.fieldType == 'CURRENCY'}">
+                <lightning:formattedNumber value="{!v.valueVar}" style="currency"/>
+            </aura:if>
+            <aura:if isTrue="{!v.fieldType == 'DATE'}">
+                <lightning:formattedDateTime value="{!v.valueVar}" timeZone="{!$Locale.timezone}"/>
+            </aura:if>
+            <aura:if isTrue="{!v.fieldType == 'DATETIME'}">
+                <lightning:formattedDateTime value="{!v.valueVar}" timeZone="{!$Locale.timezone}"/>
+            </aura:if>
+            <aura:if isTrue="{!v.fieldType == 'EMAIL'}">
+                <lightning:formattedEmail value="{!v.valueVar}"/>
+            </aura:if>
+            <aura:if isTrue="{!v.fieldType == 'DOUBLE'}">
+                <lightning:formattedNumber value="{!v.valueVar}"
+                                           maximumFractionDigits="{!v.fractionalDigits}"
+                                           minimumFractionDigits="{!v.fractionalDigits}"
+                />
+            </aura:if>
+            <aura:if isTrue="{!v.fieldType == 'PERCENT'}">
+                <lightning:formattedNumber value="{!v.valueVar}"
+                                           style="percent"
+                                           maximumFractionDigits="{!v.fractionalDigits}"
+                                           minimumFractionDigits="{!v.fractionalDigits}"
+                />
+            </aura:if>
+            <aura:if isTrue="{!v.fieldType == 'PHONE'}">
+                <lightning:formattedPhone value="{!v.valueVar}"/>
+            </aura:if>
+            <aura:if isTrue="{!v.fieldType == 'URL'}">
+                <lightning:formattedUrl value="{!v.valueVar}" label="{!v.valueVar}" target="_blank"/>
+            </aura:if>
+            <aura:if isTrue="{!v.fieldType == 'BOOLEAN'}">
+                <lightning:input type="checkbox-button" label="{!v.valueVar}" name="{!v.valueVar}" checked="{!v.valueVar}"
+                                 disabled="true"/>
+            </aura:if>
+            <aura:if isTrue="{!or(v.fieldType == 'STRING', v.fieldType == 'PICKLIST')}">
+                {!v.valueVar}
+            </aura:if>
+            <aura:if isTrue="{!v.fieldType == 'MULTIPICKLIST'}">
+                <aura:iteration items="{!v.valueVar}" var="item">
+                    <span class="{!v.cssClass}" style="margin-bottom: 5px;margin-top: 5px;margin-left: 0px !important;margin-right: 0.5rem;">{!item}</span>
+                </aura:iteration>
+            </aura:if>
+        </div>
+    </aura:if>
+
+    <aura:if isTrue="{!v.readonly != true}">
+        <aura:if isTrue="{!v.fieldType == 'TEXTAREA'}">
+            <lightning:textarea label="{!v.fieldLabel}"
+                                class="{!v.cssClass}"
+                                name="{!v.fieldName}"
+                                variant="{!if(v.labelHidden, 'label-hidden', '')}"
+                                disabled="{!v.disabled}"
+                                value="{!v.valueVar}"
+                                placeholder="{!v.placeholder}"
+                                required="{!v.required}"
+            />
+        </aura:if>
+        <aura:if isTrue="{!and(v.fieldType == 'REFERENCE', not(empty(v.sObject)))}">
+            <c:verticLookup aura:id="lookup"
+                            label="{!v.fieldLabel}"
+                            object="{!v.sObject}"
+                            class="{!v.cssClass}"
+                            disabled="{!v.disabled}"
+                            searchField="{!v.searchField}"
+                            subtitleField="{!v.subtitleField}"
+                            showSubtitleLabel="{!v.showSubtitleLabel}"
+                            iconTag="{!v.iconName}"
+                            filter="{!v.filter}"
+                            value="{!v.valueVar}"
+                            order="CreatedDate DESC"
+                            limit="10"
+                            searchMode="SOQL"
+                            showRecentRecords="{!v.showRecentRecords}"
+                            placeholder="{!v.placeholder}"
+                            allowNewRecords="{!v.allowNewRecords}"
+                            required="{!v.required}"
+                            isClickable="{!v.isClickable}"
+                            onaddnew="{!c.handleAddNewObject}"
+            />
+            <!--            <c:vertic_Lookup label="{!v.fieldLabel}"-->
+            <!--                             object="{!v.sObject}"-->
+            <!--                             class="{!v.cssClass}"-->
+            <!--                             disabled="{!v.disabled}"-->
+            <!--                             searchField="{!v.searchField}"-->
+            <!--                             subtitleField="{!v.subtitleField}"-->
+            <!--                             iconName="{!v.iconName}"-->
+            <!--                             filter="{!v.filter}"-->
+            <!--                             value="{!v.valueVar}"-->
+            <!--                             order="CreatedDate DESC"-->
+            <!--                             limit="10"-->
+            <!--                             loadingMessage="Loading..."-->
+            <!--                             errorMessage="Invalid input"-->
+            <!--                             placeholder="{!v.placeholder}"-->
+            <!--                             overrideNewEvent="{!v.overrideNewEvent}"-->
+            <!--                             allowNewRecords="{!v.allowNewRecords}"-->
+            <!--                             vertic_Lookup_evt_addNewRecord="{!c.handleAddNewObject}"-->
+            <!--                             required="{!v.required}"-->
+            <!--            />-->
+        </aura:if>
+        <aura:if isTrue="{!v.fieldType == 'PICKLIST'}">
+            <aura:if isTrue="{!empty(v.picklistType)}">
+                <c:aos_Select aura:id="vertic-select"
+                                 label="{!v.fieldLabel}"
+                                 class="{!v.cssClass}"
+                                 variant="{!if(v.labelHidden, 'label-hidden', '')}"
+                                 disabled="{!v.disabled}"
+                                 options="{!v.options}"
+                                 dependentOptions="{!v.dependentOptions}"
+                                 controllingField="{!v.controllingField}"
+                                 value="{!v.valueVar}"
+                                 required="{!v.required}"
+                />
+            </aura:if>
+            <aura:if isTrue="{!and(not(empty(v.picklistType)), equals('radioGroup', v.picklistType))}">
+                <label class="slds-form-element__label">
+                    <span>{!v.fieldLabel}</span>
+                </label>
+                <lightning:radioGroup name="{!v.fieldName + '_' + v.indexVar}"
+                                      label="{!v.fieldLabel}"
+                                      options="{! v.options }"
+                                      value="{! v.valueVar }"
+                                      disabled="{!v.disabled}"
+                                      required="{!v.required}"
+                                      variant="label-hidden"
+                                      type="button"/>
+            </aura:if>
+        </aura:if>
+        <aura:if isTrue="{!v.fieldType == 'MULTIPICKLIST'}">
+            <lightning:dualListbox label="{!v.fieldLabel}"
+                                   sourceLabel="Available"
+                                   selectedLabel="Selected"
+                                   fieldLevelHelp="{!v.helpText}"
+                                   options="{!v.options}"
+                                   value="{!v.multiPickListValue}"
+                                   variant="{!if(v.labelHidden, 'label-hidden', '')}"
+                                   onchange="{!c.handleMultiPickListChange}"
+            />
+        </aura:if>
+        <aura:if isTrue="{!v.fieldType == 'BOOLEAN'}">
+            <label class="slds-form-element__label">
+                <span>{!v.fieldLabel}</span>
+            </label>
+            <lightning:input label="{!v.fieldLabel}"
+                             type="checkbox-button"
+                             fieldLevelHelp="{!v.helpText}"
+                             class="{!v.cssClass}"
+                             name="{!v.fieldName}"
+                             checked="{!v.valueVar}"
+                             disabled="{!v.disabled}"
+                             placeholder="{!v.placeholder}"
+                             variant="{!if(v.labelHidden, 'label-hidden', '')}"
+                             required="{!v.required}"
+            />
+        </aura:if>
+        <aura:if isTrue="{!v.fieldType == 'INTEGER'}">
+            <lightning:input label="{!v.fieldLabel}"
+                             type="number"
+                             fieldLevelHelp="{!v.helpText}"
+                             class="{!v.cssClass}"
+                             name="{!v.fieldName}"
+                             value="{!v.valueVar}"
+                             disabled="{!v.disabled}"
+                             variant="{!if(v.labelHidden, 'label-hidden', '')}"
+                             placeholder="{!v.placeholder}"
+                             required="{!v.required}"
+            />
+        </aura:if>
+        <aura:if isTrue="{!v.fieldType == 'DOUBLE'}">
+            <lightning:input label="{!v.fieldLabel}"
+                             type="number"
+                             class="{!v.cssClass}"
+                             name="{!v.fieldName}"
+                             step="{!v.decimalStep}"
+                             value="{!v.valueVar}"
+                             disabled="{!v.disabled}"
+                             variant="{!if(v.labelHidden, 'label-hidden', '')}"
+                             placeholder="{!v.placeholder}"
+                             required="{!v.required}"
+            />
+        </aura:if>
+        <aura:if isTrue="{!v.fieldType == 'PERCENT'}">
+            <lightning:input label="{!v.fieldLabel}"
+                             type="number"
+                             fieldLevelHelp="{!v.helpText}"
+                             class="{!v.cssClass}"
+                             name="{!v.fieldName}"
+                             min="0"
+                             max="100"
+                             step="{!v.decimalStep}"
+                             value="{!v.valueVar}"
+                             disabled="{!v.disabled}"
+                             variant="{!if(v.labelHidden, 'label-hidden', '')}"
+                             placeholder="{!v.placeholder}"
+                             required="{!v.required}"
+            />
+        </aura:if>
+        <aura:if isTrue="{!v.fieldType == 'CURRENCY'}">
+            <lightning:input label="{!v.fieldLabel}"
+                             type="number"
+                             fieldLevelHelp="{!v.helpText}"
+                             class="{!v.cssClass}"
+                             name="{!v.fieldName}"
+                             step="{!v.decimalStep}"
+                             formatter="currency"
+                             value="{!v.valueVar}"
+                             disabled="{!v.disabled}"
+                             variant="{!if(v.labelHidden, 'label-hidden', '')}"
+                             placeholder="{!v.placeholder}"
+                             required="{!v.required}"
+            />
+        </aura:if>
+        <aura:if isTrue="{!v.fieldType == 'DATE'}">
+            <lightning:input label="{!v.fieldLabel}"
+                             name="{!v.fieldName}"
+                             fieldLevelHelp="{!v.helpText}"
+                             type="date"
+                             class="{!v.cssClass}"
+                             value="{!v.valueVar}"
+                             disabled="{!v.disabled}"
+                             variant="{!if(v.labelHidden, 'label-hidden', '')}"
+                             placeholder="{!v.placeholder}"
+                             required="{!v.required}"
+            />
+        </aura:if>
+        <aura:if isTrue="{!v.fieldType == 'DATETIME'}">
+            <aura:if isTrue="{!v.required}">
+                <abbr title="required" class="slds-required">*</abbr>
+            </aura:if>
+            <label class="slds-form-element__label"><span>{!v.fieldLabel}</span></label>
+            <lightning:input label="{!v.fieldLabel}"
+                             name="{!v.fieldName}"
+                             fieldLevelHelp="{!v.helpText}"
+                             type="datetime"
+                             class="{!v.cssClass}"
+                             value="{!v.valueVar}"
+                             disabled="{!v.disabled}"
+                             variant="label-hidden"
+                             placeholder="{!v.placeholder}"
+                             required="{!v.required}"
+            />
+        </aura:if>
+        <aura:if isTrue="{!v.fieldType == 'STRING'}">
+            <lightning:input label="{!v.fieldLabel}"
+                             name="{!v.fieldName}"
+                             fieldLevelHelp="{!v.helpText}"
+                             type="text"
+                             class="{!v.cssClass}"
+                             value="{!v.valueVar}"
+                             disabled="{!v.disabled}"
+                             variant="{!if(v.labelHidden, 'label-hidden', '')}"
+                             placeholder="{!v.placeholder}"
+                             pattern="{!v.pattern}"
+                             messageWhenPatternMismatch="{!v.messageWhenPatternMismatch}"
+                             required="{!v.required}"
+            />
+        </aura:if>
+    </aura:if>
+</aura:component>

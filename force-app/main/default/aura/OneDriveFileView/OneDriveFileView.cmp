@@ -1,4 +1,4 @@
-<aura:component description="OneDriveFileView" extends="c:vertic_Modal">
+<aura:component description="OneDriveFileView" extends="c:aos_Modal">
     <aura:attribute name="payload" type="Map"/>
 
 

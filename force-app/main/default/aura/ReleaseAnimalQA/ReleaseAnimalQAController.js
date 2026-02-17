@@ -27,7 +27,7 @@
     handleSubmitClick : function(cmp, event, helper){
         helper.execute(
             cmp,
-            'ReleaseAnimalQASubmitProc',
+            'aos_ReleaseAnimalQASubmitProc',
             {
                 recordId: cmp.get('v.recordId'),
                 address: cmp.get('v.address'),

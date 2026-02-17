@@ -67,7 +67,7 @@ global class TDTM_aos_JobNoteSendEmailToJobOwner extends animalos.TDTM.Handler i
                 if (emailTemplateVar != null) {
                     List<Map<String, Object>> contentAttachments = new List<Map<String, Object>>{
                             new Map<String, Object>{
-                                    'proc' => 'AOS_JobSummaryQA',
+                                    'proc' => 'aos_JobSummaryQA',
                                     'fileName' => 'Job Summary.pdf',
                                     'jobId' => job.Id
                             }

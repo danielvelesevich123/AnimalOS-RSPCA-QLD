@@ -10,7 +10,7 @@
     <c:aos_Utils context="{!this}"/>
     <lightning:notificationsLibrary aura:id="notifyLib"/>
 
-    <c:vertic_QuickActionModal aura:id="modal"
+    <c:aos_QuickActionModal aura:id="modal"
                                title="Add Behaviour Eval - SAE"
                                heightPX="750"
                                widthPercentage="60"
@@ -27,7 +27,7 @@
             />
         </aura:set>
 
-        <c:vertic_Spinner isLoading="{!v.isBusy}">
+        <c:aos_Spinner isLoading="{!v.isBusy}">
             <div class="slds-grid slds-wrap">
 
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
-                    <c:vertic_Select label="Location"
+                    <c:aos_Select label="Location"
                                      value="{!v.meta.dto.assessment.Location__c}"
                                      disabled="{!v.isBusy}"
                                      options="{!v.meta.selectOptions.locationOptions}"
@@ -57,9 +57,9 @@
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
                     <div class="slds-grid slds-grid_vertical-align-center">
                         <label>Social Response SAE</label>
-                        <c:customHelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.socialResponseHelpText}"/>
+                        <c:aos_HelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.socialResponseHelpText}"/>
                     </div>
-                    <c:vertic_Select label="Social Response SAE"
+                    <c:aos_Select label="Social Response SAE"
                                      value="{!v.meta.dto.assessment.Social_Response_SAE__c}"
                                      disabled="{!v.isBusy}"
                                      class="label-hidden"
@@ -76,9 +76,9 @@
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
                     <div class="slds-grid slds-grid_vertical-align-center">
                         <label>Handling SAE</label>
-                        <c:customHelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.handlingHelpText}"/>
+                        <c:aos_HelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.handlingHelpText}"/>
                     </div>
-                    <c:vertic_Select label="Handling SAE"
+                    <c:aos_Select label="Handling SAE"
                                      value="{!v.meta.dto.assessment.Handling_SAE__c}"
                                      disabled="{!v.isBusy}"
                                      class="label-hidden"
@@ -95,9 +95,9 @@
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
                     <div class="slds-grid slds-grid_vertical-align-center">
                         <label>Exploration SAE</label>
-                        <c:customHelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.explorationHelpText}"/>
+                        <c:aos_HelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.explorationHelpText}"/>
                     </div>
-                    <c:vertic_Select label="Exploration SAE"
+                    <c:aos_Select label="Exploration SAE"
                                      value="{!v.meta.dto.assessment.Exploration_SAE__c}"
                                      disabled="{!v.isBusy}"
                                      class="label-hidden"
@@ -114,9 +114,9 @@
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
                     <div class="slds-grid slds-grid_vertical-align-center">
                         <label>Body Language SAE</label>
-                        <c:customHelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.bodyLanguageHelpText}"/>
+                        <c:aos_HelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.bodyLanguageHelpText}"/>
                     </div>
-                    <c:vertic_Select label="Body Language SAE"
+                    <c:aos_Select label="Body Language SAE"
                                      value="{!v.meta.dto.assessment.Body_Language_SAE__c}"
                                      disabled="{!v.isBusy}"
                                      class="label-hidden"
@@ -133,7 +133,7 @@
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
                     <div class="slds-grid slds-grid_vertical-align-center">
                         <label>Behaviours Exhibited SAE</label>
-                        <c:customHelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.behavioursExhibitedHelpText}"/>
+                        <c:aos_HelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.behavioursExhibitedHelpText}"/>
                     </div>
                     <lightning:dualListbox label="Behaviours Exhibited SAE"
                                            sourceLabel="Available"
@@ -154,7 +154,7 @@
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
                     <div class="slds-grid slds-grid_vertical-align-center">
                         <label>Household Recommendations SAE</label>
-                        <c:customHelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.householdRecommendationsHelpText}"/>
+                        <c:aos_HelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.householdRecommendationsHelpText}"/>
                     </div>
                     <lightning:dualListbox label="Household Recommendations SAE"
                                            sourceLabel="Available"
@@ -172,7 +172,7 @@
                     />
                 </div>
             </div>
-        </c:vertic_Spinner>
-    </c:vertic_QuickActionModal>
+        </c:aos_Spinner>
+    </c:aos_QuickActionModal>
 
 </aura:component>
