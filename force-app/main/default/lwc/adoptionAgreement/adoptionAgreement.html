@@ -55,7 +55,7 @@
                                             <span class="slds-form-element__label">Person Address</span>
                                             <div class="slds-form-element__control">
                                                 <div class="slds-form-element__static">
-                                                    <lightning-formatted-text value={meta.dto.referral.Address__c}></lightning-formatted-text>
+                                                    <lightning-formatted-text value={meta.dto.referral.aos_Address__c}></lightning-formatted-text>
                                                 </div>
                                             </div>
                                         </div>
@@ -65,7 +65,7 @@
                                             <span class="slds-form-element__label">Email</span>
                                             <div class="slds-form-element__control">
                                                 <div class="slds-form-element__static">
-                                                    <lightning-formatted-email value={meta.dto.referral.Email__c}></lightning-formatted-email>
+                                                    <lightning-formatted-email value={meta.dto.referral.aos_Email__c}></lightning-formatted-email>
                                                 </div>
                                             </div>
                                         </div>
@@ -76,7 +76,7 @@
                                             <span class="slds-form-element__label">Mobile</span>
                                             <div class="slds-form-element__control">
                                                 <div class="slds-form-element__static">
-                                                    <lightning-formatted-text value={meta.dto.referral.Mobile__c}></lightning-formatted-text>
+                                                    <lightning-formatted-text value={meta.dto.referral.aos_Mobile__c}></lightning-formatted-text>
                                                 </div>
                                             </div>
                                         </div>
@@ -86,7 +86,7 @@
                                             <span class="slds-form-element__label">Home Phone</span>
                                             <div class="slds-form-element__control">
                                                 <div class="slds-form-element__static">
-                                                    <lightning-formatted-text value={meta.dto.referral.Home_Phone__c}></lightning-formatted-text>
+                                                    <lightning-formatted-text value={meta.dto.referral.aos_Home_Phone__c}></lightning-formatted-text>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,7 +96,7 @@
                                             <span class="slds-form-element__label">Work Phone</span>
                                             <div class="slds-form-element__control">
                                                 <div class="slds-form-element__static">
-                                                    <lightning-formatted-text value={meta.dto.referral.Work_Phone__c}></lightning-formatted-text>
+                                                    <lightning-formatted-text value={meta.dto.referral.aos_Work_Phone__c}></lightning-formatted-text>
                                                 </div>
                                             </div>
                                         </div>
@@ -106,7 +106,7 @@
                                             <span class="slds-form-element__label">Person ID</span>
                                             <div class="slds-form-element__control">
                                                 <div class="slds-form-element__static">
-                                                    <lightning-formatted-text value={meta.dto.referral.Contact_Code__c}></lightning-formatted-text>
+                                                    <lightning-formatted-text value={meta.dto.referral.aos_Contact_Code__c}></lightning-formatted-text>
                                                 </div>
                                             </div>
                                         </div>
@@ -164,7 +164,7 @@
                                                              label="If you do not wish to have your personal information used in that way, please opt out here:"
                                                              type="checkbox"
                                                              disabled={isBusy}
-                                                             checked={meta.dto.referral.Third_Party_Marketing_Opt_Out__c}
+                                                             checked={meta.dto.referral.aos_Third_Party_Marketing_Opt_Out__c}
                                                              onchange={handleThirdPartMarketingChange}>
                                             </lightning-input>
                                         </div>
@@ -175,7 +175,7 @@
                                                              type="checkbox"
                                                              disabled={isBusy}
                                                              variant="label-hidden"
-                                                             checked={meta.dto.referral.Royal_Canin_s_Healthy_Pets_Club_Opt_In__c}
+                                                             checked={meta.dto.referral.aos_Royal_Canin_s_Healthy_Pets_Club_Opt__c}
                                                              onchange={handleRoyalCanineChange}>
                                             </lightning-input>
                                         </div>
@@ -217,7 +217,7 @@
                                     <c-scoped-notification-lwc icon-name="utility:warning" for:each={meta.dto.animalTypesInformation} for:item="animalTypeInformation" key={animalTypeInformation.Id}>
                                         <p><b>{animalTypeInformation.Label}</b></p>
                                         <p>
-                                            <lightning-formatted-text value={animalTypeInformation.Information__c}></lightning-formatted-text>
+                                            <lightning-formatted-text value={animalTypeInformation.aos_Information__c}></lightning-formatted-text>
                                         </p>
                                     </c-scoped-notification-lwc>
                                 </div>

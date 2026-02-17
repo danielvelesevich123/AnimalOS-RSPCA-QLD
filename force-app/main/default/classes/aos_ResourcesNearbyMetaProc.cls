@@ -52,7 +52,7 @@ public class aos_ResourcesNearbyMetaProc extends aos_MetadataProcessor implement
         Decimal distance = this.request.getDecimal('distance') == null ? 1 : this.request.getDecimal('distance');
         Address jobVarAddress = jobVar.animalos__Address__c;
         List<String> conditions = new List<String>{
-                '(DISTANCE(Current_Location__c, :jobVarAddress, \'km\') < :distance)',
+                '(DISTANCE(aos_Current_Location__c, :jobVarAddress, \'km\') < :distance)',
                 'animalos__Active__c = true',
                 'animalos__User__c != null'
         };

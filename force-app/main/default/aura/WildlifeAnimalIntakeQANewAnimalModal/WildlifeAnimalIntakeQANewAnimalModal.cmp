@@ -101,7 +101,7 @@
                     <aura:if isTrue="{!equals(v.recordTypeDevName, v.koalaRescueRT)}">
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3">
                             <lightning:input label="KRS Number"
-                                             value="{!v.animal.KRS_Number__c}"
+                                             value="{!v.animal.aos_KRS_Number__c}"
                                              disabled="{!v.isBusy}"
                                              maxlength="255"
                             />

@@ -35,9 +35,9 @@ public class aos_RetrieveDeletedAnimalFilesGetProc extends aos_AbstractProcessor
         List<String> conditions = new List<String>();
         List<String> totalConditions;
 
-        conditions.add('(Is_Public__c = FALSE OR Is_Deleted__c = TRUE)');
-        conditions.add('Folder_Name__c LIKE \'%PHOTO%\'');
-        conditions.add('animalos_Animal__c IN (\n' +
+        conditions.add('(aos_Is_Public__c = FALSE OR aos_Is_Deleted__c = TRUE)');
+        conditions.add('aos_Folder_Name__c LIKE \'%PHOTO%\'');
+        conditions.add('aos_Animal__c IN (\n' +
                 '        SELECT Id\n' +
                 '        FROM animalos__Animal__c\n' +
                 ')');
@@ -61,8 +61,8 @@ public class aos_RetrieveDeletedAnimalFilesGetProc extends aos_AbstractProcessor
 
         List<aos_OneDrive_File__c> oneDriveFiles = Database.query(queryFactory.toSOQL());
 
-        Integer recordsLeft = (Integer) Database.countQuery(('SELECT COUNT() FROM OneDrive_File__c WHERE ' + String.join(conditions, ' AND '))) - (queryLimit == null ? 0 : queryLimit);
-        Integer totalNumberOfRecords = (Integer) Database.countQuery(('SELECT COUNT() FROM OneDrive_File__c WHERE ' + String.join(totalConditions, ' AND ')));
+        Integer recordsLeft = (Integer) Database.countQuery(('SELECT COUNT() FROM aos_OneDrive_File__c WHERE ' + String.join(conditions, ' AND '))) - (queryLimit == null ? 0 : queryLimit);
+        Integer totalNumberOfRecords = (Integer) Database.countQuery(('SELECT COUNT() FROM aos_OneDrive_File__c WHERE ' + String.join(totalConditions, ' AND ')));
 
         this.response.getMapper().mapFromListSObjects('oneDriveFiles', oneDriveFiles);
         this.response.put('recordsLeft', recordsLeft < 0 || String.isBlank(this.request.params.get('Limit')) ? 0 : recordsLeft);

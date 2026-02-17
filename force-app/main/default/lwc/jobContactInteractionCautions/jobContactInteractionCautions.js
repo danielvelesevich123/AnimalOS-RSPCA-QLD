@@ -21,7 +21,7 @@ export default class JobContactInteractionCautions extends LightningElement {
     }
 
     refresh() {
-        return execute('JobContactInteractionCautionsMetaProc', {
+        return execute('aos_JobContactIntCautionsMetaProc', {
             contactId: this.contactId,
             jobId: this.jobId,
             jobContactId: this.jobContactId

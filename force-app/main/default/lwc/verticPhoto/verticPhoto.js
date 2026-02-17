@@ -170,11 +170,11 @@ export default class VerticPhoto extends BaseElement {
             this.execute(
                 'vertic_DMLProc',
                 {
-                    sObjectType: 'OneDrive_File__c',
+                    sObjectType: 'aos_OneDrive_File__c',
                     upsert: [{
                         Id: oneDriveFileId,
-                        Profile_Image__c: false,
-                        Is_Deleted__c: true
+                        aos_Profile_Image__c: false,
+                        aos_Is_Deleted__c: true
                     }]
                 })
                 .then(response => {

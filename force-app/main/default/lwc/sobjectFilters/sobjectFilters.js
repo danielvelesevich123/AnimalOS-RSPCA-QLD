@@ -12,7 +12,7 @@ export default class SobjectFilters extends LightningElement {
     async connectedCallback() {
         this.isBusy = true;
         try {
-            let response = await execute('SobjectFilterMetaProc', {
+            let response = await execute('aos_SobjectFilterMetaProc', {
                 sobjectApiName: this.sobjectApiName
             });
             this.selectOptions = response.selectOptions;

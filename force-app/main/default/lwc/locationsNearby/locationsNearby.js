@@ -29,7 +29,7 @@ export default class LocationsNearby extends LightningElement {
     @api
     refresh() {
         this.isBusy = true;
-        return execute('LocationsNearbyMetaProc', {
+        return execute('aos_LocationsNearbyMetaProc', {
             recordId: this.recordId,
             distance: this.distance,
             job: this.job

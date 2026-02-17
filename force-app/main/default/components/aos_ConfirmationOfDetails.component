@@ -160,9 +160,9 @@
                             <td style="border: none">
                                 <p>
                                     Implant Date:
-                                    <apex:pageBlock rendered="{!IF(animal['Microchip_Implant_Date__c'] == ' ', false, true)}">
+                                    <apex:pageBlock rendered="{!IF(animal['aos_Microchip_Implant_Date__c'] == ' ', false, true)}">
                                         <apex:outputText value=" {0, date, dd/MM/yyyy}">
-                                            <apex:param value="{!animal['Microchip_Implant_Date__c']}"/>
+                                            <apex:param value="{!animal['aos_Microchip_Implant_Date__c']}"/>
                                         </apex:outputText>
                                     </apex:pageBlock>
                                 </p>

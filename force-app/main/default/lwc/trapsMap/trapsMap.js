@@ -25,7 +25,7 @@ export default class TrapsMap extends LightningElement {
     async refresh() {
         this.isBusy = true;
         try {
-            let response = await execute('TrapsMapMetaProc', {});
+            let response = await execute('aos_TrapsMapMetaProc', {});
             this.jobActivities = response.dto.jobActivities || [];
             this.initMapMarkers();
             this.mapCenter.location = this.defaultLocation;

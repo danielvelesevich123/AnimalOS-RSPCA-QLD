@@ -141,7 +141,7 @@ export default class AnimalWelfareCase extends LightningElement {
 
     refresh(recordId) {
         this.isBusy = true;
-        return execute('AnimalWelfareCaseMetaProc', {recordId: recordId})
+        return execute('aos_AnimalWelfareCaseMetaProc', {recordId: recordId})
             .then(response => {
                 this.job = response.dto.job || this.job;
                 this.caseVar = response.dto.caseVar || this.caseVar;
@@ -330,7 +330,7 @@ export default class AnimalWelfareCase extends LightningElement {
         //execute a proc to find an existing job contact by phone
         if (event && event.target.value) {
             this.isJobContactSearching = true;
-            execute('vertic_SOQLProc', {
+            execute('aos_SOQLProc', {
                 SOQL:
                     'SELECT Id, FirstName, LastName, Email, MobilePhone, Phone, ' +
                     'MailingStreet, MailingCity, MailingState, MailingPostalCode, MailingCountry,' +

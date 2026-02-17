@@ -31,7 +31,7 @@ export default class LogsReview extends LightningElement {
                 this.isBusy = true;
                 this.errorMessage = null;
                 let groupFilter = this.group.indexOf('{recordId}') === -1 ? this.group : this.group.replace('{recordId}', this.recordId);
-                let response = await execute('vertic_SOQLProc', {
+                let response = await execute('aos_SOQLProc', {
                     SOQL: 'SELECT Id, Name, animalos__Type__c, animalos__Process__c, animalos__Log_Details__c, animalos__Payload__c ' +
                         'FROM animalos__Log__c ' +
                         'WHERE animalos__Group__c = \'' + groupFilter + '\' ' +

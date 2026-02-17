@@ -35,7 +35,7 @@ export default class PartnersUserSetupLocationVolunteerItem extends LightningEle
     }
 
     get isActive() {
-        return this.locationVolunteer.Status__c !== 'Inactive';
+        return this.locationVolunteer.aos_Status__c !== 'Inactive';
     }
 
     get activateButtonDisabled() {
@@ -43,10 +43,10 @@ export default class PartnersUserSetupLocationVolunteerItem extends LightningEle
     }
 
     get locationName() {
-        return this.locationVolunteer.Location__r.RecordType.DeveloperName === 'Foster' && this.locationVolunteer.Location__r.animalos__Parent_Block__r ? this.locationVolunteer.Location__r.animalos__Parent_Block__r.Name + ' / ' + this.locationVolunteer.Location__r.Name : this.locationVolunteer.Location__r.animalos__Full_Location_Name__c;
+        return this.locationVolunteer.aos_Location__r.RecordType.DeveloperName === 'Foster' && this.locationVolunteer.aos_Location__r.animalos__Parent_Block__r ? this.locationVolunteer.aos_Location__r.animalos__Parent_Block__r.Name + ' / ' + this.locationVolunteer.aos_Location__r.Name : this.locationVolunteer.aos_Location__r.animalos__Full_Location_Name__c;
     }
 
     get locationURL() {
-        return '/' + this.locationVolunteer.Location__c;
+        return '/' + this.locationVolunteer.aos_Location__c;
     }
 }

@@ -21,7 +21,7 @@
             </td>
             <td style="width: 50%">
                 <p>Tag Number:</p>
-                <p>{!dto['animal']['Tag_Number__c']}</p>
+                <p>{!dto['animal']['aos_Tag_Number__c']}</p>
             </td>
         </tr>
         <tr>

@@ -18,11 +18,11 @@
     },
 
     handleBehavioursExhibitedChanged: function (cmp, event, helper) {
-        cmp.set('v.meta.dto.assessment.Behaviours_Exhibited_SAE__c', cmp.get('v.behavioursExhibitedValue').join(';'));
+        cmp.set('v.meta.dto.assessment.aos_Behaviours_Exhibited_SAE__c', cmp.get('v.behavioursExhibitedValue').join(';'));
     },
 
     handleHouseHoldRecommendationsChanged: function (cmp, event, helper) {
-        cmp.set('v.meta.dto.assessment.Household_Recommendations_SAE__c', cmp.get('v.householdRecommendationsValue').join(';'));
+        cmp.set('v.meta.dto.assessment.aos_Household_Recommendations_SAE__c', cmp.get('v.householdRecommendationsValue').join(';'));
     },
 
     handleSubmit: function (cmp, event, helper) {

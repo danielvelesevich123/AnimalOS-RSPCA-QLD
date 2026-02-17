@@ -19,7 +19,7 @@ export default class ManageTrapsQAModal extends LightningModal {
 
         try {
             const response = await execute(
-                'ManageTrapsQAMetaProc',
+                'aos_ManageTrapsQAMetaProc',
                 {
                     recordId: this.recordId
                 }

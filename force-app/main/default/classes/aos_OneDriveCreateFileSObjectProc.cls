@@ -21,18 +21,18 @@ public without sharing class aos_OneDriveCreateFileSObjectProc extends aos_Abstr
 
 
         SObjectType sObjectTypeName = recordId.getSobjectType();
-        String sObjectTypeNameString = recordId.getSobjectType() == animalos__Animal__c.SObjectType ? 'animalos_Animal__c' : aos_OneDriveCreateFileSObjectProc.getLookupFieldName(sObjectTypeName);
+        String sObjectTypeNameString = recordId.getSobjectType() == animalos__Animal__c.SObjectType ? 'aos_Animal__c' : aos_OneDriveCreateFileSObjectProc.getLookupFieldName(sObjectTypeName);
 
-        Boolean isOneDriveFolderFieldExists = sObjectTypeName.getDescribe().fields.getMap().keySet().contains('one_drive_folder_name__c');
+        Boolean isOneDriveFolderFieldExists = sObjectTypeName.getDescribe().fields.getMap().keySet().contains('aos_One_Drive_Folder_Name__c');
 
         if (!isOneDriveFolderFieldExists) {
-            throw new aos_Structs.CommonException('Error: Current object does not contain the One_Drive_Folder_Name__c field');
+            throw new aos_Structs.CommonException('Error: Current object does not contain the aos_One_Drive_Folder_Name__c field');
         }
 
-        String currentRecordQuery = 'SELECT Id, One_Drive_Folder_Name__c FROM ' + sObjectTypeName.getDescribe().getName() + ' WHERE Id = \'' + recordId + '\'';
+        String currentRecordQuery = 'SELECT Id, aos_One_Drive_Folder_Name__c FROM ' + sObjectTypeName.getDescribe().getName() + ' WHERE Id = \'' + recordId + '\'';
         SObject record = (SObject) aos_Utils.arrays.firstOrException(Database.query(currentRecordQuery));
 
-        String oneDriveRecordsQuery = 'SELECT Id, Name, Folder_Name__c, File_ID__c FROM OneDrive_File__c WHERE ' + sobjectTypeNameString.remove('__c') + '__c' + '= \'' + recordId + '\'';
+        String oneDriveRecordsQuery = 'SELECT Id, Name, aos_Folder_Name__c, aos_File_ID__c FROM aos_OneDrive_File__c WHERE ' + sobjectTypeNameString.remove('__c') + '__c' + '= \'' + recordId + '\'';
 
         List<aos_OneDrive_File__c> oneDriveFileRecords = Database.query(oneDriveRecordsQuery);
 
@@ -90,9 +90,9 @@ public without sharing class aos_OneDriveCreateFileSObjectProc extends aos_Abstr
 
     public static String getLookupFieldName(SObjectType sObjectTypeName) {
         if (sObjectTypeName == animalos__Animal__c.SObjectType) {
-            return 'animalos_Animal__c';
+            return 'aos_Animal__c';
         } else if (sObjectTypeName == animalos__Job__c.SObjectType) {
-            return 'animalos_Job__c';
+            return 'aos_Job__c';
         } else {
             String sobjectTypeNameString = String.valueOf(sObjectTypeName.getDescribe().getLocalName());
             if (sobjectTypeNameString.split('__').size() == 3) {
@@ -104,7 +104,7 @@ public without sharing class aos_OneDriveCreateFileSObjectProc extends aos_Abstr
             Boolean isAccordingLookupExists = aos_OneDrive_File__c.SObjectType.getDescribe().fields.getMap().keySet().contains(sobjectTypeNameString);
 
             if (isAccordingLookupExists) {
-                throw new aos_Structs.CommonException('Error: OneDrive_File__c does not contain lookup to the current object');
+                throw new aos_Structs.CommonException('Error: aos_OneDrive_File__c does not contain lookup to the current object');
             }
             return sobjectTypeNameString;
         }

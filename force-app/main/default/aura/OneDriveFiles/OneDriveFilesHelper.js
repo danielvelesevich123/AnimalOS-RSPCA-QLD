@@ -17,11 +17,11 @@
                     cmp,
                     'aos_SOQLProc',
                     {
-                        'SOQL': 'SELECT Id, One_Drive_Folder_Name__c FROM ' + overriddenSObjectName + ' WHERE Id IN (SELECT ' + apiNameLookupField + ' FROM ' + sObjectName + ' WHERE Id = \'' + payload.recordId + '\')'
+                        'SOQL': 'SELECT Id, aos_One_Drive_Folder_Name__c FROM ' + overriddenSObjectName + ' WHERE Id IN (SELECT ' + apiNameLookupField + ' FROM ' + sObjectName + ' WHERE Id = \'' + payload.recordId + '\')'
                     },
                     function (response) {
                         if (response.isValid && response.dto.records[0]) {
-                            let oneDriveFolderName = response.dto.records[0].One_Drive_Folder_Name__c;
+                            let oneDriveFolderName = response.dto.records[0].aos_One_Drive_Folder_Name__c;
                             let recordId = response.dto.records[0].Id;
                             payload.recordName = oneDriveFolderName ? oneDriveFolderName : recordId;
                             payload.sObjectName = overriddenSObjectName;

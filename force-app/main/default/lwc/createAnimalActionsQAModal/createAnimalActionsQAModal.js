@@ -18,7 +18,7 @@ export default class CreateAnimalActionsQAModal extends LightningModal {
 
         try {
             const response = await execute(
-                'CreateAnimalActionsQAMetaProc',
+                'aos_CreateAnimalActionsQAMetaProc',
                 {
                     recordId: this.recordId
                 }
@@ -60,7 +60,7 @@ export default class CreateAnimalActionsQAModal extends LightningModal {
 
         try {
             await execute(
-                'CreateAnimalActionsQASubmitProc',
+                'aos_CreateAnimalActionsQASubmitProc',
                 {
                     animalActions: this.animalActions
                 }

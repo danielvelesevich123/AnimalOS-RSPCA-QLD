@@ -38,7 +38,7 @@ export default class AnimalsNearby extends LightningElement {
     async refresh() {
         this.isBusy = true;
         try {
-            let response = await execute('AnimalsNearbyMetaProc', {
+            let response = await execute('aos_AnimalsNearbyMetaProc', {
                 recordId: this.recordId,
                 distance: this.distance,
                 animalStatusFilter: this.animalStatusFilter

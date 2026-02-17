@@ -9,8 +9,8 @@
             function(response) {
                 cmp.set('v.meta', response);
 
-                let availableProfiles = response.dto.oneDriveFilePermission.Available_Profiles_Text__c.split(';');
-                cmp.set('v.meta.dto.oneDriveFilePermission.Available_Profiles_Text__c', availableProfiles);
+                let availableProfiles = response.dto.oneDriveFilePermission.aos_Available_Profiles_Text__c.split(';');
+                cmp.set('v.meta.dto.oneDriveFilePermission.aos_Available_Profiles_Text__c', availableProfiles);
             },
             function(errors) {
                 console.log(errors);
@@ -24,10 +24,10 @@
 
     handleSaveClick: function (cmp, event, helper) {
         helper.execute(cmp, 'aos_DMLProc', {
-            sObjectType: 'One_Drive_File_Permission__c',
+            sObjectType: 'aos_One_Drive_File_Permission__c',
             upsert: [{
                 Id: cmp.get('v.meta.dto.oneDriveFilePermission.Id'),
-                Available_Profiles_Text__c: cmp.get('v.meta.dto.oneDriveFilePermission.Available_Profiles_Text__c').toString().replaceAll(',',';')
+                aos_Available_Profiles_Text__c: cmp.get('v.meta.dto.oneDriveFilePermission.aos_Available_Profiles_Text__c').toString().replaceAll(',',';')
             }]
             },
             function(response) {

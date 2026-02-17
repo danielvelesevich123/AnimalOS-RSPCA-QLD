@@ -22,7 +22,7 @@ export default class JobContactsAddInteractionCautionForm extends LightningEleme
 
     refresh() {
         this.isBusy = true;
-        return execute('JobContactsAddInteractionCautionMetaProc', {jobContactId: this.jobContactId})
+        return execute('aos_JobContactsAddIntCautionMetaProc', {jobContactId: this.jobContactId})
             .then(response => {
                 this.interactionCaution = response.dto.interactionCaution || {};
                 this.selectOptions = response.selectOptions;

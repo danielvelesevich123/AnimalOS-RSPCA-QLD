@@ -42,7 +42,7 @@ export default class ContactsNearby extends LightningElement {
     async search() {
         if (this.recordId) {
             try {
-                let response = await execute('ContactsNearbyMetaProc', {
+                let response = await execute('aos_ContactsNearbyMetaProc', {
                     recordId: this.recordId,
                     distance: this.distance,
                     filters: this.refs?.filters?.filters

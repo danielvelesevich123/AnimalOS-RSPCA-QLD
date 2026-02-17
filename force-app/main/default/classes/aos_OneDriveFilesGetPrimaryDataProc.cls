@@ -7,7 +7,7 @@ public without sharing class aos_OneDriveFilesGetPrimaryDataProc extends aos_Abs
         String folderName = this.request.getRequiredString('folderName');
 
         SObjectType sObjectTypeName = recordId.getSobjectType();
-        String sObjectTypeNameString = recordId.getSobjectType() == animalos__Animal__c.SObjectType ? 'animalos_Animal__c' : aos_OneDriveCreateFileSObjectProc.getLookupFieldName(sObjectTypeName);
+        String sObjectTypeNameString = recordId.getSobjectType() == animalos__Animal__c.SObjectType ? 'aos_Animal__c' : aos_OneDriveCreateFileSObjectProc.getLookupFieldName(sObjectTypeName);
 
         String oneDriveFilesQuery = 'SELECT Id, aos_Is_Primary__c, aos_Profile_Image__c, Name FROM aos_OneDrive_File__c WHERE '
                 + sobjectTypeNameString.remove('__c') + '__c = \'' + recordId + '\'' + ' AND aos_Folder_Name__c = \'' + folderName + '\'';

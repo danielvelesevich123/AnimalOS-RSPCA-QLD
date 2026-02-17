@@ -16,7 +16,7 @@
     <aura:attribute name="enableProfilePhotoFileSelection" type="Boolean" default="false"/>
     <aura:attribute name="isFilesLoad" type="Boolean" default="false"/>
     <aura:attribute name="recordName" type="String" access="global"
-                    default="{!v.recordFields.One_Drive_Folder_Name__c == null ? v.recordId + (v.folderNamePostfix == '' ? '' : '-' + v.folderNamePostfix) : v.recordFields.One_Drive_Folder_Name__c + (v.folderNamePostfix == '' ? '' : '-' + v.folderNamePostfix) }"/>
+                    default="{!v.recordFields.aos_One_Drive_Folder_Name__c == null ? v.recordId + (v.folderNamePostfix == '' ? '' : '-' + v.folderNamePostfix) : v.recordFields.aos_One_Drive_Folder_Name__c + (v.folderNamePostfix == '' ? '' : '-' + v.folderNamePostfix) }"/>
     <aura:attribute name="isFullView" type="Boolean" access="global" default="true"/>
     <aura:attribute name="isFiles" type="Boolean" access="global" default="false"/>
     <aura:attribute name="isRestore" type="Boolean" access="global" default="false"/>
@@ -31,7 +31,7 @@
 
     <force:recordData aura:id="recordLoader"
                       recordId="{!v.recordId}"
-                      fields="Id, One_Drive_Folder_Name__c"
+                      fields="Id, aos_One_Drive_Folder_Name__c"
                       targetFields="{!v.recordFields }"
                       targetError="{!v.recordError}"
     />

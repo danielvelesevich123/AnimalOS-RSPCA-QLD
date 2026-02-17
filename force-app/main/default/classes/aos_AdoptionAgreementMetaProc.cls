@@ -87,6 +87,7 @@ public without sharing class aos_AdoptionAgreementMetaProc extends aos_MetadataP
                         animalos__Current_Site__r.aos_Postcode__c,
                         animalos__Current_Site__r.aos_Site_Phone__c,
                         aos_Microchip_Company__c,
+                        aos_Microchip_Implant_Date__c,
                         animalos__Current_Weight__c,
                         aos_Neutered_Spayed_By__c,
                         aos_Neutered_Spayed_By__r.Name,

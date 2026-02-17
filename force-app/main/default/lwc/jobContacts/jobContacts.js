@@ -31,7 +31,7 @@ export default class JobContacts extends LightningElement {
     }
 
     refresh() {
-        return execute('JobContactsMetaProc', {
+        return execute('aos_JobContactsMetaProc', {
             recordId: this.recordId
         })
             .then(response => {
@@ -153,7 +153,7 @@ export default class JobContacts extends LightningElement {
         let interactionCaution = event.detail?.interactionCaution;
 
         if (interactionCaution) {
-            execute('vertic_DMLProc', {
+            execute('aos_DMLProc', {
                 sObjectType: 'animalos__Interaction_Caution__c',
                 upsert: [interactionCaution]
             })

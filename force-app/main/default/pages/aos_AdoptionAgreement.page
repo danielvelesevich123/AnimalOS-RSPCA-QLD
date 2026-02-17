@@ -59,7 +59,7 @@
                             Person Address:
                         </th>
                         <th colspan="3">
-                            {!dto['referral']['Address__c']}
+                            {!dto['referral']['aos_Address__c']}
                         </th>
                     </tr>
                     <tr>
@@ -67,13 +67,13 @@
                             Home Phone:
                         </th>
                         <th>
-                            {!dto['referral']['Home_Phone__c']}
+                            {!dto['referral']['aos_Home_Phone__c']}
                         </th>
                         <th>
                             Person ID:
                         </th>
                         <th>
-                            {!dto['referral']['Contact_Code__c']}
+                            {!dto['referral']['aos_Contact_Code__c']}
                         </th>
                     </tr>
                     <tr>
@@ -81,13 +81,13 @@
                             Work Phone:
                         </th>
                         <th>
-                            {!dto['referral']['Work_Phone__c']}
+                            {!dto['referral']['aos_Work_Phone__c']}
                         </th>
                         <th>
                             Receipt #:
                         </th>
                         <th>
-                            ADOPT{!dto['referral']['Referral_ID__c']}
+                            ADOPT{!dto['referral']['aos_Referral_ID__c']}
                         </th>
                     </tr>
                     <tr>
@@ -95,13 +95,13 @@
                             Mobile:
                         </th>
                         <th>
-                            {!dto['referral']['Mobile__c']}
+                            {!dto['referral']['aos_Mobile__c']}
                         </th>
                         <th>
                             Receipt Date:
                         </th>
                         <th>
-                            {!dto['referral']['Signing_Date__c']}
+                            {!dto['referral']['aos_Signing_Date__c']}
                         </th>
                     </tr>
                     <tr>
@@ -109,7 +109,7 @@
                             Email:
                         </th>
                         <th>
-                            {!dto['referral']['Email__c']}
+                            {!dto['referral']['aos_Email__c']}
                         </th>
                         <th>
                             Adopted Date:
@@ -239,11 +239,11 @@
                             </p>
                         </td>
                         <td style="width: 45%;border-left: none">
-                            <img src="{!dto['referral']['Additional_Signature_URL__c']}" alt="Signature" height="60" width="200"/>
+                            <img src="{!dto['referral']['aos_Additional_Signature_URL__c']}" alt="Signature" height="60" width="200"/>
                         </td>
                         <td>
                             <p>
-                                Date:&nbsp;{!dto['referral']['Additional_Signing_Date__c']}
+                                Date:&nbsp;{!dto['referral']['aos_Additional_Signing_Date__c']}
                             </p>
                         </td>
                     </tr>
@@ -267,19 +267,19 @@
                 <div>In accordance with the above, RSPCA QLD may use or share your personal information with third party suppliers engaged by us for marketing purposes.</div>
                 <br/>
                 <div>If you do not wish to have your personal information used in that way, please opt out here:
-                    <apex:outputPanel rendered="{!IF(dto['referral']['Third_Party_Marketing_Opt_Out__c'] == true, true, false)}">
+                    <apex:outputPanel rendered="{!IF(dto['referral']['aos_Third_Party_Marketing_Opt_Out__c'] == true, true, false)}">
                         <img src="/img/checkbox_checked.gif"></img>
                     </apex:outputPanel>
-                    <apex:outputPanel rendered="{!IF(dto['referral']['Third_Party_Marketing_Opt_Out__c'] == false, true, false)}">
+                    <apex:outputPanel rendered="{!IF(dto['referral']['aos_Third_Party_Marketing_Opt_Out__c'] == false, true, false)}">
                         <img src="/img/checkbox_unchecked.gif"></img>
                     </apex:outputPanel>
                 </div>
                 <br/>
                 <div>I would like to receive promotions, pet advice and special offers from the Royal Canin’s Healthy Pets Club:
-                    <apex:outputPanel rendered="{!IF(dto['referral']['Royal_Canin_s_Healthy_Pets_Club_Opt_In__c'] == true, true, false)}">
+                    <apex:outputPanel rendered="{!IF(dto['referral']['aos_Royal_Canin_s_Healthy_Pets_Club_Opt__c'] == true, true, false)}">
                         <img src="/img/checkbox_checked.gif"></img>
                     </apex:outputPanel>
-                    <apex:outputPanel rendered="{!IF(dto['referral']['Royal_Canin_s_Healthy_Pets_Club_Opt_In__c'] == false, true, false)}">
+                    <apex:outputPanel rendered="{!IF(dto['referral']['aos_Royal_Canin_s_Healthy_Pets_Club_Opt__c'] == false, true, false)}">
                         <img src="/img/checkbox_unchecked.gif"></img>
                     </apex:outputPanel>
                 </div>
@@ -339,13 +339,13 @@
                                 Microchip Implant Date:
                             </th>
                             <th>
-                                {!animal['Microchip_Implant_Date__c']}
+                                {!animal['aos_Microchip_Implant_Date__c']}
                             </th>
                             <th>
                                 Microchip Company:
                             </th>
                             <th>
-                                {!animal['Microchip_Company__c']}
+                                {!animal['aos_Microchip_Company__c']}
                             </th>
                         </tr>
                         <tr>
@@ -396,7 +396,7 @@
                                 Shelter Tag:
                             </th>
                             <th>
-                                {!animal['Tag_Number__c']}
+                                {!animal['aos_Tag_Number__c']}
                             </th>
                         </tr>
                         <tr>
@@ -439,10 +439,10 @@
                                 Heartworm Test:
                             </th>
                             <th>
-                                {!animal['Heartworm_Test_Outcome__c']}
+                                {!animal['aos_Heartworm_Test_Outcome__c']}
                             </th>
                             <th>
-                                {!animal['Last_Heartworm_Test_Date__c']}
+                                {!animal['aos_Last_Heartworm_Test_Date__c']}
                             </th>
                         </tr>
                         <tr>
@@ -450,10 +450,10 @@
                                 FIV/FeLV Test:
                             </th>
                             <th>
-                                {!animal['FIV_FeLV_Test_Outcome__c']}
+                                {!animal['aos_FIV_FeLV_Test_Outcome__c']}
                             </th>
                             <th>
-                                {!animal['FIV_Date_Administered__c']}
+                                {!animal['aos_FIV_Date_Administered__c']}
                             </th>
                         </tr>
                     </table>
@@ -478,13 +478,13 @@
                         </td>
                         <td class="header-table" style="text-align: right" width="35%">
                             <apex:outputPanel rendered="{!animal['animalos__Current_Site__c'] != ' '}">
-                                <b>{!animal['animalos__Current_Site__r']['Street_Address__c']}</b>
+                                <b>{!animal['animalos__Current_Site__r']['aos_Street_Address__c']}</b>
                                 <br/>
 
-                                <b>{!animal['animalos__Current_Site__r']['Suburb__c']} {!animal['animalos__Current_Site__r']['State__c']} {!animal['animalos__Current_Site__r']['Postcode__c']}</b>
+                                <b>{!animal['animalos__Current_Site__r']['aos_Suburb__c']} {!animal['animalos__Current_Site__r']['aos_State__c']} {!animal['animalos__Current_Site__r']['aos_Postcode__c']}</b>
                                 <br/>
 
-                                <b>{!animal['animalos__Current_Site__r']['Site_Phone__c']}</b>
+                                <b>{!animal['animalos__Current_Site__r']['aos_Site_Phone__c']}</b>
                             </apex:outputPanel>
                         </td>
                     </tr>
@@ -537,11 +537,11 @@
 
                             <b>Mixed:</b>
 
-                            <apex:outputPanel rendered="{!animal['Crossbreed__c'] != true}">
+                            <apex:outputPanel rendered="{!animal['aos_Crossbreed__c'] != true}">
                                 No
                             </apex:outputPanel>
 
-                            <apex:outputPanel rendered="{!animal['Crossbreed__c'] == true}">
+                            <apex:outputPanel rendered="{!animal['aos_Crossbreed__c'] == true}">
                                 Yes
                             </apex:outputPanel>
                             <br/>
@@ -610,8 +610,8 @@
 
                             <b>By:</b>
 
-                            <apex:outputPanel rendered="{!animal['Neutered_Spayed_By__c'] != ' '}">
-                                {!animal['Neutered_Spayed_By__r']['Name']}
+                            <apex:outputPanel rendered="{!animal['aos_Neutered_Spayed_By__c'] != ' '}">
+                                {!animal['aos_Neutered_Spayed_By__r']['Name']}
                             </apex:outputPanel>
                             <br/>
 
@@ -636,13 +636,13 @@
                             </td>
                             <td class="header-table" style="text-align: right" width="35%">
                                 <apex:outputPanel rendered="{!animal['animalos__Current_Site__c'] != ' '}">
-                                    <b>{!animal['animalos__Current_Site__r']['Street_Address__c']}</b>
+                                    <b>{!animal['animalos__Current_Site__r']['aos_Street_Address__c']}</b>
                                     <br/>
 
-                                    <b>{!animal['animalos__Current_Site__r']['Suburb__c']} {!animal['animalos__Current_Site__r']['State__c']} {!animal['animalos__Current_Site__r']['Postcode__c']}</b>
+                                    <b>{!animal['animalos__Current_Site__r']['aos_Suburb__c']} {!animal['animalos__Current_Site__r']['aos_State__c']} {!animal['animalos__Current_Site__r']['aos_Postcode__c']}</b>
                                     <br/>
 
-                                    <b>{!animal['animalos__Current_Site__r']['Site_Phone__c']}</b>
+                                    <b>{!animal['animalos__Current_Site__r']['aos_Site_Phone__c']}</b>
                                 </apex:outputPanel>
                             </td>
                         </tr>
@@ -695,11 +695,11 @@
 
                                 <b>Mixed:</b>
 
-                                <apex:outputPanel rendered="{!animal['Crossbreed__c'] != true}">
+                                <apex:outputPanel rendered="{!animal['aos_Crossbreed__c'] != true}">
                                     No
                                 </apex:outputPanel>
 
-                                <apex:outputPanel rendered="{!animal['Crossbreed__c'] == true}">
+                                <apex:outputPanel rendered="{!animal['aos_Crossbreed__c'] == true}">
                                     Yes
                                 </apex:outputPanel>
                                 <br/>
@@ -723,7 +723,7 @@
                                 <b>VIP Tag:</b> {!animal['animalos__Shelter_ID__c']}
                                 <br/>
 
-                                <b>Primary Microchip Brand:</b> {!animal['Microchip_Company__c']}
+                                <b>Primary Microchip Brand:</b> {!animal['aos_Microchip_Company__c']}
                                 <br/>
 
                                 <b>Primary Microchip #:</b> {!animal['animalos__Microchip_Number__c']}
@@ -863,7 +863,7 @@
                         <table>
                             <tr>
                                 <td width="25%">
-                                    {!waiver['Indemnity_Waiver_Title__c']}
+                                    {!waiver['aos_Indemnity_Waiver_Title__c']}
                                 </td>
                                 <td width="75%">
                                     <apex:outputText escape="false" value="{!waiver['animalos__Animal_Indemnity_Waiver_Content__c']}"></apex:outputText>
@@ -891,11 +891,11 @@
                             </p>
                         </td>
                         <td style="border-left: none">
-                            <img src="{!dto['referral']['Signature_URL__c']}" alt="Signature"></img>
+                            <img src="{!dto['referral']['aos_Signature_URL__c']}" alt="Signature"></img>
                         </td>
                         <td>
                             <p>
-                                Date:&nbsp;{!dto['referral']['Signing_Date__c']}
+                                Date:&nbsp;{!dto['referral']['aos_Signing_Date__c']}
                             </p>
                         </td>
                     </tr>
@@ -996,7 +996,7 @@
                     <apex:repeat rendered="{!dto['hasAnimalTypeInformation']}" value="{!dto['animalTypesInformation']}" var="animalTypeInformation" id="animalTypesInformation">
                         <div>
                             <b>{!animalTypeInformation['Label']}</b>
-                            <p><apex:outputField value="{!animalTypeInformation.Information__c}"/></p>
+                            <p><apex:outputField value="{!animalTypeInformation.aos_Information__c}"/></p>
                         </div>
                     </apex:repeat>
 

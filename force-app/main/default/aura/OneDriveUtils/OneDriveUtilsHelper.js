@@ -4,7 +4,7 @@
         return new Promise(function (resolve, reject) {
             payload.helper.execute(payload.cmp, 'aos_SOQLProc',
                 {
-                    SOQL: 'SELECT DeveloperName, RecordApiName__c, DriveName__c FROM OnedriveSetting__mdt'
+                    SOQL: 'SELECT DeveloperName, aos_RecordApiName__c, aos_DriveName__c FROM aos_OnedriveSetting__mdt'
                 }
             ).then(function (response) {
                 var records = response.dto.records || [];
@@ -14,16 +14,16 @@
                 if (records.length > 0) {
 
                     records.forEach(function (record) {
-                        if (payload.overrides.has(record['DriveName__c'])) {
-                            if (!Array.isArray(payload.overrides.get(record['DriveName__c']))) {
-                                let array = [payload.overrides.get(record['DriveName__c'])];
-                                array.push(record['RecordApiName__c']);
-                                payload.overrides.set(record['DriveName__c'], array);
+                        if (payload.overrides.has(record['aos_DriveName__c'])) {
+                            if (!Array.isArray(payload.overrides.get(record['aos_DriveName__c']))) {
+                                let array = [payload.overrides.get(record['aos_DriveName__c'])];
+                                array.push(record['aos_RecordApiName__c']);
+                                payload.overrides.set(record['aos_DriveName__c'], array);
                             } else {
-                                payload.overrides.get(record['DriveName__c']).push(record['RecordApiName__c']);
+                                payload.overrides.get(record['aos_DriveName__c']).push(record['aos_RecordApiName__c']);
                             }
                         } else {
-                            payload.overrides.set(record['DriveName__c'], record['RecordApiName__c']);
+                            payload.overrides.set(record['aos_DriveName__c'], record['aos_RecordApiName__c']);
                         }
                     });
                     console.log(payload.overrides);

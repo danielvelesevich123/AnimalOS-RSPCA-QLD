@@ -2,8 +2,8 @@ public class aos_RetrieveAnimalFilesGetProc extends aos_AbstractProcessor implem
 
     private Set<String> oneDriveFileFields = new Set<String>{
             'Name',
-            'animalos_Animal__r.Name',
-            'animalos_Animal__r.animalos__Status__c',
+            'aos_Animal__r.Name',
+            'aos_Animal__r.animalos__Status__c',
             'aos_File_Link__c',
             'aos_Folder_Name__c',
             'aos_Is_Primary__c',
@@ -38,18 +38,18 @@ public class aos_RetrieveAnimalFilesGetProc extends aos_AbstractProcessor implem
         List<String> conditions = new List<String>();
         List<String> totalConditions;
 
-        conditions.add('Is_Public__c = TRUE');
-        conditions.add('Folder_Name__c LIKE \'%PHOTO%\'');
-        conditions.add('Is_Deleted__c = FALSE');
+        conditions.add('aos_Is_Public__c = TRUE');
+        conditions.add('aos_Folder_Name__c LIKE \'%PHOTO%\'');
+        conditions.add('aos_Is_Deleted__c = FALSE');
 
         if (String.isNotBlank(this.request.params.get('AnimalId'))) {
             String animalId = this.request.params.get('AnimalId');
-            conditions.add('animalos_Animal__c = :animalId');
+            conditions.add('aos_Animal__c = :animalId');
             totalConditions = conditions.clone();
         } else {
             if (String.isNotBlank(animalStatus)) {
                 statuses = animalStatus.split(',');
-                conditions.add('animalos_Animal__r.animalos__Status__c IN :statuses');
+                conditions.add('aos_Animal__r.animalos__Status__c IN :statuses');
             }
 
             if (lastModifiedDate != null) {
@@ -70,11 +70,11 @@ public class aos_RetrieveAnimalFilesGetProc extends aos_AbstractProcessor implem
                 .setOrdering(aos_OneDrive_File__c.Id, aos_QueryFactory.SortOrder.ASCENDING);
         List<aos_OneDrive_File__c> oneDriveFiles = Database.query(queryFactory.toSOQL());
 
-        Integer recordsLeft = (Integer) Database.countQuery(('SELECT COUNT() FROM OneDrive_File__c WHERE ' + String.join(conditions, ' AND '))) - (queryLimit == null ? 0 : queryLimit);
+        Integer recordsLeft = (Integer) Database.countQuery(('SELECT COUNT() FROM aos_OneDrive_File__c WHERE ' + String.join(conditions, ' AND '))) - (queryLimit == null ? 0 : queryLimit);
 
         this.response.put('oneDriveFiles', oneDriveFiles);
 
-        Integer totalNumberOfRecords = (Integer) Database.countQuery(('SELECT COUNT() FROM OneDrive_File__c WHERE ' + String.join(totalConditions, ' AND ')));
+        Integer totalNumberOfRecords = (Integer) Database.countQuery(('SELECT COUNT() FROM aos_OneDrive_File__c WHERE ' + String.join(totalConditions, ' AND ')));
         this.response.put('recordsLeft', recordsLeft < 0 || String.isBlank(this.request.params.get('Limit')) ? 0 : recordsLeft);
         this.response.put('totalNumberOfRecords', totalNumberOfRecords);
     }

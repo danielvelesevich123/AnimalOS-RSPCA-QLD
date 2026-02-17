@@ -45,7 +45,7 @@
             cmp,
             'aos_SOQLProc',
             {
-                SOQL: 'SELECT Flags__c ' +
+                SOQL: 'SELECT aos_Flags__c ' +
                     'FROM animalos__Assessment__c ' +
                     'WHERE animalos__Animal__c = \'' + cmp.get('v.recordId') + '\' AND animalos__Assessment_Date_Time__c != NULL AND ' +
                     '(RecordType.DeveloperName = \'aos_Behaviour_Evaluation_Canine\' OR RecordType.DeveloperName = \'aos_Behaviour_Evaluation_Feline\') ' +

@@ -24,7 +24,7 @@ public without sharing class aos_OneDriveSetProfileImage extends aos_AbstractPro
         SObjectType sObjectTypeName = recordId.getSobjectType();
         String sObjectTypeNameString = recordId.getSobjectType() == animalos__Animal__c.SObjectType ? 'aos_Animal__c' : aos_OneDriveCreateFileSObjectProc.getLookupFieldName(sObjectTypeName);
 
-        String oneDriveFilesQuery = 'SELECT Id, Is_Primary__c, Profile_Image__c, File_Link__c, Name, aos_File_ID__c FROM aos_OneDrive_File__c WHERE ' +
+        String oneDriveFilesQuery = 'SELECT Id, aos_Is_Primary__c, aos_Profile_Image__c, aos_File_Link__c, Name, aos_File_ID__c FROM aos_OneDrive_File__c WHERE ' +
                 sObjectTypeNameString.remove('__c') + '__c = ' + '\'' + recordId + '\'';
 
         List<aos_OneDrive_File__c> oneDriveFiles = Database.query(oneDriveFilesQuery);
@@ -42,7 +42,7 @@ public without sharing class aos_OneDriveSetProfileImage extends aos_AbstractPro
             }
 
             if (aos_Utils.sObjects.isSomeFieldChanged(oneDriveFile, oneDriveFileClone, new List<String>{
-                    'Profile_Image__c'
+                    'aos_Profile_Image__c'
             })) {
                 oneDriveFilesForUpdate.add(oneDriveFile);
             }

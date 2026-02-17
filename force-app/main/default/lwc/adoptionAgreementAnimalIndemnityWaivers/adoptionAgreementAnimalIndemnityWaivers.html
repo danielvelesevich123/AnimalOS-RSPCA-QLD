@@ -3,7 +3,7 @@
         <lightning-card title={cardTitle} icon-name="utility:error" key={animal.Id}>
             <div class="slds-p-horizontal_large">
                 <template lwc:if={animalHasIndemnityWaivers} for:each={animal.animalos__Animal_Indemnity_Waivers__r} for:item="waiver" id="waivers">
-                    <lightning-card title={waiver.Indemnity_Waiver_Title__c} key={waiver.Id}>
+                    <lightning-card title={waiver.aos_Indemnity_Waiver_Title__c} key={waiver.Id}>
                         <div class="slds-p-horizontal_large">
                             <lightning-formatted-rich-text value={waiver.animalos__Animal_Indemnity_Waiver_Content__c}></lightning-formatted-rich-text>
                         </div>

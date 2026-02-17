@@ -40,14 +40,14 @@
 
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
                     <c:aos_Select label="Location"
-                                     value="{!v.meta.dto.assessment.Location__c}"
+                                     value="{!v.meta.dto.assessment.aos_Location__c}"
                                      disabled="{!v.isBusy}"
                                      options="{!v.meta.selectOptions.locationOptions}"
                     />
                 </div>
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
                     <lightning:textarea label="Other Location"
-                                        value="{!v.meta.dto.assessment.Other_Location__c}"
+                                        value="{!v.meta.dto.assessment.aos_Other_Location__c}"
                                         disabled="{!v.isBusy}"
                                         maxlength="255"
                     />
@@ -60,7 +60,7 @@
                         <c:aos_HelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.socialResponseHelpText}"/>
                     </div>
                     <c:aos_Select label="Social Response SAE"
-                                     value="{!v.meta.dto.assessment.Social_Response_SAE__c}"
+                                     value="{!v.meta.dto.assessment.aos_Social_Response_SAE__c}"
                                      disabled="{!v.isBusy}"
                                      class="label-hidden"
                                      options="{!v.meta.selectOptions.socialResponseSAEOptions}"
@@ -68,7 +68,7 @@
                 </div>
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
                     <lightning:textarea label="Social Response Comments"
-                                        value="{!v.meta.dto.assessment.Social_Response_Comments__c}"
+                                        value="{!v.meta.dto.assessment.aos_Social_Response_Comments__c}"
                                         disabled="{!v.isBusy}"
                     />
                 </div>
@@ -79,7 +79,7 @@
                         <c:aos_HelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.handlingHelpText}"/>
                     </div>
                     <c:aos_Select label="Handling SAE"
-                                     value="{!v.meta.dto.assessment.Handling_SAE__c}"
+                                     value="{!v.meta.dto.assessment.aos_Handling_SAE__c}"
                                      disabled="{!v.isBusy}"
                                      class="label-hidden"
                                      options="{!v.meta.selectOptions.handlingSAEOptions}"
@@ -87,7 +87,7 @@
                 </div>
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
                     <lightning:textarea label="Handling Comments"
-                                        value="{!v.meta.dto.assessment.Handling_Comments__c}"
+                                        value="{!v.meta.dto.assessment.aos_Handling_Comments__c}"
                                         disabled="{!v.isBusy}"
                     />
                 </div>
@@ -98,7 +98,7 @@
                         <c:aos_HelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.explorationHelpText}"/>
                     </div>
                     <c:aos_Select label="Exploration SAE"
-                                     value="{!v.meta.dto.assessment.Exploration_SAE__c}"
+                                     value="{!v.meta.dto.assessment.aos_Exploration_SAE__c}"
                                      disabled="{!v.isBusy}"
                                      class="label-hidden"
                                      options="{!v.meta.selectOptions.explorationSAEOptions}"
@@ -106,7 +106,7 @@
                 </div>
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
                     <lightning:textarea label="Exploration Comments"
-                                        value="{!v.meta.dto.assessment.Exploration_Comments__c}"
+                                        value="{!v.meta.dto.assessment.aos_Exploration_Comments__c}"
                                         disabled="{!v.isBusy}"
                     />
                 </div>
@@ -117,7 +117,7 @@
                         <c:aos_HelpText class="slds-m-bottom_x-small" width="250px" text="{!v.meta.dto.helpTextsMap.bodyLanguageHelpText}"/>
                     </div>
                     <c:aos_Select label="Body Language SAE"
-                                     value="{!v.meta.dto.assessment.Body_Language_SAE__c}"
+                                     value="{!v.meta.dto.assessment.aos_Body_Language_SAE__c}"
                                      disabled="{!v.isBusy}"
                                      class="label-hidden"
                                      options="{!v.meta.selectOptions.bodyLanguageSAEOptions}"
@@ -125,7 +125,7 @@
                 </div>
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
                     <lightning:textarea label="Body Language Comments"
-                                        value="{!v.meta.dto.assessment.Body_Language_Comments__c}"
+                                        value="{!v.meta.dto.assessment.aos_Body_Language_Comments__c}"
                                         disabled="{!v.isBusy}"
                     />
                 </div>
@@ -146,7 +146,7 @@
                 </div>
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
                     <lightning:textarea label="Behaviours Exhibited Comments"
-                                        value="{!v.meta.dto.assessment.Behaviours_Exhibited_Comments__c}"
+                                        value="{!v.meta.dto.assessment.aos_Behaviours_Exhibited_Comments__c}"
                                         disabled="{!v.isBusy}"
                     />
                 </div>
@@ -167,7 +167,7 @@
                 </div>
                 <div class="slds-col slds-size_1-of-1 slds-p-bottom_small">
                     <lightning:textarea label="Household Recommendations Comments"
-                                        value="{!v.meta.dto.assessment.Household_Recommendation_Comments__c}"
+                                        value="{!v.meta.dto.assessment.aos_Household_Recommendation_Comments__c}"
                                         disabled="{!v.isBusy}"
                     />
                 </div>

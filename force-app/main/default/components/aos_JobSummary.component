@@ -413,7 +413,7 @@
                 </td>
                 <td colspan="3" style="vertical-align: top">
                     <p>
-                        <apex:variable value="{!job['animalos__Job_Outcome__c'] + IF(AND(NOT(ISBLANK(job['animalos__Job_Outcome__c'])), NOT(ISBLANK(job['Job_Outcome_Multi__c']))), ';', '') + job['Job_Outcome_Multi__c']}" var="jobOutcome"/>
+                        <apex:variable value="{!job['animalos__Job_Outcome__c'] + IF(AND(NOT(ISBLANK(job['animalos__Job_Outcome__c'])), NOT(ISBLANK(job['aos_Job_Outcome_Multi__c']))), ';', '') + job['aos_Job_Outcome_Multi__c']}" var="jobOutcome"/>
                         {!
                             IF(
                                 LEFT(TRIM(jobOutcome), 1) = ';',

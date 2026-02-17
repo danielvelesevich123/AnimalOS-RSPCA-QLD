@@ -18,7 +18,7 @@ export default class AdoptionScreenPage extends LightningElement {
     connectedCallback() {
         this.isBusy = true;
 
-        execute('AdoptionScreenMetaProc', {unitId: this.unitId})
+        execute('aos_AdoptionScreenMetaProc', {unitId: this.unitId})
             .then(response => {
                 this.meta = response;
                 this.startSlideshow();

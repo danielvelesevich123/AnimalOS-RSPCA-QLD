@@ -9,7 +9,7 @@ public class aos_OneDriveCopyFilesToFolderProc extends aos_AbstractProcessor {
     }
 
     private Set<String> recordsQueryFields = new Set<String>{
-            'One_Drive_Folder_Name__c'
+            'aos_One_Drive_Folder_Name__c'
     };
 
     private Set<String> oneDriveFilesQueryFields = new Set<String>{
@@ -56,7 +56,7 @@ public class aos_OneDriveCopyFilesToFolderProc extends aos_AbstractProcessor {
         String fromDriveId = drives.get(driveNames.get(sourceRecordId.getSobjectType().getDescribe().getName()));
         String toDriveId = drives.get(driveNames.get(targetRecordId.getSobjectType().getDescribe().getName()));
 
-        String folderName = String.valueOf(toRecord.get('One_Drive_Folder_Name__c'));
+        String folderName = String.valueOf(toRecord.get('aos_One_Drive_Folder_Name__c'));
 
         if ('Adoption Photos'.equalsIgnoreCase(this.targetFolderType)) {
             toDriveId = drives.get('Adoption');

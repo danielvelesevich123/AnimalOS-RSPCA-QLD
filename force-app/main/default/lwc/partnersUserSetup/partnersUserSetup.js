@@ -55,18 +55,18 @@ export default class PartnersUserSetup extends LightningElement {
 
         switch (path) {
             case 'site':
-                this.locationVolunteer.Location__c = event.detail.value;
+                this.locationVolunteer.aos_Location__c = event.detail.value;
                 this.locationVolunteer.block = null;
                 this.locationVolunteer.unit = null;
                 await this.resetLocationVolunteerForm();
                 break;
             case 'block':
-                this.locationVolunteer.Location__c = event.detail.value;
+                this.locationVolunteer.aos_Location__c = event.detail.value;
                 this.locationVolunteer.unit = null;
                 await this.resetLocationVolunteerForm();
                 break;
             case 'unit':
-                this.locationVolunteer.Location__c = event.detail.value;
+                this.locationVolunteer.aos_Location__c = event.detail.value;
                 break;
         }
     }
@@ -95,7 +95,7 @@ export default class PartnersUserSetup extends LightningElement {
 
         try {
             await execute(
-                'PartnersUserSetupActivateUserProc',
+                'aos_PartnersUserSetupActivateUserProc',
                 {
                     recordId: this.recordId,
                     user: this.user
@@ -104,7 +104,7 @@ export default class PartnersUserSetup extends LightningElement {
 
             if (this.isFosterProfile && !this.userExists) {
                 await execute(
-                    'PartnersUserSetupAddLVProc',
+                    'aos_PartnersUserSetupAddLVProc',
                     {
                         recordId: this.recordId,
                         location: this.fosterLocation
@@ -128,7 +128,7 @@ export default class PartnersUserSetup extends LightningElement {
 
         try {
             await execute(
-                'PartnersUserSetupDeactivateUserProc',
+                'aos_PartnersUserSetupDeactivateUserProc',
                 {
                     recordId: this.recordId
                 }
@@ -148,7 +148,7 @@ export default class PartnersUserSetup extends LightningElement {
         this.isBusy = true;
         try {
             const response = await execute(
-                'PartnersUserSetupMetaProc',
+                'aos_PartnersUserSetupMetaProc',
                 {
                     recordId: this.recordId
                 }
@@ -160,8 +160,8 @@ export default class PartnersUserSetup extends LightningElement {
             this.doesCommunityExist = response.dto.doesCommunityExist || false;
             this.selectOptions = response.selectOptions || {};
             this.locationVolunteer = {
-                Volunteer__c: this.contact.Id,
-                Status__c: !this.user.Id || this.contact.IsActive ? 'Active' : 'Inactive'
+                aos_Volunteer__c: this.contact.Id,
+                aos_Status__c: !this.user.Id || this.contact.IsActive ? 'Active' : 'Inactive'
             };
         } catch (errors) {
             this.isBusy = false;
@@ -175,14 +175,14 @@ export default class PartnersUserSetup extends LightningElement {
             index = event.detail.index,
             locationVolunteer = this.locationVolunteers[index];
 
-        locationVolunteer.Status__c = action === 'activate' ? 'Active' : 'Inactive';
+        locationVolunteer.aos_Status__c = action === 'activate' ? 'Active' : 'Inactive';
 
         this.isBusy = true;
         try {
             const response = await execute(
                 'vertic_DMLProc',
                 {
-                    sObjectType: 'Location_Volunteer__c',
+                    sObjectType: 'aos_Location_Volunteer__c',
                     upsert: [locationVolunteer]
                 });
 
@@ -210,14 +210,14 @@ export default class PartnersUserSetup extends LightningElement {
         this.isBusy = true;
 
         try {
-            this.locationVolunteer.Volunteer__c = this.recordId;
-            this.locationVolunteer.Status__c = 'Active';
+            this.locationVolunteer.aos_Volunteer__c = this.recordId;
+            this.locationVolunteer.aos_Status__c = 'Active';
 
             let request,
                 processor;
 
             if (this.isFosterProfile) {
-                processor = 'PartnersUserSetupAddLVProc';
+                processor = 'aos_PartnersUserSetupAddLVProc';
                 request = {
                     recordId: this.recordId,
                     location: this.fosterLocation
@@ -226,7 +226,7 @@ export default class PartnersUserSetup extends LightningElement {
                 processor = 'vertic_DMLProc';
                 request = {
                     upsert: [this.locationVolunteer],
-                    sObjectType: 'Location_Volunteer__c'
+                    sObjectType: 'aos_Location_Volunteer__c'
                 };
             }
 
@@ -263,11 +263,11 @@ export default class PartnersUserSetup extends LightningElement {
     }
 
     get locationIds() {
-        return this.locationVolunteers.map(locationVolunteer => locationVolunteer.Location__c);
+        return this.locationVolunteers.map(locationVolunteer => locationVolunteer.aos_Location__c);
     }
 
     get parentBlockIds() {
-        return this.locationVolunteers.map(locationVolunteer => locationVolunteer.Location__r?.animalos__Parent_Block__c);
+        return this.locationVolunteers.map(locationVolunteer => locationVolunteer.aos_Location__r?.animalos__Parent_Block__c);
     }
 
     get offsiteLocationFilter() {

@@ -77,7 +77,7 @@ public without sharing class aos_AnimalWelfareLOISearchProc extends aos_Abstract
                         'animalos__Address__Longitude__s', 'animalos__Address__Street__s',
                         'animalos__Address__City__s', 'animalos__Address__CountryCode__s',
                         'animalos__Address__PostalCode__s', 'animalos__Address__StateCode__s',
-                        'POI_Time_at_Location__c', 'Number_of_Residents__c', 'Children_at_Location__c', 'Children_Details__c', 'Location_Safety_Concerns__c'
+                        'aos_POI_Time_at_Location__c', 'aos_Number_of_Residents__c', 'aos_Children_at_Location__c', 'aos_Children_Details__c', 'aos_Location_Safety_Concerns__c'
                 })
                 .setCondition(condition)
                 .setLimit(1)

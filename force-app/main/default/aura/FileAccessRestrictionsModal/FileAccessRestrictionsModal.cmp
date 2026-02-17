@@ -11,7 +11,7 @@
                            selectedLabel="Selected"
                            fieldLevelHelp="Select the profiles that you want to give access to the file"
                            options="{!v.meta.selectOptions.availableProfilesOptions}"
-                           value="{!v.meta.dto.oneDriveFilePermission.Available_Profiles_Text__c}"
+                           value="{!v.meta.dto.oneDriveFilePermission.aos_Available_Profiles_Text__c}"
                            onchange="{! c.handleChange }"/>
 
 

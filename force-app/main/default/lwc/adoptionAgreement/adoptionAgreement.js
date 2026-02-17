@@ -25,7 +25,7 @@ export default class AdoptionAgreement extends LightningElement {
     connectedCallback() {
         this.isBusy = true;
         this.recordId = new URLSearchParams(window.location.search).get('recordId');
-        execute('AdoptionAgreementMetaProc', {recordId: this.recordId})
+        execute('aos_AdoptionAgreementMetaProc', {recordId: this.recordId})
             .then(response => {
                 this.meta = response;
                 // if (this.hasAnyDogs) {
@@ -49,15 +49,15 @@ export default class AdoptionAgreement extends LightningElement {
     }
 
     get receiptNumber() {
-        return 'ADOPT' + this.meta.dto?.referral?.Referral_ID__c;
+        return 'ADOPT' + this.meta.dto?.referral?.aos_Referral_ID__c;
     }
 
     handleThirdPartMarketingChange(event) {
-        this.meta.dto.referral.Third_Party_Marketing_Opt_Out__c = event.target.checked;
+        this.meta.dto.referral.aos_Third_Party_Marketing_Opt_Out__c = event.target.checked;
     }
 
     handleRoyalCanineChange(event) {
-        this.meta.dto.referral.Royal_Canin_s_Healthy_Pets_Club_Opt_In__c = event.target.checked;
+        this.meta.dto.referral.aos_Royal_Canin_s_Healthy_Pets_Club_Opt__c = event.target.checked;
     }
 
     saveClick(event) {
@@ -66,7 +66,7 @@ export default class AdoptionAgreement extends LightningElement {
         }
         this.meta.dto.referral.Id = this.recordId;
         this.isBusy = true;
-        execute('AdoptionAgreementSubmitProc', {
+        execute('aos_AdoptionAgreementSubmitProc', {
             adoptionAgreementSignature: this.adoptionAgreementSignature,
             indemnityWaiverContractSignature: this.indemnityWaiverContractSignature,
             referral: this.meta.dto.referral
@@ -85,7 +85,7 @@ export default class AdoptionAgreement extends LightningElement {
     sendClick(event) {
         this.isBusy = true;
 
-        execute('AdoptionAgreementSendEmailProc', {
+        execute('aos_AdoptionAgreementSendEmailProc', {
             referralId: this.recordId
         })
             .then(response => {

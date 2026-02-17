@@ -20,16 +20,16 @@
                 </td>
                 <td class="header-table" style="text-align: right" width="35%">
                     <apex:outputPanel rendered="{! NOT(ISBLANK(dto['animal'].animalos__Current_Site__c)) }">
-                        <b>{!dto['animal'].animalos__Current_Site__r.Street_Address__c}</b>
+                        <b>{!dto['animal'].animalos__Current_Site__r.aos_Street_Address__c}</b>
                         <br/>
 
-                        <b>{!dto['animal'].animalos__Current_Site__r.Suburb__c}
-                            {!dto['animal'].animalos__Current_Site__r.State__c}
-                            {!dto['animal'].animalos__Current_Site__r.Postcode__c}
+                        <b>{!dto['animal'].animalos__Current_Site__r.aos_Suburb__c}
+                            {!dto['animal'].animalos__Current_Site__r.aos_State__c}
+                            {!dto['animal'].animalos__Current_Site__r.aos_Postcode__c}
                         </b>
                         <br/>
 
-                        <b>{!dto['animal'].animalos__Current_Site__r.Site_Phone__c}</b>
+                        <b>{!dto['animal'].animalos__Current_Site__r.aos_Site_Phone__c}</b>
                     </apex:outputPanel>
                 </td>
             </tr>
@@ -82,11 +82,11 @@
 
                     <b>Mixed:</b>
 
-                    <apex:outputPanel rendered="{! NOT(dto['animal'].Crossbreed__c) }">
+                    <apex:outputPanel rendered="{! NOT(dto['animal'].aos_Crossbreed__c) }">
                         No
                     </apex:outputPanel>
 
-                    <apex:outputPanel rendered="{! dto['animal'].Crossbreed__c }">
+                    <apex:outputPanel rendered="{! dto['animal'].aos_Crossbreed__c }">
                         Yes
                     </apex:outputPanel>
                     <br/>
@@ -155,8 +155,8 @@
 
                     <b>By:</b>
 
-                    <apex:outputPanel rendered="{! NOT(ISBLANK(dto['animal'].Neutered_Spayed_By__c)) }">
-                        {!dto['animal'].Neutered_Spayed_By__r.Name}
+                    <apex:outputPanel rendered="{! NOT(ISBLANK(dto['animal'].aos_Neutered_Spayed_By__c)) }">
+                        {!dto['animal'].aos_Neutered_Spayed_By__r.Name}
                     </apex:outputPanel>
                     <br/>
                     <br/>

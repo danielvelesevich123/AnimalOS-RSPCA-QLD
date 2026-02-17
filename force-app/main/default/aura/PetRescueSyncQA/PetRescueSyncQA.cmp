@@ -35,7 +35,7 @@
                 <div class="slds-col slds-size_1-of-3">
                     <lightning:input label="PetRescue Id"
                                      fieldLevelHelp="Enter the value manually if Animal already exists in PetRescue"
-                                     value="{!v.meta.dto.animal.PetRescue_Id__c}"
+                                     value="{!v.meta.dto.animal.aos_PetRescue_Id__c}"
                                      disabled="{!v.isBusy}"
                     />
                 </div>

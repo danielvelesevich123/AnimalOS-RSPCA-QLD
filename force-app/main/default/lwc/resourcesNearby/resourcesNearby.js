@@ -39,7 +39,7 @@ export default class ResourcesNearby extends LightningElement {
     async refresh() {
         this.isBusy = true;
         try {
-            let response = await execute('ResourcesNearbyMetaProc', {
+            let response = await execute('aos_ResourcesNearbyMetaProc', {
                 recordId: this.recordId,
                 distance: this.distance,
                 selectedSkills: this.selectedSkills
@@ -127,11 +127,11 @@ export default class ResourcesNearby extends LightningElement {
 
             this.mapMarkers.push({
                 location: {
-                    City: resource.Current_Location__City__s,
-                    Country: resource.Current_Location__CountryCode__s,
-                    PostalCode: resource.Current_Location__PostalCode__s,
-                    State: resource.Current_Location__StateCode__s,
-                    Street: resource.Current_Location__Street__s
+                    City: resource.aos_Current_Location__City__s,
+                    Country: resource.aos_Current_Location__CountryCode__s,
+                    PostalCode: resource.aos_Current_Location__PostalCode__s,
+                    State: resource.aos_Current_Location__StateCode__s,
+                    Street: resource.aos_Current_Location__Street__s
                 },
                 value: 'RESOURCE' + resource.Id,
                 icon: 'standard:contact',
