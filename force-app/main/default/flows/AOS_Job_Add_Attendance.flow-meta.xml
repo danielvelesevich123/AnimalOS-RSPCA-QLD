@@ -447,7 +447,7 @@
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Rescue_Attendance</stringValue>
+                <stringValue>aos_Rescue_Attendance</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>

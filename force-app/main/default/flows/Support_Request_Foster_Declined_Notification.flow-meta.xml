@@ -77,14 +77,14 @@
             <field>SobjectType</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Support_Request__c</stringValue>
+                <stringValue>aos_Support_Request__c</stringValue>
             </value>
         </filters>
         <filters>
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Foster_Care_Request</stringValue>
+                <stringValue>aos_Foster_Care_Request</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>

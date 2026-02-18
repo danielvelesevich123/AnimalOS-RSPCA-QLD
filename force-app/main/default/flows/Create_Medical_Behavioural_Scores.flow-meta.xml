@@ -337,14 +337,14 @@
             <field>SobjectType</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Assessment_Score__c</stringValue>
+                <stringValue>aos_Assessment_Score__c</stringValue>
             </value>
         </filters>
         <filters>
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Behavioural_Score</stringValue>
+                <stringValue>aos_Behavioural_Score</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -365,14 +365,14 @@
             <field>SobjectType</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Assessment_Score__c</stringValue>
+                <stringValue>aos_Assessment_Score__c</stringValue>
             </value>
         </filters>
         <filters>
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Medical_Score</stringValue>
+                <stringValue>aos_Medical_Score</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -393,14 +393,14 @@
             <field>SobjectType</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Assessment_Score__c</stringValue>
+                <stringValue>aos_Assessment_Score__c</stringValue>
             </value>
         </filters>
         <filters>
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Behavioural_Score</stringValue>
+                <stringValue>aos_Behavioural_Score</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
@@ -421,14 +421,14 @@
             <field>SobjectType</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Assessment_Score__c</stringValue>
+                <stringValue>aos_Assessment_Score__c</stringValue>
             </value>
         </filters>
         <filters>
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Medical_Score</stringValue>
+                <stringValue>aos_Medical_Score</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>

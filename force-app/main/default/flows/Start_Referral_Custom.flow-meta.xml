@@ -415,7 +415,7 @@
                 <leftValueReference>referralRecordTypeDeveloperName</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Programs_Emergency_Boarding</stringValue>
+                    <stringValue>aos_Programs_Emergency_Boarding</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -490,7 +490,7 @@
                 <leftValueReference>referralRecordTypeDeveloperName</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Wildlife_Rescue</stringValue>
+                    <stringValue>aos_Wildlife_Rescue</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -505,7 +505,7 @@
                 <leftValueReference>referralRecordTypeDeveloperName</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Koala_Rescue</stringValue>
+                    <stringValue>aos_Koala_Rescue</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -520,7 +520,7 @@
                 <leftValueReference>referralRecordTypeDeveloperName</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Domestic_Rescue</stringValue>
+                    <stringValue>aos_Domestic_Rescue</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -535,7 +535,7 @@
                 <leftValueReference>referralRecordTypeDeveloperName</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <stringValue>Inbound_Community_Prevention</stringValue>
+                    <stringValue>aos_Inbound_Community_Prevention</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -616,7 +616,7 @@
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Programs_Emergency_Boarding</stringValue>
+                <stringValue>aos_Programs_Emergency_Boarding</stringValue>
             </value>
         </filters>
         <filters>
@@ -651,14 +651,14 @@
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Wildlife_Rescue</stringValue>
+                <stringValue>aos_Wildlife_Rescue</stringValue>
             </value>
         </filters>
         <filters>
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Inbound_Community_Prevention</stringValue>
+                <stringValue>aos_Inbound_Community_Prevention</stringValue>
             </value>
         </filters>
         <object>RecordType</object>
@@ -711,7 +711,7 @@
             <field>DeveloperName</field>
             <operator>NotEqualTo</operator>
             <value>
-                <stringValue>Domestic_Rescue</stringValue>
+                <stringValue>aos_Domestic_Rescue</stringValue>
             </value>
         </filters>
         <object>RecordType</object>
@@ -763,7 +763,7 @@
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Domestic_Rescue</stringValue>
+                <stringValue>aos_Domestic_Rescue</stringValue>
             </value>
         </filters>
         <filters>
@@ -1378,4 +1378,5 @@
         <isOutput>false</isOutput>
         <objectType>animalos__Referral__c</objectType>
     </variables>
+    <runInMode>SystemModeWithoutSharing</runInMode>
 </Flow>

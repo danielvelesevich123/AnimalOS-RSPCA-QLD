@@ -149,7 +149,7 @@
             <field>DeveloperName</field>
             <operator>EqualTo</operator>
             <value>
-                <stringValue>Safety_Declaration</stringValue>
+                <stringValue>aos_Safety_Declaration</stringValue>
             </value>
         </filters>
         <getFirstRecordOnly>true</getFirstRecordOnly>
