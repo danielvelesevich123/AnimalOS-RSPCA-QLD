@@ -1,13 +1,14 @@
 global class aos_CalcRollupsContactLocation extends animalos.vertic_SequentialScheduledBatch {
     global override Database.QueryLocator start(Database.BatchableContext BC) {
         return Database.getQueryLocator([
-                SELECT Id, Foster_Animal_Count_Total__c,
-                        Foster_Animal_Count_Last_5_Years__c, Foster_Animal_Count_Last_Month__c,
-                        Foster_Animal_Count_Last_Year__c, Foster_Animal_Count_This_Month__c,
-                        Foster_Animal_Special_Needs_Count__c, Foster_Days_Total__c, Foster_Days_Last_5_Years__c,
-                        Foster_Days_Last_Year__c, Foster_Days_Last_Month__c, Foster_Days_This_Year__c,
-                        Foster_Days_This_Month__c, Foster_Days_Special_Needs__c, Foster_Animal_Count_This_Year__c,
-                        Foster_Instances__c
+                SELECT Id,
+                        aos_Foster_Animal_Count_Total__c,
+                        aos_Foster_Animal_Count_Last_5_Years__c, aos_Foster_Animal_Count_Last_Month__c,
+                        aos_Foster_Animal_Count_Last_Year__c, aos_Foster_Animal_Count_This_Month__c,
+                        aos_Foster_Animal_Special_Needs_Count__c, aos_Foster_Days_Total__c, aos_Foster_Days_Last_5_Years__c,
+                        aos_Foster_Days_Last_Year__c, aos_Foster_Days_Last_Month__c, aos_Foster_Days_This_Year__c,
+                        aos_Foster_Days_This_Month__c, aos_Foster_Days_Special_Needs__c, aos_Foster_Animal_Count_This_Year__c,
+                        aos_Foster_Instances__c
                 FROM Contact
                 WHERE Id IN (
                         SELECT animalos__Contact__c
@@ -42,7 +43,7 @@ global class aos_CalcRollupsContactLocation extends animalos.vertic_SequentialSc
 
             List<animalos__Location__c> locations = (List<sObject>) locationsByContact.get(contact.Id);
 
-            contact.Foster_Instances__c = movementsByContact.get(contact.Id) == null ? 0 : (Decimal) movementsByContact.get(contact.Id);
+            contact.aos_Foster_Instances__c = movementsByContact.get(contact.Id) == null ? 0 : (Decimal) movementsByContact.get(contact.Id);
             this.calculateLocationMovements(contact, locations);
         }
 
@@ -51,40 +52,39 @@ global class aos_CalcRollupsContactLocation extends animalos.vertic_SequentialSc
 
 
     private void calculateLocationMovements(Contact contactForUpdate, List<SObject> locations) {
+        contactForUpdate.aos_Foster_Animal_Count_Total__c = 0;
+        contactForUpdate.aos_Foster_Animal_Count_Last_5_Years__c = 0;
+        contactForUpdate.aos_Foster_Animal_Count_Last_Month__c = 0;
+        contactForUpdate.aos_Foster_Animal_Count_Last_Year__c = 0;
+        contactForUpdate.aos_Foster_Animal_Count_This_Year__c = 0;
+        contactForUpdate.aos_Foster_Animal_Count_This_Month__c = 0;
+        contactForUpdate.aos_Foster_Animal_Special_Needs_Count__c = 0;
 
-        contactForUpdate.Foster_Animal_Count_Total__c = 0;
-        contactForUpdate.Foster_Animal_Count_Last_5_Years__c = 0;
-        contactForUpdate.Foster_Animal_Count_Last_Month__c = 0;
-        contactForUpdate.Foster_Animal_Count_Last_Year__c = 0;
-        contactForUpdate.Foster_Animal_Count_This_Year__c = 0;
-        contactForUpdate.Foster_Animal_Count_This_Month__c = 0;
-        contactForUpdate.Foster_Animal_Special_Needs_Count__c = 0;
-
-        contactForUpdate.Foster_Days_Total__c = 0;
-        contactForUpdate.Foster_Days_Last_5_Years__c = 0;
-        contactForUpdate.Foster_Days_Last_Year__c = 0;
-        contactForUpdate.Foster_Days_Last_Month__c = 0;
-        contactForUpdate.Foster_Days_This_Year__c = 0;
-        contactForUpdate.Foster_Days_This_Month__c = 0;
-        contactForUpdate.Foster_Days_Special_Needs__c = 0;
+        contactForUpdate.aos_Foster_Days_Total__c = 0;
+        contactForUpdate.aos_Foster_Days_Last_5_Years__c = 0;
+        contactForUpdate.aos_Foster_Days_Last_Year__c = 0;
+        contactForUpdate.aos_Foster_Days_Last_Month__c = 0;
+        contactForUpdate.aos_Foster_Days_This_Year__c = 0;
+        contactForUpdate.aos_Foster_Days_This_Month__c = 0;
+        contactForUpdate.aos_Foster_Days_Special_Needs__c = 0;
 
         if (locations != null) {
             for (animalos__Location__c location : (List<animalos__Location__c>) locations) {
-                contactForUpdate.Foster_Animal_Count_Total__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_Total__c, 0);
-                contactForUpdate.Foster_Animal_Count_Last_5_Years__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_Last_5_Years__c, 0);
-                contactForUpdate.Foster_Animal_Count_Last_Month__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_Last_Month__c, 0);
-                contactForUpdate.Foster_Animal_Count_Last_Year__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_Last_Year__c, 0);
-                contactForUpdate.Foster_Animal_Count_This_Month__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_This_Month__c, 0);
-                contactForUpdate.Foster_Animal_Count_This_Year__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_This_Year__c, 0);
-                contactForUpdate.Foster_Animal_Special_Needs_Count__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Special_Needs_Count__c, 0);
+                contactForUpdate.aos_Foster_Animal_Count_Total__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_Total__c, 0);
+                contactForUpdate.aos_Foster_Animal_Count_Last_5_Years__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_Last_5_Years__c, 0);
+                contactForUpdate.aos_Foster_Animal_Count_Last_Month__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_Last_Month__c, 0);
+                contactForUpdate.aos_Foster_Animal_Count_Last_Year__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_Last_Year__c, 0);
+                contactForUpdate.aos_Foster_Animal_Count_This_Month__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_This_Month__c, 0);
+                contactForUpdate.aos_Foster_Animal_Count_This_Year__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Count_This_Year__c, 0);
+                contactForUpdate.aos_Foster_Animal_Special_Needs_Count__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Animal_Special_Needs_Count__c, 0);
 
-                contactForUpdate.Foster_Days_Total__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Days_Total__c, 0);
-                contactForUpdate.Foster_Days_Last_5_Years__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Days_Last_5_Years__c, 0);
-                contactForUpdate.Foster_Days_Last_Year__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Days_Last_Year__c, 0);
-                contactForUpdate.Foster_Days_Last_Month__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Days_Last_Month__c, 0);
-                contactForUpdate.Foster_Days_This_Year__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Days_This_Year__c, 0);
-                contactForUpdate.Foster_Days_This_Month__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Days_This_Month__c, 0);
-                contactForUpdate.Foster_Days_Special_Needs__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Days_Special_Needs__c, 0);
+                contactForUpdate.aos_Foster_Days_Total__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Days_Total__c, 0);
+                contactForUpdate.aos_Foster_Days_Last_5_Years__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Days_Last_5_Years__c, 0);
+                contactForUpdate.aos_Foster_Days_Last_Year__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Days_Last_Year__c, 0);
+                contactForUpdate.aos_Foster_Days_Last_Month__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Days_Last_Month__c, 0);
+                contactForUpdate.aos_Foster_Days_This_Year__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Days_This_Year__c, 0);
+                contactForUpdate.aos_Foster_Days_This_Month__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Days_This_Month__c, 0);
+                contactForUpdate.aos_Foster_Days_Special_Needs__c += aos_Utils.objects.defaultIfNull(location.aos_Foster_Days_Special_Needs__c, 0);
             }
         }
     }

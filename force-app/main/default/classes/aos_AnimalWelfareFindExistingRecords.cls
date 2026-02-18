@@ -64,8 +64,8 @@ public without sharing class aos_AnimalWelfareFindExistingRecords extends aos_Ab
                             Account.Name,
                             AccountId,
                             animalos__POI_Description__c,
-                            ID_Number__c,
-                            ID_Type__c,
+                            aos_ID_Number__c,
+                            aos_ID_Type__c,
                             Birthdate,
                             MailingAddress,
                             MailingStreet,
@@ -77,7 +77,7 @@ public without sharing class aos_AnimalWelfareFindExistingRecords extends aos_Ab
                     WHERE LastName != NULL AND LastName = :contactVar.LastName
                     AND FirstName != NULL AND FirstName = :contactVar.FirstName
                     AND (
-                            (ID_Number__c != NULL AND ID_Number__c = :contactVar.ID_Number__c)
+                            (aos_ID_Number__c != NULL AND aos_ID_Number__c = :contactVar.aos_ID_Number__c)
                             OR (Birthdate != NULL AND Birthdate = :contactVar.Birthdate)
                             OR (Email != NULL AND Email = :contactVar.Email)
                             OR (MobilePhone != NULL AND MobilePhone = :contactVar.MobilePhone)
@@ -93,8 +93,8 @@ public without sharing class aos_AnimalWelfareFindExistingRecords extends aos_Ab
                 existingContact.Email = contactVar.Email ?? existingContact.Email;
                 existingContact.AccountId = contactVar.AccountId ?? existingContact.AccountId;
                 existingContact.animalos__POI_Description__c = contactVar.animalos__POI_Description__c ?? existingContact.animalos__POI_Description__c;
-                existingContact.ID_Type__c = contactVar.ID_Type__c ?? existingContact.ID_Type__c;
-                existingContact.ID_Number__c = contactVar.ID_Number__c ?? existingContact.ID_Number__c;
+                existingContact.aos_ID_Type__c = contactVar.aos_ID_Type__c ?? existingContact.aos_ID_Type__c;
+                existingContact.aos_ID_Number__c = contactVar.aos_ID_Number__c ?? existingContact.aos_ID_Number__c;
                 existingContact.Birthdate = contactVar.Birthdate ?? existingContact.Birthdate;
                 existingContact.MailingCountry = contactVar.MailingCountry ?? existingContact.MailingCountry;
                 existingContact.MailingState = contactVar.MailingState ?? existingContact.MailingState;

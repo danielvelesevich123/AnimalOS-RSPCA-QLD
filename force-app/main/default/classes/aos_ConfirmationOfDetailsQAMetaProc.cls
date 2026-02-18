@@ -26,7 +26,7 @@ public class aos_ConfirmationOfDetailsQAMetaProc extends aos_MetadataProcessor {
                 SELECT
                         Id,
                         animalos__Contact__r.Name,
-                        animalos__Contact__r.Full_Address__c,
+                        animalos__Contact__r.aos_Full_Address__c,
                         animalos__Contact__r.Email,
                         animalos__Contact__r.HomePhone,
                         animalos__Contact__r.MobilePhone,

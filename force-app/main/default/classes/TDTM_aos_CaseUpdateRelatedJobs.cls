@@ -47,7 +47,7 @@ global class TDTM_aos_CaseUpdateRelatedJobs extends animalos.TDTM.Handler implem
                             Case.Status,
                             Case.Description,
                             Case.Priority,
-                            Case.Animal_Report_Summary__c
+                            Case.aos_Animal_Report_Summary__c
                     });
 
             if ((isInsert || isUpdate) && crueltyRecordTypeId.equalsIgnoreCase(caseVar.RecordTypeId)) {
@@ -56,7 +56,7 @@ global class TDTM_aos_CaseUpdateRelatedJobs extends animalos.TDTM.Handler implem
                     jobVar.animalos__Subject__c = caseVar.Subject;
 //                    jobVar.Status__c = caseVar.Status;
                     jobVar.animalos__Description__c = caseVar.Description;
-                    jobVar.animalos__Animal_Report_Summary__c = caseVar.Animal_Report_Summary__c;
+                    jobVar.animalos__Animal_Report_Summary__c = caseVar.aos_Animal_Report_Summary__c;
                     if (jobVar.aos_Sync_with_Case_Priority__c) {
                         jobVar.animalos__Priority__c = caseVar.Priority;
                     }
@@ -85,7 +85,7 @@ global class TDTM_aos_CaseUpdateRelatedJobs extends animalos.TDTM.Handler implem
                             Case.Status,
                             Case.Description,
                             Case.Priority,
-                            Case.Animal_Report_Summary__c
+                            Case.aos_Animal_Report_Summary__c
                     });
 
             if ((isInsert || isUpdate) && crueltyRecordTypeId.equalsIgnoreCase(caseVar.RecordTypeId) &&

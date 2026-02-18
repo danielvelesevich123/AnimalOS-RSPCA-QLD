@@ -125,8 +125,8 @@ export default class AnimalWelfareCase extends LightningElement {
             this.recordId = searchParams.get('c__recordId');
             this.caseVar.Priority = searchParams.get('c__priority') || this.caseVar.Priority;
             this.caseVar.Origin = searchParams.get('c__caseOrigin');
-            this.caseVar.Job_Categorisation__c = searchParams.get('c__jobCategorisation');
-            this.caseVar.Reported_Animal_Type__c = searchParams.get('c__reportedAnimalType');
+            this.caseVar.aos_Job_Categorisation__c = searchParams.get('c__jobCategorisation');
+            this.caseVar.aos_Reported_Animal_Type__c = searchParams.get('c__reportedAnimalType');
             this.caseVar.Phone = searchParams.get('c__phone') ? searchParams.get('c__phone') : searchParams.get('c__mobilePhone');
             this.animalReport.animalos__Cruelty_Type__c = searchParams.get('c__jobCategorisation');
             this.animalReport.animalos__Animal_Type__c = searchParams.get('c__reportedAnimalType');
@@ -334,7 +334,7 @@ export default class AnimalWelfareCase extends LightningElement {
                 SOQL:
                     'SELECT Id, FirstName, LastName, Email, MobilePhone, Phone, ' +
                     'MailingStreet, MailingCity, MailingState, MailingPostalCode, MailingCountry,' +
-                    'ID_Type__c, ID_Number__c, Birthdate, ' +
+                    'aos_ID_Type__c, aos_ID_Number__c, Birthdate, ' +
                     '(SELECT AccountId FROM AccountContactRelations WHERE Account.RecordType.DeveloperName = \'Organization\') ' +
                     'FROM Contact ' +
                     'WHERE (MobilePhone = \'' + event.target.value + '\' OR Phone = \'' + event.target.value + '\')' +
@@ -745,7 +745,7 @@ export default class AnimalWelfareCase extends LightningElement {
     }
 
     get isIdNumberInputDisabled() {
-        return this.isJobContactSearching === true || !this.jobContact.animalos__Contact__r?.ID_Type__c;
+        return this.isJobContactSearching === true || !this.jobContact.animalos__Contact__r?.aos_ID_Type__c;
     }
 
     get showAnimalReportForm() {

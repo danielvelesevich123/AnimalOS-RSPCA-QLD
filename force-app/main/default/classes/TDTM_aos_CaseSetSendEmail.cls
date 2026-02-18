@@ -11,8 +11,8 @@ global class TDTM_aos_CaseSetSendEmail extends animalos.TDTM.Handler implements 
 
     private void setSendEmailByCaseId(List<SObject> records) {
         for (Case caseVar : (List<Case>) records) {
-            SEND_EMAIL_BY_CASE_ID.put(caseVar.Id, SEND_EMAIL_BY_CASE_ID.get(caseVar.Id) == true || caseVar.Notify_Inspector__c == true);
-            caseVar.Notify_Inspector__c = false;
+            SEND_EMAIL_BY_CASE_ID.put(caseVar.Id, SEND_EMAIL_BY_CASE_ID.get(caseVar.Id) == true || caseVar.aos_Notify_Inspector__c == true);
+            caseVar.aos_Notify_Inspector__c = false;
         }
     }
 }

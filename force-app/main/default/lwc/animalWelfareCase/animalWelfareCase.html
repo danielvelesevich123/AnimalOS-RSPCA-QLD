@@ -300,9 +300,9 @@
                                     <template lwc:if={isPOI}>
                                         <div class="slds-col slds-size_1-of-1">
                                             <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
-                                            <lightning-textarea data-path="animalos__Contact__r.POI_Description__c"
+                                            <lightning-textarea data-path="animalos__Contact__r.animalos__POI_Description__c"
                                                                 lwc:else
-                                                                value={jobContact.animalos__Contact__r.POI_Description__c}
+                                                                value={jobContact.animalos__Contact__r.animalos__POI_Description__c}
                                                                 label="POI Description"
                                                                 disabled={isJobContactSearching}
                                                                 onchange={handleJobContactFieldChange}
@@ -312,20 +312,20 @@
                                     </template>
                                     <div class="slds-col slds-size_1-of-2">
                                         <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
-                                        <c-aos-select data-path="animalos__Contact__r.ID_Type__c"
+                                        <c-aos-select data-path="animalos__Contact__r.aos_ID_Type__c"
                                                          label="ID Type"
                                                          lwc:else
                                                          placeholder="Select an Option"
                                                          onchange={handleJobContactFieldChange}
                                                          disabled={isJobContactSearching}
                                                          options={selectOptions.iDTypeOptions}
-                                                         value={jobContact.animalos__Contact__r.ID_Type__c}
+                                                         value={jobContact.animalos__Contact__r.aos_ID_Type__c}
                                         ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
                                         <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
-                                        <lightning-input data-path="animalos__Contact__r.ID_Number__c"
-                                                         value={jobContact.animalos__Contact__r.ID_Number__c}
+                                        <lightning-input data-path="animalos__Contact__r.aos_ID_Number__c"
+                                                         value={jobContact.animalos__Contact__r.aos_ID_Number__c}
                                                          label="ID Number"
                                                          lwc:else
                                                          disabled={isIdNumberInputDisabled}

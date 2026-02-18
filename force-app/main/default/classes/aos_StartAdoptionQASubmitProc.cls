@@ -25,7 +25,7 @@ public without sharing class aos_StartAdoptionQASubmitProc extends aos_AbstractP
 
         if (contactVar.Id != null) {
             Boolean isPersonOfInterest = ((Contact) aos_Utils.arrays.firstOrException([SELECT animalos__POI_Flag__c FROM Contact WHERE Id = :contactVar.Id])).animalos__POI_Flag__c;
-            Boolean doNotAllowAdoptions = ((Contact) aos_Utils.arrays.firstOrException([SELECT Do_Not_Allow_Adoptions__c FROM Contact WHERE Id = :contactVar.Id])).Do_Not_Allow_Adoptions__c;
+            Boolean doNotAllowAdoptions = ((Contact) aos_Utils.arrays.firstOrException([SELECT aos_Do_Not_Allow_Adoptions__c FROM Contact WHERE Id = :contactVar.Id])).aos_Do_Not_Allow_Adoptions__c;
             if (isPersonOfInterest) {
                 throw new aos_Structs.InvalidDataException('Contact is a Person Of Interest, we cannot process the Adoption. Please contact RSPCA for more information.');
             }
@@ -37,7 +37,7 @@ public without sharing class aos_StartAdoptionQASubmitProc extends aos_AbstractP
 
         if (alternateContactVar.Id != null && isAlternateContactFilled == true) {
             Boolean isPersonOfInterest = ((Contact) aos_Utils.arrays.firstOrException([SELECT animalos__POI_Flag__c FROM Contact WHERE Id = :alternateContactVar.Id])).animalos__POI_Flag__c;
-            Boolean doNotAllowAdoptions = ((Contact) aos_Utils.arrays.firstOrException([SELECT Do_Not_Allow_Adoptions__c FROM Contact WHERE Id = :alternateContactVar.Id])).Do_Not_Allow_Adoptions__c;
+            Boolean doNotAllowAdoptions = ((Contact) aos_Utils.arrays.firstOrException([SELECT aos_Do_Not_Allow_Adoptions__c FROM Contact WHERE Id = :alternateContactVar.Id])).aos_Do_Not_Allow_Adoptions__c;
             if (isPersonOfInterest) {
                 throw new aos_Structs.InvalidDataException('Alternate Contact is a Person Of Interest, we cannot process the Adoption. Please contact RSPCA for more information.');
             }

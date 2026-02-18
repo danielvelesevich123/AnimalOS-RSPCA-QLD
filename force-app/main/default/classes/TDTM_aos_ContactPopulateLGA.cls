@@ -34,7 +34,7 @@ global class TDTM_aos_ContactPopulateLGA extends animalos.TDTM.Handler implement
             if (isInsert || isUpdate) {
                 for (aos_Postcode__c postcode : postcodes) {
                     if (contact.MailingCity == postcode.aos_Suburb__c && contact.MailingPostalCode == postcode.aos_Postcode__c) {
-                        contact.LGA__c = postcode.aos_LGA__c;
+                        contact.aos_LGA__c = postcode.aos_LGA__c;
                     }
                 }
             }

@@ -39,13 +39,13 @@ public without sharing class aos_AnimalWelfareCaseSubmitProc extends aos_Abstrac
             jobVar.animalos__Status__c = 'New';
         }
 
-        caseVar.Location_Address__Street__s = locationOfInterestVar.animalos__Address__Street__s;
-        caseVar.Location_Address__City__s = locationOfInterestVar.animalos__Address__City__s;
-        caseVar.Location_Address__StateCode__s = locationOfInterestVar.animalos__Address__StateCode__s;
-        caseVar.Location_Address__PostalCode__s = locationOfInterestVar.animalos__Address__PostalCode__s;
-        caseVar.Location_Address__CountryCode__s = locationOfInterestVar.animalos__Address__CountryCode__s;
-        caseVar.Location_Address__Latitude__s = locationOfInterestVar.animalos__Address__Latitude__s;
-        caseVar.Location_Address__Longitude__s = locationOfInterestVar.animalos__Address__Longitude__s;
+//        caseVar.Location_Address__Street__s = locationOfInterestVar.animalos__Address__Street__s;
+//        caseVar.Location_Address__City__s = locationOfInterestVar.animalos__Address__City__s;
+//        caseVar.Location_Address__StateCode__s = locationOfInterestVar.animalos__Address__StateCode__s;
+//        caseVar.Location_Address__PostalCode__s = locationOfInterestVar.animalos__Address__PostalCode__s;
+//        caseVar.Location_Address__CountryCode__s = locationOfInterestVar.animalos__Address__CountryCode__s;
+//        caseVar.Location_Address__Latitude__s = locationOfInterestVar.animalos__Address__Latitude__s;
+//        caseVar.Location_Address__Longitude__s = locationOfInterestVar.animalos__Address__Longitude__s;
 
         uow.registerUpsert(caseVar);
 
@@ -194,12 +194,12 @@ public without sharing class aos_AnimalWelfareCaseSubmitProc extends aos_Abstrac
             }
         }
 
-        if (String.isNotBlank(caseVar.Location_Address__City__s)) {
-            caseSubjectParts.add(caseVar.Location_Address__City__s);
+        if (String.isNotBlank(caseVar.aos_Location_Address__City__s)) {
+            caseSubjectParts.add(caseVar.aos_Location_Address__City__s);
         }
 
-        if (String.isNotBlank(caseVar.Location_Address__PostalCode__s)) {
-            caseSubjectParts.add(caseVar.Location_Address__PostalCode__s);
+        if (String.isNotBlank(caseVar.aos_Location_Address__PostalCode__s)) {
+            caseSubjectParts.add(caseVar.aos_Location_Address__PostalCode__s);
         }
 
         caseVar.Subject = String.join(new List<String>(caseSubjectParts), ' - ');

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_LGA__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <description>The Local Government Area the Contact sits within (based on the Mailing Postcode).</description>
+    <inlineHelpText>The Local Government Area the Contact sits within (based on the Mailing Postcode).</inlineHelpText>
+    <label>LGA</label>
+    <referenceTo>aos_LGA__c</referenceTo>
+    <relationshipLabel>Contacts</relationshipLabel>
+    <relationshipName>Contacts</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>Lookup</type>
+</CustomField>

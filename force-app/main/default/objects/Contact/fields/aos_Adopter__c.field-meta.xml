@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Adopter__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(aos_Adoption_Transactions__c), &quot;NULL&quot;,
+IF(aos_Adoption_Transactions__c = 1, &quot;Yes&quot;,
+IF(aos_Adoption_Transactions__c = 0, &quot;No&quot;,
+IF(aos_Adoption_Transactions__c &gt; 1, &quot;Repeat&quot;, NULL)
+)
+)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Adopter</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

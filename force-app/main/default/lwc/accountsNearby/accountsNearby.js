@@ -123,8 +123,8 @@ export default class AccountsNearby extends LightningElement {
             if (account.Phone) {
                 accountDescription += 'Phone: ' + account.Phone + '\n';
             }
-            if (account.Email__c) {
-                accountDescription += 'Email: ' + account.Email__c + '\n';
+            if (account.aos_Email__c) {
+                accountDescription += 'Email: ' + account.aos_Email__c + '\n';
             }
             if (accountDescription.endsWith('\n')) {
                 accountDescription = accountDescription.slice(0, -1);

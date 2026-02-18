@@ -4,7 +4,7 @@ public class aos_AccountsNearbyMetaProc extends aos_MetadataProcessor implements
     Set<String> accountFields = new Set<String>{
             'Id',
             'Name',
-            'Email__c',
+            'aos_Email__c',
             'Phone',
             'ShippingAddress',
             'ShippingCity',

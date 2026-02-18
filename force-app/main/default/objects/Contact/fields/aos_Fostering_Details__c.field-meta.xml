@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Fostering_Details__c</fullName>
+    <label>Fostering Details</label>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackHistory>false</trackHistory>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Doggie Day Out</fullName>
+                <default>false</default>
+                <label>Doggie Day Out</label>
+            </value>
+            <value>
+                <fullName>Neonate Kitten Program</fullName>
+                <default>false</default>
+                <label>Neonate Kitten Program</label>
+            </value>
+            <value>
+                <fullName>Pillow Paws</fullName>
+                <default>false</default>
+                <label>Pillow Paws</label>
+            </value>
+            <value>
+                <fullName>School Holidays Only</fullName>
+                <default>false</default>
+                <label>School Holidays Only</label>
+            </value>
+            <value>
+                <fullName>Emergency Bushfire Relief Fostering</fullName>
+                <default>false</default>
+                <label>Emergency Bushfire Relief Fostering</label>
+            </value>
+            <value>
+                <fullName>New Foster</fullName>
+                <default>false</default>
+                <label>New Foster</label>
+            </value>
+            <value>
+                <fullName>RSPCA ACT Staff</fullName>
+                <default>false</default>
+                <label>RSPCA ACT Staff</label>
+            </value>
+            <value>
+                <fullName>Special Foster Parent</fullName>
+                <default>false</default>
+                <label>Special Foster Parent</label>
+            </value>
+            <value>
+                <fullName>Experienced Foster</fullName>
+                <default>false</default>
+                <label>Experienced Foster</label>
+            </value>
+            <value>
+                <fullName>One Off Foster</fullName>
+                <default>false</default>
+                <label>One Off Foster</label>
+            </value>
+            <value>
+                <fullName>RSPCA ACT Volunteer</fullName>
+                <default>false</default>
+                <label>RSPCA ACT Volunteer</label>
+            </value>
+            <value>
+                <fullName>Trial Adoption Only</fullName>
+                <default>false</default>
+                <label>Trial Adoption Only</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

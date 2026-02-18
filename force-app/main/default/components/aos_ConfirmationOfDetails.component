@@ -57,7 +57,7 @@
                         <tr>
                             <td style="border: none">
                                 <p>
-                                    Address: {!dto['referral']['animalos__Contact__r']['Full_Address__c']}
+                                    Address: {!dto['referral']['animalos__Contact__r']['aos_Full_Address__c']}
                                 </p>
                             </td>
                         </tr>

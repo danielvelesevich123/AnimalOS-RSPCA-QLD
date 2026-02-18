@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>aos_Full_Address__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF(ISBLANK(MailingStreet), &quot;&quot;, MailingStreet &amp; &quot;, &quot;) &amp;
+IF(ISBLANK(MailingCity), &quot;&quot;, MailingCity &amp; &quot;, &quot;)&amp;
+IF(ISBLANK(MailingState), &quot;&quot;, MailingState &amp; &quot; &quot;)&amp;
+IF(ISBLANK(MailingPostalCode), &quot;&quot;, MailingPostalCode)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Full Address</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <type>Text</type>
+    <unique>false</unique>
+</CustomField>

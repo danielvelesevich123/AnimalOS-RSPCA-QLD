@@ -25,6 +25,6 @@ export default class AccountsNearbyAccount extends LightningElement {
     }
 
     get email() {
-        return this.account.Email__c;
+        return this.account.aos_Email__c;
     }
 }

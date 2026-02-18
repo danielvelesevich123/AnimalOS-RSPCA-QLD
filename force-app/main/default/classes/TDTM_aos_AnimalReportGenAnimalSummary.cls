@@ -40,7 +40,7 @@ global class TDTM_aos_AnimalReportGenAnimalSummary extends animalos.TDTM.Handler
                         new Map<String, Object>()
                 );
 
-                caseVar.Animal_Report_Summary__c = generateAnimalReportSummaryResponse.getString('animalReportSummary');
+                caseVar.aos_Animal_Report_Summary__c = generateAnimalReportSummaryResponse.getString('animalReportSummary');
 
             }
 

@@ -62,7 +62,8 @@ public class aos_DownloadJobActivitiesQAMetaProc extends aos_MetadataProcessor {
         List<animalos__Job_Contact__c> personsOfInterest = [
                 SELECT Id, Name, animalos__Contact_Type__c,
                         animalos__Contact__r.Name, animalos__Contact__r.MobilePhone,
-                        animalos__Contact__r.Email, animalos__Contact__r.Full_Address__c
+                        animalos__Contact__r.Email,
+                        animalos__Contact__r.aos_Full_Address__c
                 FROM animalos__Job_Contact__c
                 WHERE animalos__Job__c = :job.Id AND animalos__Contact_Type__c = 'Person Of Interest'
         ];
