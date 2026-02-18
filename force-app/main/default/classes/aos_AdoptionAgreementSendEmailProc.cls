@@ -28,7 +28,7 @@ public without sharing class aos_AdoptionAgreementSendEmailProc extends aos_Abst
 
         List<Map<String, Object>> contentAttachments = new List<Map<String, Object>>{
                 new Map<String, Object>{
-                        'proc' => 'ConfirmationOfDetailsQA',
+                        'proc' => 'aos_ConfirmationOfDetailsQA',
                         'fileName' => 'Confirmation of Details.pdf',
                         'recordId' => referralId
                 }

@@ -6,7 +6,7 @@
     getPDFContentParams: function (cmp, event, helper) {
         let fileName = 'Confirmation Of Details.pdf';
         let params = {
-            cmp: 'ConfirmationOfDetailsQA',
+            cmp: 'aos_ConfirmationOfDetailsQA',
             recordId: cmp.get('v.recordId'),
             renderAs: 'pdf',
             fileName: fileName

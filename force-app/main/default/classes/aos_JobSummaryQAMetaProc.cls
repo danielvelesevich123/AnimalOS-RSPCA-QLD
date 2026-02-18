@@ -62,7 +62,7 @@ public with sharing class aos_JobSummaryQAMetaProc extends aos_MetadataProcessor
                         animalos__Contact__r.MobilePhone, animalos__Contact__r.Phone, animalos__Contact__r.HomePhone,
                         animalos__Contact__r.Email,
 
-                        animalos__Contact__r.Full_Address__c, animalos__Contact__r.npe01__WorkPhone__c,
+                        animalos__Contact__r.Full_Address__c,
                         animalos__Contact__r.animalos__POI_Description__c
                 FROM animalos__Job_Contact__c
                 WHERE animalos__Job__c IN :jobIds AND animalos__Contact__c != NULL
@@ -217,11 +217,6 @@ public with sharing class aos_JobSummaryQAMetaProc extends aos_MetadataProcessor
                     String phone = '';
                     if (!String.isBlank(jobContact.animalos__Contact__r.MobilePhone)) {
                         phone = phone + '<p>' + jobContact.animalos__Contact__r.MobilePhone + '</p>';
-                    }
-
-                    // TODO: AOS remove npe01__WorkPhone__c from the logic
-                    if (!String.isBlank(jobContact.animalos__Contact__r.npe01__WorkPhone__c)) {
-                        phone = phone + '<p>' + jobContact.animalos__Contact__r.npe01__WorkPhone__c + '</p>';
                     }
                     if (!String.isBlank(jobContact.animalos__Contact__r.HomePhone)) {
                         phone = phone + '<p>' + jobContact.animalos__Contact__r.HomePhone + '</p>';

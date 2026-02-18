@@ -95,7 +95,7 @@ public without sharing class aos_AdoptionAgreementSavePdfProc extends aos_Abstra
                         },
                         'contentAttachments' => new List<Map<String, Object>>{
                                 new Map<String, Object>{
-                                        'proc' => 'ConfirmationOfDetailsQA',
+                                        'proc' => 'aos_ConfirmationOfDetailsQA',
                                         'fileName' => 'Confirmation of Details.pdf',
                                         'recordId' => whatId
                                 }

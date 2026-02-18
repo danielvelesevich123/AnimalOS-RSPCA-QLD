@@ -71,7 +71,7 @@
                         <tr>
                             <td style="border: none">
                                 <p>
-                                    Business: {!dto['referral']['animalos__Contact__r']['npe01__WorkPhone__c']}
+                                    Business: {!dto['referral']['aos_Work_Phone__c']}
                                 </p>
                             </td>
                         </tr>

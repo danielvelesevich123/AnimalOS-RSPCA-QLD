@@ -2,7 +2,7 @@
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>aos_Work_Phone__c</fullName>
     <externalId>false</externalId>
-    <formula>animalos__Contact__r.npe01__WorkPhone__c</formula>
+    <formula>animalos__Contact__r.MobilePhone</formula>
     <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
     <label>Work Phone</label>
     <required>false</required>
