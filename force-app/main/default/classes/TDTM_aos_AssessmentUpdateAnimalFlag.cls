@@ -28,17 +28,17 @@ global class TDTM_aos_AssessmentUpdateAnimalFlag extends animalos.TDTM.Handler i
             SELECT Id, aos_Flags__c, animalos__Animal__c, RecordType.DeveloperName
             FROM animalos__Assessment__c
             WHERE animalos__Animal__c IN :animalIds AND animalos__Assessment_Date_Time__c != NULL AND
-            RecordType.DeveloperName IN ('Behaviour_Observation', 'Behaviour_Observation_Feline', 'Behaviour_Assessment')
+            RecordType.DeveloperName IN ('aos_Behaviour_Observation_Canine', 'aos_Behaviour_Observation_Feline', 'aos_Behaviour_Evaluation_Canine', 'aos_Behaviour_Evaluation_Feline')
             ORDER BY animalos__Assessment_Date_Time__c ASC
         ]) {
             switch on assessment.RecordType.DeveloperName {
-                when 'Behaviour_Observation' {
+                when 'aos_Behaviour_Observation_Canine' {
                     lastBehaviourObservationByAnimal.put(assessment.animalos__Animal__c, assessment);
                 }
-                when 'Behaviour_Observation_Feline' {
+                when 'aos_Behaviour_Observation_Feline' {
                     lastFelineBehaviourObservationByAnimal.put(assessment.animalos__Animal__c, assessment);
                 }
-                when 'Behaviour_Assessment' {
+                when 'aos_Behaviour_Evaluation_Canine', 'aos_Behaviour_Evaluation_Feline' {
                     lastBehaviourAssessmentByAnimal.put(assessment.animalos__Animal__c, assessment);
                 }
             }

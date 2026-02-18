@@ -337,7 +337,7 @@ public class aos_AnimalWelfareCaseMetaProc extends aos_MetadataProcessor {
 
         this.response.put('inspectorateRecordTypeId', aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Job__c.SObjectType, 'Inspectorate'));
         this.response.put('rescueRecordTypeId', aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Job__c.SObjectType, 'Rescue'));
-        this.response.put('wildlifeHubRecordTypeId', aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Job__c.SObjectType, 'Wildlife_Hub'));
+        this.response.put('wildlifeHubRecordTypeId', aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Job__c.SObjectType, 'aos_Wildlife_Hub'));
     }
 
     private void initSelectOptions() {

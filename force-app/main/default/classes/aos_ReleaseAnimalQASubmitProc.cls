@@ -45,7 +45,7 @@ public without sharing class aos_ReleaseAnimalQASubmitProc extends aos_AbstractP
 
         animalos__Referral__c referralVar = new animalos__Referral__c();
 
-        referralVar.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Referral__c.SObjectType, 'Wildlife_Release');
+        referralVar.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Referral__c.SObjectType, 'aos_Wildlife_Release');
         referralVar.animalos__Referral_Description__c = description;
         referralVar.animalos__Stage__c = 'New';
         referralVar.animalos__Scheduled_Date_Time__c = Datetime.now();

@@ -10,7 +10,7 @@ public without sharing class aos_AnimalToPetRescueProc extends aos_AbstractProce
     private String respBody;
     private Integer responseStatusCode;
     private Set<String> oneDriveFileFields = new Set<String>{
-            'Id', 'Is_Primary__c', 'Is_Public__c', 'File_ID__c'
+            'Id', 'aos_Is_Primary__c', 'aos_Is_Public__c', 'aos_File_ID__c'
     };
 
     public override aos_Response process(aos_Request request) {
@@ -40,9 +40,9 @@ public without sharing class aos_AnimalToPetRescueProc extends aos_AbstractProce
         subQueryFactory.setCondition(
                 String.join(
                         new List<String>{
-                                '(Is_Primary__c = TRUE OR Is_Public__c = TRUE)',
-                                'Folder_Name__c LIKE \'%photos%\'',
-                                'Is_Deleted__c = FALSE'
+                                '(aos_Is_Primary__c = TRUE OR aos_Is_Public__c = TRUE)',
+                                'aos_Folder_Name__c LIKE \'%photos%\'',
+                                'aos_Is_Deleted__c = FALSE'
                         },
                         ' AND '
                 )

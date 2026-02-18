@@ -53,11 +53,11 @@ export default class JobContactsJob extends LightningElement {
     }
 
     get caseUrl() {
-        return location.hostname + '/' + this.jobContacts[0].animalos__Job__r.Case__c;
+        return location.hostname + '/' + this.jobContacts[0].animalos__Job__r.aos_Case__c;
     }
 
     get caseNumber() {
-        return this.jobContacts[0].animalos__Job__r.Case__r?.CaseNumber;
+        return this.jobContacts[0].animalos__Job__r.aos_Case__r?.CaseNumber;
     }
 
     get jobCreatedDate() {

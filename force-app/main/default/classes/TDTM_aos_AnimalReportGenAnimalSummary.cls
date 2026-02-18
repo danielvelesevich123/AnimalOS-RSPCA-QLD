@@ -27,7 +27,7 @@ global class TDTM_aos_AnimalReportGenAnimalSummary extends animalos.TDTM.Handler
 
             aos_QueryFactory factory = new aos_QueryFactory(animalos__Animal_Report__c.SObjectType);
             factory.selectFields(fieldsInString);
-            factory.setCondition('Case__c IN :caseIds');
+            factory.setCondition('aos_Case__c IN :caseIds');
 
             Map<String, Object> animalReportsByCaseId = aos_Utils.sObjects.getSObjectsListByAnyFieldMap(
                     Database.query(factory.toSOQL()),

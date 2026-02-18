@@ -25,7 +25,7 @@ global without sharing class TDTM_aos_AssessmentCalculateScore extends animalos.
         assessmentMatrixSettingByName = aos_Utils.sObjects.getSObjectsByAnyFieldMap([
             SELECT Id, animalos__Setting__c, Name
             FROM animalos__Setting__c
-            WHERE RecordType.DeveloperName = 'Assessment_Score'
+            WHERE RecordType.DeveloperName = 'aos_Assessment_Score'
         ], animalos__Setting__c.Name);
 
         Map<String, Object> assessmentScoresByAssessmentId = aos_Utils.sObjects.getSObjectsListByAnyFieldMap([

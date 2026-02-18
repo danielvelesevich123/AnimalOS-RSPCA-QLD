@@ -48,11 +48,11 @@ private class aos_ManageTrapsQASubmitProcTest {
             'resources' => new List<Map<String, Object>>{
                 new Map<String, Object>{
                     'Id' => resource1.Id,
-                    'Status__c' => 'In Use'
+                    'aos_Status__c' => 'In Use'
                 },
                 new Map<String, Object>{
                     'Id' => resource2.Id,
-                    'Status__c' => 'In Use'
+                    'aos_Status__c' => 'In Use'
                 }
             }
         };
@@ -91,7 +91,7 @@ private class aos_ManageTrapsQASubmitProcTest {
         System.assertNotEquals(null, createdJobActivity.animalos__Start_Date_Time__c, 'Start date time should be set');
         
         // Verify Record Type ID is set using aos_Utils
-        Id expectedRecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Job_Activity__c.SObjectType, 'Trap');
+        Id expectedRecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Job_Activity__c.SObjectType, 'aos_Trap');
         System.assertEquals(expectedRecordTypeId, createdJobActivity.RecordTypeId, 'Record Type should be set correctly using aos_Utils');
 
         // Verify Assigned Resources were created

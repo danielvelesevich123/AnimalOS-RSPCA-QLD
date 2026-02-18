@@ -109,17 +109,17 @@ export default class ResourcesNearby extends LightningElement {
 
         this.resources.forEach(resource => {
             let contactDescription = '';
-            if (resource.Contact__r?.MobilePhone) {
-                contactDescription += 'Mobile: ' + resource.Contact__r.MobilePhone + '\n';
+            if (resource.aos_Contact__r?.MobilePhone) {
+                contactDescription += 'Mobile: ' + resource.aos_Contact__r.MobilePhone + '\n';
             }
-            if (resource.Contact__r?.Phone) {
-                contactDescription += 'Phone: ' + resource.Contact__r.Phone + '\n';
+            if (resource.aos_Contact__r?.Phone) {
+                contactDescription += 'Phone: ' + resource.aos_Contact__r.Phone + '\n';
             }
-            if (resource.Contact__r?.Email) {
-                contactDescription += 'Email: ' + resource.Contact__r.Email + '\n';
+            if (resource.aos_Contact__r?.Email) {
+                contactDescription += 'Email: ' + resource.aos_Contact__r.Email + '\n';
             }
-            if (resource.Contact__r?.Account?.Name) {
-                contactDescription += 'Organisation: ' + resource.Contact__r.Account.Name + '\n';
+            if (resource.aos_Contact__r?.Account?.Name) {
+                contactDescription += 'Organisation: ' + resource.aos_Contact__r.Account.Name + '\n';
             }
             if (contactDescription.endsWith('\n')) {
                 contactDescription = contactDescription.slice(0, -1);
@@ -135,7 +135,7 @@ export default class ResourcesNearby extends LightningElement {
                 },
                 value: 'RESOURCE' + resource.Id,
                 icon: 'standard:contact',
-                title: resource.Contact__r?.Name,
+                title: resource.aos_Contact__r?.Name,
                 description: contactDescription
             });
         });

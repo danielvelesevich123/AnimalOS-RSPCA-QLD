@@ -122,7 +122,7 @@ public class aos_RetrieveAnimalsGetProc extends aos_AbstractProcessor implements
             }
 
             if (String.isNotBlank(this.request.params.get('GalleryChangedDate'))) {
-                conditions.add('Gallery_Updated_Date__c > ' + this.request.params.get('GalleryChangedDate'));
+                conditions.add('aos_Gallery_Updated_Date__c > ' + this.request.params.get('GalleryChangedDate'));
             }
 
             totalConditions = conditions.clone();
@@ -143,9 +143,9 @@ public class aos_RetrieveAnimalsGetProc extends aos_AbstractProcessor implements
         queryFactory.setOrdering(animalos__Animal__c.Id, aos_QueryFactory.SortOrder.ASCENDING);
 
         List<String> oneDriveFilesCondition = new List<String>();
-        oneDriveFilesCondition.add('Is_Public__c = TRUE');
-        oneDriveFilesCondition.add('Folder_Name__c LIKE \'%PHOTO%\'');
-        oneDriveFilesCondition.add('Is_Deleted__c = FALSE');
+        oneDriveFilesCondition.add('aos_Is_Public__c = TRUE');
+        oneDriveFilesCondition.add('aos_Folder_Name__c LIKE \'%PHOTO%\'');
+        oneDriveFilesCondition.add('aos_Is_Deleted__c = FALSE');
 
         queryFactory.subselectQuery(aos_OneDrive_File__c.SObjectType)
                 .selectFields(this.oneDriveFileFields).setCondition(String.join(oneDriveFilesCondition, ' AND '));

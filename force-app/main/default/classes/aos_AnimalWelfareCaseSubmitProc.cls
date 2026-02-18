@@ -106,28 +106,28 @@ public without sharing class aos_AnimalWelfareCaseSubmitProc extends aos_Abstrac
         if (animalReports != null) {
             for (animalos__Animal_Report__c animalReport : animalReports) {
                 if ('Dog'.equals(animalReport.animalos__Animal_Type__c) || 'Puppy'.equals(animalReport.animalos__Animal_Type__c)) {
-                    animalReport.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Animal_Report__c.SObjectType, 'Dog');
+                    animalReport.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Animal_Report__c.SObjectType, 'aos_Dog');
                 } else if ('Cat'.equals(animalReport.animalos__Animal_Type__c) || 'Kitten'.equals(animalReport.animalos__Animal_Type__c)) {
-                    animalReport.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Animal_Report__c.SObjectType, 'Cat');
+                    animalReport.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Animal_Report__c.SObjectType, 'aos_Cat');
                 } else if ('Bird'.equals(animalReport.animalos__Animal_Type__c) || 'Native Birds'.equals(animalReport.animalos__Animal_Type__c) || 'Non Native Birds'.equals(animalReport.animalos__Animal_Type__c)) {
-                    animalReport.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Animal_Report__c.SObjectType, 'Bird');
+                    animalReport.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Animal_Report__c.SObjectType, 'aos_Bird');
                 } else if ('Cattle'.equals(animalReport.animalos__Animal_Type__c) || 'Donkey'.equals(animalReport.animalos__Animal_Type__c) ||
                         'Farm'.equals(animalReport.animalos__Animal_Type__c) || 'Fowl'.equals(animalReport.animalos__Animal_Type__c) ||
                         'Goat'.equals(animalReport.animalos__Animal_Type__c) || 'Horse'.equals(animalReport.animalos__Animal_Type__c) ||
                         'Pig'.equals(animalReport.animalos__Animal_Type__c) || 'Pony'.equals(animalReport.animalos__Animal_Type__c) ||
                         'Sheep'.equals(animalReport.animalos__Animal_Type__c)) {
-                    animalReport.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Animal_Report__c.SObjectType, 'Livestock');
+                    animalReport.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Animal_Report__c.SObjectType, 'aos_Livestock');
                 } else if ('Ferret'.equals(animalReport.animalos__Animal_Type__c) || 'Gerbil'.equals(animalReport.animalos__Animal_Type__c) ||
                         'Guinea Pig'.equals(animalReport.animalos__Animal_Type__c) || 'Hamster'.equals(animalReport.animalos__Animal_Type__c) ||
                         'Rabbit'.equals(animalReport.animalos__Animal_Type__c) || 'Mouse'.equals(animalReport.animalos__Animal_Type__c) ||
                         'Rat'.equals(animalReport.animalos__Animal_Type__c) || 'Rodent'.equals(animalReport.animalos__Animal_Type__c) ||
                         'Small Pets'.equals(animalReport.animalos__Animal_Type__c)) {
-                    animalReport.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Animal_Report__c.SObjectType, 'Pocket_Pet');
+                    animalReport.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Animal_Report__c.SObjectType, 'aos_Pocket_Pet');
                 } else if ('Poultry'.equals(animalReport.animalos__Animal_Type__c) || 'Chicken'.equals(animalReport.animalos__Animal_Type__c) ||
                         'Duck'.equals(animalReport.animalos__Animal_Type__c) || 'Goose'.equals(animalReport.animalos__Animal_Type__c)) {
-                    animalReport.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Animal_Report__c.SObjectType, 'Poultry');
+                    animalReport.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Animal_Report__c.SObjectType, 'aos_Poultry');
                 } else {
-                    animalReport.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Animal_Report__c.SObjectType, 'General_Animal_Report');
+                    animalReport.RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Animal_Report__c.SObjectType, 'aos_General');
                 }
             }
 

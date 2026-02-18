@@ -6,35 +6,35 @@ export default class ResourcesNearbyResource extends LightningElement {
     @api jobId;
 
     get contactUrl() {
-        return location.hostname + '/' + this.resource.Contact__c;
+        return location.hostname + '/' + this.resource.aos_Contact__c;
     }
 
     get contactName() {
-        return this.resource.Contact__r?.Name;
+        return this.resource.aos_Contact__r?.Name;
     }
 
     get hasContact() {
-        return this.resource.Contact__c !== undefined;
+        return this.resource.aos_Contact__c !== undefined;
     }
 
     get accountUrl() {
-        return location.hostname + '/' + this.resource.Contact__r?.AccountId;
+        return location.hostname + '/' + this.resource.aos_Contact__r?.AccountId;
     }
 
     get accountName() {
-        return this.resource.Contact__r?.Account?.Name;
+        return this.resource.aos_Contact__r?.Account?.Name;
     }
 
     get hasAccount() {
-        return this.resource.Contact__r?.AccountId !== undefined;
+        return this.resource.aos_Contact__r?.AccountId !== undefined;
     }
 
     get mobile() {
-        return this.resource.Contact__r?.MobilePhone;
+        return this.resource.aos_Contact__r?.MobilePhone;
     }
 
     get phone() {
-        return this.resource.Contact__r?.Phone;
+        return this.resource.aos_Contact__r?.Phone;
     }
 
     get skills() {

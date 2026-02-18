@@ -31,7 +31,7 @@ public class aos_ManageTrapsQASubmitProc extends aos_AbstractProcessor implement
                 animalos__Address__StateCode__s = locationOfInterest.animalos__Address__StateCode__s,
                 animalos__Start_Date_Time__c = Datetime.now(),
                 animalos__Type_of_Work__c = 'Trap Deployment',
-                RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Job_Activity__c.SObjectType, 'Trap')
+                RecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(animalos__Job_Activity__c.SObjectType, 'aos_Trap')
         );
         insert jobActivity;
 

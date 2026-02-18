@@ -13,8 +13,8 @@ public without sharing class aos_OneDriveDeleteRestoreFileSobjectProc extends ao
 
         List<String> conditions = new List<String>{
                 'Name = :fileName',
-                (sObjectTypeName == animalos__Animal__c.SObjectType ? 'animalos_Animal__c' : sObjectTypeNameString) + ' = :recordId',
-                'Folder_Name__c = :folderName'
+                sObjectTypeNameString + ' = :recordId',
+                'aos_Folder_Name__c = :folderName'
         };
 
         aos_QueryFactory queryFactory = new aos_QueryFactory(aos_OneDrive_File__c.SObjectType)
