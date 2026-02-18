@@ -1,6 +1,6 @@
-global class TDTM_aos_AssessmentCheckDailyObs extends animalos.TDTM.Handler implements animalos.TDTM.AfterInsert {
+global class TDTM_aos_AssessmentCheckDailyObs extends animalos.TDTM.Handler implements animalos.TDTM.BeforeInsert {
 
-    public void onAfterInsert(List<SObject> records) {
+    public void onBeforeInsert(List<SObject> records) {
         checkAnimalDailyObservationsInProgress((List<animalos__Assessment__c>) records);
     }
 
@@ -18,7 +18,7 @@ global class TDTM_aos_AssessmentCheckDailyObs extends animalos.TDTM.Handler impl
 
         Id behaviourObservationCanineRecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(
             animalos__Assessment__c.SObjectType,
-            'Behaviour_Observation_Canine'
+            'aos_Behaviour_Observation_Canine'
         );
 
         for (animalos__Assessment__c assessment : records) {

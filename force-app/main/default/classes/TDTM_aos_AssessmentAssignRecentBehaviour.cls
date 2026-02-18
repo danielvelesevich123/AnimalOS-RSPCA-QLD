@@ -18,11 +18,11 @@ global class TDTM_aos_AssessmentAssignRecentBehaviour extends animalos.TDTM.Hand
 
         Id behaviourObservationCanineRecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(
             animalos__Assessment__c.SObjectType,
-            'Behaviour_Observation_Canine'
+            'aos_Behaviour_Observation_Canine'
         );
         Id behaviourObservationFelineRecordTypeId = aos_Utils.sObjects.recordTypeIdByAPIName(
             animalos__Assessment__c.SObjectType,
-            'Behaviour_Observation_Feline'
+            'aos_Behaviour_Observation_Feline'
         );
 
         for (animalos__Assessment__c assessment : (List<animalos__Assessment__c>) records) {
