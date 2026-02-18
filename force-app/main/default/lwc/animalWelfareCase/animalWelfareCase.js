@@ -172,7 +172,7 @@ export default class AnimalWelfareCase extends LightningElement {
             return;
         }
 
-        if (this.jobContacts.find(jobContact => jobContact.Verbally_or_Physically_Abusive__c === 'Yes' && (!jobContact.animalos__Interaction_Cautions__r || !jobContact.animalos__Interaction_Cautions__r.records || jobContact.animalos__Interaction_Cautions__r?.records?.length === 0))) {
+        if (this.jobContacts.find(jobContact => jobContact.aos_Verbally_or_Physically_Abusive__c === 'Yes' && (!jobContact.animalos__Interaction_Cautions__r || !jobContact.animalos__Interaction_Cautions__r.records || jobContact.animalos__Interaction_Cautions__r?.records?.length === 0))) {
             showToast(this, 'Error', 'A caution must be added to the POI Job Contact, please review Job Contacts.', 'error');
             return;
 
@@ -298,11 +298,11 @@ export default class AnimalWelfareCase extends LightningElement {
         if (this.isRescueRecordType) {
             this.animalReport.animalos__Cruelty_Type__c = null;
         } else if (this.isInspectorateRecordType) {
-            this.job.Complexity__c = null;
-            this.animalReport.Rescue_Type__c = null;
+            this.job.aos_Complexity__c = null;
+            this.animalReport.aos_Rescue_Type__c = null;
         } else {
             this.animalReport.animalos__Cruelty_Type__c = null;
-            this.animalReport.Rescue_Type__c = null;
+            this.animalReport.aos_Rescue_Type__c = null;
         }
 
         if (this.animalReports.length > 0) {
@@ -310,10 +310,10 @@ export default class AnimalWelfareCase extends LightningElement {
                 if (this.isRescueRecordType) {
                     report.animalos__Cruelty_Type__c = null;
                 } else if (this.isInspectorateRecordType) {
-                    report.Rescue_Type__c = null;
+                    report.aos_Rescue_Type__c = null;
                 } else {
                     report.animalos__Cruelty_Type__c = null;
-                    report.Rescue_Type__c = null;
+                    report.aos_Rescue_Type__c = null;
                 }
             });
         }
@@ -349,7 +349,7 @@ export default class AnimalWelfareCase extends LightningElement {
                             organizationId = existingContact.AccountContactRelations[0].AccountId;
                         }
                         this.jobContact.animalos__Contact__r = existingContact;
-                        this.jobContact.OrganizationId = organizationId;
+                        this.jobContact.animalos__Organization__c = organizationId;
                         this.jobContact.animalos__Contact_Type__c = 'Informant';
                     } else {
                         this.jobContact = {animalos__Contact_Type__c: 'Informant', animalos__Contact__r: {}};
@@ -613,7 +613,7 @@ export default class AnimalWelfareCase extends LightningElement {
         let animalReports = JSON.parse(JSON.stringify(this.animalReports)) || [];
         let selectedTypes = [
             ...animalReports.map(report => report.animalos__Cruelty_Type__c),
-            ...animalReports.map(report => report.Rescue_Type__c)
+            ...animalReports.map(report => report.aos_Rescue_Type__c)
         ],
         jobCodes = new Set(this.job.animalos__Codes__c?.split(';') || []);
 
@@ -737,7 +737,7 @@ export default class AnimalWelfareCase extends LightningElement {
     }
 
     get isDomestic() {
-        return this.animalReport.Animal_Class__c === 'Domestic';
+        return this.animalReport.aos_Animal_Class__c === 'Domestic';
     }
 
     get showJobContactForm() {
@@ -793,39 +793,39 @@ export default class AnimalWelfareCase extends LightningElement {
     }
 
     get showPastIncidentDetails() {
-        return this.animalReport.Past_incidents__c === 'Yes';
+        return this.animalReport.aos_Past_incidents__c === 'Yes';
     }
 
     get showInjuryDetails() {
-        return this.animalReport.Animal_is_injured__c === 'Yes';
+        return this.animalReport.aos_Animal_is_injured__c === 'Yes';
     }
 
     get showOtherBehaviour() {
-        return this.animalReport.Energy_activity_behaviour__c === 'Other';
+        return this.animalReport.aos_Energy_activity_behaviour__c === 'Other';
     }
 
     get showHistoryDescription() {
-        return this.animalReport.Has_history__c === 'Yes';
+        return this.animalReport.aos_Has_history__c === 'Yes';
     }
 
     get showOtherTetherType() {
-        return this.animalReport.Tether_type__c === 'Other';
+        return this.animalReport.aos_Tether_type__c === 'Other';
     }
 
     get otherTetherConfinementReason() {
-        return this.animalReport.Reason_for_tether_confinement__c === 'Other - please specify';
+        return this.animalReport.aos_Reason_for_tether_confinement__c === 'Other - please specify';
     }
 
     get showInformationOnPersonOfProperty() {
-        return this.animalReport.Responsible_person_of_property__c === 'Yes' || this.animalReport.Responsible_person_of_property__c === 'No';
+        return this.animalReport.aos_Responsible_person_of_property__c === 'Yes' || this.animalReport.aos_Responsible_person_of_property__c === 'No';
     }
 
     get showAnimalLocationComments() {
-        return this.animalReport.Animal_location__c === 'Other';
+        return this.animalReport.aos_Animal_location__c === 'Other';
     }
 
     get showOtherTypeOfShelter() {
-        return this.animalReport.Type_of_shelter__c === 'Other';
+        return this.animalReport.aos_Type_of_shelter__c === 'Other';
     }
 
     get jobContactFormDisabled() {
@@ -845,11 +845,11 @@ export default class AnimalWelfareCase extends LightningElement {
     }
 
     get isAnimalAtHeight() {
-        return this.animalReport.Rescue_Type__c?.includes('Animal at Height');
+        return this.animalReport.aos_Rescue_Type__c?.includes('Animal at Height');
     }
 
     get isOtherCauseOfAffliction() {
-        return this.animalReport.Cause_of_Affliction__c === 'Other';
+        return this.animalReport.aos_Cause_of_Affliction__c === 'Other';
     }
 
     //STEPPER

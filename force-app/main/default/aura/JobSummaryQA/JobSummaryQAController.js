@@ -16,7 +16,7 @@
         } else if (jobIds) {
             window.setTimeout(
                 $A.getCallback(function () {
-                    window.open('/apex/aso_JobSummary?proc=' + procName + '&fileName=' + fileName + '&renderAs=pdf' + '&jobId=' + jobIds, '_blank');
+                    window.open('/apex/aos_JobSummary?proc=' + procName + '&fileName=' + fileName + '&renderAs=pdf' + '&jobId=' + jobIds, '_blank');
                 }), 1000
             );
 

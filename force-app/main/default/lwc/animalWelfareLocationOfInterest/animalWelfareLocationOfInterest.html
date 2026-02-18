@@ -140,9 +140,9 @@
                             <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
                                 <div class="slds-col slds-size_1-of-3">
                                     <c-aos-stencil count="1" height="15" lwc:if={isInit}></c-aos-stencil>
-                                    <lightning-input data-path="POI_Time_at_Location__c"
+                                    <lightning-input data-path="aos_POI_Time_at_Location__c"
                                                      lwc:else
-                                                     value={locationOfInterest.POI_Time_at_Location__c}
+                                                     value={locationOfInterest.aos_POI_Time_at_Location__c}
                                                      label="How long as the POI been living at the address?"
                                                      disabled={isSearch}
                                                      onchange={handleLOIFieldChange}
@@ -150,11 +150,11 @@
                                 </div>
                                 <div class="slds-col slds-size_1-of-3">
                                     <c-aos-stencil count="1" height="15" lwc:if={isInit}></c-aos-stencil>
-                                    <lightning-input data-path="Number_of_Residents__c"
+                                    <lightning-input data-path="aos_Number_of_Residents__c"
                                                      lwc:else
                                                      step="1"
                                                      min="0"
-                                                     value={locationOfInterest.Number_of_Residents__c}
+                                                     value={locationOfInterest.aos_Number_of_Residents__c}
                                                      label="Number of Residents"
                                                      type="number"
                                                      disabled={isSearch}
@@ -163,21 +163,21 @@
                                 </div>
                                 <div class="slds-col slds-size_1-of-3">
                                     <c-aos-stencil count="1" height="15" lwc:if={isInit}></c-aos-stencil>
-                                    <c-aos-select data-path="Children_at_Location__c"
+                                    <c-aos-select data-path="aos_Children_at_Location__c"
                                                      disabled={isSearch}
                                                      lwc:else
                                                      placeholder="Select an Option..."
                                                      label="Are there any children at the address?"
                                                      onchange={handleLOIFieldChange}
                                                      options={yesNoOptions}
-                                                     value={locationOfInterest.Children_at_Location__c}
+                                                     value={locationOfInterest.aos_Children_at_Location__c}
                                     ></c-aos-select>
                                 </div>
                                 <div class="slds-col slds-size_1-of-1">
                                     <c-aos-stencil count="1" height="15" lwc:if={isInit}></c-aos-stencil>
-                                    <lightning-textarea data-path="Children_Details__c"
+                                    <lightning-textarea data-path="aos_Children_Details__c"
                                                         lwc:else
-                                                        value={locationOfInterest.Children_Details__c}
+                                                        value={locationOfInterest.aos_Children_Details__c}
                                                         label="Children Details"
                                                         disabled={isSearch}
                                                         onchange={handleLOIFieldChange}
@@ -185,9 +185,9 @@
                                 </div>
                                 <div class="slds-col slds-size_1-of-1">
                                     <c-aos-stencil count="1" height="15" lwc:if={isInit}></c-aos-stencil>
-                                    <lightning-textarea data-path="Location_Safety_Concerns__c"
+                                    <lightning-textarea data-path="aos_Location_Safety_Concerns__c"
                                                         lwc:else
-                                                        value={locationOfInterest.Location_Safety_Concerns__c}
+                                                        value={locationOfInterest.aos_Location_Safety_Concerns__c}
                                                         label="Is there any reason Inspectors should be concerned for their safety at the property?"
                                                         disabled={isSearch}
                                                         onchange={handleLOIFieldChange}

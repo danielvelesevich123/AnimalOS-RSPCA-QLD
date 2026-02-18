@@ -99,26 +99,26 @@
                             </div>
                             <div class="slds-col slds-size_2-of-8">
                                 <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
-                                <c-aos-select data-path="Anonymous__c"
+                                <c-aos-select data-path="aos_Anonymous__c"
                                                  disabled={isSubmit}
                                                  lwc:else
                                                  placeholder="Select an Option..."
                                                  label="Anonymous"
                                                  onchange={handleJobFieldChange}
                                                  options={selectOptions.yesNoBoolOptions}
-                                                 value={job.Anonymous__c}
+                                                 value={job.aos_Anonymous__c}
                                 ></c-aos-select>
                             </div>
                             <div class="slds-col slds-size_2-of-8">
                                 <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
-                                <c-aos-select data-path="Second_Hand__c"
+                                <c-aos-select data-path="aos_Second_Hand__c"
                                                  disabled={isSubmit}
                                                  lwc:else
                                                  placeholder="Select an Option..."
                                                  label="Second Hand"
                                                  onchange={handleJobFieldChange}
                                                  options={selectOptions.yesNoBoolOptions}
-                                                 value={job.Second_Hand__c}
+                                                 value={job.aos_Second_Hand__c}
                                 ></c-aos-select>
                             </div>
                             <div class="slds-col slds-size_4-of-8">
@@ -210,14 +210,14 @@
                                     </div>
                                     <div class="slds-col slds-size_1-of-1">
                                         <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
-                                        <c-aos-select data-path="Verbally_or_Physically_Abusive__c"
+                                        <c-aos-select data-path="aos_Verbally_or_Physically_Abusive__c"
                                                          lwc:elseif={isPOI}
                                                          label="Could this person be verbally or physically abusive"
                                                          placeholder="Select an Option"
                                                          onchange={handleJobContactTypeChange}
                                                          disabled={isJobContactSearching}
                                                          options={selectOptions.verballyOrPhysicallyAbusiveOptions}
-                                                         value={jobContact.Verbally_or_Physically_Abusive__c}
+                                                         value={jobContact.aos_Verbally_or_Physically_Abusive__c}
                                         ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
@@ -283,7 +283,7 @@
                                     </div>
                                     <div class="slds-col slds-size_1-of-2">
                                         <c-aos-stencil count="1" height="15" lwc:if={isBusy}></c-aos-stencil>
-                                        <c-aos-lookup data-path="OrganizationId"
+                                        <c-aos-lookup data-path="animalos__Organization__c"
                                                          lwc:else
                                                          filter="RecordType.Name = 'Organization'"
                                                          icon-tag="account"
@@ -294,7 +294,7 @@
                                                          placeholder="Select Account"
                                                          search-field="Name"
                                                          search-mode="SOQL"
-                                                         value={jobContact.OrganizationId}
+                                                         value={jobContact.animalos__Organization__c}
                                         ></c-aos-lookup>
                                     </div>
                                     <template lwc:if={isPOI}>
@@ -407,13 +407,13 @@
                                 ></lightning-button>
                                 <div class="slds-grid slds-wrap slds-gutters_x-small slds-m-horizontal_x-small">
                                     <div class="slds-col slds-size_1-of-2">
-                                        <c-aos-select data-path="Animal_Class__c"
+                                        <c-aos-select data-path="aos_Animal_Class__c"
                                                          disabled={isBusy}
                                                          label="Animal Class"
                                                          placeholder="Select an Option"
                                                          onchange={handleAnimalReportFieldChange}
                                                          options={selectOptions.animalClassOptions}
-                                                         value={animalReport.Animal_Class__c}
+                                                         value={animalReport.aos_Animal_Class__c}
                                                          required
                                         ></c-aos-select>
                                     </div>
@@ -440,13 +440,13 @@
                                         ></c-aos-multi-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isRescueRecordType}>
-                                        <c-aos-multi-select data-path="Rescue_Type__c"
+                                        <c-aos-multi-select data-path="aos_Rescue_Type__c"
                                                                disabled={isBusy}
                                                                label="Rescue Type"
                                                                onchange={handleAnimalReportFieldChange}
                                                                options={selectOptions.rescueTypeOptions}
                                                                placeholder="Select Options"
-                                                               value={animalReport.Rescue_Type__c}
+                                                               value={animalReport.aos_Rescue_Type__c}
                                                                required
                                         ></c-aos-multi-select>
                                     </div>
@@ -474,13 +474,13 @@
                                         ></lightning-input>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isRescueRecordType}>
-                                        <c-aos-picklist-input data-path="Condition__c"
+                                        <c-aos-picklist-input data-path="aos_Condition__c"
                                                           sobject-type="animalos__Animal_Report__c"
-                                                          sobject-field="Condition__c"
+                                                          sobject-field="aos_Condition__c"
                                                           disabled={isBusy}
                                                           label="Condition"
                                                           onchange={handleAnimalReportFieldChange}
-                                                          value={animalReport.Condition__c}
+                                                          value={animalReport.aos_Condition__c}
                                                           autocomplete
                                         ></c-aos-picklist-input>
                                     </div>
@@ -521,31 +521,31 @@
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isDomestic}>
                                         <c-aos-select
-                                                data-path="Is_are_animal_s_likely_to_be_aggressive__c"
+                                                data-path="animalos__Is_are_animal_s_likely_to_be_aggressive__c"
                                                 disabled={isBusy}
                                                 label="Is/are animal/s likely to be aggressive?"
                                                 placeholder="Select an Option"
                                                 onchange={handleAnimalReportFieldChange}
                                                 options={selectOptions.isAreAnimalSLikelyToBeAggressiveOptions}
-                                                value={animalReport.Is_are_animal_s_likely_to_be_aggressive__c}
+                                                value={animalReport.animalos__Is_are_animal_s_likely_to_be_aggressive__c}
                                                 required
                                         ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isDomestic}>
                                         <c-aos-select
-                                                data-path="Is_the_animal_frightened__c"
+                                                data-path="aos_Is_the_animal_frightened__c"
                                                 disabled={isBusy}
                                                 label="Is the animal frightened?"
                                                 placeholder="Select an Option"
                                                 onchange={handleAnimalReportFieldChange}
                                                 options={selectOptions.isTheAnimalFrightenedOptions}
-                                                value={animalReport.Is_the_animal_frightened__c}
+                                                value={animalReport.aos_Is_the_animal_frightened__c}
 
                                         ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isDomestic}>
-                                        <lightning-input data-path="Owners_last_seen__c"
-                                                         value={animalReport.Owners_last_seen__c}
+                                        <lightning-input data-path="aos_Owners_last_seen__c"
+                                                         value={animalReport.aos_Owners_last_seen__c}
                                                          label="Owners last seen"
                                                          type="date"
                                                          onchange={handleAnimalReportFieldChange}
@@ -554,38 +554,38 @@
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isDomestic}>
                                         <c-aos-select
-                                                data-path="Is_Owner_Aware__c"
+                                                data-path="aos_Is_Owner_Aware__c"
                                                 disabled={isBusy}
                                                 label="Is Owner Aware?"
                                                 placeholder="Select an Option"
                                                 onchange={handleAnimalReportFieldChange}
                                                 options={selectOptions.isOwnerAwareOptions}
-                                                value={animalReport.Is_Owner_Aware__c}
+                                                value={animalReport.aos_Is_Owner_Aware__c}
 
                                         ></c-aos-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isAnimalAtHeight}>
-                                        <lightning-textarea data-path="How_high_is_the_animal_metres__c"
-                                                            value={animalReport.How_high_is_the_animal_metres__c}
+                                        <lightning-textarea data-path="aos_How_high_is_the_animal_metres__c"
+                                                            value={animalReport.aos_How_high_is_the_animal_metres__c}
                                                             label="How high is the animal (metres)?"
                                                             onchange={handleAnimalReportFieldChange}
                                                             disabled={isBusy}
                                         ></lightning-textarea>
                                     </div>
                                     <div class="slds-col slds-size_1-of-2" lwc:if={isRescueRecordType}>
-                                        <c-aos-multi-select data-path="Cause_of_Affliction__c"
+                                        <c-aos-multi-select data-path="aos_Cause_of_Affliction__c"
                                                                disabled={isBusy}
                                                                label="Cause of Affliction"
                                                                onchange={handleAnimalReportFieldChange}
                                                                options={selectOptions.causeOfAfflictionOptions}
                                                                placeholder="Select Options"
-                                                               value={animalReport.Cause_of_Affliction__c}
+                                                               value={animalReport.aos_Cause_of_Affliction__c}
                                                                required
                                         ></c-aos-multi-select>
                                     </div>
                                     <div class="slds-col slds-size_1-of-1" lwc:if={isOtherCauseOfAffliction}>
-                                        <lightning-textarea data-path="Other_Cause_of_Affliction__c"
-                                                            value={animalReport.Other_Cause_of_Affliction__c}
+                                        <lightning-textarea data-path="aos_Other_Cause_of_Affliction__c"
+                                                            value={animalReport.aos_Other_Cause_of_Affliction__c}
                                                             label="Other (Cause of Affliction)"
                                                             onchange={handleAnimalReportFieldChange}
                                                             disabled={isBusy}
@@ -603,18 +603,18 @@
                                     <template lwc:if={abandonedCrueltyType}>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Owners_vacated__c"
+                                                    data-path="aos_Owners_vacated__c"
                                                     disabled={isBusy}
                                                     label="Owners vacated?"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.ownersVacatedOptions}
-                                                    value={animalReport.Owners_vacated__c}
+                                                    value={animalReport.aos_Owners_vacated__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <lightning-input data-path="Owner_s_Location__c"
-                                                             value={animalReport.Owner_s_Location__c}
+                                            <lightning-input data-path="aos_Owner_s_Location__c"
+                                                             value={animalReport.aos_Owner_s_Location__c}
                                                              label="Owner's location"
                                                              type="text"
                                                              max-length="255"
@@ -624,8 +624,8 @@
                                             ></lightning-input>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <lightning-input data-path="Owners_last_seen__c"
-                                                             value={animalReport.Owners_last_seen__c}
+                                            <lightning-input data-path="aos_Owners_last_seen__c"
+                                                             value={animalReport.aos_Owners_last_seen__c}
                                                              label="Owners last seen"
                                                              type="date"
                                                              onchange={handleAnimalReportFieldChange}
@@ -634,18 +634,18 @@
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Any_visitors__c"
+                                                    data-path="aos_Any_visitors__c"
                                                     disabled={isBusy}
                                                     label="Any visitors"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.anyVisitorsOptions}
-                                                    value={animalReport.Any_visitors__c}
+                                                    value={animalReport.aos_Any_visitors__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <lightning-input data-path="Date_last_seen__c"
-                                                             value={animalReport.Date_last_seen__c}
+                                            <lightning-input data-path="aos_Date_last_seen__c"
+                                                             value={animalReport.aos_Date_last_seen__c}
                                                              label="Last Seen at Property"
                                                              type="date"
                                                              onchange={handleAnimalReportFieldChange}
@@ -655,40 +655,40 @@
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Body_score__c"
+                                                    data-path="aos_Body_score__c"
                                                     disabled={isBusy}
                                                     label="Body Score"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.bodyScoreOptions}
-                                                    value={animalReport.Body_score__c}
+                                                    value={animalReport.aos_Body_score__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Responsible_person_of_property__c"
+                                                    data-path="aos_Responsible_person_of_property__c"
                                                     disabled={isBusy}
                                                     label="Responsible person of property"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.responsiblePersonOfPropertyOptions}
-                                                    value={animalReport.Responsible_person_of_property__c}
+                                                    value={animalReport.aos_Responsible_person_of_property__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Animal_location__c"
+                                                    data-path="aos_Animal_location__c"
                                                     disabled={isBusy}
                                                     label="Animal location"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.animalLocationOptions}
-                                                    value={animalReport.Animal_location__c}
+                                                    value={animalReport.aos_Animal_location__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1" lwc:if={showAnimalLocationComments}>
-                                            <lightning-input data-path="Animal_Location_comments__c"
-                                                             value={animalReport.Animal_Location_comments__c}
+                                            <lightning-input data-path="aos_Animal_Location_comments__c"
+                                                             value={animalReport.aos_Animal_Location_comments__c}
                                                              label="Animal location comments"
                                                              type="text"
                                                              max-length="255"
@@ -698,8 +698,8 @@
                                             ></lightning-input>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1" lwc:if={showInformationOnPersonOfProperty}>
-                                            <lightning-input data-path="Information_on_Person_of_Property__c"
-                                                             value={animalReport.Information_on_Person_of_Property__c}
+                                            <lightning-input data-path="aos_Information_on_Person_of_Property__c"
+                                                             value={animalReport.aos_Information_on_Person_of_Property__c}
                                                              label="Information on responsible Person of Property"
                                                              type="text"
                                                              max-length="255"
@@ -712,13 +712,13 @@
                                     <template lwc:if={illTreatmentCrueltyType}>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Reporter_observed_incident__c"
+                                                    data-path="aos_Reporter_observed_incident__c"
                                                     disabled={isBusy}
                                                     label="Reporter observed incident"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.reporterObservedIncidentOptions}
-                                                    value={animalReport.Reporter_observed_incident__c}
+                                                    value={animalReport.aos_Reporter_observed_incident__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
@@ -735,24 +735,24 @@
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Other_witness_s__c"
+                                                    data-path="aos_Other_witness_s__c"
                                                     disabled={isBusy}
                                                     label="Other witness's"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.otherWitnessSOptions}
-                                                    value={animalReport.Other_witness_s__c}
+                                                    value={animalReport.aos_Other_witness_s__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Offender_is_responsible_for_animal__c"
+                                                    data-path="aos_Offender_is_responsible_for_animal__c"
                                                     disabled={isBusy}
                                                     label="Offender is responsible for animal"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.offenderIsResponsibleForAnimalOptions}
-                                                    value={animalReport.Offender_is_responsible_for_animal__c}
+                                                    value={animalReport.aos_Offender_is_responsible_for_animal__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1">
@@ -765,8 +765,8 @@
                                             ></lightning-textarea>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1">
-                                            <lightning-textarea data-path="Describe_why_the_incident_occurred__c"
-                                                                value={animalReport.Describe_why_the_incident_occurred__c}
+                                            <lightning-textarea data-path="aos_Describe_why_the_incident_occurred__c"
+                                                                value={animalReport.aos_Describe_why_the_incident_occurred__c}
                                                                 label="Describe why the incident occurred"
                                                                 onchange={handleAnimalReportFieldChange}
                                                                 disabled={isBusy}
@@ -775,40 +775,40 @@
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Witness_statement__c"
+                                                    data-path="aos_Witness_statement__c"
                                                     disabled={isBusy}
                                                     label="Witness statement"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.witnessStatementOptions}
-                                                    value={animalReport.Witness_statement__c}
+                                                    value={animalReport.aos_Witness_statement__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Past_incidents__c"
+                                                    data-path="aos_Past_incidents__c"
                                                     disabled={isBusy}
                                                     label="Past incidents"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.pastIncidentsOptions}
-                                                    value={animalReport.Past_incidents__c}
+                                                    value={animalReport.aos_Past_incidents__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Animal_is_injured__c"
+                                                    data-path="aos_Animal_is_injured__c"
                                                     disabled={isBusy}
                                                     label="Animal is injured"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.animalIsInjuredOptions}
-                                                    value={animalReport.Animal_is_injured__c}
+                                                    value={animalReport.aos_Animal_is_injured__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <lightning-input data-path="Duration_at_address__c"
-                                                             value={animalReport.Duration_at_address__c}
+                                            <lightning-input data-path="aos_Duration_at_address__c"
+                                                             value={animalReport.aos_Duration_at_address__c}
                                                              label="Duration at address"
                                                              type="text"
                                                              max-length="255"
@@ -818,8 +818,8 @@
                                             ></lightning-input>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1" lwc:if={showPastIncidentDetails}>
-                                            <lightning-textarea data-path="Past_incident_details__c"
-                                                                value={animalReport.Past_incident_details__c}
+                                            <lightning-textarea data-path="aos_Past_incident_details__c"
+                                                                value={animalReport.aos_Past_incident_details__c}
                                                                 label="Past incident details"
                                                                 onchange={handleAnimalReportFieldChange}
                                                                 disabled={isBusy}
@@ -827,8 +827,8 @@
                                             ></lightning-textarea>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1" lwc:if={showInjuryDetails}>
-                                            <lightning-textarea data-path="Injury_details__c"
-                                                                value={animalReport.Injury_details__c}
+                                            <lightning-textarea data-path="aos_Injury_details__c"
+                                                                value={animalReport.aos_Injury_details__c}
                                                                 label="Injury details"
                                                                 onchange={handleAnimalReportFieldChange}
                                                                 disabled={isBusy}
@@ -839,18 +839,18 @@
                                     <template lwc:if={veterinaryTreatmentCrueltyType}>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Urgent_attention_required__c"
+                                                    data-path="aos_Urgent_attention_required__c"
                                                     disabled={isBusy}
                                                     label="Urgent attention required"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.urgentAttentionRequiredOptions}
-                                                    value={animalReport.Urgent_attention_required__c}
+                                                    value={animalReport.aos_Urgent_attention_required__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <lightning-input data-path="First_noticed_animal_condition__c"
-                                                             value={animalReport.First_noticed_animal_condition__c}
+                                            <lightning-input data-path="aos_First_noticed_animal_condition__c"
+                                                             value={animalReport.aos_First_noticed_animal_condition__c}
                                                              label="First noticed animal condition"
                                                              type="date"
                                                              onchange={handleAnimalReportFieldChange}
@@ -859,8 +859,8 @@
                                             ></lightning-input>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <lightning-input data-path="Condition_injury__c"
-                                                             value={animalReport.Condition_injury__c}
+                                            <lightning-input data-path="aos_Condition_injury__c"
+                                                             value={animalReport.aos_Condition_injury__c}
                                                              label="Condition/injury"
                                                              type="text"
                                                              max-length="255"
@@ -871,29 +871,29 @@
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Energy_activity_behaviour__c"
+                                                    data-path="aos_Energy_activity_behaviour__c"
                                                     disabled={isBusy}
                                                     label="Energy/activity/behaviour"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.energyActivityBehaviourOptions}
-                                                    value={animalReport.Energy_activity_behaviour__c}
+                                                    value={animalReport.aos_Energy_activity_behaviour__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Has_history__c"
+                                                    data-path="aos_Has_history__c"
                                                     disabled={isBusy}
                                                     label="Has history"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.hasHistoryOptions}
-                                                    value={animalReport.Has_history__c}
+                                                    value={animalReport.aos_Has_history__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1" lwc:if={showOtherBehaviour}>
-                                            <lightning-textarea data-path="Other_behaviour__c"
-                                                                value={animalReport.Other_behaviour__c}
+                                            <lightning-textarea data-path="aos_Other_behaviour__c"
+                                                                value={animalReport.aos_Other_behaviour__c}
                                                                 label="Other behaviour"
                                                                 onchange={handleAnimalReportFieldChange}
                                                                 disabled={isBusy}
@@ -901,8 +901,8 @@
                                             ></lightning-textarea>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1" lwc:if={showHistoryDescription}>
-                                            <lightning-textarea data-path="History_description__c"
-                                                                value={animalReport.History_description__c}
+                                            <lightning-textarea data-path="aos_History_description__c"
+                                                                value={animalReport.aos_History_description__c}
                                                                 label="History description"
                                                                 onchange={handleAnimalReportFieldChange}
                                                                 disabled={isBusy}
@@ -912,40 +912,40 @@
                                     </template>
                                     <template lwc:if={insufficientFoodAndWaterCrueltyType}>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-aos-multi-select data-path="Are_any_of_the_following_visible__c"
+                                            <c-aos-multi-select data-path="aos_Are_any_of_the_following_visible__c"
                                                                    disabled={isBusy}
                                                                    label="Are any of the following visible?"
                                                                    onchange={handleAnimalReportFieldChange}
                                                                    options={selectOptions.areAnyOfTheFollowingVisibleOptions}
                                                                    placeholder="Select Options"
-                                                                   value={animalReport.Are_any_of_the_following_visible__c}
+                                                                   value={animalReport.aos_Are_any_of_the_following_visible__c}
                                             ></c-aos-multi-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Is_there_access_to_food_and_or_water__c"
+                                                    data-path="aos_Is_there_access_to_food_and_or_water__c"
                                                     disabled={isBusy}
                                                     label="Is there access to food and/or water"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.isThereAccessToFoodAndOrWaterOptions}
-                                                    value={animalReport.Is_there_access_to_food_and_or_water__c}
+                                                    value={animalReport.aos_Is_there_access_to_food_and_or_water__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Food_water_bowls_present__c"
+                                                    data-path="aos_Food_water_bowls_present__c"
                                                     disabled={isBusy}
                                                     label="Food/water bowls present"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.foodWaterBowlsPresentOptions}
-                                                    value={animalReport.Food_water_bowls_present__c}
+                                                    value={animalReport.aos_Food_water_bowls_present__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <lightning-input data-path="Last_provided_food_or_water__c"
-                                                             value={animalReport.Last_provided_food_or_water__c}
+                                            <lightning-input data-path="aos_Last_provided_food_or_water__c"
+                                                             value={animalReport.aos_Last_provided_food_or_water__c}
                                                              label="Last provided food or water"
                                                              type="date"
                                                              onchange={handleAnimalReportFieldChange}
@@ -956,42 +956,42 @@
 
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Body_score__c"
+                                                    data-path="aos_Body_score__c"
                                                     disabled={isBusy}
                                                     label="Body Score"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.bodyScoreOptions}
-                                                    value={animalReport.Body_score__c}
+                                                    value={animalReport.aos_Body_score__c}
                                             ></c-aos-select>
                                         </div>
                                     </template>
                                     <template lwc:if={shelterConditionsCrueltyType}>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Access_to_shelter__c"
+                                                    data-path="aos_Access_to_shelter__c"
                                                     disabled={isBusy}
                                                     label="Access To Shelter"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.accessToShelterOptions}
-                                                    value={animalReport.Access_to_shelter__c}
+                                                    value={animalReport.aos_Access_to_shelter__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Type_of_shelter__c"
+                                                    data-path="aos_Type_of_shelter__c"
                                                     disabled={isBusy}
                                                     label="Type of shelter"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.typeOfShelterOptions}
-                                                    value={animalReport.Type_of_shelter__c}
+                                                    value={animalReport.aos_Type_of_shelter__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1" lwc:if={showOtherTypeOfShelter}>
-                                            <lightning-input data-path="Type_of_Shelter_Other__c"
-                                                             value={animalReport.Type_of_Shelter_Other__c}
+                                            <lightning-input data-path="aos_Type_of_Shelter_Other__c"
+                                                             value={animalReport.aos_Type_of_Shelter_Other__c}
                                                              label="Type of Shelter - Other"
                                                              type="text"
                                                              max-length="255"
@@ -1001,8 +1001,8 @@
                                             ></lightning-input>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1">
-                                            <lightning-textarea data-path="Living_conditions__c"
-                                                                value={animalReport.Living_conditions__c}
+                                            <lightning-textarea data-path="aos_Living_conditions__c"
+                                                                value={animalReport.aos_Living_conditions__c}
                                                                 label="Living conditions"
                                                                 onchange={handleAnimalReportFieldChange}
                                                                 disabled={isBusy}
@@ -1013,93 +1013,93 @@
                                     <template lwc:if={tiedCrueltyType}>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Frequency__c"
+                                                    data-path="aos_Frequency__c"
                                                     disabled={isBusy}
                                                     label="Frequency"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.frequencyOptions}
-                                                    value={animalReport.Frequency__c}
+                                                    value={animalReport.aos_Frequency__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Animal_can_move_freely__c"
+                                                    data-path="aos_Animal_can_move_freely__c"
                                                     disabled={isBusy}
                                                     label="Animal can move freely"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.animalCanMoveFreelyOptions}
-                                                    value={animalReport.Animal_can_move_freely__c}
+                                                    value={animalReport.aos_Animal_can_move_freely__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Frequency_off_tether__c"
+                                                    data-path="aos_Frequency_off_tether__c"
                                                     disabled={isBusy}
                                                     label="Frequency off tether"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.frequencyOffTetherOptions}
-                                                    value={animalReport.Frequency_off_tether__c}
+                                                    value={animalReport.aos_Frequency_off_tether__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Size_of_confinement__c"
+                                                    data-path="aos_Size_of_confinement__c"
                                                     disabled={isBusy}
                                                     label="Size of confinement"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.sizeOfConfinementOptions}
-                                                    value={animalReport.Size_of_confinement__c}
+                                                    value={animalReport.aos_Size_of_confinement__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Tethered_duration__c"
+                                                    data-path="aos_Tethered_duration__c"
                                                     disabled={isBusy}
                                                     label="Tethered duration"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.tetheredDurationOptions}
-                                                    value={animalReport.Tethered_duration__c}
+                                                    value={animalReport.aos_Tethered_duration__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Reason_for_tether_confinement__c"
+                                                    data-path="aos_Reason_for_tether_confinement__c"
                                                     disabled={isBusy}
                                                     label="Reason for tether/confinement"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.reasonForTetherConfinementOptions}
-                                                    value={animalReport.Reason_for_tether_confinement__c}
+                                                    value={animalReport.aos_Reason_for_tether_confinement__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Animal_is_tangled__c"
+                                                    data-path="aos_Animal_is_tangled__c"
                                                     disabled={isBusy}
                                                     label="Animal is tangled"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.animalIsTangledOptions}
-                                                    value={animalReport.Animal_is_tangled__c}
+                                                    value={animalReport.aos_Animal_is_tangled__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
-                                            <c-aos-counter data-path="Number_of_Animals_Confined__c"
+                                            <c-aos-counter data-path="aos_Number_of_Animals_Confined__c"
                                                               label="Animals confined"
                                                               onchange={handleAnimalReportFieldChange}
                                                               placeholder="Select a number"
-                                                              value={animalReport.Number_of_Animals_Confined__c}
+                                                              value={animalReport.aos_Number_of_Animals_Confined__c}
                                                               disabled={isBusy}
                                             ></c-aos-counter>
                                         </div>
                                         <div class="slds-col slds-size_1-of-1" lwc:if={otherTetherConfinementReason}>
-                                            <lightning-input data-path="Other_tether_confinement_reason__c"
-                                                             value={animalReport.Other_tether_confinement_reason__c}
+                                            <lightning-input data-path="aos_Other_tether_confinement_reason__c"
+                                                             value={animalReport.aos_Other_tether_confinement_reason__c}
                                                              label="Other tether/confinement reason"
                                                              type="text"
                                                              max-length="255"
@@ -1110,62 +1110,62 @@
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Signs_of_distress__c"
+                                                    data-path="aos_Signs_of_distress__c"
                                                     disabled={isBusy}
                                                     label="Signs of distress"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.signsOfDistressOptions}
-                                                    value={animalReport.Signs_of_distress__c}
+                                                    value={animalReport.aos_Signs_of_distress__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Pacing__c"
+                                                    data-path="aos_Pacing__c"
                                                     disabled={isBusy}
                                                     label="Pacing"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.pacingOptions}
-                                                    value={animalReport.Pacing__c}
+                                                    value={animalReport.aos_Pacing__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Self_mutilating__c"
+                                                    data-path="aos_Self_mutilating__c"
                                                     disabled={isBusy}
                                                     label="Self mutilating"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.selfMutilatingOptions}
-                                                    value={animalReport.Self_mutilating__c}
+                                                    value={animalReport.aos_Self_mutilating__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Tether_length__c"
+                                                    data-path="aos_Tether_length__c"
                                                     disabled={isBusy}
                                                     label="Tether length"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.tetherLengthOptions}
-                                                    value={animalReport.Tether_length__c}
+                                                    value={animalReport.aos_Tether_length__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2">
                                             <c-aos-select
-                                                    data-path="Tether_type__c"
+                                                    data-path="aos_Tether_type__c"
                                                     disabled={isBusy}
                                                     label="Tether type"
                                                     placeholder="Select an Option"
                                                     onchange={handleAnimalReportFieldChange}
                                                     options={selectOptions.tetherTypeOptions}
-                                                    value={animalReport.Tether_type__c}
+                                                    value={animalReport.aos_Tether_type__c}
                                             ></c-aos-select>
                                         </div>
                                         <div class="slds-col slds-size_1-of-2" lwc:if={showOtherTetherType}>
-                                            <lightning-input data-path="Other_tether_type__c"
-                                                             value={animalReport.Other_tether_type__c}
+                                            <lightning-input data-path="aos_Other_tether_type__c"
+                                                             value={animalReport.aos_Other_tether_type__c}
                                                              label="Other tether type"
                                                              type="text"
                                                              max-length="255"
@@ -1185,7 +1185,7 @@
                                     <template lwc:if={showAnimalReports} for:each={animalReports} for:item="animalReport" id="AnimalReportCards" for:index="index">
                                         <div class="slds-m-vertical_medium" key={animalReport.Id}>
                                             <c-animal-welfare-animal-report onaction={handleAnimalReportAction} index={index} animal-report={animalReport}
-                                                                            key={animalReport.Cruelty_Type__c}></c-animal-welfare-animal-report>
+                                                                            key={animalReport.animalos__Cruelty_Type__c}></c-animal-welfare-animal-report>
                                         </div>
                                     </template>
                                     <template lwc:else>
@@ -1225,7 +1225,7 @@
                                 <div class="slds-m-horizontal_medium">
                                     <template lwc:if={showAnimalReports} for:each={animalReports} for:item="animalReport" id="AnimalReportsInfo">
                                         <div class="slds-m-vertical_medium" key={animalReport.Id}>
-                                            <c-animal-welfare-animal-report hide-actions animal-report={animalReport} key={animalReport.Cruelty_Type__c}></c-animal-welfare-animal-report>
+                                            <c-animal-welfare-animal-report hide-actions animal-report={animalReport} key={animalReport.animalos__Cruelty_Type__c}></c-animal-welfare-animal-report>
                                         </div>
                                     </template>
                                     <template lwc:else>
