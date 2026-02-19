@@ -55,3 +55,4 @@ settings.json
 
 **/graphql.config.yml
 .idea
+.cursor
