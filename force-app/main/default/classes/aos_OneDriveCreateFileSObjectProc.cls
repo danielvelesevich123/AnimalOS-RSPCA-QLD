@@ -23,7 +23,7 @@ public without sharing class aos_OneDriveCreateFileSObjectProc extends aos_Abstr
         SObjectType sObjectTypeName = recordId.getSobjectType();
         String sObjectTypeNameString = recordId.getSobjectType() == animalos__Animal__c.SObjectType ? 'aos_Animal__c' : aos_OneDriveCreateFileSObjectProc.getLookupFieldName(sObjectTypeName);
 
-        Boolean isOneDriveFolderFieldExists = sObjectTypeName.getDescribe().fields.getMap().keySet().contains('aos_One_Drive_Folder_Name__c');
+        Boolean isOneDriveFolderFieldExists = sObjectTypeName.getDescribe().fields.getMap().containsKey('aos_One_Drive_Folder_Name__c');
 
         if (!isOneDriveFolderFieldExists) {
             throw new aos_Structs.CommonException('Error: Current object does not contain the aos_One_Drive_Folder_Name__c field');

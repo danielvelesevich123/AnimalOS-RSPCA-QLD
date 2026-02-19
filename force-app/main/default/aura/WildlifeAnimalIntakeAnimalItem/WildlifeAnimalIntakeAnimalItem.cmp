@@ -38,10 +38,10 @@
                 <div class="slds-truncate" title="Animal Class">
                     <aura:if isTrue="{!not(v.isBusy)}">
                         <c:aos_Select label="Animal Class"
-                                         options="{!v.selectOptions.animalosClassOptions}"
-                                         value="{!v.animal.animalos__Class__c}"
-                                         class="label-hidden"
-                                         disabled="{!v.isBusy}"
+                                      options="{!v.selectOptions.animalosClassOptions}"
+                                      value="{!v.animal.animalos__Class__c}"
+                                      class="label-hidden"
+                                      disabled="{!v.isBusy}"
                         />
                     </aura:if>
                 </div>
@@ -50,10 +50,10 @@
                 <div class="slds-truncate" title="Gender">
                     <aura:if isTrue="{!not(v.isBusy)}">
                         <c:aos_Select label="Gender"
-                                         options="{!v.selectOptions.animalosGenderOptions}"
-                                         value="{!v.animal.animalos__Gender__c}"
-                                         class="label-hidden"
-                                         disabled="{!v.isBusy}"
+                                      options="{!v.selectOptions.animalosGenderOptions}"
+                                      value="{!v.animal.animalos__Gender__c}"
+                                      class="label-hidden"
+                                      disabled="{!v.isBusy}"
                         />
                     </aura:if>
                 </div>
@@ -62,13 +62,13 @@
                 <div class="slds-truncate" title="Type">
                     <aura:if isTrue="{!not(v.isBusy)}">
                         <c:aos_Select label="Type"
-                                         dependentOptions="{!v.dependentOptions.animalosTypeOptions}"
-                                         value="{!v.animal.animalos__Type__c}"
-                                         isDepended="{!true}"
-                                         dependsOn="{!v.animal.animalos__Class__c}"
-                                         required="{!true}"
-                                         class="label-hidden"
-                                         disabled="{!v.isBusy}"
+                                      dependentOptions="{!v.dependentOptions.animalosTypeOptions}"
+                                      value="{!v.animal.animalos__Type__c}"
+                                      isDepended="{!true}"
+                                      dependsOn="{!v.animal.animalos__Class__c}"
+                                      required="{!true}"
+                                      class="label-hidden"
+                                      disabled="{!v.isBusy}"
                         />
                     </aura:if>
                 </div>
@@ -83,14 +83,15 @@
                             </div>
                             <aura:set attribute="else">
                                 <c:aosLookup required="{!true}"
-                                                filter="{!'animalos__Type__c INCLUDES (\'' + v.animal.animalos__Type__c + '\')'}"
-                                                object="animalos__Breed__c"
-                                                showRecentRecords="{!true}"
-                                                onchange="{!c.handlePrimaryBreedChange}"
-                                                aura:id="primaryBreedLookup"
-                                                value="{!v.animal.animalos__Primary_Breed__c}"
-                                                placeholder="Select Breed..."
-                                                disabled="{!or(empty(v.animal.animalos__Type__c), v.isBusy)}"
+                                             filter="{!'animalos__Type__c INCLUDES (\'' + v.animal.animalos__Type__c + '\')'}"
+                                             object="animalos__Breed__c"
+                                             showRecentRecords="{!true}"
+                                             onchange="{!c.handlePrimaryBreedChange}"
+                                             aura:id="primaryBreedLookup"
+                                             value="{!v.animal.animalos__Primary_Breed__c}"
+                                             placeholder="Select Breed..."
+                                             disabled="{!or(empty(v.animal.animalos__Type__c), v.isBusy)}"
+                                             labelHidden="{!true}"
                                 />
                             </aura:set>
                         </aura:if>
@@ -111,11 +112,11 @@
                 <div class="slds-truncate" title="Stage">
                     <aura:if isTrue="{!not(v.isBusy)}">
                         <c:aos_Select label="Stage"
-                                         options="{!v.selectOptions.animalosStageOptions}"
-                                         value="{!v.animal.animalos__Stage__c}"
-                                         required="{!true}"
-                                         class="label-hidden"
-                                         disabled="{!or(v.isBusy, not(v.showStageAndStatus))}"
+                                      options="{!v.selectOptions.animalosStageOptions}"
+                                      value="{!v.animal.animalos__Stage__c}"
+                                      required="{!true}"
+                                      class="label-hidden"
+                                      disabled="{!or(v.isBusy, not(v.showStageAndStatus))}"
                         />
                     </aura:if>
                 </div>
@@ -124,13 +125,13 @@
                 <div class="slds-truncate" title="Status">
                     <aura:if isTrue="{!not(v.isBusy)}">
                         <c:aos_Select label="Status"
-                                         dependentOptions="{!v.dependentOptions.animalosStatusOptions}"
-                                         value="{!v.animal.animalos__Status__c}"
-                                         isDepended="{!true}"
-                                         dependsOn="{!v.animal.animalos__Stage__c}"
-                                         required="{!true}"
-                                         class="label-hidden"
-                                         disabled="{!or(v.isBusy, not(v.showStageAndStatus))}"
+                                      dependentOptions="{!v.dependentOptions.animalosStatusOptions}"
+                                      value="{!v.animal.animalos__Status__c}"
+                                      isDepended="{!true}"
+                                      dependsOn="{!v.animal.animalos__Stage__c}"
+                                      required="{!true}"
+                                      class="label-hidden"
+                                      disabled="{!or(v.isBusy, not(v.showStageAndStatus))}"
                         />
                     </aura:if>
                 </div>
@@ -224,76 +225,76 @@
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4 slds-truncate">
                             <aura:if isTrue="{!not(v.isBusy)}">
                                 <c:aos_Select label="Gender"
-                                                 options="{!v.selectOptions.animalosGenderOptions}"
-                                                 value="{!v.animal.animalos__Gender__c}"
-                                                 disabled="{!v.isBusy}"
+                                              options="{!v.selectOptions.animalosGenderOptions}"
+                                              value="{!v.animal.animalos__Gender__c}"
+                                              disabled="{!v.isBusy}"
                                 />
                             </aura:if>
                         </div>
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4 slds-truncate">
                             <aura:if isTrue="{!not(v.isBusy)}">
                                 <c:aos_Select label="Age Group"
-                                                 options="{!v.selectOptions.animalosAgeGroupOptions}"
-                                                 value="{!v.animal.animalos__Age_Group__c}"
-                                                 disabled="{!v.isBusy}"
-                                                 required="{!or(equals(v.animal.animalos__Type__c, 'Dog'), or(equals(v.animal.animalos__Type__c, 'Puppy'), or(equals(v.animal.animalos__Type__c, 'Cat'), equals(v.animal.animalos__Type__c, 'Kitten'))))}"
+                                              options="{!v.selectOptions.animalosAgeGroupOptions}"
+                                              value="{!v.animal.animalos__Age_Group__c}"
+                                              disabled="{!v.isBusy}"
+                                              required="{!or(equals(v.animal.animalos__Type__c, 'Dog'), or(equals(v.animal.animalos__Type__c, 'Puppy'), or(equals(v.animal.animalos__Type__c, 'Cat'), equals(v.animal.animalos__Type__c, 'Kitten'))))}"
                                 />
                             </aura:if>
                         </div>
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4 slds-truncate">
                             <aura:if isTrue="{!not(v.isBusy)}">
                                 <c:aos_Select label="Animal Class"
-                                                 options="{!v.selectOptions.animalosClassOptions}"
-                                                 value="{!v.animal.animalos__Class__c}"
-                                                 disabled="{!v.isBusy}"
+                                              options="{!v.selectOptions.animalosClassOptions}"
+                                              value="{!v.animal.animalos__Class__c}"
+                                              disabled="{!v.isBusy}"
                                 />
                             </aura:if>
                         </div>
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4 slds-truncate">
                             <aura:if isTrue="{!not(v.isBusy)}">
                                 <c:aos_Select label="Type"
-                                                 dependentOptions="{!v.dependentOptions.animalosTypeOptions}"
-                                                 value="{!v.animal.animalos__Type__c}"
-                                                 isDepended="{!true}"
-                                                 dependsOn="{!v.animal.animalos__Class__c}"
-                                                 required="{!true}"
-                                                 disabled="{!v.isBusy}"
+                                              dependentOptions="{!v.dependentOptions.animalosTypeOptions}"
+                                              value="{!v.animal.animalos__Type__c}"
+                                              isDepended="{!true}"
+                                              dependsOn="{!v.animal.animalos__Class__c}"
+                                              required="{!true}"
+                                              disabled="{!v.isBusy}"
                                 />
                             </aura:if>
                         </div>
                         <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-4">
                             <c:aosLookup required="{!true}"
-                                            filter="{!'animalos__Type__c INCLUDES (\'' + v.animal.animalos__Type__c + '\')'}"
-                                            object="animalos__Breed__c"
-                                            label="Primary Breed"
-                                            showRecentRecords="{!true}"
-                                            onchange="{!c.handlePrimaryBreedChange}"
-                                            aura:id="primaryBreedLookup"
-                                            value="{!v.animal.animalos__Primary_Breed__c}"
-                                            placeholder="Select Breed..."
-                                            disabled="{!or(empty(v.animal.animalos__Type__c), v.isBusy)}"
+                                         filter="{!'animalos__Type__c INCLUDES (\'' + v.animal.animalos__Type__c + '\')'}"
+                                         object="animalos__Breed__c"
+                                         label="Primary Breed"
+                                         showRecentRecords="{!true}"
+                                         onchange="{!c.handlePrimaryBreedChange}"
+                                         aura:id="primaryBreedLookup"
+                                         value="{!v.animal.animalos__Primary_Breed__c}"
+                                         placeholder="Select Breed..."
+                                         disabled="{!or(empty(v.animal.animalos__Type__c), v.isBusy)}"
                             />
                         </div>
                         <aura:if isTrue="{!v.showStageAndStatus}">
                             <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5 slds-truncate">
                                 <aura:if isTrue="{!not(v.isBusy)}">
                                     <c:aos_Select label="Stage"
-                                                     options="{!v.selectOptions.animalosStageOptions}"
-                                                     value="{!v.animal.animalos__Stage__c}"
-                                                     required="{!true}"
-                                                     disabled="{!v.isBusy}"
+                                                  options="{!v.selectOptions.animalosStageOptions}"
+                                                  value="{!v.animal.animalos__Stage__c}"
+                                                  required="{!true}"
+                                                  disabled="{!v.isBusy}"
                                     />
                                 </aura:if>
                             </div>
                             <div class="slds-col slds-small-size_1-of-1 slds-medium-size_1-of-3 slds-large-size_1-of-5 slds-truncate">
                                 <aura:if isTrue="{!not(v.isBusy)}">
                                     <c:aos_Select label="Status"
-                                                     dependentOptions="{!v.dependentOptions.animalosStatusOptions}"
-                                                     value="{!v.animal.animalos__Status__c}"
-                                                     isDepended="{!true}"
-                                                     dependsOn="{!v.animal.animalos__Stage__c}"
-                                                     required="{!true}"
-                                                     disabled="{!v.isBusy}"
+                                                  dependentOptions="{!v.dependentOptions.animalosStatusOptions}"
+                                                  value="{!v.animal.animalos__Status__c}"
+                                                  isDepended="{!true}"
+                                                  dependsOn="{!v.animal.animalos__Stage__c}"
+                                                  required="{!true}"
+                                                  disabled="{!v.isBusy}"
                                     />
                                 </aura:if>
                             </div>

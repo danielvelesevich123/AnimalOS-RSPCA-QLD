@@ -1,4 +1,4 @@
-public with sharing class aos_WildlifeAnimalIntakeSubmitProc extends aos_AbstractProcessor implements aos_Structs.IRollbackable {
+public without sharing class aos_WildlifeAnimalIntakeSubmitProc extends aos_AbstractProcessor implements aos_Structs.IRollbackable {
 
     private animalos__Referral__c referral = new animalos__Referral__c();
     private Boolean isInboundRecordType;
@@ -43,7 +43,6 @@ public with sharing class aos_WildlifeAnimalIntakeSubmitProc extends aos_Abstrac
                     SELECT Id, Name
                     FROM Contact
                     WHERE Id = :this.referral.animalos__Contact__c
-                    WITH SECURITY_ENFORCED
             ]);
 
             referralNameParts.add(contactVar?.Name);
@@ -54,7 +53,6 @@ public with sharing class aos_WildlifeAnimalIntakeSubmitProc extends aos_Abstrac
                     SELECT Id, Name
                     FROM Account
                     WHERE Id = :this.referral.animalos__Referral_Organisation__c
-                    WITH SECURITY_ENFORCED
             ]);
 
             referralNameParts.add(accountVar?.Name);
@@ -65,7 +63,6 @@ public with sharing class aos_WildlifeAnimalIntakeSubmitProc extends aos_Abstrac
                     SELECT Id, Name
                     FROM animalos__Location__c
                     WHERE Id = :this.referral.animalos__Entry_Site__c
-                    WITH SECURITY_ENFORCED
             ]);
 
             referralNameParts.add(locationVar?.Name);
@@ -113,7 +110,6 @@ public with sharing class aos_WildlifeAnimalIntakeSubmitProc extends aos_Abstrac
                     FROM animalos__Movement__c
                     WHERE animalos__Animal__c IN :animals
                     AND animalos__Current__c = TRUE
-                    WITH SECURITY_ENFORCED
             ];
 
             for (animalos__Movement__c movement : movements) {
@@ -166,7 +162,6 @@ public with sharing class aos_WildlifeAnimalIntakeSubmitProc extends aos_Abstrac
                 FROM animalos__Movement__c
                 WHERE animalos__Animal__c IN :animals
                 AND animalos__Current__c = TRUE
-                WITH SECURITY_ENFORCED
         ];
 
         for (animalos__Movement__c movement : movements) {

@@ -1,4 +1,4 @@
-public with sharing class aos_WildlifeAnimalIntakeMetaProc extends aos_MetadataProcessor {
+public without sharing class aos_WildlifeAnimalIntakeMetaProc extends aos_MetadataProcessor {
 
     private Set<String> animalLookupFields = new Set<String>{
             'animalos__Animal_Name__c',
@@ -64,7 +64,6 @@ public with sharing class aos_WildlifeAnimalIntakeMetaProc extends aos_MetadataP
                 SELECT Id, animalos__Setting__c
                 FROM animalos__Setting__c
                 WHERE RecordType.DeveloperName = 'Start_Referral'
-                WITH USER_MODE
         ]);
 
         if (startReferralSetting == null || String.isBlank(startReferralSetting.animalos__Setting__c)) {

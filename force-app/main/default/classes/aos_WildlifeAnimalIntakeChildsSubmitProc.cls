@@ -1,4 +1,4 @@
-public with sharing class aos_WildlifeAnimalIntakeChildsSubmitProc extends aos_AbstractProcessor {
+public without sharing class aos_WildlifeAnimalIntakeChildsSubmitProc extends aos_AbstractProcessor {
 
     private aos_UnitOfWork uow = new aos_UnitOfWork(new List<SObjectType>{
             animalos__Animal__c.SObjectType,
