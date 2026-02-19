@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>true</sorted>
+    <standardValue>
+        <fullName>Assistance Hub Portal</fullName>
+        <default>false</default>
+        <label>Assistance Hub Portal</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Automatic</fullName>
+        <default>false</default>
+        <label>Automatic</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Chat</fullName>
+        <default>false</default>
+        <label>Chat</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Community</fullName>
+        <default>false</default>
+        <label>Community</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Email</fullName>
+        <default>false</default>
+        <label>Email</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Facebook</fullName>
+        <default>false</default>
+        <label>Facebook</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Google</fullName>
+        <default>false</default>
+        <label>Google</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Instagram</fullName>
+        <default>false</default>
+        <label>Instagram</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Internal</fullName>
+        <default>false</default>
+        <label>Internal</label>
+    </standardValue>
+    <standardValue>
+        <fullName>LinkedIn</fullName>
+        <default>false</default>
+        <label>LinkedIn</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Mobile Device</fullName>
+        <default>false</default>
+        <label>Mobile Device</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Phone</fullName>
+        <default>true</default>
+        <label>Phone</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Q&amp;A</fullName>
+        <default>false</default>
+        <label>Q&amp;A</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Salesforce IoT</fullName>
+        <default>false</default>
+        <label>Salesforce IoT</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Text Session</fullName>
+        <default>false</default>
+        <label>Text Session</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Twitter</fullName>
+        <default>false</default>
+        <label>Twitter</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Walk In</fullName>
+        <default>false</default>
+        <label>Walk In</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Web</fullName>
+        <default>false</default>
+        <label>Web</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Website</fullName>
+        <default>false</default>
+        <label>Website</label>
+    </standardValue>
+</StandardValueSet>

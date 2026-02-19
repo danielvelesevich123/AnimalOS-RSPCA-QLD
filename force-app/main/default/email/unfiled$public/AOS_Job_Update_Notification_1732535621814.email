@@ -1,0 +1,14 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><a href="https://rspcansw.lightning.force.com/{{{animalos__Job__c.Id}}}">{{{animalos__Job__c.Name}}}</a> job has been updated. The following details have been updated:<br />
+<br />
+Subject: {{{animalos__Job__c.animalos__Subject__c}}}<br />
+<br />
+Description: {{{animalos__Job__c.animalos__Description__c}}}<br />
+<br />
+Animal Report Summary: {{{animalos__Job__c.animalos__Animal_Report_Summary__c}}}<br />
+<br />
+Priority: {{{animalos__Job__c.animalos__Priority__c}}}</body>
+</html>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>New</fullName>
+        <default>true</default>
+        <label>New</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Contact Details</fullName>
+        <default>false</default>
+        <label>Contact Details</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Person Responsible</fullName>
+        <default>false</default>
+        <label>Person Responsible</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Condition of Animals Reported</fullName>
+        <default>false</default>
+        <label>Condition of Animals Reported</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Evidence</fullName>
+        <default>false</default>
+        <label>Evidence</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Submitted</fullName>
+        <default>false</default>
+        <label>Submitted</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Working/Assigned</fullName>
+        <default>false</default>
+        <label>Working/Assigned</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Waiting on Customer</fullName>
+        <default>false</default>
+        <label>Waiting on Customer</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Escalated</fullName>
+        <default>false</default>
+        <label>Escalated</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Active</fullName>
+        <default>false</default>
+        <label>Active</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Inactive</fullName>
+        <default>false</default>
+        <label>Inactive</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Job Raised</fullName>
+        <default>false</default>
+        <label>Job Raised</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Intel</fullName>
+        <default>false</default>
+        <label>Intel</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Closed</fullName>
+        <default>false</default>
+        <label>Closed</label>
+        <closed>true</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Referred</fullName>
+        <default>false</default>
+        <label>Referred</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting RSPCA Team Member</fullName>
+        <default>false</default>
+        <label>Awaiting RSPCA Team Member</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting Paperwork</fullName>
+        <default>false</default>
+        <label>Awaiting Paperwork</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting 3rd Party</fullName>
+        <default>false</default>
+        <label>Awaiting 3rd Party</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>In Progress</fullName>
+        <default>false</default>
+        <label>In Progress</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting Donor</fullName>
+        <default>false</default>
+        <label>Awaiting Donor</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>On Hold</fullName>
+        <default>false</default>
+        <label>On Hold</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Investigating</fullName>
+        <default>false</default>
+        <label>Investigating</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Awaiting Action</fullName>
+        <default>false</default>
+        <label>Awaiting Action</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Future Development</fullName>
+        <default>false</default>
+        <label>Future Development</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Pending</fullName>
+        <default>false</default>
+        <label>Pending</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>In Care</fullName>
+        <default>false</default>
+        <label>In Care</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Assistance</fullName>
+        <default>false</default>
+        <label>Assistance</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Finalised</fullName>
+        <default>false</default>
+        <label>Finalised</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Paperwork Sent</fullName>
+        <default>false</default>
+        <label>Paperwork Sent</label>
+        <closed>false</closed>
+    </standardValue>
+    <standardValue>
+        <fullName>Gathering Info</fullName>
+        <default>false</default>
+        <label>Gathering Info</label>
+        <closed>false</closed>
+    </standardValue>
+</StandardValueSet>

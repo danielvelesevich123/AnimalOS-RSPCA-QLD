@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>FlowStyles_Badge</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Badge</shortDescription>
+        <value>&lt;span class=&quot;slds-badge&quot;&gt;_BADGE_LABEL_&lt;/span&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Badge_Dark</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Badge_Dark</shortDescription>
+        <value>&lt;span class=&quot;slds-badge slds-badge_inverse&quot;&gt;_BADGE_LABEL_&lt;/span&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Badge_Error</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Badge_Error</shortDescription>
+        <value>&lt;span class=&quot;slds-badge slds-theme_error&quot;&gt;_BADGE_LABEL_&lt;/span&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Badge_Light</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Badge_Light</shortDescription>
+        <value>&lt;span class=&quot;slds-badge slds-badge_lightest&quot;&gt;_BADGE_LABEL_&lt;/span&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Badge_Success</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Badge_Success</shortDescription>
+        <value>&lt;span class=&quot;slds-badge slds-theme_success&quot;&gt;_BADGE_LABEL_&lt;/span&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Badge_Success_Completed</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Badge_Success_Completed</shortDescription>
+        <value>&lt;span class=&quot;slds-badge slds-theme_success&quot;&gt;Completed&lt;/span&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Badge_Success_Treatment_Completed</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Badge_Success_Treatment_Completed</shortDescription>
+        <value>&lt;span class=&quot;slds-badge slds-theme_success&quot;&gt;Treatment Completed&lt;/span&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Badge_Warning</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Badge_Warning</shortDescription>
+        <value>&lt;span class=&quot;slds-badge slds-theme_warning&quot;&gt;_BADGE_LABEL_&lt;/span&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Badge_Warning_Incomplete</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Badge_Warning_Incomplete</shortDescription>
+        <value>&lt;span class=&quot;slds-badge slds-theme_warning&quot;&gt;Incomplete&lt;/span&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Box</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Box</shortDescription>
+        <value>&lt;div class=&quot;slds-box slds-box_small&quot;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Box_DarkBlue</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles Box DarkBlue</shortDescription>
+        <value>&lt;div class=&quot;slds-box slds-box_small slds-theme_inverse&quot;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Box_DarkBlueAlt</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Box_DarkBlueAlt</shortDescription>
+        <value>&lt;div class=&quot;slds-box slds-box_small slds-theme_alt-inverse&quot;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Box_Error</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Box_Error</shortDescription>
+        <value>&lt;div class=&quot;slds-box slds-box_small slds-theme_error&quot;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Box_Info</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Box_Info</shortDescription>
+        <value>&lt;div class=&quot;slds-box slds-box_small slds-theme_info&quot;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Box_Shaded</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Box_Shaded</shortDescription>
+        <value>&lt;div class=&quot;slds-box slds-box_small slds-theme_shade&quot;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Box_Success</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Box_Success</shortDescription>
+        <value>&lt;div class=&quot;slds-box slds-box_small slds-theme_success&quot;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Box_Warning</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Box_Warning</shortDescription>
+        <value>&lt;div class=&quot;slds-box slds-box_small slds-theme_warning&quot;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_ErrorBackgroud</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_ErrorBackgroud</shortDescription>
+        <value>&lt;div class=&quot;slds-box slds-theme_error&quot;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Notification_Dark</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Notification_Dark</shortDescription>
+        <value>&lt;div class=&quot;slds-scoped-notification slds-scoped-notification_dark&quot; role=&quot;status&quot;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Notification_Error</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Notification_Error</shortDescription>
+        <value>&lt;div class=&quot;slds-scoped-notification slds-theme_error&quot; role=&quot;status&quot;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Notification_Success</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Notification_Success</shortDescription>
+        <value>&lt;div class=&quot;slds-scoped-notification slds-theme_success&quot; role=&quot;status&quot;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_Notification_Warning</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Notification_Warning</shortDescription>
+        <value>&lt;div class=&quot;slds-scoped-notification slds-theme_warning&quot; role=&quot;status&quot;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_ScopedNotification_Light</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_ScopedNotification_Light</shortDescription>
+        <value>&lt;div class=&quot;slds-scoped-notification slds-scoped-notification_light&quot; role=&quot;status&quot;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>FlowStyles_SectionTitle</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_SectionTitle</shortDescription>
+        <value>&lt;div class=&quot;slds-section slds-section__title slds-theme_shade slds-p-horizontal_small slds-p-vertical_xxx-small&quot;&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Flow_Styles_Badge_Error_Questions_Due</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Badge_Error_Questions_Due</shortDescription>
+        <value>&lt;span class=&quot;slds-badge slds-theme_error&quot;&gt;Please Complete&lt;/span&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Flow_Styles_Badge_Error_Treatment_Due</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Badge_Error_Treatment_Due</shortDescription>
+        <value>&lt;span class=&quot;slds-badge slds-theme_error&quot;&gt;Treatment Due&lt;/span&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Flow_Styles_Badge_Success_Logged</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Badge_Success_Logged</shortDescription>
+        <value>&lt;span class=&quot;slds-badge slds-theme_success&quot;&gt;Logged&lt;/span&gt;</value>
+    </labels>
+    <labels>
+        <fullName>Flow_Styles_Badge_Warning_Not_Logged</fullName>
+        <categories>Flow Styles</categories>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>FlowStyles_Badge_Warning_Not_Logged</shortDescription>
+        <value>&lt;span class=&quot;slds-badge slds-theme_warning&quot;&gt;Not Logged&lt;/span&gt;</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_field_not_insertable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_field_not_insertable</shortDescription>
+        <value>You do not have permission to insert field {1} on {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_field_not_readable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_field_not_readable</shortDescription>
+        <value>You do not have permission to read the field {1} on {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_field_not_updateable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_field_not_updateable</shortDescription>
+        <value>You do not have permission to update the field {1} on {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_object_not_deletable</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_object_not_deletable</shortDescription>
+        <value>You do not have permission to delete {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_object_not_insertable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_object_not_insertable</shortDescription>
+        <value>You do not have permission to insert {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_object_not_readable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_object_not_readable</shortDescription>
+        <value>You do not have permission to read {0}</value>
+    </labels>
+    <labels>
+        <fullName>fflib_security_error_object_not_updateable</fullName>
+        <categories>security,error</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>fflib_security_error_object_not_updateable</shortDescription>
+        <value>You do not have permission to update {0}</value>
+    </labels>
+</CustomLabels>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Birds</label>
+    <protected>false</protected>
+    <values>
+        <field>aos_Animal_Type__c</field>
+        <value xsi:type="xsd:string">Bird</value>
+    </values>
+    <values>
+        <field>aos_Information__c</field>
+        <value xsi:type="xsd:string">Psittacosis is a common bacterial disease in pet birds that causes sneezing, watery eyes and nose, and general sickness, and can be transmitted to humans. This bird has not been tested for Psittacosis, but does not have any clinical signs of disease. New owners should consult their avian veterinarian for advice on screening tests. If the bird returns a positive test, new owners accept full responsibility for the care and costs of treatment</value>
+    </values>
+</CustomMetadata>

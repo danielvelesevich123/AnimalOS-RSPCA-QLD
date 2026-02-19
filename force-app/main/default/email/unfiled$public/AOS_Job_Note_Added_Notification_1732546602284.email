@@ -1,0 +1,13 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<div><a href="https://rspcansw.lightning.force.com/{{{animalos__Job_Note__c.aos_Job_Id__c}}}">{{{animalos__Job_Note__c.animalos__Job__c}}}</a> job has been updated with a new Job Note. The note details:</div>
+
+<ul>
+	<li>{{{animalos__Job_Note__c.animalos__Subject__c}}}</li>
+	<li>{{{animalos__Job_Note__c.animalos__Content__c}}}</li>
+</ul>
+</body>
+</html>

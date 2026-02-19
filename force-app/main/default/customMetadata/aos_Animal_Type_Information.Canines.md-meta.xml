@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Canines</label>
+    <protected>false</protected>
+    <values>
+        <field>aos_Animal_Type__c</field>
+        <value xsi:type="xsd:string">Dog;Puppy</value>
+    </values>
+    <values>
+        <field>aos_Information__c</field>
+        <value xsi:type="xsd:string">Many dog breeds are genetically predisposed to certain conditions, which are present from a young age, but generally, only cause symptoms as the animal ages. RSPCA does not perform testing other than a clinical examination to determine if, or at what stage, these conditions have developed in animals that are not showing clinical symptoms. I accept full responsibility for seeking professional advice about potential genetic disorders specific to the animal I am adopting.</value>
+    </values>
+</CustomMetadata>

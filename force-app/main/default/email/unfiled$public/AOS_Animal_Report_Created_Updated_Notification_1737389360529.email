@@ -1,0 +1,6 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;"><a href="https://rspcansw.lightning.force.com/{{{animalos__Animal_Report__c.Id}}}">{{{animalos__Animal_Report__c.Name}}}</a>&nbsp;Animal Report has been created/updated on the&nbsp;<a href="https://rspcansw.lightning.force.com/{{{animalos__Animal_Report__c.animalos__Job_Id__c}}}">{{{animalos__Animal_Report__c.animalos__Job__c}}}</a>&nbsp;Job</body>
+</html>

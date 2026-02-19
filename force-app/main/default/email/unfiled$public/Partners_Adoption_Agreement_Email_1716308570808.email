@@ -1,0 +1,17 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Hi {{{Recipient.FirstName}}},</p>
+
+<p>Thank you for choosing to adopt from the RSPCA QLD, please see <a href="https://rspcaqld2--aosuat.sandbox.my.site.com/partners/s/adoption-agreement?recordId={{{animalos__Referral__c.Id}}}">Adoption Agreement for your review and signing.</a></p>
+
+<p>For more information about how to care for your new pet please visit our website <a href="https://www.rspcaqld.org.au/">Homepage | RSPCA QLD | Helping people help animals</a></p>
+&nbsp;
+
+<p>Kind regards</p>
+
+<p>RSPCA QLD Adoption Team</p>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Felines</label>
+    <protected>false</protected>
+    <values>
+        <field>aos_Animal_Type__c</field>
+        <value xsi:type="xsd:string">Cat;Kitten</value>
+    </values>
+    <values>
+        <field>aos_Information__c</field>
+        <value xsi:type="xsd:string">Cat Flu is a widespread, highly infectious condition in cats. It is virtually impossible to prevent exposure to cat flu, especially in cats that have been wandering or brought into care at an animal shelter. Infected cats can become sick with flu-like symptoms ranging from very mild to very severe. Occasionally, cats end up with long term problems and/or lifelong snuffles despite extensive treatment and this outcome is not able to be predicted. Some infected cats never develop sickness, but they still spread the disease to other cats and this carrier condition is not able to be detected by testing. Vaccination does not prevent infection, but usually reduces the severity of clinical disease and the chances of long-term problems.
+
+All cats available for adoption should therefore be considered at risk of developing cat flu after adoption, whether or not they have already had it and recovered and despite the fact they have been vaccinated against cat flu. Stress is a major reason that cats get sick with flu, and cats are stressed by many things, such as moving to a new place, travelling, or adapting to living with new family members. RSPCA will provide care and treatment for all newly adopted cats that develop clinical cat flu in the first 14 days after adoption (as part of the animal’s health warranty), but will not provide veterinary care or treatment for any existing household cats that develop cat flu. I understand that existing household cats should be vaccinated against cat flu at least 2 weeks prior to adopting a new cat.
+
+All cats over 6 months of age will be tested for Feline Immunodeficiency Virus (FIV). If the test result is negative, the cat will be placed up for adoption. Some cats who test positive for FIV may also be made available for adoption if they are suitable for the RSPCA’s FIV rehoming program. However, it can take 6 months for a recent infection to return a positive test. As this animal’s history (and/or level of exposure to the FIV virus) is unknown, it is not possible to predict if the virus is being incubated and the animal will test positive for FIV in the future. New owners are advised to organise a follow-up FIV test with their private veterinarian in 6 months’ time. RSPCA will not reimburse owners for any tests or treatments provided by a private veterinarian. If the cat returns a positive test, new owners accept full responsibility for all the medical and husbandry requirements of owning an FIV positive cat.</value>
+    </values>
+</CustomMetadata>

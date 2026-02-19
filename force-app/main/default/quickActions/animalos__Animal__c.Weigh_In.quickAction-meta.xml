@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldOverrides>
+        <field>animalos__Action_Status__c</field>
+        <literalValue>Given</literalValue>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>animalos__Date_Time_Action_Completed__c</field>
+        <formula>NOW()</formula>
+    </fieldOverrides>
+    <label>Weigh In</label>
+    <optionsCreateFeedItem>true</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>animalos__Animal__c</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>animalos__Date_Time_Action_Completed__c</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>animalos__Weight_KG__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+    </quickActionLayout>
+    <targetObject>animalos__Animal_Action__c</targetObject>
+    <targetParentField>animalos__Animal__c</targetParentField>
+    <targetRecordType>animalos__Animal_Action__c.animalos__Weigh_In</targetRecordType>
+    <type>Create</type>
+</QuickAction>

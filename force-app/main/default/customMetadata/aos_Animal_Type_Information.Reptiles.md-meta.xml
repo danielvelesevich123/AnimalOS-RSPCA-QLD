@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Reptiles</label>
+    <protected>false</protected>
+    <values>
+        <field>aos_Animal_Type__c</field>
+        <value xsi:type="xsd:string">Reptile</value>
+    </values>
+    <values>
+        <field>aos_Information__c</field>
+        <value xsi:type="xsd:string">All RSPCA QLD adoption reptiles have had an xray and a physical examination by a wildlife vet to detect evidence of disease, including underlying signs of metabolic bone disease, renal and liver diseases, etc. Based on these examinations, this animal is considered healthy, but its history prior to coming into care at RSPCA is unknown and therefore its risk of developing disease is uncertain. In addition, there are some diseases (infectious and metabolic) that can be present in an apparently healthy animal but may not show any clinical signs of disease until 1-3 years. New owners are strongly advised to consult with a reptile vet prior to introducing this animal to an existing collection for another health check and appropriate quarantine advice. New owners accept all responsibility for the care and costs of any future problems that may arise.</value>
+    </values>
+</CustomMetadata>

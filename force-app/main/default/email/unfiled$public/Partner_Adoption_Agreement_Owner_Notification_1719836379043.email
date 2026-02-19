@@ -1,0 +1,9 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">{{{Recipient.FirstName}}}<br />
+<br />
+The Adoption Agreement has been e-signed, please proceed with finalising the <a href="https://rspcaqld2--aosuat.sandbox.lightning.force.com/{{{animalos__Referral__c.Id}}}">adoption</a>.<br />
+&nbsp;</body>
+</html>

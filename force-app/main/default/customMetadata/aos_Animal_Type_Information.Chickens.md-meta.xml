@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Chickens</label>
+    <protected>false</protected>
+    <values>
+        <field>aos_Animal_Type__c</field>
+        <value xsi:type="xsd:string">Fowl</value>
+    </values>
+    <values>
+        <field>aos_Information__c</field>
+        <value xsi:type="xsd:string">There are several diseases of chickens (Marek&apos;s disease, Avian Leukosis viruses and others) that are contagious and may lay dormant for several years without causing any signs of illness. Although this chicken has not shown any signs of these diseases while in care, testing has not been performed and RSPCA Qld cannot guarantee that the bird is not a carrier. New owners accept all responsibility for any loss resulting from the adoption of these birds, and for the care and costs of any future problems that may arise from this or any related condition.</value>
+    </values>
+</CustomMetadata>

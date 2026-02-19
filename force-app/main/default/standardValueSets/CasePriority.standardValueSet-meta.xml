@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Minor</fullName>
+        <default>true</default>
+        <label>Minor</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Critical</fullName>
+        <default>false</default>
+        <label>Critical</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Major</fullName>
+        <default>false</default>
+        <label>Major</label>
+    </standardValue>
+    <standardValue>
+        <fullName>No Incident</fullName>
+        <default>false</default>
+        <label>No Incident</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Secondary</fullName>
+        <default>false</default>
+        <label>Secondary</label>
+    </standardValue>
+</StandardValueSet>

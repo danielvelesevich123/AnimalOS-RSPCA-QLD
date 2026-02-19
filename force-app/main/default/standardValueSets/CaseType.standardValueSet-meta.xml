@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>true</sorted>
+    <standardValue>
+        <fullName>Animal Related</fullName>
+        <default>false</default>
+        <label>Animal Related</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Animal Surrender</fullName>
+        <default>false</default>
+        <label>Animal Surrender</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Corporate</fullName>
+        <default>false</default>
+        <label>Corporate</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Cruelty Complaint</fullName>
+        <default>false</default>
+        <label>Cruelty Complaint</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Education</fullName>
+        <default>false</default>
+        <label>Education</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Fundraising</fullName>
+        <default>false</default>
+        <label>Fundraising</label>
+    </standardValue>
+    <standardValue>
+        <fullName>General Enquiry</fullName>
+        <default>false</default>
+        <label>General Enquiry</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Housing Emergency</fullName>
+        <default>false</default>
+        <label>Housing Emergency</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Media</fullName>
+        <default>false</default>
+        <label>Media</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Other</fullName>
+        <default>false</default>
+        <label>Other</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Philanthropy</fullName>
+        <default>false</default>
+        <label>Philanthropy</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Policy Breach</fullName>
+        <default>false</default>
+        <label>Policy Breach</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Survey Response</fullName>
+        <default>false</default>
+        <label>Survey Response</label>
+    </standardValue>
+</StandardValueSet>

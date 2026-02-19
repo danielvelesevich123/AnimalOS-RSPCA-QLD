@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Queue xmlns="http://soap.sforce.com/2006/04/metadata">
+    <doesSendEmailToMembers>false</doesSendEmailToMembers>
+    <name>Logan Volunteer Rescue</name>
+    <queueMembers>
+        <users>
+            <user>chantelle.scolari@rspcaqld.org.au</user>
+            <user>david.casey_rspcaqld2@rspcaqld.org.au</user>
+            <user>developer+rspcaqld2@vertic.com.au</user>
+        </users>
+    </queueMembers>
+    <queueSobject>
+        <sobjectType>animalos__Job__c</sobjectType>
+    </queueSobject>
+</Queue>

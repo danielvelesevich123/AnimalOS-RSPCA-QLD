@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Rats/Mouses</label>
+    <protected>false</protected>
+    <values>
+        <field>aos_Animal_Type__c</field>
+        <value xsi:type="xsd:string">Rat;Mouse</value>
+    </values>
+    <values>
+        <field>aos_Information__c</field>
+        <value xsi:type="xsd:string">Respiratory disease in rats and mice is widespread and highly infectious. Infected animals can become sick with flu-like symptoms ranging from very mild to very severe and some infected animals never develop sickness but still spread the disease. It is not possible to test if an animal is carrying the disease and therefore virtually impossible to prevent exposure to it. Respiratory disease can be difficult to treat and often affected animals can only be managed, not cured. All rats and mice available for adoption should therefore be considered at risk of developing respiratory disease after adoption, despite being symptom free at the time of adoption. Stress and environmental hygiene is a major reason that rats and mice succumb to respiratory disease. New owners should minimise the risk of respiratory disease by providing a calm, stress-free living environment, with adequate ventilation and cleaning to prevent the buildup of ammonia and other toxins.</value>
+    </values>
+</CustomMetadata>
