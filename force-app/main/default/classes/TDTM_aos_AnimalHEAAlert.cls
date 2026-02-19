@@ -15,7 +15,7 @@ global class TDTM_aos_AnimalHEAAlert extends animalos.TDTM.Handler implements an
         Map<String, SObject> activeAnimalAlertByAnimalId = aos_Utils.sObjects.getSObjectsByAnyFieldMap([
             SELECT Id, animalos__Target_Record_Id__c, animalos__Alert_Message__c
             FROM animalos__Alert__c
-            WHERE animalos__Target_Record_Id__c IN :animalIds AND animalos__Alert_Message__c = 'This is a HEA/BEQUEST pet.  DO NOT EUTHANISE.  VETS, please read animal notes. Any concerns please contact Philanthropy on 07 3258 5645.'
+            WHERE animalos__Target_Record_Id__c IN :animalIds AND animalos__Alert_Message__c = 'This is a HEA/BEQUEST pet.  DO NOT EUTHANISE.  VETS, please read animal notes. Any concerns please contact Fundraising on 1300 777 221.'
             AND animalos__Start_Date_Time__c <= TODAY AND (animalos__End_Date_Time__c = NULL OR animalos__End_Date_Time__c > TODAY)
         ], animalos__Alert__c.animalos__Target_Record_Id__c);
 
@@ -32,8 +32,8 @@ global class TDTM_aos_AnimalHEAAlert extends animalos.TDTM.Handler implements an
                 animalAlertsForUpsert.add(
                     new animalos__Alert__c(
                         animalos__Target_Record_Id__c = animal.Id,
-                        animalos__Alert_Message__c = 'This is a HEA/BEQUEST pet.  DO NOT EUTHANISE.  VETS, please read animal notes. Any concerns please contact Philanthropy on 07 3258 5645.',
-                        animalos__Message_Formatted__c = '<p><b>This is a HEA/BEQUEST pet.  DO NOT EUTHANISE.  VETS, please read animal notes. Any concerns please contact Philanthropy on 07 3258 5645.</b></p>',
+                        animalos__Alert_Message__c = 'This is a HEA/BEQUEST pet.  DO NOT EUTHANISE.  VETS, please read animal notes. Any concerns please contact Fundraising on 1300 777 221.',
+                        animalos__Message_Formatted__c = '<p><b>This is a HEA/BEQUEST pet.  DO NOT EUTHANISE.  VETS, please read animal notes. Any concerns please contact Fundraising on 1300 777 221.</b></p>',
                         animalos__Start_Date_Time__c = Datetime.now(),
                         animalos__Active__c = true,
                         animalos__Display_Created_Date__c = false,
